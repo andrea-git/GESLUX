@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4A221410-657-1820612209
+PROGRAM_UNIQUE_CODE=TOTEM-7E634948-111-148012164
 
 {{@DESCRIPTION:
 
@@ -1900,6 +1899,16 @@ m_bFixed=1
 
 @}}
 [FDITEM178_WK]
+m_strName=como-vet-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM178_WK
+
+@}}
+[FDITEM179_WK]
 m_strName=ESCI-73X21-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -1908,59 +1917,49 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM178_WK
+{{@DataItem_m_strDescriptionFDITEM179_WK
 
 @}}
-[FDITEM179_WK]
+[FDITEM180_WK]
 m_strName=STATUS-tparamge
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM179_WK
+{{@DataItem_m_strDescriptionFDITEM180_WK
 
 @}}
-[FDITEM180_WK]
+[FDITEM181_WK]
 m_strName=Valid-STATUS-tparamge
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM180_WK
-
-@}}
-[FDITEM181_WK]
-m_strName=Arial10BI-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM181_WK
 
 @}}
 [FDITEM182_WK]
-m_strName=r-riga
-m_nItemLevel=1
+m_strName=Arial10BI-Occidentale
+m_nUsage=26
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM182_WK
 
 @}}
 [FDITEM183_WK]
-m_strName=r-causale
-m_strRawPic=x(4)
-m_strPic=X(4)
-m_nItemLevel=5
+m_strName=r-riga
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM183_WK
 
 @}}
 [FDITEM184_WK]
-m_strName=r-codice
-m_strRawPic=z(5)
-m_strPic=Z(5)
+m_strName=r-causale
+m_strRawPic=x(4)
+m_strPic=X(4)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1968,9 +1967,9 @@ m_bFixed=1
 
 @}}
 [FDITEM185_WK]
-m_strName=r-ragsoc
-m_strRawPic=x(80)
-m_strPic=X(80)
+m_strName=r-codice
+m_strRawPic=z(5)
+m_strPic=Z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1978,9 +1977,9 @@ m_bFixed=1
 
 @}}
 [FDITEM186_WK]
-m_strName=r-destino
-m_strRawPic=x(40)
-m_strPic=x(40)
+m_strName=r-ragsoc
+m_strRawPic=x(80)
+m_strPic=X(80)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1988,9 +1987,9 @@ m_bFixed=1
 
 @}}
 [FDITEM187_WK]
-m_strName=r-age
-m_strRawPic=z(5)
-m_strPic=z(5)
+m_strName=r-destino
+m_strRawPic=x(40)
+m_strPic=x(40)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1998,9 +1997,9 @@ m_bFixed=1
 
 @}}
 [FDITEM188_WK]
-m_strName=r-age-d
-m_strRawPic=x(40)
-m_strPic=x(40)
+m_strName=r-age
+m_strRawPic=z(5)
+m_strPic=z(5)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2008,9 +2007,9 @@ m_bFixed=1
 
 @}}
 [FDITEM189_WK]
-m_strName=r-data-mov
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=r-age-d
+m_strRawPic=x(40)
+m_strPic=x(40)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2018,9 +2017,9 @@ m_bFixed=1
 
 @}}
 [FDITEM190_WK]
-m_strName=r-evasione
-m_strRawPic=z(8)
-m_strPic=Z(8)
+m_strName=r-data-mov
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2028,7 +2027,7 @@ m_bFixed=1
 
 @}}
 [FDITEM191_WK]
-m_strName=r-numdoc
+m_strName=r-evasione
 m_strRawPic=z(8)
 m_strPic=Z(8)
 m_nItemLevel=5
@@ -2038,9 +2037,9 @@ m_bFixed=1
 
 @}}
 [FDITEM192_WK]
-m_strName=r-datadoc
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=r-numdoc
+m_strRawPic=z(8)
+m_strPic=Z(8)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2048,9 +2047,9 @@ m_bFixed=1
 
 @}}
 [FDITEM193_WK]
-m_strName=r-marca
-m_strRawPic=z(4)
-m_strPic=Z(4)
+m_strName=r-datadoc
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2058,9 +2057,9 @@ m_bFixed=1
 
 @}}
 [FDITEM194_WK]
-m_strName=r-mag
-m_strRawPic=x(3)
-m_strPic=X(3)
+m_strName=r-marca
+m_strRawPic=z(4)
+m_strPic=Z(4)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2068,9 +2067,9 @@ m_bFixed=1
 
 @}}
 [FDITEM195_WK]
-m_strName=r-articolo
-m_strRawPic=z(6)
-m_strPic=Z(6)
+m_strName=r-mag
+m_strRawPic=x(3)
+m_strPic=X(3)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2078,9 +2077,9 @@ m_bFixed=1
 
 @}}
 [FDITEM196_WK]
-m_strName=r-desart
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=r-articolo
+m_strRawPic=z(6)
+m_strPic=Z(6)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2088,9 +2087,9 @@ m_bFixed=1
 
 @}}
 [FDITEM197_WK]
-m_strName=r-qta
-m_strRawPic=zz.zzz.zz9
-m_strPic=ZZ.ZZZ.ZZ9
+m_strName=r-desart
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2098,9 +2097,9 @@ m_bFixed=1
 
 @}}
 [FDITEM198_WK]
-m_strName=r-prezzo
-m_strRawPic=----.---.---.--9,99
-m_strPic=----.---.---.--9,99
+m_strName=r-qta
+m_strRawPic=zz.zzz.zz9
+m_strPic=ZZ.ZZZ.ZZ9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2108,7 +2107,7 @@ m_bFixed=1
 
 @}}
 [FDITEM199_WK]
-m_strName=r-tot
+m_strName=r-prezzo
 m_strRawPic=----.---.---.--9,99
 m_strPic=----.---.---.--9,99
 m_nItemLevel=5
@@ -2118,9 +2117,9 @@ m_bFixed=1
 
 @}}
 [FDITEM200_WK]
-m_strName=r-peso
-m_strRawPic=zzz.zz9,999
-m_strPic=zzz.zz9,999
+m_strName=r-tot
+m_strRawPic=----.---.---.--9,99
+m_strPic=----.---.---.--9,99
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -2128,17 +2127,17 @@ m_bFixed=1
 
 @}}
 [FDITEM201_WK]
-m_strName=lab-tot-coubat-buf
-m_strRawPic=zzz.zzz.zz9,99
-m_strPic=zzz.zzz.zz9,99
-m_nItemLevel=77
+m_strName=r-peso
+m_strRawPic=zzz.zz9,999
+m_strPic=zzz.zz9,999
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM201_WK
 
 @}}
 [FDITEM202_WK]
-m_strName=lab-tot-cons-buf
+m_strName=lab-tot-coubat-buf
 m_strRawPic=zzz.zzz.zz9,99
 m_strPic=zzz.zzz.zz9,99
 m_nItemLevel=77
@@ -2148,7 +2147,7 @@ m_bFixed=1
 
 @}}
 [FDITEM203_WK]
-m_strName=lab-tot-colimp-buf
+m_strName=lab-tot-cons-buf
 m_strRawPic=zzz.zzz.zz9,99
 m_strPic=zzz.zzz.zz9,99
 m_nItemLevel=77
@@ -2158,9 +2157,9 @@ m_bFixed=1
 
 @}}
 [FDITEM204_WK]
-m_strName=tmo-codmag
-m_strRawPic=x(3)
-m_strPic=x(3)
+m_strName=lab-tot-colimp-buf
+m_strRawPic=zzz.zzz.zz9,99
+m_strPic=zzz.zzz.zz9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2168,9 +2167,9 @@ m_bFixed=1
 
 @}}
 [FDITEM205_WK]
-m_strName=lab-pag-buf
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=tmo-codmag
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2178,11 +2177,9 @@ m_bFixed=1
 
 @}}
 [FDITEM206_WK]
-m_strName=bottone-ok-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=lab-pag-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2190,7 +2187,7 @@ m_bFixed=1
 
 @}}
 [FDITEM207_WK]
-m_strName=bottone-cancel-bmp
+m_strName=bottone-ok-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2202,7 +2199,7 @@ m_bFixed=1
 
 @}}
 [FDITEM208_WK]
-m_strName=BOTTONE-EXIT-BMP
+m_strName=bottone-cancel-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2214,8 +2211,11 @@ m_bFixed=1
 
 @}}
 [FDITEM209_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
+m_strName=BOTTONE-EXIT-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2223,9 +2223,8 @@ m_bFixed=1
 
 @}}
 [FDITEM210_WK]
-m_strName=STATUS-destinif
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2233,28 +2232,28 @@ m_bFixed=1
 
 @}}
 [FDITEM211_WK]
+m_strName=STATUS-destinif
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM211_WK
+
+@}}
+[FDITEM212_WK]
 m_strName=Valid-STATUS-destinif
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM211_WK
-
-@}}
-[FDITEM212_WK]
-m_strName=lab-codfor-buf
-m_strRawPic=X(9)
-m_strPic=X(9)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM212_WK
 
 @}}
 [FDITEM213_WK]
-m_strName=lab-ragsoc-buf
-m_strRawPic=X(80)
-m_strPic=X(80)
+m_strName=lab-codfor-buf
+m_strRawPic=X(9)
+m_strPic=X(9)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2262,10 +2261,9 @@ m_bFixed=1
 
 @}}
 [FDITEM214_WK]
-m_strName=lab-destino-2-buf
-m_strRawPic=X(40)
-m_strPic=X(40)
-m_strDefaultValue="Destino"
+m_strName=lab-ragsoc-buf
+m_strRawPic=X(80)
+m_strPic=X(80)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2273,9 +2271,10 @@ m_bFixed=1
 
 @}}
 [FDITEM215_WK]
-m_strName=lab-des-2-buf
+m_strName=lab-destino-2-buf
 m_strRawPic=X(40)
 m_strPic=X(40)
+m_strDefaultValue="Destino"
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2283,9 +2282,9 @@ m_bFixed=1
 
 @}}
 [FDITEM216_WK]
-m_strName=lab-citta-buf
-m_strRawPic=X(35)
-m_strPic=X(35)
+m_strName=lab-des-2-buf
+m_strRawPic=X(40)
+m_strPic=X(40)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2293,9 +2292,9 @@ m_bFixed=1
 
 @}}
 [FDITEM217_WK]
-m_strName=lab-marca-2-buf
-m_strRawPic=X(40)
-m_strPic=X(40)
+m_strName=lab-citta-buf
+m_strRawPic=X(35)
+m_strPic=X(35)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2303,9 +2302,9 @@ m_bFixed=1
 
 @}}
 [FDITEM218_WK]
-m_strName=lab-codice-buf
-m_strRawPic=z(5)
-m_strPic=z(5)
+m_strName=lab-marca-2-buf
+m_strRawPic=X(40)
+m_strPic=X(40)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2313,7 +2312,7 @@ m_bFixed=1
 
 @}}
 [FDITEM219_WK]
-m_strName=lab-des-prog-buf
+m_strName=lab-codice-buf
 m_strRawPic=z(5)
 m_strPic=z(5)
 m_nItemLevel=77
@@ -2323,9 +2322,9 @@ m_bFixed=1
 
 @}}
 [FDITEM220_WK]
-m_strName=lab-cod-marca-buf
-m_strRawPic=z(4)
-m_strPic=z(4)
+m_strName=lab-des-prog-buf
+m_strRawPic=z(5)
+m_strPic=z(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2333,6 +2332,16 @@ m_bFixed=1
 
 @}}
 [FDITEM221_WK]
+m_strName=lab-cod-marca-buf
+m_strRawPic=z(4)
+m_strPic=z(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM221_WK
+
+@}}
+[FDITEM222_WK]
 m_strName=EXCEL-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -2341,24 +2350,13 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM221_WK
-
-@}}
-[FDITEM222_WK]
-m_strName=como-numero
-m_strRawPic=9(12)v99
-m_strPic=9(12)v99
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM222_WK
 
 @}}
 [FDITEM223_WK]
-m_strName=stampa-tipo
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=como-numero
+m_strRawPic=9(12)v99
+m_strPic=9(12)v99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2366,29 +2364,30 @@ m_bFixed=1
 
 @}}
 [FDITEM224_WK]
+m_strName=stampa-tipo
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM224_WK
+
+@}}
+[FDITEM225_WK]
 m_strName=stampa-excel
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM224_WK
-
-@}}
-[FDITEM225_WK]
-m_strName=wstampa
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM225_WK
 
 @}}
 [FDITEM226_WK]
-m_strName=STATUS-lineseq
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2396,28 +2395,28 @@ m_bFixed=1
 
 @}}
 [FDITEM227_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM227_WK
+
+@}}
+[FDITEM228_WK]
 m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM227_WK
-
-@}}
-[FDITEM228_WK]
-m_strName=cbo-tipo-ord-buf
-m_strRawPic=x(70)
-m_strPic=x(70)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM228_WK
 
 @}}
 [FDITEM229_WK]
-m_strName=STATUS-destini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=cbo-tipo-ord-buf
+m_strRawPic=x(70)
+m_strPic=x(70)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2425,66 +2424,66 @@ m_bFixed=1
 
 @}}
 [FDITEM230_WK]
+m_strName=STATUS-destini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM230_WK
+
+@}}
+[FDITEM231_WK]
 m_strName=Valid-STATUS-destini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM230_WK
+{{@DataItem_m_strDescriptionFDITEM231_WK
 
 @}}
-[FDITEM231_WK]
+[FDITEM232_WK]
 m_strName=STATUS-clienti
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM231_WK
+{{@DataItem_m_strDescriptionFDITEM232_WK
 
 @}}
-[FDITEM232_WK]
+[FDITEM233_WK]
 m_strName=Valid-STATUS-clienti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM232_WK
+{{@DataItem_m_strDescriptionFDITEM233_WK
 
 @}}
-[FDITEM233_WK]
+[FDITEM234_WK]
 m_strName=STATUS-rordini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM233_WK
+{{@DataItem_m_strDescriptionFDITEM234_WK
 
 @}}
-[FDITEM234_WK]
+[FDITEM235_WK]
 m_strName=Valid-STATUS-rordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM234_WK
-
-@}}
-[FDITEM235_WK]
-m_strName=path-tmp-ordini
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM235_WK
 
 @}}
 [FDITEM236_WK]
-m_strName=STATUS-tmp-ordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-tmp-ordini
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2492,28 +2491,28 @@ m_bFixed=1
 
 @}}
 [FDITEM237_WK]
+m_strName=STATUS-tmp-ordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM237_WK
+
+@}}
+[FDITEM238_WK]
 m_strName=Valid-STATUS-tmp-ordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM237_WK
-
-@}}
-[FDITEM238_WK]
-m_strName=lab-tot-piombo-buf
-m_strRawPic=zzz.zzz.zz9,99
-m_strPic=zzz.zzz.zz9,99
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM238_WK
 
 @}}
 [FDITEM239_WK]
-m_strName=STATUS-ttipocli
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-tot-piombo-buf
+m_strRawPic=zzz.zzz.zz9,99
+m_strPic=zzz.zzz.zz9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2521,31 +2520,60 @@ m_bFixed=1
 
 @}}
 [FDITEM240_WK]
+m_strName=STATUS-ttipocli
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM240_WK
+
+@}}
+[FDITEM241_WK]
 m_strName=Valid-STATUS-ttipocli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM240_WK
+{{@DataItem_m_strDescriptionFDITEM241_WK
 
 @}}
-[FDITEM241_WK]
+[FDITEM242_WK]
 m_strName=STATUS-agenti
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM241_WK
+{{@DataItem_m_strDescriptionFDITEM242_WK
 
 @}}
-[FDITEM242_WK]
+[FDITEM243_WK]
 m_strName=Valid-STATUS-agenti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM242_WK
+{{@DataItem_m_strDescriptionFDITEM243_WK
+
+@}}
+[FDITEM244_WK]
+m_strName=STATUS-tvettori
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM244_WK
+
+@}}
+[FDITEM245_WK]
+m_strName=Valid-STATUS-tvettori
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM245_WK
 
 @}}
 
@@ -3903,7 +3931,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 20,28
+   Lines             = 22,44
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -3948,7 +3976,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 9
       Line              = 1,33
-      Lines             = 16,78
+      Lines             = 19,00
       Lines Unit        = Default
       Low Color         = 0
       Size              = 44,60
@@ -4214,7 +4242,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          Hint              = .
-         ID                = 19
+         ID                = 20
          ID Variable       = AUTO-ID
          Justification     = Right
          Line              = 6,67
@@ -4306,6 +4334,67 @@ Begin Screen Form1
          Before Procedure  = ef-art-BeforeProcedure
          After Procedure   = ef-art-AfterProcedure
       End
+      Begin Data.Entry-Field ef-vet
+         SCREEN-COL        = 10,70
+         SCREEN-LINE       = 11,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-vet
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 10,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 1
+         Field Edited Format = z(5)
+         Field Picture     = 9(5)
+         Field Variable    = vet-codice
+         File              = tvettori
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = .
+         ID                = 25
+         ID Variable       = AUTO-ID
+         Justification     = Right
+         Line              = 10,67
+         Lines             = 1,33
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 5
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 7,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 7
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Visible           = NONE
+         Width in Cells    = TRUE
+         My Property       = "CONTROLLO=;ZOOM="
+         Before Procedure  = ef-art-BeforeProcedure
+         After Procedure   = ef-art-AfterProcedure
+      End
       Begin Label Screen3-La-1a
          SCREEN-COL        = 18,70
          SCREEN-LINE       = 3,25
@@ -4333,7 +4422,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 7,00
          Size Unit         = Default
-         Tab Order         = 7
+         Tab Order         = 8
          Title             = "Data"
          Transparent       = TRUE
          Visible           = NONE
@@ -4366,7 +4455,7 @@ Begin Screen Form1
          Size              = 2,80
          Size in Pixels    = 28
          Size Unit         = Default
-         Tab Order         = 8
+         Tab Order         = 9
          Transparent Color = 0
          Transparent Color Variable = TR-COLOR
          Visible           = NONE
@@ -4399,7 +4488,7 @@ Begin Screen Form1
          Size              = 2,80
          Size in Pixels    = 28
          Size Unit         = Default
-         Tab Order         = 9
+         Tab Order         = 10
          Transparent Color = 0
          Transparent Color Variable = TR-COLOR
          Visible           = NONE
@@ -4434,7 +4523,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 1,60
          Size Unit         = Default
-         Tab Order         = 10
+         Tab Order         = 11
          Title             = "BlockPgm"
          Transparent       = TRUE
          Visible           = NONE
@@ -4472,7 +4561,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 2,20
          Size Unit         = Default
-         Tab Order         = 11
+         Tab Order         = 12
          Title             = "CUSTOM CONTROL"
          Transparent       = TRUE
          Visible           = NONE
@@ -4506,7 +4595,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 7,00
          Size Unit         = Default
-         Tab Order         = 12
+         Tab Order         = 13
          Title             = "Marca"
          Transparent       = TRUE
          Visible           = NONE
@@ -4539,7 +4628,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 7,00
          Size Unit         = Default
-         Tab Order         = 13
+         Tab Order         = 14
          Title             = "Articolo"
          Transparent       = TRUE
          Visible           = NONE
@@ -4577,7 +4666,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 26,00
          Size Unit         = Default
-         Tab Order         = 14
+         Tab Order         = 15
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -4614,14 +4703,14 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 26,00
          Size Unit         = Default
-         Tab Order         = 15
+         Tab Order         = 16
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
       End
       Begin Label Screen4-La-1
          SCREEN-COL        = 9,50
-         SCREEN-LINE       = 11,50
+         SCREEN-LINE       = 14,27
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen4-La-1
@@ -4639,14 +4728,14 @@ Begin Screen Form1
          ID                = 4
          Justification     = Center
          Label Offset      = 20
-         Line              = 11,17
+         Line              = 13,94
          Lines             = 1,00
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
          Size              = 29,00
          Size Unit         = Default
-         Tab Order         = 16
+         Tab Order         = 17
          Title             = "Tipologia di ordini da visualizzare"
          Transparent       = TRUE
          Visible           = NONE
@@ -4654,7 +4743,7 @@ Begin Screen Form1
       End
       Begin Combo-Box cbo-tipo-ord
          SCREEN-COL        = 8,00
-         SCREEN-LINE       = 13,22
+         SCREEN-LINE       = 16,00
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = cbo-tipo-ord
@@ -4675,7 +4764,7 @@ Begin Screen Form1
          Hint              = .
          ID                = 5
          ID Variable       = AUTO-ID
-         Line              = 12,89
+         Line              = 15,67
          Lines             = 4,00
          Lines Unit        = Default
          Mass Update       = 0:Fast-Update
@@ -4687,7 +4776,7 @@ Begin Screen Form1
          Size              = 32,00
          Size Unit         = Default
          Style             = Drop List
-         Tab Order         = 17
+         Tab Order         = 18
          Termination Value = 0
          Unsorted          = TRUE
          Value Container   = cbo-tipo-ord-buf
@@ -4713,7 +4802,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 16
+         ID                = 6
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 4,72
@@ -4723,7 +4812,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 7,00
          Size Unit         = Default
-         Tab Order         = 18
+         Tab Order         = 19
          Title             = "Agente"
          Transparent       = TRUE
          Visible           = NONE
@@ -4751,7 +4840,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 21
+         ID                = 10
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 4,72
@@ -4761,7 +4850,77 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 26,00
          Size Unit         = Default
-         Tab Order         = 19
+         Tab Order         = 20
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen4-La-4a
+         SCREEN-COL        = 3,70
+         SCREEN-LINE       = 11,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen4-La-4a
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 3,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 18
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 10,67
+         Lines             = 1,33
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 7,00
+         Size Unit         = Default
+         Tab Order         = 21
+         Title             = "Vettore"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Data.Label lab-vet
+         SCREEN-COL        = 18,70
+         SCREEN-LINE       = 11,00
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = lab-vet
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 5
+         Column            = 18,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Field Edited (Style) = 0
+         Field Edited Format = X(40)
+         Field Picture     = X(40)
+         Field Variable    = vet-descrizione
+         File              = tvettori
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 22
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 10,67
+         Lines             = 2,00
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 26,00
+         Size Unit         = Default
+         Tab Order         = 22
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -4769,7 +4928,7 @@ Begin Screen Form1
    End
    Begin Frame Screen4-Fr-1
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 18,44
+      SCREEN-LINE       = 20,61
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Fr-1
@@ -4788,7 +4947,7 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 23
-      Line              = 18,44
+      Line              = 20,61
       Lines             = 2,83
       Lines Unit        = Default
       Low Color         = 0
@@ -4801,7 +4960,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
       Begin Push-Button pb-ok
          SCREEN-COL        = 30,90
-         SCREEN-LINE       = 19,13
+         SCREEN-LINE       = 21,30
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-ok
@@ -4846,7 +5005,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-annulla
          SCREEN-COL        = 38,80
-         SCREEN-LINE       = 19,13
+         SCREEN-LINE       = 21,30
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-annulla
@@ -6389,6 +6548,7 @@ BEGIN-TEXT
            move "0 = Tutte le marche"    to lab-marca-buf.  
            move "0 = Tutti gli articoli" to lab-art-buf.
            move "0 = Tutti gli agenti"   to lab-age-buf.
+           move "0 = Tutti i vettori"    to lab-vet-buf.
 
            display Form1.
 
@@ -6413,6 +6573,7 @@ BEGIN-TEXT
            inquire ef-marca, value in como-mar-codice.
            inquire ef-art,   value in como-art-codice.
            inquire ef-age,   value in como-age-codice.
+           inquire ef-vet,   value in como-vet-codice.
            perform RIEMPI-TMP.
 
            call "w$mouse" using SET-MOUSE-SHAPE, ARROW-POINTER.
@@ -6901,6 +7062,16 @@ BEGIN-TEXT
                 cancel "zoom-gt"
                 if stato-zoom = ZERO  
                    modify ef-art,   value art-codice
+                end-if           
+      *
+           when 78-ID-ef-vet
+                inquire ef-vet   value vet-codice
+                move "tvettori"     to como-File
+                call   "zoom-gt" using como-file, vet-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   modify ef-vet, value vet-codice
                 end-if  
       *   
            end-evaluate.
@@ -7011,7 +7182,25 @@ BEGIN-TEXT
                    move "Tutti gli articoli" to art-descrizione
                 end-if     
                 move art-descrizione to lab-art-buf
-                display lab-art
+                display lab-art     
+      *                        
+           when 78-ID-ef-vet
+                inquire ef-vet,   value in vet-codice
+                move spaces to vet-descrizione
+                if vet-codice not = 0
+                   read tvettori no lock
+                        invalid
+                        set errori to true
+                        display message"Inserimento vettore NON valido"
+                                title = tit-err
+                                icon 2
+                        move 78-ID-ef-vet to control-id 
+                   end-read
+                else
+                   move "Tutti i vettori" to vet-descrizione
+                end-if     
+                move vet-descrizione to lab-vet-buf
+                display lab-vet
       *               
            when 78-ID-cbo-tipo-ord
                 inquire cbo-tipo-ord, value in cbo-tipo-ord-buf
@@ -7702,18 +7891,18 @@ BEGIN-DATA
 BEGIN-TEXT
            move CONTROL-ID to mem-id.
 
-           perform  varying CONTROL-ID from 78-ID-ef-data-from by 1
-                      until CONTROL-ID > 78-ID-cbo-tipo-ord
+           perform varying CONTROL-ID from 78-ID-ef-data-from by 1
+                     until CONTROL-ID > 78-ID-cbo-tipo-ord
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
 
            if tutto-ok
               modify form1-Handle, visible 0
-              perform FORM2-OPEN-ROUTINE                       
+              perform FORM2-OPEN-ROUTINE
               modify form1-Handle, visible 1
-              move 78-ID-ef-data-from to CONTROL-ID     
-              move 4                  to ACCEPT-CONTROL 
+              move 78-ID-ef-data-from to CONTROL-ID
+              move 4                  to ACCEPT-CONTROL
            end-if.
 END-TEXT
 END-DATA
@@ -7850,8 +8039,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=82
-REL_SYM_INFO_L=13
+REL_SYM_SIZE=88
+REL_SYM_INFO_L=14
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1544760598
 REL_SYM_INFO_X1=2301
@@ -7878,6 +8067,8 @@ REL_SYM_INFO_X11=2301
 REL_SYM_INFO_Y11=1891987690
 REL_SYM_INFO_X12=2301
 REL_SYM_INFO_Y12=378216434
+REL_SYM_INFO_X13=2301
+REL_SYM_INFO_Y13=1934372693
 
 [DRAW_BASESYMBOL_2301_1544760598]
 OBJ_NAME=2301
@@ -8503,6 +8694,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1934372693]
+OBJ_NAME=2301
+OBJ_ID=1934372693
+KIND=1
+{{@LABEL_2301_1934372693
+tvettori
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2880
+TOP=566
+RIGHT=3280
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -8907,6 +9146,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_378216434
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1934372693]
+OBJ_NAME=0
+OBJ_ID=1934372693
+REL_M_OBJ_ID=0
+ENTITY=tvettori
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=vet-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1934372693
 
 @}}
 DSN_INFO_PRIMARY=0

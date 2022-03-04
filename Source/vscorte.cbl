@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 3 ottobre 2020 00:07:34.
+       DATE-WRITTEN.        venerdì 4 marzo 2022 10:24:30.
        REMARKS.
       *{TOTEM}END
 
@@ -40,6 +40,7 @@
            COPY "tcodpag.sl".
            COPY "ttipocli.sl".
            COPY "agenti.sl".
+           COPY "tvettori.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -57,6 +58,7 @@
            COPY "tcodpag.fd".
            COPY "ttipocli.fd".
            COPY "agenti.fd".
+           COPY "tvettori.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -278,6 +280,7 @@
        77 como-mar-codice  PIC  9(4).
        77 como-art-codice  PIC  9(6).
        77 como-age-codice  PIC  9(5).
+       77 como-vet-codice  PIC  9(5).
        77 ESCI-73X21-BMP   PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -357,6 +360,8 @@
            88 Valid-STATUS-ttipocli VALUE IS "00" THRU "09". 
        77 STATUS-agenti    PIC  X(2).
            88 Valid-STATUS-agenti VALUE IS "00" THRU "09". 
+       77 STATUS-tvettori  PIC  X(2).
+           88 Valid-STATUS-tvettori VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -364,9 +369,9 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Form2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form2-tordini-RESTOREBUF  PIC X(3898).
+       77 TMP-Form2-tordini-RESTOREBUF  PIC X(3938).
        77 TMP-Form2-KEYIS  PIC 9(3) VALUE 1.
-       77 Form2-MULKEY-TMPBUF   PIC X(3898).
+       77 Form2-MULKEY-TMPBUF   PIC X(3938).
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
       * DATA CONTROL BUFFER
@@ -377,12 +382,16 @@
               05 ef-marca-BUF PIC z(4).
       * Data.Entry-Field
               05 ef-art-BUF PIC z(6).
+      * Data.Entry-Field
+              05 ef-vet-BUF PIC z(5).
       * Data.Label
               05 lab-marca-BUF PIC X(30).
       * Data.Label
               05 lab-art-BUF PIC X(50).
       * Data.Label
               05 lab-age-BUF PIC X(40).
+      * Data.Label
+              05 lab-vet-BUF PIC X(40).
 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
@@ -418,22 +427,23 @@
               05 lab-destino-BUF PIC x(100).
 
        77 TMP-form4-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-form4-tordini-RESTOREBUF  PIC X(3898).
+       77 TMP-form4-tordini-RESTOREBUF  PIC X(3938).
        77 TMP-form4-KEYIS  PIC 9(3) VALUE 1.
-       77 form4-MULKEY-TMPBUF   PIC X(3898).
+       77 form4-MULKEY-TMPBUF   PIC X(3938).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tmp-ordini-BUF     PIC X(490).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -504,6 +514,11 @@
        77 DataSet1-agenti-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-agenti-KEY-Asc  VALUE "A".
           88 DataSet1-agenti-KEY-Desc VALUE "D".
+       77 DataSet1-tvettori-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tvettori-LOCK  VALUE "Y".
+       77 DataSet1-tvettori-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tvettori-KEY-Asc  VALUE "A".
+          88 DataSet1-tvettori-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -529,7 +544,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -539,6 +554,7 @@
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
        77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
+       77 tvettori-k-des-SPLITBUF  PIC X(41).
 
       *{TOTEM}END
 
@@ -549,7 +565,8 @@
        78  78-ID-ef-age VALUE 5003.
        78  78-ID-ef-marca VALUE 5004.
        78  78-ID-ef-art VALUE 5005.
-       78  78-ID-cbo-tipo-ord VALUE 5006.
+       78  78-ID-ef-vet VALUE 5006.
+       78  78-ID-cbo-tipo-ord VALUE 5007.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1085,7 +1102,7 @@
            Frame, 
            COL 1,70, 
            LINE 1,33,
-           LINES 16,78 ,
+           LINES 19,00 ,
            SIZE 44,60 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -1209,6 +1226,24 @@
            RIGHT,
            MAX-TEXT 6,
            VALUE ef-art-BUF,
+           .
+
+      * ENTRY FIELD
+       05
+           ef-vet, 
+           Entry-Field, 
+           COL 10,70, 
+           LINE 11,00,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-vet,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 5,
+           VALUE ef-vet-BUF,
            .
 
       * LABEL
@@ -1352,7 +1387,7 @@
            Screen4-La-1, 
            Label, 
            COL 9,50, 
-           LINE 11,50,
+           LINE 14,27,
            LINES 1,00 ,
            SIZE 29,00 ,
            ID IS 4,
@@ -1368,7 +1403,7 @@
            cbo-tipo-ord, 
            Combo-Box, 
            COL 8,00, 
-           LINE 13,22,
+           LINE 16,00,
            LINES 4,00 ,
            SIZE 32,00 ,
            BOXED,
@@ -1389,7 +1424,7 @@
            LINE 5,05,
            LINES 1,33 ,
            SIZE 7,00 ,
-           ID IS 16,
+           ID IS 6,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1405,10 +1440,41 @@
            LINES 2,00 ,
            SIZE 26,00 ,
            COLOR IS 5,
-           ID IS 21,
+           ID IS 10,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-age-BUF,
+           TRANSPARENT,
+           .
+
+      * LABEL
+       05
+           Screen4-La-4a, 
+           Label, 
+           COL 3,70, 
+           LINE 11,00,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           ID IS 18,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Vettore",
+           .
+
+      * DB_LABEL
+       05
+           lab-vet, 
+           Label, 
+           COL 18,70, 
+           LINE 11,00,
+           LINES 2,00 ,
+           SIZE 26,00 ,
+           COLOR IS 5,
+           ID IS 22,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE lab-vet-BUF,
            TRANSPARENT,
            .
 
@@ -1417,7 +1483,7 @@
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 18,44,
+           LINE 20,61,
            LINES 2,83 ,
            SIZE 46,00 ,
            ID IS 23,
@@ -1430,7 +1496,7 @@
            pb-ok, 
            Push-Button, 
            COL 30,90, 
-           LINE 19,13,
+           LINE 21,30,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -1449,7 +1515,7 @@
            pb-annulla, 
            Push-Button, 
            COL 38,80, 
-           LINE 19,13,
+           LINE 21,30,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -2457,6 +2523,7 @@
            PERFORM OPEN-tcodpag
            PERFORM OPEN-ttipocli
            PERFORM OPEN-agenti
+           PERFORM OPEN-tvettori
       *    After Open
            .
 
@@ -2616,6 +2683,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tvettori.
+      * <TOTEM:EPT. INIT:vscorte, FD:tvettori, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tvettori
+           IF NOT Valid-STATUS-tvettori
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:vscorte, FD:tvettori, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-articoli
@@ -2632,6 +2711,7 @@
            PERFORM CLOSE-tcodpag
            PERFORM CLOSE-ttipocli
            PERFORM CLOSE-agenti
+           PERFORM CLOSE-tvettori
       *    After Close
            .
 
@@ -2709,6 +2789,12 @@
       * <TOTEM:EPT. INIT:vscorte, FD:agenti, BeforeClose>
       * <TOTEM:END>
            CLOSE agenti
+           .
+
+       CLOSE-tvettori.
+      * <TOTEM:EPT. INIT:vscorte, FD:tvettori, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tvettori
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -3919,7 +4005,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -5012,6 +5098,168 @@
       * <TOTEM:END>
            .
 
+       tvettori-k-des-MERGE-SPLITBUF.
+           INITIALIZE tvettori-k-des-SPLITBUF
+           MOVE vet-descrizione(1:40) TO tvettori-k-des-SPLITBUF(1:40)
+           .
+
+       DataSet1-tvettori-INITSTART.
+           IF DataSet1-tvettori-KEY-Asc
+              MOVE Low-Value TO vet-chiave
+           ELSE
+              MOVE High-Value TO vet-chiave
+           END-IF
+           .
+
+       DataSet1-tvettori-INITEND.
+           IF DataSet1-tvettori-KEY-Asc
+              MOVE High-Value TO vet-chiave
+           ELSE
+              MOVE Low-Value TO vet-chiave
+           END-IF
+           .
+
+      * tvettori
+       DataSet1-tvettori-START.
+           IF DataSet1-tvettori-KEY-Asc
+              START tvettori KEY >= vet-chiave
+           ELSE
+              START tvettori KEY <= vet-chiave
+           END-IF
+           .
+
+       DataSet1-tvettori-START-NOTGREATER.
+           IF DataSet1-tvettori-KEY-Asc
+              START tvettori KEY <= vet-chiave
+           ELSE
+              START tvettori KEY >= vet-chiave
+           END-IF
+           .
+
+       DataSet1-tvettori-START-GREATER.
+           IF DataSet1-tvettori-KEY-Asc
+              START tvettori KEY > vet-chiave
+           ELSE
+              START tvettori KEY < vet-chiave
+           END-IF
+           .
+
+       DataSet1-tvettori-START-LESS.
+           IF DataSet1-tvettori-KEY-Asc
+              START tvettori KEY < vet-chiave
+           ELSE
+              START tvettori KEY > vet-chiave
+           END-IF
+           .
+
+       DataSet1-tvettori-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tvettori-LOCK
+              READ tvettori WITH LOCK 
+              KEY vet-chiave
+           ELSE
+              READ tvettori WITH NO LOCK 
+              KEY vet-chiave
+           END-IF
+           PERFORM tvettori-k-des-MERGE-SPLITBUF
+           MOVE STATUS-tvettori TO TOTEM-ERR-STAT 
+           MOVE "tvettori" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tvettori-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tvettori-KEY-Asc
+              IF DataSet1-tvettori-LOCK
+                 READ tvettori NEXT WITH LOCK
+              ELSE
+                 READ tvettori NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tvettori-LOCK
+                 READ tvettori PREVIOUS WITH LOCK
+              ELSE
+                 READ tvettori PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tvettori-k-des-MERGE-SPLITBUF
+           MOVE STATUS-tvettori TO TOTEM-ERR-STAT
+           MOVE "tvettori" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tvettori-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tvettori-KEY-Asc
+              IF DataSet1-tvettori-LOCK
+                 READ tvettori PREVIOUS WITH LOCK
+              ELSE
+                 READ tvettori PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tvettori-LOCK
+                 READ tvettori NEXT WITH LOCK
+              ELSE
+                 READ tvettori NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tvettori-k-des-MERGE-SPLITBUF
+           MOVE STATUS-tvettori TO TOTEM-ERR-STAT
+           MOVE "tvettori" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tvettori-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tvettori TO TOTEM-ERR-STAT
+           MOVE "tvettori" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tvettori-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tvettori TO TOTEM-ERR-STAT
+           MOVE "tvettori" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tvettori-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tvettori TO TOTEM-ERR-STAT
+           MOVE "tvettori" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tvettori, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE mar-rec OF tmarche
@@ -5026,6 +5274,7 @@
            INITIALIZE record-tblpa OF tcodpag
            INITIALIZE tcl-rec OF ttipocli
            INITIALIZE age-rec OF agenti
+           INITIALIZE vet-rec OF tvettori
            .
 
 
@@ -5203,6 +5452,14 @@
       * FD's Initialize Paragraph
        DataSet1-agenti-INITREC.
            INITIALIZE age-rec OF agenti
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tvettori-INITREC.
+           INITIALIZE vet-rec OF tvettori
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -5740,7 +5997,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 20,28,
+              LINES 22,44,
               SIZE 46,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -5797,6 +6054,7 @@
            move "0 = Tutte le marche"    to lab-marca-buf.  
            move "0 = Tutti gli articoli" to lab-art-buf.
            move "0 = Tutti gli agenti"   to lab-age-buf.
+           move "0 = Tutti i vettori"    to lab-vet-buf.
 
            display Form1.
 
@@ -5918,6 +6176,14 @@
                MOVE 5005 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-vet's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-vet-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5006 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
            .
 
        ef-age-BEFORE-VALIDATION.
@@ -5971,6 +6237,23 @@
            PERFORM ef-art-AFTER-VALIDATION
            .
 
+       ef-vet-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-vet, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-vet-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-vet, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-vet's Validation
+       ef-vet-VALIDATION.
+           PERFORM ef-vet-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-vet-AFTER-VALIDATION
+           .
+
 
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
@@ -5981,6 +6264,8 @@
            MOVE ef-marca-BUF TO mar-codice
       * DB_Entry-Field : ef-art
            MOVE ef-art-BUF TO art-codice
+      * DB_Entry-Field : ef-vet
+           MOVE ef-vet-BUF TO vet-codice
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
       * <TOTEM:END>
            .
@@ -5994,12 +6279,16 @@
            MOVE mar-codice TO ef-marca-BUF
       * DB_Entry-Field : ef-art
            MOVE art-codice TO ef-art-BUF
+      * DB_Entry-Field : ef-vet
+           MOVE vet-codice TO ef-vet-BUF
       * DB_LABEL : lab-marca
               MOVE mar-descrizione  TO lab-marca-BUF
       * DB_LABEL : lab-art
               MOVE art-descrizione  TO lab-art-BUF
       * DB_LABEL : lab-age
               MOVE age-ragsoc-1  TO lab-age-BUF
+      * DB_LABEL : lab-vet
+              MOVE vet-descrizione  TO lab-vet-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
       * <TOTEM:END>
            .
@@ -6054,6 +6343,10 @@
            when 78-ID-ef-art
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-vet è l'ID del campo ef-vet
+           when 78-ID-ef-vet
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella BEFORE della screen
@@ -6082,6 +6375,11 @@
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
+           |78-ID-ef-vet è l'ID del campo ef-vet
+           when 78-ID-ef-vet
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella AFTER della screen
@@ -6107,6 +6405,9 @@
                 perform CONTROLLO
            |78-ID-ef-art è l'ID del campo ef-art
            when 78-ID-ef-art
+                perform CONTROLLO
+           |78-ID-ef-vet è l'ID del campo ef-vet
+           when 78-ID-ef-vet
                 perform CONTROLLO
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
@@ -6161,6 +6462,7 @@
            inquire ef-marca, value in como-mar-codice.
            inquire ef-art,   value in como-art-codice.
            inquire ef-age,   value in como-age-codice.
+           inquire ef-vet,   value in como-vet-codice.
            perform RIEMPI-TMP.
 
            call "w$mouse" using SET-MOUSE-SHAPE, ARROW-POINTER.
@@ -7127,13 +7429,15 @@
            WHEN 5004 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5005 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5006 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5007 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
            When 5003 PERFORM ef-marca-BeforeProcedure
            When 5004 PERFORM ef-marca-BeforeProcedure
            When 5005 PERFORM ef-art-BeforeProcedure
-           When 5006 PERFORM Screen4-Cm-1-BeforeProcedure
+           When 5006 PERFORM ef-art-BeforeProcedure
+           When 5007 PERFORM Screen4-Cm-1-BeforeProcedure
            END-EVALUATE
            perform Form1-BEFORE-SCREEN
            .
@@ -7143,6 +7447,7 @@
            When 5003 PERFORM ef-marca-AfterProcedure
            When 5004 PERFORM ef-marca-AfterProcedure
            When 5005 PERFORM ef-art-AfterProcedure
+           When 5006 PERFORM ef-art-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -7260,6 +7565,16 @@
                 cancel "zoom-gt"
                 if stato-zoom = ZERO  
                    modify ef-art,   value art-codice
+                end-if           
+      *
+           when 78-ID-ef-vet
+                inquire ef-vet   value vet-codice
+                move "tvettori"     to como-File
+                call   "zoom-gt" using como-file, vet-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   modify ef-vet, value vet-codice
                 end-if  
       *   
            end-evaluate 
@@ -7372,7 +7687,25 @@
                    move "Tutti gli articoli" to art-descrizione
                 end-if     
                 move art-descrizione to lab-art-buf
-                display lab-art
+                display lab-art     
+      *                        
+           when 78-ID-ef-vet
+                inquire ef-vet,   value in vet-codice
+                move spaces to vet-descrizione
+                if vet-codice not = 0
+                   read tvettori no lock
+                        invalid
+                        set errori to true
+                        display message"Inserimento vettore NON valido"
+                                title = tit-err
+                                icon 2
+                        move 78-ID-ef-vet to control-id 
+                   end-read
+                else
+                   move "Tutti i vettori" to vet-descrizione
+                end-if     
+                move vet-descrizione to lab-vet-buf
+                display lab-vet
       *               
            when 78-ID-cbo-tipo-ord
                 inquire cbo-tipo-ord, value in cbo-tipo-ord-buf
@@ -7689,6 +8022,12 @@ OMAGGI              perform AGGIUNGI-RIGA
               INQUIRE ef-art, VALUE IN art-codice
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-art-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-vet, VALUE IN vet-codice
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-vet-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -8030,18 +8369,18 @@ OMAGGI              perform AGGIUNGI-RIGA
       * <TOTEM:PARA. pb-ok-LinkTo>
            move CONTROL-ID to mem-id.
 
-           perform  varying CONTROL-ID from 78-ID-ef-data-from by 1
-                      until CONTROL-ID > 78-ID-cbo-tipo-ord
+           perform varying CONTROL-ID from 78-ID-ef-data-from by 1
+                     until CONTROL-ID > 78-ID-cbo-tipo-ord
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
 
            if tutto-ok
               modify form1-Handle, visible 0
-              perform FORM2-OPEN-ROUTINE                       
+              perform FORM2-OPEN-ROUTINE
               modify form1-Handle, visible 1
-              move 78-ID-ef-data-from to CONTROL-ID     
-              move 4                  to ACCEPT-CONTROL 
+              move 78-ID-ef-data-from to CONTROL-ID
+              move 4                  to ACCEPT-CONTROL
            end-if 
            .
       * <TOTEM:END>

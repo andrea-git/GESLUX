@@ -20,6 +20,10 @@
            when 78-ID-ef-art
                 inquire ef-art, value in ef-art-buf
 
+           |78-ID-ef-vet è l'ID del control ef-vet
+           when 78-ID-ef-vet
+                inquire ef-vet, value in ef-vet-buf
+
            end-evaluate.
 
       * Paragrafo per la struttura dei controlli sulla screen form3

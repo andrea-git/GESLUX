@@ -126,6 +126,13 @@ LUBEXX*****                        set record-ok to true
 LUBEXX*****                     end-if
 LUBEXX*****              end-evaluate
 LUBEXX*****           end-if
+                 if record-ok
+                    if como-vet-codice not = 0
+                       if tor-vettore not = como-vet-codice
+                          set record-ok to false
+                       end-if
+                    end-if
+                 end-if
 
                  if record-ok
                     move tor-causale to tca-codice
