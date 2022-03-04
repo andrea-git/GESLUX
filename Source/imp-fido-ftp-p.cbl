@@ -97,7 +97,7 @@
                   ftp-remote-dir delimited low-value
                   "PMITRADE_"    delimited size
                   como-data      delimited size
-                  ".csv "        delimited size
+                  ".cs* "        delimited size
                   path-import    delimited size
              into iniFtp-riga
            end-string.
@@ -128,7 +128,7 @@
                    ".log"        delimited size
               into ftpGetCommand
            end-string.
-           call "C$SYSTEM" using ftpGetCommand.
+           call "C$SYSTEM" using ftpGetCommand, 255.
                   
            accept  ini-path-backup from environment "WINSCP_INI_BACKUP". 
            inspect ini-path-backup 
