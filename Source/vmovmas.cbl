@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovmas.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 19 ottobre 2021 14:27:17.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        lunedì 7 marzo 2022 14:42:06.
        REMARKS.
       *{TOTEM}END
 
@@ -310,6 +310,7 @@
            05 r-destino        PIC  z(5).
            05 r-localita       PIC  x(40).
            05 r-numero         PIC  z(8).
+           05 r-numordcli      PIC  x(60).
            05 r-data-mov       PIC  99/99/9999.
            05 r-marca          PIC  z(4).
            05 r-mag            PIC  x(3).

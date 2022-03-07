@@ -7,6 +7,7 @@
                10 tmp-mov-movim    PIC  9(8).
                10 tmp-mov-riga     PIC  9(5).
            05 tmp-mov-dati.
+               10 tmp-mov-numordcli            PIC  x(50).
                10 tmp-mov-imballo  PIC  x(3).
                10 tmp-mov-gdo      PIC  x(5).
                10 tmp-mov-tipocli  PIC  x(2).
@@ -40,7 +41,6 @@
                10 tmp-mov-tipo-cmc PIC  x.
                10 tmp-mov-cmr      PIC  s9(9)v999.
                10 tmp-mov-promo    PIC  9(15).
-               10 tmp-mov-num-ord-cli          PIC  x(50).
                10 tmp-mov-data-ordine          PIC  9(8).
                10 tmp-mov-cod-pag  PIC  xxx.
                10 tmp-mov-des-pag  PIC  x(50).

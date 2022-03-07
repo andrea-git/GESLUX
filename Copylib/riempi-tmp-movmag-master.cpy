@@ -164,8 +164,9 @@ LUBEXX           end-if
                                        alphanumeric data by spaces.
 
            move art-descrizione    to tmp-mov-desart.
-           move mro-anno           to tmp-mov-anno.
+           move mro-anno           to tmp-mov-anno. 
            move mro-numero         to tmp-mov-movim.
+           move mto-num-ord-cli    to tmp-mov-numordcli.
            move mro-riga           to tmp-mov-riga.
            move mto-causale        to tmp-mov-causale.
            move mto-data-creazione to tmp-mov-data-movim.
@@ -466,8 +467,9 @@ LUBEXX     move mro-prg-peso              to tmp-mov-peso.
               read tgrupgdo no lock invalid continue end-read
               move gdo-intestazione to r-gdo
                                   
-              move tmp-mov-destino    to r-destino
+              move tmp-mov-destino    to r-destino 
               move tmp-mov-movim      to r-numero
+              move tmp-mov-numordcli  to r-numordcli
 
               move tmp-mov-data-movim to como-data
               perform DATE-TO-SCREEN
@@ -533,6 +535,8 @@ LUBEXX             end-if
                         separatore          delimited size
                         "Nr. Ord."          delimited size
                         separatore          delimited size
+                        "Nr. Ord. Cli."     delimited size
+                        separatore          delimited size
                         "Data Creazione"    delimited size
                         separatore          delimited size
                         "Marca"             delimited size
@@ -591,6 +595,8 @@ LUBEXX             end-if
                      r-localita    delimited size
                      separatore    delimited size
                      r-numero      delimited size
+                     separatore    delimited size
+                     r-numordcli   delimited size
                      separatore    delimited size
                      r-data-mov    delimited size
                      separatore    delimited size
