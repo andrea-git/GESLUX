@@ -282,6 +282,7 @@
       *
       *
       *
+      *
        77 old-forn         PIC  9(5).
        77 elemento-bmp     PIC  s9(9)
                   USAGE IS COMP-4
@@ -448,7 +449,10 @@
                        88 old-art-SHARK-si VALUE IS 1. 
                        88 old-art-SHARK-no VALUE IS 0. 
                    15 old-art-litri    PIC  9(4)v999.
-                   15 old-art-num-vuoto-2          PIC  9(4).
+                   15 old-art-novita   PIC  9.
+                       88 old-art-novita-si VALUE IS 1. 
+                       88 old-art-novita-no VALUE IS 0. 
+                   15 old-art-num-vuoto-2          PIC  9(3).
                    15 old-art-num-vuoto-3          PIC  9(18).
                    15 old-art-note2    PIC  X(300).
        77 form3-Handle

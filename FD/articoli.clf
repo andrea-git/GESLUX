@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E637132751-112-1505924054
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E6398246-10-1610831401
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1388,9 +1388,9 @@ m_bFixed=1
 
 @}}
 [FDITEM143_]
-m_strName=art-num-vuoto-2
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=art-novita
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1398,26 +1398,54 @@ m_bFixed=1
 
 @}}
 [FDITEM144_]
+m_strName=art-novita-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+{{@DataItem_m_strDescriptionFDITEM144_
+
+@}}
+[FDITEM145_]
+m_strName=art-novita-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+{{@DataItem_m_strDescriptionFDITEM145_
+
+@}}
+[FDITEM146_]
+m_strName=art-num-vuoto-2
+m_strRawPic=9(3)
+m_strPic=9(3)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM146_
+
+@}}
+[FDITEM147_]
 m_strName=art-num-vuoto-3
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM144_
+{{@DataItem_m_strDescriptionFDITEM147_
 
 @}}
-[FDITEM145_]
+[FDITEM148_]
 m_strName=art-note2
 m_strRawPic=X(300)
 m_strPic=X(300)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM145_
+{{@DataItem_m_strDescriptionFDITEM148_
 
 @}}
-[FDITEM146_]
+[FDITEM149_]
 m_strName=art-alfa-vuoto
 m_strRawPic=X(200)
 m_strPic=X(200)
@@ -1425,7 +1453,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=art-alfa-vuoto_1
-{{@DataItem_m_strDescriptionFDITEM146_
+{{@DataItem_m_strDescriptionFDITEM149_
 
 @}}
 [CStoAcucobolSL_]
