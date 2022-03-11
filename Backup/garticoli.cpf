@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6398271-680-442815272
+PROGRAM_UNIQUE_CODE=TOTEM-7E63B12111-285-1303520327
 
 {{@DESCRIPTION:
 
@@ -8824,6 +8825,58 @@ Begin Screen Form1
             Before Procedure  = ef-dogana-BeforeProcedure
             After Procedure   = ef-dogana-AfterProcedure
          End
+         Begin Data.Check-Box ef-novita
+            SCREEN-COL        = 91,67
+            SCREEN-LINE       = 23,69
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = ef-novita
+            Bitmap Frame      = FALSE
+            Bitmap Number     = 1
+            Bitmap Square     = TRUE
+            Check Off Value   = "0"
+            Check On Value    = "1"
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 90,00
+            Copy Resource     = TRUE
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = FALSE
+            Enable Variable   = mod-campi
+            Exception Value   = 1000
+            Field Variable    = art-novita OF articoli
+            File              = articoli
+            Flat              = TRUE
+            Font              = Default Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            Hint              = Imposta il flag CEPSA
+            ID                = 62
+            ID Variable       = AUTO-ID
+            Left Text         = FALSE
+            Line              = 18,00
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Tab            = FALSE
+            Notify            = FALSE
+            Occurs            = 0
+            Self Act          = TRUE
+            Size              = 2,50
+            Size Unit         = Default
+            Tab Order         = 23
+            Termination Value = 0
+            Title             = "art-soggetto-imposte"
+            Value             = 0:FALSE
+            Visible           = TRUE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD="
+            Before Procedure  = chk-utf-BeforeProcedure
+            After Procedure   = chk-utf-AfterProcedure
+            Link To           = chk-imposte-LinkTo
+         End
          Begin Data.Radio-Button Form1-DaRb-1
             SCREEN-COL        = 127,67
             SCREEN-LINE       = 23,69
@@ -8867,7 +8920,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 23
+            Tab Order         = 24
             Termination Value = 0
             Title             = "Confezionato"
             Value             = 0
@@ -8920,7 +8973,7 @@ Begin Screen Form1
             Self Act          = FALSE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 24
+            Tab Order         = 25
             Termination Value = 0
             Title             = "Sfuso"
             Value             = 0
@@ -8970,7 +9023,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 25
+            Tab Order         = 26
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
@@ -9034,7 +9087,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 26
+            Tab Order         = 27
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9097,7 +9150,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 27
+            Tab Order         = 28
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9160,7 +9213,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 28
+            Tab Order         = 29
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9223,7 +9276,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 29
+            Tab Order         = 30
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9274,7 +9327,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 30
+            Tab Order         = 31
             Termination Value = 0
             Title             = "art-soggetto-cobat"
             Value             = 0:FALSE
@@ -9338,7 +9391,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 31
+            Tab Order         = 32
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9385,7 +9438,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Drop List
-            Tab Order         = 32
+            Tab Order         = 33
             Termination Value = 0
             Unsorted          = TRUE
             Value Container   = art-auto-moto-per-cobat of articoli
@@ -9450,7 +9503,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 33
+            Tab Order         = 34
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9514,7 +9567,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 34
+            Tab Order         = 35
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9577,7 +9630,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 35
+            Tab Order         = 36
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9640,7 +9693,7 @@ Begin Screen Form1
             Size              = 14,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 36
+            Tab Order         = 37
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9702,7 +9755,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 37
+            Tab Order         = 38
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9765,7 +9818,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 38
+            Tab Order         = 39
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9828,7 +9881,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 39
+            Tab Order         = 40
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9891,7 +9944,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 40
+            Tab Order         = 41
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -9954,7 +10007,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 41
+            Tab Order         = 42
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10017,7 +10070,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 42
+            Tab Order         = 43
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10080,7 +10133,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 43
+            Tab Order         = 44
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10143,7 +10196,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 44
+            Tab Order         = 45
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10206,7 +10259,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 45
+            Tab Order         = 46
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10269,7 +10322,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 46
+            Tab Order         = 47
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10332,7 +10385,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 47
+            Tab Order         = 48
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10395,7 +10448,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 48
+            Tab Order         = 49
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -10457,7 +10510,7 @@ Begin Screen Form1
             Size              = 120,00
             Size Unit         = Default
             Style             = Vscroll Bar
-            Tab Order         = 49
+            Tab Order         = 50
             Use Return        = TRUE
             Use Tab           = TRUE
             Value Multiple    = FALSE
@@ -10504,7 +10557,7 @@ Begin Screen Form1
             Size              = 15,00
             Size Unit         = Default
             Style             = Drop List
-            Tab Order         = 50
+            Tab Order         = 51
             Termination Value = 0
             Unsorted          = TRUE
             Value Container   = art-stato of articoli
@@ -10559,7 +10612,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 51
+            Tab Order         = 52
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
@@ -10611,7 +10664,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 2,50
             Size Unit         = Default
-            Tab Order         = 52
+            Tab Order         = 53
             Termination Value = 0
             Title             = "art-soggetto-cobat"
             Value             = 0:FALSE
@@ -10663,7 +10716,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 53
+            Tab Order         = 54
             Termination Value = 0
             Title             = "art-soggetto-cobat"
             Value             = 0:FALSE
@@ -10675,8 +10728,8 @@ Begin Screen Form1
             Link To           = chk-cobat-LinkTo
          End
          Begin Data.Check-Box chk-cepsa
-            SCREEN-COL        = 160,33
-            SCREEN-LINE       = 37,85
+            SCREEN-COL        = 160,34
+            SCREEN-LINE       = 37,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-cepsa
@@ -10715,7 +10768,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 2,50
             Size Unit         = Default
-            Tab Order         = 54
+            Tab Order         = 55
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
@@ -10767,7 +10820,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 55
+            Tab Order         = 56
             Termination Value = 0
             Title             = "art-soggetto-cobat"
             Value             = 0:FALSE
@@ -10819,7 +10872,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 2,50
             Size Unit         = Default
-            Tab Order         = 56
+            Tab Order         = 57
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
@@ -10871,7 +10924,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 57
+            Tab Order         = 58
             Termination Value = 0
             Title             = "art-soggetto-cobat"
             Value             = 0:FALSE
@@ -10881,58 +10934,6 @@ Begin Screen Form1
             Before Procedure  = chk-cobat-BeforeProcedure
             After Procedure   = chk-cobat-AfterProcedure
             Link To           = chk-cobat-LinkTo
-         End
-         Begin Data.Check-Box ef-novita
-            SCREEN-COL        = 160,34
-            SCREEN-LINE       = 39,84
-            LOCK-CONTROL      = TRUE
-            LEVEL             = 10
-            (Name)            = ef-novita
-            Bitmap Frame      = FALSE
-            Bitmap Number     = 1
-            Bitmap Square     = TRUE
-            Check Off Value   = "0"
-            Check On Value    = "1"
-            Clines            = 0
-            Clines Unit       = Default
-            Color             = 0
-            Column            = 158,67
-            Copy Resource     = TRUE
-            Csize             = 0
-            Csize Unit        = Default
-            Destroy Type      = Automatic
-            Enable            = FALSE
-            Enable Variable   = mod-campi
-            Exception Value   = 1000
-            Field Variable    = art-novita OF articoli
-            File              = articoli
-            Flat              = TRUE
-            Font              = Default Font
-            Height in Cells   = TRUE
-            Help ID           = 0
-            Hint              = Imposta il flag CEPSA
-            ID                = 67
-            ID Variable       = AUTO-ID
-            Left Text         = FALSE
-            Line              = 34,15
-            Lines             = 1,31
-            Lines Unit        = Default
-            No Tab            = FALSE
-            Notify            = FALSE
-            Occurs            = 0
-            Self Act          = TRUE
-            Size              = 2,50
-            Size Unit         = Default
-            Tab Order         = 58
-            Termination Value = 0
-            Title             = "art-soggetto-imposte"
-            Value             = 0:FALSE
-            Visible           = TRUE
-            Width in Cells    = TRUE
-            My Property       = "CONTROLLO-OLD="
-            Before Procedure  = chk-utf-BeforeProcedure
-            After Procedure   = chk-utf-AfterProcedure
-            Link To           = chk-imposte-LinkTo
          End
          Begin Data.Check-Box chk-gruppi
             SCREEN-COL        = 110,67
@@ -11067,7 +11068,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag WEB
-            ID                = 62
+            ID                = 63
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 36,08
@@ -11119,7 +11120,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag SPI
-            ID                = 63
+            ID                = 64
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 38,08
@@ -11171,7 +11172,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag Auto Trade
-            ID                = 64
+            ID                = 65
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 38,08
@@ -11223,7 +11224,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag TEXACO
-            ID                = 65
+            ID                = 68
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 38,08
@@ -11502,7 +11503,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 68
+            ID                = 28
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 14,00
@@ -12974,7 +12975,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33ab
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 39,85
+            SCREEN-LINE       = 39,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33ab
@@ -13599,8 +13600,8 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-32aabaaa
-            SCREEN-COL        = 151,83
-            SCREEN-LINE       = 37,85
+            SCREEN-COL        = 151,84
+            SCREEN-LINE       = 37,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aabaaa
@@ -13849,15 +13850,15 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-32aabaaaa
-            SCREEN-COL        = 151,84
-            SCREEN-LINE       = 39,84
+            SCREEN-COL        = 82,67
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aabaaaa
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
-            Column            = 150,17
+            Column            = 81,00
             Csize             = 0
             Csize Unit        = Default
             Destroy Type      = Automatic
@@ -13866,10 +13867,10 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 677
+            ID                = 684
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 34,15
+            Line              = 18,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -14656,7 +14657,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il numero di Cartoni per UDC
-            ID                = 28
+            ID                = 114
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 17,23
@@ -14782,7 +14783,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il peso dell'articolo per SHI
-            ID                = 114
+            ID                = 115
             Justification     = Right
             Line              = 19,23
             Lines             = 1,31
@@ -14844,7 +14845,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il peso dell'articolo per GET
-            ID                = 115
+            ID                = 116
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 19,23
@@ -15159,7 +15160,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la quantità per le pedane STANDARD
-            ID                = 116
+            ID                = 117
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 25,69
@@ -15219,7 +15220,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag diretti
-            ID                = 117
+            ID                = 125
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 30,54
@@ -15271,7 +15272,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag GDA
-            ID                = 125
+            ID                = 127
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 30,54
@@ -15881,7 +15882,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 684
+            ID                = 154
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 25,69
@@ -15948,7 +15949,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 154
+            ID                = 686
             Justification     = Center
             Label Offset      = 20
             Line              = 2,00
@@ -18984,7 +18985,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 686
+            ID                = 179
             Justification     = Left
             Label Offset      = 20
             Line              = 20,85
@@ -19543,7 +19544,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 179
+            ID                = 703
             Justification     = Center
             Label Offset      = 20
             Line              = 1,92

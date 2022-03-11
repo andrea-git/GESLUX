@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        mercoledì 9 marzo 2022 09:32:07.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 11 marzo 2022 13:02:47.
        REMARKS.
       *{TOTEM}END
 
@@ -183,6 +183,8 @@
               10 ef-peso-non-utf-BUF PIC zz.zz9,999.
       * Data.Entry-Field
               10 ef-prodener-BUF PIC x(10).
+      * Data.Check-Box
+              10 ef-novita-BUF PIC 9 VALUE ZERO.
       * Data.Radio-Button
               10 Form1-RADIO-1-BUF PIC 99 VALUE ZERO.
       * Data.Check-Box
@@ -253,8 +255,6 @@
               10 chk-specialist-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               10 chk-gds-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              10 ef-novita-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               10 chk-gruppi-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
@@ -718,42 +718,42 @@
        78  78-ID-ef-peso-utf VALUE 5019.
        78  78-ID-ef-peso-non-utf VALUE 5020.
        78  78-ID-ef-prodener VALUE 5021.
-       78  78-ID-Form1-DaRb-1 VALUE 5022.
-       78  78-ID-Form1-DaRb-2 VALUE 5023.
-       78  78-ID-chk-imposte VALUE 5024.
-       78  78-ID-ef-perce-imposte VALUE 5025.
-       78  78-ID-ef-perce-cou VALUE 5026.
-       78  78-ID-ef-scorta VALUE 5027.
-       78  78-ID-ef-moq VALUE 5028.
-       78  78-ID-chk-cobat VALUE 5029.
-       78  78-ID-ef-amperaggio VALUE 5030.
-       78  78-ID-cbo-cobat VALUE 5031.
-       78  78-ID-ef-reale VALUE 5032.
-       78  78-ID-ef-prezzo-acq VALUE 5033.
-       78  78-ID-ef-sconto-acquisto VALUE 5034.
-       78  78-ID-ef-prz-vend VALUE 5035.
-       78  78-ID-ef-litri VALUE 5036.
-       78  78-ID-ef-prezzo-banco VALUE 5037.
-       78  78-ID-ef-sconto-agente VALUE 5038.
-       78  78-ID-ef-min-vend VALUE 5039.
-       78  78-ID-ef-ean-1 VALUE 5040.
-       78  78-ID-ef-ean-2 VALUE 5041.
-       78  78-ID-ef-ean-3 VALUE 5042.
-       78  78-ID-ef-ean-4 VALUE 5043.
-       78  78-ID-ef-ean-5 VALUE 5044.
-       78  78-ID-ef-art-for VALUE 5045.
-       78  78-ID-ef-forn VALUE 5046.
-       78  78-ID-ef-destino VALUE 5047.
-       78  78-ID-ef-note2 VALUE 5048.
-       78  78-ID-cbo-stato VALUE 5049.
-       78  78-ID-chk-ala VALUE 5050.
-       78  78-ID-chk-agenti VALUE 5051.
-       78  78-ID-chk-eg VALUE 5052.
-       78  78-ID-chk-cepsa VALUE 5053.
-       78  78-ID-chk-gda VALUE 5054.
-       78  78-ID-chk-specialist VALUE 5055.
-       78  78-ID-chk-gds VALUE 5056.
-       78  78-ID-ef-novita VALUE 5057.
+       78  78-ID-ef-novita VALUE 5022.
+       78  78-ID-Form1-DaRb-1 VALUE 5023.
+       78  78-ID-Form1-DaRb-2 VALUE 5024.
+       78  78-ID-chk-imposte VALUE 5025.
+       78  78-ID-ef-perce-imposte VALUE 5026.
+       78  78-ID-ef-perce-cou VALUE 5027.
+       78  78-ID-ef-scorta VALUE 5028.
+       78  78-ID-ef-moq VALUE 5029.
+       78  78-ID-chk-cobat VALUE 5030.
+       78  78-ID-ef-amperaggio VALUE 5031.
+       78  78-ID-cbo-cobat VALUE 5032.
+       78  78-ID-ef-reale VALUE 5033.
+       78  78-ID-ef-prezzo-acq VALUE 5034.
+       78  78-ID-ef-sconto-acquisto VALUE 5035.
+       78  78-ID-ef-prz-vend VALUE 5036.
+       78  78-ID-ef-litri VALUE 5037.
+       78  78-ID-ef-prezzo-banco VALUE 5038.
+       78  78-ID-ef-sconto-agente VALUE 5039.
+       78  78-ID-ef-min-vend VALUE 5040.
+       78  78-ID-ef-ean-1 VALUE 5041.
+       78  78-ID-ef-ean-2 VALUE 5042.
+       78  78-ID-ef-ean-3 VALUE 5043.
+       78  78-ID-ef-ean-4 VALUE 5044.
+       78  78-ID-ef-ean-5 VALUE 5045.
+       78  78-ID-ef-art-for VALUE 5046.
+       78  78-ID-ef-forn VALUE 5047.
+       78  78-ID-ef-destino VALUE 5048.
+       78  78-ID-ef-note2 VALUE 5049.
+       78  78-ID-cbo-stato VALUE 5050.
+       78  78-ID-chk-ala VALUE 5051.
+       78  78-ID-chk-agenti VALUE 5052.
+       78  78-ID-chk-eg VALUE 5053.
+       78  78-ID-chk-cepsa VALUE 5054.
+       78  78-ID-chk-gda VALUE 5055.
+       78  78-ID-chk-specialist VALUE 5056.
+       78  78-ID-chk-gds VALUE 5057.
        78  78-ID-chk-gruppi VALUE 5058.
        78  78-ID-chk-estero VALUE 5059.
        78  78-ID-chk-web VALUE 5060.
@@ -1276,6 +1276,26 @@
            MAX-TEXT 10,
            VALUE ef-prodener-BUF,
            .
+
+      * CHECK BOX
+       10
+           ef-novita, 
+           Check-Box, 
+           COL 91,67, 
+           LINE 23,69,
+           LINES 1,31 ,
+           SIZE 2,50 ,
+           ENABLED mod-campi,
+           EXCEPTION-VALUE 1000
+           FLAT,
+           ID IS 78-ID-ef-novita,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "art-soggetto-imposte",
+           VALUE ef-novita-BUF,
+           VISIBLE 1,
+            .
 
       * RADIO BUTTON
        10
@@ -1906,8 +1926,8 @@
        10
            chk-cepsa, 
            Check-Box, 
-           COL 160,33, 
-           LINE 37,85,
+           COL 160,34, 
+           LINE 37,84,
            LINES 1,31 ,
            SIZE 2,50 ,
            ENABLED mod-campi,
@@ -1978,26 +1998,6 @@
            TITLE "art-soggetto-cobat",
            VALUE chk-gds-BUF,
            VISIBLE 0,
-            .
-
-      * CHECK BOX
-       10
-           ef-novita, 
-           Check-Box, 
-           COL 160,34, 
-           LINE 39,84,
-           LINES 1,31 ,
-           SIZE 2,50 ,
-           ENABLED mod-campi,
-           EXCEPTION-VALUE 1000
-           FLAT,
-           ID IS 78-ID-ef-novita,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "art-soggetto-imposte",
-           VALUE ef-novita-BUF,
-           VISIBLE 1,
             .
 
       * CHECK BOX
@@ -2239,7 +2239,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 68,
+           ID IS 28,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2940,7 +2940,7 @@
            Form1-La-33ab, 
            Label, 
            COL 136,00, 
-           LINE 39,85,
+           LINE 39,84,
            LINES 1,31 ,
            SIZE 6,00 ,
            FONT IS Small-Font,
@@ -3238,8 +3238,8 @@
        10
            Form1-La-32aabaaa, 
            Label, 
-           COL 151,83, 
-           LINE 37,85,
+           COL 151,84, 
+           LINE 37,84,
            LINES 1,31 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
@@ -3357,12 +3357,12 @@
        10
            Form1-La-32aabaaaa, 
            Label, 
-           COL 151,84, 
-           LINE 39,84,
+           COL 82,67, 
+           LINE 23,69,
            LINES 1,31 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
-           ID IS 677,
+           ID IS 684,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3668,7 +3668,7 @@
            COLOR IS 513,
            ENABLED mod-campi,
            FONT IS Small-Font,
-           ID IS 114,
+           ID IS 115,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -4100,7 +4100,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 684,
+           ID IS 154,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4132,7 +4132,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
-           ID IS 154,
+           ID IS 686,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -5229,7 +5229,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            COLOR IS 2,
-           ID IS 686,
+           ID IS 179,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5513,7 +5513,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
-           ID IS 179,
+           ID IS 703,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -14059,14 +14059,6 @@
 
               WHEN Key-Status = 1000
                  PERFORM chk-imposte-LinkTo
-              WHEN Key-Status = 1001
-                 PERFORM chk-cobat-LinkTo
-              WHEN Key-Status = 1000
-                 PERFORM chk-imposte-LinkTo
-              WHEN Key-Status = 1001
-                 PERFORM chk-cobat-LinkTo
-              WHEN Key-Status = 1001
-                 PERFORM chk-cobat-LinkTo
               WHEN Key-Status = 1000
                  PERFORM chk-imposte-LinkTo
               WHEN Key-Status = 1001
@@ -14075,8 +14067,16 @@
                  PERFORM chk-imposte-LinkTo
               WHEN Key-Status = 1001
                  PERFORM chk-cobat-LinkTo
+              WHEN Key-Status = 1001
+                 PERFORM chk-cobat-LinkTo
               WHEN Key-Status = 1000
                  PERFORM chk-imposte-LinkTo
+              WHEN Key-Status = 1001
+                 PERFORM chk-cobat-LinkTo
+              WHEN Key-Status = 1000
+                 PERFORM chk-imposte-LinkTo
+              WHEN Key-Status = 1001
+                 PERFORM chk-cobat-LinkTo
               WHEN Key-Status = 1000
                  PERFORM chk-imposte-LinkTo
               WHEN Key-Status = 1000
@@ -14561,6 +14561,8 @@
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
       * DB_CHECK BOX
+              MOVE 0 TO art-novita OF articoli
+      * DB_CHECK BOX
               MOVE "N" TO art-soggetto-imposte of articoli
       * DB_CHECK BOX
               MOVE "N" TO art-soggetto-cobat of articoli
@@ -14578,8 +14580,6 @@
               MOVE 0 TO art-specialist of articoli
       * DB_CHECK BOX
               MOVE 0 TO art-gds of articoli
-      * DB_CHECK BOX
-              MOVE 0 TO art-novita OF articoli
       * DB_CHECK BOX
               MOVE 0 TO art-gruppi of articoli
       * DB_CHECK BOX
@@ -14817,7 +14817,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-perce-cou's Validation
@@ -14827,7 +14827,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-scorta's Validation
@@ -14837,7 +14837,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-moq's Validation
@@ -14847,7 +14847,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-amperaggio's Validation
@@ -14857,7 +14857,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-reale's Validation
@@ -14867,7 +14867,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prezzo-acq's Validation
@@ -14877,7 +14877,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-acquisto's Validation
@@ -14887,7 +14887,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prz-vend's Validation
@@ -14897,7 +14897,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-litri's Validation
@@ -14907,7 +14907,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prezzo-banco's Validation
@@ -14917,7 +14917,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-sconto-agente's Validation
@@ -14927,7 +14927,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-min-vend's Validation
@@ -14937,7 +14937,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5039 TO CONTROL-ID
+               MOVE 5040 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ean-1's Validation
@@ -14947,7 +14947,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5040 TO CONTROL-ID
+               MOVE 5041 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ean-2's Validation
@@ -14957,7 +14957,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5041 TO CONTROL-ID
+               MOVE 5042 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ean-3's Validation
@@ -14967,7 +14967,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5042 TO CONTROL-ID
+               MOVE 5043 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ean-4's Validation
@@ -14977,7 +14977,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5043 TO CONTROL-ID
+               MOVE 5044 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ean-5's Validation
@@ -14987,7 +14987,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5044 TO CONTROL-ID
+               MOVE 5045 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-art-for's Validation
@@ -14997,7 +14997,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5045 TO CONTROL-ID
+               MOVE 5046 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-forn's Validation
@@ -15007,7 +15007,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5046 TO CONTROL-ID
+               MOVE 5047 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-destino's Validation
@@ -15017,7 +15017,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5047 TO CONTROL-ID
+               MOVE 5048 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note2's Validation
@@ -15027,7 +15027,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5048 TO CONTROL-ID
+               MOVE 5049 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-agg's Validation
@@ -15147,7 +15147,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 114 TO CONTROL-ID
+               MOVE 115 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-peso-GET's Validation
@@ -17410,6 +17410,12 @@
            MOVE ef-peso-non-utf-BUF TO art-peso-non-utf of articoli
       * DB_Entry-Field : ef-prodener
            MOVE ef-prodener-BUF TO art-cod-prodener OF articoli
+      * DB_CHECK BOX : ef-novita
+              IF ef-novita-BUF = 1
+                 MOVE 1 TO art-novita OF articoli
+              ELSE
+                 MOVE 0 TO art-novita OF articoli
+              END-IF
       * DB_RADIOBOX : Form1-DaRb-1, Form1-DaRb-2, 
            EVALUATE Form1-RADIO-1-BUF
            WHEN 1
@@ -17518,12 +17524,6 @@
                  MOVE 1 TO art-gds of articoli
               ELSE
                  MOVE 0 TO art-gds of articoli
-              END-IF
-      * DB_CHECK BOX : ef-novita
-              IF ef-novita-BUF = 1
-                 MOVE 1 TO art-novita OF articoli
-              ELSE
-                 MOVE 0 TO art-novita OF articoli
               END-IF
       * DB_CHECK BOX : chk-gruppi
               IF chk-gruppi-BUF = 1
@@ -17754,6 +17754,12 @@
            MOVE art-peso-non-utf of articoli TO ef-peso-non-utf-BUF
       * DB_Entry-Field : ef-prodener
            MOVE art-cod-prodener OF articoli TO ef-prodener-BUF
+      * DB_CHECK BOX : ef-novita
+              IF art-novita OF articoli = 1
+                 MOVE 1 TO ef-novita-BUF
+              ELSE
+                 MOVE 0 TO ef-novita-BUF
+              END-IF
       * DB_RADIOBOX : Form1-DaRb-1, Form1-DaRb-2, 
            EVALUATE art-tipo-stoc OF articoli
            WHEN "C"
@@ -17862,12 +17868,6 @@
                  MOVE 1 TO chk-gds-BUF
               ELSE
                  MOVE 0 TO chk-gds-BUF
-              END-IF
-      * DB_CHECK BOX : ef-novita
-              IF art-novita OF articoli = 1
-                 MOVE 1 TO ef-novita-BUF
-              ELSE
-                 MOVE 0 TO ef-novita-BUF
               END-IF
       * DB_CHECK BOX : chk-gruppi
               IF art-gruppi of articoli = 1
@@ -18244,6 +18244,14 @@
            end-if
 
 
+           if art-novita OF articoli not = old-art-novita
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-novita è l'ID del campo ef-novita
+              move 78-ID-ef-novita to store-id 
+           end-if
+
+
            if art-tipo-stoc OF articoli not = old-art-tipo-stoc
               and SiSalvato
               set NoSalvato to true
@@ -18531,14 +18539,6 @@
            end-if
 
 
-           if art-novita OF articoli not = old-art-novita
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-ef-novita è l'ID del campo ef-novita
-              move 78-ID-ef-novita to store-id 
-           end-if
-
-
            if art-gruppi of articoli not = old-art-gruppi
               and SiSalvato
               set NoSalvato to true
@@ -18679,8 +18679,8 @@
            if art-peso-SHI of articoli not = old-art-peso-SHI
               and SiSalvato
               set NoSalvato to true
-              |114 è l'ID del campo ef-peso-SHI
-              move 114 to store-id
+              |115 è l'ID del campo ef-peso-SHI
+              move 115 to store-id
            end-if
 
 
@@ -18984,8 +18984,8 @@
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |114 è l'ID del campo ef-peso-SHI
-           when 114
+           |115 è l'ID del campo ef-peso-SHI
+           when 115
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
@@ -19249,8 +19249,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |114 è l'ID del campo ef-peso-SHI
-           when 114
+           |115 è l'ID del campo ef-peso-SHI
+           when 115
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -19402,8 +19402,8 @@
            |78-ID-ef-qta-stda è l'ID del campo ef-qta-stda
            when 78-ID-ef-qta-stda
                 perform CONTROLLO
-           |114 è l'ID del campo ef-peso-SHI
-           when 114
+           |115 è l'ID del campo ef-peso-SHI
+           when 115
                 perform CONTROLLO
            |78-ID-ef-peso-GET è l'ID del campo ef-peso-GET
            when 78-ID-ef-peso-GET
@@ -20191,58 +20191,58 @@
            WHEN 5020 MOVE "Digitare il peso non UTF" to TOTEM-HINT-TEXT
            WHEN 5021 MOVE "Digitare il protodotto energetico" to 
            TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5022 MOVE "Imposta il flag CEPSA" to TOTEM-HINT-TEXT
            WHEN 5023 MOVE "." to TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Soggetto/Non soggetto all'imposte" to 
-           TOTEM-HINT-TEXT
-           WHEN 5025 MOVE "Digitare la percentuale delle imposte" to 
+           WHEN 5024 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5025 MOVE "Soggetto/Non soggetto all'imposte" to 
            TOTEM-HINT-TEXT
            WHEN 5026 MOVE "Digitare la percentuale delle imposte" to 
            TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Digitare il numero dei pezzi di scorta" to 
+           WHEN 5027 MOVE "Digitare la percentuale delle imposte" to 
            TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare il valore MOQ" to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Soggetto/Non soggetto COBAT" to 
+           WHEN 5028 MOVE "Digitare il numero dei pezzi di scorta" to 
            TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Digitare l'amperaggio" to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Selezionare il tipo di COBAT" to 
+           WHEN 5029 MOVE "Digitare il valore MOQ" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Soggetto/Non soggetto COBAT" to 
            TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "Digitare il peso reale espresso in Kg" to 
+           WHEN 5031 MOVE "Digitare l'amperaggio" to TOTEM-HINT-TEXT
+           WHEN 5032 MOVE "Selezionare il tipo di COBAT" to 
            TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Digitare il prezzo di vendita" to 
+           WHEN 5033 MOVE "Digitare il peso reale espresso in Kg" to 
            TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Digitare la percentuale di sconto sull'acquis
+           WHEN 5034 MOVE "Digitare il prezzo di vendita" to 
+           TOTEM-HINT-TEXT
+           WHEN 5035 MOVE "Digitare la percentuale di sconto sull'acquis
       -    "to" to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Digitare il prezzo di vendita da listino" to 
+           WHEN 5036 MOVE "Digitare il prezzo di vendita da listino" to 
            TOTEM-HINT-TEXT
-           WHEN 5037 MOVE "Digitare il prezzo di vendita al banco (IVA c
+           WHEN 5038 MOVE "Digitare il prezzo di vendita al banco (IVA c
       -    "ompresa)" to TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Digitare la percentuale di sconto per l'agent
+           WHEN 5039 MOVE "Digitare la percentuale di sconto per l'agent
       -    "e" to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE "Digitare il prezzo di minima vendita (IVA com
+           WHEN 5040 MOVE "Digitare il prezzo di minima vendita (IVA com
       -    "presa)" to TOTEM-HINT-TEXT
-           WHEN 5040 MOVE "Digitare il codice EAN 1" to TOTEM-HINT-TEXT
-           WHEN 5041 MOVE "Digitare il codice EAN 2" to TOTEM-HINT-TEXT
-           WHEN 5042 MOVE "Digitare il codice EAN 3" to TOTEM-HINT-TEXT
-           WHEN 5043 MOVE "Digitare il codice EAN 4" to TOTEM-HINT-TEXT
-           WHEN 5044 MOVE "Digitare il codice EAN 5" to TOTEM-HINT-TEXT
-           WHEN 5045 MOVE "Digitare il codice articolo per fornitore" 
+           WHEN 5041 MOVE "Digitare il codice EAN 1" to TOTEM-HINT-TEXT
+           WHEN 5042 MOVE "Digitare il codice EAN 2" to TOTEM-HINT-TEXT
+           WHEN 5043 MOVE "Digitare il codice EAN 3" to TOTEM-HINT-TEXT
+           WHEN 5044 MOVE "Digitare il codice EAN 4" to TOTEM-HINT-TEXT
+           WHEN 5045 MOVE "Digitare il codice EAN 5" to TOTEM-HINT-TEXT
+           WHEN 5046 MOVE "Digitare il codice articolo per fornitore" 
            to TOTEM-HINT-TEXT
-           WHEN 5046 MOVE "Digitare il codice del fornitore" to 
+           WHEN 5047 MOVE "Digitare il codice del fornitore" to 
            TOTEM-HINT-TEXT
-           WHEN 5047 MOVE "Digitare il codice del destino del fornitore"
+           WHEN 5048 MOVE "Digitare il codice del destino del fornitore"
             to TOTEM-HINT-TEXT
-           WHEN 5049 MOVE "Selezionare lo stato dell'articolo" to 
+           WHEN 5050 MOVE "Selezionare lo stato dell'articolo" to 
            TOTEM-HINT-TEXT
-           WHEN 5050 MOVE "Imposta il flag ALA" to TOTEM-HINT-TEXT
-           WHEN 5051 MOVE "Imposta il flag Agenti" to TOTEM-HINT-TEXT
-           WHEN 5052 MOVE "Imposta il flag D.O." to TOTEM-HINT-TEXT
-           WHEN 5053 MOVE "Imposta il flag CEPSA" to TOTEM-HINT-TEXT
-           WHEN 5054 MOVE "Imposta il flag GDA" to TOTEM-HINT-TEXT
-           WHEN 5055 MOVE "Imposta il flag Specialist" to 
+           WHEN 5051 MOVE "Imposta il flag ALA" to TOTEM-HINT-TEXT
+           WHEN 5052 MOVE "Imposta il flag Agenti" to TOTEM-HINT-TEXT
+           WHEN 5053 MOVE "Imposta il flag D.O." to TOTEM-HINT-TEXT
+           WHEN 5054 MOVE "Imposta il flag CEPSA" to TOTEM-HINT-TEXT
+           WHEN 5055 MOVE "Imposta il flag GDA" to TOTEM-HINT-TEXT
+           WHEN 5056 MOVE "Imposta il flag Specialist" to 
            TOTEM-HINT-TEXT
-           WHEN 5056 MOVE "Imposta il flag GDS" to TOTEM-HINT-TEXT
-           WHEN 5057 MOVE "Imposta il flag CEPSA" to TOTEM-HINT-TEXT
+           WHEN 5057 MOVE "Imposta il flag GDS" to TOTEM-HINT-TEXT
            WHEN 5058 MOVE "Imposta il flag Gruppi" to TOTEM-HINT-TEXT
            WHEN 5059 MOVE "Imposta il flag Estero" to TOTEM-HINT-TEXT
            WHEN 5060 MOVE "Imposta il flag WEB" to TOTEM-HINT-TEXT
@@ -20271,7 +20271,7 @@
            TOTEM-HINT-TEXT
            WHEN 5074 MOVE "Digitare il valore di pericolosità ADR" to 
            TOTEM-HINT-TEXT
-           WHEN 114 MOVE "Digitare il peso dell'articolo per SHI" to 
+           WHEN 115 MOVE "Digitare il peso dell'articolo per SHI" to 
            TOTEM-HINT-TEXT
            WHEN 5075 MOVE "Digitare il peso dell'articolo per GET" to 
            TOTEM-HINT-TEXT
@@ -20380,40 +20380,40 @@
            When 5019 PERFORM ef-peso-utf-BeforeProcedure
            When 5020 PERFORM ef-peso-non-utf-BeforeProcedure
            When 5021 PERFORM ef-dogana-BeforeProcedure
-           When 5022 PERFORM Form1-DaRb-1-BeforeProcedure
-           When 5023 PERFORM Form1-DaRb-2-BeforeProcedure
-           When 5024 PERFORM chk-utf-BeforeProcedure
-           When 5025 PERFORM ef-perce-imposte-BeforeProcedure
+           When 5022 PERFORM chk-utf-BeforeProcedure
+           When 5023 PERFORM Form1-DaRb-1-BeforeProcedure
+           When 5024 PERFORM Form1-DaRb-2-BeforeProcedure
+           When 5025 PERFORM chk-utf-BeforeProcedure
            When 5026 PERFORM ef-perce-imposte-BeforeProcedure
-           When 5027 PERFORM ef-scorta-BeforeProcedure
-           When 5028 PERFORM ef-perce-imposte-BeforeProcedure
-           When 5029 PERFORM chk-cobat-BeforeProcedure
-           When 5030 PERFORM ef-amperaggio-BeforeProcedure
-           When 5031 PERFORM Form1-Cm-1-BeforeProcedure
-           When 5032 PERFORM ef-sconto-agente-BeforeProcedure
-           When 5033 PERFORM ef-prezzo-vendita-BeforeProcedure
-           When 5034 PERFORM ef-sconto-acquisto-BeforeProcedure
-           When 5035 PERFORM ef-prezzo-acquisto-BeforeProcedure
-           When 5037 PERFORM ef-prezzo-acquisto-BeforeProcedure
-           When 5038 PERFORM ef-sconto-agente-BeforeProcedure
-           When 5039 PERFORM ef-prezzo-acquisto-BeforeProcedure
-           When 5040 PERFORM ef-ean-1-BeforeProcedure
-           When 5041 PERFORM ef-ean-2-BeforeProcedure
-           When 5042 PERFORM ef-ean-3-BeforeProcedure
-           When 5043 PERFORM ef-ean-4-BeforeProcedure
-           When 5044 PERFORM ef-ean-5-BeforeProcedure
+           When 5027 PERFORM ef-perce-imposte-BeforeProcedure
+           When 5028 PERFORM ef-scorta-BeforeProcedure
+           When 5029 PERFORM ef-perce-imposte-BeforeProcedure
+           When 5030 PERFORM chk-cobat-BeforeProcedure
+           When 5031 PERFORM ef-amperaggio-BeforeProcedure
+           When 5032 PERFORM Form1-Cm-1-BeforeProcedure
+           When 5033 PERFORM ef-sconto-agente-BeforeProcedure
+           When 5034 PERFORM ef-prezzo-vendita-BeforeProcedure
+           When 5035 PERFORM ef-sconto-acquisto-BeforeProcedure
+           When 5036 PERFORM ef-prezzo-acquisto-BeforeProcedure
+           When 5038 PERFORM ef-prezzo-acquisto-BeforeProcedure
+           When 5039 PERFORM ef-sconto-agente-BeforeProcedure
+           When 5040 PERFORM ef-prezzo-acquisto-BeforeProcedure
+           When 5041 PERFORM ef-ean-1-BeforeProcedure
+           When 5042 PERFORM ef-ean-2-BeforeProcedure
+           When 5043 PERFORM ef-ean-3-BeforeProcedure
+           When 5044 PERFORM ef-ean-4-BeforeProcedure
            When 5045 PERFORM ef-ean-5-BeforeProcedure
-           When 5046 PERFORM ef-forn-BeforeProcedure
+           When 5046 PERFORM ef-ean-5-BeforeProcedure
            When 5047 PERFORM ef-forn-BeforeProcedure
-           When 5049 PERFORM cbo-stato-BeforeProcedure
-           When 5050 PERFORM chk-utf-BeforeProcedure
-           When 5051 PERFORM chk-cobat-BeforeProcedure
+           When 5048 PERFORM ef-forn-BeforeProcedure
+           When 5050 PERFORM cbo-stato-BeforeProcedure
+           When 5051 PERFORM chk-utf-BeforeProcedure
            When 5052 PERFORM chk-cobat-BeforeProcedure
-           When 5053 PERFORM chk-utf-BeforeProcedure
-           When 5054 PERFORM chk-cobat-BeforeProcedure
-           When 5055 PERFORM chk-utf-BeforeProcedure
-           When 5056 PERFORM chk-cobat-BeforeProcedure
-           When 5057 PERFORM chk-utf-BeforeProcedure
+           When 5053 PERFORM chk-cobat-BeforeProcedure
+           When 5054 PERFORM chk-utf-BeforeProcedure
+           When 5055 PERFORM chk-cobat-BeforeProcedure
+           When 5056 PERFORM chk-utf-BeforeProcedure
+           When 5057 PERFORM chk-cobat-BeforeProcedure
            When 5058 PERFORM chk-utf-BeforeProcedure
            When 5059 PERFORM chk-utf-BeforeProcedure
            When 5060 PERFORM chk-cobat-BeforeProcedure
@@ -20431,7 +20431,7 @@
            When 5072 PERFORM ef-ean-5-BeforeProcedure
            When 5073 PERFORM ef-ean-5-BeforeProcedure
            When 5074 PERFORM ef-ean-5-BeforeProcedure
-           When 114 PERFORM ef-ean-5-BeforeProcedure
+           When 115 PERFORM ef-ean-5-BeforeProcedure
            When 5075 PERFORM ef-ean-5-BeforeProcedure
            When 5076 PERFORM ef-ean-5-BeforeProcedure
            When 5077 PERFORM ef-ean-5-BeforeProcedure
@@ -20510,40 +20510,40 @@
            When 5019 PERFORM ef-peso-utf-AfterProcedure
            When 5020 PERFORM ef-peso-non-utf-AfterProcedure
            When 5021 PERFORM ef-dogana-AfterProcedure
-           When 5022 PERFORM Form1-DaRb-1-AfterProcedure
-           When 5023 PERFORM Form1-DaRb-2-AfterProcedure
-           When 5024 PERFORM chk-utf-AfterProcedure
-           When 5025 PERFORM ef-perce-imposte-AfterProcedure
+           When 5022 PERFORM chk-utf-AfterProcedure
+           When 5023 PERFORM Form1-DaRb-1-AfterProcedure
+           When 5024 PERFORM Form1-DaRb-2-AfterProcedure
+           When 5025 PERFORM chk-utf-AfterProcedure
            When 5026 PERFORM ef-perce-imposte-AfterProcedure
            When 5027 PERFORM ef-perce-imposte-AfterProcedure
            When 5028 PERFORM ef-perce-imposte-AfterProcedure
-           When 5029 PERFORM chk-cobat-AfterProcedure
-           When 5030 PERFORM ef-amperaggio-AfterProcedure
-           When 5032 PERFORM ef-sconto-agente-AfterProcedure
-           When 5033 PERFORM ef-prezzo-vendita-AfterProcedure
-           When 5034 PERFORM ef-sconto-acquisto-AfterProcedure
-           When 5035 PERFORM ef-prezzo-acquisto-AfterProcedure
-           When 5036 PERFORM ef-sconto-agente-AfterProcedure
-           When 5037 PERFORM ef-prezzo-acquisto-AfterProcedure
-           When 5038 PERFORM ef-sconto-agente-AfterProcedure
-           When 5039 PERFORM ef-prezzo-acquisto-AfterProcedure
-           When 5040 PERFORM ef-ean-1-AfterProcedure
-           When 5041 PERFORM ef-ean-2-AfterProcedure
-           When 5042 PERFORM ef-ean-3-AfterProcedure
-           When 5043 PERFORM ef-ean-4-AfterProcedure
-           When 5044 PERFORM ef-ean-5-AfterProcedure
+           When 5029 PERFORM ef-perce-imposte-AfterProcedure
+           When 5030 PERFORM chk-cobat-AfterProcedure
+           When 5031 PERFORM ef-amperaggio-AfterProcedure
+           When 5033 PERFORM ef-sconto-agente-AfterProcedure
+           When 5034 PERFORM ef-prezzo-vendita-AfterProcedure
+           When 5035 PERFORM ef-sconto-acquisto-AfterProcedure
+           When 5036 PERFORM ef-prezzo-acquisto-AfterProcedure
+           When 5037 PERFORM ef-sconto-agente-AfterProcedure
+           When 5038 PERFORM ef-prezzo-acquisto-AfterProcedure
+           When 5039 PERFORM ef-sconto-agente-AfterProcedure
+           When 5040 PERFORM ef-prezzo-acquisto-AfterProcedure
+           When 5041 PERFORM ef-ean-1-AfterProcedure
+           When 5042 PERFORM ef-ean-2-AfterProcedure
+           When 5043 PERFORM ef-ean-3-AfterProcedure
+           When 5044 PERFORM ef-ean-4-AfterProcedure
            When 5045 PERFORM ef-ean-5-AfterProcedure
-           When 5046 PERFORM ef-forn-AfterProcedure
+           When 5046 PERFORM ef-ean-5-AfterProcedure
            When 5047 PERFORM ef-forn-AfterProcedure
-           When 5048 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5050 PERFORM chk-utf-AfterProcedure
-           When 5051 PERFORM chk-cobat-AfterProcedure
+           When 5048 PERFORM ef-forn-AfterProcedure
+           When 5049 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5051 PERFORM chk-utf-AfterProcedure
            When 5052 PERFORM chk-cobat-AfterProcedure
-           When 5053 PERFORM chk-utf-AfterProcedure
-           When 5054 PERFORM chk-cobat-AfterProcedure
-           When 5055 PERFORM chk-utf-AfterProcedure
-           When 5056 PERFORM chk-cobat-AfterProcedure
-           When 5057 PERFORM chk-utf-AfterProcedure
+           When 5053 PERFORM chk-cobat-AfterProcedure
+           When 5054 PERFORM chk-utf-AfterProcedure
+           When 5055 PERFORM chk-cobat-AfterProcedure
+           When 5056 PERFORM chk-utf-AfterProcedure
+           When 5057 PERFORM chk-cobat-AfterProcedure
            When 5058 PERFORM chk-utf-AfterProcedure
            When 5059 PERFORM chk-utf-AfterProcedure
            When 5060 PERFORM chk-cobat-AfterProcedure
@@ -20561,7 +20561,7 @@
            When 5072 PERFORM ef-ean-5-AfterProcedure
            When 5073 PERFORM ef-ean-5-AfterProcedure
            When 5074 PERFORM ef-ean-5-AfterProcedure
-           When 114 PERFORM ef-ean-5-AfterProcedure
+           When 115 PERFORM ef-ean-5-AfterProcedure
            When 5075 PERFORM ef-ean-5-AfterProcedure
            When 5076 PERFORM ef-ean-5-AfterProcedure
            When 5077 PERFORM ef-ean-5-AfterProcedure
@@ -20660,7 +20660,7 @@
        cbo-stato-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Ntf-Selchange ALSO 5049 ALSO
+           WHEN Ntf-Selchange ALSO 5050 ALSO
                     Form1-Handle
               PERFORM cbo-stato-Ev-Ntf-Selchange
            END-EVALUATE
