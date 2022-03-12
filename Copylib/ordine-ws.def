@@ -26,6 +26,7 @@
        77 como-cli-fidejussione        PIC  s9(15)v99.
        77 giacenza-assoluta            PIC  9(8).
        77 mult PIC  9v99.
+       77 como-perce       PIC  9(3)v99.
        77 giacenza-assoluta-maggiore   PIC  9(8).
        77 save-impegnato   PIC  s9(8).
        78 max-page VALUE IS 3. 
@@ -448,6 +449,7 @@
       *
       *
       *
+      *
        01 filler           PIC  9.
            88 prezzo-sp VALUE IS 1,    WHEN SET TO FALSE  0. 
        77 save-cli-codice  PIC  9(5).
@@ -531,6 +533,7 @@
                    88 OLD-mto-saldi-promo-no VALUE IS 0. 
                10 OLD-mto-vuoti.
       *(( XFD NAME = mto-num-vuoto-3_1 ))
+      *
       *
       *
                    15 OLD-mto-immediato            PIC  9.

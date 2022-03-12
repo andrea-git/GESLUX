@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A1481712-726-120563189
+PROGRAM_UNIQUE_CODE=TOTEM-7E63C12655-200-2059729919
 
 {{@DESCRIPTION:
 
@@ -19473,7 +19474,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-evadi-dal
             SCREEN-COL        = 94,17
-            SCREEN-LINE       = 13,38
+            SCREEN-LINE       = 13,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-evadi-dal
@@ -19496,8 +19497,8 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             ID                = 67
-            Line              = 1,69
-            Lines             = 1,92
+            Line              = 1,46
+            Lines             = 1,50
             Lines Unit        = Default
             No Auto Default   = FALSE
             No Tab            = TRUE
@@ -19512,6 +19513,48 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
             Link To           = pb-evadi-dal-LinkTo
+         End
+         Begin Push-Button pb-sconto
+            SCREEN-COL        = 94,17
+            SCREEN-LINE       = 14,69
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = pb-sconto
+            Bitmap Frame      = FALSE
+            Bitmap Number     = 1
+            Bitmap Square     = TRUE
+            Clines            = 0
+            Clines Unit       = Default
+            Column            = 92,00
+            Copy Resource     = TRUE
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi
+            Exception Value   = 1012
+            Flat              = FALSE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 67
+            Line              = 3,00
+            Lines             = 1,50
+            Lines Unit        = Default
+            No Auto Default   = FALSE
+            No Tab            = TRUE
+            Occurs            = 0
+            Self Act          = FALSE
+            Size              = 16,50
+            Size Unit         = Default
+            Style             = Other
+            Tab Order         = 47
+            Termination Value = 0
+            Title             = "Sconto %"
+            Visible           = NONE
+            Width in Cells    = TRUE
+            Link To           = pb-sconto-LinkTo
          End
       End
    End
@@ -25353,6 +25396,13 @@ BEGIN-DATA
    PARAGRAPH         = chk-contrassegno-AfterProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-sconto-LinkTo
+BEGIN-TEXT
+           perform PB-SCONTO-PRESSED.
 END-TEXT
 END-DATA
 

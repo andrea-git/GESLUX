@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 ottobre 2021 10:17:46.
+       DATE-WRITTEN.        sabato 12 marzo 2022 13:19:39.
        REMARKS.
       *{TOTEM}END
 
@@ -991,6 +991,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
       * FOR SPLIT KEY BUFFER
@@ -3276,8 +3277,8 @@
            pb-evadi-dal, 
            Push-Button, 
            COL 94,17, 
-           LINE 13,38,
-           LINES 1,92 ,
+           LINE 13,15,
+           LINES 1,50 ,
            SIZE 16,50 ,
            ENABLED mod-campi,
            EXCEPTION-VALUE 1011,
@@ -3287,6 +3288,24 @@
            WIDTH-IN-CELLS,
            NO-TAB,
            TITLE "Evadi dal",
+           .
+
+      * PUSH BUTTON
+       10
+           pb-sconto, 
+           Push-Button, 
+           COL 94,17, 
+           LINE 14,69,
+           LINES 1,50 ,
+           SIZE 16,50 ,
+           ENABLED mod-campi,
+           EXCEPTION-VALUE 1012,
+           FONT IS Small-Font,
+           ID IS 67,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           NO-TAB,
+           TITLE "Sconto %",
            .
 
       * LABEL
@@ -13355,6 +13374,14 @@
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            IF DataSet1-tordforn-KEY-Asc
               MOVE Low-Value TO tof-chiave
@@ -13420,6 +13447,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -13451,6 +13479,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -13482,6 +13511,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -15391,6 +15421,8 @@ PATCH      end-evaluate.
                  PERFORM pb-forza-LinkTo
               WHEN Key-Status = 1011
                  PERFORM pb-evadi-dal-LinkTo
+              WHEN Key-Status = 1012
+                 PERFORM pb-sconto-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-evasioni-LinkTo
               WHEN Key-Status = 4
@@ -21781,6 +21813,11 @@ LUBEXX                       move store-riga to riga
        chk-contrassegno-AfterProcedure.
       * <TOTEM:PARA. chk-contrassegno-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       pb-sconto-LinkTo.
+      * <TOTEM:PARA. pb-sconto-LinkTo>
+           perform PB-SCONTO-PRESSED 
            .
       * <TOTEM:END>
 

@@ -2483,161 +2483,11 @@ OMAGGI          move 4 to accept-control
 
            |78-ID-ef-uni è l'ID del control ef-uni
            when 78-ID-ef-uni
-                inquire ef-uni, value in ef-uni-buf
-                move ef-uni-buf to mro-prz-unitario col-uni como-prezzo
-                if pgm-name = "ordinevar" and not NewRow
-                   perform CONTROLLA-CAMBIO-PREZZO
-                end-if
-                if tutto-ok
-                   if mro-prz-unitario = 0
-                      perform PREZZO-ZERO
-                   else
-                      if TotaleSiZero
-                         display message "Impossibile attribuire prezzo"
-                                         " con la causale inserita"
-                                   title tit-err
-                                    icon 2
-                         set errori to true
-                      else
-LUBEXX                   if ef-cod-iva-buf = tge-cod-iva-omag
-LUBEXX                      perform RECUPERA-IVA
-                            display ef-cod-iva
-LUBEXX                      set errori to true
-LUBEXX                   end-if
-LUBEXX                end-if
-                   
-                      if tutto-ok
-                         if tcl-agente-si
-                            move ef-age-buf to age-codice
-                            if age-codice not = 0
-                               move mto-data-ordine  to tor-data-ordine
-                               move mro-omaggio      to ror-omaggio
-                               move mro-cod-articolo to ror-cod-articolo
-                               move ef-cli-buf to como-prm-cliente
-                               move ef-des-buf to como-prm-destino
-                               perform RECUPERA-PRZ-LISTINO
-                               if mro-prz-unitario < prezzo-listino
-                                  move prezzo-listino to como-edit
-                                  display message
-                                  "Prezzo inserito < prezzo agente!!!"
-                           x"0d0a""Prezzo listino: " como-edit
-                           x"0d0a""Confermi?"
-                                            title titolo
-                                             type mb-yes-no
-                                             icon 2
-                                          default mb-no
-                                           giving scelta
-                                  if scelta= mb-no
-                                     set errori to true
-                                  end-if
-                               end-if
-                            end-if
-                         end-if
-                         if tutto-ok
-                            perform VALUTA-CAMBIO-PREZZO
-                            if tcl-si-piombo and art-si-cobat and 
-                               naz-imp-esenti-no
-                               perform CALCOLA-ADD-PIOMBO
-                               display ef-add
-                            end-if
-                            move ef-add-buf  to mro-add-piombo
-                            if ( mro-prz-unitario   <=
-                               ( mro-imp-consumo   +
-                                 mro-imp-cou-cobat +
-                                 mro-add-piombo ) ) and ttipocli-gdo
-                               perform DISPLAY-SCREEN
-                               display message
-                      "Prezzo errato: dev'essere maggiore delle imposte"
-                                         title tit-err
-                                          icon 2
-                               set errori to true
-                            else
-                               perform CALCOLA-IMPONIBILE
-                            end-if
-                         end-if
-                      end-if
-                   end-if
-                end-if
-
-                if errori
-                   move 78-ID-ef-uni    to control-id
-                else
-                   move ef-uni-buf to old-prezzo
-                   move 78-ID-ef-sconto to control-id
-                   perform DISPLAY-SCREEN
-                end-if                               
-                move 4 to accept-control
+                perform CONTROLLO-UNI
 
            |78-ID-ef-sconto è l'ID del control ef-sconto
            when 78-ID-ef-sconto
-                inquire ef-sconto, value in ef-sconto-buf
-                move ef-sconto-buf to mro-perce-sconto
-                move ef-uni-buf    to mro-prz-unitario
-      *****          if SaveGDO = spaces
-                if ttipocli-gdo continue
-                else
-                   if mro-prz-unitario not = 0 |Articolo omaggio
-                      compute mro-prz-unitario =
-                              mro-prz-unitario -
-                           (( mro-prz-unitario *
-                              mro-perce-sconto ) / 100)
-                      perform CALCOLA-IMPONIBILE
-                      move mro-imponib-merce to ef-imp-buf col-imp
-                   else
-                      move 0 to ef-sconto-buf
-                      display ef-sconto
-                   end-if
-                end-if
-
-                display ef-imp
-                if key-status = 13
-
-                   if mro-prz-unitario = 0 |Articolo omaggio
-                      move 0 to ef-cons-buf ef-cou-buf ef-add-buf
-                                col-cons col-cou col-add
-                      display ef-cons ef-cou
-                   end-if
-                            
-                   set tutto-ok to true
-                   if pgm-name = "ordinevar"
-                      move col-qta     to como-qta
-
-
-                      move old-col-qta to como-old-qta
-                      if como-qta     <  como-old-qta and
-                         prg-giacenza >= como-qta     and not NewRow
-                         display message "Si sta tagliando "
-                                         "merce con giacenza."
-                                  x"0d0a""Confermare?"
-                                   title titolo
-                                    icon 2
-                                    type mb-yes-no
-                                  giving scelta
-                                 default mb-no
-                         if scelta = mb-no
-                            set errori to true
-                         end-if
-                      end-if
-                   end-if
-
-                   if tutto-ok
-                      perform ENTRY-TO-ROW
-      *    se è un blister e ho cambiato la qta vado ad aggiornare la qta
-      *    sulele righe collegate
-                      if hid-blister = 1
-                         if col-qta not = old-col-qta
-                            perform AGGIORNA-QTA-CORRELATE
-                         end-if
-                      end-if
-
-      *****             move 0 to e-gui
-      *****             modify rb-gui, enabled = e-gui
-                      perform PULISCI-CAMPI-LABELS
-                   end-if
-                else
-                   move 78-ID-ef-art to control-id
-                   move 4            to accept-control
-                end-if
+                perform CONTROLLO-SCONTO
 
            |78-ID-ef-cons è l'ID del control ef-cons
            when 78-ID-ef-cons
@@ -5223,6 +5073,45 @@ LABLAB***---
               display ef-evadi-dal
            end-if.
 
+      ***---
+       PB-SCONTO-PRESSED.    
+           if mto-chiuso exit paragraph end-if. 
+           inquire form1-gd-1, last-row in tot-righe.
+           if tot-righe = 1 exit paragraph end-if.
+
+           call   "confperce" using como-perce.
+           cancel "confperce".
+           if como-perce not = 0
+              move riga to store-riga
+               perform varying riga from 2 by 1 
+                        until riga > tot-righe
+                 inquire form1-gd-1(riga, 1), 
+                         cell-data in col-art
+                 move col-art to art-codice
+                 read articoli no lock
+                 inquire form1-gd-1(riga, 1), 
+                         hidden-data in gruppo-hidden
+                 move HiddenKey to prg-chiave
+                 read progmag no lock
+                 inquire form1-gd-1(riga, 6), 
+                         cell-data in col-uni
+                 move col-uni to como-prz-unitario
+                 compute como-prz-unitario =
+                         como-prz-unitario * 
+                         (( 100 - como-perce ) / 100)
+                 move como-prz-unitario to ef-uni-buf
+                 modify ef-uni, value ef-uni-buf
+                 perform CONTROLLO-UNI               
+                 perform CONTROLLO-SCONTO
+                 modify form1-gd-1(riga, 1), 
+                        hidden-data gruppo-hidden
+              end-perform
+              set RigaCambiata to true
+              perform DATE-TO-SCREEN
+              move como-data to ef-evadi-dal-buf
+              display ef-evadi-dal
+           end-if.
+
 
       ***---
        QTA-IMPEGNATO.
@@ -5551,3 +5440,161 @@ LABLAB***---
 
            copy "promo-fittizia.cpy".
            copy "controlla-fuori-fido.cpy".
+
+      ***---
+       CONTROLLO-UNI.
+           inquire ef-uni, value in ef-uni-buf.
+           move ef-uni-buf to mro-prz-unitario col-uni como-prezzo.
+           if pgm-name = "ordinevar" and not NewRow
+              perform CONTROLLA-CAMBIO-PREZZO
+           end-if.
+           if tutto-ok
+              if mro-prz-unitario = 0
+                 perform PREZZO-ZERO
+              else
+                 if TotaleSiZero
+                    display message "Impossibile attribuire prezzo"
+                                    " con la causale inserita"
+                              title tit-err
+                               icon 2
+                    set errori to true
+                 else
+LUBEXX              if ef-cod-iva-buf = tge-cod-iva-omag
+LUBEXX                 perform RECUPERA-IVA
+                       display ef-cod-iva
+LUBEXX                 set errori to true
+LUBEXX              end-if
+LUBEXX           end-if
+              
+                 if tutto-ok
+                    if tcl-agente-si
+                       move ef-age-buf to age-codice
+                       if age-codice not = 0
+                          move mto-data-ordine  to tor-data-ordine
+                          move mro-omaggio      to ror-omaggio
+                          move mro-cod-articolo to ror-cod-articolo
+                          move ef-cli-buf to como-prm-cliente
+                          move ef-des-buf to como-prm-destino
+                          perform RECUPERA-PRZ-LISTINO
+                          if mro-prz-unitario < prezzo-listino
+                             move prezzo-listino to como-edit
+                             display message
+                             "Prezzo inserito < prezzo agente!!!"
+                      x"0d0a""Prezzo listino: " como-edit
+                      x"0d0a""Confermi?"
+                                       title titolo
+                                        type mb-yes-no
+                                        icon 2
+                                     default mb-no
+                                      giving scelta
+                             if scelta= mb-no
+                                set errori to true
+                             end-if
+                          end-if
+                       end-if
+                    end-if
+                    if tutto-ok
+                       perform VALUTA-CAMBIO-PREZZO
+                       if tcl-si-piombo and art-si-cobat and 
+                          naz-imp-esenti-no
+                          perform CALCOLA-ADD-PIOMBO
+                          display ef-add
+                       end-if
+                       move ef-add-buf  to mro-add-piombo
+                       if ( mro-prz-unitario   <=
+                          ( mro-imp-consumo   +
+                            mro-imp-cou-cobat +
+                            mro-add-piombo ) ) and ttipocli-gdo
+                          perform DISPLAY-SCREEN
+                          display message
+                 "Prezzo errato: dev'essere maggiore delle imposte"
+                                    title tit-err
+                                     icon 2
+                          set errori to true
+                       else
+                          perform CALCOLA-IMPONIBILE
+                       end-if
+                    end-if
+                 end-if
+              end-if
+           end-if.
+
+           if errori
+              move 78-ID-ef-uni    to control-id
+           else
+              move ef-uni-buf to old-prezzo
+              move 78-ID-ef-sconto to control-id
+              perform DISPLAY-SCREEN
+           end-if.
+           move 4 to accept-control.
+
+      ***---
+       CONTROLLO-SCONTO.
+           inquire ef-sconto, value in ef-sconto-buf
+           move ef-sconto-buf to mro-perce-sconto
+           move ef-uni-buf    to mro-prz-unitario
+      *****       if SaveGDO = spaces
+           if ttipocli-gdo continue
+           else
+              if mro-prz-unitario not = 0 |Articolo omaggio
+                 compute mro-prz-unitario =
+                         mro-prz-unitario -
+                      (( mro-prz-unitario *
+                         mro-perce-sconto ) / 100)
+                 perform CALCOLA-IMPONIBILE
+                 move mro-imponib-merce to ef-imp-buf col-imp
+              else
+                 move 0 to ef-sconto-buf
+                 display ef-sconto
+              end-if
+           end-if
+
+           display ef-imp
+           if key-status = 13
+
+              if mro-prz-unitario = 0 |Articolo omaggio
+                 move 0 to ef-cons-buf ef-cou-buf ef-add-buf
+                           col-cons col-cou col-add
+                 display ef-cons ef-cou
+              end-if
+                       
+              set tutto-ok to true
+              if pgm-name = "ordinevar"
+                 move col-qta     to como-qta
+
+
+                 move old-col-qta to como-old-qta
+                 if como-qta     <  como-old-qta and
+                    prg-giacenza >= como-qta     and not NewRow
+                    display message "Si sta tagliando "
+                                    "merce con giacenza."
+                             x"0d0a""Confermare?"
+                              title titolo
+                               icon 2
+                               type mb-yes-no
+                             giving scelta
+                            default mb-no
+                    if scelta = mb-no
+                       set errori to true
+                    end-if
+                 end-if
+              end-if
+
+              if tutto-ok
+                 perform ENTRY-TO-ROW
+      *    se è un blister e ho cambiato la qta vado ad aggiornare la qta
+      *    sulele righe collegate
+                 if hid-blister = 1
+                    if col-qta not = old-col-qta
+                       perform AGGIORNA-QTA-CORRELATE
+                    end-if
+                 end-if
+
+      *****        move 0 to e-gui
+      *****        modify rb-gui, enabled = e-gui
+                 perform PULISCI-CAMPI-LABELS
+              end-if
+           else
+              move 78-ID-ef-art to control-id
+              move 4            to accept-control
+           end-if.
