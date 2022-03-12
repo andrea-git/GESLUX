@@ -5084,17 +5084,13 @@ LABLAB***---
            if como-perce not = 0
               move riga to store-riga
                perform varying riga from 2 by 1 
-                        until riga > tot-righe
-                 inquire form1-gd-1(riga, 1), 
-                         cell-data in col-art
+                        until riga > tot-righe  
+                 modify form1-gd-1, cursor-y riga
+                 perform ROW-TO-ENTRY
                  move col-art to art-codice
                  read articoli no lock
-                 inquire form1-gd-1(riga, 1), 
-                         hidden-data in gruppo-hidden
                  move HiddenKey to prg-chiave
                  read progmag no lock
-                 inquire form1-gd-1(riga, 6), 
-                         cell-data in col-uni
                  move col-uni to como-prz-unitario
                  compute como-prz-unitario =
                          como-prz-unitario * 
@@ -5103,8 +5099,6 @@ LABLAB***---
                  modify ef-uni, value ef-uni-buf
                  perform CONTROLLO-UNI               
                  perform CONTROLLO-SCONTO
-                 modify form1-gd-1(riga, 1), 
-                        hidden-data gruppo-hidden
               end-perform
               set RigaCambiata to true
               perform DATE-TO-SCREEN
@@ -5550,7 +5544,7 @@ LUBEXX           end-if
            end-if
 
            display ef-imp
-           if key-status = 13
+           if key-status = 13 or 1012
 
               if mro-prz-unitario = 0 |Articolo omaggio
                  move 0 to ef-cons-buf ef-cou-buf ef-add-buf
