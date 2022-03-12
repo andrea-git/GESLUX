@@ -9,6 +9,8 @@
            05 tmp-mov-dati.
                10 tmp-mov-numordcli            PIC  x(50).
                10 tmp-mov-imballo  PIC  x(3).
+               10 tmp-mov-imb-des  PIC  x(50).
+               10 tmp-mov-imb-da   PIC  9(5).
                10 tmp-mov-gdo      PIC  x(5).
                10 tmp-mov-tipocli  PIC  x(2).
                10 tmp-mov-causale  PIC  x(4).

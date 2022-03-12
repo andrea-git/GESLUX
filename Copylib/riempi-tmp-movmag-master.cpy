@@ -191,7 +191,12 @@ LUBEXX           end-if
            end-evaluate.
                                                     
            move mro-num-colli        to tmp-mov-colli.
-           move mro-prg-tipo-imballo to tmp-mov-imballo.
+           move mro-prg-tipo-imballo to tmp-mov-imballo imq-codice.
+           read timbalqta.
+           move imq-qta-imb to tmp-mov-imb-da.
+           move imq-tipo to imb-codice.
+           read timballi.
+           move imb-descrizione to tmp-mov-imb-des.
 
            move mro-imponib-merce  to tmp-mov-imp.
 
@@ -492,6 +497,8 @@ LUBEXX             end-if
 
               move tmp-mov-colli      to r-colli
               move tmp-mov-imballo    to r-imballo
+              move tmp-mov-imb-des    to r-imb-des
+              move tmp-mov-imb-da     to r-imb-da
 
               move tmp-mov-imp        to r-imp-merce
               move tmp-mov-add        to r-add-pb
@@ -548,6 +555,10 @@ LUBEXX             end-if
                         "Prodotto"          delimited size
                         separatore          delimited size
                         "Imballo"           delimited size
+                        separatore          delimited size
+                        "Descrizione"       delimited size
+                        separatore          delimited size
+                        "da"                delimited size
                         separatore          delimited size
                         "Colli"             delimited size
                         separatore          delimited size
@@ -609,6 +620,10 @@ LUBEXX             end-if
                      r-desart      delimited size
                      separatore    delimited size
                      r-imballo     delimited size
+                     separatore    delimited size
+                     r-imb-des     delimited size
+                     separatore    delimited size
+                     r-imb-da      delimited size
                      separatore    delimited size
                      r-colli       delimited size
                      separatore    delimited size

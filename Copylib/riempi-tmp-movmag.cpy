@@ -276,7 +276,7 @@ LUBEXX           end-if
                     read tordini no lock key k-fattura
                          invalid continue
                      not invalid
-                         move tor-num-ord-cli to tmp-mov-num-ord-cli
+                         move tor-num-ord-cli to tmp-mov-numordcli
                          move tor-data-ordine to tmp-mov-data-ordine
                 
                          move tor-cod-agente  to tmp-mov-age-codice 
@@ -325,7 +325,7 @@ LUBEXX           end-if
                  move tmo-numdoc-clifor to tmp-mov-num-bolla
                  move tmo-data-doc      to tmp-mov-data-bolla
 
-                 move 0      to tmp-mov-num-ord-cli tmp-mov-data-ordine
+                 move 0      to tmp-mov-numordcli tmp-mov-data-ordine
                  move spaces to tmp-mov-cod-pag tmp-mov-des-pag
               end-if
               move 0 to r-anno-m r-num-m r-riga-m
@@ -633,7 +633,7 @@ LUBEXX     move rmo-peso             to tmp-mov-peso.
               move tmp-mov-destino    to r-destino
               move tmp-mov-movim      to r-numero
 
-              move tmp-mov-num-ord-cli to r-num-ord-cli
+              move tmp-mov-numordcli  to r-num-ord-cli
               move tmp-mov-data-ordine to como-data
               perform DATE-TO-SCREEN
               move como-data          to r-data-ordine

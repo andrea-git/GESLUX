@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovmag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 12:23:12.
+       DATE-WRITTEN.        sabato 12 marzo 2022 12:59:43.
        REMARKS.
       *{TOTEM}END
 
@@ -545,7 +545,7 @@
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
-       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(476).
+       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(531).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
