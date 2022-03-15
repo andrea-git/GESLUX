@@ -5092,9 +5092,10 @@ LABLAB***---
                  move HiddenKey to prg-chiave
                  read progmag no lock
                  move col-uni to como-prz-unitario
-                 compute como-prz-unitario =
+                 compute risultato-imposte =
                          como-prz-unitario * 
                          (( 100 - como-perce ) / 100)
+                 add 0,005 to risultato-imposte giving como-prz-unitario
                  move como-prz-unitario to ef-uni-buf
                  modify ef-uni, value ef-uni-buf
                  perform CONTROLLO-UNI   
