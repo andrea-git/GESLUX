@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 18 febbraio 2022 14:50:16.
+       DATE-WRITTEN.        martedì 15 marzo 2022 11:19:00.
        REMARKS.
       *{TOTEM}END
 
@@ -2945,8 +2945,8 @@
            pb-evadi-dal, 
            Push-Button, 
            COL 94,17, 
-           LINE 13,38,
-           LINES 1,92 ,
+           LINE 13,54,
+           LINES 1,50 ,
            SIZE 16,50 ,
            ENABLED mod-campi,
            EXCEPTION-VALUE 1009,
@@ -2956,6 +2956,24 @@
            WIDTH-IN-CELLS,
            NO-TAB,
            TITLE "Evadi dal",
+           .
+
+      * PUSH BUTTON
+       10
+           pb-sconto, 
+           Push-Button, 
+           COL 112,50, 
+           LINE 13,54,
+           LINES 1,50 ,
+           SIZE 16,50 ,
+           ENABLED mod-campi,
+           EXCEPTION-VALUE 1012,
+           FONT IS Small-Font,
+           ID IS 68,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           NO-TAB,
+           TITLE "Sconto %",
            .
 
       * LABEL
@@ -13770,6 +13788,8 @@
                  PERFORM pb-forza-LinkTo
               WHEN Key-Status = 1009
                  PERFORM pb-evadi-dal-LinkTo
+              WHEN Key-Status = 1012
+                 PERFORM pb-sconto-LinkTo
               WHEN Key-Status = 3
                  PERFORM TOOL-SALVA-LinkTo
               WHEN Key-Status = 6
@@ -18119,6 +18139,11 @@ LABLAB     end-if
        chk-urgente-LinkTo.
       * <TOTEM:PARA. chk-urgente-LinkTo>
            modify chk-urgente, value = chk-urgente-buf 
+           .
+      * <TOTEM:END>
+       pb-sconto-LinkTo.
+      * <TOTEM:PARA. pb-sconto-LinkTo>
+           perform PB-SCONTO-PRESSED 
            .
       * <TOTEM:END>
 

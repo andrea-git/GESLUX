@@ -5097,8 +5097,28 @@ LABLAB***---
                          (( 100 - como-perce ) / 100)
                  move como-prz-unitario to ef-uni-buf
                  modify ef-uni, value ef-uni-buf
-                 perform CONTROLLO-UNI               
+                 perform CONTROLLO-UNI   
+                 if errori   
+                    move riga to event-data-2        
+                    perform SPOSTAMENTO
+                    subtract 1 from riga
+                    display message "Errore a riga " riga ","
+                             x"0d0a""ricalcolo sconto terminato"
+                              title tit-err
+                               icon 2
+                    exit perform
+                 end-if            
                  perform CONTROLLO-SCONTO
+                 if errori                           
+                    move riga to event-data-2
+                    perform SPOSTAMENTO
+                    subtract 1 from riga
+                    display message "Errore a riga " riga ","
+                             x"0d0a""ricalcolo sconto terminato"
+                              title tit-err
+                               icon 2                
+                    exit perform
+                 end-if
               end-perform
               set RigaCambiata to true
               perform DATE-TO-SCREEN
