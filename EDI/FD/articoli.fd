@@ -144,7 +144,10 @@
                        88 art-SHARK-si VALUE IS 1. 
                        88 art-SHARK-no VALUE IS 0. 
                    15 art-litri        PIC  9(4)v999.
-                   15 art-num-vuoto-2  PIC  9(4).
+                   15 art-novita       PIC  9.
+                       88 art-novita-si VALUE IS 1. 
+                       88 art-novita-no VALUE IS 0. 
+                   15 art-num-vuoto-2  PIC  9(3).
                    15 art-num-vuoto-3  PIC  9(18).
                    15 art-note2        PIC  X(300).
       *(( XFD NAME = art-alfa-vuoto_1 ))

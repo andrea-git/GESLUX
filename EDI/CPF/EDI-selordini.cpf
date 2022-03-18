@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E62F15355-841-2612828459
+PROGRAM_UNIQUE_CODE=TOTEM-7E6312105932-235-919829161
 
 {{@DESCRIPTION:
 
@@ -21622,7 +21622,8 @@ BEGIN-DATA
    PARAGRAPH         = pb-aggiungi-LinkTo
 BEGIN-TEXT
            set fromAggiungi to true.
-           perform ZOOM-SU-PROGMAG.  
+           perform ZOOM-SU-PROGMAG. 
+           set fromAggiungi to false.
            if stato-zoom = 0               
               modify pb-aggiungi, bitmap-number = 1
               modify form1-gd-1(riga), row-font = Arial10-Occidentale

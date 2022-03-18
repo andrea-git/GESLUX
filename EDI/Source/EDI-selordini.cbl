@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 febbraio 2022 16:36:07.
+       DATE-WRITTEN.        venerdì 18 marzo 2022 11:58:45.
        REMARKS.
       *{TOTEM}END
 
@@ -22567,7 +22567,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
        pb-aggiungi-LinkTo.
       * <TOTEM:PARA. pb-aggiungi-LinkTo>
            set fromAggiungi to true.
-           perform ZOOM-SU-PROGMAG.  
+           perform ZOOM-SU-PROGMAG. 
+           set fromAggiungi to false.
            if stato-zoom = 0               
               modify pb-aggiungi, bitmap-number = 1
               modify form1-gd-1(riga), row-font = Arial10-Occidentale
