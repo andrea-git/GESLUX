@@ -1205,14 +1205,13 @@
               perform CALCOLA-TOTALE-IVATO
               move link-ti-tot-doc    to tot-doc
               string tot-doc-int delimited size
-                     ","         delimited size
                      tot-doc-dec delimited size
                  into HUSCTES_UDF5 
               end-string
               inspect HUSCTES_UDF5 replacing leading x"30" by x"20"
               call "C$JUSTIFY" using HUSCTES_UDF5, "L"
            else
-              move "0,00" to HUSCTES_UDF5
+              move "0" to HUSCTES_UDF5
            end-if.
            move tca-caus-trasporto to HUSCTES_UDF6
            move space              to HUSCTES_UDF7
