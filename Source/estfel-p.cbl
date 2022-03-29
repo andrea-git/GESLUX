@@ -852,8 +852,26 @@
              into line-riga
            end-string.
            write line-riga. 
-              
-           if cli-piva not = spaces   
+
+      * per evitare l’errore 00305 1.4.1.1.2. Questo è un errore molto comune. 
+      * Viene sollevato quando per un anagrafica avente codice fiscale numerico, 
+      * questo viene anche inviato come partita IVA. Questa problematica è molto 
+      * comune con le anagrafiche delle associazioni, che hanno il codice fiscale
+      * numerico che inizia normalmente con il numero 9. In questo caso, se questo
+      * codice fiscale venisse anche inviato come partita IVA, la fattura verrà 
+      * scartata appunto con l’errore 00305.
+
+      *Soluzione generale
+      * Per risolvere il problema basta rettificare la fattura, eliminando 
+      * la partita IVA, ed inviando il dato solo come codice fiscale.
+
+      * fonte: https://www.newsoftit.net/err-fatt-sdi-00305
+ 
+           if cli-piva(1:1) = "9"
+              move spaces to cli-piva
+           end-if.
+   
+           if cli-piva not = spaces
               inspect cli-piva replacing trailing spaces by low-value
               initialize line-riga
               string 78-spazi   
