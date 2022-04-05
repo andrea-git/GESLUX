@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E0115155048-558-2537821984
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E64571314-821-3273026716
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -202,9 +202,9 @@ m_strTrue="N" " "
 
 @}}
 [FDITEM20_]
-m_strName=naz-alfa-vuoto-1
-m_strRawPic=x(17)
-m_strPic=x(17)
+m_strName=naz-fe
+m_strRawPic=x(1)
+m_strPic=x(1)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -212,23 +212,51 @@ m_bFixed=1
 
 @}}
 [FDITEM21_]
+m_strName=naz-fe-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM21_
+
+@}}
+[FDITEM22_]
+m_strName=naz-fe-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N", " "
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
+m_strName=naz-alfa-vuoto-1
+m_strRawPic=x(16)
+m_strPic=x(16)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_
+
+@}}
+[FDITEM24_]
 m_strName=naz-alfa-vuoto-2
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM21_
+{{@DataItem_m_strDescriptionFDITEM24_
 
 @}}
-[FDITEM22_]
+[FDITEM25_]
 m_strName=naz-alfa-vuoto-3
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM22_
+{{@DataItem_m_strDescriptionFDITEM25_
 
 @}}
 [CStoAcucobolSL_]

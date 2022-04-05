@@ -2,13 +2,14 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [WORKSPACE_CONTENT]
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -36944,7 +36945,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\tnazioni.cbl]
-COPY_DEPENDENCE=FD\tnazioni.sl;FD\tnazioni.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-G2Agg.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\toolbar.bmp;Resource\esegui_73x21.bmp;Copylib\ABILITA-TOOLBAR.CPY;Copylib\COLOR-CUSTOM.CPY;Copylib\cerca-testo.cpy
+COPY_DEPENDENCE=FD\tnazioni.sl;FD\tnazioni.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-G2Agg.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\toolbar.bmp;Resource\esegui_73x21.bmp;Copylib\ABILITA-TOOLBAR.CPY;Copylib\COLOR-CUSTOM.CPY;Copylib\cerca-testo.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -59857,7 +59858,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\tnazioni.cbl]
-COPY_DEPENDENCE=FD\tnazioni.sl;FD\tnazioni.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-G2Agg.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\toolbar.bmp;Resource\esegui_73x21.bmp;Copylib\ABILITA-TOOLBAR.CPY;Copylib\COLOR-CUSTOM.CPY;Copylib\cerca-testo.cpy
+COPY_DEPENDENCE=FD\tnazioni.sl;FD\tnazioni.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-G2Agg.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\toolbar.bmp;Resource\esegui_73x21.bmp;Copylib\ABILITA-TOOLBAR.CPY;Copylib\COLOR-CUSTOM.CPY;Copylib\cerca-testo.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

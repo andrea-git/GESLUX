@@ -19,6 +19,9 @@
                    15 naz-imp-esenti   PIC  x.
                        88 naz-imp-esenti-si VALUE IS "S". 
                        88 naz-imp-esenti-no VALUE IS "N" " ". 
-                   15 naz-alfa-vuoto-1 PIC  x(17).
+                   15 naz-fe           PIC  x(1).
+                       88 naz-fe-si VALUE IS "S". 
+                       88 naz-fe-no VALUE IS "N", " ". 
+                   15 naz-alfa-vuoto-1 PIC  x(16).
                    15 naz-alfa-vuoto-2 PIC  x(20).
                    15 naz-alfa-vuoto-3 PIC  x(20).

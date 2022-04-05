@@ -94,6 +94,9 @@
        78  78-max-doc            value 250.
        
       * VARIABILI                           
+       01  abilitazioni-nazione.       
+         05 cli-naz-fe           pic x.
+         05 des-naz-fe           pic x.
        77  prg-invio             pic 9(5).
        77  como-des              pic x(80).
        77  como-note             pic x(500).
@@ -286,20 +289,36 @@
                     move tor-prg-destino to des-prog
                     read clienti no lock
                          invalid initialize cli-rec
-                    end-read                       
+                    end-read
+
+                    move cli-nazione to naz-codice
+                    read tnazioni no lock 
+                         invalid  move space to naz-fe
+                    end-read
+                    move naz-fe to cli-naz-fe
+
                     read destini no lock
                          invalid 
                          initialize des-rec
                          move cli-nazione to des-nazione
                     end-read
+
+                    move des-nazione to naz-codice
+                    read tnazioni no lock 
+                         invalid  move space to naz-fe
+                    end-read
+                    move naz-fe to des-naz-fe
+
                     move cli-tipo to tcl-codice
                     read ttipocli
                     move cli-codice to rec-codice
                     read recapiti no lock
                          invalid initialize rec-rec
                     end-read
-                    if cli-nazione(1:2) = "IT" or 
-                       des-nazione(1:2) = "IT"
+                    if cli-naz-fe = "S" or 
+                       des-naz-fe = "S"
+      *****              if cli-nazione(1:2) = "IT" or 
+      *****                 des-nazione(1:2) = "IT"
                        move cli-codice to cli-codice-G2
                        read CLI no lock
                             invalid initialize record-cli
@@ -371,9 +390,17 @@
                     read destini no lock
                          invalid initialize des-rec
                     end-read    
+
+                    move cli-nazione to naz-codice
+                    read tnazioni no lock 
+                         invalid  move space to naz-fe
+                    end-read
+                    move naz-fe to cli-naz-fe
+
                     move cli-tipo to tcl-codice
                     read ttipocli
-                    if cli-nazione(1:2) = "IT"
+      *****              if cli-nazione(1:2) = "IT"
+                    if cli-naz-fe = "S"
                        move cli-codice to cli-codice-G2
                        read CLI no lock
                             invalid initialize record-cli
@@ -1755,6 +1782,7 @@
                   des-indirizzo delimited low-value
                   "</Indirizzo>"
              into line-riga.
+
            write line-riga.     
                                           
            if des-cap = "EE" or des-cap = spaces
@@ -1798,8 +1826,8 @@
 
            move des-nazione to naz-codice.
            read tnazioni no lock 
-                invalid move des-nazione to naz-cod-edi
-           end-read.
+                invalid  move des-nazione to naz-cod-edi
+           end-read.                               
            inspect naz-cod-edi replacing trailing spaces by low-value.
            
            string 78-spazi 
