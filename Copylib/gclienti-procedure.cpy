@@ -3343,7 +3343,7 @@ LUBEXX     if tutto-ok perform SALVA-RIGA end-if.
                         until riga > tot-righe                      
                  inquire form1-gd-1(riga, 6), cell-data in col-prov
                  inquire form1-gd-1(riga, 4), cell-data in col-cap
-                 if col-prov not = "EE" or spaces
+                 if col-prov not = "EE" 
                     move col-cap to anc-cap
                     read anacap no lock
                          invalid
