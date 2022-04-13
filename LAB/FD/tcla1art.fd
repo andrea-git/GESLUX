@@ -12,7 +12,8 @@
                    15 cl1-ora-ultima-modifica      PIC  9(8).
                    15 cl1-utente-ultima-modifica   PIC  x(10).
                10 cl1-vuoti.
-                   15 cl1-num-vuoto-1  PIC  9(15).
+                   15 cl1-livello      PIC  99.
+                   15 cl1-num-vuoto-1  PIC  9(13).
                    15 cl1-num-vuoto-2  PIC  9(15).
                    15 cl1-num-vuoto-3  PIC  9(15).
                    15 cl1-alfa-vuoto-1 PIC  x(20).

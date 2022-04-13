@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E5978127-353-241631930
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E64D111551-697-1632328009
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -277,6 +277,7 @@ m_strAssignToName="listini"
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-listini
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 
@@ -312,3 +313,14 @@ m_strName=lst-gdo OF listini
 m_strName=lst-cod-art-cli OF listini
 [SLKEYATOM2_SLINDEX1_]
 m_strName=lst-data OF listini
+[SLINDEX2_]
+m_strName=lst-k-data
+{{@Key_m_strDescriptionSLINDEX2_
+
+@}}
+[SLKEYATOM0_SLINDEX2_]
+m_strName=lst-data OF listini
+[SLKEYATOM1_SLINDEX2_]
+m_strName=lst-gdo OF listini
+[SLKEYATOM2_SLINDEX2_]
+m_strName=lst-cod-art-cli OF listini
