@@ -58,12 +58,12 @@
       ***---
        ELABORAZIONE.                
            move low-value to lst-chiave.
-           move 20210101 to lst-data.
-           start listini key >= lst-k-data
+           move 20200101 to lst-data.
+           start listini key < lst-k-data
                  invalid continue
              not invalid
                  perform until 1 = 2
-                    read listini next at end exit perform end-read
+                    read listini previous at end exit perform end-read
                     move lst-gdo to gdo-chiave
                     read tgrupgdo no lock
                          invalid continue
