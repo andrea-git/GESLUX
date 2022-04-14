@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gprogmag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 20 settembre 2019 10:34:10.
+       DATE-WRITTEN.        giovedì 14 aprile 2022 15:12:22.
        REMARKS.
       *{TOTEM}END
 
@@ -381,8 +381,8 @@
            X(10).
                10 OLD-prg-vuoti.
                    15 OLD-prg-giacenza-bloc        PIC  s9(8).
-                   15 OLD-prg-num-vuoto-1          PIC  9(7).
-                   15 OLD-prg-num-vuoto-2          PIC  9(15).
+                   15 OLD-prg-costo-mp PIC  S9(9)V9(2).
+                   15 OLD-prg-num-vuoto-2          PIC  9(11).
                    15 OLD-prg-num-vuoto-3          PIC  9(15).
                    15 OLD-prg-alfa-vuoto-1         PIC  X(20).
                    15 OLD-prg-alfa-vuoto-2         PIC  X(20).
@@ -517,6 +517,8 @@
               05 ef-imp-gdo-BUF PIC ---.---.--9.
       * Data.Entry-Field
               05 ef-imp-trad-BUF PIC --.---.--9.
+      * Data.Entry-Field
+              05 EF-GIACENZA-Ba-BUF PIC ----.---.--9,99.
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-progmag-RESTOREBUF  PIC X(1090).
@@ -762,7 +764,7 @@
            ef-peso-utf, 
            Entry-Field, 
            COL 18,83, 
-           LINE 13,00,
+           LINE 12,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -784,7 +786,7 @@
            ef-peso-non-utf, 
            Entry-Field, 
            COL 52,00, 
-           LINE 13,00,
+           LINE 12,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -806,7 +808,7 @@
            EF-COSTO-ULTIMO, 
            Entry-Field, 
            COL 18,83, 
-           LINE 17,00,
+           LINE 16,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -828,7 +830,7 @@
            EF-COSTO-MEDIO, 
            Entry-Field, 
            COL 52,00, 
-           LINE 17,00,
+           LINE 16,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -850,7 +852,7 @@
            EF-GIACENZA, 
            Entry-Field, 
            COL 18,83, 
-           LINE 19,77,
+           LINE 18,62,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -872,7 +874,7 @@
            EF-ORD-CLI, 
            Entry-Field, 
            COL 52,00, 
-           LINE 19,77,
+           LINE 18,62,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -894,7 +896,7 @@
            EF-ORD-FORN-1, 
            Entry-Field, 
            COL 18,83, 
-           LINE 23,23,
+           LINE 21,31,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -916,7 +918,7 @@
            EF-ORD-FORN-2, 
            Entry-Field, 
            COL 35,67, 
-           LINE 23,23,
+           LINE 21,31,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -938,7 +940,7 @@
            EF-ORD-FORN-3, 
            Entry-Field, 
            COL 52,00, 
-           LINE 23,23,
+           LINE 21,31,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -960,7 +962,7 @@
            EF-ORD-FORN-4, 
            Entry-Field, 
            COL 69,00, 
-           LINE 23,23,
+           LINE 21,31,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -982,7 +984,7 @@
            EF-ORD-FORN-5, 
            Entry-Field, 
            COL 85,67, 
-           LINE 23,23,
+           LINE 21,31,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -1004,7 +1006,7 @@
            EF-ORD-FORN-6, 
            Entry-Field, 
            COL 102,33, 
-           LINE 23,23,
+           LINE 21,31,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -1026,7 +1028,7 @@
            EF-GIACENZA-B, 
            Entry-Field, 
            COL 18,83, 
-           LINE 25,92,
+           LINE 24,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -1751,14 +1753,14 @@
            Form1-Br-2, 
            Bar,
            COL 19,50, 
-           LINE 15,69,
+           LINE 14,92,
            SIZE 98,33 ,
            ID IS 100,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
            .
 
       * LABEL
@@ -1822,7 +1824,7 @@
            Form1-La-5aaaa, 
            Label, 
            COL 2,50, 
-           LINE 17,00,
+           LINE 16,23,
            LINES 1,31 ,
            SIZE 13,00 ,
            ID IS 4,
@@ -1837,7 +1839,7 @@
            Form1-La-5aaab, 
            Label, 
            COL 35,67, 
-           LINE 17,00,
+           LINE 16,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 5,
@@ -1853,7 +1855,7 @@
            Form1-La-5aaabaa, 
            Label, 
            COL 2,50, 
-           LINE 19,77,
+           LINE 18,62,
            LINES 1,31 ,
            SIZE 11,00 ,
            ID IS 8,
@@ -1869,7 +1871,7 @@
            Form1-La-5aaabab, 
            Label, 
            COL 35,67, 
-           LINE 19,77,
+           LINE 18,62,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 9,
@@ -1884,7 +1886,7 @@
            Form1-La-5aaabaaaa, 
            Label, 
            COL 2,50, 
-           LINE 23,23,
+           LINE 21,31,
            LINES 1,31 ,
            SIZE 7,00 ,
            ID IS 11,
@@ -1995,7 +1997,7 @@
            Form1-La-5aaac, 
            Label, 
            COL 2,17, 
-           LINE 15,00,
+           LINE 14,23,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -2032,9 +2034,9 @@
            ID IS 20,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
            .
 
       * LABEL
@@ -2229,14 +2231,14 @@
            Form1-Br-2b, 
            Bar,
            COL 19,33, 
-           LINE 11,69,
+           LINE 10,92,
            SIZE 98,33 ,
            ID IS 26,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
            .
 
       * LABEL
@@ -2244,7 +2246,7 @@
            Form1-La-5aaaaa, 
            Label, 
            COL 2,50, 
-           LINE 13,00,
+           LINE 12,23,
            LINES 1,31 ,
            SIZE 13,00 ,
            ID IS 27,
@@ -2259,7 +2261,7 @@
            Form1-La-5aaabb, 
            Label, 
            COL 35,67, 
-           LINE 13,00,
+           LINE 12,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 29,
@@ -2275,7 +2277,7 @@
            Form1-La-5aaacb, 
            Label, 
            COL 2,17, 
-           LINE 11,00,
+           LINE 10,23,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -2308,7 +2310,7 @@
            Form1-La-5aaaba, 
            Label, 
            COL 69,00, 
-           LINE 17,00,
+           LINE 16,23,
            LINES 1,31 ,
            SIZE 13,67 ,
            COLOR IS 5,
@@ -2325,7 +2327,7 @@
            ef-costo-mp, 
            Entry-Field, 
            COL 85,67, 
-           LINE 17,00,
+           LINE 16,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2346,7 +2348,7 @@
            ef-prz, 
            Entry-Field, 
            COL 85,67, 
-           LINE 13,00,
+           LINE 12,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2367,7 +2369,7 @@
            Form1-La-5aaabac, 
            Label, 
            COL 69,00, 
-           LINE 13,00,
+           LINE 12,23,
            LINES 1,31 ,
            SIZE 13,67 ,
            COLOR IS 5,
@@ -2384,7 +2386,7 @@
            Form1-La-5aaabaaaab, 
            Label, 
            COL 18,83, 
-           LINE 21,92,
+           LINE 20,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 32,
@@ -2400,7 +2402,7 @@
            Form1-La-5aaabaaaaba, 
            Label, 
            COL 35,67, 
-           LINE 21,92,
+           LINE 20,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 33,
@@ -2416,7 +2418,7 @@
            Form1-La-5aaabaaaabb, 
            Label, 
            COL 52,00, 
-           LINE 21,92,
+           LINE 20,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 34,
@@ -2432,7 +2434,7 @@
            Form1-La-5aaabaaaabc, 
            Label, 
            COL 69,00, 
-           LINE 21,92,
+           LINE 20,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 36,
@@ -2448,7 +2450,7 @@
            Form1-La-5aaabaaaabca, 
            Label, 
            COL 85,67, 
-           LINE 21,92,
+           LINE 20,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 37,
@@ -2464,7 +2466,7 @@
            Form1-La-5aaabaaaabcaa, 
            Label, 
            COL 102,33, 
-           LINE 21,92,
+           LINE 20,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            ID IS 39,
@@ -2480,7 +2482,7 @@
            ef-imp-master, 
            Entry-Field, 
            COL 69,00, 
-           LINE 19,92,
+           LINE 18,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2500,7 +2502,7 @@
            ef-imp-gdo, 
            Entry-Field, 
            COL 85,67, 
-           LINE 19,92,
+           LINE 18,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2520,7 +2522,7 @@
            ef-imp-trad, 
            Entry-Field, 
            COL 102,17, 
-           LINE 19,92,
+           LINE 18,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2540,7 +2542,7 @@
            Form1-La-5aaabaaaabcb, 
            Label, 
            COL 69,00, 
-           LINE 18,69,
+           LINE 17,54,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 5,
@@ -2557,7 +2559,7 @@
            Form1-La-5aaabaaaabcab, 
            Label, 
            COL 85,67, 
-           LINE 18,69,
+           LINE 17,54,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 5,
@@ -2574,7 +2576,7 @@
            Form1-La-5aaabaaaabcaaa, 
            Label, 
            COL 102,17, 
-           LINE 18,69,
+           LINE 17,54,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 5,
@@ -2625,7 +2627,7 @@
            Form1-La-5aaabaaa, 
            Label, 
            COL 2,50, 
-           LINE 25,62,
+           LINE 23,69,
            LINES 1,92 ,
            SIZE 11,00 ,
            ID IS 48,
@@ -2641,7 +2643,7 @@
            ef-rim, 
            Entry-Field, 
            COL 85,67, 
-           LINE 25,92,
+           LINE 24,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2662,7 +2664,7 @@
            ef-gia, 
            Entry-Field, 
            COL 102,33, 
-           LINE 25,92,
+           LINE 24,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2683,7 +2685,7 @@
            Form1-La-5aaabaca, 
            Label, 
            COL 85,67, 
-           LINE 24,54,
+           LINE 22,62,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 5,
@@ -2700,7 +2702,7 @@
            Form1-La-5aaabacaa, 
            Label, 
            COL 102,33, 
-           LINE 24,54,
+           LINE 22,62,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 5,
@@ -2717,7 +2719,7 @@
            Form1-La-5aaabacab, 
            Label, 
            COL 42,33, 
-           LINE 25,92,
+           LINE 24,00,
            LINES 1,31 ,
            SIZE 24,00 ,
            COLOR IS 5,
@@ -2735,7 +2737,7 @@
            Form1-La-5aaabacac, 
            Label, 
            COL 69,00, 
-           LINE 24,54,
+           LINE 22,62,
            LINES 1,31 ,
            SIZE 14,00 ,
            COLOR IS 5,
@@ -2752,7 +2754,7 @@
            ef-pren, 
            Entry-Field, 
            COL 69,00, 
-           LINE 25,92,
+           LINE 24,00,
            LINES 1,31 ,
            SIZE 14,00 ,
            BOXED,
@@ -2766,6 +2768,43 @@
            VALUE ef-pren-buf,
            AFTER PROCEDURE Form1-Ef-1-AfterProcedure, 
            BEFORE PROCEDURE Form1-Ef-1-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           EF-GIACENZA-Ba, 
+           Entry-Field, 
+           COL 18,83, 
+           LINE 26,31,
+           LINES 1,31 ,
+           SIZE 14,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED MOD-CAMPI,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 13,
+           NUMERIC,
+           READ-ONLY,
+           VALUE EF-GIACENZA-Ba-BUF,
+           .
+
+      * LABEL
+       05
+           Form1-La-5aaabaaac, 
+           Label, 
+           COL 2,50, 
+           LINE 26,31,
+           LINES 1,31 ,
+           SIZE 11,00 ,
+           ID IS 56,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "Costo MP",
            .
 
       * TOOLBAR
@@ -6419,6 +6458,14 @@
                MOVE 55 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * EF-GIACENZA-Ba's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM EF-GIACENZA-Ba-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 59 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
            .
 
        EF-COD-ARTICOLO-BEFORE-VALIDATION.
@@ -7305,6 +7352,23 @@
            PERFORM ef-imp-trad-AFTER-VALIDATION
            .
 
+       EF-GIACENZA-Ba-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-GIACENZA-Ba, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       EF-GIACENZA-Ba-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:EF-GIACENZA-Ba, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * EF-GIACENZA-Ba's Validation
+       EF-GIACENZA-Ba-VALIDATION.
+           PERFORM EF-GIACENZA-Ba-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM EF-GIACENZA-Ba-AFTER-VALIDATION
+           .
+
 
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
@@ -7414,6 +7478,8 @@
            MOVE ef-imp-gdo-BUF TO prg-imp-GDO OF progmag
       * DB_Entry-Field : ef-imp-trad
            MOVE ef-imp-trad-BUF TO prg-imp-TRAD OF progmag
+      * DB_Entry-Field : EF-GIACENZA-Ba
+           MOVE EF-GIACENZA-Ba-BUF TO prg-costo-mp OF progmag
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
            perform SCARICA-COMBO-STATO.
            move stato                     to prg-stato of progmag.
@@ -7536,6 +7602,8 @@
            MOVE prg-imp-GDO OF progmag TO ef-imp-gdo-BUF
       * DB_Entry-Field : ef-imp-trad
            MOVE prg-imp-TRAD OF progmag TO ef-imp-trad-BUF
+      * DB_Entry-Field : EF-GIACENZA-Ba
+           MOVE prg-costo-mp OF progmag TO EF-GIACENZA-Ba-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
            move controlli to save-controlli
 
@@ -7981,6 +8049,14 @@
               set NoSalvato to true
               |78-ID-cbo-stato è l'ID del campo cbo-stato
               move 78-ID-cbo-stato to store-id 
+           end-if
+
+
+           if prg-costo-mp OF progmag not = old-prg-costo-mp
+              and SiSalvato
+              set NoSalvato to true
+              |59 è l'ID del campo EF-GIACENZA-Ba
+              move 59 to store-id
            end-if
 
            .
@@ -8550,6 +8626,9 @@
            |78-ID-cbo-stato è l'ID del campo cbo-stato
            when 78-ID-cbo-stato
                 perform CONTROLLO
+           |59 è l'ID del campo EF-GIACENZA-Ba
+           when 59
+                perform CONTROLLO
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
@@ -8657,6 +8736,8 @@
             to TOTEM-HINT-TEXT
            WHEN 55 MOVE "Digitare l'ordinato (Ordinazione a Fornitorii)"
             to TOTEM-HINT-TEXT
+           WHEN 59 MOVE "Digitare il Valore della Giacenza" to 
+           TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -8711,6 +8792,7 @@
            When 53 PERFORM ef-voce-BeforeProcedure
            When 54 PERFORM ef-voce-BeforeProcedure
            When 55 PERFORM ef-voce-BeforeProcedure
+           When 59 PERFORM ef-voce-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -8770,6 +8852,7 @@
            When 53 PERFORM ef-voce-AfterProcedure
            When 54 PERFORM ef-voce-AfterProcedure
            When 55 PERFORM ef-voce-AfterProcedure
+           When 59 PERFORM EF-PREZZO-FINITO-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -11296,6 +11379,12 @@ LUBEXX*****               from prg-scorta       of progmag2.
            progmag
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM EF-GIACENZA-B-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE EF-GIACENZA-Ba, VALUE IN prg-costo-mp OF progmag
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM EF-GIACENZA-Ba-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

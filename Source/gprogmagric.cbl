@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gprogmagric.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 14 settembre 2019 11:53:51.
+       DATE-WRITTEN.        giovedì 14 aprile 2022 15:10:32.
        REMARKS.
       *{TOTEM}END
 
@@ -67,7 +67,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -364,6 +364,8 @@
                    15 OLD-prr-alfa-vuoto-1         PIC  X(20).
                    15 OLD-prr-alfa-vuoto-2         PIC  X(20).
                    15 OLD-prr-alfa-vuoto-3         PIC  X(20).
+       77 Impact16-Occidentale
+                  USAGE IS HANDLE OF FONT.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -2201,7 +2203,7 @@
            LINE 19,31,
            LINES 1,31 ,
            SIZE 35,00 ,
-           ID IS 40,
+           ID IS 44,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -3194,7 +3196,7 @@
       * <TOTEM:EPT. INIT:gprogmagric, INIT:gprogmagric, BeforeDestroyResource>
       * <TOTEM:END>
            DESTROY Verdana12B-Occidentale
-           DESTROY Impact16B-Occidentale
+           DESTROY Impact16-Occidentale
            CALL "w$bitmap" USING WBITMAP-DESTROY, toolbar-bmp
            CALL "w$bitmap" USING WBITMAP-DESTROY, FATTO-BMP
       *    After-Program
@@ -3239,19 +3241,18 @@
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
                      Verdana12B-Occidentale, WFONT-DATA
-      * Impact16B-Occidentale
-           INITIALIZE WFONT-DATA Impact16B-Occidentale
+      * Impact16-Occidentale
+           INITIALIZE WFONT-DATA Impact16-Occidentale
            MOVE 16 TO WFONT-SIZE
            MOVE "Impact" TO WFONT-NAME
-           SET WFCHARSET-DONT-CARE TO TRUE
-           SET WFONT-BOLD TO TRUE
+           SET WFONT-BOLD TO FALSE
            SET WFONT-ITALIC TO FALSE
            SET WFONT-UNDERLINE TO FALSE
            SET WFONT-STRIKEOUT TO FALSE
            SET WFONT-FIXED-PITCH TO FALSE
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
-                     Impact16B-Occidentale, WFONT-DATA
+                     Impact16-Occidentale, WFONT-DATA
            .
 
        INIT-BMP.
@@ -7841,11 +7842,11 @@
        Screen1-Create-Win.
            Display Floating GRAPHICAL WINDOW
               LINES 18,65,
-              SIZE 62,91,
+              SIZE 62,90,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
-              CONTROL FONT Impact16B-Occidentale,
+              CONTROL FONT Impact16-Occidentale,
               LINK TO THREAD,
               NO SCROLL,
               TITLE-BAR,
