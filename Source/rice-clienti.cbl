@@ -72,13 +72,15 @@
       ***---
        ELABORAZIONE.
            move low-value to cli-rec.
-           set cli-tipo-C to true.
+           move link-rc-CF to cli-tipo-CF. 
            start clienti key >= cli-chiave
                  invalid continue
              not invalid
                  perform until 1 = 2
                     read clienti next at end exit perform end-read
-                    if cli-tipo-F exit perform end-if
+                    if cli-tipo-CF not = link-rc-CF
+                       exit perform
+                    end-if
                     if cli-piva not = link-rc-piva
                        exit perform cycle
                     end-if

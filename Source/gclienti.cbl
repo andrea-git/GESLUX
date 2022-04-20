@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 13 dicembre 2021 15:50:13.
+       DATE-WRITTEN.        mercoledì 20 aprile 2022 17:20:32.
        REMARKS.
       *{TOTEM}END
 
@@ -14600,39 +14600,6 @@
                 CELL-DATA = "Provincia",
            .
 
-       DataSet1-clienti-REF-recapiti-KEY.
-           MOVE cli-codice TO rec-codice
-           .
-
-       DataSet1-clienti-REF-recapiti.
-           PERFORM DataSet1-recapiti-INITREC
-           PERFORM DataSet1-clienti-REF-recapiti-KEY
-           PERFORM DataSet1-Relation2-EXPRESSION
-           PERFORM DataSet1-recapiti-READ
-           IF NOT Valid-STATUS-recapiti
-              PERFORM DataSet1-recapiti-INITREC
-           END-IF
-           .
-
-      * RI TYPE : Restricted
-       DataSet1-clienti-REF-recapiti-INS.
-           .
-
-      * RI TYPE : Restricted
-       DataSet1-clienti-REF-recapiti-UPD.
-           .
-
-      * RI TYPE : Cascade
-       DataSet1-clienti-REF-recapiti-DEL.
-      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, BeforeCascadeDelete>
-      * <TOTEM:END>
-           PERFORM DataSet1-clienti-REF-recapiti-KEY
-           PERFORM DataSet1-Relation2-EXPRESSION
-           PERFORM DataSet1-recapiti-Rec-Delete
-      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, AfterCascadeDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-clienti-REF-destini-KEY.
            MOVE cli-codice TO des-codice
            .
@@ -14720,6 +14687,39 @@
            ELSE
               PERFORM DataSet1-destini-Rec-Write
            END-IF
+           .
+
+       DataSet1-clienti-REF-recapiti-KEY.
+           MOVE cli-codice TO rec-codice
+           .
+
+       DataSet1-clienti-REF-recapiti.
+           PERFORM DataSet1-recapiti-INITREC
+           PERFORM DataSet1-clienti-REF-recapiti-KEY
+           PERFORM DataSet1-Relation2-EXPRESSION
+           PERFORM DataSet1-recapiti-READ
+           IF NOT Valid-STATUS-recapiti
+              PERFORM DataSet1-recapiti-INITREC
+           END-IF
+           .
+
+      * RI TYPE : Restricted
+       DataSet1-clienti-REF-recapiti-INS.
+           .
+
+      * RI TYPE : Restricted
+       DataSet1-clienti-REF-recapiti-UPD.
+           .
+
+      * RI TYPE : Cascade
+       DataSet1-clienti-REF-recapiti-DEL.
+      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, BeforeCascadeDelete>
+      * <TOTEM:END>
+           PERFORM DataSet1-clienti-REF-recapiti-KEY
+           PERFORM DataSet1-Relation2-EXPRESSION
+           PERFORM DataSet1-recapiti-Rec-Delete
+      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, AfterCascadeDelete>
+      * <TOTEM:END>
            .
 
       * FD's Initialize Paragraph
@@ -14936,8 +14936,8 @@
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
-           PERFORM DataSet1-recapiti-INITREC
            PERFORM DataSet1-destini-INITREC
+           PERFORM DataSet1-recapiti-INITREC
            .
 
       * FD's Initialize Paragraph
@@ -14964,10 +14964,10 @@
            END-EVALUATE
            .
 
-       DataSet1-Relation2-EXPRESSION.
+       DataSet1-Relation1-EXPRESSION.
            .
 
-       DataSet1-Relation1-EXPRESSION.
+       DataSet1-Relation2-EXPRESSION.
            .
 
        Form1-DISPLAY-STATUS-MSG.
@@ -15544,8 +15544,8 @@
            PERFORM Form1-Buf-To-Fld
            PERFORM DataSet1-clienti-Rec-Delete
            IF Valid-STATUS-clienti
-              PERFORM DataSet1-clienti-REF-recapiti-DEL
               PERFORM DataSet1-clienti-REF-destini-DEL
+              PERFORM DataSet1-clienti-REF-recapiti-DEL
               PERFORM Form1-CLEAR
               PERFORM Form1-DUMMY-DELETE-INIT
               MOVE "303" TO TOTEM-MSG-ID
@@ -24264,6 +24264,7 @@
       * <TOTEM:PARA. pb-ricerca-ok-LinkTo>
            if ef-ricerca-piva-buf = spaces exit paragraph end-if.
            move ef-ricerca-piva-buf      to link-rc-piva.
+           move "C" to link-rc-CF.
            call   "rice-clienti" using rice-clienti-linkage
            cancel "rice-clienti".
            if link-rc-annulla = 0

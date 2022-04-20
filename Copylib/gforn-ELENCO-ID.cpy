@@ -102,3 +102,7 @@
            evaluate control-id
            end-evaluate.
 
+      * Paragrafo per la struttura dei controlli sulla screen scr-ricerca
+           evaluate control-id
+           end-evaluate.
+
