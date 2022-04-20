@@ -69,7 +69,7 @@
                          invalid continue
                      not invalid
                          if gdo-tipocli = 11
-                            move 999999999999,99 to lst-prezzo
+                            move 99999999,99 to lst-prezzo
                             rewrite lst-rec
                             add 1 to cont-n
                          end-if

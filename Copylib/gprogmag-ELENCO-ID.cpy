@@ -44,5 +44,9 @@
            when 78-ID-cbo-stato
                 inquire cbo-stato, value in cbo-stato-buf
 
+           |59 è l'ID del control EF-GIACENZA-Ba
+           when 59
+                inquire EF-GIACENZA-Ba, value in EF-GIACENZA-Ba-buf
+
            end-evaluate.
 

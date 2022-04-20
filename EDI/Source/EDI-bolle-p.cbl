@@ -316,7 +316,7 @@
                    "_"                delimited size
                    como-ora           delimited size
                    ".txt"             delimited size
-                   into wstampa
+              into wstampa
            end-string.           
 
       ***---

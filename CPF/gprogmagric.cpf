@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E64D125234-865-2124626193
+PROGRAM_UNIQUE_CODE=TOTEM-7E64E133032-631-2034224553
 
 {{@DESCRIPTION:
 
@@ -2436,6 +2436,15 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM229_WK
+
+@}}
+[FDITEM230_WK]
+m_strName=Impact16-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM230_WK
 
 @}}
 
@@ -6820,7 +6829,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 40
+      ID                = 44
       Justification     = Right
       Label Offset      = 20
       Line              = 19,31
@@ -7603,7 +7612,7 @@ Begin Screen Screen1
    Boxed             = FALSE
    Cell              = FALSE
    Cell Height       = 26
-   Cell Width        = 11
+   Cell Width        = 10
    Color             = 65793
    Confirm Delete    = TRUE
    Confirm Insert    = FALSE
@@ -7611,8 +7620,8 @@ Begin Screen Screen1
    Controls Uncropped = FALSE
    Data Set          = "(None)"
    Erase Screen      = FALSE
-   Font              = Impact/16/B/C0/@Occidentale
-   Font Variable     = Impact16B-Occidentale
+   Font              = Impact/16/C0/@Occidentale
+   Font Variable     = Impact16-Occidentale
    Handle Variable   = Screen1-Handle
    Height in Cells   = TRUE
    Help ID           = 0
@@ -7628,7 +7637,7 @@ Begin Screen Screen1
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 62,91
+   Size              = 62,90
    System Menu       = TRUE
    Title             = "FORMULE DI CALCOLO"
    Title Bar         = TRUE
@@ -7856,7 +7865,7 @@ Begin Screen Screen1
       Occurs            = 0
       Position Shift    = 0
       Size (Lines)      = 62,82
-      Size (Lines) in Pixels = 691
+      Size (Lines) in Pixels = 628
       Size (Lines) Unit = Default
       Tab Order         = 7
       Visible           = NONE
@@ -7897,7 +7906,7 @@ Begin Screen Screen1
       No Tab            = FALSE
       Occurs            = 0
       Self Act          = FALSE
-      Size              = 6,36
+      Size              = 7,10
       Size in Pixels    = 73
       Size Unit         = Default
       Style             = Other

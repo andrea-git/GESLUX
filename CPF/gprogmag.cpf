@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E64D125234-605-2528923203
+PROGRAM_UNIQUE_CODE=TOTEM-7E64E133030-897-3094731140
 
 {{@DESCRIPTION:
 
@@ -2681,9 +2681,9 @@ m_bFixed=1
 
 @}}
 [FDITEM251_WK]
-m_strName=OLD-prg-num-vuoto-1
-m_strRawPic=9(7)
-m_strPic=9(7)
+m_strName=OLD-prg-costo-mp
+m_strRawPic=S9(9)V9(2)
+m_strPic=S9(9)V9(2)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -2692,8 +2692,8 @@ m_bFixed=1
 @}}
 [FDITEM252_WK]
 m_strName=OLD-prg-num-vuoto-2
-m_strRawPic=9(15)
-m_strPic=9(15)
+m_strRawPic=9(11)
+m_strPic=9(11)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -3332,7 +3332,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-peso-utf
       SCREEN-COL        = 18,83
-      SCREEN-LINE       = 13,00
+      SCREEN-LINE       = 12,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-peso-utf
@@ -3364,7 +3364,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 13,00
+      Line              = 12,23
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3394,7 +3394,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-peso-non-utf
       SCREEN-COL        = 52,00
-      SCREEN-LINE       = 13,00
+      SCREEN-LINE       = 12,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-peso-non-utf
@@ -3426,7 +3426,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 13,00
+      Line              = 12,23
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3456,7 +3456,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-COSTO-ULTIMO
       SCREEN-COL        = 18,83
-      SCREEN-LINE       = 17,00
+      SCREEN-LINE       = 16,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-COSTO-ULTIMO
@@ -3488,7 +3488,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 17,00
+      Line              = 16,23
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3518,7 +3518,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-COSTO-MEDIO
       SCREEN-COL        = 52,00
-      SCREEN-LINE       = 17,00
+      SCREEN-LINE       = 16,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-COSTO-MEDIO
@@ -3550,7 +3550,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 17,00
+      Line              = 16,23
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3580,7 +3580,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-GIACENZA
       SCREEN-COL        = 18,83
-      SCREEN-LINE       = 19,77
+      SCREEN-LINE       = 18,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-GIACENZA
@@ -3612,7 +3612,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 19,77
+      Line              = 18,62
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3642,7 +3642,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-ORD-CLI
       SCREEN-COL        = 52,00
-      SCREEN-LINE       = 19,77
+      SCREEN-LINE       = 18,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-ORD-CLI
@@ -3674,7 +3674,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 19,77
+      Line              = 18,62
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3704,7 +3704,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-ORD-FORN-1
       SCREEN-COL        = 18,83
-      SCREEN-LINE       = 23,23
+      SCREEN-LINE       = 21,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-ORD-FORN-1
@@ -3736,7 +3736,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 23,23
+      Line              = 21,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3766,7 +3766,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-ORD-FORN-2
       SCREEN-COL        = 35,67
-      SCREEN-LINE       = 23,23
+      SCREEN-LINE       = 21,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-ORD-FORN-2
@@ -3798,7 +3798,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 23,23
+      Line              = 21,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3828,7 +3828,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-ORD-FORN-3
       SCREEN-COL        = 52,00
-      SCREEN-LINE       = 23,23
+      SCREEN-LINE       = 21,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-ORD-FORN-3
@@ -3860,7 +3860,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 23,23
+      Line              = 21,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3890,7 +3890,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-ORD-FORN-4
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 23,23
+      SCREEN-LINE       = 21,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-ORD-FORN-4
@@ -3922,7 +3922,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 23,23
+      Line              = 21,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -3952,7 +3952,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-ORD-FORN-5
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 23,23
+      SCREEN-LINE       = 21,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-ORD-FORN-5
@@ -3984,7 +3984,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 23,23
+      Line              = 21,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -4014,7 +4014,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-ORD-FORN-6
       SCREEN-COL        = 102,33
-      SCREEN-LINE       = 23,23
+      SCREEN-LINE       = 21,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-ORD-FORN-6
@@ -4046,7 +4046,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 23,23
+      Line              = 21,31
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -4076,7 +4076,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field EF-GIACENZA-B
       SCREEN-COL        = 18,83
-      SCREEN-LINE       = 25,92
+      SCREEN-LINE       = 24,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = EF-GIACENZA-B
@@ -4108,7 +4108,7 @@ Begin Screen Form1
       ID                = 0
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 25,92
+      Line              = 24,00
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -4139,7 +4139,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-INI-UDM
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 31,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-INI-UDM
       Auto              = FALSE
@@ -4201,7 +4201,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-INI-KG
       SCREEN-COL        = 52,00
       SCREEN-LINE       = 31,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-INI-KG
       Auto              = FALSE
@@ -4263,7 +4263,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-INI-VALORE
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 31,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-INI-VALORE
       Auto              = FALSE
@@ -4325,7 +4325,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-ACQ-UDM
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 33,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-ACQ-UDM
       Auto              = FALSE
@@ -4387,7 +4387,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-ACQ-KG
       SCREEN-COL        = 52,00
       SCREEN-LINE       = 33,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-ACQ-KG
       Auto              = FALSE
@@ -4449,7 +4449,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-ACQ-VALORE
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 33,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-ACQ-VALORE
       Auto              = FALSE
@@ -4511,7 +4511,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-VEN-UDM
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 35,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-VEN-UDM
       Auto              = FALSE
@@ -4573,7 +4573,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-VEN-KG
       SCREEN-COL        = 52,00
       SCREEN-LINE       = 35,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-VEN-KG
       Auto              = FALSE
@@ -4635,7 +4635,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-VEN-VALORE
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 35,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-VEN-VALORE
       Auto              = FALSE
@@ -4697,7 +4697,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-VAR-UDM
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 37,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-VAR-UDM
       Auto              = FALSE
@@ -4759,7 +4759,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-VAR-KG
       SCREEN-COL        = 52,00
       SCREEN-LINE       = 37,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-VAR-KG
       Auto              = FALSE
@@ -4821,7 +4821,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-VAR-VALORE
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 37,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-VAR-VALORE
       Auto              = FALSE
@@ -4883,7 +4883,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-FORN-UDM
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 39,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-FORN-UDM
       Auto              = FALSE
@@ -4945,7 +4945,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-FORN-KG
       SCREEN-COL        = 52,00
       SCREEN-LINE       = 39,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-FORN-KG
       Auto              = FALSE
@@ -5007,7 +5007,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-FORN-VALORE
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 39,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-FORN-VALORE
       Auto              = FALSE
@@ -5069,7 +5069,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-CLI-UDM
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 41,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-CLI-UDM
       Auto              = FALSE
@@ -5131,7 +5131,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-CLI-KG
       SCREEN-COL        = 52,00
       SCREEN-LINE       = 41,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-CLI-KG
       Auto              = FALSE
@@ -5193,7 +5193,7 @@ Begin Screen Form1
    Begin Data.Entry-Field EF-CLI-VALORE
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 41,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = EF-CLI-VALORE
       Auto              = FALSE
@@ -5255,7 +5255,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-udm-el
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 43,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-udm-el
       Auto              = FALSE
@@ -5317,7 +5317,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-kg-el
       SCREEN-COL        = 52,00
       SCREEN-LINE       = 43,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-kg-el
       Auto              = FALSE
@@ -5379,7 +5379,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-valore-el
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 43,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-valore-el
       Auto              = FALSE
@@ -5441,7 +5441,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-udm-el2
       SCREEN-COL        = 18,67
       SCREEN-LINE       = 45,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-udm-el2
       Auto              = FALSE
@@ -5503,7 +5503,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-kg-el2
       SCREEN-COL        = 51,83
       SCREEN-LINE       = 45,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-kg-el2
       Auto              = FALSE
@@ -5565,7 +5565,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-valore-el2
       SCREEN-COL        = 82,50
       SCREEN-LINE       = 45,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-valore-el2
       Auto              = FALSE
@@ -5627,7 +5627,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-udm-ul
       SCREEN-COL        = 18,67
       SCREEN-LINE       = 47,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-udm-ul
       Auto              = FALSE
@@ -5689,7 +5689,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-kg-ul
       SCREEN-COL        = 51,83
       SCREEN-LINE       = 47,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-kg-ul
       Auto              = FALSE
@@ -5751,7 +5751,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-valore-ul
       SCREEN-COL        = 82,50
       SCREEN-LINE       = 47,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-valore-ul
       Auto              = FALSE
@@ -5813,7 +5813,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-udm-ul2
       SCREEN-COL        = 18,67
       SCREEN-LINE       = 49,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-udm-ul2
       Auto              = FALSE
@@ -5874,7 +5874,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-kg-ul2
       SCREEN-COL        = 51,83
       SCREEN-LINE       = 49,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-kg-ul2
       Auto              = FALSE
@@ -5935,7 +5935,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-valore-ul2
       SCREEN-COL        = 82,50
       SCREEN-LINE       = 49,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-valore-ul2
       Auto              = FALSE
@@ -5996,7 +5996,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-gia-udm
       SCREEN-COL        = 18,67
       SCREEN-LINE       = 51,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-gia-udm
       Auto              = FALSE
@@ -6058,7 +6058,7 @@ Begin Screen Form1
    Begin Data.Entry-Field ef-gia-kg
       SCREEN-COL        = 51,83
       SCREEN-LINE       = 51,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = ef-gia-kg
       Auto              = FALSE
@@ -6120,7 +6120,7 @@ Begin Screen Form1
    Begin Combo-Box cbo-stato
       SCREEN-COL        = 82,50
       SCREEN-LINE       = 51,92
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = cbo-stato
       Border            = No Box
@@ -6168,7 +6168,7 @@ Begin Screen Form1
    End
    Begin Bar Form1-Br-2
       SCREEN-COL        = 19,50
-      SCREEN-LINE       = 15,69
+      SCREEN-LINE       = 14,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Br-2
@@ -6183,18 +6183,18 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 100
       Kind              = Horizontal
-      Line              = 15,69
+      Line              = 14,92
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
-      COLORS            = ( 8, 8 )
-      SHADING           = ( -1, 1 )
+      COLORS            = ( 8 )
+      SHADING           = ( -1 )
       Size (Lines)      = 98,33
       Size (Lines) in Pixels = 590
       Size (Lines) Unit = Default
       Tab Order         = 51
       Visible           = NONE
-      Width             = 2
+      Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5
@@ -6331,7 +6331,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaaa
       SCREEN-COL        = 2,50
-      SCREEN-LINE       = 17,00
+      SCREEN-LINE       = 16,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaaa
@@ -6349,7 +6349,7 @@ Begin Screen Form1
       ID                = 4
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 17,00
+      Line              = 16,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -6364,7 +6364,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaab
       SCREEN-COL        = 35,67
-      SCREEN-LINE       = 17,00
+      SCREEN-LINE       = 16,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaab
@@ -6382,7 +6382,7 @@ Begin Screen Form1
       ID                = 5
       Justification     = Left
       Label Offset      = 20
-      Line              = 17,00
+      Line              = 16,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -6397,7 +6397,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaa
       SCREEN-COL        = 2,50
-      SCREEN-LINE       = 19,77
+      SCREEN-LINE       = 18,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaa
@@ -6415,7 +6415,7 @@ Begin Screen Form1
       ID                = 8
       Justification     = Left
       Label Offset      = 20
-      Line              = 19,77
+      Line              = 18,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -6430,7 +6430,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabab
       SCREEN-COL        = 35,67
-      SCREEN-LINE       = 19,77
+      SCREEN-LINE       = 18,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabab
@@ -6448,7 +6448,7 @@ Begin Screen Form1
       ID                = 9
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 19,77
+      Line              = 18,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -6463,7 +6463,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaa
       SCREEN-COL        = 2,50
-      SCREEN-LINE       = 23,23
+      SCREEN-LINE       = 21,31
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaa
@@ -6481,7 +6481,7 @@ Begin Screen Form1
       ID                = 11
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 23,23
+      Line              = 21,31
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -6497,7 +6497,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaab
       SCREEN-COL        = 2,50
       SCREEN-LINE       = 31,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaab
       Clines            = 0
@@ -6681,7 +6681,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaaaa
       SCREEN-COL        = 74,83
       SCREEN-LINE       = 51,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaaa
       Clines            = 0
@@ -6713,7 +6713,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaac
       SCREEN-COL        = 2,17
-      SCREEN-LINE       = 15,00
+      SCREEN-LINE       = 14,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaac
@@ -6731,7 +6731,7 @@ Begin Screen Form1
       ID                = 18
       Justification     = Center
       Label Offset      = 20
-      Line              = 15,00
+      Line              = 14,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -6747,7 +6747,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaaca
       SCREEN-COL        = 2,17
       SCREEN-LINE       = 28,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaaca
       Clines            = 0
@@ -6780,7 +6780,7 @@ Begin Screen Form1
    Begin Bar Form1-Br-2a
       SCREEN-COL        = 19,50
       SCREEN-LINE       = 29,38
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-Br-2a
       Clines            = 0
@@ -6798,20 +6798,20 @@ Begin Screen Form1
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
-      COLORS            = ( 8, 8 )
-      SHADING           = ( -1, 1 )
+      COLORS            = ( 8 )
+      SHADING           = ( -1 )
       Size (Lines)      = 98,33
       Size (Lines) in Pixels = 590
       Size (Lines) Unit = Default
       Tab Order         = 69
       Visible           = NONE
-      Width             = 2
+      Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaabaaabb
       SCREEN-COL        = 2,50
       SCREEN-LINE       = 33,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabb
       Clines            = 0
@@ -6844,7 +6844,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabba
       SCREEN-COL        = 2,50
       SCREEN-LINE       = 35,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabba
       Clines            = 0
@@ -6877,7 +6877,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabbaa
       SCREEN-COL        = 2,50
       SCREEN-LINE       = 37,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabbaa
       Clines            = 0
@@ -6910,7 +6910,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabbab
       SCREEN-COL        = 2,50
       SCREEN-LINE       = 39,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabbab
       Clines            = 0
@@ -6943,7 +6943,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabbaba
       SCREEN-COL        = 2,50
       SCREEN-LINE       = 41,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabbaba
       Clines            = 0
@@ -6976,7 +6976,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaaba
       SCREEN-COL        = 18,83
       SCREEN-LINE       = 30,23
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaba
       Clines            = 0
@@ -7009,7 +7009,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabaa
       SCREEN-COL        = 51,00
       SCREEN-LINE       = 30,23
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabaa
       Clines            = 0
@@ -7042,7 +7042,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabab
       SCREEN-COL        = 82,67
       SCREEN-LINE       = 30,23
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabab
       Clines            = 0
@@ -7075,7 +7075,7 @@ Begin Screen Form1
    Begin Label Form1-La-1
       SCREEN-COL        = 2,33
       SCREEN-LINE       = 51,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-1
       Clines            = 0
@@ -7109,7 +7109,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabc
       SCREEN-COL        = 2,50
       SCREEN-LINE       = 43,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabc
       Clines            = 0
@@ -7142,7 +7142,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabbb
       SCREEN-COL        = 2,33
       SCREEN-LINE       = 47,69
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabbb
       Clines            = 0
@@ -7174,7 +7174,7 @@ Begin Screen Form1
    End
    Begin Bar Form1-Br-2b
       SCREEN-COL        = 19,33
-      SCREEN-LINE       = 11,69
+      SCREEN-LINE       = 10,92
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Br-2b
@@ -7189,23 +7189,23 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 26
       Kind              = Horizontal
-      Line              = 11,69
+      Line              = 10,92
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
-      COLORS            = ( 8, 8 )
-      SHADING           = ( -1, 1 )
+      COLORS            = ( 8 )
+      SHADING           = ( -1 )
       Size (Lines)      = 98,33
       Size (Lines) in Pixels = 590
       Size (Lines) Unit = Default
       Tab Order         = 81
       Visible           = NONE
-      Width             = 2
+      Width             = 1
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaaaa
       SCREEN-COL        = 2,50
-      SCREEN-LINE       = 13,00
+      SCREEN-LINE       = 12,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaaaa
@@ -7223,7 +7223,7 @@ Begin Screen Form1
       ID                = 27
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 13,00
+      Line              = 12,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7238,7 +7238,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabb
       SCREEN-COL        = 35,67
-      SCREEN-LINE       = 13,00
+      SCREEN-LINE       = 12,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabb
@@ -7256,7 +7256,7 @@ Begin Screen Form1
       ID                = 29
       Justification     = Left
       Label Offset      = 20
-      Line              = 13,00
+      Line              = 12,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7271,7 +7271,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaacb
       SCREEN-COL        = 2,17
-      SCREEN-LINE       = 11,00
+      SCREEN-LINE       = 10,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaacb
@@ -7289,7 +7289,7 @@ Begin Screen Form1
       ID                = 30
       Justification     = Center
       Label Offset      = 20
-      Line              = 11,00
+      Line              = 10,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7339,7 +7339,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaaba
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 17,00
+      SCREEN-LINE       = 16,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaaba
@@ -7357,7 +7357,7 @@ Begin Screen Form1
       ID                = 16
       Justification     = Left
       Label Offset      = 20
-      Line              = 17,00
+      Line              = 16,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7372,7 +7372,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-costo-mp
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 17,00
+      SCREEN-LINE       = 16,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-costo-mp
@@ -7397,7 +7397,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 7
       Justification     = Right
-      Line              = 17,00
+      Line              = 16,23
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -7428,7 +7428,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-prz
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 13,00
+      SCREEN-LINE       = 12,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-prz
@@ -7453,7 +7453,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 22
       Justification     = Right
-      Line              = 13,00
+      Line              = 12,23
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -7484,7 +7484,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabac
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 13,00
+      SCREEN-LINE       = 12,23
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabac
@@ -7502,7 +7502,7 @@ Begin Screen Form1
       ID                = 31
       Justification     = Left
       Label Offset      = 20
-      Line              = 13,00
+      Line              = 12,23
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7517,7 +7517,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaab
       SCREEN-COL        = 18,83
-      SCREEN-LINE       = 21,92
+      SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaab
@@ -7535,7 +7535,7 @@ Begin Screen Form1
       ID                = 32
       Justification     = Center
       Label Offset      = 20
-      Line              = 21,92
+      Line              = 20,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7550,7 +7550,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaaba
       SCREEN-COL        = 35,67
-      SCREEN-LINE       = 21,92
+      SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaaba
@@ -7568,7 +7568,7 @@ Begin Screen Form1
       ID                = 33
       Justification     = Center
       Label Offset      = 20
-      Line              = 21,92
+      Line              = 20,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7583,7 +7583,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaabb
       SCREEN-COL        = 52,00
-      SCREEN-LINE       = 21,92
+      SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaabb
@@ -7601,7 +7601,7 @@ Begin Screen Form1
       ID                = 34
       Justification     = Center
       Label Offset      = 20
-      Line              = 21,92
+      Line              = 20,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7616,7 +7616,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaabc
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 21,92
+      SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaabc
@@ -7634,7 +7634,7 @@ Begin Screen Form1
       ID                = 36
       Justification     = Center
       Label Offset      = 20
-      Line              = 21,92
+      Line              = 20,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7649,7 +7649,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaabca
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 21,92
+      SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaabca
@@ -7667,7 +7667,7 @@ Begin Screen Form1
       ID                = 37
       Justification     = Center
       Label Offset      = 20
-      Line              = 21,92
+      Line              = 20,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7682,7 +7682,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaabcaa
       SCREEN-COL        = 102,33
-      SCREEN-LINE       = 21,92
+      SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaabcaa
@@ -7700,7 +7700,7 @@ Begin Screen Form1
       ID                = 39
       Justification     = Center
       Label Offset      = 20
-      Line              = 21,92
+      Line              = 20,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7715,7 +7715,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-imp-master
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 19,92
+      SCREEN-LINE       = 18,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-imp-master
@@ -7746,7 +7746,7 @@ Begin Screen Form1
       Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
       ID                = 0
       Justification     = Right
-      Line              = 19,92
+      Line              = 18,77
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -7775,7 +7775,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-imp-gdo
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 19,92
+      SCREEN-LINE       = 18,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-imp-gdo
@@ -7806,7 +7806,7 @@ Begin Screen Form1
       Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
       ID                = 0
       Justification     = Right
-      Line              = 19,92
+      Line              = 18,77
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -7835,7 +7835,7 @@ Begin Screen Form1
    End
    Begin Data.Entry-Field ef-imp-trad
       SCREEN-COL        = 102,17
-      SCREEN-LINE       = 19,92
+      SCREEN-LINE       = 18,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-imp-trad
@@ -7866,7 +7866,7 @@ Begin Screen Form1
       Hint              = Digitare l'ordinato (Ordinazione a Fornitorii)
       ID                = 0
       Justification     = Right
-      Line              = 19,92
+      Line              = 18,77
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -7895,7 +7895,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaabcb
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 18,69
+      SCREEN-LINE       = 17,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaabcb
@@ -7913,7 +7913,7 @@ Begin Screen Form1
       ID                = 40
       Justification     = Center
       Label Offset      = 20
-      Line              = 18,69
+      Line              = 17,54
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7928,7 +7928,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaabcab
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 18,69
+      SCREEN-LINE       = 17,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaabcab
@@ -7946,7 +7946,7 @@ Begin Screen Form1
       ID                = 44
       Justification     = Center
       Label Offset      = 20
-      Line              = 18,69
+      Line              = 17,54
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7961,7 +7961,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaaabcaaa
       SCREEN-COL        = 102,17
-      SCREEN-LINE       = 18,69
+      SCREEN-LINE       = 17,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaaabcaaa
@@ -7979,7 +7979,7 @@ Begin Screen Form1
       ID                = 45
       Justification     = Center
       Label Offset      = 20
-      Line              = 18,69
+      Line              = 17,54
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -7995,7 +7995,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabca
       SCREEN-COL        = 2,33
       SCREEN-LINE       = 45,31
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabca
       Clines            = 0
@@ -8028,7 +8028,7 @@ Begin Screen Form1
    Begin Label Form1-La-5aaabaaabbba
       SCREEN-COL        = 2,33
       SCREEN-LINE       = 49,31
-      LOCK-CONTROL      = TRUE
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaabbba
       Clines            = 0
@@ -8060,7 +8060,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaaa
       SCREEN-COL        = 2,50
-      SCREEN-LINE       = 25,62
+      SCREEN-LINE       = 23,69
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaaa
@@ -8078,7 +8078,7 @@ Begin Screen Form1
       ID                = 48
       Justification     = Left
       Label Offset      = 20
-      Line              = 25,62
+      Line              = 23,69
       Lines             = 1,92
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -8093,7 +8093,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-rim
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 25,92
+      SCREEN-LINE       = 24,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-rim
@@ -8119,7 +8119,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 49
       Justification     = Right
-      Line              = 25,92
+      Line              = 24,00
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -8150,7 +8150,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-gia
       SCREEN-COL        = 102,33
-      SCREEN-LINE       = 25,92
+      SCREEN-LINE       = 24,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-gia
@@ -8176,7 +8176,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 50
       Justification     = Right
-      Line              = 25,92
+      Line              = 24,00
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -8207,7 +8207,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabaca
       SCREEN-COL        = 85,67
-      SCREEN-LINE       = 24,54
+      SCREEN-LINE       = 22,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabaca
@@ -8225,7 +8225,7 @@ Begin Screen Form1
       ID                = 51
       Justification     = Center
       Label Offset      = 20
-      Line              = 24,54
+      Line              = 22,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -8240,7 +8240,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabacaa
       SCREEN-COL        = 102,33
-      SCREEN-LINE       = 24,54
+      SCREEN-LINE       = 22,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabacaa
@@ -8258,7 +8258,7 @@ Begin Screen Form1
       ID                = 52
       Justification     = Center
       Label Offset      = 20
-      Line              = 24,54
+      Line              = 22,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -8273,7 +8273,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabacab
       SCREEN-COL        = 42,33
-      SCREEN-LINE       = 25,92
+      SCREEN-LINE       = 24,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabacab
@@ -8292,7 +8292,7 @@ Begin Screen Form1
       ID                = 53
       Justification     = Center
       Label Offset      = 20
-      Line              = 25,92
+      Line              = 24,00
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -8307,7 +8307,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-5aaabacac
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 24,54
+      SCREEN-LINE       = 22,62
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-5aaabacac
@@ -8325,7 +8325,7 @@ Begin Screen Form1
       ID                = 54
       Justification     = Center
       Label Offset      = 20
-      Line              = 24,54
+      Line              = 22,62
       Lines             = 1,31
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -8340,7 +8340,7 @@ Begin Screen Form1
    End
    Begin Entry-Field ef-pren
       SCREEN-COL        = 69,00
-      SCREEN-LINE       = 25,92
+      SCREEN-LINE       = 24,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-pren
@@ -8366,7 +8366,7 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 55
       Justification     = Right
-      Line              = 25,92
+      Line              = 24,00
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
@@ -8395,6 +8395,100 @@ Begin Screen Form1
       Before Procedure  = Form1-Ef-1-BeforeProcedure
       After Procedure   = Form1-Ef-1-AfterProcedure
    End
+   Begin Data.Entry-Field EF-GIACENZA-Ba
+      SCREEN-COL        = 18,83
+      SCREEN-LINE       = 26,31
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = EF-GIACENZA-Ba
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 18,83
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = MOD-CAMPI
+      Field Edited (Style) = 1
+      Field Edited Format = ----.---.--9,99
+      Field Picture     = S9(9)V9(2)
+      Field Variable    = prg-costo-mp OF progmag
+      File              = progmag
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Valore della Giacenza
+      ID                = 0
+      Justification     = Right
+      Line              = 26,31
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 13
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = TRUE
+      Occurs            = 0
+      Read Only         = TRUE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 112
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO-OLD=;CONTROLLO="
+      Before Procedure  = ef-voce-BeforeProcedure
+      After Procedure   = EF-PREZZO-FINITO-AfterProcedure
+   End
+   Begin Label Form1-La-5aaabaaac
+      SCREEN-COL        = 2,50
+      SCREEN-LINE       = 26,31
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-5aaabaaac
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,50
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 56
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 26,31
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 11,00
+      Size Unit         = Default
+      Tab Order         = 113
+      Title             = "Costo MP"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
    Begin Toolbar Form1-Tb-1
       SCREEN-LINE       = 1,00
       LOCK-CONTROL      = TRUE
@@ -8406,7 +8500,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 112
+      Tab Order         = 114
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -9082,7 +9176,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 61, 23, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 113
+      Tab Order         = 115
    End
 End
 
