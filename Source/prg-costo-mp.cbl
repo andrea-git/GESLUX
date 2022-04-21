@@ -155,20 +155,6 @@
               end-if  
               add 1 to n-elab
 
-              move prg-peso to prg-peso-z
-              initialize como-riga
-              string "PROGRESSIVO: "   delimited size
-                     prg-cod-articolo  delimited size
-                     " - "             delimited size
-                     prg-cod-magazzino delimited size
-                     " - "             delimited size
-                     prg-tipo-imballo  delimited size
-                     " - "             delimited size
-                     prg-peso-z        delimited size
-                into como-riga
-              end-string
-              perform SETTA-RIGA-STAMPA
-
               if prg-cod-articolo = art-errato
                  exit perform cycle
               end-if
@@ -207,15 +193,14 @@
                                  
               move prg-peso to prg-peso-z
               initialize como-riga
-              string "PROGRESSIVO: "   delimited size
-                     prg-cod-articolo  delimited size
-                     " - "             delimited size
+              string prg-cod-articolo  delimited size
+                     "-"               delimited size
                      prg-cod-magazzino delimited size
-                     " - "             delimited size
+                     "-"               delimited size
                      prg-tipo-imballo  delimited size
-                     " - "             delimited size
+                     "-"               delimited size
                      prg-peso-z        delimited size
-                     " COSTO MP: "     delimited size
+                     ": "              delimited size
                      costo-mp-z        delimited size
                      " "               delimited size
                      tipo              delimited size
