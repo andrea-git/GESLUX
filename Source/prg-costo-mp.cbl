@@ -74,10 +74,6 @@
        77  n-elab       pic 9(7) value 0.
 
        77  nargs        pic 99 comp-1 value 0.
-                                 
-       77  counter      pic 9(9).
-       77  counter2     pic 9(9).
-       77  counter-edit pic zzz.zzz.zz9.
 
        LINKAGE SECTION.
        copy "link-batch.def".
@@ -124,10 +120,14 @@
            if RichiamoSchedulato    
               move wstampa to batch-log
            end-if.
-           open output lineseq.
+           open output lineseq. 
+           move "INIZIO PROGRAMMA" to como-riga.
+           perform SETTA-RIGA-STAMPA.
 
       ***---
-       OPEN-FILES.
+       OPEN-FILES.    
+           move "OPEN FILES" to como-riga.
+           perform SETTA-RIGA-STAMPA.
            open i-o progmag.
            open input articoli tmarche timposte.
            if RichiamoSchedulato and errori
@@ -135,24 +135,21 @@
            end-if.
 
       ***---
-       ELABORAZIONE.
+       ELABORAZIONE.                 
+           move "ELABORAZIONE" to como-riga.
+           perform SETTA-RIGA-STAMPA.
+
            accept imp-data from century-date.
            start timposte key <= imp-chiave
                  invalid continue
              not invalid
                  read timposte previous
            end-start.    
-           move "INIZIO PROGRAMMA" to como-riga.
-           perform SETTA-RIGA-STAMPA.
-           move 0 to counter counter2.
            move low-value to prg-rec. 
            move 0 to art-codice art-errato.
            start progmag key >= prg-chiave.
            perform until 1 = 2
               read progmag next at end exit perform end-read
-              if RichiamoSchedulato
-                 perform CONTATORE-VIDEO
-              end-if  
               add 1 to n-elab
 
               if prg-cod-articolo = art-errato
@@ -190,7 +187,7 @@
               when recupero-normale    move "(NORMALE)"    to tipo
               when recupero-ultimo     move "(ULTIMO)"     to tipo
               end-evaluate
-                                 
+
               move prg-peso to prg-peso-z
               initialize como-riga
               string prg-cod-articolo  delimited size
@@ -228,18 +225,6 @@
       ***---
        CLOSE-FILES.
            close progmag articoli tmarche timposte.
-
-      ***---
-       CONTATORE-VIDEO.
-           add 1 to counter counter2.
-           if counter2 = 300
-              move counter to counter-edit
-              display counter-edit
-                      upon batch-win-handle
-                      line 25,00
-                    column 38,00
-              move 0 to counter2
-           end-if.
 
       ***---
        SETTA-RIGA-STAMPA.
