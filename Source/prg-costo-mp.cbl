@@ -50,12 +50,14 @@
             10 r-sec    pic xx.             
          05 filler      pic x(2) value "] ".
 
-       77  como-riga    pic x(200).
-       77  riga-stampa  pic x(200).
-       77  tipo         pic x(20).
-       77  costo-mp-z   pic ----.---.--9,99.
-       77  prg-peso-z   pic --.--9,99.
-       77  art-errato   pic 9(6).
+       77  como-riga       pic x(200).
+       77  riga-stampa     pic x(200).
+       77  tipo            pic x(20).
+       77  costo-mp-z      pic ----.---.--9,99.
+       77  prg-peso-z      pic --.--9,99.
+       77  art-errato      pic 9(6).
+       77  s-prg-costo-mp  pic  S9(9)V9(2).
+
 
        01  controllo    pic xx.    
          88 tutto-ok    value "OK".
@@ -69,6 +71,7 @@
        77  como-data    pic 9(8).
        77  como-ora     pic 9(8). 
                                          
+       77  n-n          pic 9(7) value 0.
        77  n-agg        pic 9(7) value 0.
        77  n-err        pic 9(7) value 0.
        77  n-elab       pic 9(7) value 0.
@@ -156,6 +159,8 @@
                  exit perform cycle
               end-if
 
+              move prg-costo-mp to s-prg-costo-mp
+
               if prg-cod-articolo not = art-codice
                  move prg-cod-articolo to art-codice
                  read articoli no lock
@@ -173,7 +178,7 @@
                       exit perform cycle
                  end-read
               end-if
-              add 1 to n-agg
+              add 1 to n-n
 
               perform CALCOLA-COSTO-MP-COMPLETO    
               add 0,005 to costo-mp giving costo-mp-2dec
@@ -188,33 +193,39 @@
               when recupero-ultimo     move "(ULTIMO)"     to tipo
               end-evaluate
 
-              move prg-peso to prg-peso-z
-              initialize como-riga
-              string prg-cod-articolo  delimited size
-                     "-"               delimited size
-                     prg-cod-magazzino delimited size
-                     "-"               delimited size
-                     prg-tipo-imballo  delimited size
-                     "-"               delimited size
-                     prg-peso-z        delimited size
-                     ": "              delimited size
-                     costo-mp-z        delimited size
-                     " "               delimited size
-                     tipo              delimited size
-                into como-riga
-              end-string
-              perform SETTA-RIGA-STAMPA
+              if prg-costo-mp not = s-prg-costo-mp
+                 add 1 to n-n
+
+                 move prg-peso to prg-peso-z
+                 initialize como-riga
+                 string prg-cod-articolo  delimited size
+                        "-"               delimited size
+                        prg-cod-magazzino delimited size
+                        "-"               delimited size
+                        prg-tipo-imballo  delimited size
+                        "-"               delimited size
+                        prg-peso-z        delimited size
+                        ": "              delimited size
+                        costo-mp-z        delimited size
+                        " "               delimited size
+                        tipo              delimited size
+                   into como-riga
+                 end-string
+                 perform SETTA-RIGA-STAMPA
+              end-if
 
               rewrite prg-rec
            end-perform.                         
                    
            initialize como-riga
-           string "ELABORATI PROGRESSIVI: " delimited size
-                  n-elab                    delimited size
-                  " - DI CUI ERRATI:  "     delimited size
-                  n-err                     delimited size
-                  " - DI CUI AGGIORNATI: "  delimited size
-                  n-agg                     delimited size
+           string "ELABORATI PROGRESSIVI: "    delimited size
+                  n-elab                       delimited size
+                  " - DI CUI ERRATI:  "        delimited size
+                  n-err                        delimited size
+                  " - DI CUI AGGIORNATI: "     delimited size
+                  n-agg                        delimited size
+                  " - DI CUI NON MODIFICATI: " delimited size
+                  n-n                          delimited size
              into como-riga
            end-string
            perform SETTA-RIGA-STAMPA
