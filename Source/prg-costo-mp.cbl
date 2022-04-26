@@ -82,6 +82,192 @@
        copy "link-batch.def".
 
        PROCEDURE DIVISION USING batch-linkage.
+
+       DECLARATIVES.    
+                                                 
+      ***---
+       TMARCHE-ERR SECTION.
+           use after error procedure on TMARCHE.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-TMARCHE
+           when "35"
+                initialize como-riga
+                string r-inizio                      delimited size
+                       "File [TMARCHE] inesistente!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "39"
+                initialize como-riga
+                string r-inizio                        delimited size
+                       "File [TMARCHE] mismatch size!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "98"
+                initialize como-riga
+                
+                string r-inizio                          delimited size
+                       "[TMARCHE] indexed file corrupt!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.       
+                                                 
+      ***---
+       TIMPOSTE-ERR SECTION.
+           use after error procedure on TIMPOSTE.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-TIMPOSTE
+           when "35"
+                initialize como-riga
+                
+                string r-inizio                       delimited size
+                       "File [TIMPOSTE] inesistente!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "39"
+                initialize como-riga
+                
+                string r-inizio                         delimited size
+                       "File [TIMPOSTE] mismatch size!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "98"
+                initialize como-riga
+                
+                string r-inizio                           delimited size
+                       "[TIMPOSTE] indexed file corrupt!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.      
+                                                 
+      ***---
+       ARTICOLI-ERR SECTION.
+           use after error procedure on ARTICOLI.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-LINESEQ
+           when "35"
+                initialize como-riga
+                
+                string r-inizio                      delimited size
+                       "File [LINESEQ] inesistente!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "39"
+                initialize como-riga
+                
+                string r-inizio                        delimited size
+                       "File [LINESEQ] mismatch size!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "98"
+                initialize como-riga
+                
+                string r-inizio                          delimited size
+                       "[LINESEQ] indexed file corrupt!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.    
+                                                 
+      ***---
+       LINESEQ-ERR SECTION.
+           use after error procedure on lineseq.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-ARTICOLI
+           when "35"
+                initialize como-riga
+                
+                string r-inizio                       delimited size
+                       "File [ARTICOLI] inesistente!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "39"
+                initialize como-riga
+                
+                string r-inizio                         delimited size
+                       "File [ARTICOLI] mismatch size!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "98"
+                initialize como-riga
+                
+                string r-inizio                           delimited size
+                       "[ARTICOLI] indexed file corrupt!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.   
+                                                 
+      ***---
+       PROGMAG-ERR SECTION.
+           use after error procedure on progmag.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-progmag
+           when "35"
+                initialize como-riga
+                
+                string r-inizio                      delimited size
+                       "File [PROGMAG] inesistente!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "39"
+                initialize como-riga
+                
+                string r-inizio                        delimited size
+                       "File [PROGMAG] mismatch size!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "98"
+                initialize como-riga
+                
+                string r-inizio                          delimited size
+                       "[PROGMAG] indexed file corrupt!" delimited size
+                       into como-riga
+                end-string
+                perform SETTA-RIGA-STAMPA
+                set errori to true      
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.   
+       END DECLARATIVES.
                 
       ***---
        MAIN-PRG.
@@ -151,7 +337,14 @@
            move low-value to prg-rec. 
            move 0 to art-codice art-errato.
            start progmag key >= prg-chiave.
-           perform until 1 = 2
+                                     
+           move "ELABORAZIONE2" to como-riga.
+           perform SETTA-RIGA-STAMPA.
+
+           perform until 1 = 2              
+              move "ELABORAZIONE3" to como-riga
+              perform SETTA-RIGA-STAMPA
+
               read progmag next at end exit perform end-read
               add 1 to n-elab
 

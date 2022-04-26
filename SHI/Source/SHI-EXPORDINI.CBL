@@ -1,6 +1,6 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.                      SHI-expordini.
-       AUTHOR.                          Luciano.
+       AUTHOR.                          
        REMARKS. EXPORT delle bozze ordini
       ******************************************************************
 
@@ -137,8 +137,9 @@
        77  wstampa6             pic x(256).
        77  path-tmp-tordini-exp pic x(256).
        77  path-riepilogo-c     pic x(256).
+       77  como-tot-doc         pic 9(9)v99.
        01  tot-doc.
-           03 tot-doc-int pic 9(13).
+           03 tot-doc-int pic 9(9).
            03 tot-doc-dec pic 99.
 
        77  primo-numero         pic 9(8) value 0.
@@ -1203,13 +1204,14 @@
                                                       
            if tor-contrassegno-si
               perform CALCOLA-TOTALE-IVATO
-              move link-ti-tot-doc    to tot-doc
+              move link-ti-tot-doc    to como-tot-doc         
+              move como-tot-doc       to tot-doc
               string tot-doc-int delimited size
                      tot-doc-dec delimited size
                  into HUSCTES_UDF5 
               end-string
-              inspect HUSCTES_UDF5 replacing leading x"30" by x"20"
-              call "C$JUSTIFY" using HUSCTES_UDF5, "L"
+      *        inspect HUSCTES_UDF5 replacing leading x"30" by x"20"
+      *        call "C$JUSTIFY" using HUSCTES_UDF5, "L"
            else
               move "0" to HUSCTES_UDF5
            end-if.
