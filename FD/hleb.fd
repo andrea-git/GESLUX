@@ -3,7 +3,8 @@
            05 hleb-chiave      PIC  x.
            05 hleb-dati.
                10 hleb-numordpren  PIC  9(8).
-               10 FILLER           PIC  9(18).
+               10 hleb-num-f       PIC  9(8).
+               10 FILLER           PIC  9(10).
                10 FILLER           PIC  9(18).
                10 FILLER           PIC  9(18).
                10 FILLER           PIC  9(18).

@@ -1874,6 +1874,8 @@
            compute min-value = 
               function MIN (costo-mp, costo-ultimo, prezzo-confronto).
 
+              if mro-cod-articolo = 9721 stop "K" end-if
+
            if ( mro-imp-consumo   +
                 mro-imp-cou-cobat +
                 mro-add-piombo    +

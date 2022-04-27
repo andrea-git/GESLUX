@@ -52,7 +52,7 @@
            copy "tnazioni.fd".        
            copy "recapiti.fd".  
            copy "edi-clides.fd". 
-           copy "ttipocli.fd".
+           copy "ttipocli.fd". 
 
        WORKING-STORAGE SECTION.      
        copy "varsca".
@@ -315,6 +315,7 @@
                     read recapiti no lock
                          invalid initialize rec-rec
                     end-read
+                    if tor-num-fattura < 14950 exit perform cycle end-if
                     if cli-naz-fe = "S" or 
                        des-naz-fe = "S"
       *****              if cli-nazione(1:2) = "IT" or 

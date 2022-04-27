@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          aggmese.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 23 aprile 2021 13:29:44.
+       DATE-WRITTEN.        mercoledì 27 aprile 2022 15:22:19.
        REMARKS.
       *{TOTEM}END
 
@@ -149,6 +149,10 @@
            88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
        77 STATUS-multigest PIC  X(2).
            88 Valid-STATUS-multigest VALUE IS "00" THRU "09". 
+       77 scr-elab-HANDLE
+                  USAGE IS HANDLE OF WINDOW.
+       77 Verdana14I-Occidentale
+                  USAGE IS HANDLE OF FONT.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -165,6 +169,8 @@
           88 Screen1b-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-oper-FLAG-REFRESH PIC  9.
           88 scr-oper-FLAG-REFRESH  VALUE 1 FALSE 0. 
+       77 STATUS-Screen1c-FLAG-REFRESH PIC  9.
+          88 Screen1c-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
@@ -612,7 +618,7 @@
            pb-ok, 
            Push-Button, 
            COL 27,27, 
-           LINE 20,00,
+           LINE 24,06,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -634,13 +640,11 @@
            Frame, 
            COL 2,00, 
            LINE 1,56,
-           LINES 18,00 ,
+           LINES 22,00 ,
            SIZE 58,00 ,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           HEAVY,
            .
 
       * LABEL
@@ -765,9 +769,9 @@
            ID IS 13,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
            .
 
       * BAR
@@ -780,9 +784,9 @@
            ID IS 15,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
            .
 
       * LABEL
@@ -811,9 +815,9 @@
            ID IS 17,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
            .
 
       * LABEL
@@ -821,7 +825,7 @@
            lab-doc, 
            Label, 
            COL 3,00, 
-           LINE 17,62,
+           LINE 21,50,
            LINES 1,00 ,
            SIZE 56,00 ,
            ID IS 18,
@@ -847,6 +851,90 @@
            CENTER,
            TRANSPARENT,
            TITLE lab-cons2-buf,
+           .
+
+      * LABEL
+       05
+           lab-costo-mp1, 
+           Label, 
+           COL 3,00, 
+           LINE 17,45,
+           LINES 1,00 ,
+           SIZE 56,00 ,
+           ID IS 20,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "COSTO-MP",
+           .
+
+      * LABEL
+       05
+           lab-costo-mp2, 
+           Label, 
+           COL 3,00, 
+           LINE 18,95,
+           LINES 1,00 ,
+           SIZE 56,00 ,
+           ID IS 21,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "RISULTATO",
+           .
+
+      * BAR
+       05
+           scr-oper-Br-1cba, 
+           Bar,
+           COL 2,18, 
+           LINE 20,67,
+           SIZE 56,91 ,
+           ID IS 22,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
+           .
+
+      * FORM
+       01 
+           Screen1c, 
+           .
+
+      * LABEL
+       05
+           Screen1-La-1ba, 
+           Label, 
+           COL 2,00, 
+           LINE 1,67,
+           LINES 1,00 ,
+           SIZE 25,00 ,
+           ID IS 2,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "Ricalcolo costo mp in corso...",
+           .
+
+      * LABEL
+       05
+           Screen2-blockpgm-1, 
+           Label, 
+           COL 1,55, 
+           LINE 1,17,
+           LINES 1,00 ,
+           SIZE 1,00 ,
+           ID IS 1,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "BlockPgm",
+           VISIBLE v-custom,
            .
 
       *{TOTEM}END
@@ -1792,6 +1880,12 @@
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
 
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
            .
       * <TOTEM:END>
            .
@@ -1985,6 +2079,12 @@
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
 
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
            .
       * <TOTEM:END>
            .
@@ -2168,6 +2268,12 @@
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
@@ -2364,6 +2470,12 @@ LUBEXX*****           cancel "aggstatmese".
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
@@ -2582,6 +2694,12 @@ LUBEXX*****           cancel "aggstatmese".
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
 
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
            .
       * <TOTEM:END>
            .
@@ -2677,7 +2795,7 @@ LUBEXX*****           cancel "aggstatmese".
 
        scr-oper-Create-Win.
            Display Floating GRAPHICAL WINDOW
-              LINES 21,44,
+              LINES 25,44,
               SIZE 60,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -2718,11 +2836,14 @@ LUBEXX*****           cancel "aggstatmese".
 
 LUBEXX*****           modify lab-aux1,      title spaces.
 LUBEXX*****           modify lab-aux2,      title spaces.
+                            
+           modify lab-ordfor1,     title spaces.
+           modify lab-ordfor2,     title spaces.
 
-           modify lab-ordfor1,   title spaces.
-           modify lab-ordfor2,   title spaces.
+           modify lab-costo-mp1,   title spaces.
+           modify lab-costo-mp2,   title spaces.
 
-           modify lab-doc,       title spaces.
+           modify lab-doc,         title spaces.
 
            perform ELABORAZIONE.
 
@@ -2780,6 +2901,12 @@ LUBEXX*****           modify lab-aux2,      title spaces.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
@@ -2863,6 +2990,207 @@ LUBEXX*****           modify lab-aux2,      title spaces.
            .             
 
        scr-oper-Restore-Status.
+           .
+
+       Screen1c-Open-Routine.
+           PERFORM Screen1c-Scrn
+           PERFORM Screen1c-Proc
+           .
+
+       Screen1c-Scrn.
+           PERFORM Screen1c-Create-Win
+           PERFORM Screen1c-Init-Value
+           PERFORM Screen1c-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           PERFORM Screen1c-DISPLAY
+           .
+
+       Screen1c-Create-Win.
+           Display Independent GRAPHICAL WINDOW
+              LINES 2,39,
+              SIZE 27,00,
+              HEIGHT-IN-CELLS,
+              COLOR 65793,
+              CONTROL FONT Verdana12BI-Occidentale,
+              LINK TO THREAD,
+              NO SCROLL,
+              USER-GRAY,
+           VISIBLE 0,
+              USER-WHITE,
+              No WRAP,
+              EVENT PROCEDURE Screen1-Event-Proc,
+              HANDLE IS form1a-Handle,
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+      * Status-bar
+           DISPLAY Screen1c UPON form1a-Handle
+      * DISPLAY-COLUMNS settings
+           .
+
+       Screen1c-PROC.
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, BeforeAccept>
+           move 0 to link-result.
+
+           call  "W$MOUSE"      using set-mouse-shape, wait-pointer.
+
+           call   "prg-costo-mp" using user-codi,
+                                       link-result,          
+                                       scr-oper-handle.
+           cancel "prg-costo-mp".
+
+LUBEXX*****           call   "aggstatmese" using como-data,
+LUBEXX*****                                      scr-oper-handle.
+LUBEXX*****           cancel "aggstatmese".
+
+           call  "W$MOUSE"      using set-mouse-shape, arrow-pointer.
+
+           move 27 to key-status.
+
+           .
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT OMITTED LINE 1 COL 1
+                 ON EXCEPTION
+                    PERFORM Screen1c-Evaluate-Func
+                 MOVE 7 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY form1a-Handle
+           INITIALIZE Key-Status
+           .
+
+       Screen1c-Evaluate-Func.
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM Screen1c-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM Screen1c-Exit
+                 END-IF
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       Screen1c-CLEAR.
+           PERFORM Screen1c-INIT-VALUE
+           PERFORM Screen1c-DISPLAY
+           .
+
+       Screen1c-DISPLAY.
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY Screen1c UPON form1a-Handle
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       Screen1c-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       Screen1c-Init-Data.
+           MOVE 7 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+           .
+
+       Screen1c-Init-Value.
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, SetDefault>
+      * <TOTEM:END>
+           PERFORM Screen1c-FLD-TO-BUF
+           .
+
+
+       Screen1c-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       Screen1c-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       Screen1c-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       Screen1c-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:Screen1c, FORM:Screen1c, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       Screen1c-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform Screen1c-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       Screen1c-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM Screen1c-SHOW-MSG-ROUTINE
+           .
+
+       Screen1c-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM Screen1c-DISPLAY-MESSAGE
+           .
+
+       Screen1c-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       Screen1c-Save-Status.
+           .             
+
+       Screen1c-Restore-Status.
            .
 
 
@@ -2995,7 +3323,18 @@ LUBEXX*****           end-if.
            else
               modify lab-ordfor1, title = "Aggiornamento file ordini a f
       -    "ornitori non effettuato"
-           end-if.
+           end-if.  
+
+           modify lab-costo-mp1, title = "Ricalcolo costo mp in corso...
+      -    ""
+           perform SCREEN1C-OPEN-ROUTINE
+           if link-result = 1
+              modify lab-costo-mp2, title = "Ricalcolo costo mp eseguito
+      -    ""
+           else
+              modify lab-costo-mp2, title = "Ricalcolo costo mp effettua
+      -    "to con errori"
+           end-if
 
            modify lab-doc, title "Premere Ok per proseguire...".
            |RIPULISCO LA SCREEN DAL CONTATORE
@@ -3157,6 +3496,7 @@ LUBEXX*****           end-if.
               goback
            end-if.
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
+           move LK-BL-PROG-ID    TO COMO-PROG-ID.
            move LK-BL-PROG-ID    TO COMO-PROG-ID 
            .
       * <TOTEM:END>
@@ -3172,7 +3512,10 @@ LUBEXX*****           end-if.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            unlock multigest all records.
-           close  multigest 
+           close  multigest.
+           SET LK-BL-CANCELLAZIONE TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM 
            .
       * <TOTEM:END>
        pb-ok-LinkTo.

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=aggmese-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E64D125210-828-2866219282
+PROGRAM_UNIQUE_CODE=TOTEM-7E641B95733-236-981429938
 
 {{@DESCRIPTION:
 
@@ -954,6 +954,24 @@ m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM84_WK
+
+@}}
+[FDITEM85_WK]
+m_strName=scr-elab-HANDLE
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM85_WK
+
+@}}
+[FDITEM86_WK]
+m_strName=Verdana14I-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
 
@@ -2290,7 +2308,7 @@ Begin Screen scr-oper
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 20
-   Lines             = 21,44
+   Lines             = 25,44
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -2316,7 +2334,7 @@ Begin Screen scr-oper
    Event Procedure   = scr-oper-Event-Proc
    Begin Push-Button pb-ok
       SCREEN-COL        = 27,27
-      SCREEN-LINE       = 20,00
+      SCREEN-LINE       = 24,06
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-ok
@@ -2340,7 +2358,7 @@ Begin Screen scr-oper
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 2
-      Line              = 20,00
+      Line              = 24,06
       Lines             = 1,56
       Lines in Pixels   = 30
       Lines Unit        = Default
@@ -2366,7 +2384,7 @@ Begin Screen scr-oper
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = scr-oper-Fr-1
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -2382,13 +2400,13 @@ Begin Screen scr-oper
       High Color        = 0
       ID                = 3
       Line              = 1,56
-      Lines             = 18,00
+      Lines             = 22,00
       Lines Unit        = Default
       Low Color         = 0
       Size              = 58,00
       Size Unit         = Default
       Tab Order         = 2
-      Thickness         = Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Width in Cells    = TRUE
@@ -2644,14 +2662,14 @@ Begin Screen scr-oper
          Line Styles       = Solid
          Occurs            = 0
          Position Shift    = 0
-         COLORS            = ( 8, 8 )
-         SHADING           = ( -1, 1 )
+         COLORS            = ( 8 )
+         SHADING           = ( -1 )
          Size (Lines)      = 56,91
          Size (Lines) in Pixels = 626
          Size (Lines) Unit = Default
          Tab Order         = 8
          Visible           = NONE
-         Width             = 2
+         Width             = 1
          Width in Cells    = TRUE
       End
       Begin Bar scr-oper-Br-1ca
@@ -2675,14 +2693,14 @@ Begin Screen scr-oper
          Line Styles       = Solid
          Occurs            = 0
          Position Shift    = 0
-         COLORS            = ( 8, 8 )
-         SHADING           = ( -1, 1 )
+         COLORS            = ( 8 )
+         SHADING           = ( -1 )
          Size (Lines)      = 56,91
          Size (Lines) in Pixels = 626
          Size (Lines) Unit = Default
          Tab Order         = 9
          Visible           = NONE
-         Width             = 2
+         Width             = 1
          Width in Cells    = TRUE
       End
       Begin Label lab-ordfor2
@@ -2739,19 +2757,19 @@ Begin Screen scr-oper
          Line Styles       = Solid
          Occurs            = 0
          Position Shift    = 0
-         COLORS            = ( 8, 8 )
-         SHADING           = ( -1, 1 )
+         COLORS            = ( 8 )
+         SHADING           = ( -1 )
          Size (Lines)      = 56,91
          Size (Lines) in Pixels = 626
          Size (Lines) Unit = Default
          Tab Order         = 11
          Visible           = NONE
-         Width             = 2
+         Width             = 1
          Width in Cells    = TRUE
       End
       Begin Label lab-doc
          SCREEN-COL        = 3,00
-         SCREEN-LINE       = 17,62
+         SCREEN-LINE       = 21,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-doc
@@ -2769,7 +2787,7 @@ Begin Screen scr-oper
          ID                = 18
          Justification     = Center
          Label Offset      = 20
-         Line              = 17,06
+         Line              = 20,94
          Lines             = 1,00
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -2817,6 +2835,225 @@ Begin Screen scr-oper
          Visible           = NONE
          Width in Cells    = TRUE
       End
+      Begin Label lab-costo-mp1
+         SCREEN-COL        = 3,00
+         SCREEN-LINE       = 17,45
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = lab-costo-mp1
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 20
+         Justification     = Center
+         Label Offset      = 20
+         Line              = 16,89
+         Lines             = 1,00
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 56,00
+         Size Unit         = Default
+         Tab Order         = 14
+         Title             = "COSTO-MP"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label lab-costo-mp2
+         SCREEN-COL        = 3,00
+         SCREEN-LINE       = 18,95
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = lab-costo-mp2
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 2,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 21
+         Justification     = Center
+         Label Offset      = 20
+         Line              = 18,39
+         Lines             = 1,00
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 56,00
+         Size Unit         = Default
+         Tab Order         = 15
+         Title             = "RISULTATO"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Bar scr-oper-Br-1cba
+         SCREEN-COL        = 2,18
+         SCREEN-LINE       = 20,67
+         LOCK-CONTROL      = FALSE
+         LEVEL             = 5
+         (Name)            = scr-oper-Br-1cba
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 1,18
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 22
+         Kind              = Horizontal
+         Line              = 20,11
+         Line Styles       = Solid
+         Occurs            = 0
+         Position Shift    = 0
+         COLORS            = ( 8 )
+         SHADING           = ( -1 )
+         Size (Lines)      = 56,91
+         Size (Lines) in Pixels = 626
+         Size (Lines) Unit = Default
+         Tab Order         = 16
+         Visible           = NONE
+         Width             = 1
+         Width in Cells    = TRUE
+      End
+   End
+End
+
+Begin Screen Screen1c
+   PREFIX            = Screen2
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = Screen1c
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 11
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/B/I/C0/@Occidentale
+   Font Variable     = Verdana12BI-Occidentale
+   Handle Variable   = form1a-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 2,39
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 27,00
+   System Menu       = FALSE
+   Title Bar         = FALSE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = FALSE
+   Width in Cells    = FALSE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Event Procedure   = Screen1-Event-Proc
+   Begin Label Screen1-La-1ba
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 1,67
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-1ba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 2
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 1,67
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 25,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "Ricalcolo costo mp in corso..."
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin CsCtrl.blockpgm Label Screen2-blockpgm-1
+      CUST-SYMBOL       = blockpgm
+      CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
+      SCREEN-COL        = 1,55
+      SCREEN-LINE       = 1,17
+      LOCK-CONTROL      = FALSE
+      LEVEL             = 5
+      (Name)            = Screen2-blockpgm-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,55
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 1
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 1,17
+      Lines             = 1,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 1,00
+      Size Unit         = Default
+      Tab Order         = 2
+      Title             = "BlockPgm"
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-custom
+      Width in Cells    = TRUE
    End
 End
 
@@ -2910,6 +3147,8 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3120,11 +3359,14 @@ BEGIN-TEXT
 
 LUBEXX*****           modify lab-aux1,      title spaces.
 LUBEXX*****           modify lab-aux2,      title spaces.
+                            
+           modify lab-ordfor1,     title spaces.
+           modify lab-ordfor2,     title spaces.
 
-           modify lab-ordfor1,   title spaces.
-           modify lab-ordfor2,   title spaces.
+           modify lab-costo-mp1,   title spaces.
+           modify lab-costo-mp2,   title spaces.
 
-           modify lab-doc,       title spaces.
+           modify lab-doc,         title spaces.
 
            perform ELABORAZIONE.
 END-TEXT
@@ -3195,6 +3437,8 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3208,6 +3452,8 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3221,6 +3467,8 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3234,6 +3482,8 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3247,6 +3497,49 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1c
+   ACTOBJ            = Screen1c
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1c
+   ACTOBJ            = Screen1c
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move 0 to link-result.
+
+           call  "W$MOUSE"      using set-mouse-shape, wait-pointer.
+
+           call   "prg-costo-mp" using user-codi,
+                                       link-result,          
+                                       scr-oper-handle.
+           cancel "prg-costo-mp".
+
+LUBEXX*****           call   "aggstatmese" using como-data,
+LUBEXX*****                                      scr-oper-handle.
+LUBEXX*****           cancel "aggstatmese".
+
+           call  "W$MOUSE"      using set-mouse-shape, arrow-pointer.
+
+           move 27 to key-status.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3345,7 +3638,15 @@ LUBEXX*****           end-if.
               end-if
            else
               modify lab-ordfor1, title = "Aggiornamento file ordini a fornitori non effettuato"
-           end-if.
+           end-if.  
+
+           modify lab-costo-mp1, title = "Ricalcolo costo mp in corso..."
+           perform SCREEN1C-OPEN-ROUTINE
+           if link-result = 1
+              modify lab-costo-mp2, title = "Ricalcolo costo mp eseguito"
+           else
+              modify lab-costo-mp2, title = "Ricalcolo costo mp effettuato con errori"
+           end-if
 
            modify lab-doc, title "Premere Ok per proseguire...".
            |RIPULISCO LA SCREEN DAL CONTATORE
@@ -3543,6 +3844,7 @@ BEGIN-TEXT
            end-if.
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3554,7 +3856,7 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1b **>>
            unlock multigest all records.
            close  multigest.
-
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA

@@ -10,7 +10,6 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            COPY "progmag.sl". 
-           COPY "lineseq.sl".
            COPY "articoli.sl".   
            copy "timposte.sl".
            copy "tmarche.sl".
@@ -18,7 +17,6 @@
        DATA DIVISION.
        FILE SECTION.
            COPY "progmag.fd".
-           COPY "lineseq.fd".
            COPY "articoli.fd".
            copy "timposte.fd".
            copy "tmarche.fd".
@@ -27,11 +25,9 @@
        copy "costo-medio.def".      
        copy "imposte.def".  
        77  status-progmag    pic xx.
-       77  status-lineseq    pic xx.
        77  status-articoli   pic xx.
        77  status-timposte   pic xx.
        77  status-tmarche    pic xx.
-       77  wstampa           pic x(256).
 
        01  r-inizio.
          05 filler      pic x(2) value " [".
@@ -74,200 +70,22 @@
        77  n-n          pic 9(7) value 0.
        77  n-agg        pic 9(7) value 0.
        77  n-err        pic 9(7) value 0.
-       77  n-elab       pic 9(7) value 0.
+       77  n-elab       pic 9(7) value 0.    
+ 
+       77  counter      pic 9(10).
+       77  counter2     pic 9(10).
+       77  counter-edit pic z(10).
 
        77  nargs        pic 99 comp-1 value 0.
 
-       LINKAGE SECTION.
-       copy "link-batch.def".
+       LINKAGE SECTION. 
+       77  link-user             pic x(10).
+       77  link-result           pic 9.
+       77  scr-oper-handle       handle of window.
 
-       PROCEDURE DIVISION USING batch-linkage.
-
-       DECLARATIVES.    
-                                                 
-      ***---
-       TMARCHE-ERR SECTION.
-           use after error procedure on TMARCHE.
-           set RecLocked to false.
-           set tutto-ok  to true.
-           evaluate status-TMARCHE
-           when "35"
-                initialize como-riga
-                string r-inizio                      delimited size
-                       "File [TMARCHE] inesistente!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "39"
-                initialize como-riga
-                string r-inizio                        delimited size
-                       "File [TMARCHE] mismatch size!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "98"
-                initialize como-riga
-                
-                string r-inizio                          delimited size
-                       "[TMARCHE] indexed file corrupt!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "93"
-           when "99" set RecLocked to true
-           end-evaluate.       
-                                                 
-      ***---
-       TIMPOSTE-ERR SECTION.
-           use after error procedure on TIMPOSTE.
-           set RecLocked to false.
-           set tutto-ok  to true.
-           evaluate status-TIMPOSTE
-           when "35"
-                initialize como-riga
-                
-                string r-inizio                       delimited size
-                       "File [TIMPOSTE] inesistente!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "39"
-                initialize como-riga
-                
-                string r-inizio                         delimited size
-                       "File [TIMPOSTE] mismatch size!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "98"
-                initialize como-riga
-                
-                string r-inizio                           delimited size
-                       "[TIMPOSTE] indexed file corrupt!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "93"
-           when "99" set RecLocked to true
-           end-evaluate.      
-                                                 
-      ***---
-       ARTICOLI-ERR SECTION.
-           use after error procedure on ARTICOLI.
-           set RecLocked to false.
-           set tutto-ok  to true.
-           evaluate status-LINESEQ
-           when "35"
-                initialize como-riga
-                
-                string r-inizio                      delimited size
-                       "File [LINESEQ] inesistente!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "39"
-                initialize como-riga
-                
-                string r-inizio                        delimited size
-                       "File [LINESEQ] mismatch size!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "98"
-                initialize como-riga
-                
-                string r-inizio                          delimited size
-                       "[LINESEQ] indexed file corrupt!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "93"
-           when "99" set RecLocked to true
-           end-evaluate.    
-                                                 
-      ***---
-       LINESEQ-ERR SECTION.
-           use after error procedure on lineseq.
-           set RecLocked to false.
-           set tutto-ok  to true.
-           evaluate status-ARTICOLI
-           when "35"
-                initialize como-riga
-                
-                string r-inizio                       delimited size
-                       "File [ARTICOLI] inesistente!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "39"
-                initialize como-riga
-                
-                string r-inizio                         delimited size
-                       "File [ARTICOLI] mismatch size!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "98"
-                initialize como-riga
-                
-                string r-inizio                           delimited size
-                       "[ARTICOLI] indexed file corrupt!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "93"
-           when "99" set RecLocked to true
-           end-evaluate.   
-                                                 
-      ***---
-       PROGMAG-ERR SECTION.
-           use after error procedure on progmag.
-           set RecLocked to false.
-           set tutto-ok  to true.
-           evaluate status-progmag
-           when "35"
-                initialize como-riga
-                
-                string r-inizio                      delimited size
-                       "File [PROGMAG] inesistente!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "39"
-                initialize como-riga
-                
-                string r-inizio                        delimited size
-                       "File [PROGMAG] mismatch size!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "98"
-                initialize como-riga
-                
-                string r-inizio                          delimited size
-                       "[PROGMAG] indexed file corrupt!" delimited size
-                       into como-riga
-                end-string
-                perform SETTA-RIGA-STAMPA
-                set errori to true      
-           when "93"
-           when "99" set RecLocked to true
-           end-evaluate.   
-       END DECLARATIVES.
+       PROCEDURE DIVISION USING link-user      
+                                link-result    
+                                scr-oper-handle.
                 
       ***---
        MAIN-PRG.
@@ -281,53 +99,26 @@
 
       ***---
        INIT.
-           set tutto-ok to true.
-           call "C$NARG" using nargs.
-           if nargs not = 0
-              set RichiamoSchedulato to true
-           else                             
-              set RichiamoSchedulato to false
-           end-if.                
-           initialize wstampa.
-           if RichiamoSchedulato        
-              move 0 to batch-status
-              accept  wstampa  from environment "SCHEDULER_PATH_LOG"
-           else                                                     
-              accept  wstampa  from environment "PATH_ST"
-           end-if.                
-           accept como-data from century-date.
-           accept como-ora  from time.
-           inspect wstampa  replacing trailing spaces by low-value.
-           string  wstampa         delimited low-value
-                   "PRG-COSTO-MP_" delimited size
-                   como-data       delimited size
-                   "_"             delimited size
-                   como-ora        delimited size
-                   ".log"          delimited size
-              into wstampa
-           end-string.              
-           if RichiamoSchedulato    
-              move wstampa to batch-log
-           end-if.
-           open output lineseq. 
-           move "INIZIO PROGRAMMA" to como-riga.
-           perform SETTA-RIGA-STAMPA.
+           set tutto-ok to true.    
+           move 1 to link-result.
+
+           |RIPULISCO LA SCREEN DAL CONTATORE
+           display "                          "
+              upon scr-oper-handle at column 34
+                                        line 25
+           display "                          "
+              upon scr-oper-handle at column 30
+                                        line 26
+           ||||||||
+           .
 
       ***---
        OPEN-FILES.    
-           move "OPEN FILES" to como-riga.
-           perform SETTA-RIGA-STAMPA.
            open i-o progmag.
            open input articoli tmarche timposte.
-           if RichiamoSchedulato and errori
-              move -1 to batch-status
-           end-if.
 
       ***---
        ELABORAZIONE.                 
-           move "ELABORAZIONE" to como-riga.
-           perform SETTA-RIGA-STAMPA.
-
            accept imp-data from century-date.
            start timposte key <= imp-chiave
                  invalid continue
@@ -337,13 +128,8 @@
            move low-value to prg-rec. 
            move 0 to art-codice art-errato.
            start progmag key >= prg-chiave.
-                                     
-           move "ELABORAZIONE2" to como-riga.
-           perform SETTA-RIGA-STAMPA.
 
            perform until 1 = 2              
-              move "ELABORAZIONE3" to como-riga
-              perform SETTA-RIGA-STAMPA
 
               read progmag next at end exit perform end-read
               add 1 to n-elab
@@ -355,100 +141,61 @@
               move prg-costo-mp to s-prg-costo-mp
 
               if prg-cod-articolo not = art-codice
+                 move 0 to link-result
                  move prg-cod-articolo to art-codice
                  read articoli no lock
-                      invalid
+                      invalid                     
+                     display message "ARTICOLO: " art-codice 
+                                     " NON TROVATO"
+                              title "GESLUX - Ricalcolo costo mp"
+                               icon 2
                       move prg-cod-articolo to art-errato
-                      initialize como-riga
-                      string "***!! ERRORE !!*** ARTICOLO: "   
-                                                 delimited size
-                             art-codice          delimited size
-                             " NON TROVATO ****" delimited size
-                        into como-riga
-                      end-string
-                      perform SETTA-RIGA-STAMPA
                       set errori to true
                       exit perform cycle
                  end-read
               end-if
-              add 1 to n-n
+              add 1 to n-n    
+
+              add 1 to counter
+              add 1 to counter2
+              if counter2 = 100
+                 move counter to counter-edit
+                 display counter-edit
+                    upon scr-oper-handle at column 34
+                                              line 25
+                 move 0 to counter2
+                 if counter = 100
+                    display "COSTO-MP COUNTER"
+                       upon scr-oper-handle at column 30
+                                                 line 26
+                 end-if
+              end-if
 
               perform CALCOLA-COSTO-MP-COMPLETO    
               add 0,005 to costo-mp giving costo-mp-2dec
               move costo-mp-2dec to prg-costo-mp costo-mp-z
 
-              evaluate true
-              when recupero-iniziale   move "(INIZIALE)"   to tipo
-              when recupero-anagrafica move "(ANAGRAFICA)" to tipo
-              when recupero-ini        move "(INIZIALI)"   to tipo
-              when recupero-acq        move "(ACQUISTO)"   to tipo
-              when recupero-normale    move "(NORMALE)"    to tipo
-              when recupero-ultimo     move "(ULTIMO)"     to tipo
-              end-evaluate
-
-              if prg-costo-mp not = s-prg-costo-mp
-                 add 1 to n-n
-
-                 move prg-peso to prg-peso-z
-                 initialize como-riga
-                 string prg-cod-articolo  delimited size
-                        "-"               delimited size
-                        prg-cod-magazzino delimited size
-                        "-"               delimited size
-                        prg-tipo-imballo  delimited size
-                        "-"               delimited size
-                        prg-peso-z        delimited size
-                        ": "              delimited size
-                        costo-mp-z        delimited size
-                        " "               delimited size
-                        tipo              delimited size
-                   into como-riga
-                 end-string
-                 perform SETTA-RIGA-STAMPA
-              end-if
+              accept prg-data-ultima-modifica from century-date
+              accept prg-ora-ultima-modifica  from time
+              move link-user to prg-utente-ultima-modifica
 
               rewrite prg-rec
-           end-perform.                         
-                   
-           initialize como-riga
-           string "ELABORATI PROGRESSIVI: "    delimited size
-                  n-elab                       delimited size
-                  " - DI CUI ERRATI:  "        delimited size
-                  n-err                        delimited size
-                  " - DI CUI AGGIORNATI: "     delimited size
-                  n-agg                        delimited size
-                  " - DI CUI NON MODIFICATI: " delimited size
-                  n-n                          delimited size
-             into como-riga
-           end-string
-           perform SETTA-RIGA-STAMPA
-
-           move "FINE PROGRAMMA" to como-riga.
-           perform SETTA-RIGA-STAMPA.
+           end-perform.
 
       ***---
        CLOSE-FILES.
-           close progmag articoli tmarche timposte.
-
-      ***---
-       SETTA-RIGA-STAMPA.
-           initialize riga-stampa.
-           perform SETTA-INIZIO-RIGA.
-           string r-inizio  delimited size
-                  como-riga delimited size
-             into riga-stampa
-           end-string.
-           write line-riga of lineseq from riga-stampa.
+           close progmag articoli tmarche timposte.    
 
       ***---
        EXIT-PGM.
-           if RichiamoSchedulato
-              close lineseq
-              display "                                          "
-                 upon batch-win-handle
-                 line 25,00
-               column 35,00
-           end-if.
+           |RIPULISCO LA SCREEN DAL CONTATORE
+           display "                          "
+              upon scr-oper-handle at column 34
+                                        line 25
+           display "                          "
+              upon scr-oper-handle at column 30
+                                        line 26
+           ||||||||
            goback.
 
       ***---
