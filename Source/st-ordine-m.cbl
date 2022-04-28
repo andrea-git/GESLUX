@@ -1853,11 +1853,11 @@
                                       alphanumeric data by spaces
            move mro-prg-cod-articolo to prg-cod-articolo
            read progmag no lock invalid continue end-read.
-           move prg-costo-ultimo to costo-ultimo
-
+           move prg-costo-ultimo to costo-ultimo.
+           perform CALCOLA-COSTO-MP.
+                                                    
            move mro-prg-chiave  to prg-chiave
            read progmag no lock invalid continue end-read.
-           perform CALCOLA-COSTO-MP
            
            perform TROVA-LISTINO-PIU-BASSO.
 
@@ -1873,9 +1873,7 @@
 
            compute min-value = 
               function MIN (costo-mp, costo-ultimo, prezzo-confronto).
-
-              if mro-cod-articolo = 9721 stop "K" end-if
-
+                                      
            if ( mro-imp-consumo   +
                 mro-imp-cou-cobat +
                 mro-add-piombo    +
