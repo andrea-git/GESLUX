@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 21 aprile 2022 13:20:49.
+       DATE-WRITTEN.        venerdì 29 aprile 2022 10:46:57.
        REMARKS.
       *{TOTEM}END
 
@@ -1602,7 +1602,7 @@
            close lineseq.                    
 
            if debugger-test = space
-              call "C$SYSTEM" using "E: \GESLUX\acu-start.bat"
+              call "C$SYSTEM" using "E:\GESLUX\acu-start.bat"
               perform INVIO-MAIL-FINE  
            end-if.
 

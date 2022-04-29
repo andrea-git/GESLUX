@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-oper
 BEFORE_PROGRAM=scheduler-Ev-Before-Program
 AFTER_PROGRAM=scheduler-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6415111241-177-3214011517
+PROGRAM_UNIQUE_CODE=TOTEM-7E641D8460-627-1988429057
 
 {{@DESCRIPTION:
 
@@ -1443,7 +1443,7 @@ BEGIN-TEXT
            close lineseq.                    
 
            if debugger-test = space
-              call "C$SYSTEM" using "E: \GESLUX\acu-start.bat"
+              call "C$SYSTEM" using "E:\GESLUX\acu-start.bat"
               perform INVIO-MAIL-FINE  
            end-if.
 

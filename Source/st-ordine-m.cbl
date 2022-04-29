@@ -68,7 +68,7 @@
            copy "link-settaPDF.def".
            copy "link-EDI-stbozze.def".  
            COPY "imposte-fornitore.def".     
-           COPY  "trova-parametro.def".
+           COPY "trova-parametro.def".
        
        78  titolo                value "GESLUX - Scontrino MASTER".
        78  MaxRighe              value 52.
