@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [WORKSPACE_CONTENT]
@@ -32533,7 +32534,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:Source\situacont-p.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\ttipocli.sl;FD\tordini.sl;FD\PNT.sl;FD\PNR.sl;FD\PAR.sl;FD\pas.sl;FD\tcodpag.sl;FD\tblco.sl;FD\tbldo.sl;FD\tblva.sl;FD\G2.sl;FD\tsetinvio.sl;FD\lineseq.sl;FD\clienti.fd;FD\ttipocli.fd;FD\tordini.fd;FD\PNT.fd;FD\PNR.fd;FD\PAR.fd;FD\pas.fd;FD\tcodpag.fd;FD\tblco.fd;FD\tbldo.fd;FD\tblva.fd;FD\G2.fd;FD\tsetinvio.fd;FD\lineseq.fd;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-geslock.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\mail.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;Copylib\link-situacont.def;Copylib\common-excel.cpy;Copylib\mail.cpy;Copylib\setta-inizio-riga.cpy
+COPY_DEPENDENCE=FD\clienti.sl;FD\ttipocli.sl;FD\tordini.sl;FD\PNT.sl;FD\PNR.sl;FD\PAR.sl;FD\pas.sl;FD\tcodpag.sl;FD\tblco.sl;FD\tbldo.sl;FD\tblva.sl;FD\G2.sl;FD\tsetinvio.sl;FD\clienti.fd;FD\ttipocli.fd;FD\tordini.fd;FD\PNT.fd;FD\PNR.fd;FD\PAR.fd;FD\pas.fd;FD\tcodpag.fd;FD\tblco.fd;FD\tbldo.fd;FD\tblva.fd;FD\G2.fd;FD\tsetinvio.fd;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-geslock.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\mail.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;Copylib\link-situacont.def;Copylib\common-excel.cpy;Copylib\mail.cpy;Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-x -Fxa -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -36197,7 +36198,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\sttendenza.cbl]
-COPY_DEPENDENCE=FD\tparamge.sl;FD\tparamge.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\UTYDATA.DEF;Copylib\comune.def;Copylib\messaggi.def;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\splcrt2graf.lks;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Copylib\COLOR-CUSTOM.CPY
+COPY_DEPENDENCE=FD\tparamge.sl;FD\tparamge.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\splcrt2graf.lks;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Copylib\COLOR-CUSTOM.CPY
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

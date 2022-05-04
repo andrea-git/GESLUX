@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          sttendenza.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:19:31.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 4 maggio 2022 12:10:11.
        REMARKS.
       *{TOTEM}END
 
@@ -43,9 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -981,8 +979,8 @@
                       ".txt"     delimited by size
                       into PathFile
               end-string
-      *****        call   "sttendenza-p" using PathFile, mese
-      *****        cancel "sttendenza-p"
+              call   "sttendenza-p" using PathFile, mese
+              cancel "sttendenza-p"
            end-if.
                                    
            modify form2-handle, visible = 0

@@ -32,10 +32,17 @@
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-logFile.
 
-           copy "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+       SELECT lineseq
+           ASSIGN       TO  wstampa
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-lineseq.
+           
+       SELECT lineseq1
+           ASSIGN       TO  wstampa
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-lineseq1.
 
       *****************************************************************
        DATA DIVISION.
@@ -61,10 +68,11 @@
        FD  iniFtp.
        01 iniFtp-riga        PIC  x(1000).
 
-           copy "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+       FD  lineseq.
+       01 line-riga        PIC  x(1500).
+
+       FD  lineseq1.
+       01 line-riga        PIC  x(1500).
 
        WORKING-STORAGE SECTION.
            copy "common-excel.def".
@@ -95,7 +103,7 @@
        77  status-iniFtp    pic xx.
        77  status-logFile   pic xx.
        77  wstampa          pic x(256). 
-       77  attach1          pic x(256) value spaces . 
+       77  logFtp           pic x(256) value spaces. 
        77  iniFtpPath       pic x(256). 
        77  logFilePath      pic x(256).
        77  pattern          pic x(10).
@@ -108,7 +116,7 @@
        77  counter-edit     pic z(10).
                                        
        77  file-name        pic x(50). 
-       77  file-backup      pic x(50).       
+       77  file-backup      pic x(100).       
        77  situacont-path-fileseq pic x(200).
        77  situacont-path-backup  pic x(200).
        77  cmd              pic x(200).
@@ -353,8 +361,6 @@
 
            open output lineseq.
            if tutto-ok         
-              move wstampa to attach1
-              inspect attach1 replacing trailing spaces by low-value
               initialize como-riga
               perform SETTA-INIZIO-RIGA
               string r-inizio                        delimited size
@@ -769,9 +775,9 @@
 
            initialize como-riga.
            perform SETTA-INIZIO-RIGA.
-           string r-inizio                       delimited size
-                  "Creazione file per clienti: " delimited size
-                  wstampa                        delimited size
+           string r-inizio                      delimited size
+                  "Creato file per i clienti: " delimited size
+                  wstampa                       delimited size
              into como-riga
            end-string.
            perform RIGA-LOG.
@@ -805,7 +811,7 @@
            initialize como-riga.
            perform SETTA-INIZIO-RIGA.
            string r-inizio               delimited size
-                  "Accodamente file "    delimited size
+                  "Accodamento file "    delimited size
                   pattern                delimited size
                   " in "                 delimited size
                   situacont-path-fileseq delimited size
@@ -1128,17 +1134,22 @@
            inspect iniFtpPath    replacing trailing spaces by low-value.
            inspect pathWinSCPLog replacing trailing spaces by low-value.
 
-           string  pathWinSCP    delimited low-value
-                   " /script="   delimited size
-                   iniFtpPath    delimited low-value
-                   " /log="      delimited size
-                   pathWinSCPLog delimited low-value
+           initialize logFtp.
+           string  pathWinSCPLog delimited low-value
                    "putFtp"      delimited size
                    "_"           delimited size
                    como-data     delimited size
                    "-"           delimited size
                    como-ora      delimited size
                    ".log"        delimited size
+              into logFtp
+           end-string.
+
+           string  pathWinSCP    delimited low-value
+                   " /script="   delimited size
+                   iniFtpPath    delimited low-value
+                   " /log="      delimited size
+                   logFtp        delimited size
               into ftpPutCommand
            end-string.    
                                
@@ -1198,25 +1209,34 @@
            end-string.
            perform RIGA-LOG.
 
-           initialize LinkBody.
            move "INVIO FTP SITUAZIONE CONTABILE" to LinkSubject.
-
-           move "In allegato dettaglio invio ftp. " to LinkBody.
 
            accept LinkAddress from environment "INVIO_FTP_ADDRESSES".
 
            if LinkAddress not = spaces
+                                        
+              inspect ini-path-backup 
+                      replacing trailing spaces by low-value
+              inspect logFilePath 
+                      replacing trailing spaces by low-value
 
-              if attach1 not = spaces
-                 initialize LinkAttach
-                 string attach1 delimited low-value
-                        ";"     delimited size
-                        wstampa delimited size
-                   into LinkAttach
-                 end-string
-              else
-                 move wstampa to LinkAttach
-              end-if
+              initialize LinkAttach
+              string ini-path-backup delimited low-value
+                     ";"             delimited size     
+                     logFtp          delimited size      
+                into LinkAttach
+              end-string        
+              inspect logFilePath 
+                      replacing trailing low-value by spaces
+
+              initialize como-riga
+              perform SETTA-INIZIO-RIGA
+              string r-inizio          delimited size
+                     "Allegato mail: " delimited size
+                     LinkAttach        delimited size
+                into como-riga
+              end-string
+              perform RIGA-LOG
                                
               move "situacont-p" to NomeProgramma
               set trovato to false
@@ -1249,6 +1269,13 @@
        RIGA-LOG.
            initialize logFile-riga.
            write logFile-riga from como-riga.
+           inspect LinkBody   replacing trailing spaces by low-value.
+           string LinkBody    delimited low-value
+                  x"0d0a"     delimited size
+                  como-riga   delimited size
+             into LinkBody
+           end-string.
+           inspect LinkBody   replacing trailing low-value by spaces.
 
       ***---
        PARAGRAFO-COPY.
