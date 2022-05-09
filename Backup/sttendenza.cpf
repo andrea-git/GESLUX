@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=stbolle-Ev-Before-Program
 AFTER_PROGRAM=stbolle-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65992154-963-621883
+PROGRAM_UNIQUE_CODE=TOTEM-7E659212146-147-287788334
 
 {{@DESCRIPTION:
 
@@ -258,6 +258,45 @@ m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=file-info-n
+m_strRawPic=9(18)
+m_strPic=9(18)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
+
+@}}
+[FDITEM25_WK]
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM25_WK
+
+@}}
+[FDITEM26_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
+m_strName=Valid-STATUS-lineseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM27_WK
 
 @}}
 
@@ -1106,41 +1145,60 @@ BEGIN-TEXT
                       mese        delimited size
                       ".txt"      delimited size
                  into PathFile
-              end-string       
+              end-string   
 
-              accept  path-dest from environment "PATH-ST"        
-              inspect path-dest replacing trailing spaces by low-value
-              accept como-data from century-date
-              accept como-ora  from time
-              |Uno per giorno altrimenti non lo trovo più
-              string  path-dest   delimited low-value
-                      "statsett-" delimited size
-                      como-data   delimited size
-                      "_"         delimited size
-                      como-ora    delimited size
-                      ".txt"      delimited size
-                 into path-dest
-              end-string       
+              initialize file-info replacing numeric data by zeroes
+                                        alphanumeric data by spaces                             
+                                                         
+              inspect PathFile   replacing trailing low-value by spaces
+              call "C$FILEINFO" using PathFile, file-info
+              inspect PathFile   replacing trailing spaces by low-value
 
-              initialize cmd-lancio
-              string "copy "   delimited size
-                     x"22"     delimited size  
-                     PathFile  delimited low-value
-                     x"22"     delimited size  
-                     " "       delimited size     
-                     x"22"     delimited size  
-                     path-dest delimited low-value
-                     x"22"     delimited size  
-                into cmd-lancio
-              end-string
-      *        move "copy F:\Lubex\GESLUX\a.txt F:\Lubex\GESLUX\v\a.txt"
-      *        to cmd-lancio
+              if file-size not = 0
+                 accept  path-dest from environment "PATH-ST"        
+                 inspect path-dest replacing trailing spaces by low-value
+                 accept como-data from century-date
+                 accept como-ora  from time
+                 |Uno per giorno altrimenti non lo trovo più
+                 string  path-dest   delimited low-value
+                         "statsett-" delimited size
+                         como-data   delimited size
+                         "_"         delimited size
+                         como-ora    delimited size
+                         ".txt"      delimited size
+                    into path-dest
+                 end-string       
+              
+                 initialize cmd-lancio
+                 string "copy "   delimited size
+                        x"22"     delimited size  
+                        PathFile  delimited low-value
+                        x"22"     delimited size  
+                        " "       delimited size     
+                        x"22"     delimited size  
+                        path-dest delimited low-value
+                        x"22"     delimited size  
+                   into cmd-lancio
+                 end-string
+      *           move "copy F:\Lubex\GESLUX\a.txt F:\Lubex\GESLUX\v\a.txt"
+      *           to cmd-lancio                                       
+              
+                 call "C$SYSTEM" using cmd-lancio, 225
+                                giving return-code
+                 inspect path-dest   replacing trailing low-value by spaces
 
-              call "C$SYSTEM" using cmd-lancio, 225
-                             giving return-code
-              inspect path-dest   replacing trailing low-value by spaces
+                 perform 1000 times                                   
 
-              call "C$SLEEP" using 2                                
+                    move path-dest to wstampa
+                    open input lineseq
+                    if status-lineseq = "00"
+                       close lineseq
+                       exit perform
+                    end-if
+                 end-perform
+                    
+              end-if
+                           
            end-if.
                                    
            modify form2-handle, visible = 0
@@ -1417,7 +1475,7 @@ MARGIN_RIGHT=150
 MARGIN_BOTTOM=150
 PROP_DOCU_TYPE=ø
 PROP_DOCU_TYPE2=ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
-PROP_DOCU_NAME=DataSet - DataSet1[statgio(GESLUX)]
+PROP_DOCU_NAME=DataSet - DataSet1[sttendenza(GESLUX)]
 PROP_DOCU_OWNER=Person A
 PROP_DOCU_CDATE=12/01/05
 PROP_DOCU_MODIFIER=Person B
@@ -1442,10 +1500,12 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=10
-REL_SYM_INFO_L=1
+REL_SYM_SIZE=16
+REL_SYM_INFO_L=2
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1994268869
+REL_SYM_INFO_X1=2301
+REL_SYM_INFO_Y1=207877800
 
 [DRAW_BASESYMBOL_2301_1994268869]
 OBJ_NAME=2301
@@ -1462,6 +1522,54 @@ LEFT=50
 TOP=50
 RIGHT=450
 BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_207877800]
+OBJ_NAME=2301
+OBJ_ID=207877800
+KIND=1
+{{@LABEL_2301_207877800
+lineseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=899
+TOP=1082
+RIGHT=1299
+BOTTOM=1304
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -1532,6 +1640,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=1
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_207877800]
+OBJ_NAME=0
+OBJ_ID=207877800
+REL_M_OBJ_ID=0
+ENTITY=lineseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_207877800
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

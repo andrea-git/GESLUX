@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          sttendenza.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 9 maggio 2022 21:53:18.
+       DATE-WRITTEN.        lunedì 9 maggio 2022 23:32:40.
        REMARKS.
       *{TOTEM}END
 
@@ -28,11 +28,13 @@
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
            COPY "tparamge.sl".
+           COPY "lineseq.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
            COPY "tparamge.fd".
+           COPY "lineseq.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -96,6 +98,10 @@
        77 como-anno        PIC  9999.
        77 path-dest        PIC  x(256).
        77 cmd-lancio       PIC  x(200).
+       77 file-info-n      PIC  9(18).
+       77 wstampa          PIC  X(256).
+       77 STATUS-lineseq   PIC  X(2).
+           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -105,6 +111,7 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -115,6 +122,11 @@
        77 DataSet1-tparamge-KEY1-ORDER  PIC X VALUE "A".
           88 DataSet1-tparamge-KEY1-Asc  VALUE "A".
           88 DataSet1-tparamge-KEY1-Desc VALUE "D".
+       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-KEY-Desc VALUE "D".
 
 
            copy "splcrt2graf.lks".
@@ -476,6 +488,8 @@
        OPEN-FILE-RTN.
       *    Before Open
            PERFORM OPEN-tparamge
+      *    lineseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq
       *    After Open
            .
 
@@ -491,9 +505,23 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq.
+      * <TOTEM:EPT. INIT:sttendenza, FD:lineseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq
+           IF NOT Valid-STATUS-lineseq
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:sttendenza, FD:lineseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tparamge
+      *    lineseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq
       *    After Close
            .
 
@@ -501,6 +529,11 @@
       * <TOTEM:EPT. INIT:sttendenza, FD:tparamge, BeforeClose>
       * <TOTEM:END>
            CLOSE tparamge
+           .
+
+       CLOSE-lineseq.
+      * <TOTEM:EPT. INIT:sttendenza, FD:lineseq, BeforeClose>
+      * <TOTEM:END>
            .
 
        DataSet1-tparamge-INITSTART.
@@ -702,14 +735,110 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-INITSTART.
+           .
+
+       DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-lineseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-LOCK
+              READ lineseq WITH LOCK 
+           ELSE
+              READ lineseq WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT 
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-KEY-Asc
+              IF DataSet1-lineseq-LOCK
+                 READ lineseq NEXT WITH LOCK
+              ELSE
+                 READ lineseq NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tge-rec OF tparamge
+           INITIALIZE line-riga OF lineseq
            .
 
 
       * FD's Initialize Paragraph
        DataSet1-tparamge-INITREC.
            INITIALIZE tge-rec OF tparamge
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-INITREC.
+           INITIALIZE line-riga OF lineseq
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -988,41 +1117,63 @@
                       mese        delimited size
                       ".txt"      delimited size
                  into PathFile
-              end-string       
+              end-string   
 
-              accept  path-dest from environment "PATH-ST"        
-              inspect path-dest replacing trailing spaces by low-value
-              accept como-data from century-date
-              accept como-ora  from time
-              |Uno per giorno altrimenti non lo trovo più
-              string  path-dest   delimited low-value
-                      "statsett-" delimited size
-                      como-data   delimited size
-                      "_"         delimited size
-                      como-ora    delimited size
-                      ".txt"      delimited size
-                 into path-dest
-              end-string       
+              initialize file-info replacing numeric data by zeroes
+                                        alphanumeric data by spaces     
+                                   
+                                                         
+              inspect PathFile   replacing trailing low-value by spaces
+              call "C$FILEINFO" using PathFile, file-info
+              inspect PathFile   replacing trailing spaces by low-value
 
-              initialize cmd-lancio
-              string "copy "   delimited size
-                     x"22"     delimited size  
-                     PathFile  delimited low-value
-                     x"22"     delimited size  
-                     " "       delimited size     
-                     x"22"     delimited size  
-                     path-dest delimited low-value
-                     x"22"     delimited size  
-                into cmd-lancio
-              end-string
-      *        move "copy F:\Lubex\GESLUX\a.txt F:\Lubex\GESLUX\v\a.txt"
-      *        to cmd-lancio
+              if file-size not = 0
+                 accept  path-dest from environment "PATH-ST"        
+                 inspect path-dest replacing trailing spaces by 
+           low-value
+                 accept como-data from century-date
+                 accept como-ora  from time
+                 |Uno per giorno altrimenti non lo trovo più
+                 string  path-dest   delimited low-value
+                         "statsett-" delimited size
+                         como-data   delimited size
+                         "_"         delimited size
+                         como-ora    delimited size
+                         ".txt"      delimited size
+                    into path-dest
+                 end-string       
+              
+                 initialize cmd-lancio
+                 string "copy "   delimited size
+                        x"22"     delimited size  
+                        PathFile  delimited low-value
+                        x"22"     delimited size  
+                        " "       delimited size     
+                        x"22"     delimited size  
+                        path-dest delimited low-value
+                        x"22"     delimited size  
+                   into cmd-lancio
+                 end-string
+      *           move "copy F:\Lubex\GESLUX\a.txt F:\Lubex\GESLUX\v\a.txt"
+      *           to cmd-lancio                                       
+              
+                 call "C$SYSTEM" using cmd-lancio, 225
+                                giving return-code
+                 inspect path-dest   replacing trailing low-value by 
+           spaces
 
-              call "C$SYSTEM" using cmd-lancio, 225
-                             giving return-code
-              inspect path-dest   replacing trailing low-value by spaces
+                 perform 1000 times                                   
 
-              call "C$SLEEP" using 2                                
+                    move path-dest to wstampa
+                    open input lineseq
+                    if status-lineseq = "00"
+                       close lineseq
+                       exit perform
+                    end-if
+                 end-perform
+                    
+              end-if
+                           
            end-if.
                                    
            modify form2-handle, visible = 0
