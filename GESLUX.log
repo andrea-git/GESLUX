@@ -17,6 +17,7 @@ Set parameter 'PRINTER' to '-P SPOOLER-DIRECT'
 Set parameter 'STRIP_TRAILING_SPACES' to TRUE
 Set parameter 'V_VERSION' to 4
 Set parameter 'LOCKS_PER_FILE' to 5000
+Set variable 'PATH_STAT' to value 'f:\lubex\geslux\statistiche\'
 Set parameter 'TC_CHECK_ALIVE_INTERVAL' to 3600
 Set parameter 'TC_SERVER_TIMEOUT' to 3600
 Set variable 'ASSORTIMENTO' to value 'N'
@@ -267,38 +268,9 @@ Library msvcrt.dll loaded
 Set parameter 'CODE_PREFIX' to '.\Object\;'
 Routine '_getpid' loaded from DLL 'msvcrt.dll'
 Set parameter 'DLL_CONVENTION' to 0
-Set variable 'PID_SESSIONE' to value '16344'
+Set variable 'PID_SESSIONE' to value '10492'
 Try loading '.\Object\genfiles.acu'...
 .\Object\genfiles.acu loaded
 Try loading '.\Object\colors.acu'...
 .\Object\colors.acu loaded
-Set variable 'STORICO' to value ''
-
-*** LOGIN GESLUX ***
-Set variable 'ESERCIZIO' to value '2022'
-Set variable 'ESERCIZIO_G2' to value 'C2'
-*** DATA: 04/05/2022 - ORA: 12:24 USER: BOSS
-Set variable 'USER_CODI' to value 'BOSS'
-Try loading '.\Object\menu.acu'...
-.\Object\menu.acu loaded
-Try loading '.\Object\utydata.acu'...
-.\Object\utydata.acu loaded
-Try loading '.\Object\BLOCKPGM.acu'...
-.\Object\BLOCKPGM.acu loaded
-Try loading '.\Object\BLOCKPGM.acu'...
-.\Object\BLOCKPGM.acu loaded
-Try loading '.\Object\lanciopgm.acu'...
-.\Object\lanciopgm.acu loaded
-Try loading '.\Object\gpgmexe.acu'...
-.\Object\gpgmexe.acu loaded
-Try loading '.\Object\gbatnott.acu'...
-.\Object\gbatnott.acu loaded
-Try loading '.\Object\BLOCKPGM.acu'...
-.\Object\BLOCKPGM.acu loaded
-Try loading '.\Object\BLOCKPGM.acu'...
-.\Object\BLOCKPGM.acu loaded
-Try loading '.\Object\gpgmexe.acu'...
-.\Object\gpgmexe.acu loaded
-Try loading '.\Object\gpgmexe.acu'...
-.\Object\gpgmexe.acu loaded
 *** ENDING GESLUX... ***

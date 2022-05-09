@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-doc
 BEFORE_PROGRAM=contab-Ev-Before-Program
 AFTER_PROGRAM=contab-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E58199457-227-2460513699
+PROGRAM_UNIQUE_CODE=TOTEM-7E6599220-501-504810863
 
 {{@DESCRIPTION:
 
@@ -3492,7 +3493,7 @@ Begin Screen scr-conf-1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -3770,7 +3771,7 @@ Begin Screen scr-conf-2
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1a
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -5642,7 +5643,7 @@ Begin Screen scr-oper
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = scr-oper-Fr-1
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -5664,7 +5665,7 @@ Begin Screen scr-oper
       Size              = 43,64
       Size Unit         = Default
       Tab Order         = 2
-      Thickness         = Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Width in Cells    = TRUE
@@ -12209,12 +12210,12 @@ REL_M_OBJ_ID=0
 ENTITY=PAT
 LINK=0
 LINK_NAME=
-DSN_SIZE=42
+DSN_SIZE=56
 FD_SIZE=0
 SL_SIZE=0
 DSN_INFO_OPEN_MODE=2
 DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=PAT-CODICE
+DSN_INFO_KEY_IS=pat-codice of record-pat
 DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=

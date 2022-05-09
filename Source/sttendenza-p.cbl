@@ -5,7 +5,14 @@
 
        SPECIAL-NAMES. decimal-point is comma.
        INPUT-OUTPUT SECTION.
-       FILE-CONTROL.
+       FILE-CONTROL.        
+
+       select logFile
+           assign       to logFilePath
+           organization is line sequential
+           access mode  is sequential
+           file status  is status-logFile.
+
            copy "lineseq.sl".
            copy "statsett.sl".
            copy "tmarche.sl".
@@ -16,7 +23,11 @@
 
       *****************************************************************
        DATA DIVISION.
-       FILE SECTION.
+       FILE SECTION.  
+
+       FD  logFile.
+       01 logFile-riga     PIC  x(900).
+
            copy "lineseq.fd". 
            copy "statsett.fd".
            copy "tmarche.fd".
@@ -25,12 +36,35 @@
            copy "tparamge.fd".
            copy "tcontat.fd".
 
-       WORKING-STORAGE SECTION.
-       copy "statsett.def".
+       WORKING-STORAGE SECTION.     
+
+       01  r-inizio.
+         05 filler                 pic x(2)  value " [".
+         05 r-data.
+            10 r-gg                pic xx.
+            10 filler              pic x     value "/".
+            10 r-mm                pic xx.
+            10 filler              pic x     value "/".
+            10 r-aa                pic xx.
+         05 filler                 pic x(5)  value "] - [".
+         05 r-ora.
+            10 r-hh                pic xx.
+            10 filler              pic x     value X"22".
+            10 r-min               pic xx.
+            10 filler              pic x     value "'".
+            10 r-sec               pic xx.
+         05 filler                 pic x(2)  value "] ".   
+       77  nargs                 pic 99 comp-1 value 0.
+       77  como-anno            pic 9(4).
+
+       copy "statsett.def".      
+       77  logFilePath          pic x(256).
+       77  status-logFile       pic xx.
        77  status-tmp-tendenza  pic xx.
        77  status-tparamge      pic xx.
        77  status-tcontat       pic xx.
-       77  path-tmp-tendenza    pic x(256).
+       77  path-tmp-tendenza    pic x(256). 
+       77  riga-log             pic x(200).
 
       * COSTANTI
        78  titolo       value "DIREZIONALE: Statistica giornaliera NEW".
@@ -45,14 +79,19 @@
            88 statraff-mensile  value is "M". 
            88 statraff-cumulato value is "C". 
 
-       77  statraff-mese-a  pic 99.
+       77  statraff-mese-a  pic 99.   
+
+       01  filler                pic 9 value 0.
+           88 RichiamoSchedulato       value 1, false 0.   
 
        LINKAGE SECTION.
        77  link-mese        pic 99.
        77  link-data        pic 9(8).
 
+       copy "link-batch.def".
+
       ******************************************************************
-       PROCEDURE DIVISION USING link-mese link-data.
+       PROCEDURE DIVISION USING link-mese link-data batch-linkage.
 
        DECLARATIVES.
 
@@ -179,16 +218,63 @@
        END DECLARATIVES.
 
       ***--- 
-       MAIN-PRG.
+       MAIN-PRG.    
+           |Mi serve solamente per recuperare la data di consolid. mag.
+           open  input tparamge.
+           move  spaces to tge-chiave.
+           read  tparamge.
+           close tparamge.
+           set RichiamoSchedulato to false.
+           call "C$NARG" using nargs. 
+           if nargs > 2
+              accept como-data from century-date
+              accept como-ora  from time
+              set RichiamoSchedulato to true
+              move 0 to batch-status  
+              accept logFilePath from environment "SCHEDULER_PATH_LOG"
+              inspect logFilePath replacing trailing spaces by low-value
+              string  logFilePath    delimited low-value
+                      "ST-TENDENZA_" delimited size
+                      "_"            delimited size
+                      como-data      delimited size
+                      "_"            delimited size
+                      como-ora       delimited size
+                      ".log"         delimited size
+                      into logFilePath
+              end-string
+              open output logFile
+              move "Inizio programma" to riga-log
+              perform RIGA-LOG
+           end-if.
+
            set statraff-mensile  to true.
            set RicalcoloNotturno to true.
            perform INIT.
            perform OPEN-FILES.
            open input tparamge tcontat.
-           if tutto-ok
+           if tutto-ok        
+
+              initialize riga-log
+              string "Creata stampa statisiche mese "
+                     link-mese
+                     " in: "
+                     wstampa
+                into riga-log
+              end-string
+              perform RIGA-LOG
+
+              move "Controllo presenza contabilizzazione" to riga-log
+              perform RIGA-LOG
+
               perform CONTROLLA-PRESENZA-CONTAB
-              if trovato-contab
+              if trovato-contab    
+                 move "Contabilizzazione trovata" to riga-log
+                 perform RIGA-LOG
                  perform ELABORAZIONE
+              else
+                 move "Contabilizzazione NON trovata" to riga-log
+                 perform RIGA-LOG
+                 move 1 to batch-status
               end-if
               perform CLOSE-FILES
               close       tmp-tendenza
@@ -302,13 +388,31 @@
            move link-data(1:4)           to st-data-rical(7:4).
 
            move "(Dati mese RICALCOLATI)"    to tit-tipo-stampa.
-           perform SCRIVI-INTESTAZIONE-COMMON.
+           perform SCRIVI-INTESTAZIONE-COMMON.  
+
+      ***---
+       RIGA-LOG.
+           if not RichiamoSchedulato exit paragraph end-if.
+           initialize logFile-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio  delimited size
+                  riga-log  delimited size
+             into logFile-riga
+           end-string.   
+           write logFile-riga.
 
       ***---
        EXIT-PGM.
+           move "Fine programma" to riga-log
+           perform RIGA-LOG
+           if RichiamoSchedulato
+              close logFile
+           end-if.
+
            goback.
 
       ***---
        PARAGRAFO-COPY.
            copy "statsett.cpy".
            copy "controlla-presenza-contab.cpy".
+           copy "setta-inizio-riga.cpy".

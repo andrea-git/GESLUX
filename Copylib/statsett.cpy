@@ -15,24 +15,35 @@
            move num-max-righe-x to max-righe with convert.
            accept  wstampa    from environment "PATH_ST".
            inspect wstampa    replacing trailing spaces by low-value.
-           if RicalcoloNotturno
+           if RicalcoloNotturno                           
+              move tge-data-consolid-progmag(5:2) to como-anno
+              if como-anno = 12
+                 move tge-data-consolid-progmag(1:4) to como-anno
+                 add 1 to como-anno
+              else
+                 move tge-data-consolid-progmag(1:4) to como-anno
+              end-if
+              accept  wstampa     from environment "PATH_STAT"        
+              inspect wstampa     replacing trailing spaces by low-value
               |Uno per giorno altrimenti non lo trovo più
-              string  wstampa    delimited by low-value
-                      "statsett" delimited by size
-                      "_"        delimited by size
-                      como-data  delimited by size
-                      ".txt"     delimited by size
-                      into wstampa
-              end-string
+              string  wstampa     delimited low-value
+                      "statsett-" delimited size
+                      como-anno   delimited size
+                      "_"         delimited size
+                      link-mese   delimited size
+                      ".txt"      delimited size
+                 into wstampa
+              end-string       
+
            else
-              string  wstampa    delimited by low-value
-                      "statsett" delimited by size
-                      "_"        delimited by size
-                      como-data  delimited by size
-                      "_"        delimited by size
-                      como-ora   delimited by size
-                      ".txt"     delimited by size
-                      into wstampa
+              string  wstampa    delimited low-value
+                      "statsett" delimited size
+                      "_"        delimited size
+                      como-data  delimited size
+                      "_"        delimited size
+                      como-ora   delimited size
+                      ".txt"     delimited size
+                 into wstampa
               end-string
            end-if.
 

@@ -146,6 +146,9 @@
 
        01  filler                pic 9 value 0.
            88 RichiamoSchedulato       value 1, false 0.   
+                                              
+       77  st-tendenza-status    signed-short.
+       77  st-delta-status       signed-short.
    
        LINKAGE SECTION.
        copy "link-batch.def".
@@ -772,13 +775,17 @@
            perform SETTA-RIGA-STAMPA.
            call   "sttendenza-p" using link-mese 
                                        data-rical
+                                       batch-linkage
            cancel "sttendenza-p".
+           move batch-status to st-tendenza-status.
            
            move "CREAZIONE STAMPA DELTA" to como-riga.
            perform SETTA-RIGA-STAMPA.
            call   "st-delta-p"   using link-mese 
-                                       data-rical.
-           cancel "st-delta-p".
+                                       data-rical
+                                       batch-linkage.
+           cancel "st-delta-p".                    
+           move batch-status to st-delta-status.
 
       ***---
        SETTA-RIGA-STAMPA.
@@ -918,7 +925,15 @@
                    perform SETTA-RIGA-STAMPA
                    move  1 to batch-status
               when errore-ko      move -1 to batch-status
-              end-evaluate      
+              end-evaluate     
+              if batch-status = 0
+                 evaluate st-tendenza-status also st-delta-status
+                 when 0 also 0 move 0 to batch-status
+                 when 1 also 1 
+                 when 0 also 1 
+                 when 1 also 0 move 1 to batch-status
+                 end-evaluate
+              end-if
               close lineseq
               display "                                             "
                  upon batch-win-handle

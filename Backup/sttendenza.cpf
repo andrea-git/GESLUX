@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=stbolle-Ev-Before-Program
 AFTER_PROGRAM=stbolle-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65410956-65-949716664
+PROGRAM_UNIQUE_CODE=TOTEM-7E65992154-963-621883
 
 {{@DESCRIPTION:
 
@@ -228,6 +228,36 @@ m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM20_WK
+
+@}}
+[FDITEM21_WK]
+m_strName=como-anno
+m_strRawPic=9999
+m_strPic=9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_WK
+
+@}}
+[FDITEM22_WK]
+m_strName=path-dest
+m_strRawPic=x(256)
+m_strPic=x(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_WK
+
+@}}
+[FDITEM23_WK]
+m_strName=cmd-lancio
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
 
 @}}
 
@@ -1056,32 +1086,71 @@ BEGIN-TEXT
            else
                move "Stampa Statistica NEW in corso..." 
                 to lab-oper-buf
-              display lab-oper
+              display lab-oper                     
+              |Deve replicare il programma di creazione notturna del file
+              |sttendenza-p
+              move tge-data-consolid-progmag(5:2) to como-anno
+              if como-anno = 12
+                 move tge-data-consolid-progmag(1:4) to como-anno
+                 add 1 to como-anno
+              else
+                 move tge-data-consolid-progmag(1:4) to como-anno
+              end-if
+              accept  PathFile    from environment "PATH_STAT"        
+              inspect PathFile    replacing trailing spaces by low-value
+              |Uno per giorno altrimenti non lo trovo più
+              string  PathFile    delimited low-value
+                      "statsett-" delimited size
+                      como-anno   delimited size
+                      "_"         delimited size
+                      mese        delimited size
+                      ".txt"      delimited size
+                 into PathFile
+              end-string       
+
+              accept  path-dest from environment "PATH-ST"        
+              inspect path-dest replacing trailing spaces by low-value
               accept como-data from century-date
-              initialize PathFile
-              accept  PathFile   from environment "PATH_ST"
-              inspect PathFile   replacing trailing spaces by low-value
-              |Ne trovo solamente uno per giorno
-              |creato in notturna dalla funziona apposita
-              string  PathFile   delimited by low-value
-                      "statsett" delimited by size
-                      "_"        delimited by size
-                      como-data  delimited by size
-                      ".txt"     delimited by size
-                      into PathFile
+              accept como-ora  from time
+              |Uno per giorno altrimenti non lo trovo più
+              string  path-dest   delimited low-value
+                      "statsett-" delimited size
+                      como-data   delimited size
+                      "_"         delimited size
+                      como-ora    delimited size
+                      ".txt"      delimited size
+                 into path-dest
+              end-string       
+
+              initialize cmd-lancio
+              string "copy "   delimited size
+                     x"22"     delimited size  
+                     PathFile  delimited low-value
+                     x"22"     delimited size  
+                     " "       delimited size     
+                     x"22"     delimited size  
+                     path-dest delimited low-value
+                     x"22"     delimited size  
+                into cmd-lancio
               end-string
-              call   "sttendenza-p" using PathFile, mese
-              cancel "sttendenza-p"
+      *        move "copy F:\Lubex\GESLUX\a.txt F:\Lubex\GESLUX\v\a.txt"
+      *        to cmd-lancio
+
+              call "C$SYSTEM" using cmd-lancio, 225
+                             giving return-code
+              inspect path-dest   replacing trailing low-value by spaces
+
+              call "C$SLEEP" using 2                                
            end-if.
                                    
            modify form2-handle, visible = 0
           
-           call "C$FILEINFO" using PathFile, file-info.
+           call "C$FILEINFO" using path-dest, file-info.
       
            if file-size not = 0
               set  splcrt2graf-stampa        to true
               set  splcrt2graf-windows       to true
-              move PathFile
+              move path-dest
                 to splcrt2graf-percorso-stampa
               set  splcrt2graf-orizzontale   to true
               set  splcrt2graf-forza-crt     to true

@@ -33,7 +33,12 @@
            88 statraff-mensile  value is "M". 
            88 statraff-cumulato value is "C". 
 
-       77  statraff-mese-a  pic 99.
+       77  statraff-mese-a  pic 99. 
+
+       |Dummy, solo per compilazione
+       77  como-anno                 pic 9.
+       77  tge-data-consolid-progmag pic 9(8).
+       ||
 
        LINKAGE SECTION.
        77  link-path        pic x(256).

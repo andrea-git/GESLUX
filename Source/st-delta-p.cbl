@@ -10,7 +10,14 @@
 
        SPECIAL-NAMES. decimal-point is comma.
        INPUT-OUTPUT SECTION.
-       FILE-CONTROL.
+       FILE-CONTROL.   
+
+       select logFile
+           assign       to logFilePath
+           organization is line sequential
+           access mode  is sequential
+           file status  is status-logFile.
+
            |FITTIZIO
            copy "tmp-tendenza.sl".
 
@@ -32,7 +39,11 @@
                                 
       *****************************************************************
        DATA DIVISION.
-       FILE SECTION.
+       FILE SECTION.   
+
+       FD  logFile.
+       01 logFile-riga     PIC  x(900).
+
            |FITTIZIO
            copy "tmp-tendenza.fd".
                               
@@ -52,11 +63,33 @@
                 REPLACING ==statsett== BY ==statsett2==,
                           ==STATUS-statsett== BY ==STATUS-statsett2==.
 
-       WORKING-STORAGE SECTION.
+       WORKING-STORAGE SECTION.  
+
+       01  r-inizio.
+         05 filler                 pic x(2)  value " [".
+         05 r-data.
+            10 r-gg                pic xx.
+            10 filler              pic x     value "/".
+            10 r-mm                pic xx.
+            10 filler              pic x     value "/".
+            10 r-aa                pic xx.
+         05 filler                 pic x(5)  value "] - [".
+         05 r-ora.
+            10 r-hh                pic xx.
+            10 filler              pic x     value X"22".
+            10 r-min               pic xx.
+            10 filler              pic x     value "'".
+            10 r-sec               pic xx.
+         05 filler                 pic x(2)  value "] ".   
+       77  nargs                   pic 99 comp-1 value 0.
+       77  como-anno               pic 9(4).
+
       * FILE STATUS AND VARIABLES
        77  status-tmp-tendenza        pic xx.
        77  path-tmp-tendenza          pic x(256).
 
+       77  logFilePath                pic x(256).
+       77  status-logFile             pic xx.
        77  status-tendelta            pic xx.
        77  status-lineseq             pic xx.
        77  status-statsett2           pic xx.
@@ -83,6 +116,7 @@
        77  tg-scostamento             pic s9(12)v99.
 
       * VARIABILI
+       77  riga-log                   pic x(200).
        77  como-data                  pic 9(8).
        77  como-ora                   pic 9(8).
        77  como-vendite               pic s9(12)v999.
@@ -163,6 +197,9 @@
          88 tutto-ok                  value "OK".
          88 errori                    value "ER".
 
+       01  filler                pic 9 value 0.
+           88 RichiamoSchedulato       value 1, false 0.   
+
       * COSTANTI
        78  titolo                     value "Stampa delta margine".
        78  max-righe                  value 62.
@@ -170,9 +207,10 @@
        LINKAGE SECTION.
        77  link-mese                  pic 99.
        77  link-data                  pic 9(8).
+       copy "link-batch.def".
 
       ******************************************************************
-       PROCEDURE DIVISION USING link-mese.
+       PROCEDURE DIVISION USING link-mese link-data batch-linkage.
 
        DECLARATIVES.
       ***---
@@ -452,11 +490,20 @@
        MAIN-PRG.
            perform INIT.
            perform OPEN-FILES.
-           if tutto-ok
+           if tutto-ok     
+              move "Controllo presenza contabilizzazione" to riga-log
+              perform RIGA-LOG
               perform CONTROLLA-PRESENZA-CONTAB
               if trovato-contab
+                 move "Contabilizzazione trovata" to riga-log
+                 perform RIGA-LOG
+
                  perform ELABORAZIONE
-              else
+              else               
+                 move "Contabilizzazione NON trovata" to riga-log
+                 perform RIGA-LOG
+                 move 1 to batch-status
+
                  |FITTIZIO
                  close tmp-tendenza
                  delete file tmp-tendenza
@@ -467,20 +514,69 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.                       
+           |Mi serve solamente per recuperare la data di consolid. mag.
+           open  input tparamge.
+           move  spaces to tge-chiave.
+           read  tparamge.
+           close tparamge.
+
+           set RichiamoSchedulato to false.
+           call "C$NARG" using nargs. 
+           accept  wstampa    from environment "PATH-ST". 
+           initialize wstampa path-tmp-delta-marca.
+           if nargs > 2
+              set RichiamoSchedulato to true
+              move 0 to batch-status  
+              accept como-data from century-date
+              accept como-ora  from time
+              accept  logFilePath  from environment "SCHEDULER_PATH_LOG"
+              inspect logFilePath replacing trailing spaces by low-value
+              string  logFilePath  delimited low-value
+                      "ST-DELTA-"  delimited size
+                      como-data    delimited size
+                      "_"          delimited size
+                      como-ora     delimited size
+                      ".log"       delimited size
+                      into logFilePath
+              end-string
+              open output logFile
+              move "Inizio programma" to riga-log
+              perform RIGA-LOG
+              accept  wstampa from environment "PATH_STAT"
+           end-if.
+
            accept como-data from century-date.
            accept como-ora  from time.
-           initialize wstampa path-tmp-delta-marca.
            set tutto-ok       to true.
-           accept  wstampa    from environment "PATH-ST".
            inspect wstampa    replacing trailing spaces by low-value.
-           string  wstampa    delimited by low-value
-                   "st-delta" delimited by size
-                   "_"        delimited by size
-                   como-data  delimited by size
-                   ".txt"     delimited by size
-                   into wstampa
-           end-string.
+
+           if RichiamoSchedulato
+              move tge-data-consolid-progmag(5:2) to como-anno
+              if como-anno = 12
+                 move tge-data-consolid-progmag(1:4) to como-anno
+                 add 1 to como-anno
+              else
+                 move tge-data-consolid-progmag(1:4) to como-anno
+              end-if
+              string  wstampa    delimited by low-value
+                      "st-delta" delimited by size
+                      "-"        delimited by size
+                      como-anno  delimited size
+                      "_"
+                      link-mese  delimited by size
+                      ".txt"     delimited by size
+                 into wstampa
+              end-string
+           else
+              string  wstampa    delimited by low-value
+                      "st-delta" delimited by size
+                      "_"        delimited by size
+                      como-data  delimited by size
+                      ".txt"     delimited by size
+                 into wstampa
+              end-string
+           end-if.
            accept  path-tmp-delta-marca from environment "PATH-ST".
            inspect path-tmp-delta-marca 
                    replacing trailing spaces by low-value
@@ -490,13 +586,23 @@
                    como-data      delimited by size
                    "_"            delimited by size
                    como-ora       delimited by size
-                   into path-tmp-delta-marca
+              into path-tmp-delta-marca
            end-string.
 
       ***---
        OPEN-FILES.
            perform OPEN-OUTPUT-LINESEQ.
            if tutto-ok
+
+              initialize riga-log
+              string "Creata stampa statisiche mese "
+                     link-mese
+                     " in: "
+                     wstampa
+                into riga-log
+              end-string
+              perform RIGA-LOG
+
               perform OPEN-TMP-DELTA-MARCA-LOCK
               if tutto-ok
                  open input  statsett statsett2 statraff 
@@ -553,8 +659,13 @@
            move link-data(5:2)           to st-data-rical(4:2).
            move "/"                      to st-data-rical(6:1).
            move link-data(1:4)           to st-data-rical(7:4).
-
+                                             
+           move "MARGINE RICALCOLATO" to riga-log
+           perform RIGA-LOG
            perform MARGINE-RICALCOLATO.
+        
+           move "MARGINE CONSOLIDATO" to riga-log
+           perform RIGA-LOG
            perform MARGINE-CONSOLIDATO.
 
            |CALCOLO COLONNE
@@ -725,14 +836,31 @@
                  tparamge
                  rmovmag
                  tendelta.
-
+           
            delete file tmp-delta-marca.
+
+      ***---
+       RIGA-LOG.
+           if not RichiamoSchedulato exit paragraph end-if.
+           initialize logFile-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio  delimited size
+                  riga-log  delimited size
+             into logFile-riga
+           end-string.   
+           write logFile-riga.
   
       ***---
-       EXIT-PGM.
+       EXIT-PGM.     
+           move "Fine programma" to riga-log
+           perform RIGA-LOG
+           if RichiamoSchedulato
+              close logFile
+           end-if.
            goback.
 
       ***---
        PARAGRAFO-COPY.
            copy "delta.cpy".
            copy "controlla-presenza-contab.cpy".
+           copy "setta-inizio-riga.cpy".

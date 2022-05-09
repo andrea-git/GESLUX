@@ -25,6 +25,12 @@
        copy "link-geslock.def".
        copy "statsett.def".
 
+       |Dummy, solo per compilazione
+       77  link-mese                 pic 9.
+       77  como-anno                 pic 9.
+       77  tge-data-consolid-progmag pic 9(8).
+       ||
+
        01  filler               pic 9.
            88 RicalcoloNotturno value 1, false 0. 
 

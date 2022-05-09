@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          contab.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 19 febbraio 2019 16:43:23.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 9 maggio 2022 11:28:39.
        REMARKS.
       *{TOTEM}END
 
@@ -111,7 +111,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -384,12 +384,12 @@
           88 scr-prima-nota-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-oper-FLAG-REFRESH PIC  9.
           88 scr-oper-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-tmovmag-BUF     PIC X(256).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-rmovmag-BUF     PIC X(446).
        77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
        77 TMP-DataSet1-rnotacr-BUF     PIC X(545).
@@ -414,7 +414,7 @@
        77 TMP-DataSet1-PNI-BUF     PIC X(3000).
        77 TMP-DataSet1-PNR-BUF     PIC X(300).
        77 TMP-DataSet1-PNT-BUF     PIC X(512).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-TBLVA-BUF     PIC X(1380).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
        77 TMP-DataSet1-GDVR-BUF     PIC X(1899).
@@ -616,7 +616,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -627,6 +627,7 @@
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 rmovmag-k-articolo-SPLITBUF  PIC X(19).
        77 rmovmag-rmo-chiave-ricerca-SPLITBUF  PIC X(25).
        77 rmovmag-k-progmag-SPLITBUF  PIC X(21).
@@ -665,7 +666,8 @@
        77 PAS-PAS-CODICE2-SPLITBUF  PIC X(31).
        77 PAS-PAS-CODICE3-SPLITBUF  PIC X(43).
        77 PAS-PAS-CODICE4-SPLITBUF  PIC X(32).
-       77 PAT-PAT-CODICE1-SPLITBUF  PIC X(38).
+       77 PAT-pat-codice1-SPLITBUF  PIC X(38).
+       77 PAT-pat-codice2-SPLITBUF  PIC X(26).
        77 PNR-PNR-CODICE1-SPLITBUF  PIC X(33).
        77 PNT-PNT-CODICE1-SPLITBUF  PIC X(17).
        77 PNT-PNT-CODICE2-SPLITBUF  PIC X(27).
@@ -753,7 +755,6 @@
            LINE 1,38,
            LINES 10,00 ,
            SIZE 48,00 ,
-           RAISED,
            ID IS 1,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -866,7 +867,6 @@
            LINE 1,38,
            LINES 10,00 ,
            SIZE 48,00 ,
-           RAISED,
            ID IS 1,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1624,11 +1624,9 @@
            LINE 1,56,
            LINES 22,89 ,
            SIZE 43,64 ,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           HEAVY,
            .
 
       * LABEL
@@ -2804,7 +2802,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
       * <TOTEM:EPT. INIT:contab, FD:PAT, BeforeOpen>
       * <TOTEM:END>
            OPEN  I-O PAT
-           IF STATUS-PAT = "35"
+           IF status-pat = "35"
               OPEN OUTPUT PAT
                 IF Valid-status-pat
                    CLOSE PAT
@@ -3343,7 +3341,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -3859,6 +3857,16 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave of rordini
@@ -3924,6 +3932,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -3955,6 +3964,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -3986,6 +3996,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -7958,62 +7969,74 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
       * <TOTEM:END>
            .
 
-       PAT-PAT-CODICE1-MERGE-SPLITBUF.
-           INITIALIZE PAT-PAT-CODICE1-SPLITBUF
-           MOVE PAT-CODICE-CONTO(1:9) TO PAT-PAT-CODICE1-SPLITBUF(1:9)
-           MOVE PAT-DATA-RIFERIMENTO(1:8) TO 
-           PAT-PAT-CODICE1-SPLITBUF(10:8)
-           MOVE PAT-NUMERO-RIFERIMENTO(1:12) TO 
-           PAT-PAT-CODICE1-SPLITBUF(18:12)
-           MOVE PAT-CODICE(1:8) TO PAT-PAT-CODICE1-SPLITBUF(30:8)
+       PAT-pat-codice1-MERGE-SPLITBUF.
+           INITIALIZE PAT-pat-codice1-SPLITBUF
+           MOVE pat-codice-conto of record-pat(1:9) TO 
+           PAT-pat-codice1-SPLITBUF(1:9)
+           MOVE pat-data-riferimento of record-pat(1:8) TO 
+           PAT-pat-codice1-SPLITBUF(10:8)
+           MOVE pat-numero-riferimento of record-pat(1:12) TO 
+           PAT-pat-codice1-SPLITBUF(18:12)
+           MOVE pat-codice of record-pat(1:8) TO 
+           PAT-pat-codice1-SPLITBUF(30:8)
+           .
+
+       PAT-pat-codice2-MERGE-SPLITBUF.
+           INITIALIZE PAT-pat-codice2-SPLITBUF
+           MOVE pat-data-riferimento of record-pat(1:8) TO 
+           PAT-pat-codice2-SPLITBUF(1:8)
+           MOVE pat-codice-conto of record-pat(1:9) TO 
+           PAT-pat-codice2-SPLITBUF(9:9)
+           MOVE pat-codice of record-pat(1:8) TO 
+           PAT-pat-codice2-SPLITBUF(18:8)
            .
 
        DataSet1-PAT-INITSTART.
            IF DataSet1-PAT-KEY-Asc
-              MOVE Low-Value TO PAT-CODICE
+              MOVE Low-Value TO pat-codice of record-pat
            ELSE
-              MOVE High-Value TO PAT-CODICE
+              MOVE High-Value TO pat-codice of record-pat
            END-IF
            .
 
        DataSet1-PAT-INITEND.
            IF DataSet1-PAT-KEY-Asc
-              MOVE High-Value TO PAT-CODICE
+              MOVE High-Value TO pat-codice of record-pat
            ELSE
-              MOVE Low-Value TO PAT-CODICE
+              MOVE Low-Value TO pat-codice of record-pat
            END-IF
            .
 
       * PAT
        DataSet1-PAT-START.
            IF DataSet1-PAT-KEY-Asc
-              START PAT KEY >= PAT-CODICE
+              START PAT KEY >= pat-codice of record-pat
            ELSE
-              START PAT KEY <= PAT-CODICE
+              START PAT KEY <= pat-codice of record-pat
            END-IF
            .
 
        DataSet1-PAT-START-NOTGREATER.
            IF DataSet1-PAT-KEY-Asc
-              START PAT KEY <= PAT-CODICE
+              START PAT KEY <= pat-codice of record-pat
            ELSE
-              START PAT KEY >= PAT-CODICE
+              START PAT KEY >= pat-codice of record-pat
            END-IF
            .
 
        DataSet1-PAT-START-GREATER.
            IF DataSet1-PAT-KEY-Asc
-              START PAT KEY > PAT-CODICE
+              START PAT KEY > pat-codice of record-pat
            ELSE
-              START PAT KEY < PAT-CODICE
+              START PAT KEY < pat-codice of record-pat
            END-IF
            .
 
        DataSet1-PAT-START-LESS.
            IF DataSet1-PAT-KEY-Asc
-              START PAT KEY < PAT-CODICE
+              START PAT KEY < pat-codice of record-pat
            ELSE
-              START PAT KEY > PAT-CODICE
+              START PAT KEY > pat-codice of record-pat
            END-IF
            .
 
@@ -8024,13 +8047,14 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
       * <TOTEM:END>
            IF DataSet1-PAT-LOCK
               READ PAT WITH LOCK 
-              KEY PAT-CODICE
+              KEY pat-codice of record-pat
            ELSE
               READ PAT WITH NO LOCK 
-              KEY PAT-CODICE
+              KEY pat-codice of record-pat
            END-IF
-           PERFORM PAT-PAT-CODICE1-MERGE-SPLITBUF
-           MOVE STATUS-PAT TO TOTEM-ERR-STAT 
+           PERFORM PAT-pat-codice1-MERGE-SPLITBUF
+           PERFORM PAT-pat-codice2-MERGE-SPLITBUF
+           MOVE status-pat TO TOTEM-ERR-STAT 
            MOVE "PAT" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, AfterRead>
@@ -8057,8 +8081,9 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
                  READ PAT PREVIOUS WITH NO LOCK
               END-IF
            END-IF
-           PERFORM PAT-PAT-CODICE1-MERGE-SPLITBUF
-           MOVE STATUS-PAT TO TOTEM-ERR-STAT
+           PERFORM PAT-pat-codice1-MERGE-SPLITBUF
+           PERFORM PAT-pat-codice2-MERGE-SPLITBUF
+           MOVE status-pat TO TOTEM-ERR-STAT
            MOVE "PAT" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, AfterRead>
@@ -8085,8 +8110,9 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
                  READ PAT NEXT WITH NO LOCK
               END-IF
            END-IF
-           PERFORM PAT-PAT-CODICE1-MERGE-SPLITBUF
-           MOVE STATUS-PAT TO TOTEM-ERR-STAT
+           PERFORM PAT-pat-codice1-MERGE-SPLITBUF
+           PERFORM PAT-pat-codice2-MERGE-SPLITBUF
+           MOVE status-pat TO TOTEM-ERR-STAT
            MOVE "PAT" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, AfterRead>
@@ -8098,8 +8124,8 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
        DataSet1-PAT-Rec-Write.
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, BeforeWrite>
       * <TOTEM:END>
-           WRITE RECORD-PAT OF PAT.
-           MOVE STATUS-PAT TO TOTEM-ERR-STAT
+           WRITE record-pat OF PAT.
+           MOVE status-pat TO TOTEM-ERR-STAT
            MOVE "PAT" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, AfterWrite>
@@ -8109,8 +8135,8 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
        DataSet1-PAT-Rec-Rewrite.
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, BeforeRewrite>
       * <TOTEM:END>
-           REWRITE RECORD-PAT OF PAT.
-           MOVE STATUS-PAT TO TOTEM-ERR-STAT
+           REWRITE record-pat OF PAT.
+           MOVE status-pat TO TOTEM-ERR-STAT
            MOVE "PAT" TO TOTEM-ERR-FILE
            MOVE "REWRITE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, AfterRewrite>
@@ -8121,7 +8147,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, BeforeDelete>
       * <TOTEM:END>
            DELETE PAT.
-           MOVE STATUS-PAT TO TOTEM-ERR-STAT
+           MOVE status-pat TO TOTEM-ERR-STAT
            MOVE "PAT" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:PAT, AfterDelete>
@@ -9506,7 +9532,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
            INITIALIZE tcl-rec OF ttipocli
            INITIALIZE record-par OF PAR
            INITIALIZE RECORD-PAS OF PAS
-           INITIALIZE RECORD-PAT OF PAT
+           INITIALIZE record-pat OF PAT
            INITIALIZE record-pni OF PNI
            INITIALIZE RECORD-PNR OF PNR
            INITIALIZE RECORD-PNT OF PNT
@@ -9728,7 +9754,7 @@ LUBEXX***** TMOVTRAT-ERR SECTION.
 
       * FD's Initialize Paragraph
        DataSet1-PAT-INITREC.
-           INITIALIZE RECORD-PAT OF PAT
+           INITIALIZE record-pat OF PAT
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -12732,7 +12758,7 @@ LUBEXX*****        read tmovtrat lock
               if tutto-ok
                  move esercizio to con-anno
 
-                 read tcontat invalid continue end-read
+                 read tcontat invalid continue end-read   
 
                  perform until 1 = 2
                     read tordini next no lock at end exit perform
