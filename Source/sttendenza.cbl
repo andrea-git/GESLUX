@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          sttendenza.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 9 maggio 2022 23:32:40.
+       DATE-WRITTEN.        martedì 10 maggio 2022 12:29:24.
        REMARKS.
       *{TOTEM}END
 
@@ -1378,6 +1378,16 @@
                    set errori to true
                 end-if            
 
+                add 1 to mese-delta
+                if mese > mese-delta
+                   set errori to true
+                   display message "Mese selezionabile massimo successiv
+      -    "o al consolidamento (" mese-delta ")"
+                             title tit-err
+                              icon 2
+                end-if             
+                subtract 1 from mese-delta
+
            end-evaluate.
 
            if errori
@@ -1442,7 +1452,7 @@
               if errori
                  exit perform
               end-if
-           end-perform.
+           end-perform. 
 
            if tutto-ok
               modify form1-handle, visible = 0

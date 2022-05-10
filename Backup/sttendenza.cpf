@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=stbolle-Ev-Before-Program
 AFTER_PROGRAM=stbolle-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E659212146-147-287788334
+PROGRAM_UNIQUE_CODE=TOTEM-7E65A10276-25-1283318665
 
 {{@DESCRIPTION:
 
@@ -1316,6 +1316,15 @@ BEGIN-TEXT
                    set errori to true
                 end-if            
 
+                add 1 to mese-delta
+                if mese > mese-delta
+                   set errori to true
+                   display message "Mese selezionabile massimo successivo al consolidamento (" mese-delta ")"
+                             title tit-err
+                              icon 2
+                end-if             
+                subtract 1 from mese-delta
+
            end-evaluate.
 
            if errori
@@ -1387,7 +1396,7 @@ BEGIN-TEXT
               if errori
                  exit perform
               end-if
-           end-perform.
+           end-perform. 
 
            if tutto-ok
               modify form1-handle, visible = 0
