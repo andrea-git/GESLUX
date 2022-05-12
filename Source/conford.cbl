@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 29 aprile 2022 12:56:09.
+       DATE-WRITTEN.        giovedì 12 maggio 2022 15:09:45.
        REMARKS.
       *{TOTEM}END
 
@@ -29,11 +29,6 @@
       *{TOTEM}FILE-CONTROL
            COPY "usr-tel.sl".
            COPY "tsetinvio.sl".
-           COPY "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
-                .
            COPY "fileseq.sl".
            COPY "mrordini.sl".
            COPY "mtordini.sl".
@@ -41,27 +36,23 @@
            COPY "clienti.sl".
            COPY "destini.sl".
            COPY "progmag.sl".
-           COPY "tlistini.sl".
            COPY "rlistini.sl".
+           COPY "tlistini.sl".
            COPY "tparamge.sl".
            COPY "destinif.sl".
-           COPY "timposte.sl".
            COPY "impforn.sl".
+           COPY "timposte.sl".
            COPY "tscorte.sl".
            COPY "distinteb.sl".
            COPY "tpiombo.sl".
            COPY "param.sl".
+           COPY "lineseq-mail.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
            COPY "usr-tel.fd".
            COPY "tsetinvio.fd".
-           COPY "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
-                .
            COPY "fileseq.fd".
            COPY "mrordini.fd".
            COPY "mtordini.fd".
@@ -69,16 +60,17 @@
            COPY "clienti.fd".
            COPY "destini.fd".
            COPY "progmag.fd".
-           COPY "tlistini.fd".
            COPY "rlistini.fd".
+           COPY "tlistini.fd".
            COPY "tparamge.fd".
            COPY "destinif.fd".
-           COPY "timposte.fd".
            COPY "impforn.fd".
+           COPY "timposte.fd".
            COPY "tscorte.fd".
            COPY "distinteb.fd".
            COPY "tpiombo.fd".
            COPY "param.fd".
+           COPY "lineseq-mail.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -180,11 +172,6 @@
            88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 130.
-       77 wstampa          PIC  X(256).
-       77 STATUS-lineseq   PIC  X(2).
-           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
-       77 STATUS-lineseq1  PIC  X(2).
-           88 VALID-STATUS-lineseq1 VALUE IS "00" THRU "09". 
        77 path-fileseq     PIC  X(500).
        77 STATUS-fileseq   PIC  X(2).
            88 Valid-STATUS-fileseq VALUE IS "00" THRU "09". 
@@ -220,6 +207,9 @@
            88 Valid-STATUS-tpiombo VALUE IS "00" THRU "09". 
        77 STATUS-param     PIC  X(2).
            88 Valid-STATUS-param VALUE IS "00" THRU "09". 
+       77 path-lineseq-mail            PIC  X(256).
+       77 STATUS-lineseq-mail          PIC  X(2).
+           88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -230,8 +220,6 @@
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-usr-tel-BUF     PIC X(1362).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
        77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
@@ -239,16 +227,17 @@
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
-       77 TMP-DataSet1-tlistini-BUF     PIC X(257).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
+       77 TMP-DataSet1-tlistini-BUF     PIC X(257).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
-       77 TMP-DataSet1-timposte-BUF     PIC X(717).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
+       77 TMP-DataSet1-timposte-BUF     PIC X(717).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-distinteb-BUF     PIC X(672).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-param-BUF     PIC X(980).
+       77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -264,16 +253,6 @@
        77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
           88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq-LOCK  VALUE "Y".
-       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq1-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq1-LOCK  VALUE "Y".
-       77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq1-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq1-KEY-Desc VALUE "D".
        77 DataSet1-fileseq-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-fileseq-LOCK  VALUE "Y".
        77 DataSet1-fileseq-KEY-ORDER  PIC X VALUE "A".
@@ -309,16 +288,16 @@
        77 DataSet1-progmag-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-progmag-KEY-Asc  VALUE "A".
           88 DataSet1-progmag-KEY-Desc VALUE "D".
-       77 DataSet1-tlistini-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tlistini-LOCK  VALUE "Y".
-       77 DataSet1-tlistini-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tlistini-KEY-Asc  VALUE "A".
-          88 DataSet1-tlistini-KEY-Desc VALUE "D".
        77 DataSet1-rlistini-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-rlistini-LOCK  VALUE "Y".
        77 DataSet1-rlistini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-rlistini-KEY-Asc  VALUE "A".
           88 DataSet1-rlistini-KEY-Desc VALUE "D".
+       77 DataSet1-tlistini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tlistini-LOCK  VALUE "Y".
+       77 DataSet1-tlistini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tlistini-KEY-Asc  VALUE "A".
+          88 DataSet1-tlistini-KEY-Desc VALUE "D".
        77 DataSet1-tparamge-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tparamge-LOCK  VALUE "Y".
        77 DataSet1-tparamge-KEY-ORDER  PIC X VALUE "A".
@@ -329,16 +308,16 @@
        77 DataSet1-destinif-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-destinif-KEY-Asc  VALUE "A".
           88 DataSet1-destinif-KEY-Desc VALUE "D".
-       77 DataSet1-timposte-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-timposte-LOCK  VALUE "Y".
-       77 DataSet1-timposte-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-timposte-KEY-Asc  VALUE "A".
-          88 DataSet1-timposte-KEY-Desc VALUE "D".
        77 DataSet1-impforn-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-impforn-LOCK  VALUE "Y".
        77 DataSet1-impforn-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-impforn-KEY-Asc  VALUE "A".
           88 DataSet1-impforn-KEY-Desc VALUE "D".
+       77 DataSet1-timposte-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-timposte-LOCK  VALUE "Y".
+       77 DataSet1-timposte-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-timposte-KEY-Asc  VALUE "A".
+          88 DataSet1-timposte-KEY-Desc VALUE "D".
        77 DataSet1-tscorte-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tscorte-LOCK  VALUE "Y".
        77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
@@ -359,6 +338,11 @@
        77 DataSet1-param-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-param-KEY-Asc  VALUE "A".
           88 DataSet1-param-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
 
        77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
@@ -693,6 +677,8 @@
       *{TOTEM}DECLARATIVE
        DECLARATIVES.
       * <TOTEM:EPT. INIT:conford, INIT:conford, BeforeDeclarative>
+       copy "mail-decl.cpy".
+
       * <TOTEM:END>
        INPUT-ERROR SECTION.
            USE AFTER STANDARD ERROR PROCEDURE ON INPUT.
@@ -809,10 +795,6 @@
            PERFORM OPEN-usr-tel
       *    tsetinvio OPEN MODE IS FALSE
       *    PERFORM OPEN-tsetinvio
-      *    lineseq OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq
-      *    lineseq1 OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq1
       *    fileseq OPEN MODE IS FALSE
       *    PERFORM OPEN-fileseq
            PERFORM OPEN-mrordini
@@ -821,16 +803,18 @@
            PERFORM OPEN-clienti
            PERFORM OPEN-destini
            PERFORM OPEN-progmag
-           PERFORM OPEN-tlistini
            PERFORM OPEN-rlistini
+           PERFORM OPEN-tlistini
            PERFORM OPEN-tparamge
            PERFORM OPEN-destinif
-           PERFORM OPEN-timposte
            PERFORM OPEN-impforn
+           PERFORM OPEN-timposte
            PERFORM OPEN-tscorte
            PERFORM OPEN-distinteb
            PERFORM OPEN-tpiombo
            PERFORM OPEN-param
+      *    lineseq-mail OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq-mail
       *    After Open
            .
 
@@ -862,30 +846,6 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:conford, FD:tsetinvio, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-lineseq.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT lineseq
-           IF NOT Valid-STATUS-lineseq
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:lineseq, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-lineseq1.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq1, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT lineseq1
-           IF NOT VALID-STATUS-lineseq1
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:lineseq1, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -973,18 +933,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-tlistini.
-      * <TOTEM:EPT. INIT:conford, FD:tlistini, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tlistini
-           IF NOT Valid-STATUS-tlistini
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:tlistini, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-rlistini.
       * <TOTEM:EPT. INIT:conford, FD:rlistini, BeforeOpen>
       * <TOTEM:END>
@@ -994,6 +942,18 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:conford, FD:rlistini, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tlistini.
+      * <TOTEM:EPT. INIT:conford, FD:tlistini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tlistini
+           IF NOT Valid-STATUS-tlistini
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:tlistini, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -1021,18 +981,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-timposte.
-      * <TOTEM:EPT. INIT:conford, FD:timposte, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT timposte
-           IF NOT Valid-STATUS-timposte
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:timposte, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-impforn.
       * <TOTEM:EPT. INIT:conford, FD:impforn, BeforeOpen>
       * <TOTEM:END>
@@ -1042,6 +990,18 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:conford, FD:impforn, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-timposte.
+      * <TOTEM:EPT. INIT:conford, FD:timposte, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT timposte
+           IF NOT Valid-STATUS-timposte
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:timposte, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -1093,15 +1053,23 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq-mail.
+      * <TOTEM:EPT. INIT:conford, FD:lineseq-mail, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT lineseq-mail
+           IF NOT Valid-STATUS-lineseq-mail
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:lineseq-mail, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-usr-tel
       *    tsetinvio CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tsetinvio
-      *    lineseq CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq
-      *    lineseq1 CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq1
       *    fileseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-fileseq
            PERFORM CLOSE-mrordini
@@ -1110,16 +1078,18 @@
            PERFORM CLOSE-clienti
            PERFORM CLOSE-destini
            PERFORM CLOSE-progmag
-           PERFORM CLOSE-tlistini
            PERFORM CLOSE-rlistini
+           PERFORM CLOSE-tlistini
            PERFORM CLOSE-tparamge
            PERFORM CLOSE-destinif
-           PERFORM CLOSE-timposte
            PERFORM CLOSE-impforn
+           PERFORM CLOSE-timposte
            PERFORM CLOSE-tscorte
            PERFORM CLOSE-distinteb
            PERFORM CLOSE-tpiombo
            PERFORM CLOSE-param
+      *    lineseq-mail CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq-mail
       *    After Close
            .
 
@@ -1131,16 +1101,6 @@
 
        CLOSE-tsetinvio.
       * <TOTEM:EPT. INIT:conford, FD:tsetinvio, BeforeClose>
-      * <TOTEM:END>
-           .
-
-       CLOSE-lineseq.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq, BeforeClose>
-      * <TOTEM:END>
-           .
-
-       CLOSE-lineseq1.
-      * <TOTEM:EPT. INIT:conford, FD:lineseq1, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -1185,16 +1145,16 @@
            CLOSE progmag
            .
 
-       CLOSE-tlistini.
-      * <TOTEM:EPT. INIT:conford, FD:tlistini, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tlistini
-           .
-
        CLOSE-rlistini.
       * <TOTEM:EPT. INIT:conford, FD:rlistini, BeforeClose>
       * <TOTEM:END>
            CLOSE rlistini
+           .
+
+       CLOSE-tlistini.
+      * <TOTEM:EPT. INIT:conford, FD:tlistini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tlistini
            .
 
        CLOSE-tparamge.
@@ -1209,16 +1169,16 @@
            CLOSE destinif
            .
 
-       CLOSE-timposte.
-      * <TOTEM:EPT. INIT:conford, FD:timposte, BeforeClose>
-      * <TOTEM:END>
-           CLOSE timposte
-           .
-
        CLOSE-impforn.
       * <TOTEM:EPT. INIT:conford, FD:impforn, BeforeClose>
       * <TOTEM:END>
            CLOSE impforn
+           .
+
+       CLOSE-timposte.
+      * <TOTEM:EPT. INIT:conford, FD:timposte, BeforeClose>
+      * <TOTEM:END>
+           CLOSE timposte
            .
 
        CLOSE-tscorte.
@@ -1243,6 +1203,11 @@
       * <TOTEM:EPT. INIT:conford, FD:param, BeforeClose>
       * <TOTEM:END>
            CLOSE param
+           .
+
+       CLOSE-lineseq-mail.
+      * <TOTEM:EPT. INIT:conford, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
            .
 
        DataSet1-usr-tel-INITSTART.
@@ -1598,180 +1563,6 @@
            MOVE "tsetinvio" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-INITSTART.
-           .
-
-       DataSet1-lineseq-INITEND.
-           .
-
-       DataSet1-lineseq-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-lineseq-LOCK
-              READ lineseq WITH LOCK 
-           ELSE
-              READ lineseq WITH NO LOCK 
-           END-IF
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT 
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-lineseq-KEY-Asc
-              IF DataSet1-lineseq-LOCK
-                 READ lineseq NEXT WITH LOCK
-              ELSE
-                 READ lineseq NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-INITSTART.
-           .
-
-       DataSet1-lineseq1-INITEND.
-           .
-
-       DataSet1-lineseq1-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-lineseq1-LOCK
-              READ lineseq1 WITH LOCK 
-           ELSE
-              READ lineseq1 WITH NO LOCK 
-           END-IF
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT 
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-lineseq1-KEY-Asc
-              IF DataSet1-lineseq1-LOCK
-                 READ lineseq1 NEXT WITH LOCK
-              ELSE
-                 READ lineseq1 NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -3014,160 +2805,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-tlistini-INITSTART.
-           IF DataSet1-tlistini-KEY-Asc
-              MOVE Low-Value TO tlis-chiave OF tlistini
-           ELSE
-              MOVE High-Value TO tlis-chiave OF tlistini
-           END-IF
-           .
-
-       DataSet1-tlistini-INITEND.
-           IF DataSet1-tlistini-KEY-Asc
-              MOVE High-Value TO tlis-chiave OF tlistini
-           ELSE
-              MOVE Low-Value TO tlis-chiave OF tlistini
-           END-IF
-           .
-
-      * tlistini
-       DataSet1-tlistini-START.
-           IF DataSet1-tlistini-KEY-Asc
-              START tlistini KEY >= tlis-chiave OF tlistini
-           ELSE
-              START tlistini KEY <= tlis-chiave OF tlistini
-           END-IF
-           .
-
-       DataSet1-tlistini-START-NOTGREATER.
-           IF DataSet1-tlistini-KEY-Asc
-              START tlistini KEY <= tlis-chiave OF tlistini
-           ELSE
-              START tlistini KEY >= tlis-chiave OF tlistini
-           END-IF
-           .
-
-       DataSet1-tlistini-START-GREATER.
-           IF DataSet1-tlistini-KEY-Asc
-              START tlistini KEY > tlis-chiave OF tlistini
-           ELSE
-              START tlistini KEY < tlis-chiave OF tlistini
-           END-IF
-           .
-
-       DataSet1-tlistini-START-LESS.
-           IF DataSet1-tlistini-KEY-Asc
-              START tlistini KEY < tlis-chiave OF tlistini
-           ELSE
-              START tlistini KEY > tlis-chiave OF tlistini
-           END-IF
-           .
-
-       DataSet1-tlistini-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tlistini-LOCK
-              READ tlistini WITH LOCK 
-              KEY tlis-chiave OF tlistini
-           ELSE
-              READ tlistini WITH NO LOCK 
-              KEY tlis-chiave OF tlistini
-           END-IF
-           MOVE STATUS-tlistini TO TOTEM-ERR-STAT 
-           MOVE "tlistini" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tlistini-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tlistini-KEY-Asc
-              IF DataSet1-tlistini-LOCK
-                 READ tlistini NEXT WITH LOCK
-              ELSE
-                 READ tlistini NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tlistini-LOCK
-                 READ tlistini PREVIOUS WITH LOCK
-              ELSE
-                 READ tlistini PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
-           MOVE "tlistini" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tlistini-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tlistini-KEY-Asc
-              IF DataSet1-tlistini-LOCK
-                 READ tlistini PREVIOUS WITH LOCK
-              ELSE
-                 READ tlistini PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tlistini-LOCK
-                 READ tlistini NEXT WITH LOCK
-              ELSE
-                 READ tlistini NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
-           MOVE "tlistini" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tlistini-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
-           MOVE "tlistini" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tlistini-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
-           MOVE "tlistini" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tlistini-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
-           MOVE "tlistini" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterDelete>
-      * <TOTEM:END>
-           .
-
        rlistini-rlis-k-art-MERGE-SPLITBUF.
            INITIALIZE rlistini-rlis-k-art-SPLITBUF
            MOVE rlis-articolo OF rlistini(1:6) TO 
@@ -3341,6 +2978,160 @@
            MOVE "rlistini" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:rlistini, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tlistini-INITSTART.
+           IF DataSet1-tlistini-KEY-Asc
+              MOVE Low-Value TO tlis-chiave OF tlistini
+           ELSE
+              MOVE High-Value TO tlis-chiave OF tlistini
+           END-IF
+           .
+
+       DataSet1-tlistini-INITEND.
+           IF DataSet1-tlistini-KEY-Asc
+              MOVE High-Value TO tlis-chiave OF tlistini
+           ELSE
+              MOVE Low-Value TO tlis-chiave OF tlistini
+           END-IF
+           .
+
+      * tlistini
+       DataSet1-tlistini-START.
+           IF DataSet1-tlistini-KEY-Asc
+              START tlistini KEY >= tlis-chiave OF tlistini
+           ELSE
+              START tlistini KEY <= tlis-chiave OF tlistini
+           END-IF
+           .
+
+       DataSet1-tlistini-START-NOTGREATER.
+           IF DataSet1-tlistini-KEY-Asc
+              START tlistini KEY <= tlis-chiave OF tlistini
+           ELSE
+              START tlistini KEY >= tlis-chiave OF tlistini
+           END-IF
+           .
+
+       DataSet1-tlistini-START-GREATER.
+           IF DataSet1-tlistini-KEY-Asc
+              START tlistini KEY > tlis-chiave OF tlistini
+           ELSE
+              START tlistini KEY < tlis-chiave OF tlistini
+           END-IF
+           .
+
+       DataSet1-tlistini-START-LESS.
+           IF DataSet1-tlistini-KEY-Asc
+              START tlistini KEY < tlis-chiave OF tlistini
+           ELSE
+              START tlistini KEY > tlis-chiave OF tlistini
+           END-IF
+           .
+
+       DataSet1-tlistini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tlistini-LOCK
+              READ tlistini WITH LOCK 
+              KEY tlis-chiave OF tlistini
+           ELSE
+              READ tlistini WITH NO LOCK 
+              KEY tlis-chiave OF tlistini
+           END-IF
+           MOVE STATUS-tlistini TO TOTEM-ERR-STAT 
+           MOVE "tlistini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tlistini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tlistini-KEY-Asc
+              IF DataSet1-tlistini-LOCK
+                 READ tlistini NEXT WITH LOCK
+              ELSE
+                 READ tlistini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tlistini-LOCK
+                 READ tlistini PREVIOUS WITH LOCK
+              ELSE
+                 READ tlistini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
+           MOVE "tlistini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tlistini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tlistini-KEY-Asc
+              IF DataSet1-tlistini-LOCK
+                 READ tlistini PREVIOUS WITH LOCK
+              ELSE
+                 READ tlistini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tlistini-LOCK
+                 READ tlistini NEXT WITH LOCK
+              ELSE
+                 READ tlistini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
+           MOVE "tlistini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tlistini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
+           MOVE "tlistini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tlistini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
+           MOVE "tlistini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tlistini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tlistini TO TOTEM-ERR-STAT
+           MOVE "tlistini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tlistini, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -3672,160 +3463,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-timposte-INITSTART.
-           IF DataSet1-timposte-KEY-Asc
-              MOVE Low-Value TO imp-chiave
-           ELSE
-              MOVE High-Value TO imp-chiave
-           END-IF
-           .
-
-       DataSet1-timposte-INITEND.
-           IF DataSet1-timposte-KEY-Asc
-              MOVE High-Value TO imp-chiave
-           ELSE
-              MOVE Low-Value TO imp-chiave
-           END-IF
-           .
-
-      * timposte
-       DataSet1-timposte-START.
-           IF DataSet1-timposte-KEY-Asc
-              START timposte KEY >= imp-chiave
-           ELSE
-              START timposte KEY <= imp-chiave
-           END-IF
-           .
-
-       DataSet1-timposte-START-NOTGREATER.
-           IF DataSet1-timposte-KEY-Asc
-              START timposte KEY <= imp-chiave
-           ELSE
-              START timposte KEY >= imp-chiave
-           END-IF
-           .
-
-       DataSet1-timposte-START-GREATER.
-           IF DataSet1-timposte-KEY-Asc
-              START timposte KEY > imp-chiave
-           ELSE
-              START timposte KEY < imp-chiave
-           END-IF
-           .
-
-       DataSet1-timposte-START-LESS.
-           IF DataSet1-timposte-KEY-Asc
-              START timposte KEY < imp-chiave
-           ELSE
-              START timposte KEY > imp-chiave
-           END-IF
-           .
-
-       DataSet1-timposte-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-timposte-LOCK
-              READ timposte WITH LOCK 
-              KEY imp-chiave
-           ELSE
-              READ timposte WITH NO LOCK 
-              KEY imp-chiave
-           END-IF
-           MOVE STATUS-timposte TO TOTEM-ERR-STAT 
-           MOVE "timposte" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timposte-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-timposte-KEY-Asc
-              IF DataSet1-timposte-LOCK
-                 READ timposte NEXT WITH LOCK
-              ELSE
-                 READ timposte NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-timposte-LOCK
-                 READ timposte PREVIOUS WITH LOCK
-              ELSE
-                 READ timposte PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-timposte TO TOTEM-ERR-STAT
-           MOVE "timposte" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timposte-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-timposte-KEY-Asc
-              IF DataSet1-timposte-LOCK
-                 READ timposte PREVIOUS WITH LOCK
-              ELSE
-                 READ timposte PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-timposte-LOCK
-                 READ timposte NEXT WITH LOCK
-              ELSE
-                 READ timposte NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-timposte TO TOTEM-ERR-STAT
-           MOVE "timposte" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timposte-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-timposte TO TOTEM-ERR-STAT
-           MOVE "timposte" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timposte-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-timposte TO TOTEM-ERR-STAT
-           MOVE "timposte" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timposte-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-timposte TO TOTEM-ERR-STAT
-           MOVE "timposte" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-impforn-INITSTART.
            IF DataSet1-impforn-KEY-Asc
               MOVE Low-Value TO imf-chiave OF impforn
@@ -3977,6 +3614,160 @@
            MOVE "impforn" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:impforn, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timposte-INITSTART.
+           IF DataSet1-timposte-KEY-Asc
+              MOVE Low-Value TO imp-chiave
+           ELSE
+              MOVE High-Value TO imp-chiave
+           END-IF
+           .
+
+       DataSet1-timposte-INITEND.
+           IF DataSet1-timposte-KEY-Asc
+              MOVE High-Value TO imp-chiave
+           ELSE
+              MOVE Low-Value TO imp-chiave
+           END-IF
+           .
+
+      * timposte
+       DataSet1-timposte-START.
+           IF DataSet1-timposte-KEY-Asc
+              START timposte KEY >= imp-chiave
+           ELSE
+              START timposte KEY <= imp-chiave
+           END-IF
+           .
+
+       DataSet1-timposte-START-NOTGREATER.
+           IF DataSet1-timposte-KEY-Asc
+              START timposte KEY <= imp-chiave
+           ELSE
+              START timposte KEY >= imp-chiave
+           END-IF
+           .
+
+       DataSet1-timposte-START-GREATER.
+           IF DataSet1-timposte-KEY-Asc
+              START timposte KEY > imp-chiave
+           ELSE
+              START timposte KEY < imp-chiave
+           END-IF
+           .
+
+       DataSet1-timposte-START-LESS.
+           IF DataSet1-timposte-KEY-Asc
+              START timposte KEY < imp-chiave
+           ELSE
+              START timposte KEY > imp-chiave
+           END-IF
+           .
+
+       DataSet1-timposte-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-timposte-LOCK
+              READ timposte WITH LOCK 
+              KEY imp-chiave
+           ELSE
+              READ timposte WITH NO LOCK 
+              KEY imp-chiave
+           END-IF
+           MOVE STATUS-timposte TO TOTEM-ERR-STAT 
+           MOVE "timposte" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timposte-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-timposte-KEY-Asc
+              IF DataSet1-timposte-LOCK
+                 READ timposte NEXT WITH LOCK
+              ELSE
+                 READ timposte NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timposte-LOCK
+                 READ timposte PREVIOUS WITH LOCK
+              ELSE
+                 READ timposte PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timposte TO TOTEM-ERR-STAT
+           MOVE "timposte" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timposte-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-timposte-KEY-Asc
+              IF DataSet1-timposte-LOCK
+                 READ timposte PREVIOUS WITH LOCK
+              ELSE
+                 READ timposte PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timposte-LOCK
+                 READ timposte NEXT WITH LOCK
+              ELSE
+                 READ timposte NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timposte TO TOTEM-ERR-STAT
+           MOVE "timposte" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timposte-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-timposte TO TOTEM-ERR-STAT
+           MOVE "timposte" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timposte-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-timposte TO TOTEM-ERR-STAT
+           MOVE "timposte" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timposte-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-timposte TO TOTEM-ERR-STAT
+           MOVE "timposte" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -4615,11 +4406,79 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-mail-INITSTART.
+           .
+
+       DataSet1-lineseq-mail-INITEND.
+           .
+
+       DataSet1-lineseq-mail-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
+      * <TOTEM:END>
+           WRITE line-riga-mail OF lineseq-mail.
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE usr-rec OF usr-tel
            INITIALIZE tsi-rec OF tsetinvio
-           INITIALIZE line-riga OF lineseq
-           INITIALIZE line-riga OF lineseq1
            INITIALIZE rec-stampa OF fileseq
            INITIALIZE mro-rec OF mrordini
            INITIALIZE mto-rec OF mtordini
@@ -4627,16 +4486,17 @@
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
            INITIALIZE prg-rec OF progmag
-           INITIALIZE tlis-rec OF tlistini
            INITIALIZE rlis-rec OF rlistini
+           INITIALIZE tlis-rec OF tlistini
            INITIALIZE tge-rec OF tparamge
            INITIALIZE desf-rec OF destinif
-           INITIALIZE imp-rec OF timposte
            INITIALIZE imf-rec OF impforn
+           INITIALIZE imp-rec OF timposte
            INITIALIZE sco-rec OF tscorte
            INITIALIZE dis-rec OF distinteb
            INITIALIZE tpb-rec OF tpiombo
            INITIALIZE prm-rec OF param
+           INITIALIZE line-riga-mail OF lineseq-mail
            .
 
 
@@ -4651,22 +4511,6 @@
       * FD's Initialize Paragraph
        DataSet1-tsetinvio-INITREC.
            INITIALIZE tsi-rec OF tsetinvio
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-lineseq-INITREC.
-           INITIALIZE line-riga OF lineseq
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-lineseq1-INITREC.
-           INITIALIZE line-riga OF lineseq1
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -4729,16 +4573,16 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tlistini-INITREC.
-           INITIALIZE tlis-rec OF tlistini
+       DataSet1-rlistini-INITREC.
+           INITIALIZE rlis-rec OF rlistini
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
            .
 
       * FD's Initialize Paragraph
-       DataSet1-rlistini-INITREC.
-           INITIALIZE rlis-rec OF rlistini
+       DataSet1-tlistini-INITREC.
+           INITIALIZE tlis-rec OF tlistini
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -4761,16 +4605,16 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-timposte-INITREC.
-           INITIALIZE imp-rec OF timposte
+       DataSet1-impforn-INITREC.
+           INITIALIZE imf-rec OF impforn
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
            .
 
       * FD's Initialize Paragraph
-       DataSet1-impforn-INITREC.
-           INITIALIZE imf-rec OF impforn
+       DataSet1-timposte-INITREC.
+           INITIALIZE imp-rec OF timposte
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -4803,6 +4647,14 @@
       * FD's Initialize Paragraph
        DataSet1-param-INITREC.
            INITIALIZE prm-rec OF param
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-mail-INITREC.
+           INITIALIZE line-riga-mail OF lineseq-mail
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -5165,7 +5017,7 @@
 
               if errori
                  display message box "Invio non riuscito."
-                              x"0d0A"line-riga of lineseq1
+                              x"0d0A"line-riga-mail
                           title titolo
               else
                  display message box "Invio riuscito."
@@ -5384,14 +5236,14 @@
               perform SEND-MAIL
 
       *        call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq1
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq1
+              close lineseq-mail
 
            end-perform 
 

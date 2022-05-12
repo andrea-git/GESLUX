@@ -65,7 +65,6 @@
            copy "aggiorna-stato-master.def".
            copy "link-geslock.def".
            copy "link-wprogmag.def".
-           copy "mail.def".
            copy "versione-evasione.def".
            copy "trova-parametro.def".
 
@@ -367,7 +366,6 @@
        PARAGRAFO-COPY.
            copy "aggiorna-stato-master.cpy".
            copy "direziona-impegnato-common.cpy".
-           copy "mail.cpy".
            copy "trova-parametro.cpy".
            copy "setta-inizio-riga.cpy".
 

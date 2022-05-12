@@ -1,0 +1,37 @@
+; CaseMaker Totem Layout Structure File, Version 6.1
+; WARNING: DO NOT MODIFY THIS FILE!
+
+[DATALAYOUT_CONTENT]
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E65C12423-40-3327223
+[DSNENTITY_]
+[CStoAcucobolFileDefinition_]
+m_nType=1
+m_bBlockRecords=1
+m_bRecordFixed=1
+m_bStandard=1
+m_strXfdFile=lineseq
+m_strPrefix=lineseq
+{{@FD_m_strDescription
+
+@}}
+[FDITEM0_]
+m_strName=statusMail-riga
+m_strRawPic=x(1000)
+m_strPic=x(1000)
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM0_
+
+@}}
+[CStoAcucobolSL_]
+m_nType=1
+m_strAssignToName=path-statusMail
+m_nFormat=1
+m_nAccessMode=1
+m_strFileStatus=STATUS-statusMail
+m_nNumber=1
+m_nCompression=70
+{{@SL_m_strDescription
+
+@}}

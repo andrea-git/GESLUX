@@ -15,13 +15,8 @@
        FILE-CONTROL.
            copy "tsetinvio.sl".
            copy "mrordini.sl".
-           copy "lineseq.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "lineseq.sl". 
+           COPY "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -29,9 +24,7 @@
            copy "tsetinvio.fd".
            copy "mrordini.fd".
            copy "lineseq.fd".
-
-       FD  lineseq1.
-       01 line-riga        PIC  x(900).
+           COPY "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "mail.def".
@@ -41,7 +34,10 @@
        77  status-mrordini       pic xx.
        77  status-tsetinvio      pic xx.
        77  status-lineseq        pic xx.
-       77  wstampa               pic x(256).
+       77  wstampa               pic x(256).   
+
+       77  status-lineseq-mail   pic xx.
+       77  path-lineseq-mail     pic x(256).
                                             
        77  FileDest              pic x(256).
        77  FileOrig              pic x(256).   
@@ -79,6 +75,7 @@
        PROCEDURE DIVISION USING link-cpm-chiave link-cpm-operazione.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
 
       ***---
        MRORDINI-ERR SECTION.
@@ -197,24 +194,24 @@
            move 0 to tentativi.
                                
            move "check-prog-master" to NomeProgramma.
-           perform 10 times
+           perform 5 times
               add 1 to tentativi
               perform SEND-MAIL
               
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq1
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq1   
+              close lineseq-mail
            end-perform
                
            initialize como-riga.
            if errori
               display message "INVIO MAIL NON RIUSCITO"
-                       x"0d0a"line-riga of lineseq1
+                       x"0d0a"line-riga-mail
                         title titolo
                          icon 2
            end-if.

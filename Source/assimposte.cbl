@@ -13,12 +13,7 @@
            copy "tnomen.sl".
            copy "articoli.sl".
            copy "lineseq.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -26,10 +21,8 @@
            copy "tsetinvio.fd".
            copy "tnomen.fd".
            copy "articoli.fd".
-           copy "lineseq.fd".
-
-       FD  lineseq1.
-       01 line-riga1        PIC  x(900).
+           copy "lineseq.fd".     
+           copy "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "mail.def".
@@ -39,7 +32,9 @@
        77  status-articoli       pic xx.
        77  status-lineseq        pic xx.
        77  status-tsetinvio      pic xx.
+       77  status-lineseq-mail   pic xx.
        77  wstampa               pic x(256).
+       77  path-lineseq-mail     pic x(256).
 
        77  oper                  pic x(4).
        77  r-perce               pic zz9,99.
@@ -57,6 +52,9 @@
 
       ******************************************************************
        PROCEDURE DIVISION.
+       DECLARATIVES.    
+       copy "mail-decl.cpy".
+       END DECLARATIVES.
 
       ***---
        MAIN-PRG.
@@ -192,19 +190,20 @@
            move "assimposte" to NomeProgramma.
 
            set errori to true.
-           perform 10 times
+           perform 5 times
               perform SEND-MAIL
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga1 = "True"
+              if status-lineseq-mail not = "00"
+                 exit perform
+              end-if      
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq1
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq1
+              close lineseq-mail
            end-perform.
-
-           delete file lineseq.
 
       ***---
        CLOSE-FILES.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 aprile 2021 13:25:39.
+       DATE-WRITTEN.        giovedì 12 maggio 2022 16:21:15.
        REMARKS.
       *{TOTEM}END
 
@@ -35,6 +35,7 @@
            COPY "PROG.sl".
            COPY "tmp-cpu.sl".
            COPY "tsetinvio.sl".
+           COPY "lineseq-mail.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -47,6 +48,7 @@
            COPY "PROG.fd".
            COPY "tmp-cpu.fd".
            COPY "tsetinvio.fd".
+           COPY "lineseq-mail.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -154,6 +156,9 @@
            88 Valid-STATUS-tsetmerc VALUE IS "00" THRU "09". 
        77 STATUS-tsetinvio PIC  X(2).
            88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
+       77 path-lineseq-mail            PIC  X(256).
+       77 STATUS-lineseq-mail          PIC  X(2).
+           88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -172,6 +177,7 @@
        77 TMP-DataSet1-PROG-BUF     PIC X(676).
        77 TMP-DataSet1-tmp-cpu-BUF     PIC X(33).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
+       77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -217,6 +223,11 @@
        77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
           88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
 
 
            copy "mail.def".
@@ -834,6 +845,9 @@
       *{TOTEM}DECLARATIVE
        DECLARATIVES.
       * <TOTEM:EPT. INIT:gpgmexe, INIT:gpgmexe, BeforeDeclarative>
+
+       copy "mail-decl.cpy".
+
       ***---
        LINESEQ-ERR SECTION.
            use after error procedure on lineseq.
@@ -1058,6 +1072,7 @@
       *    PERFORM OPEN-tmp-cpu
       *    tsetinvio OPEN MODE IS FALSE
       *    PERFORM OPEN-tsetinvio
+           PERFORM OPEN-lineseq-mail
       *    After Open
            .
 
@@ -1178,6 +1193,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq-mail.
+      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq-mail, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq-mail
+           IF NOT Valid-STATUS-lineseq-mail
+              PERFORM  form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq-mail, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-pgmexe
@@ -1195,6 +1222,7 @@
       *    PERFORM CLOSE-tmp-cpu
       *    tsetinvio CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tsetinvio
+           PERFORM CLOSE-lineseq-mail
       *    After Close
            .
 
@@ -1237,6 +1265,12 @@
        CLOSE-tsetinvio.
       * <TOTEM:EPT. INIT:gpgmexe, FD:tsetinvio, BeforeClose>
       * <TOTEM:END>
+           .
+
+       CLOSE-lineseq-mail.
+      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
+           CLOSE lineseq-mail
            .
 
        DataSet1-pgmexe-INITSTART.
@@ -2290,6 +2324,93 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-mail-INITSTART.
+           .
+
+       DataSet1-lineseq-mail-INITEND.
+           .
+
+       DataSet1-lineseq-mail-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-mail-LOCK
+              READ lineseq-mail WITH LOCK 
+           ELSE
+              READ lineseq-mail WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT 
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-mail-KEY-Asc
+              IF DataSet1-lineseq-mail-LOCK
+                 READ lineseq-mail NEXT WITH LOCK
+              ELSE
+                 READ lineseq-mail NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE pge-rec OF pgmexe
            INITIALIZE user-rec OF USER
@@ -2299,6 +2420,7 @@
            INITIALIZE PROG-R OF PROG
            INITIALIZE cpu-rec OF tmp-cpu
            INITIALIZE tsi-rec OF tsetinvio
+           INITIALIZE line-riga-mail OF lineseq-mail
            .
 
 
@@ -2386,6 +2508,14 @@
       * FD's Initialize Paragraph
        DataSet1-tsetinvio-INITREC.
            INITIALIZE tsi-rec OF tsetinvio
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-mail-INITREC.
+           INITIALIZE line-riga-mail OF lineseq-mail
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3433,18 +3563,18 @@
            set errori to true.
            move 0 to tentativi.
            move "gpgmexe" to NomeProgramma.
-           perform 10 times
+           perform 5 times
               add 1 to tentativi
               perform SEND-MAIL
               
-              open input lineseq
-              read  lineseq next
-              if line-riga = "True"
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq
+              close lineseq-mail
            end-perform
 
            if errori

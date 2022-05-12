@@ -14,15 +14,9 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            copy "tsetinvio.sl".
-           copy "lineseq.sl".
            copy "tvettori.sl".
-           copy "vettel.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "vettel.sl". 
+           COPY "lineseq-mail.sl".
 
       * select rep-recupero
       *     assign       to path-rep-recupero
@@ -34,12 +28,9 @@
        DATA DIVISION.
        FILE SECTION. 
            copy "tsetinvio.fd".
-           copy "lineseq.fd".
            copy "tvettori.fd".
            copy "vettel.fd".
-
-       FD  lineseq1.
-       01 line-riga        PIC  x(900).
+           COPY "lineseq-mail.fd".
 
       * FD  rep-recupero.
       * 01 riga-recupero    pic x(100).
@@ -81,12 +72,12 @@
 
        77  status-tvettori         pic xx.
        77  status-tsetinvio        pic xx.
-       77  status-vettel         pic xx.
-       77  status-lineseq        pic xx.
+       77  status-vettel           pic xx.
+       77  status-lineseq-mail     pic xx.
+       77  path-lineseq-mail       pic x(256).
 
-       77  RENAME-STATUS            pic 9(9)            comp-4.
+       77  RENAME-STATUS           pic 9(9)            comp-4.
 
-       77  wstampa               pic x(256).
       * 77  path-rep-recupero     pic x(256) value spaces.
                                             
        77  FileDest              pic x(256).
@@ -144,6 +135,8 @@
        PROCEDURE DIVISION.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
+
       ***---
        TVETTORI-ERR SECTION.
            use after error procedure on tvettori.
@@ -862,7 +855,7 @@
            set errori to true.
            move 0 to tentativi. 
            move "imp-esiti" to NomeProgramma.
-           perform 10 times
+           perform 5 times
               add 1 to tentativi
               perform SEND-MAIL
               
@@ -888,22 +881,22 @@
               perform SETTA-RIGA-STAMPA
                             
               call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq1
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq1
+              close lineseq-mail
 
               initialize como-riga
-              string r-inizio              delimited size
-                     "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     ": "                  delimited size
-                     line-riga of lineseq1 delimited size
-                     into como-riga
+              string r-inizio        delimited size
+                     "TENTATIVO N. " delimited size
+                     tentativi       delimited size
+                     ": "            delimited size
+                     line-riga-mail  delimited size
+                into como-riga
               end-string
               perform SETTA-RIGA-STAMPA
 
@@ -924,7 +917,7 @@
            end-if.
            perform SETTA-RIGA-STAMPA.
 
-           delete file lineseq.
+           delete file lineseq-mail.
 
       ***---
        EXIT-PGM.
@@ -971,14 +964,14 @@
               perform SEND-MAIL
               
               call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq1
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq1
+              close lineseq-mail
 
       *        initialize como-riga
       *        string r-inizio              delimited size
@@ -1007,5 +1000,5 @@
       *     end-if.
       *     perform SETTA-RIGA-STAMPA.
 
-           delete file lineseq.
+           delete file lineseq-mail.
 

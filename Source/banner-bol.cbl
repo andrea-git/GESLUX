@@ -25,13 +25,8 @@
            copy "user.sl".
            copy "useravv.sl".
            copy "clienti.sl".
-           copy "ttipocli.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "ttipocli.sl". 
+           COPY "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -45,15 +40,15 @@
            copy "user.fd".
            copy "useravv.fd".
            copy "clienti.fd".
-           copy "ttipocli.fd".
-
-       FD  lineseq1.
-       01 line-riga        PIC  x(900).
+           copy "ttipocli.fd". 
+           COPY "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "acucobol.def".
            copy "mail.def".
-           copy "link-geslock.def".
+           copy "link-geslock.def". 
+       77  status-lineseq-mail pic xx.
+       77  path-lineseq-mail   pic x(256).
 
        77  como-user    pic x(10).      
        77  GdoInUsoFlag pic x.
@@ -155,7 +150,8 @@
       ******************************************************************
        PROCEDURE DIVISION using Form-Handle, user-codi.
 
-       DECLARATIVES.
+       DECLARATIVES.  
+       copy "mail-decl.cpy".
       ***---
        MTORDINI-ERR SECTION.
            use after error procedure on mtordini.
@@ -695,27 +691,26 @@
            set errori to true.
            move 0 to tentativi.
            move "banner-bol" to NomeProgramma.
-           perform 10 times
+           perform 5 times
               add 1 to tentativi
               perform SEND-MAIL
-              
-              call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
+                        
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq1
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq1
+              close lineseq-mail
 
               initialize como-riga
-              string r-inizio              delimited size
-                     "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     ": "                  delimited size
-                     line-riga of lineseq1 delimited size
-                     into como-riga
+              string r-inizio         delimited size
+                     "TENTATIVO N. "  delimited size
+                     tentativi        delimited size
+                     ": "             delimited size
+                     line-riga-mail   delimited size
+                into como-riga
               end-string
               perform SETTA-RIGA-STAMPA
 
@@ -740,8 +735,6 @@
            else
               perform MESSAGE-BOX
            end-if.
-
-           delete file lineseq.
 
       ***--
        AZZERA-ORD-MASTER.

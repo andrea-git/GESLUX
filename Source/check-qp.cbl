@@ -26,13 +26,8 @@
            copy "tparamge.sl".
            copy "teva.sl".
            copy "reva.sl".
-           copy "lineseq.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "lineseq.sl". 
+           COPY "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -45,10 +40,8 @@
            copy "tparamge.fd".
            copy "teva.fd".
            copy "reva.fd".
-           copy "lineseq.fd".   
-
-       FD  lineseq1.
-       01 line-riga        PIC  x(900).
+           copy "lineseq.fd".
+           COPY "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "mail.def".
@@ -62,7 +55,9 @@
        77  status-teva           pic xx.
        77  status-reva           pic xx.
        77  status-lineseq        pic xx.
-       77  wstampa               pic x(256).   
+       77  wstampa               pic x(256).    
+       77  status-lineseq-mail   pic xx.
+       77  path-lineseq-mail     pic x(256).
                                             
        77  FileDest              pic x(256).
        77  FileOrig              pic x(256).    
@@ -140,6 +135,7 @@
        PROCEDURE DIVISION USING batch-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
 
       ***---
        TORDFORN-ERR SECTION.
@@ -936,7 +932,7 @@
            move 0 to tentativi.
            move "check-qp" to NomeProgramma.
 
-           perform 10 times
+           perform 5 times
               add 1 to tentativi
               perform SEND-MAIL
               
@@ -948,7 +944,7 @@
                         ": "                          delimited size
                         "Chiamata InvioMail fallita!" delimited size
                         " STATUS -1"                  delimited size
-                        into como-riga
+                   into como-riga
                  end-string
               else
                  string r-inizio                       delimited size
@@ -956,27 +952,27 @@
                         tentativi                      delimited size
                         ": "                           delimited size
                         "Chiamata InvioMail riuscita!" delimited size
-                        into como-riga
+                   into como-riga
                  end-string
               end-if
               perform SETTA-RIGA-STAMPA
                             
               call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
+              open input lineseq-mail
+              read  lineseq-mail next
+              if line-riga-mail = "True"
                  set tutto-ok to true
-                 close lineseq1
+                 close lineseq-mail
                  exit perform
               end-if
-              close lineseq1
+              close lineseq-mail
 
               initialize como-riga
               string r-inizio              delimited size
                      "TENTATIVO N. "       delimited size
                      tentativi             delimited size
                      ": "                  delimited size
-                     line-riga of lineseq1 delimited size
+                     line-riga-mail        delimited size
                      into como-riga
               end-string
               perform SETTA-RIGA-STAMPA

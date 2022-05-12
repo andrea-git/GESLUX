@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 5 gennaio 2022 10:56:31.
+       DATE-WRITTEN.        giovedì 12 maggio 2022 16:10:33.
        REMARKS.
       *{TOTEM}END
 
@@ -71,6 +71,7 @@
            COPY "log-macrobatch.sl".
            COPY "usr-tel.sl".
            COPY "tsetinvio.sl".
+           COPY "lineseq-mail.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -119,6 +120,7 @@
            COPY "log-macrobatch.fd".
            COPY "usr-tel.fd".
            COPY "tsetinvio.fd".
+           COPY "lineseq-mail.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -649,6 +651,9 @@
            88 Valid-status-usr-tel VALUE IS "00" THRU "09". 
        77 STATUS-tsetinvio PIC  X(2).
            88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
+       77 path-lineseq-mail            PIC  X(256).
+       77 STATUS-lineseq-mail          PIC  X(2).
+           88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -713,6 +718,7 @@
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
        77 TMP-DataSet1-usr-tel-BUF     PIC X(1362).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
+       77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -938,6 +944,11 @@
        77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
           88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -2488,6 +2499,9 @@
       *{TOTEM}DECLARATIVE
        DECLARATIVES.
       * <TOTEM:EPT. INIT:evacli, INIT:evacli, BeforeDeclarative>
+
+       copy "mail-decl.cpy".
+
        MTORDINI-ERR SECTION.
            use after error procedure on MTORDINI.
            evaluate status-MTORDINI
@@ -2921,6 +2935,8 @@
            PERFORM OPEN-usr-tel
       *    tsetinvio OPEN MODE IS FALSE
       *    PERFORM OPEN-tsetinvio
+      *    lineseq-mail OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq-mail
       *    After Open
            .
 
@@ -3529,6 +3545,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq-mail.
+      * <TOTEM:EPT. INIT:evacli, FD:lineseq-mail, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT lineseq-mail
+           IF NOT Valid-STATUS-lineseq-mail
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:evacli, FD:lineseq-mail, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tparameva
@@ -3588,6 +3616,8 @@
            PERFORM CLOSE-usr-tel
       *    tsetinvio CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tsetinvio
+      *    lineseq-mail CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq-mail
       *    After Close
            .
 
@@ -3839,6 +3869,11 @@
 
        CLOSE-tsetinvio.
       * <TOTEM:EPT. INIT:evacli, FD:tsetinvio, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-lineseq-mail.
+      * <TOTEM:EPT. INIT:evacli, FD:lineseq-mail, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -11041,6 +11076,76 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-mail-INITSTART.
+           .
+
+       DataSet1-lineseq-mail-INITEND.
+           .
+
+       DataSet1-lineseq-mail-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
+      * <TOTEM:END>
+           WRITE line-riga-mail OF lineseq-mail.
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tpa-rec OF tparameva
            INITIALIZE mag-rec OF tmagaz
@@ -11086,6 +11191,7 @@
            INITIALIZE lm-riga OF log-macrobatch
            INITIALIZE usr-rec OF usr-tel
            INITIALIZE tsi-rec OF tsetinvio
+           INITIALIZE line-riga-mail OF lineseq-mail
            .
 
 
@@ -11568,6 +11674,14 @@
       * FD's Initialize Paragraph
        DataSet1-tsetinvio-INITREC.
            INITIALIZE tsi-rec OF tsetinvio
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-mail-INITREC.
+           INITIALIZE line-riga-mail OF lineseq-mail
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES

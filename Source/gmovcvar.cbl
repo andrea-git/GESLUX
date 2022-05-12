@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gmovcvar.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 25 gennaio 2016 17:24:27.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 12 maggio 2022 16:18:41.
        REMARKS.
       *{TOTEM}END
 
@@ -44,11 +44,6 @@
            COPY "ttipocli.sl".
            COPY "tmp-progmag-zoom.sl".
            COPY "tgrupgdo.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
-                .
-           COPY "lineseq.sl".
            COPY "tordforn.sl".
            COPY "rordforn.sl".
            COPY "reva.sl".
@@ -60,6 +55,7 @@
            COPY "tcontat.sl".
            COPY "movutf.sl".
            COPY "tnazioni.sl".
+           COPY "lineseq-mail.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -81,11 +77,6 @@
            COPY "ttipocli.fd".
            COPY "tmp-progmag-zoom.fd".
            COPY "tgrupgdo.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
-                .
-           COPY "lineseq.fd".
            COPY "tordforn.fd".
            COPY "rordforn.fd".
            COPY "reva.fd".
@@ -97,6 +88,7 @@
            COPY "tcontat.fd".
            COPY "movutf.fd".
            COPY "tnazioni.fd".
+           COPY "lineseq-mail.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -107,7 +99,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -151,11 +143,6 @@
        77 tipo-messaggio   PIC  9(3).
        77 STATUS-tgrupgdo  PIC  X(2).
            88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
-       77 wstampa          PIC  X(256).
-       77 STATUS-lineseq   PIC  X(2).
-           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
-       77 STATUS-lineseq1  PIC  X(2).
-           88 VALID-STATUS-lineseq1 VALUE IS "00" THRU "09". 
        77 path-tmp-eva     PIC  X(32).
        77 STATUS-tmp-eva   PIC  X(2).
            88 Valid-STATUS-tmp-eva VALUE IS "00" THRU "09". 
@@ -185,6 +172,9 @@
            88 Valid-STATUS-movutf VALUE IS "00" THRU "09". 
        77 STATUS-tnazioni  PIC  X(2).
            88 Valid-STATUS-tnazioni VALUE IS "00" THRU "09". 
+       77 path-lineseq-mail            PIC  X(32).
+       77 STATUS-lineseq-mail          PIC  X(2).
+           88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -229,7 +219,7 @@
       * Data.Label
               10 lab-mag-BUF PIC X(50).
       * Data.Label
-              10 lab-destino-BUF PIC X(40).
+              10 lab-destino-BUF PIC x(100).
       * Data.Label
               10 lab-vettore-BUF PIC X(40).
       * Page
@@ -269,7 +259,7 @@
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tmovmag-BUF     PIC X(256).
        77 TMP-DataSet1-rmovmag-BUF     PIC X(446).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
@@ -279,24 +269,23 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
-       77 TMP-DataSet1-destini-BUF     PIC X(445).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tmp-progmag-zoom-BUF     PIC X(195).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(900).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-reva-BUF     PIC X(260).
-       77 TMP-DataSet1-tvettori-BUF     PIC X(1787).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-teva-BUF     PIC X(199).
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
        77 TMP-DataSet1-btnotacr-BUF     PIC X(912).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
-       77 TMP-DataSet1-tcontat-BUF     PIC X(257).
+       77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
        77 TMP-DataSet1-movutf-BUF     PIC X(217).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
+       77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -387,16 +376,6 @@
        77 DataSet1-tgrupgdo-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tgrupgdo-KEY-Asc  VALUE "A".
           88 DataSet1-tgrupgdo-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq1-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq1-LOCK  VALUE "Y".
-       77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq1-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq1-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq-LOCK  VALUE "Y".
-       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq-KEY-Desc VALUE "D".
        77 DataSet1-tordforn-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tordforn-LOCK  VALUE "Y".
        77 DataSet1-tordforn-KEY-ORDER  PIC X VALUE "A".
@@ -452,6 +431,11 @@
        77 DataSet1-tnazioni-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tnazioni-KEY-Asc  VALUE "A".
           88 DataSet1-tnazioni-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
 
        77 tmovmag-key01-SPLITBUF  PIC X(17).
        77 tmovmag-k2-SPLITBUF  PIC X(20).
@@ -466,15 +450,18 @@
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 progmag-key01-SPLITBUF  PIC X(21).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 tordforn-tof-k-causale-SPLITBUF  PIC X(17).
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 rordforn-rof-k-articolo-SPLITBUF  PIC X(24).
        77 rordforn-rof-k-art-mag-SPLITBUF  PIC X(27).
        77 reva-reva-k-articolo-SPLITBUF  PIC X(26).
@@ -2444,6 +2431,9 @@
       *{TOTEM}DECLARATIVE
        DECLARATIVES.
       * <TOTEM:EPT. INIT:gmovcvar, INIT:gmovcvar, BeforeDeclarative>
+
+       copy "mail-decl.cpy".
+       
        PROGMAG-ERROR SECTION.
            use after error procedure on progmag.
            set RecLocked to false.
@@ -3028,10 +3018,6 @@
       *    tmp-progmag-zoom OPEN MODE IS FALSE
       *    PERFORM OPEN-tmp-progmag-zoom
            PERFORM OPEN-tgrupgdo
-      *    lineseq1 OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq1
-      *    lineseq OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq
            PERFORM OPEN-tordforn
            PERFORM OPEN-rordforn
            PERFORM OPEN-reva
@@ -3046,6 +3032,7 @@
       *    movutf OPEN MODE IS FALSE
       *    PERFORM OPEN-movutf
            PERFORM OPEN-tnazioni
+           PERFORM OPEN-lineseq-mail
       *    After Open
            .
 
@@ -3274,30 +3261,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-lineseq1.
-      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq1, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  OUTPUT lineseq1
-           IF NOT VALID-STATUS-lineseq1
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq1, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-lineseq.
-      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  OUTPUT lineseq
-           IF NOT Valid-STATUS-lineseq
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-tordforn.
       * <TOTEM:EPT. INIT:gmovcvar, FD:tordforn, BeforeOpen>
       * <TOTEM:END>
@@ -3486,6 +3449,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq-mail.
+      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq-mail, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq-mail
+           IF NOT Valid-STATUS-lineseq-mail
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq-mail, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tmovmag
@@ -3506,10 +3481,6 @@
       *    tmp-progmag-zoom CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tmp-progmag-zoom
            PERFORM CLOSE-tgrupgdo
-      *    lineseq1 CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq1
-      *    lineseq CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq
            PERFORM CLOSE-tordforn
            PERFORM CLOSE-rordforn
            PERFORM CLOSE-reva
@@ -3524,6 +3495,7 @@
       *    movutf CLOSE MODE IS FALSE
       *    PERFORM CLOSE-movutf
            PERFORM CLOSE-tnazioni
+           PERFORM CLOSE-lineseq-mail
       *    After Close
            .
 
@@ -3628,16 +3600,6 @@
            CLOSE tgrupgdo
            .
 
-       CLOSE-lineseq1.
-      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq1, BeforeClose>
-      * <TOTEM:END>
-           .
-
-       CLOSE-lineseq.
-      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq, BeforeClose>
-      * <TOTEM:END>
-           .
-
        CLOSE-tordforn.
       * <TOTEM:EPT. INIT:gmovcvar, FD:tordforn, BeforeClose>
       * <TOTEM:END>
@@ -3699,6 +3661,12 @@
       * <TOTEM:EPT. INIT:gmovcvar, FD:tnazioni, BeforeClose>
       * <TOTEM:END>
            CLOSE tnazioni
+           .
+
+       CLOSE-lineseq-mail.
+      * <TOTEM:EPT. INIT:gmovcvar, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
+           CLOSE lineseq-mail
            .
 
        tmovmag-key01-MERGE-SPLITBUF.
@@ -4971,6 +4939,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            IF DataSet1-articoli-KEY-Asc
               MOVE Low-Value TO art-chiave OF articoli
@@ -5033,6 +5007,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5061,6 +5036,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5089,6 +5065,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -5760,9 +5737,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -6446,6 +6423,14 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
        DataSet1-tgrupgdo-INITSTART.
            IF DataSet1-tgrupgdo-KEY-Asc
               MOVE Low-Value TO gdo-chiave OF tgrupgdo
@@ -6507,6 +6492,7 @@
               READ tgrupgdo WITH NO LOCK 
               KEY gdo-chiave OF tgrupgdo
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -6534,6 +6520,7 @@
                  READ tgrupgdo PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -6561,6 +6548,7 @@
                  READ tgrupgdo NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -6600,146 +6588,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq1-INITSTART.
-           .
-
-       DataSet1-lineseq1-INITEND.
-           .
-
-       DataSet1-lineseq1-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadRecord>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadNext>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeWrite>
-      * <TOTEM:END>
-           WRITE line-riga OF lineseq1.
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq1-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-INITSTART.
-           .
-
-       DataSet1-lineseq-INITEND.
-           .
-
-       DataSet1-lineseq-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
-      * <TOTEM:END>
-           WRITE line-riga OF lineseq.
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
-      * <TOTEM:END>
-           .
-
        tordforn-tof-k-causale-MERGE-SPLITBUF.
            INITIALIZE tordforn-tof-k-causale-SPLITBUF
            MOVE tof-causale(1:4) TO tordforn-tof-k-causale-SPLITBUF(1:4)
@@ -6767,6 +6615,14 @@
            tordforn-tof-k-data-SPLITBUF(1:8)
            MOVE tof-chiave OF tordforn(1:12) TO 
            tordforn-tof-k-data-SPLITBUF(9:12)
+           .
+
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
            .
 
        DataSet1-tordforn-INITSTART.
@@ -6834,6 +6690,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -6865,6 +6722,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -6896,6 +6754,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -8691,6 +8550,93 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-mail-INITSTART.
+           .
+
+       DataSet1-lineseq-mail-INITEND.
+           .
+
+       DataSet1-lineseq-mail-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-mail-LOCK
+              READ lineseq-mail WITH LOCK 
+           ELSE
+              READ lineseq-mail WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT 
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-mail-KEY-Asc
+              IF DataSet1-lineseq-mail-LOCK
+                 READ lineseq-mail NEXT WITH LOCK
+              ELSE
+                 READ lineseq-mail NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tmo-rec OF tmovmag
            INITIALIZE rmo-rec OF rmovmag
@@ -8709,8 +8655,6 @@
            INITIALIZE tcl-rec OF ttipocli
            INITIALIZE tmp-prg-z-rec OF tmp-progmag-zoom
            INITIALIZE gdo-rec OF tgrupgdo
-           INITIALIZE line-riga OF lineseq1
-           INITIALIZE line-riga OF lineseq
            INITIALIZE tof-rec OF tordforn
            INITIALIZE rof-rec OF rordforn
            INITIALIZE reva-rec OF reva
@@ -8722,6 +8666,7 @@
            INITIALIZE con-rec OF tcontat
            INITIALIZE mov-rec OF movutf
            INITIALIZE naz-rec OF tnazioni
+           INITIALIZE line-riga-mail OF lineseq-mail
            .
 
 
@@ -8903,22 +8848,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-lineseq1-INITREC.
-           INITIALIZE line-riga OF lineseq1
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-lineseq-INITREC.
-           INITIALIZE line-riga OF lineseq
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-tordforn-INITREC.
            INITIALIZE tof-rec OF tordforn
                REPLACING NUMERIC       DATA BY ZEROS
@@ -9001,6 +8930,14 @@
       * FD's Initialize Paragraph
        DataSet1-tnazioni-INITREC.
            INITIALIZE naz-rec OF tnazioni
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-mail-INITREC.
+           INITIALIZE line-riga-mail OF lineseq-mail
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -11501,15 +11438,15 @@ LUBEXX*****             hidden-data in hid-old-qta.
               end-string
            end-if.             
            move "gmovcvar" to NomeProgramma.
-           perform 10 times
+           perform 5 times
               perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True" 
-                 close lineseq1
+              open input lineseq-mail
+              read lineseq-mail next
+              if line-riga-mail = "True" 
+                 close lineseq-mail
                  exit perform 
               end-if
-              close lineseq1
+              close lineseq-mail
            end-perform.
            initialize wk-path copy-status.
            accept  wk-date from century-date.
@@ -11525,9 +11462,8 @@ LUBEXX*****             hidden-data in hid-old-qta.
                    ".ini"      delimited size
                    into wk-path
            end-string.
-           call "C$COPY" using wstampa, wk-path, "S"
+           call "C$COPY" using path-lineseq-mail, wk-path, "S"
                         giving copy-status.
-           delete file lineseq.
 
            perform 3 times
               set SystemErrorOccurred to true

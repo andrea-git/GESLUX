@@ -36,10 +36,7 @@
            copy "tvettori.sl".
            copy "tsetinvio.sl".
            copy "usr-tel.sl".
-           COPY "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -50,10 +47,7 @@
            copy "tvettori.fd". 
            copy "tsetinvio.fd".
            copy "usr-tel.fd".
-           COPY "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "mail.def".
@@ -70,13 +64,12 @@
        77  status-tordini      pic xx.
        77  status-stato-invio  pic xx.
        77  status-tvettori     pic xx.
-       77  status-tsetinvio    pic xx.
-       77  status-lineseq      pic xx.
-       77  status-lineseq1     pic xx.
+       77  status-tsetinvio    pic xx.  
        77  status-usr-tel      pic xx.
        77  status-clienti      pic xx.
-       
-       77  wstampa             pic x(256).
+                                        
+       77  status-lineseq-mail pic xx.
+       77  path-lineseq-mail   pic x(256).
        77  tentativi           pic 9.
        77  bolla-x             pic x(8).
        77  form1-handle        handle of window.
@@ -98,6 +91,8 @@
        PROCEDURE DIVISION USING isol-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
+
       ***---
        TORDINI-ERR SECTION.
            use after error procedure on tordini.
@@ -389,20 +384,22 @@
               perform 5 times
                  add 1 to tentativi
                  perform SEND-MAIL
-      *        call "C$DELETE" using FileDest
-                 open input lineseq1
-                 read  lineseq1 next
-                 if line-riga of lineseq1 = "True"
+                 if status-lineseq-mail not = "00"
+                    exit perform
+                 end-if   
+                 open input lineseq-mail
+                 read lineseq-mail next
+                 if line-riga-mail = "True"
                     set tutto-ok to true
-                    close lineseq1
+                    close lineseq-mail
                     exit perform
                  end-if
-                 close lineseq1
+                 close lineseq-mail
               end-perform                         
 
               if errori
                  display message box "Invio non riuscito."
-                              x"0d0A"line-riga of lineseq1
+                              x"0d0A" line-riga-mail
                           title titolo
               else
                  display message box "Invio riuscito."
