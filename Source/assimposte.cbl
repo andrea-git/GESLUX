@@ -189,7 +189,6 @@
                                
            move "assimposte" to NomeProgramma.
 
-           set errori to true.
            move 5 to tentativi-mail.
            perform CICLO-SEND-MAIL.
 

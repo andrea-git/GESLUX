@@ -41,8 +41,8 @@
        77  status-articoli      pic xx.
        77  status-tmp-sost-art  pic xx.
        77  status-ttipocli      pic xx.
-       77  STATUS-lineseq-mail  PIC  X(2).
-       77  path-lineseq-mail    PIC  X(2).
+       77  STATUS-lineseq-mail  PIC xx.
+       77  path-lineseq-mail    PIC x(256).
 
        78  titolo    
            value "Invio Mail sostituzione articoli negli ordini master".
@@ -261,7 +261,6 @@
            perform PREPARA-FROM.
            move space   to LinkAttach.
 
-           set errori to true.
            move 5 to tentativi-mail.
            move "mail-sost-art" to NomeProgramma.
            perform CICLO-SEND-MAIL.

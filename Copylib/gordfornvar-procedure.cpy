@@ -1448,16 +1448,8 @@ OMAGGI*                SavePrezzo * ( rof-qta - rof-qta-omaggi )
               end-string
            end-if.             
            move "gordfornvar" to NomeProgramma.
-           perform 10 times
-              perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-           end-perform.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
            initialize wk-path copy-status.
            accept  wk-date from century-date.
            accept  wk-hour from time.
@@ -1472,9 +1464,9 @@ OMAGGI*                SavePrezzo * ( rof-qta - rof-qta-omaggi )
                    ".ini"      delimited size
                    into wk-path
            end-string.
-           call "C$COPY" using wstampa, wk-path, "S"
+           call "C$COPY" using path-lineseq-mail, wk-path, "S"
                         giving copy-status.
-           delete file lineseq.
+           delete file lineseq-mail.
 
            perform 3 times
               set SystemErrorOccurred to true
@@ -1486,6 +1478,9 @@ OMAGGI*                SavePrezzo * ( rof-qta - rof-qta-omaggi )
            end-perform.
            perform RECUPERA-RECORD.
            rollback transaction.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        LEGGI-ANNO.

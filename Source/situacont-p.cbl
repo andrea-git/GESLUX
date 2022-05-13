@@ -18,7 +18,8 @@
            copy "TBLDO.sl".
            copy "TBLVA.sl".
            copy "G2.sl".
-           copy "tsetinvio.sl".
+           copy "tsetinvio.sl".            
+           copy "lineseq-mail.sl".       
 
        SELECT iniFtp
            ASSIGN       TO  iniFtpPath
@@ -31,18 +32,19 @@
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-logFile.
-
+                     
        SELECT lineseq
            ASSIGN       TO  wstampa
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-lineseq.
-           
+
        SELECT lineseq1
            ASSIGN       TO  wstampa
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-lineseq1.
+
 
       *****************************************************************
        DATA DIVISION.
@@ -60,19 +62,20 @@
            copy "TBLVA.fd".
            copy "G2.fd".
            copy "tsetinvio.fd".    
+           copy "lineseq-mail.fd".
 
 
        FD  logFile.
-       01 logFile-riga       PIC  x(1000).
+       01 logFile-riga     PIC x(1000).
 
        FD  iniFtp.
-       01 iniFtp-riga        PIC  x(1000).
+       01 iniFtp-riga      PIC x(1000).
 
        FD  lineseq.
-       01 line-riga        PIC  x(1500).
+       01 line-riga        PIC x(1500).
 
        FD  lineseq1.
-       01 line-riga        PIC  x(1500).
+       01 line-riga        PIC x(1500).
 
        WORKING-STORAGE SECTION.
            copy "common-excel.def".
@@ -102,6 +105,8 @@
        77  status-lineseq1  pic xx.   
        77  status-iniFtp    pic xx.
        77  status-logFile   pic xx.
+       77  status-lineseq-mail pic xx.
+       77  path-lineseq-mail   pic x(256).
        77  wstampa          pic x(256). 
        77  logFtp           pic x(256) value spaces. 
        77  iniFtpPath       pic x(256). 
@@ -133,22 +138,7 @@
        77  como-riga        pic x(200). 
        77  ini-path-backup  pic x(200).
 
-       01  r-inizio.
-         05 filler              pic x(2)  value " [".
-         05 r-data.
-            10 r-gg             pic xx.
-            10 filler           pic x     value "/".
-            10 r-mm             pic xx.
-            10 filler           pic x     value "/".
-            10 r-aa             pic xx.
-         05 filler              pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh             pic xx.
-            10 filler           pic x     value X"22".
-            10 r-min            pic xx.
-            10 filler           pic x     value "'".
-            10 r-sec            pic xx.
-         05 filler              pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
                    
        77  ftpPutCommand         pic x(256).
        77  pathWinSCP            pic x(256).
@@ -200,6 +190,7 @@
       ******************************************************************
        PROCEDURE DIVISION USING sc-linkage.
        DECLARATIVES.    
+       copy "mail-decl.cpy".
 
       ***---
        LINESEQ-ERR SECTION.
@@ -1239,31 +1230,24 @@
               perform RIGA-LOG
                                
               move "situacont-p" to NomeProgramma
-              set trovato to false
-              perform 10 times
-                 perform SEND-MAIL
-                 open input lineseq1
-                 read lineseq1 next
-
-                 initialize como-riga
-                 perform SETTA-INIZIO-RIGA
-                 string r-inizio              delimited size
-                        "Status invio mail: " delimited size
-                        line-riga of lineseq1 delimited size
-                   into como-riga
-                 end-string
-                 perform RIGA-LOG
-
-                 if line-riga of lineseq1 = "True"      
-                    set trovato to true
-                    close lineseq1
-                    exit perform 
-                 end-if
-                 close lineseq1
-              end-perform
-              call "C$DELETE" using wstampa, "S"
+              move 10 to tentativi-mail
+              perform CICLO-SEND-MAIL
+              call "C$DELETE" using path-lineseq-mail, "S"
 
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio              delimited size
+                  "Status invio mail: " delimited size
+                  StatusInvioMail       delimited size
+                  " - "                 delimited size
+                  line-riga-mail        delimited size
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
 
       ***---
        RIGA-LOG.

@@ -58,22 +58,7 @@
        77  como-ora  pic 9(8).
        77  como-data pic 9(8).
 
-       01  r-inizio.
-         05 filler                 pic x(2)  value " [".
-         05 r-data.
-            10 r-gg                pic xx.
-            10 filler              pic x     value "/".
-            10 r-mm                pic xx.
-            10 filler              pic x     value "/".
-            10 r-aa                pic xx.
-         05 filler                 pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh                pic xx.
-            10 filler              pic x     value X"22".
-            10 r-min               pic xx.
-            10 filler              pic x     value "'".
-            10 r-sec               pic xx.
-         05 filler                 pic x(12)  value "] (CALFIDO) ".
+       01  r-inizio              pic x(25).
 
       * FILE STATUS AND VARIABLES
        77  status-cli         pic xx.

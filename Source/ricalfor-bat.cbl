@@ -37,6 +37,7 @@
            copy "catart.sl".
            copy "tmp-ordfor.sl".
            copy "param.sl".
+           copy "lineseq-mail.sl".
 
        select lineseq1
            assign       to  wstampa
@@ -72,6 +73,7 @@
            copy "catart.fd".
            copy "tmp-ordfor.fd".
            copy "param.fd".
+           copy "lineseq-mail.fd".
 
        FD  lineseq1.
        01 line-riga        PIC  x(900).   
@@ -116,7 +118,9 @@
        77  path-tmp-forn         pic x(256).
        77  path-tmp-ordfor       pic x(256).
        77  wstampa               pic x(256).
-       77  status-qta-pordini    pic x(2).
+       77  status-qta-pordini    pic x(2).   
+       77  status-lineseq-mail   pic xx.
+       77  path-lineseq-mail     pic x(256).
 
       * VARIABILI
        77  idx                   pic 9(3).
@@ -128,22 +132,7 @@
        77  FileDest              pic x(256).
        77  FileOrig              pic x(256).
 
-       01  r-inizio.
-         05 filler               pic x(2)  value " [".
-         05 r-data.
-            10 r-gg              pic xx.
-            10 filler            pic x     value "/".
-            10 r-mm              pic xx.
-            10 filler            pic x     value "/".
-            10 r-aa              pic xx.
-         05 filler               pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh              pic xx.
-            10 filler            pic x     value X"22".
-            10 r-min             pic xx.
-            10 filler            pic x     value "'".
-            10 r-sec             pic xx.
-         05 filler               pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
                                  
        77  start-secondi         pic 9(18).
        77  end-secondi           pic 9(18).
@@ -190,6 +179,7 @@
        PROCEDURE DIVISION USING batch-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
        
       ***---
        ORDFOR-ERR SECTION.
@@ -913,59 +903,14 @@
            accept FileDest    from environment "RICALFOR_LOG_INVIO".
            call "C$COPY" using FileOrig, FileDest, "S".
            move FileDest to LinkAttach.
-
-           set errori to true.
-           move 0 to tentativi.
+                               
            move "ricalfor-bat" to NomeProgramma.
-           perform 10 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              initialize como-riga
-              if StatusInvioMail = -1
-                 string r-inizio                      delimited size
-                        "TENTATIVO N. "               delimited size
-                        tentativi                     delimited size
-                        ": "                          delimited size
-                        "Chiamata InvioMail fallita!" delimited size
-                        " STATUS -1"                  delimited size
-                        into como-riga
-                 end-string
-              else
-                 string r-inizio                       delimited size
-                        "TENTATIVO N. "                delimited size
-                        tentativi                      delimited size
-                        ": "                           delimited size
-                        "Chiamata InvioMail riuscita!" delimited size
-                        into como-riga
-                 end-string
-              end-if
-              perform SETTA-RIGA-STAMPA
-                            
-              call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
 
-              initialize como-riga
-              string r-inizio              delimited size
-                     "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     ": "                  delimited size
-                     line-riga of lineseq1 delimited size
-                     into como-riga
-              end-string
-              perform SETTA-RIGA-STAMPA
-
-           end-perform
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
                
            initialize como-riga.
-           if tutto-ok
+           if mail-ok
               string r-inizio               delimited size
                      "INVIO MAIL RIUSCITO!" delimited size
                      into como-riga
@@ -978,7 +923,22 @@
            end-if.
            perform SETTA-RIGA-STAMPA.
 
-           delete file lineseq.
+           delete file lineseq-mail.     
+
+      ***---
+       AFTER-SEND-MAIL.
+           call "C$DELETE" using FileDest.
+           initialize como-riga.
+           string r-inizio          delimited size
+                  "TENTATIVO N. "   delimited size
+                  tentativo-mail    delimited size
+                  ": STATUS "       delimited size
+                  StatusInvioMail   delimited size
+                  " - "             delimited size
+                  line-riga-mail    delimited size
+             into como-riga
+           end-string.
+           perform SETTA-RIGA-STAMPA.
 
       ***---
        SETTA-RIGA-STAMPA.
@@ -1007,11 +967,11 @@
               perform SETTA-INIZIO-RIGA
               initialize como-riga
               string r-inizio       delimited size
-                     "ERRORE"       delimited size
+                     "ERRORE"       delimited size   
                      status-lineseq delimited size
                      " su: "        delimited size
                      wstampa        delimited size
-                    into como-riga
+                into como-riga
               end-string
               perform RIGA-LOG
            else   

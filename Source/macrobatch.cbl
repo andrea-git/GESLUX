@@ -26,35 +26,28 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            copy "log-macrobatch.sl".  
-           copy "tsetinvio.sl".
-           copy "lineseq.sl".   
+           copy "tsetinvio.sl". 
            copy "macrobatch.sl".
            copy "lockfile.sl".
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
        FILE SECTION. 
            copy "log-macrobatch.fd".
            copy "tsetinvio.fd".
-           copy "lineseq.fd".   
+           copy "lineseq-mail.fd".   
            copy "macrobatch.fd".
            copy "lockfile.fd".  
-
-       FD  lineseq1.
-       01 line-riga        PIC  x(32000).
 
        WORKING-STORAGE SECTION.  
        77  status-log-macrobatch   pic xx.
        77  status-tsetinvio        pic xx.     
-       77  status-lineseq          pic xx.
+       77  status-lineseq-mail     pic xx.
        77  status-lineseq1         pic xx.
        77  status-macrobatch       pic xx.
        77  status-lockfile         pic xx.
+       77  path-lineseq-mail       pic x(256).
 
        77  wstampa                 pic x(256).
        77  path-log-macrobatch     pic x(256) value spaces.
@@ -64,8 +57,6 @@
        77  como-data               pic 9(8).
        77  como-ora                pic 9(8).  
 
-       77  tentativi               pic 99.
-
        copy "log-macrobatch.def".      
        copy "mail.def".
        copy "common-linkage.def".
@@ -74,6 +65,7 @@
                           
        PROCEDURE DIVISION.
        DECLARATIVES.
+       copy "mail-decl.cpy".
 
       ***---
        LOCKFILE-ERR SECTION.
@@ -300,38 +292,15 @@
                    como-ora(3:2)        delimited size
               into LinkBody
            end-string.
-
-           set errori to true.
-           move 0 to tentativi.
-           move "macrobatch" to NomeProgramma.
+                                     
            accept debugger-test from environment "DEBUGGER_TEST".
            if debugger-test not = "S"
-              perform 5 times
-                 add 1 to tentativi    
-           
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output                    delimited size
-                        "INVIO MAIL. TENTATIVO N. " delimited size
-                        tentativi                   delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-           
-                 perform SEND-MAIL
-                 open input lineseq1
-                 read  lineseq1 next
-                 if line-riga of lineseq1 = "True"
-                    set tutto-ok to true
-                    close lineseq1
-                    exit perform
-                 end-if
-                 close lineseq1
-              end-perform 
+              move 5 to tentativi-mail
+              move "macrobatch" to NomeProgramma
+              perform CICLO-SEND-MAIL
            end-if.
       
-           if errori             
+           if mail-ko
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
               initialize lm-riga
@@ -341,7 +310,19 @@
                 into lm-riga
               end-string
               write lm-riga
-           end-if.        
+           end-if.
+        
+      ***---
+       AFTER-SEND-MAIL.  
+           call   "set-ini-log" using r-output.
+           cancel "set-ini-log".
+           initialize lm-riga.
+           string r-output                    delimited size
+                  "INVIO MAIL. TENTATIVO N. " delimited size
+                  tentativo-mail              delimited size
+             into lm-riga
+           end-string.
+           write lm-riga.
 
       ***---
        PREPARA-CALL.

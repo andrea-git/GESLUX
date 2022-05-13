@@ -4712,7 +4712,6 @@ BEGIN-TEXT
            perform CONTROLLA-FILE-INVIATO.
 
            if tutto-ok
-              set errori to true
               move 5 to tentativi-mail
               move "invioordforn" to NomeProgramma
               perform CICLO-SEND-MAIL

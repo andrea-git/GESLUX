@@ -71,8 +71,8 @@
        77  whh                   pic 99.
        77  wmm                   pic 9(5).
        77  wss                   pic 99.   
-
-       copy "setta-inizio-riga.def".
+                                   
+       01  r-inizio              pic x(25).
 
 
        01  filler           pic 9 value 0.

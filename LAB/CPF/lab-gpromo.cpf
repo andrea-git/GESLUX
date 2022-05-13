@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E64D125153-258-2103425581
+PROGRAM_UNIQUE_CODE=TOTEM-7E65D14621-468-19022159
 
 {{@DESCRIPTION:
 
@@ -2666,25 +2667,6 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM253_WK]
-m_strName=STATUS-lineseq1
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM253_WK
-
-@}}
-[FDITEM254_WK]
-m_strName=VALID-STATUS-lineseq1
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM254_WK
-
-@}}
-[FDITEM255_WK]
 m_strName=chk-mail-buf
 m_strRawPic=9
 m_strPic=9
@@ -2692,11 +2674,30 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM253_WK
+
+@}}
+[FDITEM254_WK]
+m_strName=STATUS-tpiombo
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM254_WK
+
+@}}
+[FDITEM255_WK]
+m_strName=Valid-STATUS-tpiombo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM255_WK
 
 @}}
 [FDITEM256_WK]
-m_strName=STATUS-tpiombo
+m_strName=STATUS-tscorte
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2706,7 +2707,7 @@ m_bFixed=1
 
 @}}
 [FDITEM257_WK]
-m_strName=Valid-STATUS-tpiombo
+m_strName=Valid-STATUS-tscorte
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2715,7 +2716,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM258_WK]
-m_strName=STATUS-tscorte
+m_strName=STATUS-tsetinvio
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2725,7 +2726,7 @@ m_bFixed=1
 
 @}}
 [FDITEM259_WK]
-m_strName=Valid-STATUS-tscorte
+m_strName=Valid-STATUS-tsetinvio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2734,7 +2735,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM260_WK]
-m_strName=STATUS-tsetinvio
+m_strName=STATUS-tmarche
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2744,7 +2745,7 @@ m_bFixed=1
 
 @}}
 [FDITEM261_WK]
-m_strName=Valid-STATUS-tsetinvio
+m_strName=Valid-STATUS-tmarche
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2753,25 +2754,6 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM262_WK]
-m_strName=STATUS-tmarche
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM262_WK
-
-@}}
-[FDITEM263_WK]
-m_strName=Valid-STATUS-tmarche
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM263_WK
-
-@}}
-[FDITEM264_WK]
 m_strName=copia-base-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -2780,19 +2762,19 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM264_WK
+{{@DataItem_m_strDescriptionFDITEM262_WK
 
 @}}
-[FDITEM265_WK]
+[FDITEM263_WK]
 m_strName=mod-copia
 m_strDefaultValue=5000
 m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM265_WK
+{{@DataItem_m_strDescriptionFDITEM263_WK
 
 @}}
-[FDITEM266_WK]
+[FDITEM264_WK]
 m_strName=e-copia
 m_strRawPic=9
 m_strPic=9
@@ -2800,7 +2782,36 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM264_WK
+
+@}}
+[FDITEM265_WK]
+m_strName=path-lineseq-mail
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM265_WK
+
+@}}
+[FDITEM266_WK]
+m_strName=STATUS-lineseq-mail
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM266_WK
+
+@}}
+[FDITEM267_WK]
+m_strName=Valid-STATUS-lineseq-mail
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM267_WK
 
 @}}
 
@@ -6073,6 +6084,8 @@ BEGIN-DATA
    ACTOBJ            = lab-gpromo
    ENTRYPOINT        = BeforeDeclarative
 BEGIN-TEXT
+       copy "mail-decl.cpy".
+
        TPROMO-ERROR SECTION.
            use after error procedure on tpromo.
            set RecLocked to false.
@@ -7346,26 +7359,18 @@ BEGIN-TEXT
            move "PROSPETTO PROMO URGENTE" to LinkSubject.
            accept LinkAddress from environment "PROMO_ADDRESSES".
 
-           set trovato to false.
-           move "lab-gpromo" to NomeProgramma.
-           perform 10 times
-              perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set trovato to true
-                 close lineseq1
-                 exit perform 
-              end-if
-              close lineseq1
-           end-perform.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-           if not trovato
+           if mail-ko
               display message "Invio mail impossibile!"
-                       x"0d0a" line-riga of lineseq1
+                       x"0d0a" line-riga-mail
                         title tit-err
                          icon 3
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -9686,17 +9691,17 @@ REL_SYM_INFO_Y10=2095829409
 REL_SYM_INFO_X11=2301
 REL_SYM_INFO_Y11=1243467550
 REL_SYM_INFO_X12=2301
-REL_SYM_INFO_Y12=1600937799
+REL_SYM_INFO_Y12=1824344291
 REL_SYM_INFO_X13=2301
-REL_SYM_INFO_Y13=1824344291
+REL_SYM_INFO_Y13=438341930
 REL_SYM_INFO_X14=2301
-REL_SYM_INFO_Y14=438341930
+REL_SYM_INFO_Y14=1697298815
 REL_SYM_INFO_X15=2301
-REL_SYM_INFO_Y15=1697298815
+REL_SYM_INFO_Y15=2129731491
 REL_SYM_INFO_X16=2301
-REL_SYM_INFO_Y16=2129731491
+REL_SYM_INFO_Y16=1931756569
 REL_SYM_INFO_X17=2301
-REL_SYM_INFO_Y17=1931756569
+REL_SYM_INFO_Y17=2066776808
 
 [DRAW_BASESYMBOL_2301_1088003960]
 OBJ_NAME=2301
@@ -10274,54 +10279,6 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_1600937799]
-OBJ_NAME=2301
-OBJ_ID=1600937799
-KIND=1
-{{@LABEL_2301_1600937799
-lineseq1
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=137
-TOP=934
-RIGHT=537
-BOTTOM=1156
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
 [DRAW_BASESYMBOL_2301_1824344291]
 OBJ_NAME=2301
 OBJ_ID=1824344291
@@ -10529,6 +10486,54 @@ LEFT=616
 TOP=1082
 RIGHT=1016
 BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2066776808]
+OBJ_NAME=2301
+OBJ_ID=2066776808
+KIND=1
+{{@LABEL_2301_2066776808
+lineseq-mail
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1216
+TOP=1058
+RIGHT=1616
+BOTTOM=1280
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -10949,37 +10954,6 @@ DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=
 
-[DMD_FILE_0_1600937799]
-OBJ_NAME=0
-OBJ_ID=1600937799
-REL_M_OBJ_ID=0
-ENTITY=lineseq1
-LINK=0
-LINK_NAME=
-DSN_SIZE=32
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=1
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1600937799
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=0
-DSN_INFO_CLOSE=0
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=1
-DSN_INFO_LOGICAL_FDNAME=lineseq1
-DSN_INFO_ORIGINAL_FDNAME=lineseq
-DSN_INFO_REPLACEBY_FILESTATUS=STATUS-lineseq1
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
 [DMD_FILE_0_1824344291]
 OBJ_NAME=0
 OBJ_ID=1824344291
@@ -11126,6 +11100,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2066776808]
+OBJ_NAME=0
+OBJ_ID=2066776808
+REL_M_OBJ_ID=0
+ENTITY=lineseq-mail
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=1
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2066776808
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

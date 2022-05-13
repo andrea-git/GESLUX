@@ -9,21 +9,14 @@
            copy "paramget.sl".
            copy "tmp-mod-rordini.sl".
            copy "lineseq.sl".
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
-
-
+           copy "lineseq-mail.sl".
 
        FILE SECTION.           
            copy "tsetinvio.fd".
            copy "paramget.fd".
            copy "tmp-mod-rordini.fd".
+           copy "lineseq-mail.fd".
        FD  lineseq.
-       01 line-riga        PIC  x(32000).
-       FD  lineseq1.
        01 line-riga        PIC  x(32000).
 
        WORKING-STORAGE SECTION.
@@ -33,6 +26,8 @@
        77  status-tsetinvio        pic xx.
        77  status-tmp-mod-rordini  pic xx.
        77  status-lineseq          pic xx.
+       77  status-lineseq-mail     pic xx.
+       77  path-lineseq-mail       pic x(256).
       
       * OTHER DATA             
        77  como-data                pic 9(8)   value zero.
@@ -53,7 +48,6 @@
 
       *
        77  mail           pic x(200).
-       77  tentativi             pic 99.
        01  riga-art.
            05 filler   pic x(10) value "articolo: ".
            05 ra-art   pic z(6).
@@ -70,6 +64,7 @@
        PROCEDURE DIVISION USING mail-mod-bozze-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
        PARAMget-ERR SECTION.
            use after error procedure on PARAMget.
            set RecLocked to false.
@@ -330,27 +325,19 @@
       ***---
        INVIO-MAIL.
            set errori to true.
-           move 0 to tentativi.
+           move 5 to tentativi-mail.
            move "GET-mail-mod-bozze" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-           end-perform.
+           perform CICLO-SEND-MAIL.
 
-           if errori
+           if mail-ko
               display message box 
                     "Errore durante l'invio della mail riepologativa"
                        title titolo
                        icon 2
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        PREPARA-SUBJECT-CANCELLA.

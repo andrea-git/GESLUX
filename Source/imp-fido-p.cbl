@@ -192,22 +192,7 @@
 
        01  filler                pic 9.
            88 prima-volta        value 1, false 0.   
-       01  r-inizio.
-         05 filler              pic x(2)  value " [".
-         05 r-data-i.
-            10 r-gg             pic xx.
-            10 filler           pic x     value "/".
-            10 r-mm             pic xx.
-            10 filler           pic x     value "/".
-            10 r-aa             pic xx.
-         05 filler              pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh             pic xx.
-            10 filler           pic x     value X"22".
-            10 r-min            pic xx.
-            10 filler           pic x     value "'".
-            10 r-sec            pic xx.
-         05 filler           pic x(2)     value "] ".
+       01  r-inizio              pic x(25).
                                                         
        LINKAGE SECTION.
        copy "link-batch.def".

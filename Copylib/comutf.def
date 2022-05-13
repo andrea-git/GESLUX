@@ -5,7 +5,8 @@
            copy "fonts.def".
            copy "selprint.lks".
            copy "link-settaPDF.def".
-           copy "setta-inizio-riga.def".
+
+       01  r-inizio                     pic x(25).
                                
        77  WFONT-STATUS          pic s9(5) value ZERO.
 
@@ -19,12 +20,12 @@
        77  status-destinif       pic xx.
        77  status-tcaumag        pic xx.
        77  status-tparamge       pic xx.
-       77  status-lineseq        pic xx.
-       77  status-lineseq1       pic xx.
+       77  status-lineseq-mail   pic xx.
        77  status-tordini        pic xx.
        77  status-rordini        pic xx.
        77  status-destini        pic xx.
        77  status-logfile        pic xx.
+       77  path-lineseq-mail     pic xx.
        77  logfile-path          pic x(200).
 
        77  como-riga             pic x(200).

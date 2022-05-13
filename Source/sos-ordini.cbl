@@ -52,8 +52,8 @@
        WORKING-STORAGE SECTION.
       * COPY
        copy "link-geslock.def".
-       copy "trova-parametro.def".      
-           copy "setta-inizio-riga.def".
+       copy "trova-parametro.def".     
+       01  r-inizio              pic x(25).
 
        77  status-mrordini                pic xx.
        77  status-tpromo                  pic xx.

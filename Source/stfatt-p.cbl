@@ -24,10 +24,7 @@
            copy "CLI.sl".  
            copy "tsetinvio.sl".
            copy "ttipocli.sl".
-           copy "lineseq.sl". 
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.   
+           copy "lineseq-mail.sl". 
 
        SELECT logfile
            ASSIGN       TO  path-logfile
@@ -61,10 +58,8 @@
            copy "CLI.fd".     
            copy "tsetinvio.fd".
            copy "ttipocli.fd".
-           copy "lineseq.fd".
-           COPY "lineseq.fd"   
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           copy "lineseq-mail.fd".
+
        FD  logfile.
        01 log-riga        PIC  x(900). 
 
@@ -81,26 +76,9 @@
            copy "link-settaPDF.def".
            copy "mail.def".   
 
-       01  r-inizio.
-         05 filler              pic x(2)  value " [".
-         05 r-data-i.
-            10 r-gg             pic xx.
-            10 filler           pic x     value "/".
-            10 r-mm             pic xx.
-            10 filler           pic x     value "/".
-            10 r-aa             pic xx.
-         05 filler              pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh             pic xx.
-            10 filler           pic x     value X"22".
-            10 r-min            pic xx.
-            10 filler           pic x     value "'".
-            10 r-sec            pic xx.
-         05 filler           pic x(2)     value "] ".
+       01  r-inizio              pic x(25).
 
        77  como-numero      pic x(8).
-       77  tentativi        pic 9.
-       77  wstampa          pic x(256).  
        77  path-csvInput    pic x(200).
        77  status-csvInput  pic xx.
        77  status-lineseq   pic xx.       
@@ -108,6 +86,8 @@
        77  status-logfile   pic xx.   
        77  status-tsetinvio pic xx.
        77  status-ttipocli  pic xx.
+       77  status-lineseq-mail pic xx.
+       77  path-lineseq-mail   pic x(256).
        77  como-riga        pic x(200).
        77  path-logfile     pic x(200).
        77  path-log         pic x(200).
@@ -125,6 +105,7 @@
        PROCEDURE DIVISION using stfatt-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
        TPARAMGE-ERR SECTION.
            use after error procedure on tparamge.
            set RecLocked to false.
@@ -1297,40 +1278,25 @@ LUBEXX           end-if
               accept LinkAddressCC 
                      from environment "EDI_FATT_ADDRESS_CC"
            
-              set errori to true 
-              move 0 to tentativi
               move "stfatt-p" to NomeProgramma
-              perform 5 times
-                 add 1 to tentativi
-                 perform SEND-MAIL
+              move 5 to tentativi-mail
+              perform CICLO-SEND-MAIL
 
-      *        call "C$DELETE" using FileDest
-                 open input lineseq1
-                 read  lineseq1 next
-                 if line-riga of lineseq1 = "True"
-                    set tutto-ok to true
-                    close lineseq1
-                    exit perform
-                 end-if
-                 close lineseq1
-
-              end-perform 
-
-              if errori         
+              if mail-ko         
                  if RichiamoSchedulato
                     move 1 to stfatt-status
                     move "INVIO NON RIUSCITO" to como-riga
                     perform SCRIVI-RIGA-LOG
                  else
                     display message box "Invio non riuscito."
-                                 x"0d0A"line-riga of lineseq1
+                                 x"0d0A"line-riga-mail
                              title titolo
                               icon 2       
                  end-if
                  move 9 to link-tipo-stampa
               else     
                  if RichiamoSchedulato        
-                    move "INVIO NON RIUSCITO" to como-riga
+                    move "INVIO RIUSCITO" to como-riga
                     perform SCRIVI-RIGA-LOG
                  else
                     display message "Invio riuscito."
@@ -1338,6 +1304,9 @@ LUBEXX           end-if
                  end-if
               end-if
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
  
       ***---
        CONTA-RIGHE-ORDINE.

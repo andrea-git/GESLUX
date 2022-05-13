@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 29 aprile 2022 10:46:57.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 14:51:08.
        REMARKS.
       *{TOTEM}END
 
@@ -30,10 +30,7 @@
            COPY "batnott.sl".
            COPY "tsetinvio.sl".
            COPY "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
-                .
+           COPY "lineseq-mail.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -41,10 +38,7 @@
            COPY "batnott.fd".
            COPY "tsetinvio.fd".
            COPY "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
-                .
+           COPY "lineseq-mail.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -156,8 +150,9 @@
                   USAGE IS HANDLE OF FONT.
        77 STATUS-tsetinvio PIC  X(2).
            88 Valid-STATUS-tsetinvio VALUE IS "00" THRU "09". 
-       77 STATUS-lineseq1  PIC  X(2).
-           88 VALID-STATUS-lineseq1 VALUE IS "00" THRU "09". 
+       77 path-lineseq-mail            PIC  X(256).
+       77 STATUS-lineseq-mail          PIC  X(2).
+           88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -167,7 +162,7 @@
        77 TMP-DataSet1-batnott-BUF     PIC X(589).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
-       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -188,11 +183,11 @@
        77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq1-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq1-LOCK  VALUE "Y".
-       77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq1-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq1-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
 
        77 batnott-bat-k-des-SPLITBUF  PIC X(34).
        77 batnott-bat-k-abil-SPLITBUF  PIC X(35).
@@ -275,6 +270,8 @@
       *{TOTEM}DECLARATIVE
        DECLARATIVES.
       * <TOTEM:EPT. INIT:scheduler, INIT:scheduler, BeforeDeclarative>
+       copy "mail-decl.cpy".
+
       * <TOTEM:END>
        INPUT-ERROR SECTION.
            USE AFTER STANDARD ERROR PROCEDURE ON INPUT.
@@ -389,8 +386,8 @@
       *    PERFORM OPEN-tsetinvio
       *    lineseq OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq
-      *    lineseq1 OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq1
+      *    lineseq-mail OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq-mail
       *    After Open
            .
 
@@ -437,15 +434,15 @@
       * <TOTEM:END>
            .
 
-       OPEN-lineseq1.
-      * <TOTEM:EPT. INIT:scheduler, FD:lineseq1, BeforeOpen>
+       OPEN-lineseq-mail.
+      * <TOTEM:EPT. INIT:scheduler, FD:lineseq-mail, BeforeOpen>
       * <TOTEM:END>
-           OPEN  INPUT lineseq1
-           IF NOT VALID-STATUS-lineseq1
+           OPEN  OUTPUT lineseq-mail
+           IF NOT Valid-STATUS-lineseq-mail
               PERFORM  scr-oper-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
            END-IF
-      * <TOTEM:EPT. INIT:scheduler, FD:lineseq1, AfterOpen>
+      * <TOTEM:EPT. INIT:scheduler, FD:lineseq-mail, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -456,8 +453,8 @@
       *    PERFORM CLOSE-tsetinvio
       *    lineseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq
-      *    lineseq1 CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq1
+      *    lineseq-mail CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq-mail
       *    After Close
            .
 
@@ -477,8 +474,8 @@
       * <TOTEM:END>
            .
 
-       CLOSE-lineseq1.
-      * <TOTEM:EPT. INIT:scheduler, FD:lineseq1, BeforeClose>
+       CLOSE-lineseq-mail.
+      * <TOTEM:EPT. INIT:scheduler, FD:lineseq-mail, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -954,90 +951,73 @@
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq1-INITSTART.
+       DataSet1-lineseq-mail-INITSTART.
            .
 
-       DataSet1-lineseq1-INITEND.
+       DataSet1-lineseq-mail-INITEND.
            .
 
-       DataSet1-lineseq1-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+       DataSet1-lineseq-mail-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadRecord>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
       * <TOTEM:END>
-           IF DataSet1-lineseq1-LOCK
-              READ lineseq1 WITH LOCK 
-           ELSE
-              READ lineseq1 WITH NO LOCK 
-           END-IF
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT 
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadRecord>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq1-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+       DataSet1-lineseq-mail-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadNext>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
       * <TOTEM:END>
-           IF DataSet1-lineseq1-KEY-Asc
-              IF DataSet1-lineseq1-LOCK
-                 READ lineseq1 NEXT WITH LOCK
-              ELSE
-                 READ lineseq1 NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadNext>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq1-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+       DataSet1-lineseq-mail-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadPrev>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadPrev>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadPrev>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadPrev>
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq1-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeWrite>
+       DataSet1-lineseq-mail-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
       * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           WRITE line-riga-mail OF lineseq-mail.
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterWrite>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterWrite>
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq1-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRewrite>
+       DataSet1-lineseq-mail-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRewrite>
       * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
            MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRewrite>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRewrite>
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq1-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeDelete>
+       DataSet1-lineseq-mail-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeDelete>
       * <TOTEM:END>
-           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
-           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterDelete>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -1045,7 +1025,7 @@
            INITIALIZE bat-rec OF batnott
            INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE line-riga OF lineseq
-           INITIALIZE line-riga OF lineseq1
+           INITIALIZE line-riga-mail OF lineseq-mail
            .
 
 
@@ -1093,8 +1073,8 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-lineseq1-INITREC.
-           INITIALIZE line-riga OF lineseq1
+       DataSet1-lineseq-mail-INITREC.
+           INITIALIZE line-riga-mail OF lineseq-mail
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1352,6 +1332,11 @@
            .
 
       * USER DEFINE PARAGRAPH
+       AFTER-SEND-MAIL.
+      * <TOTEM:PARA. AFTER-SEND-MAIL>
+           .
+      * <TOTEM:END>
+
        CHIAMA-BATCH.
       * <TOTEM:PARA. CHIAMA-BATCH>
            move space to debugger-test.
@@ -1695,21 +1680,12 @@
                                
            move "scheduler" to NomeProgramma.
            set trovato to false.    
-           perform 10 times
-              perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set trovato to true
-                 close lineseq1
-                 exit perform 
-              end-if
-              close lineseq1
-           end-perform.
+           move 10 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-           if not trovato and NomePgm = "admin"
+           if mail-ko and NomePgm = "admin"
               display message "Invio mail impossibile!"
-                       x"0d0a" line-riga of lineseq1
+                       x"0d0a" line-riga-mail
                         title tit-err
                          icon 3
            end-if 
@@ -1729,21 +1705,12 @@
 
            move "scheduler" to NomeProgramma.
            set trovato to false.    
-           perform 10 times
-              perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set trovato to true
-                 close lineseq1
-                 exit perform 
-              end-if
-              close lineseq1
-           end-perform.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-           if not trovato and NomePgm = "admin"
+           if mail-ko and NomePgm = "admin"
               display message "Invio mail impossibile!"
-                       x"0d0a" line-riga of lineseq1
+                       x"0d0a" line-riga-mail
                         title tit-err
                          icon 3
            end-if 

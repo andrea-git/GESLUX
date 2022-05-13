@@ -20,10 +20,8 @@
            copy "clienti.sl".
            copy "destini.sl".
            copy "destinif.sl".
-           copy "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           copy "lineseq-mail.sl".
+
        SELECT logfile
            ASSIGN       TO logfile-path
            ORGANIZATION IS LINE SEQUENTIAL
@@ -43,10 +41,8 @@
            copy "clienti.fd".
            copy "destini.fd".
            copy "destinif.fd".
-           copy "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           copy "lineseq-mail.fd".
+
        FD  logfile.
        01 logfile-riga        PIC  x(1000).
 
@@ -59,6 +55,7 @@
       ******************************************************************
        PROCEDURE DIVISION.       
        DECLARATIVES.
+       copy "mail-decl.cpy".
       ***---  
        TMOVTRAT-ERR SECTION.
            use after error procedure on tmovtrat.

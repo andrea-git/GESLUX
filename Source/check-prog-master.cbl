@@ -189,8 +189,6 @@
       
            accept LinkAddress from environment "CPM_ADDRESSES".
       
-           set errori to true.
-                               
            move "check-prog-master" to NomeProgramma.
            move 5 to tentativi-mail.
            perform CICLO-SEND-MAIL.

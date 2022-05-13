@@ -20,13 +20,9 @@
            copy "clienti.sl".
            copy "timbalqta.sl".
            copy "fileseq.sl".
-           copy "param.sl".
+           copy "param.sl".  
            copy "lineseq.sl".
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "lineseq-mail.sl".
 
        FILE SECTION.         
            copy "tsetinvio.fd". 
@@ -45,9 +41,8 @@
            copy "timbalqta.fd".
            copy "param.fd".
            copy "fileseq.fd".
+           copy "lineseq-mail.fd".
        FD  lineseq.
-       01 line-riga        PIC  x(32000).
-       FD  lineseq1.
        01 line-riga        PIC  x(32000).
 
        WORKING-STORAGE SECTION.
@@ -116,6 +111,8 @@
        77  status-timbalqta        pic xx.
        77  status-lineseq          pic xx.
        77  status-param            pic xx.
+       77  status-lineseq-mail     pic xx.
+       77  path-lineseq-mail       pic xx.
       
       * SWITCHES
 
@@ -208,6 +205,8 @@
        PROCEDURE DIVISION USING imp-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
+
        LINESEQ-ERR SECTION.
            use after error procedure on lineseq.
            set tutto-ok  to true.
@@ -1601,29 +1600,18 @@
       *     perform PREPARA-FROM.
            move path-pdf   to LinkAttach.
 
-           set errori to true.
-           move 0 to tentativi.
+           move 5 to tentativi-mail.
            move "SHI-impcarichi" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
+           perform CICLO-SEND-MAIL.
 
-      *        call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-           end-perform.
-
-           if errori
+           if mail-ko
               move "Errore durante l'invio della stampa via mail"
                        to como-messaggio
               perform SCRIVI-MESSAGGIO
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        CREA-PDF.

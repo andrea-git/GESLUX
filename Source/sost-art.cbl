@@ -84,22 +84,7 @@
        01  filler           pic 9 value 0.
            88 sostituzione  value 1, false 0.
 
-       01  r-inizio.
-         05 filler                 pic x(2)  value " [".
-         05 r-data.
-            10 r-gg                pic xx.
-            10 filler              pic x     value "/".
-            10 r-mm                pic xx.
-            10 filler              pic x     value "/".
-            10 r-aa                pic xx.
-         05 filler                 pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh                pic xx.
-            10 filler              pic x     value X"22".
-            10 r-min               pic xx.
-            10 filler              pic x     value "'".
-            10 r-sec               pic xx.
-         05 filler                 pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        77  como-riga        pic x(200).
        77  status-logfile   pic xx.

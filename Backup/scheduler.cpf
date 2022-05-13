@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-oper
 BEFORE_PROGRAM=scheduler-Ev-Before-Program
 AFTER_PROGRAM=scheduler-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E641D8460-627-1988429057
+PROGRAM_UNIQUE_CODE=TOTEM-7E65D12467-909-1350922893
 
 {{@DESCRIPTION:
 
@@ -886,9 +886,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM80_WK]
-m_strName=STATUS-lineseq1
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-lineseq-mail
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -896,12 +896,22 @@ m_bFixed=1
 
 @}}
 [FDITEM81_WK]
-m_strName=VALID-STATUS-lineseq1
+m_strName=STATUS-lineseq-mail
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM81_WK
+
+@}}
+[FDITEM82_WK]
+m_strName=Valid-STATUS-lineseq-mail
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM81_WK
+{{@DataItem_m_strDescriptionFDITEM82_WK
 
 @}}
 
@@ -1189,6 +1199,23 @@ BEGIN-TEXT
                                 giving call-status
               end-if
            end-if
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 0
+   PARENT            = scheduler
+   ACTOBJ            = scheduler
+   ENTRYPOINT        = BeforeDeclarative
+BEGIN-TEXT
+       copy "mail-decl.cpy".
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = AFTER-SEND-MAIL
+BEGIN-TEXT
+
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1534,21 +1561,12 @@ BEGIN-TEXT
                                
            move "scheduler" to NomeProgramma.
            set trovato to false.    
-           perform 10 times
-              perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set trovato to true
-                 close lineseq1
-                 exit perform 
-              end-if
-              close lineseq1
-           end-perform.
+           move 10 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-           if not trovato and NomePgm = "admin"
+           if mail-ko and NomePgm = "admin"
               display message "Invio mail impossibile!"
-                       x"0d0a" line-riga of lineseq1
+                       x"0d0a" line-riga-mail
                         title tit-err
                          icon 3
            end-if 
@@ -1569,21 +1587,12 @@ BEGIN-TEXT
 
            move "scheduler" to NomeProgramma.
            set trovato to false.    
-           perform 10 times
-              perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set trovato to true
-                 close lineseq1
-                 exit perform 
-              end-if
-              close lineseq1
-           end-perform.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-           if not trovato and NomePgm = "admin"
+           if mail-ko and NomePgm = "admin"
               display message "Invio mail impossibile!"
-                       x"0d0a" line-riga of lineseq1
+                       x"0d0a" line-riga-mail
                         title tit-err
                          icon 3
            end-if.
@@ -1768,7 +1777,7 @@ REL_SYM_INFO_Y1=650114516
 REL_SYM_INFO_X2=2301
 REL_SYM_INFO_Y2=1506342446
 REL_SYM_INFO_X3=2301
-REL_SYM_INFO_Y3=1940893068
+REL_SYM_INFO_Y3=1044008262
 
 [DRAW_BASESYMBOL_2301_1193415838]
 OBJ_NAME=2301
@@ -1914,21 +1923,21 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_1940893068]
+[DRAW_BASESYMBOL_2301_1044008262]
 OBJ_NAME=2301
-OBJ_ID=1940893068
+OBJ_ID=1044008262
 KIND=1
-{{@LABEL_2301_1940893068
-lineseq1
+{{@LABEL_2301_1044008262
+lineseq-mail
 @}}
 WK_STEP=0
 BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
-LEFT=773
-TOP=685
-RIGHT=1173
-BOTTOM=907
+LEFT=1748
+TOP=1082
+RIGHT=2148
+BOTTOM=1304
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -2070,33 +2079,33 @@ DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=
 
-[DMD_FILE_0_1940893068]
+[DMD_FILE_0_1044008262]
 OBJ_NAME=0
-OBJ_ID=1940893068
+OBJ_ID=1044008262
 REL_M_OBJ_ID=0
-ENTITY=lineseq1
+ENTITY=lineseq-mail
 LINK=0
 LINK_NAME=
 DSN_SIZE=32
 FD_SIZE=0
 SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
+DSN_INFO_OPEN_MODE=1
 DSN_INFO_LOCK_OPTION=0
 DSN_INFO_KEY_IS=
 DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1940893068
+{{@DSN_INFO_CONDITION_1044008262
 
 @}}
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=0
 DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=1
-DSN_INFO_LOGICAL_FDNAME=lineseq1
-DSN_INFO_ORIGINAL_FDNAME=lineseq
-DSN_INFO_REPLACEBY_FILESTATUS=STATUS-lineseq1
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
 DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=

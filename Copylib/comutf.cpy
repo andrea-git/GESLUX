@@ -252,38 +252,8 @@
                  move settaPDF-nome-file to link-path
                  move link-path to LinkAttach        
 
-                 set errori to true
-                 move 0 to tentativi
-                 perform 5 times
-              
-                    initialize como-riga
-                    string "TENTATIVO MAIL N. " delimited size
-                           tentativi            delimited size
-                      into como-riga
-                    end-string
-                    perform SCRIVI-RIGA-LOG
-
-                    add 1 to tentativi
-                    perform SEND-MAIL
-
-      *        call "C$DELETE" using FileDest
-                    open input lineseq1
-                    read  lineseq1 next
-                    if line-riga of lineseq1 = "True"
-
-                       move "INVIO MAIL RIUSCITO" to como-riga
-                       perform SCRIVI-RIGA-LOG
-
-                       set tutto-ok to true
-                       close lineseq1
-                       exit perform
-                    else
-                       move line-riga of lineseq1 to como-riga
-                       perform SCRIVI-RIGA-LOG
-                    end-if
-                    close lineseq1
-         
-                 end-perform
+                 move 5 to tentativi-mail
+                 perform CICLO-SEND-MAIL
               else                   
                  move "ERRORE PDF 2" to como-riga
                  perform SCRIVI-RIGA-LOG
@@ -292,6 +262,16 @@
               move "ERRORE PDF 1" to como-riga
               perform SCRIVI-RIGA-LOG
            end-if. 
+
+      ***---
+       AFTER-SEND-MAIL.
+           if line-riga-mail = "True"
+              move "INVIO MAIL RIUSCITO" to como-riga
+              perform SCRIVI-RIGA-LOG
+           else
+              move line-riga-mail to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.
 
       ***---                                 
        EXIT-PGM.  

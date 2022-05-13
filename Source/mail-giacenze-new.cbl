@@ -119,7 +119,7 @@
        77  status-clienti             pic xx.
        77  status-promoeva            pic xx.
        77  status-lineseq-mail        pic xx.
-       77  path-lineseq-mail          pic xx.
+       77  path-lineseq-mail          pic x(256).
 
        77  wstampa                    pic x(256).
        77  path-tmp-progmag           pic x(256).
@@ -140,22 +140,7 @@
        77  counter-edit          pic zzz.zzz.zz9.
 
        77  tit-scorte                 pic x(50).
-       01  r-inizio.
-         05 filler                    pic x(2)  value " [".
-         05 r-data.
-            10 r-gg                   pic xx.
-            10 filler                 pic x     value "/".
-            10 r-mm                   pic xx.
-            10 filler                 pic x     value "/".
-            10 r-aa                   pic xx.
-         05 filler                    pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh                   pic xx.
-            10 filler                 pic x     value X"22".
-            10 r-min                  pic xx.
-            10 filler                 pic x     value "'".
-            10 r-sec                  pic xx.
-         05 filler                    pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        77  como-riga                  pic x(80).
        77  riga-comodo                pic x(1000).
@@ -1944,7 +1929,6 @@
               end-if
               move "In allegato dettaglio giacenze."    to LinkBody
               move wstampa                              to LinkAttach
-              set errori to true
               move 5 to tentativi-mail
               perform CICLO-SEND-MAIL 
                   
@@ -1969,7 +1953,7 @@
               |FACCIO LA COPIA DEI FILE (INI, CSV)
               perform COPIA-FILES
 
-              delete file lineseq
+              delete file lineseq-mail
 
               |Così cancella anche il csv
               move LinkAttach to wstampa
@@ -2056,7 +2040,7 @@
                    into path-ini
            end-string.
            move 0 to copy-status.
-           call "C$COPY" using wstampa, path-ini, "S"
+           call "C$COPY" using path-lineseq-mail, path-ini, "S"
                         giving copy-status.
                                  
            perform SETTA-INIZIO-RIGA.

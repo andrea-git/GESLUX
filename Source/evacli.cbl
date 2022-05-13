@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 09:25:13.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 16:24:50.
        REMARKS.
       *{TOTEM}END
 
@@ -218,29 +218,7 @@
        77 save-magazzino-next          PIC  x(3).
        77 ora-stampa       PIC  9(8).
        77 data-stampa      PIC  9(8).
-       01 r-inizio.
-           05 FILLER           PIC  xx
-                      VALUE IS " [".
-           05 r-data.
-               10 r-gg PIC  xx.
-               10 FILLER           PIC  x
-                          VALUE IS "/".
-               10 r-mm PIC  xx.
-               10 FILLER           PIC  x
-                          VALUE IS "/".
-               10 r-aa PIC  xx.
-           05 FILLER           PIC  x(5)
-                      VALUE IS "] - [".
-           05 r-ora.
-               10 r-hh PIC  xx.
-               10 FILLER           PIC  x
-                          VALUE IS X"22".
-               10 r-min            PIC  xx.
-               10 FILLER           PIC  x
-                          VALUE IS "'".
-               10 r-sec            PIC  xx.
-           05 FILLER           PIC  xx
-                      VALUE IS "] ".
+       01 r-inizio         PIC  x(25).
        01 save-depositi.
            05 save-el-deposito PIC  x(3)
                       OCCURS 25 TIMES.

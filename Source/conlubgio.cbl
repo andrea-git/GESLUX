@@ -22,12 +22,7 @@
            copy "tordini.sl".    
            copy "rordini.sl".     
            copy "tsetinvio.sl".   
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.    
+           copy "lineseq-mail.sl".
        
        select file-log
            assign       to wstampa
@@ -48,9 +43,7 @@
            copy "tordini.fd".       
            copy "rordini.fd".   
            copy "tsetinvio.fd".   
-
-       FD  lineseq1.
-       01 line-riga        pic x(900).  
+           copy "lineseq-mail.fd".
 
        FD  file-log.
        01 log-riga         pic x(900).
@@ -84,6 +77,8 @@
        77  status-err-seq       pic xx.     
        77  status-lineseq       pic xx.
        77  status-file-log      pic xx.
+       77  status-lineseq-mail  pic xx.
+       77  path-lineseq-mail    pic x(256).
        77  wstampa              pic x(256).   
                                            
        77  num-bolla            pic 9(8).
@@ -101,22 +96,7 @@
                                              
        77  status-call          signed-short.
 
-       01  r-inizio.
-         05 filler              pic x(2)  value " [".
-         05 r-data.
-            10 r-gg             pic xx.
-            10 filler           pic x     value "/".
-            10 r-mm             pic xx.
-            10 filler           pic x     value "/".
-            10 r-aa             pic xx.
-         05 filler              pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh             pic xx.
-            10 filler           pic x     value X"22".
-            10 r-min            pic xx.
-            10 filler           pic x     value "'".
-            10 r-sec            pic xx.
-         05 filler              pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        77  start-secondi         pic 9(18).
        77  end-secondi           pic 9(18).
@@ -184,6 +164,7 @@
        PROCEDURE DIVISION USING batch-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
 
       ***---
        TORDINI-ERR SECTION.
@@ -918,51 +899,23 @@ LUBEXX             move "Prezzo incoerente!!!"
            move "conlubgio" to NomeProgramma.
                   
            move err-seq-path to LinkAttach.
-      
-           perform 10 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              initialize como-messaggio
-              if StatusInvioMail = -1
-                 string "TENTATIVO N. "               delimited size
-                        tentativi                     delimited size
-                        ": "                          delimited size
-                        "Chiamata InvioMail fallita!" delimited size
-                        " STATUS -1"                  delimited size
-                        into como-messaggio
-                 end-string
-              else
-                 string "TENTATIVO N. "                delimited size
-                        tentativi                      delimited size
-                        ": "                           delimited size
-                        "Chiamata InvioMail riuscita!" delimited size
-                        into como-messaggio
-                 end-string
-              end-if
-              perform COMPONI-RIGA-LOG
-
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-      
-              initialize como-messaggio
-              string "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     " - ESITO: "          delimited size
-                     line-riga of lineseq1 delimited size
-                     into como-messaggio
-              end-string
-              perform COMPONI-RIGA-LOG
-      
-           end-perform.  
-
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
            delete file err-seq.
+      
+      ***---
+       AFTER-SEND-MAIL.
+           initialize como-messaggio
+           string "TENTATIVO N. "   delimited size
+                  tentativi         delimited size
+                  " STATUS: "       delimited size
+                  StatusInvioMail   delimited size
+                  " - "             delimited size
+                  line-riga-mail    delimited size
+                  into como-messaggio
+           end-string.
+           perform COMPONI-RIGA-LOG.
+            
 
       ***---
        COMPONI-RIGA-LOG.

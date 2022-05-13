@@ -82,22 +82,7 @@
 
       * VARIABILI
        77  tit-scorte                 pic x(50).
-       01  r-inizio.
-         05 filler                    pic x(2)  value " [".
-         05 r-data.
-            10 r-gg                   pic xx.
-            10 filler                 pic x     value "/".
-            10 r-mm                   pic xx.
-            10 filler                 pic x     value "/".
-            10 r-aa                   pic xx.
-         05 filler                    pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh                   pic xx.
-            10 filler                 pic x     value X"22".
-            10 r-min                  pic xx.
-            10 filler                 pic x     value "'".
-            10 r-sec                  pic xx.
-         05 filler                    pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        77  como-riga                  pic x(80).
 
@@ -623,7 +608,7 @@
                    "giacenze_"      delimited size
                    como-data        delimited size
                    ".csv"           delimited size
-                   into wstampa
+              into wstampa
            end-string.
 
            initialize path-tmp-progmag.
@@ -636,7 +621,7 @@
                    "_"              delimited size
                    como-ora         delimited size
                    ".tmp"           delimited size
-                   into path-tmp-progmag
+              into path-tmp-progmag
            end-string.
 
       ***---
@@ -1601,7 +1586,6 @@
               move "In allegato dettaglio giacenze."    to LinkBody
               move wstampa                              to LinkAttach
 
-              set errori to true
               move 5 to tentativi-mail
               move "mail-giacenze2" to NomeProgramma
               perform CICLO-SEND-MAIL
@@ -1624,7 +1608,7 @@
               |FACCIO LA COPIA DEI FILE (INI, CSV)
               perform COPIA-FILES
 
-              delete file lineseq
+              delete file lineseq-mail
 
               |Così cancella anche il csv
               move LinkAttach to wstampa
@@ -1675,7 +1659,7 @@
                    into path-ini
            end-string.
            move 0 to copy-status.
-           call "C$COPY" using wstampa, path-ini, "S"
+           call "C$COPY" using path-lineseq-mail, path-ini, "S"
                         giving copy-status.
 
            if copy-status not = 0

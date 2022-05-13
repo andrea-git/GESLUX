@@ -20,19 +20,12 @@
            copy "tordini.sl".
            copy "rordini.sl". 
            copy "progmag.sl".
-           copy "lineseq.sl".
            copy "clienti.sl".
            copy "destini.sl".
            copy "ttipocli.sl".
            copy "articoli.sl".
            copy "tcaumag.sl".
-           copy "multigest.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "multigest.sl". 
 
       *****************************************************************
        DATA DIVISION.
@@ -42,8 +35,7 @@
            copy "mrordini.fd".
            copy "tordini.fd".
            copy "rordini.fd". 
-           copy "progmag.fd".
-           copy "lineseq.fd".
+           copy "progmag.fd". 
            copy "clienti.fd".
            copy "destini.fd".
            copy "ttipocli.fd".
@@ -51,13 +43,9 @@
            copy "tcaumag.fd".
            copy "multigest.fd".
 
-       FD  lineseq1.
-       01 line-riga        PIC  x(900).
-
        WORKING-STORAGE SECTION.
            copy "link-wprogmag.def".
            copy "link-geslock.def".
-           copy "mail.def".
 
        78  user-codi             value "BATCH".
        78  titolo                value"Batch Ricalcolo impegnato". 
@@ -74,28 +62,12 @@
        77  status-articoli       pic xx.
        77  status-tcaumag        pic xx.
        77  status-lineseq        pic xx.
-       77  status-multigest      pic xx.
-       77  wstampa               pic x(256).   
+       77  status-multigest      pic xx.  
                                             
        77  FileDest              pic x(256).
        77  FileOrig              pic x(256).
 
-       01  r-inizio.
-         05 filler              pic x(2)  value " [".
-         05 r-data.
-            10 r-gg             pic xx.
-            10 filler           pic x     value "/".
-            10 r-mm             pic xx.
-            10 filler           pic x     value "/".
-            10 r-aa             pic xx.
-         05 filler              pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh             pic xx.
-            10 filler           pic x     value X"22".
-            10 r-min            pic xx.
-            10 filler           pic x     value "'".
-            10 r-sec            pic xx.
-         05 filler              pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        77  start-secondi         pic 9(18).
        77  end-secondi           pic 9(18).
@@ -103,7 +75,6 @@
        77  hh                    pic 99.
        77  mm                    pic 99.
        77  ss                    pic 99.       
-       77  tentativi             pic 99.
 
        77  counter               pic 9(9).
        77  counter2              pic 9(9).
@@ -147,7 +118,7 @@
       ******************************************************************
        PROCEDURE DIVISION.
 
-       DECLARATIVES.
+       DECLARATIVES.  
 
       ***---
        MTORDINI-ERR SECTION.
@@ -725,101 +696,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                  upon syserr
 
            end-if.
-      *****     perform INVIO-MAIL.
            goback.
-
-      ***---
-       INVIO-MAIL.
-           display "Invio mail in corso...".
-
-           move "INVIO MAIL IN CORSO..." to como-riga.
-           perform SETTA-RIGA-STAMPA.
-
-           initialize LinkBody.
-           if nessun-errore
-              move "RICALCOLO IMPEGNATO - OK" 
-                to LinkSubject
-           else
-              move "RICALCOLO IMPEGNATO - ATTENZIONE" 
-                to LinkSubject
-           end-if.
-
-           move "In allegato dettagli funzionamento programma" 
-             to LinkBody.
-
-           accept LinkAddress from environment "RICALDIN_ADDRESSES".
-
-
-           accept FileOrig    from environment "RICALDIN_LOG".
-           accept FileDest    from environment "RICALDIN_LOG_INVIO".
-           call "C$COPY" using FileOrig, FileDest, "S".
-           move FileDest to LinkAttach.
-
-           set errori to true.
-           move 0 to tentativi.
-           move "ricalimp-bat" to NomeProgramma.
-           perform 10 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              initialize como-riga
-              if StatusInvioMail = -1
-                 string r-inizio                      delimited size
-                        "TENTATIVO N. "               delimited size
-                        tentativi                     delimited size
-                        ": "                          delimited size
-                        "Chiamata InvioMail fallita!" delimited size
-                        " STATUS -1"                  delimited size
-                        into como-riga
-                 end-string
-              else
-                 string r-inizio                       delimited size
-                        "TENTATIVO N. "                delimited size
-                        tentativi                      delimited size
-                        ": "                           delimited size
-                        "Chiamata InvioMail riuscita!" delimited size
-                        into como-riga
-                 end-string
-              end-if
-              perform SETTA-RIGA-STAMPA
-                            
-              call "C$DELETE" using FileDest
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-
-              initialize como-riga
-              string r-inizio              delimited size
-                     "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     ": "                  delimited size
-                     line-riga of lineseq1 delimited size
-                     into como-riga
-              end-string
-              perform SETTA-RIGA-STAMPA
-
-           end-perform
-               
-           initialize como-riga.
-           if tutto-ok
-              string r-inizio               delimited size
-                     "INVIO MAIL RIUSCITO!" delimited size
-                     into como-riga
-              end-string
-           else
-              string r-inizio                   delimited size
-                     "INVIO MAIL NON RIUSCITO!" delimited size
-                     into como-riga
-              end-string
-           end-if.
-           perform SETTA-RIGA-STAMPA.
-
-           delete file lineseq.
 
       ***---
        SETTA-RIGA-STAMPA.
@@ -828,6 +705,5 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
 
       ***---
        PARAGRAFO-COPY.
-           copy "mail.cpy".
            copy "direziona-impegnato-common.cpy".
            copy "setta-inizio-riga.cpy".

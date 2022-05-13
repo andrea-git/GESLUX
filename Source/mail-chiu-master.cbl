@@ -158,8 +158,7 @@
        ELABORAZIONE.
            move link-mto-chiave to mto-chiave
            read mtordini no lock
-              invalid
-                 continue
+                invalid continue
            end-read.
 
            perform INVIO.
@@ -181,7 +180,6 @@
            perform PREPARA-FROM.
            move space   to LinkAttach.
 
-           set errori to true.
            move 5 to tentativi-mail.
            move "mail-chiu-master" to NomeProgramma.
            perform CICLO-SEND-MAIL.

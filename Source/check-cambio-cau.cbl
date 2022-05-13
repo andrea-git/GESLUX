@@ -11,9 +11,7 @@
            copy "tsetinvio.sl".
            copy "tordini.sl". 
            copy "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -21,9 +19,7 @@
            copy "tsetinvio.fd".
            copy "tordini.fd". 
            copy "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
 
@@ -35,6 +31,8 @@
        77  status-lineseq        pic xx.
        77  status-lineseq1       pic xx.
        77  status-tsetinvio      pic xx.  
+       77  status-lineseq-mail   pic xx.
+       77  path-lineseq-mail     pic x(256).
        
        01 el-tor-chiave          occurs 99999.
           05 el-tor-anno         PIC  9(4).
@@ -56,6 +54,9 @@
 
       ******************************************************************
        PROCEDURE DIVISION.
+       DECLARATIVES.
+       copy "mail-decl.cpy".
+       END DECLARATIVES.
 
       ***---
        MAIN-PRG.
@@ -164,16 +165,11 @@
            move wstampa to LinkAttach                                
                                
            move "check-cambio-cau" to NomeProgramma.
-           perform 10 times
-              perform SEND-MAIL
-              open input lineseq1
-              read lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 close lineseq1
-                 exit perform 
-              end-if
-              close lineseq1
-           end-perform.
+           move 5 to tentativi-mail
+           perform CICLO-SEND-MAIL.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        EXIT-PGM.

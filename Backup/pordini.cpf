@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5B421823-696-149225835
+PROGRAM_UNIQUE_CODE=TOTEM-7E65D95611-221-2126512110
 
 {{@DESCRIPTION:
 
@@ -4904,9 +4904,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM444_WK]
-m_strName=STATUS-lineseq1
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-tmp-ordf-art
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -4914,26 +4914,26 @@ m_bFixed=1
 
 @}}
 [FDITEM445_WK]
-m_strName=VALID-STATUS-lineseq1
-m_nItemLevel=88
+m_strName=STATUS-tmp-ordf-art
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM445_WK
 
 @}}
 [FDITEM446_WK]
-m_strName=path-tmp-ordf-art
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
+m_strName=Valid-STATUS-tmp-ordf-art
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM446_WK
 
 @}}
 [FDITEM447_WK]
-m_strName=STATUS-tmp-ordf-art
+m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -4943,7 +4943,7 @@ m_bFixed=1
 
 @}}
 [FDITEM448_WK]
-m_strName=Valid-STATUS-tmp-ordf-art
+m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4952,7 +4952,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM449_WK]
-m_strName=STATUS-rordforn
+m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -4962,7 +4962,7 @@ m_bFixed=1
 
 @}}
 [FDITEM450_WK]
-m_strName=Valid-STATUS-rordforn
+m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4971,7 +4971,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM451_WK]
-m_strName=STATUS-tordforn
+m_strName=STATUS-sordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -4981,7 +4981,7 @@ m_bFixed=1
 
 @}}
 [FDITEM452_WK]
-m_strName=Valid-STATUS-tordforn
+m_strName=Valid-STATUS-sordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -4990,7 +4990,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM453_WK]
-m_strName=STATUS-sordforn
+m_strName=STATUS-distinteb
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5000,7 +5000,7 @@ m_bFixed=1
 
 @}}
 [FDITEM454_WK]
-m_strName=Valid-STATUS-sordforn
+m_strName=Valid-STATUS-distinteb
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5009,7 +5009,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM455_WK]
-m_strName=STATUS-distinteb
+m_strName=STATUS-tparamge2
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5019,7 +5019,7 @@ m_bFixed=1
 
 @}}
 [FDITEM456_WK]
-m_strName=Valid-STATUS-distinteb
+m_strName=Valid-STATUS-tparamge2
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5028,7 +5028,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM457_WK]
-m_strName=STATUS-tparamge2
+m_strName=status-catart
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5038,7 +5038,7 @@ m_bFixed=1
 
 @}}
 [FDITEM458_WK]
-m_strName=Valid-STATUS-tparamge2
+m_strName=Valid-status-catart
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5047,9 +5047,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM459_WK]
-m_strName=status-catart
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-tmp-ordfor
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5057,26 +5057,26 @@ m_bFixed=1
 
 @}}
 [FDITEM460_WK]
-m_strName=Valid-status-catart
-m_nItemLevel=88
+m_strName=STATUS-tmp-ordfor
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM460_WK
 
 @}}
 [FDITEM461_WK]
-m_strName=path-tmp-ordfor
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
+m_strName=Valid-STATUS-tmp-ordfor
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM461_WK
 
 @}}
 [FDITEM462_WK]
-m_strName=STATUS-tmp-ordfor
+m_strName=STATUS-multigest
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5086,7 +5086,7 @@ m_bFixed=1
 
 @}}
 [FDITEM463_WK]
-m_strName=Valid-STATUS-tmp-ordfor
+m_strName=Valid-STATUS-multigest
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5095,9 +5095,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM464_WK]
-m_strName=STATUS-multigest
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-fileseq
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5105,26 +5105,26 @@ m_bFixed=1
 
 @}}
 [FDITEM465_WK]
-m_strName=Valid-STATUS-multigest
-m_nItemLevel=88
+m_strName=STATUS-fileseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM465_WK
 
 @}}
 [FDITEM466_WK]
-m_strName=path-fileseq
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
+m_strName=Valid-STATUS-fileseq
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM466_WK
 
 @}}
 [FDITEM467_WK]
-m_strName=STATUS-fileseq
+m_strName=STATUS-tsetmerc
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5134,7 +5134,7 @@ m_bFixed=1
 
 @}}
 [FDITEM468_WK]
-m_strName=Valid-STATUS-fileseq
+m_strName=Valid-STATUS-tsetmerc
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5143,7 +5143,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM469_WK]
-m_strName=STATUS-tsetmerc
+m_strName=STATUS-tsetinvio
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5153,7 +5153,7 @@ m_bFixed=1
 
 @}}
 [FDITEM470_WK]
-m_strName=Valid-STATUS-tsetmerc
+m_strName=Valid-STATUS-tsetinvio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5162,7 +5162,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM471_WK]
-m_strName=STATUS-tsetinvio
+m_strName=STATUS-param
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5172,7 +5172,7 @@ m_bFixed=1
 
 @}}
 [FDITEM472_WK]
-m_strName=Valid-STATUS-tsetinvio
+m_strName=Valid-STATUS-param
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5181,7 +5181,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM473_WK]
-m_strName=STATUS-param
+m_strName=STATUS-lineseq1
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5191,7 +5191,7 @@ m_bFixed=1
 
 @}}
 [FDITEM474_WK]
-m_strName=Valid-STATUS-param
+m_strName=VALID-STATUS-lineseq1
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5200,7 +5200,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM475_WK]
-m_strName=STATUS-lineseq11
+m_strName=STATUS-qta-pordini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5210,7 +5210,7 @@ m_bFixed=1
 
 @}}
 [FDITEM476_WK]
-m_strName=VALID-STATUS-lineseq11
+m_strName=Valid-STATUS-qta-pordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5219,7 +5219,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM477_WK]
-m_strName=STATUS-qta-pordini
+m_strName=STATUS-logfile
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -5229,7 +5229,7 @@ m_bFixed=1
 
 @}}
 [FDITEM478_WK]
-m_strName=Valid-STATUS-qta-pordini
+m_strName=Valid-STATUS-logfile
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -5238,9 +5238,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM479_WK]
-m_strName=STATUS-logfile
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=path-genlog
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5248,28 +5248,27 @@ m_bFixed=1
 
 @}}
 [FDITEM480_WK]
-m_strName=Valid-STATUS-logfile
-m_nItemLevel=88
+m_strName=STATUS-genlog
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM480_WK
 
 @}}
 [FDITEM481_WK]
-m_strName=path-genlog
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
+m_strName=Valid-STATUS-genlog
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM481_WK
 
 @}}
 [FDITEM482_WK]
-m_strName=STATUS-genlog
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=scr-elab2-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -5277,21 +5276,32 @@ m_bFixed=1
 
 @}}
 [FDITEM483_WK]
-m_strName=Valid-STATUS-genlog
-m_nItemLevel=88
+m_strName=path-lineseq-mail
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM483_WK
 
 @}}
 [FDITEM484_WK]
-m_strName=scr-elab2-Handle
-m_nUsage=24
+m_strName=STATUS-lineseq-mail
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM484_WK
+
+@}}
+[FDITEM485_WK]
+m_strName=Valid-STATUS-lineseq-mail
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM485_WK
 
 @}}
 
@@ -9988,22 +9998,7 @@ BEGIN-DATA
    NODESTYLE         = 13
    PARAGRAPH         = Other Working
 BEGIN-TEXT
-       01  r-inizio.
-         05 filler                    pic x(2)  value " [".
-         05 r-data.
-            10 r-gg                   pic xx.
-            10 filler                 pic x     value "/".
-            10 r-mm                   pic xx.
-            10 filler                 pic x     value "/".
-            10 r-aa                   pic xx.
-         05 filler                    pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh                   pic xx.
-            10 filler                 pic x     value X"22".
-            10 r-min                  pic xx.
-            10 filler                 pic x     value "'".
-            10 r-sec                  pic xx.
-         05 filler                    pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        77  tentativi                  pic 9(2).
        77  como-riga                  pic x(100).
@@ -10026,6 +10021,8 @@ BEGIN-DATA
    ACTOBJ            = pordini
    ENTRYPOINT        = BeforeDeclarative
 BEGIN-TEXT
+       copy "mail-decl.cpy".
+
       ***---
        TMP-ORDF-ART-ERR SECTION.
            use after error procedure on tmp-ordf-art.
@@ -10185,16 +10182,16 @@ BEGIN-TEXT
            when "93"
            when "99"
                 set RecLocked to true
-           end-evaluate.               
-
-      ***---
-       LINESEQ1-ERR SECTION.
-           use after error procedure on lineseq1.
-           continue.
+           end-evaluate.   
 
       ***---
        QTA-PORDINI-ERR SECTION.
            use after error procedure on qta-pordini.
+           continue.   
+
+      ***---
+       LINESEQ1-ERR SECTION.
+           use after error procedure on lineseq1.
            continue.
 END-TEXT
 END-DATA
@@ -12361,60 +12358,13 @@ BEGIN-TEXT
               end-string
            end-if.
 
-           set errori to true.
-           move 0 to tentativi.
+           move 5 to tentativi-mail.
            move "pordini" to NomeProgramma.
-           perform 10 times
-              add 1 to tentativi
-              perform SEND-MAIL
-
-              perform SETTA-INIZIO-RIGA
-              initialize como-riga
-              if StatusInvioMail = -1
-                 string r-inizio                      delimited size
-                        "TENTATIVO N. "               delimited size
-                        tentativi                     delimited size
-                        ": "                          delimited size
-                        "Chiamata InvioMail fallita!" delimited size
-                        " STATUS -1"                  delimited size
-                        into como-riga
-                 end-string
-              else
-                 string r-inizio                       delimited size
-                        "TENTATIVO N. "                delimited size
-                        tentativi                      delimited size
-                        ": "                           delimited size
-                        "Chiamata InvioMail riuscita!" delimited size
-                        into como-riga
-                 end-string
-              end-if
-              display como-riga upon syserr
-
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-
-              perform SETTA-INIZIO-RIGA
-              initialize como-riga
-              string r-inizio              delimited size
-                     "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     ": "                  delimited size
-                     line-riga of lineseq1 delimited size
-                     into como-riga
-              end-string
-              display como-riga upon syserr
-
-           end-perform.
+           perform CICLO-SEND-MAIL.
                
            perform SETTA-INIZIO-RIGA.
            initialize como-riga.
-           if tutto-ok
+           if mail-ok
               string r-inizio               delimited size
                      "INVIO MAIL RIUSCITO!" delimited size
                      into como-riga
@@ -12427,7 +12377,22 @@ BEGIN-TEXT
            end-if.
            display como-riga upon syserr.
 
-           delete file lineseq. 
+           delete file lineseq-mail. 
+           
+      ***---
+       AFTER-SEND-MAIL.
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga
+           string r-inizio          delimited size
+                  "TENTATIVO N. "   delimited size
+                  tentativo-mail    delimited size
+                  ": STATUS "       delimited size
+                  StatusInvioMail   delimited size
+                  " - "             delimited size
+                  line-riga-mail    delimited size
+             into como-riga
+           end-string.
+           display como-riga upon syserr.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -14597,8 +14562,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=214
-REL_SYM_INFO_L=35
+REL_SYM_SIZE=220
+REL_SYM_INFO_L=36
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=258671777
 REL_SYM_INFO_X1=2301
@@ -14638,37 +14603,39 @@ REL_SYM_INFO_Y17=820262681
 REL_SYM_INFO_X18=2301
 REL_SYM_INFO_Y18=1836993191
 REL_SYM_INFO_X19=2301
-REL_SYM_INFO_Y19=2139883430
+REL_SYM_INFO_Y19=493562159
 REL_SYM_INFO_X20=2301
-REL_SYM_INFO_Y20=493562159
+REL_SYM_INFO_Y20=1941062565
 REL_SYM_INFO_X21=2301
-REL_SYM_INFO_Y21=1941062565
+REL_SYM_INFO_Y21=1959456997
 REL_SYM_INFO_X22=2301
-REL_SYM_INFO_Y22=1959456997
+REL_SYM_INFO_Y22=1965653503
 REL_SYM_INFO_X23=2301
-REL_SYM_INFO_Y23=1965653503
+REL_SYM_INFO_Y23=572132638
 REL_SYM_INFO_X24=2301
-REL_SYM_INFO_Y24=572132638
+REL_SYM_INFO_Y24=354744217
 REL_SYM_INFO_X25=2301
-REL_SYM_INFO_Y25=354744217
+REL_SYM_INFO_Y25=2121024813
 REL_SYM_INFO_X26=2301
-REL_SYM_INFO_Y26=2121024813
+REL_SYM_INFO_Y26=1809665589
 REL_SYM_INFO_X27=2301
-REL_SYM_INFO_Y27=1809665589
+REL_SYM_INFO_Y27=1173757245
 REL_SYM_INFO_X28=2301
-REL_SYM_INFO_Y28=1173757245
+REL_SYM_INFO_Y28=891598294
 REL_SYM_INFO_X29=2301
-REL_SYM_INFO_Y29=891598294
+REL_SYM_INFO_Y29=1663211049
 REL_SYM_INFO_X30=2301
-REL_SYM_INFO_Y30=1663211049
+REL_SYM_INFO_Y30=1554243126
 REL_SYM_INFO_X31=2301
-REL_SYM_INFO_Y31=1554243126
+REL_SYM_INFO_Y31=1813405982
 REL_SYM_INFO_X32=2301
-REL_SYM_INFO_Y32=1498815997
+REL_SYM_INFO_Y32=249358351
 REL_SYM_INFO_X33=2301
-REL_SYM_INFO_Y33=1813405982
+REL_SYM_INFO_Y33=716330028
 REL_SYM_INFO_X34=2301
-REL_SYM_INFO_Y34=249358351
+REL_SYM_INFO_Y34=2139883430
+REL_SYM_INFO_X35=2301
+REL_SYM_INFO_Y35=995563583
 
 [DRAW_BASESYMBOL_2301_258671777]
 OBJ_NAME=2301
@@ -16206,54 +16173,6 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_1498815997]
-OBJ_NAME=2301
-OBJ_ID=1498815997
-KIND=1
-{{@LABEL_2301_1498815997
-lineseq1
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=2137
-TOP=314
-RIGHT=2537
-BOTTOM=536
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
 [DRAW_BASESYMBOL_2301_1813405982]
 OBJ_NAME=2301
 OBJ_ID=1813405982
@@ -16317,6 +16236,102 @@ LEFT=4012
 TOP=50
 RIGHT=4412
 BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_716330028]
+OBJ_NAME=2301
+OBJ_ID=716330028
+KIND=1
+{{@LABEL_2301_716330028
+lineseq-mail
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1182
+TOP=821
+RIGHT=1582
+BOTTOM=1043
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_995563583]
+OBJ_NAME=2301
+OBJ_ID=995563583
+KIND=1
+{{@LABEL_2301_995563583
+lineseq1
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=3000
+TOP=325
+RIGHT=3400
+BOTTOM=547
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -17357,37 +17372,6 @@ DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=
 
-[DMD_FILE_0_1498815997]
-OBJ_NAME=0
-OBJ_ID=1498815997
-REL_M_OBJ_ID=0
-ENTITY=lineseq1
-LINK=0
-LINK_NAME=
-DSN_SIZE=32
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1498815997
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=0
-DSN_INFO_CLOSE=0
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=1
-DSN_INFO_LOGICAL_FDNAME=lineseq1
-DSN_INFO_ORIGINAL_FDNAME=lineseq
-DSN_INFO_REPLACEBY_FILESTATUS=STATUS-lineseq1
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
 [DMD_FILE_0_1813405982]
 OBJ_NAME=0
 OBJ_ID=1813405982
@@ -17446,6 +17430,68 @@ DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=
 DSN_INFO_ORIGINAL_FDNAME=
 DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_716330028]
+OBJ_NAME=0
+OBJ_ID=716330028
+REL_M_OBJ_ID=0
+ENTITY=lineseq-mail
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=1
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_716330028
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_995563583]
+OBJ_NAME=0
+OBJ_ID=995563583
+REL_M_OBJ_ID=0
+ENTITY=lineseq1
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=1
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_995563583
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=1
+DSN_INFO_LOGICAL_FDNAME=lineseq1
+DSN_INFO_ORIGINAL_FDNAME=lineseq
+DSN_INFO_REPLACEBY_FILESTATUS=STATUS-lineseq1
 DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=

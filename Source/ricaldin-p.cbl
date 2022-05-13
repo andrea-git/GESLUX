@@ -88,7 +88,6 @@
            copy "link-wprogmag.def".
            copy "aggiorna-stato-ordf.def".
            copy "aggiorna-stato-master.def".
-           copy "mail.def.".
            copy "versione-evasione.def".
            copy "trova-parametro.def".
 
@@ -538,7 +537,6 @@
       ***---
        INIT.
            accept versione-evasione from environment "VERSIONE_EVASIONE"
-           set no-mail to true.
            move 0 to counter counter2.
            set tutto-ok    to true.
            set prima-volta to true.
@@ -1920,6 +1918,5 @@ LUBEXX*****     open i-o reva allowing readers.
        PARAGRAFO-COPY.
            copy "aggiorna-stato-ordf.cpy".
       *****     copy "aggiornaX-stato-master.cpy".
-           copy "mail.cpy".
            copy "direziona-impegnato-common.cpy".
            copy "trova-parametro.cpy".

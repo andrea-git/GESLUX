@@ -7,11 +7,6 @@
        SPECIAL-NAMES. DECIMAL-POINT is COMMA.
 
        FILE-CONTROL.    
-       SELECT lineseq
-           ASSIGN       TO  wstampa
-           ORGANIZATION IS LINE SEQUENTIAL
-           ACCESS MODE  IS SEQUENTIAL
-           FILE STATUS  IS STATUS-lineseq.
 
        SELECT logfile
            ASSIGN       TO  path-log
@@ -42,11 +37,10 @@
            copy "tmarche.sl".
            copy "param.sl".
            copy "tmovtrat.sl".
-           copy "tsetinvio.sl".
+           copy "tsetinvio.sl".    
+           copy "lineseq-mail.sl".
 
        FILE SECTION.                          
-       FD  lineseq.
-       01 line-riga       PIC  x(20000).
 
        FD  logfile.
        01 log-riga        PIC  x(900).   
@@ -75,6 +69,7 @@
            copy "param.fd".
            copy "tmovtrat.fd".
            copy "tsetinvio.fd".
+           copy "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "imposte.def".
@@ -117,7 +112,7 @@
 
 
       * STATUS DEI FILES                  
-       77  status-lineseq        pic xx.
+       77  status-lineseq-mail   pic xx.
        77  status-logfile        pic xx.
        77  status-mtordini       pic xx.
        77  status-mrordini       pic xx.
@@ -146,29 +141,13 @@
        77  status-tsetinvio      pic xx.
 
        77  path-log              pic x(256).
-       77  wstampa               pic x(256).
-       77  wstampa1              pic x(256).
+       77  path-lineseq-mail     pic x(256).
 
       * FLAGS
        77  filler                pic x.
          88 prima-volta          value 1, false 0. 
 
-       01  r-inizio.
-         05 filler              pic x(2)  value " [".
-         05 r-data-i.
-            10 r-gg             pic xx.
-            10 filler           pic x     value "/".
-            10 r-mm             pic xx.
-            10 filler           pic x     value "/".
-            10 r-aa             pic xx.
-         05 filler              pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh             pic xx.
-            10 filler           pic x     value X"22".
-            10 r-min            pic xx.
-            10 filler           pic x     value "'".
-            10 r-sec            pic xx.
-         05 filler           pic x(2)     value "] ".
+       01  r-inizio              pic x(25).
 
        01  testata-1-ord.
       *     05 filler             pic x(10).
@@ -381,13 +360,7 @@
        PROCEDURE DIVISION.
 
        DECLARATIVES.      
-      ***---
-       LINESEQ-ERR SECTION.
-           use after error procedure on lineseq.
-           evaluate status-lineseq
-           when "00"
-           when other continue
-           end-evaluate.  
+       copy "mail-decl.cpy".
       ***---
        LOGFILE-ERR SECTION.
            use after error procedure on logfile.
@@ -1716,31 +1689,23 @@ LUBEXX          end-if
               move settaPDF-nome-file to LinkAttach
 
               move "stbrogcmp-auto" to NomeProgramma
-              set trovato to false
-              perform 10 times
-                 perform SEND-MAIL
-                 open input lineseq
-                 read lineseq next
-                 if line-riga of lineseq = "True"
-                    set trovato to true
-                    close lineseq
-                    exit perform 
-                 end-if
-                 close lineseq
-              end-perform
-              call "C$DELETE" using wstampa, "S"
-
-              if trovato
-                 move "INVIO MAIL RIUSCITO" to como-riga
-              else
-                 move line-riga of lineseq  to como-riga
-              end-if
-              perform SCRIVI-RIGA-LOG
+              move 5 to tentativi-mail
+              perform CICLO-SEND-MAIL
            else      
               move "NESSUNA MAIL INVIATA: DESTINATARIO NON VALORIZZATO" 
                 to como-riga
               perform SCRIVI-RIGA-LOG
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
+           call "C$DELETE" using path-lineseq-mail, "S".
+           if mail-ok
+              move "INVIO MAIL RIUSCITO" to como-riga
+           else
+              move line-riga-mail to como-riga
+           end-if.
+           perform SCRIVI-RIGA-LOG.
 
       ***---
        PARAGRAFO-COPY.

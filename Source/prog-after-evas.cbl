@@ -10,11 +10,7 @@
            copy "progmag.sl".
            copy "articoli.sl".
            copy "lineseq.sl". 
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -24,8 +20,7 @@
            copy "articoli.fd".
        FD  lineseq.
        01 line-riga        PIC  x(32000).
-       FD  lineseq1.
-       01 line-riga        PIC  x(32000).
+           copy "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            COPY "comune.def".
@@ -59,6 +54,8 @@
        77  status-tsetinvio pic xx.
        77  status-progmag   pic xx.
        77  status-articoli  pic xx.
+       77  status-lineseq-mail pic xx.
+       77  path-lineseq-mail   pic x(256).
        77  wstampa          pic x(256).
 
        77  impegnato        pic s9(8).
@@ -67,7 +64,6 @@
 
        77  como-data        pic 9(8).
        77  como-ora         pic 9(8).
-       77  tentativi        pic 9(5).
 
        LINKAGE SECTION.
        77  save-magazzino   pic x(3).
@@ -75,6 +71,9 @@
 
       ******************************************************************
        PROCEDURE DIVISION USING save-magazzino.
+       DECLARATIVES.
+       copy "mail-decl.cpy".
+       END DECLARATIVES.
 
        MAIN-PRG.
            perform INIT.
@@ -183,30 +182,21 @@
               move "EVASIONE ARTICOLI SENZA GIACENZA" to LinkSubject
               move "wvetrugno@lubex.it;a.eventi@goodworks.it" 
                 to LinkAddress
-
-              set errori to true
-              move 0 to tentativi 
+                                     
               move "prog-after-evas" to NomeProgramma
-              perform 5 times
-                 add 1 to tentativi
-                 perform SEND-MAIL
-                 open input lineseq1
-                 read  lineseq1 next
-                 if line-riga of lineseq1 = "True"
-                    set tutto-ok to true
-                    close lineseq1
-                    exit perform
-                 end-if
-                 close lineseq1
-              end-perform
+              move 5 to tentativi-mail
+              perform CICLO-SEND-MAIL
 
-              if errori
+              if mail-ko
                  display message box 
                        "Errore durante l'invio della mail riepologativa"
                           title titolo
                           icon 2
               end-if
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        EXIT-PGM.

@@ -20,10 +20,7 @@
            copy "destini.sl".            
            copy "tordini.sl".
            copy "rordini.sl".
-           copy "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.  
+           copy "lineseq-mail.sl".
        SELECT logfile
            ASSIGN       TO logfile-path
            ORGANIZATION IS LINE SEQUENTIAL
@@ -43,10 +40,7 @@
            copy "destini.fd".
            copy "tordini.fd".
            copy "rordini.fd".
-           copy "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==. 
+           copy "lineseq-mail.fd".
        FD  logfile.
        01 logfile-riga        PIC  x(1000).
 
@@ -61,6 +55,7 @@
       ******************************************************************
        PROCEDURE DIVISION.       
        DECLARATIVES.
+       copy "mail-decl.cpy".
       ***---  
        TMOVTRAT-ERR SECTION.
            use after error procedure on tmovtrat.
@@ -241,7 +236,6 @@
                          move cli-cap      to desf-cap
                          move cli-prov     to desf-prov
            end-read.                
-           initialize line-riga of lineseq.
            move tmo-peso-utf to tot-kg-edit.
            if tmo-numdoc-clifor not = 0
               move "BOLLA " to tipo-doc

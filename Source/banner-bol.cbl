@@ -79,22 +79,7 @@
        77 peso-ed          PIC  zz9,999.
        77 codice-ed        PIC  z(5).
 
-       01  r-inizio.
-         05 filler                 pic x(2)  value " [".
-         05 r-data.
-            10 r-gg                pic xx.
-            10 filler              pic x     value "/".
-            10 r-mm                pic xx.
-            10 filler              pic x     value "/".
-            10 r-aa                pic xx.
-         05 filler                 pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh                pic xx.
-            10 filler              pic x     value X"22".
-            10 r-min               pic xx.
-            10 filler              pic x     value "'".
-            10 r-sec               pic xx.
-         05 filler                 pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        77  status-mtordini      pic xx.
        77  status-tsetinvio      pic xx.
@@ -119,8 +104,6 @@
        77  como-ora              pic 9(8).
        77  como-riga             pic x(100).
        77  riga-stampa           pic x(100).
-
-       77  tentativi             pic 99.
 
       * FLAGS
        77  controllo             pic xx.
@@ -688,8 +671,6 @@
            accept LinkAddress from environment "BANNER_BOL_ADDRESSES".
            accept LinkAttach  from environment "BANNER_BOL_LOG".
 
-           set errori to true.
-           move 0 to tentativi.
            move "banner-bol" to NomeProgramma.
            move 5 to tentativi-mail.
            perform CICLO-SEND-MAIL.

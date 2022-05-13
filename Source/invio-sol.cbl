@@ -379,25 +379,10 @@
               move vet-mail-solleciti to LinkAddress
               move stbolle-path       to LinkAttach
            
-              set errori to true
-              move 0 to tentativi
-              perform 5 times
-                 add 1 to tentativi
-                 perform SEND-MAIL
-                 if status-lineseq-mail not = "00"
-                    exit perform
-                 end-if   
-                 open input lineseq-mail
-                 read lineseq-mail next
-                 if line-riga-mail = "True"
-                    set tutto-ok to true
-                    close lineseq-mail
-                    exit perform
-                 end-if
-                 close lineseq-mail
-              end-perform                         
+              move 5 to tentativi-mail
+              perform CICLO-SEND-MAIL             
 
-              if errori
+              if mail-ko
                  display message box "Invio non riuscito."
                               x"0d0A" line-riga-mail
                           title titolo
@@ -410,6 +395,9 @@
 
            call "C$DELETE" using stbolle-path.
            perform DESTROYXX.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        CLOSE-FILES.

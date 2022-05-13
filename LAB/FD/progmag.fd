@@ -86,7 +86,8 @@
                    15 prg-utente-ultima-modifica   PIC  X(10).
                10 prg-vuoti.
                    15 prg-giacenza-bloc            PIC  s9(8).
-                   15 prg-num-vuoto-1  PIC  9(7).
-                   15 prg-num-vuoto-2  PIC  9(15).
+      *(( XFD NAME = prg-costo-medio_1 ))
+                   15 prg-costo-mp     PIC  S9(9)V9(2).
+                   15 prg-num-vuoto-2  PIC  9(11).
                    15 prg-num-vuoto-3  PIC  9(15).
                    15 prg-alfa-vuoto   PIC  X(500).

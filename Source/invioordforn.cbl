@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 09:38:30.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 12:38:59.
        REMARKS.
       *{TOTEM}END
 
@@ -6600,7 +6600,6 @@
            perform CONTROLLA-FILE-INVIATO.
 
            if tutto-ok
-              set errori to true
               move 5 to tentativi-mail
               move "invioordforn" to NomeProgramma
               perform CICLO-SEND-MAIL

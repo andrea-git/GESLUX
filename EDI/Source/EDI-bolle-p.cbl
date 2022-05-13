@@ -107,22 +107,7 @@
        77  counter2              pic 9(10).
        77  counter-edit          pic z(10).
 
-       01  r-inizio.
-         05 filler              pic x(2)  value " [".
-         05 r-data-i.
-            10 r-gg             pic xx.
-            10 filler           pic x     value "/".
-            10 r-mm             pic xx.
-            10 filler           pic x     value "/".
-            10 r-aa             pic xx.
-         05 filler              pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh             pic xx.
-            10 filler           pic x     value X"22".
-            10 r-min            pic xx.
-            10 filler           pic x     value "'".
-            10 r-sec            pic xx.
-         05 filler           pic x(2)     value "] ".
+       01  r-inizio              pic x(25).
 
        77  copy-status           signed-short.
        77  path-backup           pic x(256).       

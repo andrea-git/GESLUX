@@ -41,22 +41,7 @@
            copy "link-imp-esiti-p.def".
 
 
-       01  r-inizio.
-         05 filler                 pic x(2)  value " [".
-         05 r-data.
-            10 r-gg                pic xx.
-            10 filler              pic x     value "/".
-            10 r-mm                pic xx.
-            10 filler              pic x     value "/".
-            10 r-aa                pic xx.
-         05 filler                 pic x(5)  value "] - [".
-         05 r-ora.
-            10 r-hh                pic xx.
-            10 filler              pic x     value X"22".
-            10 r-min               pic xx.
-            10 filler              pic x     value "'".
-            10 r-sec               pic xx.
-         05 filler                 pic x(2)  value "] ".
+       01  r-inizio              pic x(25).
 
        01 r-stampa.
          05 r-tipo         pic x.
@@ -852,7 +837,6 @@
       *     inspect Daemon-Sub-orig 
       *                    replacing trailing low-value by space 
 
-           set errori to true.  
            move "imp-esiti" to NomeProgramma.
            move 5 to tentativi-mail.
            perform CICLO-SEND-MAIL.
@@ -913,61 +897,20 @@
 
       ***---
        INVIO-MAIL-LOG.
-
            move "IMPORTAZIONE ESITI DI CONSEGNA" 
-                  to LinkSubject
+             to LinkSubject.
 
-           initialize linkBody
+           initialize linkBody.
 
            move "In allegato dettaglio funzionamento programma" 
-                  to LinkBody     
+             to LinkBody.
 
            accept LinkAddress from environment "IMP_ESITI_ADDRESSES".
-           accept LinkAttach from environment "IMP_ESITI_LOG".
+           accept LinkAttach  from environment "IMP_ESITI_LOG".
 
-           set errori to true.
-           move 0 to tentativi.
            move "imp-esiti" to NomeProgramma.
-           perform 10 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              call "C$DELETE" using FileDest
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-
-      *        initialize como-riga
-      *        string r-inizio              delimited size
-      *               "TENTATIVO N. "       delimited size
-      *               tentativi             delimited size
-      *               ": "                  delimited size
-      *               line-riga of lineseq1 delimited size
-      *               into como-riga
-      *        end-string
-      *        perform SETTA-RIGA-STAMPA
-
-           end-perform
-               
-      *     initialize como-riga.
-      *     if tutto-ok
-      *        string r-inizio               delimited size
-      *               "INVIO MAIL RIUSCITO!" delimited size
-      *               into como-riga
-      *        end-string
-      *     else
-      *        string r-inizio                   delimited size
-      *               "INVIO MAIL NON RIUSCITO!" delimited size
-      *               into como-riga
-      *
-      *        end-string
-      *     end-if.
-      *     perform SETTA-RIGA-STAMPA.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL
 
            delete file lineseq-mail.
 
