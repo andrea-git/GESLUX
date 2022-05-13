@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 maggio 2022 16:10:33.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 09:25:13.
        REMARKS.
       *{TOTEM}END
 
@@ -16353,7 +16353,10 @@
               end-if
 
               move 27 to key-status
-           end-if 
+           end-if.
+
+      ***---
+       AFTER-SEND-MAIL 
            .
       * <TOTEM:END>
        evacli-Ev-After-Program.

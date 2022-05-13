@@ -190,20 +190,11 @@
            move "assimposte" to NomeProgramma.
 
            set errori to true.
-           perform 5 times
-              perform SEND-MAIL
-              if status-lineseq-mail not = "00"
-                 exit perform
-              end-if      
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-           end-perform.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        CLOSE-FILES.

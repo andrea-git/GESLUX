@@ -10,10 +10,7 @@
            copy "mtordini.sl". 
            copy "destini.sl".
            copy "clienti.sl".
-           COPY "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -22,10 +19,7 @@
            COPY "mtordini.fd".
            copy "destini.fd".
            copy "clienti.fd".
-           COPY "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "comune.def".
@@ -35,14 +29,12 @@
        77  status-tsetinvio  pic xx.
        77  status-destini    pic xx.
        77  status-clienti    pic xx.
-       77  STATUS-lineseq    PIC  X(2).
-       77  STATUS-lineseq1   PIC  X(2).
-       77  wstampa           PIC  X(256).
+       77  STATUS-lineseq-mail    PIC  X(2).
+       77  path-lineseq-mail      PIC  X(256).
 
 
        78  titolo    value "Invio Mail chiusura ordine master".
 
-       77 tentativi        PIC  99.
        77  num-edit       pic z(8).
        77  cont           pic 9(4).
        77  cont2          pic 9(4).
@@ -63,6 +55,8 @@
        PROCEDURE DIVISION using link-mto-chiave.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
+
        MTORDINI-ERR SECTION.
            use after error procedure on mtordini.
            set RecLocked to false.
@@ -188,25 +182,17 @@
            move space   to LinkAttach.
 
            set errori to true.
-           move 0 to tentativi.
+           move 5 to tentativi-mail.
            move "mail-chiu-master" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-           end-perform.
-           if errori
-              display message line-riga of lineseq1
+           perform CICLO-SEND-MAIL.
+           if mail-ko
+              display message line-riga-mail
                         title titolo
                          icon 2
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        PREPARA-SUBJECT.

@@ -91,7 +91,6 @@
        77  hh                    pic 99.
        77  mm                    pic 99.
        77  ss                    pic 99.       
-       77  tentativi             pic 99.
 
        77  resto                 pic 9(3).
        77  diff-giorni           pic 9(5).
@@ -928,59 +927,13 @@
            call "C$COPY" using FileOrig, FileDest, "S".
            move FileDest to LinkAttach.
 
-           set errori to true.
-           move 0 to tentativi.
+           set errori to true..
            move "check-qp" to NomeProgramma.
-
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              initialize como-riga
-              if StatusInvioMail = -1
-                 string r-inizio                      delimited size
-                        "TENTATIVO N. "               delimited size
-                        tentativi                     delimited size
-                        ": "                          delimited size
-                        "Chiamata InvioMail fallita!" delimited size
-                        " STATUS -1"                  delimited size
-                   into como-riga
-                 end-string
-              else
-                 string r-inizio                       delimited size
-                        "TENTATIVO N. "                delimited size
-                        tentativi                      delimited size
-                        ": "                           delimited size
-                        "Chiamata InvioMail riuscita!" delimited size
-                   into como-riga
-                 end-string
-              end-if
-              perform SETTA-RIGA-STAMPA
-                            
-              call "C$DELETE" using FileDest
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-
-              initialize como-riga
-              string r-inizio              delimited size
-                     "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     ": "                  delimited size
-                     line-riga-mail        delimited size
-                     into como-riga
-              end-string
-              perform SETTA-RIGA-STAMPA
-
-           end-perform
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
                
            initialize como-riga.
-           if tutto-ok
+           if mail-ok
               string r-inizio               delimited size
                      "INVIO MAIL RIUSCITO!" delimited size
                      into como-riga
@@ -994,6 +947,20 @@
            perform SETTA-RIGA-STAMPA.
 
            delete file lineseq.
+
+      ***---
+       AFTER-SEND-MAIL.
+           initialize como-riga.
+           string r-inizio         delimited size
+                  "TENTATIVO N. "  delimited size
+                  tentativo-mail   delimited size
+                  ": STATUS "      delimited size
+                  StatusInvioMail  delimited size
+                  " - "            delimited size
+                  line-riga-mail   delimited size
+             into como-riga
+           end-string.
+           perform SETTA-RIGA-STAMPA.
 
       ***---
        SETTA-RIGA-STAMPA.

@@ -14,10 +14,7 @@
            copy "articoli.sl".
            copy "tmp-sost-art.sl".
            copy "ttipocli.sl".
-           COPY "lineseq.sl".
-           COPY "lineseq.sl"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -30,10 +27,7 @@
            copy "articoli.fd".
            copy "tmp-sost-art.fd".
            copy "ttipocli.fd".
-           COPY "lineseq.fd".
-           COPY "lineseq.fd"
-                REPLACING ==lineseq== BY ==lineseq1==,
-                          ==STATUS-lineseq== BY ==STATUS-lineseq1==.
+           COPY "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "comune.def".
@@ -47,16 +41,12 @@
        77  status-articoli      pic xx.
        77  status-tmp-sost-art  pic xx.
        77  status-ttipocli      pic xx.
-       77  STATUS-lineseq       PIC  X(2).
-       77  STATUS-lineseq1      PIC  X(2).
-       77  wstampa              PIC  X(256).
-       77  path-tmp-sost-art    PIC  X(256).
-
+       77  STATUS-lineseq-mail  PIC  X(2).
+       77  path-lineseq-mail    PIC  X(2).
 
        78  titolo    
            value "Invio Mail sostituzione articoli negli ordini master".
 
-       77  tentativi      pic 99.
        77  num-edit       pic z(8).
        77  num-edit-2     pic z(8).
        77  cont           pic 9(4).
@@ -92,6 +82,7 @@
        PROCEDURE DIVISION using mail-sost-art-linkage.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
        mtordini-ERR SECTION.
            use after error procedure on mtordini.
            set RecLocked to false.
@@ -245,12 +236,10 @@
            open input ttipocli.
 
       ***---
-       ELABORAZIONE.
-
+       ELABORAZIONE.  
            move msa-mto-chiave to mto-chiave
            read mtordini no lock
-              invalid
-                 continue
+                invalid continue
            end-read.
 
            perform INVIO.
@@ -273,20 +262,12 @@
            move space   to LinkAttach.
 
            set errori to true.
-           move 0 to tentativi.
+           move 5 to tentativi-mail.
            move "mail-sost-art" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-           end-perform.
+           perform CICLO-SEND-MAIL.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        PREPARA-SUBJECT.

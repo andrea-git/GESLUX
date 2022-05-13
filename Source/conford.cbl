@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 maggio 2022 15:09:45.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 09:23:58.
        REMARKS.
       *{TOTEM}END
 
@@ -104,7 +104,6 @@
                   USAGE IS HANDLE OF FONT DEFAULT-FONT.
        77 Form1-Handle
                   USAGE IS HANDLE OF WINDOW.
-       77 tentativi        PIC  99.
        77 OK-73X21-BMP     PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -5015,7 +5014,7 @@
 
               perform INVIO-MAIL
 
-              if errori
+              if mail-ko
                  display message box "Invio non riuscito."
                               x"0d0A"line-riga-mail
                           title titolo
@@ -5227,26 +5226,12 @@
              into LinkAttach
            end-string.
            inspect link-path replacing trailing low-value by spaces.
-           
-           set errori to true.
-           move 0 to tentativi.
-           move "conford" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
+                              
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-      *        call "C$DELETE" using FileDest
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-
-           end-perform 
-
+      ***---
+       AFTER-SEND-MAIL 
            .
       * <TOTEM:END>
 

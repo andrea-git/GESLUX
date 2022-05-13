@@ -594,5 +594,5 @@
            goback.
 
       ***---
-           copy "mail.cpy".
+      *     copy "mail.cpy".
 

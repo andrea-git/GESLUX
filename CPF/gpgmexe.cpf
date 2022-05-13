@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=stbolle-Ev-Before-Program
 AFTER_PROGRAM=stbolle-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65C141856-594-183906001
+PROGRAM_UNIQUE_CODE=TOTEM-7E65D7544-355-16343701
 
 {{@DESCRIPTION:
 
@@ -2889,32 +2890,22 @@ BEGIN-TEXT
       ***---
        INVIO-MAIL.
            accept LinkSubject from environment "MAIL_ISOLATA_SUBJECT"
-           accept LinkBody from environment "MAIL_ISOLATA_BODY"
+           accept LinkBody    from environment "MAIL_ISOLATA_BODY"
            accept LinkAddress from environment "MAIL_ISOLATA_ADDRESSES".
 
            set errori to true.
-           move 0 to tentativi.
            move "gpgmexe" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-           end-perform
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-           if errori
+           if mail-ko
               set invio-mail-fallito  to true
               perform SCRIVI-LOG
            end-if
            delete file lineseq.
 
+      ***---
+       AFTER-SEND-MAIL.
 END-TEXT
 END-DATA
 BEGIN-DATA

@@ -1,6 +1,12 @@
        77  StatusInvioMail         pic s9.
        77  PathInvioMail           pic x(80).
        77  NomeProgramma           pic x(30).  
+       77  tentativi-mail          pic 99.
+       77  tentativo-mail          pic 99.
+
+       01  status-mail             pic xx.
+         88 mail-ok                value "OK".
+         88 mail-ko                value "KO".
 
       * PER LE MAIL
        01  LinkMail.

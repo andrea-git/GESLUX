@@ -21,6 +21,7 @@
            copy "tescons.sl".
            copy "tvettori.sl".
            copy "tgruppi.sl".
+           copy "lineseq-mail.sl".
 
        SELECT tmp-vol-master
            ASSIGN       TO path-tmp-vol-master
@@ -46,7 +47,8 @@
            copy "articoli.fd".
            copy "tescons.fd".
            copy "tvettori.fd".
-           copy "tgruppi.fd".
+           copy "tgruppi.fd". 
+           copy "lineseq-mail.fd".
 
        FD  tmp-vol-master.
        01 tvm-rec.
@@ -82,6 +84,8 @@
        77  status-tescons        pic xx.
        77  status-tvettori       pic xx.
        77  status-tgruppi        pic xx.
+       77  status-lineseq-mail   pic xx.
+       77  path-lineseq-mail     pic x(256).
 
        77  path-tmp-vol-master   pic x(256).
        77  wstampa               pic x(256).
@@ -111,6 +115,7 @@
        PROCEDURE DIVISION.
 
        DECLARATIVES.
+       copy "mail-decl.cpy".
        TORDINI-ERR SECTION.
            use after error procedure on tordini.
            set RecLocked to false.
@@ -807,7 +812,7 @@
                   separatore          delimited size
                   separatore          delimited size
                   como-stato          delimited low-value
-                  into line-riga
+             into line-riga
            end-string.
            write line-riga.
 
@@ -819,6 +824,9 @@
                  tgruppi.
            close       tmp-vol-master.
            delete file tmp-vol-master.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        EXIT-PGM.

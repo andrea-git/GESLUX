@@ -14,12 +14,7 @@
            copy "lineseq.sl".
            copy "tagli.sl".
            copy "mrordini.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.
+           copy "lineseq-mail.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -28,9 +23,7 @@
            copy "lineseq.fd".
            copy "tagli.fd".
            copy "mrordini.fd".
-
-       FD  lineseq1.
-       01 line-riga        PIC  x(900).
+           copy "lineseq-mail.fd".
 
        WORKING-STORAGE SECTION.
            copy "mail.def".
@@ -58,6 +51,8 @@
        77  status-lineseq          pic xx.
        77  status-tsetinvio        pic xx.
        77  status-mrordini         pic xx.
+       77  status-lineseq-mail     pic xx.
+       77  path-lineseq-mail       pic x(256).
 
        77  wstampa               pic x(256).
                                             
@@ -67,7 +62,6 @@
        77  como-ora              pic 9(8).  
        77  como-riga             pic x(400).
        77  riga-stampa           pic x(400).
-       77  tentativi             pic 99.
        77  nargs                 pic 99 comp-1 value 0.
        77  data-oggi             pic 9(8).
 
@@ -113,6 +107,7 @@
        PROCEDURE DIVISION USING batch-linkage.
 
        DECLARATIVES. 
+       copy "mail-decl.cpy".
       ***---
        TAGLI-ERR SECTION.
            use after error procedure on tagli.
@@ -430,52 +425,25 @@
            move lin-path-pdf  to LinkAttach
 
            set errori to true.
-           move 0 to tentativi.
+           move 5 to tentativi-mail.
            move "mail-tagli" to NomeProgramma.
-           perform 10 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              initialize como-riga
-              if StatusInvioMail = -1
-                 string "TENTATIVO N. "               delimited size
-                        tentativi                     delimited size
-                        ": "                          delimited size
-                        "Chiamata InvioMail fallita!" delimited size
-                        " STATUS -1"                  delimited size
-                        into como-riga
-                 end-string
-              else
-                 string "TENTATIVO N. "                delimited size
-                        tentativi                      delimited size
-                        ": "                           delimited size
-                        "Chiamata InvioMail riuscita!" delimited size
-                        into como-riga
-                 end-string
-              end-if
-              perform SETTA-RIGA-STAMPA
-                            
-              open input lineseq1
-              read  lineseq1 next
-              if line-riga of lineseq1 = "True"
-                 set tutto-ok to true
-                 close lineseq1
-                 exit perform
-              end-if
-              close lineseq1
-
-
-              initialize como-riga
-              string "TENTATIVO N. "       delimited size
-                     tentativi             delimited size
-                     ": "                  delimited size
-                     line-riga of lineseq1 delimited size
-                     into como-riga
-              end-string
-              perform SETTA-RIGA-STAMPA
-           end-perform.
+           perform CICLO-SEND-MAIL.
 
            delete file lineseq.
+
+      ***---
+       AFTER-SEND-MAIL.
+           initialize como-riga
+           string "TENTATIVO N. "  delimited size
+                  tentativo-mail   delimited size
+                  " "              delimited size
+                  "STATUS: "       delimited size
+                  StatusInvioMail  delimited size
+                  " - "            delimited size
+                  line-riga-mail   delimited size
+             into como-riga
+           end-string
+           perform SETTA-RIGA-STAMPA.
 
       ***---
        SOSTITUZIONE.
@@ -527,12 +495,12 @@
               end-if
                
               initialize como-riga
-              if tutto-ok
+              if mail-ok
                  move "INVIO MAIL RIUSCITO!"   to como-riga
               else              
                  set errore-warning to true
                  string "INVIO MAIL NON RIUSCITO! " delimited size
-                        line-riga of lineseq1       delimited by size
+                        line-riga-mail              delimited size
                         into como-riga
                  end-string
               end-if

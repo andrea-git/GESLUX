@@ -36,12 +36,7 @@
            copy "tmp-arrivi-prese.sl".
            copy "clienti.sl".
            copy "promoeva.sl".
-
-       select lineseq1
-           assign       to  wstampa
-           organization is line sequential
-           access mode  is sequential
-           file status  is status-lineseq.  
+           copy "lineseq-mail.sl".
 
        SELECT logfile
            ASSIGN       TO  path-logfile
@@ -80,7 +75,8 @@
            copy "sordforn.fd".
            copy "tmp-arrivi-prese.fd".
            copy "clienti.fd".
-           copy "promoeva.fd".       
+           copy "promoeva.fd". 
+           copy "lineseq-mail.fd".
            
        FD  tmplbx-progmag.
        01 tmplbx-rec.
@@ -89,9 +85,6 @@
                10 tmplbx-prg-cod-magazzino            PIC  X(3).
                10 tmplbx-prg-tipo-imballo PIC  X(3).
                10 tmplbx-prg-peso         PIC  9(5)v9(3).
-
-       FD  lineseq1.
-       01 line-riga        PIC  x(900).   
 
        FD  logfile.
        01 log-riga        PIC  x(900).  
@@ -125,6 +118,8 @@
        77  status-tmp-arrivi-prese    pic xx.
        77  status-clienti             pic xx.
        77  status-promoeva            pic xx.
+       77  status-lineseq-mail        pic xx.
+       77  path-lineseq-mail          pic xx.
 
        77  wstampa                    pic x(256).
        77  path-tmp-progmag           pic x(256).
@@ -164,7 +159,6 @@
 
        77  como-riga                  pic x(80).
        77  riga-comodo                pic x(1000).
-       77  tentativi                  pic 9(2).
 
        77  path-backup                pic x(256).
        77  path-ini                   pic x(256).
@@ -1951,58 +1945,12 @@
               move "In allegato dettaglio giacenze."    to LinkBody
               move wstampa                              to LinkAttach
               set errori to true
-              move 0 to tentativi
-              perform 10 times
-                 add 1 to tentativi
-                 perform SEND-MAIL
-                 
-                 perform SETTA-INIZIO-RIGA
-                 initialize como-riga
-                 if StatusInvioMail = -1
-                    string r-inizio                      delimited size
-                           "TENTATIVO N. "               delimited size
-                           tentativi                     delimited size
-                           ": "                          delimited size
-                           "Chiamata InvioMail fallita!" delimited size
-                           " STATUS -1"                  delimited size
-                           into como-riga
-                    end-string
-                 else
-                    string r-inizio                       delimited size
-                           "TENTATIVO N. "                delimited size
-                           tentativi                      delimited size
-                           ": "                           delimited size
-                           "Chiamata InvioMail riuscita!" delimited size
-                           into como-riga
-                    end-string
-                 end-if
-                 perform SCRIVI-RIGA-LOG
-      
-                 open input lineseq1
-                 read  lineseq1 next
-                 if line-riga of lineseq1 = "True"
-                    set tutto-ok to true
-                    close lineseq1
-                    exit perform
-                 end-if
-                 close lineseq1
-      
-                 perform SETTA-INIZIO-RIGA
-                 initialize como-riga
-                 string r-inizio              delimited size
-                        "TENTATIVO N. "       delimited size
-                        tentativi             delimited size
-                        ": "                  delimited size
-                        line-riga of lineseq1 delimited size
-                        into como-riga
-                 end-string
-                 perform SCRIVI-RIGA-LOG
-      
-              end-perform
+              move 5 to tentativi-mail
+              perform CICLO-SEND-MAIL 
                   
               perform SETTA-INIZIO-RIGA
               initialize como-riga
-              if tutto-ok 
+              if mail-ok 
                  string r-inizio               delimited size
                         "INVIO MAIL RIUSCITO!" delimited size
                         into como-riga
@@ -2063,7 +2011,22 @@
               end-if
               close logfile
 
-           end-if.            
+           end-if.  
+          
+      ***---
+       AFTER-SEND-MAIL.
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga.
+           string r-inizio         delimited size
+                  "TENTATIVO N. "  delimited size
+                  tentativo-mail   delimited size
+                  ": STATUS "      delimited size
+                  StatusInvioMail  delimited size
+                  " - "            delimited size
+                  line-riga-mail   delimited size
+             into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG.
 
       ***---
        COPIA-FILES.

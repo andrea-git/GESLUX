@@ -691,33 +691,11 @@
            set errori to true.
            move 0 to tentativi.
            move "banner-bol" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-                        
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-
-              initialize como-riga
-              string r-inizio         delimited size
-                     "TENTATIVO N. "  delimited size
-                     tentativi        delimited size
-                     ": "             delimited size
-                     line-riga-mail   delimited size
-                into como-riga
-              end-string
-              perform SETTA-RIGA-STAMPA
-
-           end-perform
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
                
            initialize como-riga.
-           if tutto-ok
+           if mail-ok
               string r-inizio               delimited size
                      "INVIO MAIL RIUSCITO!" delimited size
                      into como-riga
@@ -735,6 +713,10 @@
            else
               perform MESSAGE-BOX
            end-if.
+
+      ***---
+       AFTER-SEND-MAIL.
+           
 
       ***--
        AZZERA-ORD-MASTER.
@@ -992,5 +974,3 @@
                     delete USERAVV record invalid continue end-delete
                  end-perform
            end-start.
-
-

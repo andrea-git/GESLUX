@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gmovcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 maggio 2022 16:18:41.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 09:31:04.
        REMARKS.
       *{TOTEM}END
 
@@ -11438,16 +11438,8 @@ LUBEXX*****             hidden-data in hid-old-qta.
               end-string
            end-if.             
            move "gmovcvar" to NomeProgramma.
-           perform 5 times
-              perform SEND-MAIL
-              open input lineseq-mail
-              read lineseq-mail next
-              if line-riga-mail = "True" 
-                 close lineseq-mail
-                 exit perform 
-              end-if
-              close lineseq-mail
-           end-perform.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
            initialize wk-path copy-status.
            accept  wk-date from century-date.
            accept  wk-hour from time.
@@ -11473,7 +11465,10 @@ LUBEXX*****             hidden-data in hid-old-qta.
                         title titolo
                          icon 3
            end-perform.
-           rollback transaction 
+           rollback transaction.
+
+      ***---
+       AFTER-SEND-MAIL 
            .
       * <TOTEM:END>
 

@@ -93,3 +93,27 @@
            move 0 to StatusInvioMail
            call "C$SYSTEM" using PathInvioMail
                           giving StatusInvioMail.
+
+      ***---
+       CICLO-SEND-MAIL.
+           set mail-ko to true.
+           move 0 to tentativo-mail
+           perform until 1 = 2
+              add 1 to tentativo-mail
+              if tentativo-mail > tentativi-mail
+                 exit perform
+              end-if
+              perform SEND-MAIL
+              if status-lineseq-mail not = "00"
+                 exit perform
+              end-if      
+              open input lineseq-mail
+              read  lineseq-mail next
+              perform AFTER-SEND-MAIL
+              if line-riga-mail = "True"
+                 set mail-ok to true
+                 close lineseq-mail
+                 exit perform
+              end-if
+              close lineseq-mail
+           end-perform.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 maggio 2022 16:21:15.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 09:34:23.
        REMARKS.
       *{TOTEM}END
 
@@ -3557,31 +3557,22 @@
       ***---
        INVIO-MAIL.
            accept LinkSubject from environment "MAIL_ISOLATA_SUBJECT"
-           accept LinkBody from environment "MAIL_ISOLATA_BODY"
+           accept LinkBody    from environment "MAIL_ISOLATA_BODY"
            accept LinkAddress from environment "MAIL_ISOLATA_ADDRESSES".
 
            set errori to true.
-           move 0 to tentativi.
            move "gpgmexe" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-           end-perform
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
 
-           if errori
+           if mail-ko
               set invio-mail-fallito  to true
               perform SCRIVI-LOG
            end-if
-           delete file lineseq 
+           delete file lineseq.
+
+      ***---
+       AFTER-SEND-MAIL 
            .
       * <TOTEM:END>
 

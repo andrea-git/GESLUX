@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65C14164-198-12916153
+PROGRAM_UNIQUE_CODE=TOTEM-7E65D7544-123-1418123746
 
 {{@DESCRIPTION:
 
@@ -12661,16 +12661,8 @@ BEGIN-TEXT
               end-string
            end-if.             
            move "gmovcvar" to NomeProgramma.
-           perform 5 times
-              perform SEND-MAIL
-              open input lineseq-mail
-              read lineseq-mail next
-              if line-riga-mail = "True" 
-                 close lineseq-mail
-                 exit perform 
-              end-if
-              close lineseq-mail
-           end-perform.
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
            initialize wk-path copy-status.
            accept  wk-date from century-date.
            accept  wk-hour from time.
@@ -12697,6 +12689,9 @@ BEGIN-TEXT
                          icon 3
            end-perform.
            rollback transaction.
+
+      ***---
+       AFTER-SEND-MAIL.
 END-TEXT
 END-DATA
 BEGIN-DATA

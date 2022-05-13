@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 maggio 2022 16:26:53.
+       DATE-WRITTEN.        venerdì 13 maggio 2022 09:38:30.
        REMARKS.
       *{TOTEM}END
 
@@ -133,7 +133,6 @@
        77 imballi-ed       PIC  z(4).
        77 resto            PIC  9(8).
        77 num-edit         PIC  z(8).
-       77 tentativi        PIC  99.
        77 cont2            PIC  9(4).
        77 cont3            PIC  9(4).
        77 como-LinkBody    PIC  x(3000).
@@ -6165,7 +6164,7 @@
 
       *****     call "W$MOUSE" using set-mouse-shape, arrow-pointer
 
-           if errori
+           if mail-ko
               if stof-tof-numero = 0  
                  display message box "Invio non riuscito."
                               x"0d0a""L'ordine non corrisponde a quello 
@@ -6602,25 +6601,13 @@
 
            if tutto-ok
               set errori to true
-              move 0 to tentativi
+              move 5 to tentativi-mail
               move "invioordforn" to NomeProgramma
-              perform 5 times
-                 add 1 to tentativi
-                 perform SEND-MAIL
-
-      *        call "C$DELETE" using FileDest
-                 open input lineseq-mail
-                 read  lineseq-mail next
-                 if line-riga-mail = "True"
-                    set tutto-ok to true
-                    close lineseq-mail
-                    exit perform
-                 end-if
-                 close lineseq-mail
-
-              end-perform
+              perform CICLO-SEND-MAIL
            end-if.
 
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        CONTROLLA-FILE-INVIATO.  

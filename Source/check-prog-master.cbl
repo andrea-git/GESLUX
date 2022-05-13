@@ -41,7 +41,6 @@
                                             
        77  FileDest              pic x(256).
        77  FileOrig              pic x(256).   
-       77  tentativi             pic 99.
 
        77  save-progr            pic 9(5).
 
@@ -191,25 +190,13 @@
            accept LinkAddress from environment "CPM_ADDRESSES".
       
            set errori to true.
-           move 0 to tentativi.
                                
            move "check-prog-master" to NomeProgramma.
-           perform 5 times
-              add 1 to tentativi
-              perform SEND-MAIL
-              
-              open input lineseq-mail
-              read  lineseq-mail next
-              if line-riga-mail = "True"
-                 set tutto-ok to true
-                 close lineseq-mail
-                 exit perform
-              end-if
-              close lineseq-mail
-           end-perform
+           move 5 to tentativi-mail.
+           perform CICLO-SEND-MAIL.
                
            initialize como-riga.
-           if errori
+           if mail-ko
               display message "INVIO MAIL NON RIUSCITO"
                        x"0d0a"line-riga-mail
                         title titolo
@@ -217,6 +204,9 @@
            end-if.
       
            delete file lineseq.
+
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        PARAGRAFO-COPY.

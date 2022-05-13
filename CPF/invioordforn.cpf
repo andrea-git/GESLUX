@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65C142442-240-72188568
+PROGRAM_UNIQUE_CODE=TOTEM-7E65D7544-609-2231025009
 
 {{@DESCRIPTION:
 
@@ -505,9 +506,9 @@ m_bFixed=1
 
 @}}
 [FDITEM45_WK]
-m_strName=tentativi
-m_strRawPic=99
-m_strPic=99
+m_strName=cont2
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -515,7 +516,7 @@ m_bFixed=1
 
 @}}
 [FDITEM46_WK]
-m_strName=cont2
+m_strName=cont3
 m_strRawPic=9(4)
 m_strPic=9(4)
 m_nItemLevel=77
@@ -525,9 +526,9 @@ m_bFixed=1
 
 @}}
 [FDITEM47_WK]
-m_strName=cont3
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=como-LinkBody
+m_strRawPic=x(3000)
+m_strPic=x(3000)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -535,9 +536,9 @@ m_bFixed=1
 
 @}}
 [FDITEM48_WK]
-m_strName=como-LinkBody
-m_strRawPic=x(3000)
-m_strPic=x(3000)
+m_strName=FileDest
+m_strRawPic=x(256)
+m_strPic=x(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -545,9 +546,9 @@ m_bFixed=1
 
 @}}
 [FDITEM49_WK]
-m_strName=FileDest
-m_strRawPic=x(256)
-m_strPic=x(256)
+m_strName=mail-cc-lubex
+m_strRawPic=x(400)
+m_strPic=x(400)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -555,27 +556,27 @@ m_bFixed=1
 
 @}}
 [FDITEM50_WK]
-m_strName=mail-cc-lubex
-m_strRawPic=x(400)
-m_strPic=x(400)
-m_nItemLevel=77
+m_strName=rec-grid
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM50_WK
 
 @}}
 [FDITEM51_WK]
-m_strName=rec-grid
-m_nItemLevel=1
+m_strName=col-art
+m_strRawPic=z(6)
+m_strPic=z(6)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM51_WK
 
 @}}
 [FDITEM52_WK]
-m_strName=col-art
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=col-descr-art
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -583,9 +584,9 @@ m_bFixed=1
 
 @}}
 [FDITEM53_WK]
-m_strName=col-descr-art
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=col-imballo
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -593,9 +594,9 @@ m_bFixed=1
 
 @}}
 [FDITEM54_WK]
-m_strName=col-imballo
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strName=col-qta
+m_strRawPic=z(8)
+m_strPic=z(8)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -603,9 +604,9 @@ m_bFixed=1
 
 @}}
 [FDITEM55_WK]
-m_strName=col-qta
-m_strRawPic=z(8)
-m_strPic=z(8)
+m_strName=col-prz
+m_strRawPic=zzz.zz9,9999
+m_strPic=zzz.zz9,9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -613,35 +614,25 @@ m_bFixed=1
 
 @}}
 [FDITEM56_WK]
-m_strName=col-prz
-m_strRawPic=zzz.zz9,9999
-m_strPic=zzz.zz9,9999
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM56_WK
-
-@}}
-[FDITEM57_WK]
 m_strName=STATUS-articoli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM57_WK
+{{@DataItem_m_strDescriptionFDITEM56_WK
 
 @}}
-[FDITEM58_WK]
+[FDITEM57_WK]
 m_strName=Valid-STATUS-articoli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM58_WK
+{{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
-[FDITEM59_WK]
+[FDITEM58_WK]
 m_strName=TITOLO
 m_strRawPic=X(50)
 m_strPic=X(50)
@@ -649,11 +640,23 @@ m_strDefaultValue="Geslux - Invio Ordini Fornitori"
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM58_WK
+
+@}}
+[FDITEM59_WK]
+m_strName=OK-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM59_WK
 
 @}}
 [FDITEM60_WK]
-m_strName=OK-73X21-BMP
+m_strName=CANCEL-73X21-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -665,11 +668,8 @@ m_bFixed=1
 
 @}}
 [FDITEM61_WK]
-m_strName=CANCEL-73X21-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -677,15 +677,6 @@ m_bFixed=1
 
 @}}
 [FDITEM62_WK]
-m_strName=Form1-Tb-1-Handlea
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM62_WK
-
-@}}
-[FDITEM63_WK]
 m_strName=toolbar-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -694,10 +685,10 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM63_WK
+{{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
-[FDITEM64_WK]
+[FDITEM63_WK]
 m_strName=E-ESCI
 m_strRawPic=9
 m_strPic=9
@@ -705,13 +696,25 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM63_WK
+
+@}}
+[FDITEM64_WK]
+m_strName=E-CERCA
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
 [FDITEM65_WK]
-m_strName=E-CERCA
-m_strRawPic=9
-m_strPic=9
+m_strName=bottone-ok-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
 m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
@@ -720,7 +723,7 @@ m_bFixed=1
 
 @}}
 [FDITEM66_WK]
-m_strName=bottone-ok-bmp
+m_strName=bottone-cancel-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -732,11 +735,8 @@ m_bFixed=1
 
 @}}
 [FDITEM67_WK]
-m_strName=bottone-cancel-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -744,8 +744,9 @@ m_bFixed=1
 
 @}}
 [FDITEM68_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -753,25 +754,15 @@ m_bFixed=1
 
 @}}
 [FDITEM69_WK]
-m_strName=STATUS-tparamge
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM69_WK
-
-@}}
-[FDITEM70_WK]
 m_strName=Valid-STATUS-tparamge
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM70_WK
+{{@DataItem_m_strDescriptionFDITEM69_WK
 
 @}}
-[FDITEM71_WK]
+[FDITEM70_WK]
 m_strName=path-zoom-tordini
 m_strRawPic=X(256)
 m_strPic=X(256)
@@ -779,49 +770,49 @@ m_strDefaultValue=spaces
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM71_WK
+{{@DataItem_m_strDescriptionFDITEM70_WK
 
 @}}
-[FDITEM72_WK]
+[FDITEM71_WK]
 m_strName=filler
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM72_WK
+{{@DataItem_m_strDescriptionFDITEM71_WK
 
 @}}
-[FDITEM73_WK]
+[FDITEM72_WK]
 m_strName=record-ok
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1,
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM73_WK
+{{@DataItem_m_strDescriptionFDITEM72_WK
 
 @}}
-[FDITEM74_WK]
+[FDITEM73_WK]
 m_strName=STATUS-zoom-tordini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM74_WK
+{{@DataItem_m_strDescriptionFDITEM73_WK
 
 @}}
-[FDITEM75_WK]
+[FDITEM74_WK]
 m_strName=Valid-STATUS-zoom-tordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM75_WK
+{{@DataItem_m_strDescriptionFDITEM74_WK
 
 @}}
-[FDITEM76_WK]
+[FDITEM75_WK]
 m_strName=ext-file
 m_strRawPic=x(256)
 m_strPic=X(256)
@@ -829,29 +820,29 @@ m_nItemLevel=77
 m_nExternal=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM76_WK
+{{@DataItem_m_strDescriptionFDITEM75_WK
 
 @}}
-[FDITEM77_WK]
+[FDITEM76_WK]
 m_strName=STATUS-tcaumag
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM77_WK
+{{@DataItem_m_strDescriptionFDITEM76_WK
 
 @}}
-[FDITEM78_WK]
+[FDITEM77_WK]
 m_strName=Valid-STATUS-tcaumag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM78_WK
+{{@DataItem_m_strDescriptionFDITEM77_WK
 
 @}}
-[FDITEM79_WK]
+[FDITEM78_WK]
 m_strName=v-ok
 m_strRawPic=9
 m_strPic=9
@@ -859,134 +850,134 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM79_WK
+{{@DataItem_m_strDescriptionFDITEM78_WK
 
 @}}
-[FDITEM80_WK]
+[FDITEM79_WK]
 m_strName=STATUS-tnomen
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM80_WK
+{{@DataItem_m_strDescriptionFDITEM79_WK
 
 @}}
-[FDITEM81_WK]
+[FDITEM80_WK]
 m_strName=Valid-STATUS-tnomen
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM81_WK
+{{@DataItem_m_strDescriptionFDITEM80_WK
 
 @}}
-[FDITEM82_WK]
+[FDITEM81_WK]
 m_strName=STATUS-rordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM82_WK
+{{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
-[FDITEM83_WK]
+[FDITEM82_WK]
 m_strName=Valid-STATUS-rordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM83_WK
+{{@DataItem_m_strDescriptionFDITEM82_WK
 
 @}}
-[FDITEM84_WK]
+[FDITEM83_WK]
 m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM84_WK
+{{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
-[FDITEM85_WK]
+[FDITEM84_WK]
 m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM85_WK
+{{@DataItem_m_strDescriptionFDITEM84_WK
 
 @}}
-[FDITEM86_WK]
+[FDITEM85_WK]
 m_strName=STATUS-timballi
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM86_WK
+{{@DataItem_m_strDescriptionFDITEM85_WK
 
 @}}
-[FDITEM87_WK]
+[FDITEM86_WK]
 m_strName=Valid-STATUS-timballi
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM87_WK
+{{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
-[FDITEM88_WK]
+[FDITEM87_WK]
 m_strName=STATUS-timbalqta
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM88_WK
+{{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
-[FDITEM89_WK]
+[FDITEM88_WK]
 m_strName=Valid-STATUS-timbalqta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM89_WK
+{{@DataItem_m_strDescriptionFDITEM88_WK
 
 @}}
-[FDITEM90_WK]
+[FDITEM89_WK]
 m_strName=STATUS-nordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM90_WK
+{{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
-[FDITEM91_WK]
+[FDITEM90_WK]
 m_strName=Valid-STATUS-nordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM91_WK
+{{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
-[FDITEM92_WK]
+[FDITEM91_WK]
 m_strName=cont
 m_strRawPic=9(3)
 m_strPic=9(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM92_WK
+{{@DataItem_m_strDescriptionFDITEM91_WK
 
 @}}
-[FDITEM93_WK]
+[FDITEM92_WK]
 m_strName=tipo-invio
 m_strRawPic=S9(1)
 m_strPic=S9(1)
@@ -994,40 +985,50 @@ m_strDefaultValue=3
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM93_WK
+{{@DataItem_m_strDescriptionFDITEM92_WK
 
 @}}
-[FDITEM94_WK]
+[FDITEM93_WK]
 m_strName=t-mail
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM94_WK
+{{@DataItem_m_strDescriptionFDITEM93_WK
 
 @}}
-[FDITEM95_WK]
+[FDITEM94_WK]
 m_strName=t-fax
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM95_WK
+{{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
-[FDITEM96_WK]
+[FDITEM95_WK]
 m_strName=t-manuale
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=3
+{{@DataItem_m_strDescriptionFDITEM95_WK
+
+@}}
+[FDITEM96_WK]
+m_strName=mail
+m_strRawPic=X(100)
+m_strPic=X(100)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM96_WK
 
 @}}
 [FDITEM97_WK]
-m_strName=mail
-m_strRawPic=X(100)
-m_strPic=X(100)
+m_strName=fax
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1035,9 +1036,10 @@ m_bFixed=1
 
 @}}
 [FDITEM98_WK]
-m_strName=fax
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=e-fax
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1045,7 +1047,7 @@ m_bFixed=1
 
 @}}
 [FDITEM99_WK]
-m_strName=e-fax
+m_strName=e-mail
 m_strRawPic=9
 m_strPic=9
 m_strDefaultValue=1
@@ -1056,17 +1058,6 @@ m_bFixed=1
 
 @}}
 [FDITEM100_WK]
-m_strName=e-mail
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=1
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM100_WK
-
-@}}
-[FDITEM101_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -1074,10 +1065,10 @@ m_strDefaultValue=129
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM101_WK
+{{@DataItem_m_strDescriptionFDITEM100_WK
 
 @}}
-[FDITEM102_WK]
+[FDITEM101_WK]
 m_strName=tof-rif-forn
 m_strRawPic=X(20)
 m_strPic=X(20)
@@ -1085,13 +1076,23 @@ m_strDefaultValue="tor-num-ord-cli"
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM101_WK
+
+@}}
+[FDITEM102_WK]
+m_strName=como-prz-totale
+m_strRawPic=9(8)v99
+m_strPic=9(8)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM102_WK
 
 @}}
 [FDITEM103_WK]
-m_strName=como-prz-totale
-m_strRawPic=9(8)v99
-m_strPic=9(8)v99
+m_strName=STATUS-rlistini
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1099,46 +1100,46 @@ m_bFixed=1
 
 @}}
 [FDITEM104_WK]
-m_strName=STATUS-rlistini
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM104_WK
-
-@}}
-[FDITEM105_WK]
 m_strName=Valid-STATUS-rlistini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM105_WK
+{{@DataItem_m_strDescriptionFDITEM104_WK
 
 @}}
-[FDITEM106_WK]
+[FDITEM105_WK]
 m_strName=STATUS-art-ordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM106_WK
+{{@DataItem_m_strDescriptionFDITEM105_WK
 
 @}}
-[FDITEM107_WK]
+[FDITEM106_WK]
 m_strName=Valid-STATUS-art-ordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM106_WK
+
+@}}
+[FDITEM107_WK]
+m_strName=Verdana10-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM107_WK
 
 @}}
 [FDITEM108_WK]
-m_strName=Verdana10-Occidentale
-m_nUsage=26
+m_strName=STATUS-destinif
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1146,28 +1147,28 @@ m_bFixed=1
 
 @}}
 [FDITEM109_WK]
-m_strName=STATUS-destinif
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM109_WK
-
-@}}
-[FDITEM110_WK]
 m_strName=Valid-STATUS-destinif
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=mail-cc
+m_strRawPic=X(900)
+m_strPic=X(900)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM110_WK
 
 @}}
 [FDITEM111_WK]
-m_strName=mail-cc
-m_strRawPic=X(900)
-m_strPic=X(900)
+m_strName=status-usr-tel
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1175,45 +1176,45 @@ m_bFixed=1
 
 @}}
 [FDITEM112_WK]
-m_strName=status-usr-tel
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM112_WK
-
-@}}
-[FDITEM113_WK]
 m_strName=Valid-status-usr-tel
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
+[FDITEM113_WK]
+m_strName=Verdana7-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM113_WK
 
 @}}
 [FDITEM114_WK]
-m_strName=Verdana7-Occidentale
-m_nUsage=26
-m_nItemLevel=77
+m_strName=rec-note
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM114_WK
 
 @}}
 [FDITEM115_WK]
-m_strName=rec-note
-m_nItemLevel=1
+m_strName=col-note
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM115_WK
 
 @}}
 [FDITEM116_WK]
-m_strName=col-note
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=col-nulla
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1221,18 +1222,17 @@ m_bFixed=1
 
 @}}
 [FDITEM117_WK]
-m_strName=col-nulla
-m_strRawPic=x
-m_strPic=x
-m_nItemLevel=5
+m_strName=form3-Handle
+m_nUsage=24
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM117_WK
 
 @}}
 [FDITEM118_WK]
-m_strName=form3-Handle
-m_nUsage=24
+m_strName=Verdana12BI-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1240,8 +1240,9 @@ m_bFixed=1
 
 @}}
 [FDITEM119_WK]
-m_strName=Verdana12BI-Occidentale
-m_nUsage=26
+m_strName=note-mail
+m_strRawPic=X(500)
+m_strPic=X(500)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1249,9 +1250,9 @@ m_bFixed=1
 
 @}}
 [FDITEM120_WK]
-m_strName=note-mail
-m_strRawPic=X(500)
-m_strPic=X(500)
+m_strName=STATUS-timposte
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1259,104 +1260,104 @@ m_bFixed=1
 
 @}}
 [FDITEM121_WK]
-m_strName=STATUS-timposte
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM121_WK
-
-@}}
-[FDITEM122_WK]
 m_strName=Valid-STATUS-timposte
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM122_WK
+{{@DataItem_m_strDescriptionFDITEM121_WK
 
 @}}
-[FDITEM123_WK]
+[FDITEM122_WK]
 m_strName=STATUS-tpiombo
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM123_WK
+{{@DataItem_m_strDescriptionFDITEM122_WK
 
 @}}
-[FDITEM124_WK]
+[FDITEM123_WK]
 m_strName=Valid-STATUS-tpiombo
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM124_WK
+{{@DataItem_m_strDescriptionFDITEM123_WK
 
 @}}
-[FDITEM125_WK]
+[FDITEM124_WK]
 m_strName=STATUS-impforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM125_WK
+{{@DataItem_m_strDescriptionFDITEM124_WK
 
 @}}
-[FDITEM126_WK]
+[FDITEM125_WK]
 m_strName=Valid-STATUS-impforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM126_WK
+{{@DataItem_m_strDescriptionFDITEM125_WK
 
 @}}
-[FDITEM127_WK]
+[FDITEM126_WK]
 m_strName=STATUS-tsetmerc
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM127_WK
+{{@DataItem_m_strDescriptionFDITEM126_WK
 
 @}}
-[FDITEM128_WK]
+[FDITEM127_WK]
 m_strName=Valid-STATUS-tsetmerc
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM128_WK
+{{@DataItem_m_strDescriptionFDITEM127_WK
 
 @}}
-[FDITEM129_WK]
+[FDITEM128_WK]
 m_strName=STATUS-tsetinvio
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM129_WK
+{{@DataItem_m_strDescriptionFDITEM128_WK
 
 @}}
-[FDITEM130_WK]
+[FDITEM129_WK]
 m_strName=Valid-STATUS-tsetinvio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM129_WK
+
+@}}
+[FDITEM130_WK]
+m_strName=path-lineseq-mail
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM130_WK
 
 @}}
 [FDITEM131_WK]
-m_strName=path-lineseq-mail
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=STATUS-lineseq-mail
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1364,22 +1365,12 @@ m_bFixed=1
 
 @}}
 [FDITEM132_WK]
-m_strName=STATUS-lineseq-mail
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM132_WK
-
-@}}
-[FDITEM133_WK]
 m_strName=Valid-STATUS-lineseq-mail
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM133_WK
+{{@DataItem_m_strDescriptionFDITEM132_WK
 
 @}}
 
@@ -4441,7 +4432,7 @@ BEGIN-TEXT
 
       *****     call "W$MOUSE" using set-mouse-shape, arrow-pointer
 
-           if errori
+           if mail-ko
               if stof-tof-numero = 0  
                  display message box "Invio non riuscito."
                               x"0d0a""L'ordine non corrisponde a quello stampato."
@@ -4722,25 +4713,13 @@ BEGIN-TEXT
 
            if tutto-ok
               set errori to true
-              move 0 to tentativi
+              move 5 to tentativi-mail
               move "invioordforn" to NomeProgramma
-              perform 5 times
-                 add 1 to tentativi
-                 perform SEND-MAIL
-
-      *        call "C$DELETE" using FileDest
-                 open input lineseq-mail
-                 read  lineseq-mail next
-                 if line-riga-mail = "True"
-                    set tutto-ok to true
-                    close lineseq-mail
-                    exit perform
-                 end-if
-                 close lineseq-mail
-
-              end-perform
+              perform CICLO-SEND-MAIL
            end-if.
 
+      ***---
+       AFTER-SEND-MAIL.
 
       ***---
        CONTROLLA-FILE-INVIATO.  
