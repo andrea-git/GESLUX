@@ -98,12 +98,6 @@
 
        01  r-inizio              pic x(25).
 
-       77  start-secondi         pic 9(18).
-       77  end-secondi           pic 9(18).
-       77  tot-secondi           pic 9(18).
-       77  hh                    pic 99.
-       77  mm                    pic 99.
-       77  ss                    pic 99.       
        77  tentativi             pic 99.
 
        77  resto                 pic 9(3).
@@ -749,7 +743,7 @@
                       "_"          delimited size
                       como-ora     delimited size
                       ".log"       delimited size
-                      into wstampa
+                 into wstampa
               end-string
               set RichiamoSchedulato to true
               move wstampa to batch-log
@@ -759,12 +753,6 @@
            set tutto-ok    to true.
            set prima-volta to true.
            perform SETTA-INIZIO-RIGA.
-
-           move como-ora(1:2) to hh.
-           move como-ora(3:2) to mm.
-           move como-ora(5:2) to ss.
-
-           compute start-secondi = ( hh * 3600 ) + ( mm * 60   ) + ss.
 
            initialize como-riga.
            string r-inizio              delimited size
@@ -1032,7 +1020,7 @@
                         el-gdo(idx)                       delimited size
                         " CON PREZZO: "                   delimited size
                         prz-confronto-ed                  delimited size
-                        into como-riga
+                   into como-riga
                  end-string
                  move el-gdo(idx)     to lst-gdo
                  move como-data       to lst-data
@@ -1042,8 +1030,8 @@
                  move "AUTO"          to lst-utente-creazione
                  add 1 to tot-righe
                  write lst-rec
+                 perform RIGA-LOG
               end-if    
-              perform RIGA-LOG
            end-perform.
 
       ***---
@@ -1067,44 +1055,14 @@
 
       ***---
        EXIT-PGM.
-           perform SETTA-INIZIO-RIGA.
-           move como-ora(1:2) to hh.
-           move como-ora(3:2) to mm.
-           move como-ora(5:2) to ss.
+           perform SETTA-INIZIO-RIGA.   
 
-           compute end-secondi = ( hh * 3600 ) + ( mm * 60   ) + ss.
-           compute tot-secondi = end-secondi - start-secondi.      
-
-           if tot-secondi < 60
-              if RichiamoSchedulato    
-                 move tot-secondi to ss         
-                 initialize line-riga of lineseq
-                 string "ELABORAZIONE TERMINATA IN: ",
-                        ss, " SECONDI"
-                        into line-riga of lineseq
-                 end-string
-                 write line-riga of lineseq
-              else
-                 move tot-secondi to ss
-                 display "ELABORAZIONE TERMINATA IN: ",
-                         ss, " SECONDI"
-                    upon syserr 
-              end-if
-           else
-              divide tot-secondi by 60 giving mm remainder ss
-              if RichiamoSchedulato
-                 initialize line-riga of lineseq
-                 string "ELABORAZIONE TERMINATA IN: ",
-                         mm, " MINUTI E ", ss, " SECONDI"
-                         into line-riga of lineseq
-                 end-string
-                 write line-riga of lineseq
-              else
-                 display "ELABORAZIONE TERMINATA IN: ",
-                         mm, " MINUTI E ", ss, " SECONDI"
-                    upon syserr
-              end-if
-           end-if.
+           initialize como-riga.
+           string r-inizio            delimited size
+                  "FINe ELABORAZIONE" delimited size
+                  into como-riga
+           end-string.
+           perform RIGA-LOG.
 
            if RichiamoSchedulato
               close       lineseq
