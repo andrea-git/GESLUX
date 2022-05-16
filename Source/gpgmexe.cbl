@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 16:27:08.
+       DATE-WRITTEN.        lunedì 16 maggio 2022 14:30:17.
        REMARKS.
       *{TOTEM}END
 
@@ -1070,7 +1070,8 @@
       *    PERFORM OPEN-tmp-cpu
       *    tsetinvio OPEN MODE IS FALSE
       *    PERFORM OPEN-tsetinvio
-           PERFORM OPEN-lineseq-mail
+      *    lineseq-mail OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq-mail
       *    After Open
            .
 
@@ -1194,7 +1195,7 @@
        OPEN-lineseq-mail.
       * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq-mail, BeforeOpen>
       * <TOTEM:END>
-           OPEN  INPUT lineseq-mail
+           OPEN  OUTPUT lineseq-mail
            IF NOT Valid-STATUS-lineseq-mail
               PERFORM  form1-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
@@ -1220,7 +1221,8 @@
       *    PERFORM CLOSE-tmp-cpu
       *    tsetinvio CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tsetinvio
-           PERFORM CLOSE-lineseq-mail
+      *    lineseq-mail CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq-mail
       *    After Close
            .
 
@@ -1268,7 +1270,6 @@
        CLOSE-lineseq-mail.
       * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq-mail, BeforeClose>
       * <TOTEM:END>
-           CLOSE lineseq-mail
            .
 
        DataSet1-pgmexe-INITSTART.
@@ -2333,14 +2334,6 @@
       * <TOTEM:END>
       * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
       * <TOTEM:END>
-           IF DataSet1-lineseq-mail-LOCK
-              READ lineseq-mail WITH LOCK 
-           ELSE
-              READ lineseq-mail WITH NO LOCK 
-           END-IF
-           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT 
-           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
       * <TOTEM:END>
       * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
@@ -2352,16 +2345,6 @@
       * <TOTEM:END>
       * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
       * <TOTEM:END>
-           IF DataSet1-lineseq-mail-KEY-Asc
-              IF DataSet1-lineseq-mail-LOCK
-                 READ lineseq-mail NEXT WITH LOCK
-              ELSE
-                 READ lineseq-mail NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
-           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
       * <TOTEM:END>
       * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
@@ -2382,6 +2365,7 @@
        DataSet1-lineseq-mail-Rec-Write.
       * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
       * <TOTEM:END>
+           WRITE line-riga-mail OF lineseq-mail.
            MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
            MOVE "lineseq-mail" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
