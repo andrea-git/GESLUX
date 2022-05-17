@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gmovcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 16 maggio 2022 15:59:25.
+       DATE-WRITTEN.        martedì 17 maggio 2022 14:18:26.
        REMARKS.
       *{TOTEM}END
 
@@ -172,7 +172,7 @@
            88 Valid-STATUS-movutf VALUE IS "00" THRU "09". 
        77 STATUS-tnazioni  PIC  X(2).
            88 Valid-STATUS-tnazioni VALUE IS "00" THRU "09". 
-       77 path-lineseq-mail            PIC  X(32).
+       77 path-lineseq-mail            PIC  X(256).
        77 STATUS-lineseq-mail          PIC  X(2).
            88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
 

@@ -25,7 +25,7 @@
        77  status-rordini        pic xx.
        77  status-destini        pic xx.
        77  status-logfile        pic xx.
-       77  path-lineseq-mail     pic xx.
+       77  path-lineseq-mail     pic x(256).
        77  logfile-path          pic x(200).
 
        77  como-riga             pic x(200).
