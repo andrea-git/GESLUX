@@ -1871,8 +1871,12 @@
               move 99999999 to prezzo-confronto
            end-if.
 
-           compute min-value = 
-              function MIN (costo-mp, costo-ultimo, prezzo-confronto).
+           if prezzo-confronto not = 0
+              move prezzo-confronto to min-value
+           else
+              compute min-value = 
+                 function MIN (costo-mp, costo-ultimo)
+           end-if.
                                       
            if ( mro-imp-consumo   +
                 mro-imp-cou-cobat +
