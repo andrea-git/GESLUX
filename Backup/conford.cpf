@@ -2,11 +2,10 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
-PROGRAM_UNIQUE_CODE=TOTEM-7E65D7543-242-1508717060
+PROGRAM_UNIQUE_CODE=TOTEM-7E651410243-682-9799415
 
 {{@DESCRIPTION:
 
@@ -2349,16 +2348,6 @@ BEGIN-TEXT
               
               move conf-chiave-ordine to mto-chiave
               read mtordini no lock
-              set cli-tipo-C to true
-              move mto-cod-cli to cli-codice
-              read clienti no lock
-              move cli-codice      to des-codice
-              move mto-prg-destino to des-prog
-              read destini no lock
-                   invalid 
-                   move cli-ragsoc-1 to des-ragsoc-1
-                   move cli-localita to des-localita
-              end-read
               
               string "Codice cliente"   delimited size
                      separatore         delimited size
@@ -2418,7 +2407,18 @@ BEGIN-TEXT
                        end-if
                        move mro-prz-unitario to como-prz
 
-                       perform VALUTA-SOTTOCOSTO
+                       perform VALUTA-SOTTOCOSTO 
+
+                       set cli-tipo-C to true
+                       move mto-cod-cli to cli-codice
+                       read clienti no lock
+                       move cli-codice      to des-codice
+                       move mto-prg-destino to des-prog
+                       read destini no lock
+                            invalid 
+                            move cli-ragsoc-1 to des-ragsoc-1
+                            move cli-localita to des-localita
+                       end-read
                           
                        initialize rec-stampa
                        string cli-codice        delimited size

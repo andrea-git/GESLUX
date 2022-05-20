@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 09:23:58.
+       DATE-WRITTEN.        venerdì 20 maggio 2022 12:28:32.
        REMARKS.
       *{TOTEM}END
 
@@ -4911,16 +4911,6 @@
               
               move conf-chiave-ordine to mto-chiave
               read mtordini no lock
-              set cli-tipo-C to true
-              move mto-cod-cli to cli-codice
-              read clienti no lock
-              move cli-codice      to des-codice
-              move mto-prg-destino to des-prog
-              read destini no lock
-                   invalid 
-                   move cli-ragsoc-1 to des-ragsoc-1
-                   move cli-localita to des-localita
-              end-read
               
               string "Codice cliente"   delimited size
                      separatore         delimited size
@@ -4980,7 +4970,18 @@
                        end-if
                        move mro-prz-unitario to como-prz
 
-                       perform VALUTA-SOTTOCOSTO
+                       perform VALUTA-SOTTOCOSTO 
+
+                       set cli-tipo-C to true
+                       move mto-cod-cli to cli-codice
+                       read clienti no lock
+                       move cli-codice      to des-codice
+                       move mto-prg-destino to des-prog
+                       read destini no lock
+                            invalid 
+                            move cli-ragsoc-1 to des-ragsoc-1
+                            move cli-localita to des-localita
+                       end-read
                           
                        initialize rec-stampa
                        string cli-codice        delimited size
