@@ -315,7 +315,6 @@
                     read recapiti no lock
                          invalid initialize rec-rec
                     end-read
-                    if tor-num-fattura < 14950 exit perform cycle end-if
                     if cli-naz-fe = "S" or 
                        des-naz-fe = "S"
       *****              if cli-nazione(1:2) = "IT" or 
