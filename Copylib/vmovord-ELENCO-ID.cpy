@@ -32,6 +32,10 @@
            when 78-ID-ef-art
                 inquire ef-art, value in ef-art-buf
 
+           |78-ID-ef-cau è l'ID del control ef-cau
+           when 78-ID-ef-cau
+                inquire ef-cau, value in ef-cau-buf
+
            end-evaluate.
 
       * Paragrafo per la struttura dei controlli sulla screen form3

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovord.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 17 novembre 2021 00:16:50.
+       DATE-WRITTEN.        martedì 31 maggio 2022 12:25:07.
        REMARKS.
       *{TOTEM}END
 
@@ -46,8 +46,8 @@
            COPY "tvettori.sl".
            COPY "tprov.sl".
            COPY "tregioni.sl".
-           COPY "tnotacr.sl".
            COPY "rnotacr.sl".
+           COPY "tnotacr.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -71,8 +71,8 @@
            COPY "tvettori.fd".
            COPY "tprov.fd".
            COPY "tregioni.fd".
-           COPY "tnotacr.fd".
            COPY "rnotacr.fd".
+           COPY "tnotacr.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -156,6 +156,7 @@
                   USAGE IS HANDLE OF WINDOW.
        77 como-riga        PIC  9(6).
        77 SaveArticolo     PIC  9(5).
+       77 SaveCausale      PIC  x(4).
        77 num-imballi      PIC  s9(10)v9.
        77 como-data-to     PIC  9(8).
        77 como-data-from   PIC  9(8).
@@ -446,6 +447,8 @@
               05 ef-marca-BUF PIC z(4).
       * Data.Entry-Field
               05 ef-art-BUF PIC z(6).
+      * Data.Entry-Field
+              05 ef-cau-BUF PIC X(4).
       * Data.Label
               05 lab-cod-BUF PIC X(40).
       * Data.Label
@@ -458,6 +461,8 @@
               05 lab-tipo-BUF PIC X(35).
       * Data.Label
               05 lab-gdo-BUF PIC X(30).
+      * Data.Label
+              05 lab-cau-BUF PIC X(40).
 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
@@ -510,7 +515,7 @@
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
-       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(476).
+       77 TMP-DataSet1-tmp-movmag-BUF     PIC X(531).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
@@ -525,8 +530,8 @@
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
        77 TMP-DataSet1-tregioni-BUF     PIC X(190).
-       77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
        77 TMP-DataSet1-rnotacr-BUF     PIC X(545).
+       77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -627,16 +632,16 @@
        77 DataSet1-tregioni-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tregioni-KEY-Asc  VALUE "A".
           88 DataSet1-tregioni-KEY-Desc VALUE "D".
-       77 DataSet1-tnotacr-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tnotacr-LOCK  VALUE "Y".
-       77 DataSet1-tnotacr-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tnotacr-KEY-Asc  VALUE "A".
-          88 DataSet1-tnotacr-KEY-Desc VALUE "D".
        77 DataSet1-rnotacr-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-rnotacr-LOCK  VALUE "Y".
        77 DataSet1-rnotacr-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-rnotacr-KEY-Asc  VALUE "A".
           88 DataSet1-rnotacr-KEY-Desc VALUE "D".
+       77 DataSet1-tnotacr-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tnotacr-LOCK  VALUE "Y".
+       77 DataSet1-tnotacr-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tnotacr-KEY-Asc  VALUE "A".
+          88 DataSet1-tnotacr-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -677,6 +682,7 @@
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
        77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
+       77 rnotacr-rno-k-articolo-SPLITBUF  PIC X(24).
        77 tnotacr-k-causale-SPLITBUF  PIC X(17).
        77 tnotacr-k1-SPLITBUF  PIC X(23).
        77 tnotacr-k2-SPLITBUF  PIC X(21).
@@ -688,7 +694,6 @@
        77 tnotacr-k-andamento-data-SPLITBUF  PIC X(10).
        77 tnotacr-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tnotacr-k-andamento-clides-SPLITBUF  PIC X(20).
-       77 rnotacr-rno-k-articolo-SPLITBUF  PIC X(24).
 
       *{TOTEM}END
 
@@ -702,6 +707,7 @@
        78  78-ID-ef-des VALUE 5006.
        78  78-ID-ef-marca VALUE 5007.
        78  78-ID-ef-art VALUE 5008.
+       78  78-ID-ef-cau VALUE 5009.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1257,7 +1263,7 @@
            Frame, 
            COL 1,50, 
            LINE 1,50,
-           LINES 20,61 ,
+           LINES 22,83 ,
            SIZE 44,60 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -1436,6 +1442,23 @@
            RIGHT,
            MAX-TEXT 6,
            VALUE ef-art-BUF,
+           .
+
+      * ENTRY FIELD
+       05
+           ef-cau, 
+           Entry-Field, 
+           COL 13,00, 
+           LINE 21,50,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-cau,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 4,
+           VALUE ef-cau-BUF,
            .
 
       * LABEL
@@ -1698,15 +1721,45 @@
            TRANSPARENT,
            .
 
+      * LABEL
+       05
+           Screen4-La-4a, 
+           Label, 
+           COL 4,50, 
+           LINE 21,50,
+           LINES 1,33 ,
+           SIZE 8,00 ,
+           ID IS 18,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Causale",
+           .
+
+      * DB_LABEL
+       05
+           lab-cau, 
+           Label, 
+           COL 20,50, 
+           LINE 21,50,
+           LINES 2,00 ,
+           SIZE 24,00 ,
+           COLOR IS 5,
+           ID IS 22,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE lab-cau-BUF,
+           TRANSPARENT,
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 22,72,
+           LINE 25,50,
            LINES 2,78 ,
            SIZE 45,90 ,
-           LOWERED,
            ID IS 23,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -1717,7 +1770,7 @@
            pb-ok, 
            Push-Button, 
            COL 30,90, 
-           LINE 23,41,
+           LINE 26,19,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -1736,7 +1789,7 @@
            pb-annulla, 
            Push-Button, 
            COL 38,80, 
-           LINE 23,41,
+           LINE 26,19,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -2947,8 +3000,8 @@
            PERFORM OPEN-tvettori
            PERFORM OPEN-tprov
            PERFORM OPEN-tregioni
-           PERFORM OPEN-tnotacr
            PERFORM OPEN-rnotacr
+           PERFORM OPEN-tnotacr
       *    After Open
            .
 
@@ -3180,18 +3233,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-tnotacr.
-      * <TOTEM:EPT. INIT:vmovord, FD:tnotacr, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tnotacr
-           IF NOT Valid-STATUS-tnotacr
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:vmovord, FD:tnotacr, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-rnotacr.
       * <TOTEM:EPT. INIT:vmovord, FD:rnotacr, BeforeOpen>
       * <TOTEM:END>
@@ -3201,6 +3242,18 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:vmovord, FD:rnotacr, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tnotacr.
+      * <TOTEM:EPT. INIT:vmovord, FD:tnotacr, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tnotacr
+           IF NOT Valid-STATUS-tnotacr
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:vmovord, FD:tnotacr, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -3227,8 +3280,8 @@
            PERFORM CLOSE-tvettori
            PERFORM CLOSE-tprov
            PERFORM CLOSE-tregioni
-           PERFORM CLOSE-tnotacr
            PERFORM CLOSE-rnotacr
+           PERFORM CLOSE-tnotacr
       *    After Close
            .
 
@@ -3344,16 +3397,16 @@
            CLOSE tregioni
            .
 
-       CLOSE-tnotacr.
-      * <TOTEM:EPT. INIT:vmovord, FD:tnotacr, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tnotacr
-           .
-
        CLOSE-rnotacr.
       * <TOTEM:EPT. INIT:vmovord, FD:rnotacr, BeforeClose>
       * <TOTEM:END>
            CLOSE rnotacr
+           .
+
+       CLOSE-tnotacr.
+      * <TOTEM:EPT. INIT:vmovord, FD:tnotacr, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tnotacr
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -6627,6 +6680,171 @@
       * <TOTEM:END>
            .
 
+       rnotacr-rno-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE rnotacr-rno-k-articolo-SPLITBUF
+           MOVE rno-cod-articolo(1:6) TO 
+           rnotacr-rno-k-articolo-SPLITBUF(1:6)
+           MOVE rno-chiave(1:17) TO 
+           rnotacr-rno-k-articolo-SPLITBUF(7:17)
+           .
+
+       DataSet1-rnotacr-INITSTART.
+           IF DataSet1-rnotacr-KEY-Asc
+              MOVE Low-Value TO rno-chiave
+           ELSE
+              MOVE High-Value TO rno-chiave
+           END-IF
+           .
+
+       DataSet1-rnotacr-INITEND.
+           IF DataSet1-rnotacr-KEY-Asc
+              MOVE High-Value TO rno-chiave
+           ELSE
+              MOVE Low-Value TO rno-chiave
+           END-IF
+           .
+
+      * rnotacr
+       DataSet1-rnotacr-START.
+           IF DataSet1-rnotacr-KEY-Asc
+              START rnotacr KEY >= rno-chiave
+           ELSE
+              START rnotacr KEY <= rno-chiave
+           END-IF
+           .
+
+       DataSet1-rnotacr-START-NOTGREATER.
+           IF DataSet1-rnotacr-KEY-Asc
+              START rnotacr KEY <= rno-chiave
+           ELSE
+              START rnotacr KEY >= rno-chiave
+           END-IF
+           .
+
+       DataSet1-rnotacr-START-GREATER.
+           IF DataSet1-rnotacr-KEY-Asc
+              START rnotacr KEY > rno-chiave
+           ELSE
+              START rnotacr KEY < rno-chiave
+           END-IF
+           .
+
+       DataSet1-rnotacr-START-LESS.
+           IF DataSet1-rnotacr-KEY-Asc
+              START rnotacr KEY < rno-chiave
+           ELSE
+              START rnotacr KEY > rno-chiave
+           END-IF
+           .
+
+       DataSet1-rnotacr-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-rnotacr-LOCK
+              READ rnotacr WITH LOCK 
+              KEY rno-chiave
+           ELSE
+              READ rnotacr WITH NO LOCK 
+              KEY rno-chiave
+           END-IF
+           PERFORM rnotacr-rno-k-articolo-MERGE-SPLITBUF
+           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT 
+           MOVE "rnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rnotacr-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-rnotacr-KEY-Asc
+              IF DataSet1-rnotacr-LOCK
+                 READ rnotacr NEXT WITH LOCK
+              ELSE
+                 READ rnotacr NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-rnotacr-LOCK
+                 READ rnotacr PREVIOUS WITH LOCK
+              ELSE
+                 READ rnotacr PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM rnotacr-rno-k-articolo-MERGE-SPLITBUF
+           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
+           MOVE "rnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rnotacr-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-rnotacr-KEY-Asc
+              IF DataSet1-rnotacr-LOCK
+                 READ rnotacr PREVIOUS WITH LOCK
+              ELSE
+                 READ rnotacr PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-rnotacr-LOCK
+                 READ rnotacr NEXT WITH LOCK
+              ELSE
+                 READ rnotacr NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM rnotacr-rno-k-articolo-MERGE-SPLITBUF
+           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
+           MOVE "rnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rnotacr-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
+           MOVE "rnotacr" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rnotacr-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
+           MOVE "rnotacr" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rnotacr-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
+           MOVE "rnotacr" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterDelete>
+      * <TOTEM:END>
+           .
+
        tnotacr-k-causale-MERGE-SPLITBUF.
            INITIALIZE tnotacr-k-causale-SPLITBUF
            MOVE tno-causale(1:4) TO tnotacr-k-causale-SPLITBUF(1:4)
@@ -6906,171 +7124,6 @@
       * <TOTEM:END>
            .
 
-       rnotacr-rno-k-articolo-MERGE-SPLITBUF.
-           INITIALIZE rnotacr-rno-k-articolo-SPLITBUF
-           MOVE rno-cod-articolo(1:6) TO 
-           rnotacr-rno-k-articolo-SPLITBUF(1:6)
-           MOVE rno-chiave(1:17) TO 
-           rnotacr-rno-k-articolo-SPLITBUF(7:17)
-           .
-
-       DataSet1-rnotacr-INITSTART.
-           IF DataSet1-rnotacr-KEY-Asc
-              MOVE Low-Value TO rno-chiave
-           ELSE
-              MOVE High-Value TO rno-chiave
-           END-IF
-           .
-
-       DataSet1-rnotacr-INITEND.
-           IF DataSet1-rnotacr-KEY-Asc
-              MOVE High-Value TO rno-chiave
-           ELSE
-              MOVE Low-Value TO rno-chiave
-           END-IF
-           .
-
-      * rnotacr
-       DataSet1-rnotacr-START.
-           IF DataSet1-rnotacr-KEY-Asc
-              START rnotacr KEY >= rno-chiave
-           ELSE
-              START rnotacr KEY <= rno-chiave
-           END-IF
-           .
-
-       DataSet1-rnotacr-START-NOTGREATER.
-           IF DataSet1-rnotacr-KEY-Asc
-              START rnotacr KEY <= rno-chiave
-           ELSE
-              START rnotacr KEY >= rno-chiave
-           END-IF
-           .
-
-       DataSet1-rnotacr-START-GREATER.
-           IF DataSet1-rnotacr-KEY-Asc
-              START rnotacr KEY > rno-chiave
-           ELSE
-              START rnotacr KEY < rno-chiave
-           END-IF
-           .
-
-       DataSet1-rnotacr-START-LESS.
-           IF DataSet1-rnotacr-KEY-Asc
-              START rnotacr KEY < rno-chiave
-           ELSE
-              START rnotacr KEY > rno-chiave
-           END-IF
-           .
-
-       DataSet1-rnotacr-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-rnotacr-LOCK
-              READ rnotacr WITH LOCK 
-              KEY rno-chiave
-           ELSE
-              READ rnotacr WITH NO LOCK 
-              KEY rno-chiave
-           END-IF
-           PERFORM rnotacr-rno-k-articolo-MERGE-SPLITBUF
-           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT 
-           MOVE "rnotacr" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rnotacr-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-rnotacr-KEY-Asc
-              IF DataSet1-rnotacr-LOCK
-                 READ rnotacr NEXT WITH LOCK
-              ELSE
-                 READ rnotacr NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-rnotacr-LOCK
-                 READ rnotacr PREVIOUS WITH LOCK
-              ELSE
-                 READ rnotacr PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM rnotacr-rno-k-articolo-MERGE-SPLITBUF
-           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
-           MOVE "rnotacr" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rnotacr-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-rnotacr-KEY-Asc
-              IF DataSet1-rnotacr-LOCK
-                 READ rnotacr PREVIOUS WITH LOCK
-              ELSE
-                 READ rnotacr PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-rnotacr-LOCK
-                 READ rnotacr NEXT WITH LOCK
-              ELSE
-                 READ rnotacr NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM rnotacr-rno-k-articolo-MERGE-SPLITBUF
-           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
-           MOVE "rnotacr" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rnotacr-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
-           MOVE "rnotacr" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rnotacr-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
-           MOVE "rnotacr" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rnotacr-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-rnotacr TO TOTEM-ERR-STAT
-           MOVE "rnotacr" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rnotacr, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE mar-rec OF tmarche
@@ -7091,8 +7144,8 @@
            INITIALIZE vet-rec OF tvettori
            INITIALIZE prv-rec OF tprov
            INITIALIZE reg-rec OF tregioni
-           INITIALIZE tno-rec OF tnotacr
            INITIALIZE rno-rec OF rnotacr
+           INITIALIZE tno-rec OF tnotacr
            .
 
 
@@ -7317,16 +7370,16 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tnotacr-INITREC.
-           INITIALIZE tno-rec OF tnotacr
+       DataSet1-rnotacr-INITREC.
+           INITIALIZE rno-rec OF rnotacr
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
            .
 
       * FD's Initialize Paragraph
-       DataSet1-rnotacr-INITREC.
-           INITIALIZE rno-rec OF rnotacr
+       DataSet1-tnotacr-INITREC.
+           INITIALIZE tno-rec OF tnotacr
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -7864,7 +7917,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 24,50,
+              LINES 27,28,
               SIZE 45,90,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -7887,7 +7940,7 @@
 
       * Tool Bar    
            DISPLAY TOOL-BAR 
-              LINES 2,66,   
+              LINES 2,67,   
               HANDLE IN Form1-Tb-1-Handlea
            DISPLAY Form1-Tb-1a UPON Form1-Tb-1-Handlea
 
@@ -7920,6 +7973,7 @@
            move "<<HELP>> Blank = TUTTE LE TIPOLOGIE" to lab-tipo-buf.
            move "<<HELP>> Blank = TUTTI I CLIENTI"    to lab-cli-buf.
            move "<<HELP>> Blank = TUTTI I DESTINI"    to lab-des-buf.
+           move "<<HELP>> Blank = TUTTE LE CAUSALI"   to lab-cau-buf.
 
            display Form1.
 
@@ -8064,6 +8118,14 @@
                MOVE 5008 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-cau's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-cau-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5009 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
            .
 
        ef-tipo-BEFORE-VALIDATION.
@@ -8168,6 +8230,23 @@
            PERFORM ef-art-AFTER-VALIDATION
            .
 
+       ef-cau-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-cau, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-cau-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-cau, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-cau's Validation
+       ef-cau-VALIDATION.
+           PERFORM ef-cau-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-cau-AFTER-VALIDATION
+           .
+
 
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
@@ -8184,6 +8263,8 @@
            MOVE ef-marca-BUF TO mar-codice
       * DB_Entry-Field : ef-art
            MOVE ef-art-BUF TO art-codice
+      * DB_Entry-Field : ef-cau
+           MOVE ef-cau-BUF TO tca-codice
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
       * <TOTEM:END>
            .
@@ -8203,6 +8284,8 @@
            MOVE mar-codice TO ef-marca-BUF
       * DB_Entry-Field : ef-art
            MOVE art-codice TO ef-art-BUF
+      * DB_Entry-Field : ef-cau
+           MOVE tca-codice TO ef-cau-BUF
       * DB_LABEL : lab-cod
               MOVE cli-ragsoc-1  TO lab-cod-BUF
       * DB_LABEL : lab-marca
@@ -8215,6 +8298,8 @@
               MOVE tcl-descrizione  TO lab-tipo-BUF
       * DB_LABEL : lab-gdo
               MOVE gdo-intestazione  TO lab-gdo-BUF
+      * DB_LABEL : lab-cau
+              MOVE tca-descrizione  TO lab-cau-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
       * <TOTEM:END>
            .
@@ -8281,6 +8366,10 @@
            when 78-ID-ef-art
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-cau è l'ID del campo ef-cau
+           when 78-ID-ef-cau
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella BEFORE della screen
@@ -8324,6 +8413,11 @@
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
+           |78-ID-ef-cau è l'ID del campo ef-cau
+           when 78-ID-ef-cau
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella AFTER della screen
@@ -8358,6 +8452,9 @@
                 perform CONTROLLO
            |78-ID-ef-art è l'ID del campo ef-art
            when 78-ID-ef-art
+                perform CONTROLLO
+           |78-ID-ef-cau è l'ID del campo ef-cau
+           when 78-ID-ef-cau
                 perform CONTROLLO
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
@@ -9484,6 +9581,7 @@
            WHEN 5006 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5007 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5008 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5009 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -9493,6 +9591,7 @@
            When 5006 PERFORM ef-des-BeforeProcedure
            When 5007 PERFORM ef-marca-BeforeProcedure
            When 5008 PERFORM ef-art-BeforeProcedure
+           When 5009 PERFORM ef-art-BeforeProcedure
            END-EVALUATE
            perform Form1-BEFORE-SCREEN
            .
@@ -9505,6 +9604,7 @@
            When 5006 PERFORM ef-des-AfterProcedure
            When 5007 PERFORM ef-marca-AfterProcedure
            When 5008 PERFORM ef-art-AfterProcedure
+           When 5009 PERFORM ef-art-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -9662,7 +9762,17 @@
                 if stato-zoom = 0
                    modify ef-art,   value art-codice
                 end-if
+      *                  
       *
+           when 78-ID-ef-cau
+                inquire ef-cau value tca-codice
+                move "tcaumag"      to Como-File
+                call   "zoom-gt" using como-file, tca-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   modify ef-cau,   value tca-codice
+                end-if      
            end-evaluate 
            .
       * <TOTEM:END>
@@ -9877,7 +9987,26 @@
                 end-if     
                 move art-descrizione to lab-art-buf
                 display lab-art
-                move art-codice to SaveArticolo
+                move art-codice to SaveArticolo 
+      *
+           when 78-ID-ef-cau
+                inquire ef-cau,   value in tca-codice
+                move spaces to tca-descrizione
+                if tca-codice not = spaces
+                   read tcaumag no lock
+                        invalid
+                        set errori to true
+                        display message "Inserimento causale NON valido"
+                                  title tit-err
+                                   icon 2
+                        move 78-ID-ef-cau to control-id 
+                   end-read   
+                else
+                   move "TUTTE LE CAUSALI" to tca-descrizione 
+                end-if     
+                move tca-descrizione to lab-cau-buf
+                display lab-cau
+                move tca-codice to SaveCausale
       *               
            end-evaluate.
 
@@ -10209,6 +10338,12 @@
               INQUIRE ef-art, VALUE IN art-codice
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-art-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-cau, VALUE IN tca-codice
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-cau-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -10583,7 +10718,7 @@
            move CONTROL-ID to mem-id.
 
            perform  varying CONTROL-ID from 78-ID-ef-data-from by 1
-                      until CONTROL-ID > 78-ID-ef-art
+                      until CONTROL-ID > 78-ID-ef-cau
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.

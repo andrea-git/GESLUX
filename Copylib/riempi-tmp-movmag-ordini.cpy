@@ -116,6 +116,13 @@ LUBEXX              end-if
                           ef-gdo-buf not = cli-gdo
                           set record-ok to false
                        end-if
+                    end-if 
+
+                    if record-ok
+                       if SaveCausale not = spaces and
+                          SaveCausale not = tor-causale
+                          set record-ok to false
+                       end-if
                     end-if
 
                     if record-ok
@@ -251,6 +258,13 @@ LUBEXX              end-if
                     if record-ok
                        if ef-gdo-buf not = spaces and
                           ef-gdo-buf not = cli-gdo
+                          set record-ok to false
+                       end-if
+                    end-if
+
+                    if record-ok
+                       if SaveCausale not = spaces and
+                          SaveCausale not = tno-causale
                           set record-ok to false
                        end-if
                     end-if
