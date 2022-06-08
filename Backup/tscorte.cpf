@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4C292345-450-2199126606
+PROGRAM_UNIQUE_CODE=TOTEM-7E66884441-483-2987219838
 
 {{@DESCRIPTION:
 
@@ -1224,7 +1224,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       Hint              = Seleziona/Deseleziona
-      ID                = 5
+      ID                = 6
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 35,77
@@ -1992,7 +1992,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       Hint              = Seleziona/Deseleziona
-      ID                = 6
+      ID                = 25
       ID Variable       = AUTO-ID
       Left Text         = FALSE
       Line              = 46,62
@@ -2439,7 +2439,7 @@ Begin Screen Form1
       Size              = 52,00
       Size Unit         = Default
       Tab Order         = 27
-      Title             = "Colorazione fabbisogno nero su programma ordini. Quando non attivo (OR) ""Su richiesta"" attivo impedisce la cancellazione del master se presenti ordini fornitori relativi."
+      Title             = "Colorazione fabbisogno nero su programma ordini. Quando attivo (AND) ""Su richiesta"" attivo impedisce la cancellazione del master se presenti ordini fornitori relativi."
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -4899,7 +4899,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 153
+      ID                = 191
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 35,77
@@ -4933,7 +4933,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 154
+      ID                = 192
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 35,77

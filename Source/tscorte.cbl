@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 2 dicembre 2020 10:26:18.
+       DATE-WRITTEN.        mercoledì 8 giugno 2022 11:01:48.
        REMARKS.
       *{TOTEM}END
 
@@ -1103,8 +1103,8 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE 'Colorazione fabbisogno nero su programma ordini. Quand
-      -    'o non attivo (OR) "Su richiesta" attivo impedisce la cancell
-      -    'azione del master se presenti ordini fornitori relativi.',
+      -    'o attivo (AND) "Su richiesta" attivo impedisce la cancellazi
+      -    'one del master se presenti ordini fornitori relativi.',
            .
 
       * LABEL
@@ -2179,7 +2179,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 153,
+           ID IS 191,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2196,7 +2196,7 @@
            LINES 1,31 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 154,
+           ID IS 192,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,

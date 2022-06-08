@@ -5155,7 +5155,7 @@ LABLAB***---
            move art-scorta to sco-codice.
            read tscorte no lock invalid continue end-read.
 
-           if not sco-art-attivo or
+           if sco-art-attivo and
               sco-immediato-si
                                        
               move low-value to tof-rec
