@@ -8,3 +8,8 @@
                       USAGE IS SIGNED-SHORT.
            03 LinkRicaricaGrid PIC  9.
                88 RicaricaGrid VALUE IS 1    WHEN SET TO FALSE  0. 
+           03 LinkDelete.
+               05 LinkOrdineDeleteOp           PIC  9.
+               05 LinkOrdineDeleteStatus
+                          USAGE IS SIGNED-SHORT.
+           03 filler           PIC  x(200).

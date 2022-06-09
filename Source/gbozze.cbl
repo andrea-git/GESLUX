@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gbozze.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 17 dicembre 2020 00:07:05.
+       DATE-WRITTEN.        giovedì 9 giugno 2022 14:27:40.
        REMARKS.
       *{TOTEM}END
 
@@ -96,11 +96,11 @@
            88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
        77 Default-Font
                   USAGE IS HANDLE OF FONT DEFAULT-FONT.
+           COPY  "LINK-GORDFORNVAR.DEF".
            COPY  "LINK-CHECK-EVA-F.DEF".
            COPY  "LINK-CAMBIA-RIF-ORD-REVA.DEF".
            COPY  "LINK-ST-ORDFORN.DEF".
            COPY  "LINK-ST-BOZZE.DEF".
-           COPY  "LINK-GORDCVAR.DEF".
            COPY  "AGGIORNA-STATO-ORDF.DEF".
            COPY  "IMPOSTE.DEF".
            COPY  "LINK-WPROGMAG.DEF".
@@ -329,7 +329,7 @@
        77 form1-MULKEY-TMPBUF   PIC X(199).
        77 STATUS-scr-movim-FLAG-REFRESH PIC  9.
           88 scr-movim-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
@@ -463,6 +463,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 tmovmag-key01-SPLITBUF  PIC X(17).
        77 tmovmag-k2-SPLITBUF  PIC X(20).
        77 tmovmag-k-data-SPLITBUF  PIC X(17).
@@ -4343,6 +4344,14 @@
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            IF DataSet1-tordforn-KEY-Asc
               MOVE Low-Value TO tof-chiave
@@ -4408,6 +4417,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4439,6 +4449,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4470,6 +4481,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -8166,7 +8178,6 @@
        pb-movim-LinkTo.
       * <TOTEM:PARA. pb-movim-LinkTo>
            modify form1-handle, visible   false.
-           move "gbozze"        to LinkPgm    of gordcvar-linkage.
            call   "gmovcvar" using lk-blockpgm, 
                                    user-codi,
                                    1,
@@ -8190,13 +8201,13 @@
        pb-ordfor-LinkTo.
       * <TOTEM:PARA. pb-ordfor-LinkTo>
            modify form1-handle, visible   false.
-           move anno-ordf   to LinkAnno   of gordcvar-linkage.
-           move numero-ordf to LinkNumero of gordcvar-linkage.
-           move "gbozze"    to LinkPgm    of gordcvar-linkage.
+           move anno-ordf   to LinkAnno   of gordfornvar-linkage.
+           move numero-ordf to LinkNumero of gordfornvar-linkage.
+           move "gbozze"    to LinkPgm    of gordfornvar-linkage.
            call   "gordfornvar" using lk-blockpgm, 
                                       user-codi,
                                       1,
-                                      gordcvar-linkage.
+                                      gordfornvar-linkage.
            cancel "gordfornvar".
            modify form1-handle, visible true 
            .

@@ -144,7 +144,8 @@
            evaluate true
            when tof-inserito
       *****     when tof-accettato
-                if PgmChiamante = "del-ordinif"
+      *          if PgmChiamante = "del-ordinif"
+                if LinkOrdineDeleteOp = 1
                    move mb-yes to scelta
                 else
                    display message "Cancellare l'ordine corrente?"
@@ -261,15 +262,11 @@ PATCH            perform SCRIVI-FILE-BACKUP
                  initialize tof-rec 
                         old-tof-rec replacing numeric data by zeroes
                                          alphanumeric data by spaces 
-                 if PgmChiamante not = PgmChiamante
-                    display message 
-                            "Cancellazione avenuta con successo!"
-                              title titolo
-                 end-if
                  set RicaricaGrid   to true
                  set RigaCambiata   to false
                  set PrezzoCambiato to false
-                 set HoSalvato      to true
+                 set HoSalvato      to true 
+                 move 0 to LinkOrdineDeleteOp
               end-if
               |SCRIVO IL LOG PER DOCUMENTARE LA CANCELLAZIONE FATTA DALL'UTENTE
               accept log-data from century-date
@@ -2446,7 +2443,9 @@ PATCH      call "c$calledby" using PgmChiamante.
            move 4 to event-data-1 colonna.
            perform SETTA-RIGA.      
 
-           if PgmChiamante = "del-ordinif"
+      *     if PgmChiamante = "del-ordinif"
+           if LinkOrdineDeleteOp = 1
+              move -1 to LinkOrdineDeleteOp
               perform MODIFICA
               if tutto-ok
                  perform CANCELLA

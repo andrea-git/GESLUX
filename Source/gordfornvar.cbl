@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordfornvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 16:05:44.
+       DATE-WRITTEN.        giovedì 9 giugno 2022 14:28:08.
        REMARKS.
       *{TOTEM}END
 
@@ -660,7 +660,7 @@
        LINKAGE          SECTION.
       *{TOTEM}LINKAGE
            COPY  "COMMON-LINKAGE.DEF".
-           COPY  "LINK-GORDCVAR.DEF".
+           COPY  "LINK-GORDFORNVAR.DEF".
 
       *{TOTEM}END
 
@@ -4169,7 +4169,7 @@
 
       *{TOTEM}LINKPARA
        PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL, 
-           gordcvar-linkage.
+           gordfornvar-linkage.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE

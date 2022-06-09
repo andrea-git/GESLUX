@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=check-utf-Ev-Before-Program
 AFTER_PROGRAM=check-utf-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65D143651-680-2728429406
+PROGRAM_UNIQUE_CODE=TOTEM-7E669102844-936-122137143
 
 {{@DESCRIPTION:
 
@@ -1350,7 +1350,7 @@ BEGIN-TEXT
                  move num-from to tof-numero
                  read tordforn no lock
                       invalid
-                      display message "ORDINE INESISTENTE!!!"
+                      display message "ORDINE INESISTENTE!!!" 
                                x"0d0a""ANNO: " tof-anno " - N. " tof-numero
                                 title tit-err
                                  icon 2
@@ -1368,7 +1368,7 @@ BEGIN-TEXT
                                                      gordfornvar-linkage
                            cancel "gordfornvar"
                       when tof-inviato
-                           display message "ORDINE INVIATO!!!"
+                           display message "ORDINE INVIATO!!!"  
                                     x"0d0a""ANNO: " tof-anno " - N. " tof-numero
                                      title tit-err
                                       icon 2  

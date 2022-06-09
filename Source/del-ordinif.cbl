@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-ordinif.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 1 settembre 2020 15:15:43.
+       DATE-WRITTEN.        giovedì 9 giugno 2022 12:28:46.
        REMARKS.
       *{TOTEM}END
 
@@ -130,6 +130,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
 
       *{TOTEM}END
 
@@ -536,6 +537,14 @@
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -640,6 +649,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -674,6 +684,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -708,6 +719,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -1230,7 +1242,7 @@
                  move num-from to tof-numero
                  read tordforn no lock
                       invalid
-                      display message "ORDINE INESISTENTE!!!"
+                      display message "ORDINE INESISTENTE!!!" 
                                x"0d0a""ANNO: " tof-anno " - N. " 
            tof-numero
                                 title tit-err
@@ -1249,7 +1261,7 @@
                                                      gordfornvar-linkage
                            cancel "gordfornvar"
                       when tof-inviato
-                           display message "ORDINE INVIATO!!!"
+                           display message "ORDINE INVIATO!!!"  
                                     x"0d0a""ANNO: " tof-anno " - N. " 
            tof-numero
                                      title tit-err
