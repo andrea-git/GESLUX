@@ -818,6 +818,7 @@ LUBEXX        move "N"                to r-utf
 LUBEXX             if art-peso-utf not = 0
 LUBEXX                move "S" to r-utf
 LUBEXX             end-if
+                   move art-cod-art-frn to r-cod-art-frn
               end-read                                
 
               move tmp-mov-colli      to r-colli
@@ -954,6 +955,8 @@ LUBEXX             end-if
                         "I. Cons. TOT"         delimited size
                         separatore             delimited size
                         "COU/Cobat TOT"        delimited size
+                        separatore             delimited size
+                        "Cod. Art. Frn."       delimited size
                         into line-riga         
                  end-string                    
                  write line-riga
@@ -1045,6 +1048,8 @@ LUBEXX             end-if
                      r-cons-tot       delimited size
                      separatore       delimited size
                      r-cou-tot        delimited size
+                     separatore       delimited size
+                     r-cod-art-frn    delimited size
 
                 into line-riga
               end-string

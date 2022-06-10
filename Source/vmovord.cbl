@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovord.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 31 maggio 2022 12:25:07.
+       DATE-WRITTEN.        venerdì 10 giugno 2022 17:33:37.
        REMARKS.
       *{TOTEM}END
 
@@ -356,6 +356,7 @@
            05 r-add-tot        PIC  ----.---.---.--9,99.
            05 r-cons-tot       PIC  ----.---.---.--9,99.
            05 r-cou-tot        PIC  ----.---.---.--9,99.
+           05 r-cod-art-frn    PIC  x(15).
        77 lab-tot-coubat-buf           PIC  ----.---.--9,99.
        77 lab-tot-add-buf  PIC  ----.---.--9,99.
        77 lab-tot-cons-buf PIC  ----.---.--9,99.
@@ -1652,7 +1653,7 @@
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
-           ID IS 26,
+           ID IS 27,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-des-BUF,
@@ -1667,7 +1668,7 @@
            LINE 6,11,
            LINES 2,00 ,
            SIZE 8,00 ,
-           ID IS 27,
+           ID IS 28,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1683,7 +1684,7 @@
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
-           ID IS 28,
+           ID IS 29,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-tipo-BUF,
@@ -1698,7 +1699,7 @@
            LINE 9,00,
            LINES 1,33 ,
            SIZE 8,00 ,
-           ID IS 29,
+           ID IS 30,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1714,7 +1715,7 @@
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
-           ID IS 30,
+           ID IS 31,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-gdo-BUF,
@@ -1729,7 +1730,7 @@
            LINE 21,50,
            LINES 1,33 ,
            SIZE 8,00 ,
-           ID IS 18,
+           ID IS 32,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1745,7 +1746,7 @@
            LINES 2,00 ,
            SIZE 24,00 ,
            COLOR IS 5,
-           ID IS 22,
+           ID IS 33,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-cau-BUF,

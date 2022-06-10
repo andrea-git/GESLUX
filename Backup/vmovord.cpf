@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E651F101626-210-624311462
+PROGRAM_UNIQUE_CODE=TOTEM-7E66A151955-135-1969366
 
 {{@DESCRIPTION:
 
@@ -2648,17 +2647,17 @@ m_bFixed=1
 
 @}}
 [FDITEM248_WK]
-m_strName=lab-tot-coubat-buf
-m_strRawPic=----.---.--9,99
-m_strPic=----.---.--9,99
-m_nItemLevel=77
+m_strName=r-cod-art-frn
+m_strRawPic=x(15)
+m_strPic=x(15)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM248_WK
 
 @}}
 [FDITEM249_WK]
-m_strName=lab-tot-add-buf
+m_strName=lab-tot-coubat-buf
 m_strRawPic=----.---.--9,99
 m_strPic=----.---.--9,99
 m_nItemLevel=77
@@ -2668,7 +2667,7 @@ m_bFixed=1
 
 @}}
 [FDITEM250_WK]
-m_strName=lab-tot-cons-buf
+m_strName=lab-tot-add-buf
 m_strRawPic=----.---.--9,99
 m_strPic=----.---.--9,99
 m_nItemLevel=77
@@ -2678,9 +2677,9 @@ m_bFixed=1
 
 @}}
 [FDITEM251_WK]
-m_strName=lab-tot-colimp-buf
-m_strRawPic=----.---.---.--9,99
-m_strPic=----.---.---.--9,99
+m_strName=lab-tot-cons-buf
+m_strRawPic=----.---.--9,99
+m_strPic=----.---.--9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2688,9 +2687,9 @@ m_bFixed=1
 
 @}}
 [FDITEM252_WK]
-m_strName=tmo-codmag
-m_strRawPic=x(3)
-m_strPic=x(3)
+m_strName=lab-tot-colimp-buf
+m_strRawPic=----.---.---.--9,99
+m_strPic=----.---.---.--9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2698,9 +2697,9 @@ m_bFixed=1
 
 @}}
 [FDITEM253_WK]
-m_strName=lab-pag-buf
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=tmo-codmag
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2708,11 +2707,9 @@ m_bFixed=1
 
 @}}
 [FDITEM254_WK]
-m_strName=bottone-ok-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=lab-pag-buf
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2720,7 +2717,7 @@ m_bFixed=1
 
 @}}
 [FDITEM255_WK]
-m_strName=bottone-cancel-bmp
+m_strName=bottone-ok-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2732,7 +2729,7 @@ m_bFixed=1
 
 @}}
 [FDITEM256_WK]
-m_strName=BOTTONE-EXIT-BMP
+m_strName=bottone-cancel-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -2744,8 +2741,11 @@ m_bFixed=1
 
 @}}
 [FDITEM257_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
+m_strName=BOTTONE-EXIT-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2753,9 +2753,8 @@ m_bFixed=1
 
 @}}
 [FDITEM258_WK]
-m_strName=STATUS-destini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2763,47 +2762,47 @@ m_bFixed=1
 
 @}}
 [FDITEM259_WK]
+m_strName=STATUS-destini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM259_WK
+
+@}}
+[FDITEM260_WK]
 m_strName=Valid-STATUS-destini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM259_WK
+{{@DataItem_m_strDescriptionFDITEM260_WK
 
 @}}
-[FDITEM260_WK]
+[FDITEM261_WK]
 m_strName=STATUS-destinif
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM260_WK
+{{@DataItem_m_strDescriptionFDITEM261_WK
 
 @}}
-[FDITEM261_WK]
+[FDITEM262_WK]
 m_strName=Valid-STATUS-destinif
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM261_WK
-
-@}}
-[FDITEM262_WK]
-m_strName=lab-codfor-buf
-m_strRawPic=X(9)
-m_strPic=X(9)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM262_WK
 
 @}}
 [FDITEM263_WK]
-m_strName=lab-ragsoc-buf
-m_strRawPic=X(80)
-m_strPic=X(80)
+m_strName=lab-codfor-buf
+m_strRawPic=X(9)
+m_strPic=X(9)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2811,10 +2810,9 @@ m_bFixed=1
 
 @}}
 [FDITEM264_WK]
-m_strName=lab-destino-2-buf
-m_strRawPic=X(40)
-m_strPic=X(40)
-m_strDefaultValue="Destino"
+m_strName=lab-ragsoc-buf
+m_strRawPic=X(80)
+m_strPic=X(80)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2822,9 +2820,10 @@ m_bFixed=1
 
 @}}
 [FDITEM265_WK]
-m_strName=lab-des-2-buf
+m_strName=lab-destino-2-buf
 m_strRawPic=X(40)
 m_strPic=X(40)
+m_strDefaultValue="Destino"
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2832,9 +2831,9 @@ m_bFixed=1
 
 @}}
 [FDITEM266_WK]
-m_strName=lab-citta-buf
-m_strRawPic=X(35)
-m_strPic=X(35)
+m_strName=lab-des-2-buf
+m_strRawPic=X(40)
+m_strPic=X(40)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2842,9 +2841,9 @@ m_bFixed=1
 
 @}}
 [FDITEM267_WK]
-m_strName=lab-marca-2-buf
-m_strRawPic=X(40)
-m_strPic=X(40)
+m_strName=lab-citta-buf
+m_strRawPic=X(35)
+m_strPic=X(35)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2852,9 +2851,9 @@ m_bFixed=1
 
 @}}
 [FDITEM268_WK]
-m_strName=lab-codice-buf
-m_strRawPic=z(5)
-m_strPic=z(5)
+m_strName=lab-marca-2-buf
+m_strRawPic=X(40)
+m_strPic=X(40)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2862,7 +2861,7 @@ m_bFixed=1
 
 @}}
 [FDITEM269_WK]
-m_strName=lab-des-prog-buf
+m_strName=lab-codice-buf
 m_strRawPic=z(5)
 m_strPic=z(5)
 m_nItemLevel=77
@@ -2872,9 +2871,9 @@ m_bFixed=1
 
 @}}
 [FDITEM270_WK]
-m_strName=lab-cod-marca-buf
-m_strRawPic=z(4)
-m_strPic=z(4)
+m_strName=lab-des-prog-buf
+m_strRawPic=z(5)
+m_strPic=z(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2882,6 +2881,16 @@ m_bFixed=1
 
 @}}
 [FDITEM271_WK]
+m_strName=lab-cod-marca-buf
+m_strRawPic=z(4)
+m_strPic=z(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM271_WK
+
+@}}
+[FDITEM272_WK]
 m_strName=EXCEL-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -2890,24 +2899,13 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM271_WK
-
-@}}
-[FDITEM272_WK]
-m_strName=como-numero
-m_strRawPic=s9(12)v999
-m_strPic=s9(12)v999
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM272_WK
 
 @}}
 [FDITEM273_WK]
-m_strName=stampa-tipo
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=como-numero
+m_strRawPic=s9(12)v999
+m_strPic=s9(12)v999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2915,29 +2913,30 @@ m_bFixed=1
 
 @}}
 [FDITEM274_WK]
+m_strName=stampa-tipo
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM274_WK
+
+@}}
+[FDITEM275_WK]
 m_strName=stampa-excel
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM274_WK
-
-@}}
-[FDITEM275_WK]
-m_strName=wstampa
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM275_WK
 
 @}}
 [FDITEM276_WK]
-m_strName=STATUS-lineseq
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2945,34 +2944,44 @@ m_bFixed=1
 
 @}}
 [FDITEM277_WK]
+m_strName=STATUS-lineseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM277_WK
+
+@}}
+[FDITEM278_WK]
 m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM277_WK
+{{@DataItem_m_strDescriptionFDITEM278_WK
 
 @}}
-[FDITEM278_WK]
+[FDITEM279_WK]
 m_strName=STATUS-ttipocli
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM278_WK
+{{@DataItem_m_strDescriptionFDITEM279_WK
 
 @}}
-[FDITEM279_WK]
+[FDITEM280_WK]
 m_strName=Valid-STATUS-ttipocli
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM279_WK
+{{@DataItem_m_strDescriptionFDITEM280_WK
 
 @}}
-[FDITEM280_WK]
+[FDITEM281_WK]
 m_strName=e-tipo
 m_strRawPic=9
 m_strPic=9
@@ -2980,67 +2989,67 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM280_WK
+{{@DataItem_m_strDescriptionFDITEM281_WK
 
 @}}
-[FDITEM281_WK]
+[FDITEM282_WK]
 m_strName=STATUS-tnomen
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM281_WK
+{{@DataItem_m_strDescriptionFDITEM282_WK
 
 @}}
-[FDITEM282_WK]
+[FDITEM283_WK]
 m_strName=Valid-STATUS-tnomen
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM282_WK
+{{@DataItem_m_strDescriptionFDITEM283_WK
 
 @}}
-[FDITEM283_WK]
+[FDITEM284_WK]
 m_strName=STATUS-rordini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM283_WK
+{{@DataItem_m_strDescriptionFDITEM284_WK
 
 @}}
-[FDITEM284_WK]
+[FDITEM285_WK]
 m_strName=Valid-STATUS-rordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM284_WK
+{{@DataItem_m_strDescriptionFDITEM285_WK
 
 @}}
-[FDITEM285_WK]
+[FDITEM286_WK]
 m_strName=STATUS-tgrupgdo
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM285_WK
+{{@DataItem_m_strDescriptionFDITEM286_WK
 
 @}}
-[FDITEM286_WK]
+[FDITEM287_WK]
 m_strName=Valid-STATUS-tgrupgdo
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM286_WK
+{{@DataItem_m_strDescriptionFDITEM287_WK
 
 @}}
-[FDITEM287_WK]
+[FDITEM288_WK]
 m_strName=e-gdo
 m_strRawPic=9
 m_strPic=9
@@ -3048,121 +3057,121 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM287_WK
+{{@DataItem_m_strDescriptionFDITEM288_WK
 
 @}}
-[FDITEM288_WK]
+[FDITEM289_WK]
 m_strName=STATUS-agenti
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM288_WK
+{{@DataItem_m_strDescriptionFDITEM289_WK
 
 @}}
-[FDITEM289_WK]
+[FDITEM290_WK]
 m_strName=Valid-STATUS-agenti
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM289_WK
+{{@DataItem_m_strDescriptionFDITEM290_WK
 
 @}}
-[FDITEM290_WK]
+[FDITEM291_WK]
 m_strName=STATUS-tvettori
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM290_WK
+{{@DataItem_m_strDescriptionFDITEM291_WK
 
 @}}
-[FDITEM291_WK]
+[FDITEM292_WK]
 m_strName=Valid-STATUS-tvettori
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM291_WK
+{{@DataItem_m_strDescriptionFDITEM292_WK
 
 @}}
-[FDITEM292_WK]
+[FDITEM293_WK]
 m_strName=STATUS-tprov
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM292_WK
+{{@DataItem_m_strDescriptionFDITEM293_WK
 
 @}}
-[FDITEM293_WK]
+[FDITEM294_WK]
 m_strName=Valid-STATUS-tprov
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM293_WK
+{{@DataItem_m_strDescriptionFDITEM294_WK
 
 @}}
-[FDITEM294_WK]
+[FDITEM295_WK]
 m_strName=STATUS-tregioni
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM294_WK
+{{@DataItem_m_strDescriptionFDITEM295_WK
 
 @}}
-[FDITEM295_WK]
+[FDITEM296_WK]
 m_strName=Valid-STATUS-tregioni
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM295_WK
+{{@DataItem_m_strDescriptionFDITEM296_WK
 
 @}}
-[FDITEM296_WK]
+[FDITEM297_WK]
 m_strName=STATUS-rnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM296_WK
+{{@DataItem_m_strDescriptionFDITEM297_WK
 
 @}}
-[FDITEM297_WK]
+[FDITEM298_WK]
 m_strName=Valid-STATUS-rnotacr
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM297_WK
+{{@DataItem_m_strDescriptionFDITEM298_WK
 
 @}}
-[FDITEM298_WK]
+[FDITEM299_WK]
 m_strName=STATUS-tnotacr
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM298_WK
+{{@DataItem_m_strDescriptionFDITEM299_WK
 
 @}}
-[FDITEM299_WK]
+[FDITEM300_WK]
 m_strName=Valid-STATUS-tnotacr
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM299_WK
+{{@DataItem_m_strDescriptionFDITEM300_WK
 
 @}}
 
@@ -5170,7 +5179,7 @@ Begin Screen Form1
          Height in Cells   = TRUE
          Help ID           = 0
          Hint              = .
-         ID                = 25
+         ID                = 26
          ID Variable       = AUTO-ID
          Justification     = Unaligned
          Line              = 21,00
@@ -5640,7 +5649,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 26
+         ID                = 27
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 13,50
@@ -5673,7 +5682,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 27
+         ID                = 28
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 5,61
@@ -5711,7 +5720,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 28
+         ID                = 29
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 5,61
@@ -5744,7 +5753,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 29
+         ID                = 30
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 8,50
@@ -5782,7 +5791,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 30
+         ID                = 31
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 8,50
@@ -5815,7 +5824,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 18
+         ID                = 32
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 21,00
@@ -5853,7 +5862,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 22
+         ID                = 33
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 21,00
