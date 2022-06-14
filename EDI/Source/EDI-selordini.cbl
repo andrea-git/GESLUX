@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 18 marzo 2022 11:58:45.
+       DATE-WRITTEN.        martedì 14 giugno 2022 11:15:49.
        REMARKS.
       *{TOTEM}END
 
@@ -1226,6 +1226,7 @@
        77 tpromo-tpr-k-data-ins-SPLITBUF  PIC X(29).
        77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini-lst-k-data-SPLITBUF  PIC X(29).
        77 locali-loc-chiave-gdo-fine-SPLITBUF  PIC X(32).
        77 locali-loc-chiave-fine-SPLITBUF  PIC X(32).
        77 locali-loc-chiave-ini-SPLITBUF  PIC X(32).
@@ -10745,6 +10746,16 @@
            listini-lst-k-cod-art-cli-SPLITBUF(21:8)
            .
 
+       listini-lst-k-data-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-data-SPLITBUF
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-data-SPLITBUF(1:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-data-SPLITBUF(9:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-data-SPLITBUF(14:15)
+           .
+
        DataSet1-listini-INITSTART.
            IF DataSet1-listini-KEY-Asc
               MOVE Low-Value TO lst-chiave OF listini
@@ -10808,6 +10819,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -10837,6 +10849,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -10866,6 +10879,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -19151,6 +19165,7 @@ LABLAB          end-if
            read ttipocli no lock
                 invalid  move spaces to tcl-tipologia-tratt-imposte
            end-read.
+           perform INVERTI-TIPOLOGIA.
            if tcl-tipologia-tratt-imposte not = TrattamentoInUso
 LUBEXX        display message "ATTENZIONE!!"
 LUBEXX                 x"0d0a""Impossibile cambiare la tipologia "

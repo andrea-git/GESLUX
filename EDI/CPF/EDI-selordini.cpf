@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65D143520-975-1624418198
+PROGRAM_UNIQUE_CODE=TOTEM-7E66E9920-624-294953622
 
 {{@DESCRIPTION:
 
@@ -18087,6 +18088,7 @@ BEGIN-TEXT
            read ttipocli no lock
                 invalid  move spaces to tcl-tipologia-tratt-imposte
            end-read.
+           perform INVERTI-TIPOLOGIA.
            if tcl-tipologia-tratt-imposte not = TrattamentoInUso
 LUBEXX        display message "ATTENZIONE!!"
 LUBEXX                 x"0d0a""Impossibile cambiare la tipologia "

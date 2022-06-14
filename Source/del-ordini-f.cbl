@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-ordini-f.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 14 giugno 2022 10:56:36.
+       DATE-WRITTEN.        martedì 14 giugno 2022 12:13:24.
        REMARKS.
       *{TOTEM}END
 
@@ -1348,7 +1348,7 @@
        check-utf-Ev-Before-Program.
       * <TOTEM:PARA. check-utf-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
-           move 21 to Passwd-password.
+           move 22 to Passwd-password.
            call   "passwd" using Passwd-linkage.
            cancel "passwd".
 
