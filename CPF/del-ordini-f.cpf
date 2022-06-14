@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=check-utf-Ev-Before-Program
 AFTER_PROGRAM=check-utf-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E66994611-788-2378818349
+PROGRAM_UNIQUE_CODE=TOTEM-7E66E85132-100-2187730781
 
 {{@DESCRIPTION:
 
@@ -1556,7 +1556,7 @@ BEGIN-DATA
    PARAGRAPH         = check-utf-Ev-Before-Program
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, scr-elab-blockpgm-1 **>>
-           move 1 to Passwd-password.
+           move 21 to Passwd-password.
            call   "passwd" using Passwd-linkage.
            cancel "passwd".
 
