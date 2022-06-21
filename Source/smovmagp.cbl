@@ -156,12 +156,14 @@ LUBEXX        10 imponibile-iva    pic 9(12)v99.
            05 filler               pic x(2)  value "Rg".
            05 filler               pic x(2)  value spaces.
            05 filler               pic X(4)  value "Cod.".
-           05 filler               pic X(2)  value spaces.
+           05 filler               pic X(1)  value spaces.
            05 filler               pic X(11) value "Descrizione".
            05 filler               pic X(25) value spaces. 
            05 filler               pic X(3)  value "Nr.".
            05 filler               pic X(8)  value spaces. 
-           05 filler               pic X(4)  value "Peso".
+           05 filler               pic X(4)  value "Peso". 
+           05 filler               pic X(1)  value spaces. 
+           05 filler               pic X(3)  value "Imb". 
            05 filler               pic X(3)  value spaces. 
            05 filler               pic X(10) value "Imponibile".
            05 filler               pic X(5)  value spaces.
@@ -178,7 +180,7 @@ LUBEXX        10 imponibile-iva    pic 9(12)v99.
       * INTESTAZIONE DELLA "GRIGLIA" PARTE ALTA.
        01  riga-heading-2. 
            05 filler               pic x(3)  value spaces.
-           05 filler               pic X(83) value spaces.
+           05 filler               pic X(86) value spaces.
            05 filler               pic X(6)  value "Totale".
            05 filler               pic x(7)  value spaces.
            05 filler               pic X(7)  value "Consumo".
@@ -193,12 +195,14 @@ LUBEXX        10 imponibile-iva    pic 9(12)v99.
            05 riga-dett-rg         pic Z(3).
            05 filler               pic X(1)  value spaces.
            05 riga-dett-cod        pic Z(5).
-           05 filler               pic X(2)  value spaces.
+           05 filler               pic X(1)  value spaces.
            05 riga-dett-descr      pic X(30).
            05 filler               pic X(2)  value spaces.  
            05 riga-dett-nr         pic zzz.zz9 blank zero.
            05 filler               pic X(2)  value spaces.
            05 riga-peso-nr         pic zz.zz9,999 blank zero.
+           05 filler               pic X(1)  value spaces.
+           05 riga-imb             pic X(3)  value spaces.
            05 filler               pic X(1)  value spaces.
            05 riga-dett-imponibile pic z.zzz.zz9,99.
            05 filler               pic X(2)  value spaces.
@@ -216,13 +220,13 @@ LUBEXX     05 riga-dett-tot-imp    pic zz.zzz.zz9,99.
        01  riga-fill-2.
            05 filler               pic x(3)  value spaces.
            05 filler               pic X(37) value spaces.
-           05 riga-fill-mezza      pic X(108) value all "-".
+           05 riga-fill-mezza      pic X(111) value all "-".
 
        01  riga-totali.
            05 filler               pic x(3)  value spaces.
            05 filler               pic X(37) value SPACES.
            05 filler               pic X(6)  value "TOTALI".
-           05 filler               pic X(32) value spaces.
+           05 filler               pic X(35) value spaces.
            05 riga-totale-imp      pic zzz.zzz.zz9,99.
            05 filler               pic X(4)  value spaces.
            05 riga-tot-imp-cons    pic zzz.zz9,99.
@@ -252,7 +256,7 @@ LUBEXX     05 riga-dett-tot-imp    pic zz.zzz.zz9,99.
       * SEPARATORE
        01  riga-trattini.
            05 filler               pic x(3)   value spaces.
-           05 riga-fill            pic X(145) value all "-".
+           05 riga-fill            pic X(148) value all "-".
 
        77  num-pagina              pic 999.
        77  totale-riga             pic S9(12)v99 value 0.
@@ -820,6 +824,7 @@ LUBEXX     move tbliv-percentuale to iva-aliquota(idx).
            end-if.
 
            initialize line-riga.
+
            move riga-scad-2 to line-riga.
            perform STAMPA-RIGA.
       *
@@ -885,6 +890,7 @@ LUBEXX     move tbliv-percentuale to iva-aliquota(idx).
            move art-descrizione to riga-dett-descr.
            move rmo-qta         to riga-dett-nr.
            move rmo-peso        to riga-peso-nr.
+           move rmo-imballo     to riga-imb.
            move rmo-netto       to riga-dett-imponibile.
 
            call "C$JUSTIFY"  using riga-dett-imponibile, "R".
