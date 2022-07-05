@@ -42,6 +42,8 @@
                 move "INVIO IN CORSO..."      to AccessType
            when RicalcoloXX                                         
                 move "RICALCOLO IN CORSO..."  to AccessType
+           when ElaborazioneXX                                         
+                move "ELABORAZIONE IN CORSO..."  to AccessType
            when other continue
            end-evaluate.
 
