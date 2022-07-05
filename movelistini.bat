@@ -1,0 +1,1 @@
+move f:\lubex\geslux\archivi\listini f:\lubex\archivi\listini_sto
