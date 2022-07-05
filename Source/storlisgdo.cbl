@@ -119,7 +119,7 @@
            end-evaluate.    
        END DECLARATIVES.
 
-       MAIN-PRG.
+       MAIN-PRG.                           
            perform INIT.
            perform OPEN-FILES.
            perform ELABORAZIONE.
@@ -145,7 +145,7 @@
            
       ***---
        OPEN-FILES.              
-           perform OPEN-IO-LISTINI.
+           perform OPEN-IO-LISTINI.        
            if tutto-ok     
               move "gdoart.csv" to wstampa
               open input lineseq  
@@ -188,7 +188,41 @@
            end-perform.              
       
       ***---
-       ELABORAZIONE.
+       ELABORAZIONE.         
+      *****        accept  path-file from environment "PATH_ARCHIVI"
+      *****        inspect path-file 
+      *****                replacing trailing spaces by low-value
+      *****        string  path-file delimited low-value
+      *****                "listini" delimited size
+      *****           into path-file
+      *****        end-string    
+      *****                                  
+      *****        close listini 
+      *****        accept  path-file-sto from environment "PATH_ARCHIVI"
+      *****        inspect path-file-sto 
+      *****                replacing trailing spaces by low-value
+      *****        string  path-file-sto delimited low-value
+      *****                "listini_sto" delimited size
+      *****           into path-file-sto
+      *****        end-string     
+      *****     initialize cmd 
+      *****     string "move "     delimited size
+      *****           x"22"        delimited size         
+      *****            path-file  delimited low-value
+      *****           x"22"        delimited size     
+      *****            " "         delimited size     
+      *****           x"22"        delimited size     
+      *****            path-file-sto  delimited low-value
+      *****           x"22"        delimited size     
+      *****            into cmd
+      *****     end-string.
+      *****                                stop "K"
+      *****     move 0 to return-code.            
+      *****     call "C$SYSTEM" using cmd, 225
+      *****                    giving return-code.
+      *****     goback   
+              
+
            set ElaborazioneXX to true.
            perform ACCESSOXX.
            perform until 1 = 2
@@ -233,37 +267,70 @@
                  add 1 to n-csvNotFound
               end-if
            end-perform.
-           if n-gen > 0    
+           if n-gen > 0           
+              unlock listini all records
+              close listini     
+                          
               accept  path-file from environment "PATH_ARCHIVI"
               inspect path-file 
                       replacing trailing spaces by low-value
               string  path-file delimited low-value
-                      "listini" delimited size
+                      "listini.vix" delimited size
                  into path-file
               end-string    
-                            
-              unlock listini all records
-              close listini 
+                                  
+              accept  path-file-sto from environment "PATH_ARCHIVI"
+              inspect path-file-sto 
+                      replacing trailing spaces by low-value
+              string  path-file-sto     delimited low-value
+                      "listini_sto.vix" delimited size
+                 into path-file-sto
+              end-string                               
+
+              string "move "        delimited size
+                    x"22"           delimited size         
+                     path-file      delimited low-value
+                    x"22"           delimited size     
+                     " "            delimited size     
+                    x"22"           delimited size     
+                     path-file-sto  delimited low-value
+                    x"22"           delimited size     
+                     into cmd
+              end-string                               
+              move 0 to return-code
+              call "C$SYSTEM" using cmd, 225
+                             giving return-code
+
               accept  path-file-sto from environment "PATH_ARCHIVI"
               inspect path-file-sto 
                       replacing trailing spaces by low-value
               string  path-file-sto delimited low-value
                       "listini_sto" delimited size
                  into path-file-sto
-              end-string                              
-              display "FASE 2 - SPOSTAMENTO LISTINI E CREAZIONE STORICO" 
-                      upon form1-handle 
-                      at column  2,00
-                           line  5,00
-              initialize cmd 
-              string "move "       delimited size
-                     path-file     delimited low-value
-                     " "           delimited size
-                     path-file-sto delimited low-value
-                into cmd
-              end-string          stop "K"
-              call "C$RUN" using cmd
+              end-string                       
+              accept  path-file from environment "PATH_ARCHIVI"
+              inspect path-file 
+                      replacing trailing spaces by low-value
+              string  path-file delimited low-value
+                      "listini" delimited size
+                 into path-file
+              end-string            
 
+              initialize cmd
+              string "move "       delimited size
+                    x"22"          delimited size         
+                     path-file     delimited low-value
+                    x"22"          delimited size     
+                     " "           delimited size     
+                    x"22"          delimited size     
+                     path-file-sto delimited low-value
+                    x"22"          delimited size     
+                     into cmd
+              end-string                               
+              move 0 to return-code
+              call "C$SYSTEM" using cmd, 225
+                             giving return-code
+                             
               open output listini
               move 0 to counter counter2
               move low-value to tlst-rec
@@ -276,12 +343,12 @@
                        if counter2 = 1000
                           move 0 to counter2
                           move counter to counter-edit
-                          display "FASE 3 - RESTORE LISTINI:  " 
+                          display "FASE 2 - RESTORE LISTINI:  " 
                                   upon form1-handle              
                                   at column  2,00
                                        line  5,00
                           display counter-edit upon form1-handle 
-                                  at column 23,00
+                                  at column 30,00
                                        line  5,00
                        end-if
                        move tlst-rec to lst-rec
