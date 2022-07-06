@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 27 gennaio 2022 20:50:15.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        mercoledì 6 luglio 2022 11:50:10.
        REMARKS.
       *{TOTEM}END
 
@@ -316,6 +316,10 @@
                   VALUE IS 1.
        77 form1a-Handle
                   USAGE IS HANDLE OF WINDOW.
+       77 chk-storico-buf  PIC  9
+                  VALUE IS 0.
+       77 v-storico        PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -455,8 +459,10 @@
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
        77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini-lst-k-data-SPLITBUF  PIC X(29).
        77 listini1-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini1-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini1-lst-k-data-SPLITBUF  PIC X(29).
 
            copy "common-excel.def".
       *{TOTEM}END
@@ -569,7 +575,7 @@
        05
            chk-escludi, 
            Check-Box, 
-           COL 35,00, 
+           COL 34,00, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 1,40 ,
@@ -586,7 +592,7 @@
        05
            chk-escludi-sp, 
            Check-Box, 
-           COL 49,00, 
+           COL 47,00, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 1,40 ,
@@ -596,6 +602,24 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            VALUE chk-escludi-sp-buf,
+           AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
+           BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
+           .
+      * CHECK BOX
+       05
+           chk-storico, 
+           Check-Box, 
+           COL 61,00, 
+           LINE 7,78,
+           LINES 1,33 ,
+           SIZE 1,40 ,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 13,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-storico-buf,
+           VISIBLE v-storico,
            AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
            BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
            .
@@ -827,7 +851,7 @@
        05
            Screen4-La-2aa, 
            Label, 
-           COL 37,60, 
+           COL 36,60, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -842,7 +866,7 @@
        05
            Screen4-La-2aaa, 
            Label, 
-           COL 51,60, 
+           COL 49,60, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -881,6 +905,22 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "al",
+           .
+
+      * LABEL
+       05
+           lab-storico, 
+           Label, 
+           COL 63,60, 
+           LINE 7,78,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           ID IS 206,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Storico",
+           VISIBLE v-storico,
            .
 
       * FRAME
@@ -4396,6 +4436,16 @@
            listini-lst-k-cod-art-cli-SPLITBUF(21:8)
            .
 
+       listini-lst-k-data-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-data-SPLITBUF
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-data-SPLITBUF(1:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-data-SPLITBUF(9:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-data-SPLITBUF(14:15)
+           .
+
        DataSet1-listini-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -4498,6 +4548,7 @@
            END-EVALUATE
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4530,6 +4581,7 @@
            END-EVALUATE
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4562,6 +4614,7 @@
            END-EVALUATE
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -4622,6 +4675,16 @@
            listini1-lst-k-cod-art-cli-SPLITBUF(6:15)
            MOVE lst-data OF listini(1:8) TO 
            listini1-lst-k-cod-art-cli-SPLITBUF(21:8)
+           .
+
+       listini1-lst-k-data-MERGE-SPLITBUF.
+           INITIALIZE listini1-lst-k-data-SPLITBUF
+           MOVE lst-data OF listini(1:8) TO 
+           listini1-lst-k-data-SPLITBUF(1:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini1-lst-k-data-SPLITBUF(9:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini1-lst-k-data-SPLITBUF(14:15)
            .
 
        DataSet1-listini1-INITSTART.
@@ -4687,6 +4750,7 @@
            END-IF
            PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT 
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4716,6 +4780,7 @@
            END-IF
            PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4745,6 +4810,7 @@
            END-IF
            PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -5287,9 +5353,21 @@
            perform DATE-TO-SCREEN.
            move como-data to ef-data-al-buf.
            display ef-data-al.
-
+                                                        
            move 1 to chk-escludi-buf chk-escludi-sp-buf.
            display chk-escludi chk-escludi-sp.
+
+           set environment "listini" to "listini_sto".
+           close      listini.
+           open input listini.
+           if status-listini = "00"
+              move 1 to v-storico
+           end-if.          
+           move 0 to chk-storico-buf.
+           display chk-storico lab-storico.                       
+           set environment "listini" to "listini".
+           close    listini.
+           open i-o listini.
 
            .
       * <TOTEM:END>
@@ -5752,7 +5830,7 @@
            when stampa-diretta
                 move "Stampa listino in corso..."      to tit
                 display lab
-                perform RIEMPI-TMP
+                perform RIEMPI-TMP         
                 if trovato
                    perform CHIAMATA-STAMPA
                    close  tmp-listini
@@ -5761,7 +5839,7 @@
                              title titolo
                               icon 2
                 end-if
-           end-evaluate.
+           end-evaluate.  
 
            move 27 to key-status.
 
@@ -6230,9 +6308,12 @@
               move ef-data-al-buf     to como-data
               perform DATE-TO-FILE
               move como-data          to stlst-data-ric-al
-           end-if
+           end-if.
+           move chk-escludi-buf    to stlst-escludi
+           move chk-escludi-sp-buf to stlst-escludi-sp
+
            call   "lab-st-listini" using st-listini-linkage.
-           cancel "lab-st-listini" 
+           cancel "lab-st-listini"                         
            .
       * <TOTEM:END>
 
@@ -6809,19 +6890,18 @@
                  if lst-gdo of listini not = gdo-codice
                  |or lst-data not = como-data
                     exit perform
+                 end-if          
+                 if save-articolo not = 0
+                    if save-articolo not = lst-articolo of listini
+                       exit perform
+                    end-if
+                 end-if
+                 if save-cod-art-cli not = spaces
+                    if save-cod-art-cli not = lst-cod-art-cli of listini
+                       exit perform
+                    end-if
                  end-if
                  if tipo-data = 1
-                    if save-articolo not = 0
-                       if save-articolo not = lst-articolo of listini
-                          exit perform
-                       end-if
-                    end-if
-                    if save-cod-art-cli not = spaces
-                       if save-cod-art-cli not = lst-cod-art-cli of 
-           listini
-                          exit perform
-                       end-if
-                    end-if
                     move lst-articolo of listini to tlst-articolo
                     read tmp-listini no lock key tmp-k-articolo
                          invalid perform VALORIZZA-RIGA-TMP
@@ -6832,6 +6912,40 @@
                     end-if
                     perform VALORIZZA-RIGA-TMP
                  end-if 
+              end-perform
+           end-if.                 
+                     
+           if trovato
+              set trovato to false
+              move low-value to tlst-chiave
+              start tmp-listini key >= tlst-chiave 
+                    invalid continue
+              end-start
+              perform until 1 = 2
+                 read tmp-listini next 
+                    at end 
+                       exit perform 
+                 end-read    
+                 initialize rec-grid
+                 evaluate tlst-prezzo
+                 when 0            
+                      if chk-escludi-sp-buf = 1
+                         exit perform cycle
+                      else
+                         set trovato to true
+                         exit perform
+                      end-if
+                 when 999999,99    
+                      if chk-escludi-buf = 1
+                         exit perform cycle
+                      else
+                         set trovato to true
+                         exit perform
+                      end-if
+                 when other     
+                      set trovato to true
+                      exit perform
+                 end-evaluate
               end-perform
            end-if 
            .
@@ -7293,8 +7407,24 @@
                  end-if                  
            
                  modify form1-handle, visible 0
-                 set ricarica to false
-                 perform FORM2-OPEN-ROUTINE
+                 set ricarica to false   
+
+                 if chk-storico-buf = 1
+                    set environment "listini" to "listini_sto"    
+                    close listini listini1
+                    open i-o listini
+                    open input listini1
+                 end-if
+
+                 perform FORM2-OPEN-ROUTINE                  
+
+                 if chk-storico-buf = 1
+                    set environment "listini" to "listini"    
+                    close listini listini1
+                    open i-o listini
+                    open input listini1
+                 end-if
+
                  if not ricarica
                     modify form1-handle, visible 1
                     modify pb-ok,        bitmap-number = 1

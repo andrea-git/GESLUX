@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65D142214-774-1736227217
+PROGRAM_UNIQUE_CODE=TOTEM-7E67681139-923-2529413943
 
 {{@DESCRIPTION:
 
@@ -2077,6 +2077,28 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM191_WK
 
 @}}
+[FDITEM192_WK]
+m_strName=chk-storico-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM192_WK
+
+@}}
+[FDITEM193_WK]
+m_strName=v-storico
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM193_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -2530,7 +2552,7 @@ Begin Screen Form1
          After Procedure   = ef-cod-art-cli-AfterProcedure
       End
       Begin Check-Box chk-escludi
-         SCREEN-COL        = 35,00
+         SCREEN-COL        = 34,00
          SCREEN-LINE       = 7,78
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2541,7 +2563,7 @@ Begin Screen Form1
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 34,40
+         Column            = 33,40
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -2575,7 +2597,7 @@ Begin Screen Form1
          After Procedure   = Screen4-Cb-1-AfterProcedure
       End
       Begin Check-Box chk-escludi-sp
-         SCREEN-COL        = 49,00
+         SCREEN-COL        = 47,00
          SCREEN-LINE       = 7,78
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2586,7 +2608,7 @@ Begin Screen Form1
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 48,40
+         Column            = 46,40
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -2615,6 +2637,51 @@ Begin Screen Form1
          Value             = 0:FALSE
          Value Variable    = chk-escludi-sp-buf
          Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = Screen4-Cb-1-BeforeProcedure
+         After Procedure   = Screen4-Cb-1-AfterProcedure
+      End
+      Begin Check-Box chk-storico
+         SCREEN-COL        = 61,00
+         SCREEN-LINE       = 7,78
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = chk-storico
+         Bitmap Frame      = FALSE
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 60,40
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 0
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 13
+         Left Text         = FALSE
+         Line              = 7,28
+         Lines             = 1,33
+         Lines Unit        = Default
+         No Tab            = FALSE
+         Notify            = FALSE
+         Occurs            = 0
+         Self Act          = FALSE
+         Size              = 1,40
+         Size Unit         = Default
+         Tab Order         = 6
+         Termination Value = 0
+         Value             = 0:FALSE
+         Value Variable    = chk-storico-buf
+         Visible           = FALSE
+         Visible Variable  = v-storico
          Width in Cells    = TRUE
          Before Procedure  = Screen4-Cb-1-BeforeProcedure
          After Procedure   = Screen4-Cb-1-AfterProcedure
@@ -2658,7 +2725,7 @@ Begin Screen Form1
          Self Act          = FALSE
          Size              = 1,40
          Size Unit         = Default
-         Tab Order         = 6
+         Tab Order         = 7
          Termination Value = 0
          Title             = "Radio Button"
          Value             = 1
@@ -2709,7 +2776,7 @@ Begin Screen Form1
          Self Act          = FALSE
          Size              = 1,40
          Size Unit         = Default
-         Tab Order         = 7
+         Tab Order         = 8
          Termination Value = 0
          Title             = "Radio Button"
          Value             = 0
@@ -2767,7 +2834,7 @@ Begin Screen Form1
          Size              = 11,00
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 8
+         Tab Order         = 9
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -2824,7 +2891,7 @@ Begin Screen Form1
          Size              = 11,00
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 9
+         Tab Order         = 10
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -2881,7 +2948,7 @@ Begin Screen Form1
          Size              = 11,00
          Size Unit         = Default
          Style             = Singleline
-         Tab Order         = 10
+         Tab Order         = 11
          Use Return        = FALSE
          Use Tab           = FALSE
          Value Multiple    = FALSE
@@ -2921,7 +2988,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 1,60
          Size Unit         = Default
-         Tab Order         = 11
+         Tab Order         = 12
          Title             = "BlockPgm"
          Transparent       = TRUE
          Visible           = NONE
@@ -2959,7 +3026,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 2,20
          Size Unit         = Default
-         Tab Order         = 12
+         Tab Order         = 13
          Title             = "CUSTOM CONTROL"
          Transparent       = TRUE
          Visible           = NONE
@@ -2993,7 +3060,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 10,50
          Size Unit         = Default
-         Tab Order         = 13
+         Tab Order         = 14
          Title             = "Gruppo GDO"
          Transparent       = TRUE
          Visible           = NONE
@@ -3026,7 +3093,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 23,00
          Size Unit         = Default
-         Tab Order         = 14
+         Tab Order         = 15
          Title Picture     = X(50)
          Title Variable    = lab-gdo-buf
          Transparent       = TRUE
@@ -3060,7 +3127,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 6,00
          Size Unit         = Default
-         Tab Order         = 15
+         Tab Order         = 16
          Title             = "Data"
          Transparent       = TRUE
          Visible           = NONE
@@ -3093,7 +3160,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 10,50
          Size Unit         = Default
-         Tab Order         = 16
+         Tab Order         = 17
          Title             = "Articolo"
          Transparent       = TRUE
          Visible           = NONE
@@ -3126,7 +3193,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 50,00
          Size Unit         = Default
-         Tab Order         = 17
+         Tab Order         = 18
          Title             = "<< HELP >> 0 = TUTTI GLI ARTICOLI"
          Title Picture     = x(40)
          Title Variable    = lab-art-buf
@@ -3161,14 +3228,14 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 10,50
          Size Unit         = Default
-         Tab Order         = 18
+         Tab Order         = 19
          Title             = "Cod. art. cli"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
       End
       Begin Label Screen4-La-2aa
-         SCREEN-COL        = 37,60
+         SCREEN-COL        = 36,60
          SCREEN-LINE       = 7,78
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -3176,7 +3243,7 @@ Begin Screen Form1
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 37,00
+         Column            = 36,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -3194,14 +3261,14 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 10,50
          Size Unit         = Default
-         Tab Order         = 19
+         Tab Order         = 20
          Title             = "Escludi FA"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
       End
       Begin Label Screen4-La-2aaa
-         SCREEN-COL        = 51,60
+         SCREEN-COL        = 49,60
          SCREEN-LINE       = 7,78
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -3209,7 +3276,7 @@ Begin Screen Form1
          Clines            = 0
          Clines Unit       = Default
          Color             = 0
-         Column            = 51,00
+         Column            = 49,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -3227,7 +3294,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 10,50
          Size Unit         = Default
-         Tab Order         = 20
+         Tab Order         = 21
          Title             = "Escludi SP"
          Transparent       = TRUE
          Visible           = NONE
@@ -3260,7 +3327,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 6,00
          Size Unit         = Default
-         Tab Order         = 21
+         Tab Order         = 22
          Title             = "Dal"
          Transparent       = TRUE
          Visible           = NONE
@@ -3293,10 +3360,44 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 2,00
          Size Unit         = Default
-         Tab Order         = 22
+         Tab Order         = 23
          Title             = "al"
          Transparent       = TRUE
          Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label lab-storico
+         SCREEN-COL        = 63,60
+         SCREEN-LINE       = 7,78
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = lab-storico
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 63,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 206
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 7,28
+         Lines             = 1,33
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 7,00
+         Size Unit         = Default
+         Tab Order         = 24
+         Title             = "Storico"
+         Transparent       = TRUE
+         Visible           = FALSE
+         Visible Variable  = v-storico
          Width in Cells    = TRUE
       End
    End
@@ -5641,9 +5742,21 @@ BEGIN-TEXT
            perform DATE-TO-SCREEN.
            move como-data to ef-data-al-buf.
            display ef-data-al.
-
+                                                        
            move 1 to chk-escludi-buf chk-escludi-sp-buf.
            display chk-escludi chk-escludi-sp.
+
+           set environment "listini" to "listini_sto".
+           close      listini.
+           open input listini.
+           if status-listini = "00"
+              move 1 to v-storico
+           end-if.          
+           move 0 to chk-storico-buf.
+           display chk-storico lab-storico.                       
+           set environment "listini" to "listini".
+           close    listini.
+           open i-o listini.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -5736,7 +5849,7 @@ BEGIN-TEXT
            when stampa-diretta
                 move "Stampa listino in corso..."      to tit
                 display lab
-                perform RIEMPI-TMP
+                perform RIEMPI-TMP         
                 if trovato
                    perform CHIAMATA-STAMPA
                    close  tmp-listini
@@ -5745,7 +5858,7 @@ BEGIN-TEXT
                              title titolo
                               icon 2
                 end-if
-           end-evaluate.
+           end-evaluate.  
 
            move 27 to key-status.
 END-TEXT
@@ -5957,9 +6070,12 @@ BEGIN-TEXT
               move ef-data-al-buf     to como-data
               perform DATE-TO-FILE
               move como-data          to stlst-data-ric-al
-           end-if
+           end-if.
+           move chk-escludi-buf    to stlst-escludi
+           move chk-escludi-sp-buf to stlst-escludi-sp
+
            call   "lab-st-listini" using st-listini-linkage.
-           cancel "lab-st-listini".
+           cancel "lab-st-listini".                        
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -6539,18 +6655,18 @@ BEGIN-TEXT
                  if lst-gdo of listini not = gdo-codice
                  |or lst-data not = como-data
                     exit perform
+                 end-if          
+                 if save-articolo not = 0
+                    if save-articolo not = lst-articolo of listini
+                       exit perform
+                    end-if
+                 end-if
+                 if save-cod-art-cli not = spaces
+                    if save-cod-art-cli not = lst-cod-art-cli of listini
+                       exit perform
+                    end-if
                  end-if
                  if tipo-data = 1
-                    if save-articolo not = 0
-                       if save-articolo not = lst-articolo of listini
-                          exit perform
-                       end-if
-                    end-if
-                    if save-cod-art-cli not = spaces
-                       if save-cod-art-cli not = lst-cod-art-cli of listini
-                          exit perform
-                       end-if
-                    end-if
                     move lst-articolo of listini to tlst-articolo
                     read tmp-listini no lock key tmp-k-articolo
                          invalid perform VALORIZZA-RIGA-TMP
@@ -6561,6 +6677,40 @@ BEGIN-TEXT
                     end-if
                     perform VALORIZZA-RIGA-TMP
                  end-if 
+              end-perform
+           end-if.                 
+                     
+           if trovato
+              set trovato to false
+              move low-value to tlst-chiave
+              start tmp-listini key >= tlst-chiave 
+                    invalid continue
+              end-start
+              perform until 1 = 2
+                 read tmp-listini next 
+                    at end 
+                       exit perform 
+                 end-read    
+                 initialize rec-grid
+                 evaluate tlst-prezzo
+                 when 0            
+                      if chk-escludi-sp-buf = 1
+                         exit perform cycle
+                      else
+                         set trovato to true
+                         exit perform
+                      end-if
+                 when 999999,99    
+                      if chk-escludi-buf = 1
+                         exit perform cycle
+                      else
+                         set trovato to true
+                         exit perform
+                      end-if
+                 when other     
+                      set trovato to true
+                      exit perform
+                 end-evaluate
               end-perform
            end-if.
 END-TEXT
@@ -7023,8 +7173,24 @@ BEGIN-TEXT
                  end-if                  
            
                  modify form1-handle, visible 0
-                 set ricarica to false
-                 perform FORM2-OPEN-ROUTINE
+                 set ricarica to false   
+
+                 if chk-storico-buf = 1
+                    set environment "listini" to "listini_sto"    
+                    close listini listini1
+                    open i-o listini
+                    open input listini1
+                 end-if
+
+                 perform FORM2-OPEN-ROUTINE                  
+
+                 if chk-storico-buf = 1
+                    set environment "listini" to "listini"    
+                    close listini listini1
+                    open i-o listini
+                    open input listini1
+                 end-if
+
                  if not ricarica
                     modify form1-handle, visible 1
                     modify pb-ok,        bitmap-number = 1

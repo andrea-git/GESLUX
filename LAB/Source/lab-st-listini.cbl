@@ -279,7 +279,24 @@
                        read tmp-listini next
                             at end exit perform 
                        end-read
-                       if tlst-prezzo not = 999999,99 |"FA" NON VA IN STAMPA
+
+                       evaluate tlst-prezzo
+                       when 0                                 
+                            move "SP"        to r-prezzo
+                            if stlst-escludi-sp = 1
+                               exit perform cycle
+                            end-if                         
+                       when 999999,99                         
+                            move "FA"        to r-prezzo
+                            if stlst-escludi = 1
+                               exit perform cycle
+                            end-if  
+                       when other
+                            move tlst-prezzo       to prezzo-z
+                            move prezzo-z          to r-prezzo
+                       end-evaluate
+
+      *****                 if tlst-prezzo not = 999999,99 |"FA" NON VA IN STAMPA
                           add 1 to idx
                           move idx                  to r-num
                           move tlst-data-vigore(3:2)to r-val-dal(7:2)
@@ -300,12 +317,6 @@
                           move tlst-cons            to r-cons    
                           move tlst-cou             to r-cou
                           move tlst-add             to r-add
-                          if tlst-prezzo = 0 
-                             move "SP"              to r-prezzo
-                          else
-                             move tlst-prezzo       to prezzo-z
-                             move prezzo-z          to r-prezzo
-                          end-if
                           move tlst-promo           to r-promo   
                           move tlst-faro            to r-faro
 
@@ -337,7 +348,7 @@
                           if num-righe >= 78-MaxRows
                              perform SALTO-PAGINA
                           end-if
-                       end-if
+      *****                 end-if
       
                  end-perform
       

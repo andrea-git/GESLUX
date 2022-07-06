@@ -325,6 +325,7 @@
               perform until 1 = 2
                  open input listini
                  if status-listini = "00"
+                    close listini
                     exit perform
                  end-if                                     
               end-perform                                   
