@@ -108,12 +108,7 @@
                 display message "[LISTINI] Indexed file corrupt!"
                           title titolo
                            icon 3
-           when "35"
-                display message box        "Impossibile procedere."
-                  x"0d0a""File [LISTINI] inesistente"
-                        title = titolo
-                        icon 2
-                set errori to true
+           
            when "93"
            when "99" set RecLocked to true
            end-evaluate.    
@@ -127,7 +122,25 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.                                                   
+       INIT.                                    
+           accept  path-file from environment "PATH_ARCHIVI".
+           inspect path-file replacing trailing spaces by low-value.
+           string  path-file         delimited low-value
+                   "listini_sto.vix" delimited size
+              into path-file                                 
+           end-string.                                       
+           inspect path-file replacing trailing low-value by spaces.
+           call "C$DELETE" using path-file, "S".
+
+           accept  path-file from environment "PATH_ARCHIVI".
+           inspect path-file replacing trailing spaces by low-value.
+           string  path-file     delimited low-value
+                   "listini_sto" delimited size
+              into path-file                                        
+           end-string.                                              
+           inspect path-file replacing trailing low-value by spaces.
+           call "C$DELETE" using path-file, "S".
+                             
            accept como-data from century-date.                 
            accept como-ora  from time.                 
            set RecLocked to false.
@@ -188,41 +201,7 @@
            end-perform.              
       
       ***---
-       ELABORAZIONE.         
-      *****        accept  path-file from environment "PATH_ARCHIVI"
-      *****        inspect path-file 
-      *****                replacing trailing spaces by low-value
-      *****        string  path-file delimited low-value
-      *****                "listini" delimited size
-      *****           into path-file
-      *****        end-string    
-      *****                                  
-      *****        close listini 
-      *****        accept  path-file-sto from environment "PATH_ARCHIVI"
-      *****        inspect path-file-sto 
-      *****                replacing trailing spaces by low-value
-      *****        string  path-file-sto delimited low-value
-      *****                "listini_sto" delimited size
-      *****           into path-file-sto
-      *****        end-string     
-      *****     initialize cmd 
-      *****     string "move "     delimited size
-      *****           x"22"        delimited size         
-      *****            path-file  delimited low-value
-      *****           x"22"        delimited size     
-      *****            " "         delimited size     
-      *****           x"22"        delimited size     
-      *****            path-file-sto  delimited low-value
-      *****           x"22"        delimited size     
-      *****            into cmd
-      *****     end-string.
-      *****                                stop "K"
-      *****     move 0 to return-code.            
-      *****     call "C$SYSTEM" using cmd, 225
-      *****                    giving return-code.
-      *****     goback   
-              
-
+       ELABORAZIONE.                               
            set ElaborazioneXX to true.
            perform ACCESSOXX.
            perform until 1 = 2
@@ -267,14 +246,19 @@
                  add 1 to n-csvNotFound
               end-if
            end-perform.
-           if n-gen > 0           
+           if n-gen > 0         
+              display "FASE 2 - BACKUP LISTINI_STO                     " 
+                      upon form1-handle 
+                      at column  2,00
+                           line  5,00
+  
               unlock listini all records
               close listini     
                           
               accept  path-file from environment "PATH_ARCHIVI"
               inspect path-file 
                       replacing trailing spaces by low-value
-              string  path-file delimited low-value
+              string  path-file     delimited low-value
                       "listini.vix" delimited size
                  into path-file
               end-string    
@@ -297,9 +281,12 @@
                     x"22"           delimited size     
                      into cmd
               end-string                               
-              move 0 to return-code
+              move 0 to return-code                   
+                                
               call "C$SYSTEM" using cmd, 225
                              giving return-code
+                         
+              call "C$SLEEP" using 3           
 
               accept  path-file-sto from environment "PATH_ARCHIVI"
               inspect path-file-sto 
@@ -330,6 +317,18 @@
               move 0 to return-code
               call "C$SYSTEM" using cmd, 225
                              giving return-code
+                         
+              call "C$SLEEP" using 3           
+              inspect path-file-sto 
+                      replacing trailing low-value by spaces
+              set environment "listini" to path-file-sto
+              perform until 1 = 2
+                 open input listini
+                 if status-listini = "00"
+                    exit perform
+                 end-if                                     
+              end-perform                                   
+              set environment "listini" to "listini"
                              
               open output listini
               move 0 to counter counter2
@@ -343,7 +342,7 @@
                        if counter2 = 1000
                           move 0 to counter2
                           move counter to counter-edit
-                          display "FASE 2 - RESTORE LISTINI:  " 
+                          display "FASE 3 - RESTORE LISTINI:  " 
                                   upon form1-handle              
                                   at column  2,00
                                        line  5,00
