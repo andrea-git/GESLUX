@@ -1,8 +1,13 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.                      storlisgdo.
        REMARKS. Storicizzazione listini GDO.
-                Data una lista csv, prende le righe presenti e le 
+                Data una lista csv, prende le righe NON presenti e le 
                 trasferisce su un altro file.
+                Fase 1: trovo i listini validi (n per riga), li cancello
+                        e li salvo in un file parallelo tmp-klis
+                Fase 2: quello che resta dei listini lo rinomino in sto
+                Fase 3: Creo il nuovo file listini vuoto e ci riverso 
+                        il contenuto del file parallelo tmp-klis
        AUTHOR.                          Andrea.
       ******************************************************************
 
@@ -61,6 +66,12 @@
            copy "link-geslock.def".
 
        78  titolo    value "Storicizzazione listini GDO".
+
+       01  k.
+         03 k1 pic x(6).
+         03 kn redefines k1. 
+            05 kn1 pic 9(3).
+            05 kn2 pic 9(3).
                   
        77  counter          pic 9(10) value 0.
        77  counter2         pic 9(10) value 0.
@@ -122,7 +133,16 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.                                    
+       INIT.              
+           move 0 to kn1 kn2.
+           perform until 1 = 2
+              add 1 to kn2
+              if kn2 = 999
+                 add 1 to kn1
+                 move 0 to kn2
+              end-if
+           end-perform.
+           goback.
            accept  path-file from environment "PATH_ARCHIVI".
            inspect path-file replacing trailing spaces by low-value.
            string  path-file         delimited low-value

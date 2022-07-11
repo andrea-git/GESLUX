@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        mercoledì 6 luglio 2022 11:50:10.
+       DATE-WRITTEN.        lunedì 11 luglio 2022 14:14:28.
        REMARKS.
       *{TOTEM}END
 
@@ -615,7 +615,7 @@
            SIZE 1,40 ,
            FLAT,
            FONT IS Small-Font,
-           ID IS 13,
+           ID IS 14,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            VALUE chk-storico-buf,
@@ -809,7 +809,7 @@
            LINE 5,72,
            LINES 1,33 ,
            SIZE 10,50 ,
-           ID IS 14,
+           ID IS 15,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -825,7 +825,7 @@
            LINES 1,33 ,
            SIZE 50,00 ,
            COLOR IS 5,
-           ID IS 15,
+           ID IS 16,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -915,7 +915,7 @@
            LINE 7,78,
            LINES 1,33 ,
            SIZE 7,00 ,
-           ID IS 206,
+           ID IS 209,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1015,7 +1015,7 @@
            ENABLED E-ESCI,
            EXCEPTION-VALUE 27,
            FLAT,
-           ID IS 209,
+           ID IS 210,
            SELF-ACT,
            ESCAPE-BUTTON,
            TITLE "&Esci",
@@ -1036,7 +1036,7 @@
            ENABLED E-CERCA,
            EXCEPTION-VALUE 8,
            FLAT,
-           ID IS 210,
+           ID IS 211,
            SELF-ACT,
            TITLE "Cerca (F8)",
            .
@@ -1855,11 +1855,11 @@
        LISTINI-ERR SECTION.
            use after error procedure on LISTINI.
            evaluate status-LISTINI
-           when "35"
-                display message "File [LISTINI] not found!"
-                           title titolo
-                            icon 3
-                set errori to true
+      *****     when "35"
+      *****          display message "File [LISTINI] not found!"
+      *****                     title titolo
+      *****                      icon 3
+      *****          set errori to true
            when "39"
                 display message "File [LISTINI] Mismatch size!"
                            title titolo
@@ -5356,17 +5356,17 @@
                                                         
            move 1 to chk-escludi-buf chk-escludi-sp-buf.
            display chk-escludi chk-escludi-sp.
-
-           set environment "listini" to "listini_sto".
+                                                      
            close      listini.
+           set environment "listini" to "listini_sto".
            open input listini.
            if status-listini = "00"
               move 1 to v-storico
            end-if.          
            move 0 to chk-storico-buf.
-           display chk-storico lab-storico.                       
-           set environment "listini" to "listini".
-           close    listini.
+           display chk-storico lab-storico.           
+           close    listini.            
+           set environment "listini" to "listini".    
            open i-o listini.
 
            .

@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E67681139-923-2529413943
+PROGRAM_UNIQUE_CODE=TOTEM-7E67B121320-923-1779711519
 
 {{@DESCRIPTION:
 
@@ -2662,7 +2663,7 @@ Begin Screen Form1
          Font Variable     = Small-Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 13
+         ID                = 14
          Left Text         = FALSE
          Line              = 7,28
          Lines             = 1,33
@@ -3147,7 +3148,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 14
+         ID                = 15
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 5,22
@@ -3180,7 +3181,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 15
+         ID                = 16
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 5,22
@@ -3380,7 +3381,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 206
+         ID                = 209
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 7,28
@@ -3604,7 +3605,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 209
+         ID                = 210
          Line              = 1,08
          Lines             = 1,17
          Lines in Pixels   = 23
@@ -3650,7 +3651,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 210
+         ID                = 211
          Line              = 1,08
          Lines             = 1,17
          Lines in Pixels   = 23
@@ -5742,17 +5743,17 @@ BEGIN-TEXT
                                                         
            move 1 to chk-escludi-buf chk-escludi-sp-buf.
            display chk-escludi chk-escludi-sp.
-
-           set environment "listini" to "listini_sto".
+                                                      
            close      listini.
+           set environment "listini" to "listini_sto".
            open input listini.
            if status-listini = "00"
               move 1 to v-storico
            end-if.          
            move 0 to chk-storico-buf.
-           display chk-storico lab-storico.                       
-           set environment "listini" to "listini".
-           close    listini.
+           display chk-storico lab-storico.           
+           close    listini.            
+           set environment "listini" to "listini".    
            open i-o listini.
 END-TEXT
 END-DATA
@@ -5922,11 +5923,11 @@ BEGIN-TEXT
        LISTINI-ERR SECTION.
            use after error procedure on LISTINI.
            evaluate status-LISTINI
-           when "35"
-                display message "File [LISTINI] not found!"
-                           title titolo
-                            icon 3
-                set errori to true
+      *****     when "35"
+      *****          display message "File [LISTINI] not found!"
+      *****                     title titolo
+      *****                      icon 3
+      *****          set errori to true
            when "39"
                 display message "File [LISTINI] Mismatch size!"
                            title titolo
