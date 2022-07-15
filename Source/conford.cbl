@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 20 maggio 2022 12:28:32.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        venerdì 15 luglio 2022 10:04:49.
        REMARKS.
       *{TOTEM}END
 
@@ -4899,7 +4899,10 @@
               cancel "st-ordine"
            end-if.
 
-           if link-path = spaces
+           if link-path = spaces       
+              display message box "Invio non riuscito."
+                           x"0d0A""File PDF non creato"
+                       title titolo
               set errori to true
            else
               accept separatore from environment "SEPARATORE"
@@ -5368,7 +5371,7 @@
                    "Di seguito vi comunichiamo le coordinate bancarie do
       -    "ve effettuare il pagamento:" x"0d0a"
                    "INTESTAZIONE: Lubex Spa"x"0d0a"
-                   "IBAN: IT79P0311133590000000000844"x"0d0a"
+                   "IBAN: IT 31 O 03069 33590 100000061718"x"0d0a"
                   x"0d0a"
                    "Rimaniamo a Vostra disposizione per qualsiasi chiari
       -    "mento in merito" X"0d0a" 

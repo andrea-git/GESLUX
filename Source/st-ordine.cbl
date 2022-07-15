@@ -1763,6 +1763,8 @@
 
            if settaPDF-OK
               move settaPDF-nome-file to link-path
+           else
+              move spaces to link-path
            end-if.  
 
       ***---
