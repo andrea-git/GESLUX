@@ -3107,6 +3107,7 @@ LABLAB     if tcl-si-recupero
                  end-if
                  move rpr-prz-acq        to emro-prz-GESLUX
                                             emro-prz-commle
+                 move lst-cod-art-cli    to emro-cod-art-cli
               end-if
               if trovato set trovato-promo to true
               else       set trovato-promo to false

@@ -275,6 +275,7 @@ LABLAB     if tcl-si-recupero and tca-prezzo-reso-no
                     move rpr-codice      to mro-promo
                     move rpr-codice      to hid-promo 
                  end-if
+                 move lst-cod-art-cli    to hid-cod-art-cli
                  move rpr-prz-acq        to ef-uni-buf hid-prezzo
                                             mro-prz-unitario
                                             mro-prz-commle

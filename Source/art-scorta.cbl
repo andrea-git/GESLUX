@@ -18,6 +18,7 @@
            COPY "articoli.sl".
            COPY "lineseq.sl".
            copy "timbalqta.sl".
+           copy "tmagaz.sl".
 
        DATA DIVISION.
        FILE SECTION.
@@ -25,14 +26,16 @@
            COPY "articoli.fd".
            COPY "lineseq.fd".  
            copy "timbalqta.fd".
+           copy "tmagaz.fd".
 
        WORKING-STORAGE      SECTION.
        78  titolo value "Batch articoli scorta 0/2".
        
        77  status-articoli   pic xx.
        77  status-progmag    pic xx.
-       77  status-timbalqta  pic xx.
+       77  status-timbalqta  pic xx. 
        77  status-lineseq    pic xx.
+       77  status-tmagaz     pic xx.
        77  wstampa           pic x(256).
 
        01  r-inizio              pic x(25).
@@ -111,13 +114,13 @@
       ***---
        OPEN-FILES.
            open i-o   articoli.
-           open input progmag timbalqta.
+           open input progmag timbalqta tmagaz.
            if RichiamoSchedulato and errori
               move -1 to batch-status
            end-if.
 
       ***---
-       ELABORAZIONE.
+       ELABORAZIONE.              
            move "INIZIO PROGRAMMA" to como-riga.
            perform SETTA-RIGA-STAMPA.
            move 0 to counter counter2.
@@ -139,18 +142,25 @@
                           perform until 1 = 2
                              read progmag next 
                                   at end exit perform 
-                             end-read
+                             end-read              
                              if prg-cod-articolo not = art-codice
                                 exit perform
-                             end-if
+                             end-if   
+                             if prg-cod-magazzino = spaces
+                                exit perform cycle
+                             end-if                
                              if RichiamoSchedulato
                                 perform CONTATORE-VIDEO
                              end-if
-                             if prg-cod-magazzino not = "ROT" and
-                                prg-cod-magazzino not = spaces
-                                add prg-giacenza   to giacenza
-                                add prg-ordinato-6 to ordinato
-                             end-if
+                             move prg-cod-magazzino to mag-codice
+                             read tmagaz no lock
+                                  invalid continue
+                              not invalid
+                                  if mag-per-promo-si 
+                                     add prg-giacenza   to giacenza
+                                     add prg-ordinato-6 to ordinato
+                                  end-if
+                             end-read
                           end-perform
                     end-start
                     move art-imballo-standard to imq-codice
@@ -215,7 +225,7 @@
 
       ***---
        CLOSE-FILES.
-           close progmag articoli timbalqta.
+           close tmagaz progmag articoli timbalqta.
 
       ***---
        CONTATORE-VIDEO.

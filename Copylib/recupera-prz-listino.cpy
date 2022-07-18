@@ -48,6 +48,7 @@
       *****           move prezzo-listino   to r-pz-agente
               end-if
            end-if.
+
       ***---
        CONTROLLA-PERIODO-VALIDITA.
            set listino-valido to false.
