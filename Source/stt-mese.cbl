@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          stt-mese.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 2 dicembre 2013 19:34:19.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        lunedì 25 luglio 2022 15:31:54.
        REMARKS.
       *{TOTEM}END
 
@@ -53,9 +53,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "comune.def".
-               COPY "utydata.def".
-               COPY "custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -176,10 +174,10 @@
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
-       77 TMP-DataSet1-tvettori-BUF     PIC X(1181).
-       77 TMP-DataSet1-destini-BUF     PIC X(431).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1356).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-tregioni-BUF     PIC X(190).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -218,7 +216,7 @@
           88 DataSet1-tregioni-KEY-Desc VALUE "D".
 
        77 tvettori-k-des-SPLITBUF  PIC X(41).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -258,13 +256,11 @@
            Frame, 
            COL 1,40, 
            LINE 1,00,
-           LINES 20,11 ,
+           LINES 18,94 ,
            SIZE 46,00 ,
-           RAISED,
            ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            TITLE "Selezione limiti",
            TITLE-POSITION 2,
            .
@@ -538,7 +534,7 @@
            Screen3-La-2a, 
            Label, 
            COL 3,40, 
-           LINE 12,00,
+           LINE 11,44,
            LINES 1,17 ,
            SIZE 11,00 ,
            ID IS 565,
@@ -554,7 +550,7 @@
            Screen3-La-2aa, 
            Label, 
            COL 3,40, 
-           LINE 15,00,
+           LINE 14,44,
            LINES 1,17 ,
            SIZE 11,00 ,
            ID IS 566,
@@ -570,7 +566,7 @@
            Screen3-La-2aaa, 
            Label, 
            COL 3,40, 
-           LINE 18,00,
+           LINE 16,89,
            LINES 1,17 ,
            SIZE 11,00 ,
            ID IS 567,
@@ -606,7 +602,7 @@
            ef-localita, 
            Entry-Field, 
            COL 15,40, 
-           LINE 12,00,
+           LINE 11,44,
            LINES 1,33 ,
            SIZE 28,50 ,
            BOXED,
@@ -626,7 +622,7 @@
            ef-prov, 
            Entry-Field, 
            COL 15,40, 
-           LINE 15,00,
+           LINE 14,44,
            LINES 1,33 ,
            SIZE 4,00 ,
            BOXED,
@@ -647,7 +643,7 @@
            ef-reg, 
            Entry-Field, 
            COL 15,40, 
-           LINE 18,00,
+           LINE 16,89,
            LINES 1,33 ,
            SIZE 4,00 ,
            BOXED,
@@ -684,7 +680,7 @@
            lab-localita, 
            Label, 
            COL 3,40, 
-           LINE 13,22,
+           LINE 12,67,
            LINES 1,00 ,
            SIZE 11,40 ,
            ID IS 27,
@@ -699,7 +695,7 @@
            lab-prov, 
            Label, 
            COL 22,40, 
-           LINE 15,00,
+           LINE 14,44,
            LINES 2,00 ,
            SIZE 23,00 ,
            COLOR IS 5,
@@ -715,7 +711,7 @@
            lab-reg, 
            Label, 
            COL 22,40, 
-           LINE 18,00,
+           LINE 16,89,
            LINES 2,00 ,
            SIZE 23,00 ,
            COLOR IS 5,
@@ -731,10 +727,9 @@
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 21,44,
+           LINE 20,06,
            LINES 2,78 ,
            SIZE 47,00 ,
-           LOWERED,
            ID IS 30,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -745,7 +740,7 @@
            pb-ok, 
            Push-Button, 
            COL 32,00, 
-           LINE 22,13,
+           LINE 20,75,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -764,7 +759,7 @@
            pb-annulla, 
            Push-Button, 
            COL 39,80, 
-           LINE 22,13,
+           LINE 20,75,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -1578,9 +1573,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -2322,7 +2317,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 23,22,
+              LINES 21,83,
               SIZE 47,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,

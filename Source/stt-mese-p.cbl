@@ -21,6 +21,7 @@
            copy "tescons.sl".
            copy "tmp-trasporti.sl".
            copy "tcaumag.sl".
+           copy "ttipocli.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -36,7 +37,8 @@
            copy "btnotacr.fd".
            copy "tescons.fd".
            copy "tmp-trasporti.fd".
-           copy "tcaumag.fd".
+           copy "tcaumag.fd". 
+           copy "ttipocli.fd".
 
        WORKING-STORAGE SECTION.
        copy "Acugui.def".
@@ -62,6 +64,7 @@
        77  status-btnotacr       pic xx.
        77  status-tescons        pic xx.
        77  status-tcaumag        pic xx.
+       77  status-ttipocli       pic xx.
        77  status-tmp-trasporti  pic xx.
 
        77  path-csv              pic x(256).
@@ -426,6 +429,7 @@
                          btnotacr
                          tescons
                          tcaumag
+                         ttipocli
            end-if.
 
       ***---
@@ -562,6 +566,10 @@
                      ttrs-esito         delimited by size
                      separatore         delimited by size
                      ttrs-pod           delimited by size
+                     separatore         delimited by size
+                     ttrs-tipocli       delimited by size
+                     separatore         delimited by size
+                     ttrs-tipocli-d     delimited by size
                      into line-riga
               end-string
               write line-riga
@@ -625,7 +633,11 @@
                   separatore
                   "ESITO" 
                   separatore 
-                  "POD" delimited by size
+                  "POD"                            
+                  separatore 
+                  "Tipol. cliente" delimited by size
+                  separatore 
+                  "Descrizione" delimited by size
                   into line-riga
            end-string
 
@@ -846,6 +858,12 @@
            end-read.
            move cli-ragsoc-1 to ttrs-cli-desc.
 
+           move cli-tipo to ttrs-tipocli tcl-codice.
+           read ttipocli no lock 
+                invalid move "** NON TROVATO **" to tcl-descrizione
+           end-read.
+           move tcl-descrizione to ttrs-tipocli-d.
+
            initialize reg-rec.
            move trs-regione to reg-codice.
 
@@ -960,7 +978,7 @@
       ***---
        CLOSE-FILES.
            close trasporti tvettori clienti destini tregioni eordini
-                 tordini tescons btnotacr tcaumag.
+                 tordini tescons btnotacr tcaumag ttipocli.
            close tmp-trasporti.
            delete file tmp-trasporti.
   

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7DA4F123812-250-247294485
+PROGRAM_UNIQUE_CODE=TOTEM-7E6719133014-321-302549489
 
 {{@DESCRIPTION:
 
@@ -995,7 +995,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 23,22
+   Lines             = 21,83
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -1024,7 +1024,7 @@ Begin Screen Form1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = frame-limiti
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1040,13 +1040,13 @@ Begin Screen Form1
       High Color        = 0
       ID                = 9
       Line              = 1,00
-      Lines             = 20,11
+      Lines             = 18,94
       Lines Unit        = Default
       Low Color         = 0
       Size              = 46,00
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title             = "Selezione limiti"
       Title Position    = 2:Top center
       Visible           = NONE
@@ -1680,8 +1680,8 @@ Begin Screen Form1
       End
       Begin Label Screen3-La-2a
          SCREEN-COL        = 3,40
-         SCREEN-LINE       = 12,00
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 11,44
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = Screen3-La-2a
          Clines            = 0
@@ -1698,7 +1698,7 @@ Begin Screen Form1
          ID                = 565
          Justification     = Left
          Label Offset      = 20
-         Line              = 12,00
+         Line              = 11,44
          Lines             = 1,17
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -1713,7 +1713,7 @@ Begin Screen Form1
       End
       Begin Label Screen3-La-2aa
          SCREEN-COL        = 3,40
-         SCREEN-LINE       = 15,00
+         SCREEN-LINE       = 14,44
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen3-La-2aa
@@ -1731,7 +1731,7 @@ Begin Screen Form1
          ID                = 566
          Justification     = Left
          Label Offset      = 20
-         Line              = 15,00
+         Line              = 14,44
          Lines             = 1,17
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -1746,7 +1746,7 @@ Begin Screen Form1
       End
       Begin Label Screen3-La-2aaa
          SCREEN-COL        = 3,40
-         SCREEN-LINE       = 18,00
+         SCREEN-LINE       = 16,89
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen3-La-2aaa
@@ -1764,7 +1764,7 @@ Begin Screen Form1
          ID                = 567
          Justification     = Left
          Label Offset      = 20
-         Line              = 18,00
+         Line              = 16,89
          Lines             = 1,17
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -1835,8 +1835,8 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-localita
          SCREEN-COL        = 15,40
-         SCREEN-LINE       = 12,00
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 11,44
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = ef-localita
          Auto              = FALSE
@@ -1860,7 +1860,7 @@ Begin Screen Form1
          ID                = 569
          ID Variable       = AUTO-ID
          Justification     = Left
-         Line              = 12,00
+         Line              = 11,44
          Lines             = 1,33
          Lines Unit        = Default
          Max Lines         = 0
@@ -1891,7 +1891,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-prov
          SCREEN-COL        = 15,40
-         SCREEN-LINE       = 15,00
+         SCREEN-LINE       = 14,44
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-prov
@@ -1916,7 +1916,7 @@ Begin Screen Form1
          ID                = 570
          ID Variable       = AUTO-ID
          Justification     = Left
-         Line              = 15,00
+         Line              = 14,44
          Lines             = 1,33
          Lines Unit        = Default
          Max Lines         = 0
@@ -1947,7 +1947,7 @@ Begin Screen Form1
       End
       Begin Entry-Field ef-reg
          SCREEN-COL        = 15,40
-         SCREEN-LINE       = 18,00
+         SCREEN-LINE       = 16,89
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-reg
@@ -1973,7 +1973,7 @@ Begin Screen Form1
          ID                = 571
          ID Variable       = AUTO-ID
          Justification     = Right
-         Line              = 18,00
+         Line              = 16,89
          Lines             = 1,33
          Lines Unit        = Default
          Max Lines         = 0
@@ -2039,8 +2039,8 @@ Begin Screen Form1
       End
       Begin Label lab-localita
          SCREEN-COL        = 3,40
-         SCREEN-LINE       = 13,22
-         LOCK-CONTROL      = TRUE
+         SCREEN-LINE       = 12,67
+         LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = lab-localita
          Clines            = 0
@@ -2057,7 +2057,7 @@ Begin Screen Form1
          ID                = 27
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 13,22
+         Line              = 12,67
          Lines             = 1,00
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -2072,7 +2072,7 @@ Begin Screen Form1
       End
       Begin Label lab-prov
          SCREEN-COL        = 22,40
-         SCREEN-LINE       = 15,00
+         SCREEN-LINE       = 14,44
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-prov
@@ -2090,7 +2090,7 @@ Begin Screen Form1
          ID                = 28
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 15,00
+         Line              = 14,44
          Lines             = 2,00
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -2107,7 +2107,7 @@ Begin Screen Form1
       End
       Begin Label lab-reg
          SCREEN-COL        = 22,40
-         SCREEN-LINE       = 18,00
+         SCREEN-LINE       = 16,89
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = lab-reg
@@ -2125,7 +2125,7 @@ Begin Screen Form1
          ID                = 29
          Justification     = Unaligned
          Label Offset      = 20
-         Line              = 18,00
+         Line              = 16,89
          Lines             = 2,00
          Lines Unit        = Default
          No Key Letter     = FALSE
@@ -2143,11 +2143,11 @@ Begin Screen Form1
    End
    Begin Frame Screen4-Fr-1
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 21,44
+      SCREEN-LINE       = 20,06
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Fr-1
-      3D Style          = Lowered
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -2162,7 +2162,7 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 30
-      Line              = 21,44
+      Line              = 20,06
       Lines             = 2,78
       Lines Unit        = Default
       Low Color         = 0
@@ -2175,7 +2175,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
       Begin Push-Button pb-ok
          SCREEN-COL        = 32,00
-         SCREEN-LINE       = 22,13
+         SCREEN-LINE       = 20,75
          LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = pb-ok
@@ -2220,7 +2220,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-annulla
          SCREEN-COL        = 39,80
-         SCREEN-LINE       = 22,13
+         SCREEN-LINE       = 20,75
          LOCK-CONTROL      = FALSE
          LEVEL             = 5
          (Name)            = pb-annulla
@@ -3585,12 +3585,12 @@ REL_M_OBJ_ID=0
 ENTITY=clienti
 LINK=0
 LINK_NAME=
-DSN_SIZE=42
+DSN_SIZE=53
 FD_SIZE=0
 SL_SIZE=0
 DSN_INFO_OPEN_MODE=0
 DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=cli-chiave
+DSN_INFO_KEY_IS=cli-chiave OF clienti
 DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
