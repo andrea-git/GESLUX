@@ -281,6 +281,11 @@
                                        alphanumeric data by spaces
               move ord-mag                       to ord2-mag
               move ord-articolo                  to ord2-articolo
+              if articolo-fisso not = 0
+                 if articolo-fisso not = ord2-articolo
+                    exit perform cycle
+                 end-if
+              end-if
               move ord-art-descrizione           to ord2-art-descrizione
               move ord-marca                     to ord2-marca
               move ord-qta-imb                   to ord2-qta-imb
@@ -1162,6 +1167,9 @@ LUBEXX        if mese-end = 12
 
       ***---
        AGGIUNGI-QTA-VENDUTI.
+           if articolo-fisso not = 0
+              exit paragraph 
+           end-if.
            accept como-data    from century-date.  
            if tge-data-consolid-progmag = 0
               move spaces to tge-chiave

@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 16:28:49.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        giovedì 28 luglio 2022 01:03:06.
        REMARKS.
       *{TOTEM}END
 
@@ -46,7 +46,6 @@
            COPY "destinif.sl".
            COPY "impforn.sl".
            COPY "tlistini.sl".
-           COPY "lineseq.sl".
            COPY "tmp-ordf-art.sl".
            COPY "rordforn.sl".
            COPY "tordforn.sl".
@@ -62,6 +61,7 @@
            COPY "qta-pordini.sl".
            COPY "genlog.sl".
            COPY "lineseq-mail.sl".
+           COPY "lineseq.sl".
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
@@ -89,7 +89,6 @@
            COPY "destinif.fd".
            COPY "impforn.fd".
            COPY "tlistini.fd".
-           COPY "lineseq.fd".
            COPY "tmp-ordf-art.fd".
            COPY "rordforn.fd".
            COPY "tordforn.fd".
@@ -105,6 +104,7 @@
            COPY "qta-pordini.fd".
            COPY "genlog.fd".
            COPY "lineseq-mail.fd".
+           COPY "lineseq.fd".
            COPY "lineseq.fd"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
@@ -160,6 +160,15 @@
            05 mese-ini         PIC  99.
            05 giorno-ini       PIC  99.
        77 diff PIC  9(8).
+       01 FILLER.
+           05 articolo-fisso   PIC  9(6).
+           05 mese1-fisso      PIC  9(5).
+           05 mese2-fisso      PIC  9(5).
+           05 mese3-fisso      PIC  9(5).
+           05 mese4-fisso      PIC  9(5).
+           05 mese5-fisso      PIC  9(5).
+           05 mese6-fisso      PIC  9(5).
+       77 pordini-fisso    PIC  x(100).
        77 mese-scelto      PIC  99.
        77 como-ordinato    PIC  9(8).
        77 giacenza         PIC  s9(8).
@@ -614,7 +623,6 @@
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
@@ -630,6 +638,7 @@
        77 TMP-DataSet1-qta-pordini-BUF     PIC X(7051).
        77 TMP-DataSet1-genlog-BUF     PIC X(900).
        77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -731,11 +740,6 @@
        77 DataSet1-tlistini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tlistini-KEY-Asc  VALUE "A".
           88 DataSet1-tlistini-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq-LOCK  VALUE "Y".
-       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq-KEY-Desc VALUE "D".
        77 DataSet1-tmp-ordf-art-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tmp-ordf-art-LOCK  VALUE "Y".
        77 DataSet1-tmp-ordf-art-KEY-ORDER  PIC X VALUE "A".
@@ -811,6 +815,11 @@
        77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-KEY-Desc VALUE "D".
        77 DataSet1-lineseq1-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-lineseq1-LOCK  VALUE "Y".
        77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
@@ -3073,8 +3082,6 @@
            PERFORM OPEN-destinif
            PERFORM OPEN-impforn
            PERFORM OPEN-tlistini
-      *    lineseq OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq
       *    tmp-ordf-art OPEN MODE IS FALSE
       *    PERFORM OPEN-tmp-ordf-art
            PERFORM OPEN-rordforn
@@ -3097,6 +3104,8 @@
       *    PERFORM OPEN-genlog
       *    lineseq-mail OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq-mail
+      *    lineseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq
       *    lineseq1 OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq1
       *    After Open
@@ -3344,18 +3353,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-lineseq.
-      * <TOTEM:EPT. INIT:pordini, FD:lineseq, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT lineseq
-           IF NOT Valid-STATUS-lineseq
-              PERFORM  scr-data-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:pordini, FD:lineseq, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-tmp-ordf-art.
       * <TOTEM:EPT. INIT:pordini, FD:tmp-ordf-art, BeforeOpen>
       * <TOTEM:END>
@@ -3564,6 +3561,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq.
+      * <TOTEM:EPT. INIT:pordini, FD:lineseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq
+           IF NOT Valid-STATUS-lineseq
+              PERFORM  scr-data-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:pordini, FD:lineseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
        OPEN-lineseq1.
       * <TOTEM:EPT. INIT:pordini, FD:lineseq1, BeforeOpen>
       * <TOTEM:END>
@@ -3600,8 +3609,6 @@
            PERFORM CLOSE-destinif
            PERFORM CLOSE-impforn
            PERFORM CLOSE-tlistini
-      *    lineseq CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq
       *    tmp-ordf-art CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tmp-ordf-art
            PERFORM CLOSE-rordforn
@@ -3624,6 +3631,8 @@
       *    PERFORM CLOSE-genlog
       *    lineseq-mail CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq-mail
+      *    lineseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq
       *    lineseq1 CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq1
       *    After Close
@@ -3740,11 +3749,6 @@
            CLOSE tlistini
            .
 
-       CLOSE-lineseq.
-      * <TOTEM:EPT. INIT:pordini, FD:lineseq, BeforeClose>
-      * <TOTEM:END>
-           .
-
        CLOSE-tmp-ordf-art.
       * <TOTEM:EPT. INIT:pordini, FD:tmp-ordf-art, BeforeClose>
       * <TOTEM:END>
@@ -3825,6 +3829,11 @@
 
        CLOSE-lineseq-mail.
       * <TOTEM:EPT. INIT:pordini, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-lineseq.
+      * <TOTEM:EPT. INIT:pordini, FD:lineseq, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -6961,93 +6970,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq-INITSTART.
-           .
-
-       DataSet1-lineseq-INITEND.
-           .
-
-       DataSet1-lineseq-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-lineseq-LOCK
-              READ lineseq WITH LOCK 
-           ELSE
-              READ lineseq WITH NO LOCK 
-           END-IF
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT 
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-lineseq-KEY-Asc
-              IF DataSet1-lineseq-LOCK
-                 READ lineseq NEXT WITH LOCK
-              ELSE
-                 READ lineseq NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-tmp-ordf-art-INITSTART.
            IF DataSet1-tmp-ordf-art-KEY-Asc
               MOVE Low-Value TO toa-chiave
@@ -9217,6 +9139,93 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-INITSTART.
+           .
+
+       DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-lineseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-LOCK
+              READ lineseq WITH LOCK 
+           ELSE
+              READ lineseq WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT 
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-KEY-Asc
+              IF DataSet1-lineseq-LOCK
+                 READ lineseq NEXT WITH LOCK
+              ELSE
+                 READ lineseq NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-lineseq1-INITSTART.
            .
 
@@ -9307,7 +9316,6 @@
            INITIALIZE desf-rec OF destinif
            INITIALIZE imf-rec OF impforn
            INITIALIZE tlis-rec OF tlistini
-           INITIALIZE line-riga OF lineseq
            INITIALIZE toa-rec OF tmp-ordf-art
            INITIALIZE rof-rec OF rordforn
            INITIALIZE tof-rec OF tordforn
@@ -9323,6 +9331,7 @@
            INITIALIZE qp-rec OF qta-pordini
            INITIALIZE gl-riga OF genlog
            INITIALIZE line-riga-mail OF lineseq-mail
+           INITIALIZE line-riga OF lineseq
            INITIALIZE line-riga OF lineseq1
            .
 
@@ -9619,14 +9628,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-lineseq-INITREC.
-           INITIALIZE line-riga OF lineseq
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-tmp-ordf-art-INITREC.
            INITIALIZE toa-rec OF tmp-ordf-art
                REPLACING NUMERIC       DATA BY ZEROS
@@ -9741,6 +9742,14 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq-mail-INITREC.
            INITIALIZE line-riga-mail OF lineseq-mail
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-INITREC.
+           INITIALIZE line-riga OF lineseq
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -10268,6 +10277,9 @@
            
            set hid-ascending to true.
            move low-value to ord2-rec.
+           if articolo-fisso = 0
+              move articolo-fisso to ord2-articolo
+           end-if.
            start ordfor2 key >= k-descr
                  invalid continue
            end-start.
@@ -12712,15 +12724,17 @@
        QTA-PROMO.
       * <TOTEM:PARA. QTA-PROMO>
            close ordfor2. 
-           if LK-BL-PROG-ID = "desktop"
-              call   "sos-ordini" using data-sos,
-                                        scr-elab-handle
-                                        "X"
-              cancel "sos-ordini"
-           else
-              call   "sos-ordini" using data-sos,
-                                        scr-elab-handle
-              cancel "sos-ordini"
+           if articolo-fisso = 0
+              if LK-BL-PROG-ID = "desktop"
+                 call   "sos-ordini" using data-sos,
+                                           scr-elab-handle
+                                           "X"
+                 cancel "sos-ordini"
+              else
+                 call   "sos-ordini" using data-sos,
+                                           scr-elab-handle
+                 cancel "sos-ordini"
+              end-if
            end-if.
            open i-o ordfor2 allowing readers.      
            if LK-BL-PROG-ID = "desktop"
@@ -12758,48 +12772,48 @@
            evaluate store-colonna
            when 1
                 if hid-ascending
-                   move low-value to ord2-rec
+                   move low-value to ord2-rec     
                    start ordfor2 key >= ord2-chiave
                          invalid set errori to true
                    end-start
                 else
-                   move high-value to ord2-rec
+                   move high-value to ord2-rec    
                    start ordfor2 key <= ord2-chiave
                          invalid set errori to true
                    end-start
                 end-if
            when 2
                 if hid-ascending
-                   move low-value to ord2-rec
+                   move low-value to ord2-rec     
                    start ordfor2 key >= k-descr
                          invalid set errori to true
                    end-start
                 else
-                   move high-value to ord2-rec
+                   move high-value to ord2-rec    
                    start ordfor2 key <= k-descr
                          invalid set errori to true
                    end-start
                 end-if
            when 4
                 if hid-ascending
-                   move low-value to ord2-rec
+                   move low-value to ord2-rec     
                    start ordfor2 key >= k-scorta
                          invalid set errori to true
                    end-start
                 else
-                   move high-value to ord2-rec
+                   move high-value to ord2-rec    
                    start ordfor2 key <= k-scorta
                          invalid continue
                    end-start
                 end-if
            when 5
                 if hid-ascending
-                   move low-value to ord2-rec
+                   move low-value to ord2-rec     
                    start ordfor2 key >= k-ord
                          invalid set errori to true
                    end-start
                 else
-                   move high-value to ord2-rec
+                   move high-value to ord2-rec    
                    start ordfor2 key <= k-ord
                          invalid set errori to true
                    end-start
@@ -12810,7 +12824,7 @@
                 else
                    set ord2-no-conferma to true
                 end-if
-                 move low-value to ord2-art-descrizione
+                move low-value to ord2-art-descrizione
                 start ordfor2 key >= k-ok
                       invalid set errori to true
                 end-start
@@ -13107,6 +13121,11 @@
                     read ordfor2 previous at end exit perform end-read
                  end-if
               end-if
+              if articolo-fisso not = 0
+                 if articolo-fisso not = ord2-articolo
+                    exit perform cycle
+                 end-if
+              end-if
               |XYZ
               if prima-volta
                  set trovato-marca to false
@@ -13283,6 +13302,16 @@
            compute giacenza rounded = ord2-giac / ord2-qta-imb.
            move giacenza        to col-giac-imb.
            move ord2-promo      to col-promo.
+                                             
+
+           if articolo-fisso not = 0       
+              move mese1-fisso to ord2-fabb-qta(1)
+              move mese2-fisso to ord2-fabb-qta(2)
+              move mese3-fisso to ord2-fabb-qta(3)
+              move mese4-fisso to ord2-fabb-qta(4)
+              move mese5-fisso to ord2-fabb-qta(5)
+              move mese6-fisso to ord2-fabb-qta(6)
+           end-if.
 
            move ord2-fabb-qta(1) to col-F1.
            compute giacenza rounded = ord2-fabb-qta(1) / ord2-qta-imb.
@@ -13753,16 +13782,28 @@
               open output coperfab
               close       coperfab
               open i-o    coperfab
-           else
+           else                         
+
               move 0 to counter2
               |Controllo che sia ancora presente il listino
               |con cui ho fatto la associazione
-              move low-value to cpf-rec
+              move low-value to cpf-rec 
+
+              if articolo-fisso not = 0
+                 move articolo-fisso to cpf-articolo
+              end-if
+
               start coperfab key >= cpf-chiave
                     invalid continue
                 not invalid
                     perform until 1 = 2
                        read coperfab next at end exit perform end-read
+                    
+                       if articolo-fisso not = 0
+                          if cpf-articolo not = articolo-fisso
+                             exit perform
+                          end-if
+                       end-if
 
                        add 1 to counter
                        add 1 to counter2
@@ -13799,6 +13840,12 @@
               perform until 1 = 2
 
                  read ordfor2 next at end exit perform end-read
+
+                 if articolo-fisso not = 0
+                    if articolo-fisso not = ord2-articolo
+                       exit perform cycle 
+                    end-if
+                 end-if
 
                  add 1 to counter
                  add 1 to counter2
@@ -13839,6 +13886,21 @@
        ordini-Ev-Before-Program.
       * <TOTEM:PARA. ordini-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
+           accept pordini-fisso from environment "ART_PORDINI".
+           if pordini-fisso = spaces
+              move 0 to articolo-fisso
+           else
+              unstring pordini-fisso delimited by ";"
+                  into articolo-fisso
+                       mese1-fisso
+                       mese2-fisso
+                       mese3-fisso
+                       mese4-fisso
+                       mese5-fisso
+                       mese6-fisso
+              end-unstring
+           end-if.                                              
+
            |Questo programma non può scrivere nei log di scheduler
            |allora lo forzo io                 
            if LK-BL-PROG-ID = "desktop"
@@ -14538,7 +14600,7 @@
                    evaluate store-colonna
                    when 1
                         if hid-ascending
-                           move low-value to ord2-rec
+                           move low-value to ord2-rec 
                            start ordfor2 key >= ord2-chiave
                                  invalid continue
                            end-start
@@ -14550,7 +14612,7 @@
                         end-if
                    when 2
                         if hid-ascending
-                           move low-value to ord2-rec
+                           move low-value to ord2-rec 
                            start ordfor2 key >= k-descr
                                  invalid continue
                            end-start
@@ -14562,7 +14624,7 @@
                         end-if
                    when 4
                         if hid-ascending
-                           move low-value to ord2-rec
+                           move low-value to ord2-rec 
                            start ordfor2 key >= k-scorta
                                  invalid continue
                            end-start
@@ -14574,7 +14636,7 @@
                         end-if
                    when 5
                         if hid-ascending
-                           move low-value to ord2-rec
+                           move low-value to ord2-rec 
                            start ordfor2 key >= k-ord
                                  invalid continue
                            end-start
