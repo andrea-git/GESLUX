@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        giovedì 28 luglio 2022 01:03:06.
+       DATE-WRITTEN.        giovedì 28 luglio 2022 01:17:19.
        REMARKS.
       *{TOTEM}END
 
@@ -13305,12 +13305,19 @@
                                              
 
            if articolo-fisso not = 0       
-              move mese1-fisso to ord2-fabb-qta(1)
-              move mese2-fisso to ord2-fabb-qta(2)
-              move mese3-fisso to ord2-fabb-qta(3)
-              move mese4-fisso to ord2-fabb-qta(4)
-              move mese5-fisso to ord2-fabb-qta(5)
-              move mese6-fisso to ord2-fabb-qta(6)
+              if mese1-fisso > 0 or
+                 mese2-fisso > 0 or
+                 mese3-fisso > 0 or
+                 mese4-fisso > 0 or
+                 mese5-fisso > 0 or
+                 mese6-fisso > 0
+                 move mese1-fisso to ord2-fabb-qta(1)
+                 move mese2-fisso to ord2-fabb-qta(2)
+                 move mese3-fisso to ord2-fabb-qta(3)
+                 move mese4-fisso to ord2-fabb-qta(4)
+                 move mese5-fisso to ord2-fabb-qta(5)
+                 move mese6-fisso to ord2-fabb-qta(6)
+              end-if
            end-if.
 
            move ord2-fabb-qta(1) to col-F1.

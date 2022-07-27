@@ -1,13 +1,16 @@
 ; CaseMaker Totem Program Structure File, Version 6.1
 ; WARNING: DO NOT MODIFY THIS FILE!
 
+[MONITOR_FILE]
+
+
 [PROGRAM_CONTENT]
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E671B134347-991-222353192
+PROGRAM_UNIQUE_CODE=TOTEM-7E671B23164-240-190235803
 
 {{@DESCRIPTION:
 
@@ -12274,12 +12277,19 @@ BEGIN-TEXT
                                              
 
            if articolo-fisso not = 0       
-              move mese1-fisso to ord2-fabb-qta(1)
-              move mese2-fisso to ord2-fabb-qta(2)
-              move mese3-fisso to ord2-fabb-qta(3)
-              move mese4-fisso to ord2-fabb-qta(4)
-              move mese5-fisso to ord2-fabb-qta(5)
-              move mese6-fisso to ord2-fabb-qta(6)
+              if mese1-fisso > 0 or
+                 mese2-fisso > 0 or
+                 mese3-fisso > 0 or
+                 mese4-fisso > 0 or
+                 mese5-fisso > 0 or
+                 mese6-fisso > 0
+                 move mese1-fisso to ord2-fabb-qta(1)
+                 move mese2-fisso to ord2-fabb-qta(2)
+                 move mese3-fisso to ord2-fabb-qta(3)
+                 move mese4-fisso to ord2-fabb-qta(4)
+                 move mese5-fisso to ord2-fabb-qta(5)
+                 move mese6-fisso to ord2-fabb-qta(6)
+              end-if
            end-if.
 
            move ord2-fabb-qta(1) to col-F1.
