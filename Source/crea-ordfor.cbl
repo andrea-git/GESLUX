@@ -132,7 +132,22 @@
        77  filler                pic 9.
            88 EseguiCheck        value 1 false 0.
 
-      * VARIABILI
+      * VARIABILI                                                               
+       01 FILLER.
+           05 articolo-fisso   PIC  9(6).
+           05 mese1-fisso      PIC  9(5).
+           05 mese2-fisso      PIC  9(5).
+           05 mese3-fisso      PIC  9(5).
+           05 mese4-fisso      PIC  9(5).
+           05 mese5-fisso      PIC  9(5).
+           05 mese6-fisso      PIC  9(5).
+       77  pordini-fisso         PIC  x(100).
+
+       77  qta-ordinata          pic 9(12).
+       77  qta-eccesso           pic 9(12).
+       77  qta-da-ordinare       pic 9(12).
+       77  tot-qta-m             pic 9(12).
+       77  como-mese             pic 99.
        77  primo-numero          pic 9(8) value 0.
        77  mese-oggi             pic 99.
        77  anno-oggi             pic 9(4).
@@ -666,7 +681,22 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.                     
+           accept pordini-fisso from environment "ART_PORDINI".
+           if pordini-fisso = spaces
+              move 0 to articolo-fisso
+           else
+              unstring pordini-fisso delimited by ";"
+                  into articolo-fisso
+                       mese1-fisso
+                       mese2-fisso
+                       mese3-fisso
+                       mese4-fisso
+                       mese5-fisso
+                       mese6-fisso
+              end-unstring
+           end-if.                               
+
            set EseguiCheck to false.
            move 0 to idx-forn.
            initialize path-coperfab-mag.
@@ -822,6 +852,11 @@
                       end-if
                       exit perform 
                  end-read
+                 if articolo-fisso not = 0
+                    if cpf-articolo not = articolo-fisso
+                       exit perform cycle
+                    end-if
+                 end-if
                  if cpf-qta <= 0
                     delete coperfab record invalid continue end-delete
                  else
@@ -865,6 +900,11 @@
               move 0 to save-articolo
               perform until 1 = 2
                  read coperfab next at end exit perform end-read
+                 if articolo-fisso not = 0
+                    if articolo-fisso not = cpf-articolo
+                       exit perform cycle 
+                    end-if
+                 end-if
                  if cpf-articolo not = save-articolo               
                     move cpf-articolo to art-codice save-articolo
                     read articoli no lock invalid continue end-read
@@ -1110,6 +1150,13 @@
               move spaces to save-causale
               perform until 1 = 2
                  read coperfab-mag next at end exit perform end-read  
+                 
+                 if articolo-fisso not = 0
+                    if articolo-fisso not = cpfm-articolo
+                       exit perform cycle 
+                    end-if
+                 end-if
+                 
                  if cpfm-programmazione-no
                     move cpfm-articolo to ord2-articolo
                     move "LBX"         to ord2-mag
@@ -1850,6 +1897,35 @@
 
       ***---
        SCRIVI-RIGA-PROGRAMMAZIONE.
+           |Partendo SEMPRE dalla somma delle qta da ordinare per i mesi 
+           |di riferimento, devo fare un controllo in tempo reale tra 
+           |quello che ho ordinato e quello che serve, considerando 
+           |sempre le quantità a bancali.
+           compute tot-qta-m = cpfm-qta-m(1) + cpfm-qta-m(2) +
+                               cpfm-qta-m(3) + cpfm-qta-m(4) +
+                               cpfm-qta-m(5) + cpfm-qta-m(6).
+
+           if tot-qta-m > art-qta-epal
+              |Mese 1
+              if cpfm-qta-m(1) > art-qta-epal
+                 move 0 to resto
+                 divide cpfm-qta-m(1) by art-qta-epal giving ris
+                        remainder resto
+                 add resto to ris
+                 compute cpfm-qta-m(1) = art-qta-epal * ris
+              else
+                 move 0 to cpfm-qta-m(1)                       
+              end-if                              
+              perform varying como-mese from 1 by 1 
+                        until como-mese > 6
+                 if cpfm-qta-m(como-mese) = 0
+                    exit perform cycle
+                 end-if
+                 perform CALCOLA-QTA
+                 perform CALCOLA-QTA-ORD
+              end-perform                       
+           end-if.
+
            perform varying idx from 1 by 1 
                      until idx > 6
               if cpfm-qta-m(idx) > 0
@@ -1928,6 +2004,32 @@
                  rewrite tof-rec  invalid continue end-rewrite
               end-if
            end-perform.
+
+      ***---
+       CALCOLA-QTA.
+           move 0 to qta-da-ordinare qta-ordinata.  
+           perform varying idx from 1 by 1 
+                     until idx = como-mese
+              add cpfm-qta-m(idx) to qta-ordinata
+           end-perform.
+           perform varying idx from 1 by 1 
+                     until idx > como-mese
+              add cpfm-qta-m(idx) to qta-da-ordinare
+           end-perform.
+      
+      ***---
+       CALCOLA-QTA-ORD. 
+           if qta-da-ordinare > qta-ordinata
+              move 0 to cpfm-qta-m(como-mese)
+           else                      
+              compute qta-eccesso = 
+                      qta-da-ordinare - qta-ordinata
+              move 0 to resto
+              divide qta-eccesso by art-qta-epal giving ris
+                     remainder resto
+              add resto to ris
+              compute cpfm-qta-m(como-mese) = art-qta-epal * ris        
+           end-if.
 
       ***---
        TROVA-PROGRESSIVO-ATTIVO.
