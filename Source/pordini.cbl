@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        giovedì 28 luglio 2022 01:17:19.
+       DATE-WRITTEN.        venerdì 29 luglio 2022 09:41:56.
        REMARKS.
       *{TOTEM}END
 
@@ -2396,11 +2396,9 @@
            LINE 1,30,
            LINES 15,40 CELLS,
            SIZE 27,90 CELLS,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            .
 
       * LABEL

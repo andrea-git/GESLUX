@@ -132,7 +132,10 @@
        77  filler                pic 9.
            88 EseguiCheck        value 1 false 0.
 
-      * VARIABILI                                                               
+      * VARIABILI          
+       01  s-cpfm-qta.
+         03 s-cpfm-qta-m       pic  9(8) occurs 6 times.
+                                                     
        01 FILLER.
            05 articolo-fisso   PIC  9(6).
            05 mese1-fisso      PIC  9(5).
@@ -141,6 +144,7 @@
            05 mese4-fisso      PIC  9(5).
            05 mese5-fisso      PIC  9(5).
            05 mese6-fisso      PIC  9(5).
+           05 qta-epal-fisso   pic  9(5).
        77  pordini-fisso         PIC  x(100).
 
        77  qta-ordinata          pic 9(12).
@@ -694,6 +698,7 @@
                        mese4-fisso
                        mese5-fisso
                        mese6-fisso
+                       qta-epal-fisso
               end-unstring
            end-if.                               
 
@@ -1212,6 +1217,12 @@
                  end-if
                  read coperfab-mag next at end exit perform end-read 
                  move cpfm-articolo to ord2-articolo   
+
+                 if articolo-fisso not = 0
+                    if articolo-fisso not = cpfm-articolo
+                       exit perform cycle 
+                    end-if
+                 end-if
                  
                  move "LBX"         to ord2-mag
                  read ordfor2 no lock invalid continue end-read
@@ -1901,22 +1912,52 @@
            |di riferimento, devo fare un controllo in tempo reale tra 
            |quello che ho ordinato e quello che serve, considerando 
            |sempre le quantità a bancali.
+           
+           if articolo-fisso > 0               
+              move mese1-fisso to cpfm-qta-m(1)
+              move mese2-fisso to cpfm-qta-m(2)
+              move mese3-fisso to cpfm-qta-m(3)
+              move mese4-fisso to cpfm-qta-m(4)
+              move mese5-fisso to cpfm-qta-m(5)
+              move mese6-fisso to cpfm-qta-m(6)
+              if qta-epal-fisso > 0
+                 move qta-epal-fisso to art-qta-epal
+              end-if
+           end-if.
+
            compute tot-qta-m = cpfm-qta-m(1) + cpfm-qta-m(2) +
                                cpfm-qta-m(3) + cpfm-qta-m(4) +
                                cpfm-qta-m(5) + cpfm-qta-m(6).
 
-           if tot-qta-m > art-qta-epal
+           move cpfm-qta to s-cpfm-qta.
+
+           if art-qta-epal > 0 and tot-qta-m > art-qta-epal
+           
+              |La testate degli ordini in programmazione vengono
+              |scritte in anticipo in base alla presenza delle qta mese.
+              |Siccome col nuovo ciclo posso cancellare delle qta devo
+              |resettare la situazione 
+              perform varying idx from 1 by 1 
+                        until idx > 6  
+                 move tge-anno         to tof-anno
+                 move numero-ordf(idx) to tof-numero
+                 delete tordforn invalid continue end-delete
+                 move 0 to numero-ordf(idx)
+              end-perform
+           
               |Mese 1
               if cpfm-qta-m(1) > art-qta-epal
                  move 0 to resto
                  divide cpfm-qta-m(1) by art-qta-epal giving ris
                         remainder resto
-                 add resto to ris
+                 if resto > 0
+                    add 1 to ris
+                 end-if
                  compute cpfm-qta-m(1) = art-qta-epal * ris
               else
                  move 0 to cpfm-qta-m(1)                       
               end-if                              
-              perform varying como-mese from 1 by 1 
+              perform varying como-mese from 2 by 1 
                         until como-mese > 6
                  if cpfm-qta-m(como-mese) = 0
                     exit perform cycle
@@ -1924,10 +1965,10 @@
                  perform CALCOLA-QTA
                  perform CALCOLA-QTA-ORD
               end-perform                       
-           end-if.
-
+           end-if.                          
            perform varying idx from 1 by 1 
-                     until idx > 6
+                     until idx > 6  
+                 
               if cpfm-qta-m(idx) > 0
                  initialize rof-rec replacing numeric data by zeroes
                                          alphanumeric data by spaces
@@ -2003,7 +2044,28 @@
                  end-if
                  rewrite tof-rec  invalid continue end-rewrite
               end-if
-           end-perform.
+           end-perform.                
+
+           |Resettare i numeri di inizio e fino generazione 
+           perform varying LinkFirst from LinkFirst by 1 
+                     until idx > LinkLast
+              move tge-anno  to tof-anno
+              move LinkFirst to tof-numero
+              read tordforn no lock
+                   invalid  continue
+               not invalid  exit perform
+              end-read
+           end-perform. 
+           perform varying LinkLast from LinkLast by 1 
+                     until idx < LinkFirst
+              move tge-anno  to tof-anno
+              move LinkFirst to tof-numero
+              read tordforn no lock
+                   invalid  continue
+               not invalid  exit perform
+              end-read
+           end-perform.                 
+
 
       ***---
        CALCOLA-QTA.
@@ -2014,12 +2076,13 @@
            end-perform.
            perform varying idx from 1 by 1 
                      until idx > como-mese
-              add cpfm-qta-m(idx) to qta-da-ordinare
+              add s-cpfm-qta-m(idx) to qta-da-ordinare
            end-perform.
       
       ***---
        CALCOLA-QTA-ORD. 
-           if qta-da-ordinare > qta-ordinata
+           if qta-ordinata    > qta-da-ordinare or
+              qta-da-ordinare < art-qta-epal
               move 0 to cpfm-qta-m(como-mese)
            else                      
               compute qta-eccesso = 
@@ -2027,7 +2090,9 @@
               move 0 to resto
               divide qta-eccesso by art-qta-epal giving ris
                      remainder resto
-              add resto to ris
+              if resto > 0
+                 add 1 to ris
+              end-if
               compute cpfm-qta-m(como-mese) = art-qta-epal * ris        
            end-if.
 

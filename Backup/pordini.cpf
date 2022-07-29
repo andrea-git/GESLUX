@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E671B23164-240-190235803
+PROGRAM_UNIQUE_CODE=TOTEM-7E671D7416-313-97057747
 
 {{@DESCRIPTION:
 
@@ -9453,7 +9453,7 @@ Begin Screen scr-fine
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1aa
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -9475,7 +9475,7 @@ Begin Screen scr-fine
       Size              = 27,90
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Width in Cells    = TRUE
