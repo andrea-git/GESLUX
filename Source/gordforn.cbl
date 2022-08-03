@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gordforn.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 20 settembre 2021 21:19:47.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        mercoledì 3 agosto 2022 02:00:08.
        REMARKS.
       *{TOTEM}END
 
@@ -67,6 +67,8 @@
            COPY "nforn-dest.sl".
            COPY "param.sl".
            COPY "tscorte.sl".
+           COPY "tordini.sl".
+           COPY "rordini.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -111,6 +113,8 @@
            COPY "nforn-dest.fd".
            COPY "param.fd".
            COPY "tscorte.fd".
+           COPY "tordini.fd".
+           COPY "rordini.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -137,6 +141,27 @@
            COPY  "ORDFORN-WS.DEF".
        77 STATUS-tscorte   PIC  X(2).
            88 Valid-STATUS-tscorte VALUE IS "00" THRU "09". 
+       77 annulla-bmp      PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 IMPORTA-DA-BMP   PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 scr-stampa-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 78-ID-ef-st-tipo PIC  9(6)
+                  VALUE IS 0.
+       77 ef-ricerca-piva-buf          PIC  X(11).
+       77 BOTTONE-OK-BMP   PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BOTTONE-CANCEL-BMP           PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 ef-anno-ord-buf  PIC  z(4).
+       77 ef-numero-ord-buf            PIC  z(8).
+       77 STATUS-tordini   PIC  X(2).
+           88 Valid-STATUS-tordini VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -170,6 +195,7 @@
               10 ef-data-VALUEBUF PIC 9(8).
       * Data.Entry-Field
               10 ef-data-cons-BUF PIC 99/99/9999.
+              10 ef-data-cons-VALUEBUF PIC 9(8).
       * Data.Entry-Field
               10 ef-data-listino-BUF PIC 99/99/9999.
       * Data.Check-Box
@@ -271,6 +297,8 @@
        77 TMP-Form1-tordforn-RESTOREBUF  PIC X(556).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
        77 Form1-MULKEY-TMPBUF   PIC X(556).
+       77 STATUS-scr-importa-FLAG-REFRESH PIC  9.
+          88 scr-importa-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
@@ -308,6 +336,8 @@
        77 TMP-DataSet1-nforn-dest-BUF     PIC X(379).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
+       77 TMP-DataSet1-rordini-BUF     PIC X(667).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -498,11 +528,22 @@
        77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tscorte-KEY-Asc  VALUE "A".
           88 DataSet1-tscorte-KEY-Desc VALUE "D".
+       77 DataSet1-tordini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tordini-LOCK  VALUE "Y".
+       77 DataSet1-tordini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tordini-KEY-Asc  VALUE "A".
+          88 DataSet1-tordini-KEY-Desc VALUE "D".
+       77 DataSet1-rordini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-rordini-LOCK  VALUE "Y".
+       77 DataSet1-rordini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-rordini-KEY-Asc  VALUE "A".
+          88 DataSet1-rordini-KEY-Desc VALUE "D".
 
        77 tordforn-tof-k-causale-SPLITBUF  PIC X(17).
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
@@ -541,6 +582,31 @@
        77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 distinteb-k-articolo-SPLITBUF  PIC X(12).
        77 distinteb-k-progmag-SPLITBUF  PIC X(21).
+       77 tordini-k-causale-SPLITBUF  PIC X(17).
+       77 tordini-k1-SPLITBUF  PIC X(23).
+       77 tordini-k2-SPLITBUF  PIC X(21).
+       77 tordini-k-bolla-SPLITBUF  PIC X(13).
+       77 tordini-k3-SPLITBUF  PIC X(22).
+       77 tordini-k-fattura-SPLITBUF  PIC X(13).
+       77 tordini-k4-SPLITBUF  PIC X(30).
+       77 tordini-k-contab-SPLITBUF  PIC X(14).
+       77 tordini-k-tipo-SPLITBUF  PIC X(14).
+       77 tordini-k-data-SPLITBUF  PIC X(17).
+       77 tordini-k-agfatt-SPLITBUF  PIC X(42).
+       77 tordini-k-stbolle-SPLITBUF  PIC X(34).
+       77 tordini-k-andamento-data-SPLITBUF  PIC X(10).
+       77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
+       77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
+       77 tordini-k-promo-SPLITBUF  PIC X(29).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
+       77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
+       77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
+       77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
+       77 rordini-ror-k-promo-SPLITBUF  PIC X(16).
+       77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
+       77 rordini-ror-k-master-SPLITBUF  PIC X(35).
+       77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-tmp-progmag-zoom-SPLIT-BUF1   PIC X(64).
 
@@ -586,6 +652,8 @@
        78  78-ID-ef-cod-iva VALUE 5035.
        78  78-ID-chk-manuale VALUE 5036.
        78  78-ID-ef-impforn VALUE 5037.
+       78  78-ID-ef-anno-ord VALUE 5001.
+       78  78-ID-ef-numero-ord VALUE 5002.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1039,7 +1107,7 @@
            ef-tel, 
            Entry-Field, 
            COL 23,17, 
-           LINE 23,08,
+           LINE 23,07,
            LINES 1,31 ,
            SIZE 55,00 ,
            BOXED,
@@ -1112,7 +1180,7 @@
            ef-ese-iva, 
            Entry-Field, 
            COL 23,17, 
-           LINE 30,85,
+           LINE 30,84,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1131,7 +1199,7 @@
            rb-urgente, 
            Radio-Button, 
            COL 23,17, 
-           LINE 32,85,
+           LINE 32,84,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -1151,7 +1219,7 @@
            rb-normale, 
            Radio-Button, 
            COL 35,17, 
-           LINE 32,85,
+           LINE 32,84,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED mod-campi-testa,
@@ -1295,7 +1363,7 @@
            Form1-La-8, 
            Label, 
            COL 5,17, 
-           LINE 28,85,
+           LINE 28,84,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1471,7 +1539,7 @@
            Form1-La-8a, 
            Label, 
            COL 5,17, 
-           LINE 30,85,
+           LINE 30,84,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -1504,7 +1572,7 @@
            Form1-La-16, 
            Label, 
            COL 27,17, 
-           LINE 32,85,
+           LINE 32,84,
            LINES 1,15 ,
            SIZE 8,17 ,
            FONT IS Small-Font,
@@ -1520,7 +1588,7 @@
            Form1-La-17, 
            Label, 
            COL 40,17, 
-           LINE 32,85,
+           LINE 32,84,
            LINES 1,15 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
@@ -1536,7 +1604,7 @@
            Form1-La-4aaaaa, 
            Label, 
            COL 5,17, 
-           LINE 32,85,
+           LINE 32,84,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -1707,11 +1775,11 @@
            Form1-La-4c, 
            Label, 
            COL 5,17, 
-           LINE 17,62,
+           LINE 17,61,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 13,
+           ID IS 106,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1738,7 +1806,7 @@
            ef-art, 
            Entry-Field, 
            COL 20,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 8,00 ,
            BOXED,
@@ -1758,7 +1826,7 @@
            ef-imb-ord, 
            Entry-Field, 
            COL 82,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1778,7 +1846,7 @@
            ef-qta, 
            Entry-Field, 
            COL 120,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 9,00 ,
            BOXED,
@@ -1798,7 +1866,7 @@
            ef-uni, 
            Entry-Field, 
            COL 20,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -1818,7 +1886,7 @@
            ef-sconto-1, 
            Entry-Field, 
            COL 70,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1838,7 +1906,7 @@
            ef-sconto-2, 
            Entry-Field, 
            COL 82,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1858,7 +1926,7 @@
            ef-sconto-3, 
            Entry-Field, 
            COL 94,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1878,7 +1946,7 @@
            ef-sconto-4, 
            Entry-Field, 
            COL 107,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1898,7 +1966,7 @@
            ef-sconto-5, 
            Entry-Field, 
            COL 120,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1918,7 +1986,7 @@
            ef-cons, 
            Entry-Field, 
            COL 20,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -1939,7 +2007,7 @@
            ef-cou, 
            Entry-Field, 
            COL 70,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -1960,7 +2028,7 @@
            ef-add, 
            Entry-Field, 
            COL 94,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -1981,7 +2049,7 @@
            ef-costi-agg, 
            Entry-Field, 
            COL 120,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -2078,10 +2146,34 @@
 
       * PUSH BUTTON
        10
+           pb-importa, 
+           Push-Button, 
+           COL 4,00, 
+           LINE 31,07,
+           LINES 2,15 ,
+           SIZE 16,00 ,
+           BITMAP-HANDLE IMPORTA-DA-BMP,
+           BITMAP-NUMBER 2,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1010,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 64,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Aggi&unge una riga all'ordine",
+           AFTER PROCEDURE pb-importa-AfterProcedure, 
+           BEFORE PROCEDURE pb-importa-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       10
            pb-grid-nuovo, 
            Push-Button, 
            COL 129,67, 
-           LINE 31,99,
+           LINE 32,77,
            LINES 2,15 ,
            SIZE 13,50 ,
            BITMAP-HANDLE STRIP_GRID_GCLIENTI-BMP,
@@ -2091,7 +2183,7 @@
            EXCEPTION-VALUE 1002,
            FLAT,
            FONT IS Small-Font,
-           ID IS 64,
+           ID IS 65,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -2105,7 +2197,7 @@
            pb-grid-elimina, 
            Push-Button, 
            COL 142,67, 
-           LINE 31,99,
+           LINE 32,77,
            LINES 2,15 ,
            SIZE 13,50 ,
            BITMAP-HANDLE STRIP_GRID_GCLIENTI-BMP,
@@ -2153,7 +2245,7 @@
            Form1-La-19, 
            Label, 
            COL 5,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2169,7 +2261,7 @@
            Form1-La-20, 
            Label, 
            COL 115,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 3,00 ,
            FONT IS Small-Font,
@@ -2185,7 +2277,7 @@
            Form1-La-21, 
            Label, 
            COL 5,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -2201,7 +2293,7 @@
            Form1-La-22, 
            Label, 
            COL 5,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2217,7 +2309,7 @@
            lab-imposta, 
            Label, 
            COL 55,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -2250,7 +2342,7 @@
            Form1-La-25, 
            Label, 
            COL 61,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
@@ -2284,7 +2376,7 @@
            lab-art, 
            Label, 
            COL 29,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 40,00 ,
            COLOR IS 5,
@@ -2440,7 +2532,7 @@
            lab-impostaa, 
            Label, 
            COL 84,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 8,00 ,
            FONT IS Small-Font,
@@ -2456,7 +2548,7 @@
            Form1-La-20a, 
            Label, 
            COL 75,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 6,00 ,
            FONT IS Small-Font,
@@ -2472,7 +2564,7 @@
            lab-imb, 
            Label, 
            COL 88,17, 
-           LINE 32,69,
+           LINE 33,46,
            LINES 1,31 ,
            SIZE 26,00 ,
            COLOR IS 5,
@@ -2490,7 +2582,7 @@
            lab-impostaaa, 
            Label, 
            COL 109,17, 
-           LINE 36,92,
+           LINE 37,31,
            LINES 1,31 ,
            SIZE 8,83 ,
            FONT IS Small-Font,
@@ -2541,7 +2633,7 @@
            lab-articoli, 
            Label, 
            COL 131,84, 
-           LINE 34,84,
+           LINE 35,61,
            LINES 2,46 ,
            SIZE 24,33 ,
            COLOR IS 5,
@@ -2560,7 +2652,7 @@
            chk-manuale, 
            Check-Box, 
            COL 70,17, 
-           LINE 32,38,
+           LINE 33,15,
            LINES 16,00 ,
            SIZE 16,00 ,
            BITMAP-HANDLE MOD_PREZZO-BMP,
@@ -2581,7 +2673,7 @@
            ef-impforn, 
            Entry-Field, 
            COL 32,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -2601,7 +2693,7 @@
            lab-impforn, 
            Label, 
            COL 39,17, 
-           LINE 34,69,
+           LINE 35,46,
            LINES 1,31 ,
            SIZE 19,00 ,
            COLOR IS 5,
@@ -2972,6 +3064,152 @@
            SELF-ACT,
            TITLE "Seleziona (F9)",
            BITMAP-NUMBER BitmapNumSelect
+           .
+
+      * FORM
+       01 
+           scr-importa, 
+           BEFORE PROCEDURE scr-importa-BeforeProcedure,
+           AFTER PROCEDURE  scr-importa-AFTER-SCREEN
+           .
+
+      * ENTRY FIELD
+       05
+           ef-anno-ord, 
+           Entry-Field, 
+           COL 10,00, 
+           LINE 2,11,
+           LINES 1,33 ,
+           SIZE 6,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-anno-ord,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 11,
+           VALUE ef-anno-ord-buf,
+           AFTER PROCEDURE ef-anno-ord-AfterProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-numero-ord, 
+           Entry-Field, 
+           COL 10,00, 
+           LINE 3,78,
+           LINES 1,33 ,
+           SIZE 10,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-numero-ord,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 11,
+           VALUE ef-numero-ord-buf,
+           AFTER PROCEDURE ef-numero-ord-AfterProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-ricerca-ok, 
+           Push-Button, 
+           COL 2,90, 
+           LINE 6,22,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-OK-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1000,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 100,
+           AFTER PROCEDURE pb-ricerca-ok-AfterProcedure, 
+           BEFORE PROCEDURE pb-ricerca-ok-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-ricerca-cancel, 
+           Push-Button, 
+           COL 10,80, 
+           LINE 6,22,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-CANCEL-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 27,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 200,
+           ESCAPE-BUTTON,
+           AFTER PROCEDURE pb-ricerca-cancel-AfterProcedure, 
+           BEFORE PROCEDURE pb-ricerca-cancel-BeforeProcedure, 
+           .
+
+      * BAR
+       05
+           Screen4-Br-1aaaa, 
+           Bar,
+           COL 1,00, 
+           LINE 6,11,
+           SIZE 19,80 ,
+           ID IS 12,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
+           .
+
+      * LABEL
+       05
+           lab1a, 
+           Label, 
+           COL 2,00, 
+           LINE 2,11,
+           LINES 1,22 ,
+           SIZE 6,00 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Anno",
+           .
+
+      * LABEL
+       05
+           lab1aa, 
+           Label, 
+           COL 2,00, 
+           LINE 3,78,
+           LINES 1,22 ,
+           SIZE 7,00 ,
+           ID IS 15,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Numero",
+           .
+
+      * LABEL
+       05
+           Screen1-Custom1-1, 
+           Label, 
+           COL 2,90, 
+           LINE 5,28,
+           LINES 0,44 ,
+           SIZE 5,70 ,
+           FONT IS Default-Font,
+           ID IS 1,
+           TRANSPARENT,
+           TITLE "CUSTOM CONTROL",
+           VISIBLE v-custom,
            .
 
       *{TOTEM}END
@@ -3556,11 +3794,15 @@
       * <TOTEM:EPT. INIT:gordforn, INIT:gordforn, BeforeDestroyResource>
       * <TOTEM:END>
            DESTROY Verdana10B-Occidentale
+           DESTROY Verdana12-Occidentale
+           CALL "w$bitmap" USING WBITMAP-DESTROY, IMPORTA-DA-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, 
            STRIP_GRID_GCLIENTI-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, DA-CONF-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, MOD_PREZZO-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-OK-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-CANCEL-BMP
       *    After-Program
            PERFORM gordc-Ev-After-Program
            set environment "KEYSTROKE" to "DATA=46   46".
@@ -3603,9 +3845,26 @@
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
                      Verdana10B-Occidentale, WFONT-DATA
+      * Verdana12-Occidentale
+           INITIALIZE WFONT-DATA Verdana12-Occidentale
+           MOVE 12 TO WFONT-SIZE
+           MOVE "Verdana" TO WFONT-NAME
+           SET WFCHARSET-DONT-CARE TO TRUE
+           SET WFONT-BOLD TO FALSE
+           SET WFONT-ITALIC TO FALSE
+           SET WFONT-UNDERLINE TO FALSE
+           SET WFONT-STRIKEOUT TO FALSE
+           SET WFONT-FIXED-PITCH TO FALSE
+           MOVE 0 TO WFONT-CHAR-SET
+           CALL "W$FONT" USING WFONT-GET-FONT, 
+                     Verdana12-Occidentale, WFONT-DATA
            .
 
        INIT-BMP.
+      * pb-importa
+           COPY RESOURCE "IMPORTA-DA.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "IMPORTA-DA.BMP", 
+                   GIVING IMPORTA-DA-BMP.
       * pb-grid-nuovo
            COPY RESOURCE "STRIP_GRID_GCLIENTI.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "STRIP_GRID_GCLIENTI.BMP"
@@ -3623,6 +3882,14 @@
            COPY RESOURCE "TOOLBAR.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "TOOLBAR.BMP", 
                    GIVING TOOLBAR-BMP.
+      * pb-ricerca-ok
+           COPY RESOURCE "BOTTONE-OK.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-OK.BMP", 
+                   GIVING BOTTONE-OK-BMP.
+      * pb-ricerca-cancel
+           COPY RESOURCE "BOTTONE-CANCEL.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-CANCEL.BMP", 
+                   GIVING BOTTONE-CANCEL-BMP.
            .
 
        INIT-RES.
@@ -3675,6 +3942,8 @@
            PERFORM OPEN-nforn-dest
            PERFORM OPEN-param
            PERFORM OPEN-tscorte
+           PERFORM OPEN-tordini
+           PERFORM OPEN-rordini
       *    After Open
            .
 
@@ -4185,6 +4454,30 @@
       * <TOTEM:END>
            .
 
+       OPEN-tordini.
+      * <TOTEM:EPT. INIT:gordforn, FD:tordini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tordini
+           IF NOT Valid-STATUS-tordini
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gordforn, FD:tordini, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-rordini.
+      * <TOTEM:EPT. INIT:gordforn, FD:rordini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT rordini
+           IF NOT Valid-STATUS-rordini
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gordforn, FD:rordini, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tordforn
@@ -4229,6 +4522,8 @@
            PERFORM CLOSE-nforn-dest
            PERFORM CLOSE-param
            PERFORM CLOSE-tscorte
+           PERFORM CLOSE-tordini
+           PERFORM CLOSE-rordini
       *    After Close
            .
 
@@ -4449,6 +4744,18 @@
            CLOSE tscorte
            .
 
+       CLOSE-tordini.
+      * <TOTEM:EPT. INIT:gordforn, FD:tordini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tordini
+           .
+
+       CLOSE-rordini.
+      * <TOTEM:EPT. INIT:gordforn, FD:rordini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE rordini
+           .
+
        tordforn-tof-k-causale-MERGE-SPLITBUF.
            INITIALIZE tordforn-tof-k-causale-SPLITBUF
            MOVE tof-causale(1:4) TO tordforn-tof-k-causale-SPLITBUF(1:4)
@@ -4476,6 +4783,14 @@
            tordforn-tof-k-data-SPLITBUF(1:8)
            MOVE tof-chiave OF tordforn(1:12) TO 
            tordforn-tof-k-data-SPLITBUF(9:12)
+           .
+
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
            .
 
        DataSet1-tordforn-INITSTART.
@@ -4582,6 +4897,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4616,6 +4932,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4650,6 +4967,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -10633,6 +10951,602 @@
       * <TOTEM:END>
            .
 
+       tordini-k-causale-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-causale-SPLITBUF
+           MOVE tor-causale(1:4) TO tordini-k-causale-SPLITBUF(1:4)
+           MOVE tor-anno(1:4) TO tordini-k-causale-SPLITBUF(5:4)
+           MOVE tor-numero(1:8) TO tordini-k-causale-SPLITBUF(9:8)
+           .
+
+       tordini-k1-MERGE-SPLITBUF.
+           INITIALIZE tordini-k1-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO tordini-k1-SPLITBUF(1:5)
+           MOVE tor-prg-destino(1:5) TO tordini-k1-SPLITBUF(6:5)
+           MOVE tor-anno(1:4) TO tordini-k1-SPLITBUF(11:4)
+           MOVE tor-numero(1:8) TO tordini-k1-SPLITBUF(15:8)
+           .
+
+       tordini-k2-MERGE-SPLITBUF.
+           INITIALIZE tordini-k2-SPLITBUF
+           MOVE tor-data-passaggio-ordine(1:8) TO 
+           tordini-k2-SPLITBUF(1:8)
+           MOVE tor-anno(1:4) TO tordini-k2-SPLITBUF(9:4)
+           MOVE tor-numero(1:8) TO tordini-k2-SPLITBUF(13:8)
+           .
+
+       tordini-k-bolla-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-bolla-SPLITBUF
+           MOVE tor-anno-bolla(1:4) TO tordini-k-bolla-SPLITBUF(1:4)
+           MOVE tor-num-bolla(1:8) TO tordini-k-bolla-SPLITBUF(5:8)
+           .
+
+       tordini-k3-MERGE-SPLITBUF.
+           INITIALIZE tordini-k3-SPLITBUF
+           MOVE tor-anno-bolla(1:4) TO tordini-k3-SPLITBUF(1:4)
+           MOVE tor-data-bolla(1:8) TO tordini-k3-SPLITBUF(5:8)
+           MOVE tor-num-bolla(1:8) TO tordini-k3-SPLITBUF(13:8)
+           MOVE tor-bolla-prenotata(1:1) TO tordini-k3-SPLITBUF(21:1)
+           .
+
+       tordini-k-fattura-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-fattura-SPLITBUF
+           MOVE tor-anno-fattura(1:4) TO tordini-k-fattura-SPLITBUF(1:4)
+           MOVE tor-num-fattura(1:8) TO tordini-k-fattura-SPLITBUF(5:8)
+           .
+
+       tordini-k4-MERGE-SPLITBUF.
+           INITIALIZE tordini-k4-SPLITBUF
+           MOVE tor-anno-fattura(1:4) TO tordini-k4-SPLITBUF(1:4)
+           MOVE tor-data-fattura(1:8) TO tordini-k4-SPLITBUF(5:8)
+           MOVE tor-num-fattura(1:8) TO tordini-k4-SPLITBUF(13:8)
+           MOVE tor-num-prenot(1:8) TO tordini-k4-SPLITBUF(21:8)
+           MOVE tor-fatt-prenotata(1:1) TO tordini-k4-SPLITBUF(29:1)
+           .
+
+       tordini-k-contab-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-contab-SPLITBUF
+           MOVE tor-agg-contab(1:1) TO tordini-k-contab-SPLITBUF(1:1)
+           MOVE tor-anno-fattura(1:4) TO tordini-k-contab-SPLITBUF(2:4)
+           MOVE tor-num-fattura(1:8) TO tordini-k-contab-SPLITBUF(6:8)
+           .
+
+       tordini-k-tipo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tipo-SPLITBUF
+           MOVE tor-tipo(1:1) TO tordini-k-tipo-SPLITBUF(1:1)
+           MOVE tor-chiave(1:12) TO tordini-k-tipo-SPLITBUF(2:12)
+           .
+
+       tordini-k-data-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-data-SPLITBUF
+           MOVE tor-data-creazione(1:8) TO tordini-k-data-SPLITBUF(1:8)
+           MOVE tor-numero(1:8) TO tordini-k-data-SPLITBUF(9:8)
+           .
+
+       tordini-k-agfatt-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-agfatt-SPLITBUF
+           MOVE tor-anno-fattura(1:4) TO tordini-k-agfatt-SPLITBUF(1:4)
+           MOVE tor-data-fattura(1:8) TO tordini-k-agfatt-SPLITBUF(5:8)
+           MOVE tor-num-fattura(1:8) TO tordini-k-agfatt-SPLITBUF(13:8)
+           MOVE tor-num-prenot(1:8) TO tordini-k-agfatt-SPLITBUF(21:8)
+           MOVE tor-fatt-prenotata(1:1) TO 
+           tordini-k-agfatt-SPLITBUF(29:1)
+           MOVE tor-chiave(1:12) TO tordini-k-agfatt-SPLITBUF(30:12)
+           .
+
+       tordini-k-stbolle-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-stbolle-SPLITBUF
+           MOVE tor-anno-bolla(1:4) TO tordini-k-stbolle-SPLITBUF(1:4)
+           MOVE tor-data-bolla(1:8) TO tordini-k-stbolle-SPLITBUF(5:8)
+           MOVE tor-num-bolla(1:8) TO tordini-k-stbolle-SPLITBUF(13:8)
+           MOVE tor-bolla-prenotata(1:1) TO 
+           tordini-k-stbolle-SPLITBUF(21:1)
+           MOVE tor-chiave(1:12) TO tordini-k-stbolle-SPLITBUF(22:12)
+           .
+
+       tordini-k-andamento-data-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-andamento-data-SPLITBUF
+           MOVE tor-agg-contab(1:1) TO 
+           tordini-k-andamento-data-SPLITBUF(1:1)
+           MOVE tor-data-fattura(1:8) TO 
+           tordini-k-andamento-data-SPLITBUF(2:8)
+           .
+
+       tordini-k-andamento-cliente-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-andamento-cliente-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO 
+           tordini-k-andamento-cliente-SPLITBUF(1:5)
+           MOVE tor-agg-contab(1:1) TO 
+           tordini-k-andamento-cliente-SPLITBUF(6:1)
+           MOVE tor-data-fattura(1:8) TO 
+           tordini-k-andamento-cliente-SPLITBUF(7:8)
+           .
+
+       tordini-k-andamento-clides-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-andamento-clides-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO 
+           tordini-k-andamento-clides-SPLITBUF(1:5)
+           MOVE tor-prg-destino(1:5) TO 
+           tordini-k-andamento-clides-SPLITBUF(6:5)
+           MOVE tor-agg-contab(1:1) TO 
+           tordini-k-andamento-clides-SPLITBUF(11:1)
+           MOVE tor-data-fattura(1:8) TO 
+           tordini-k-andamento-clides-SPLITBUF(12:8)
+           .
+
+       tordini-k-promo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-promo-SPLITBUF
+           MOVE tor-stato(1:1) TO tordini-k-promo-SPLITBUF(1:1)
+           MOVE tor-promo(1:1) TO tordini-k-promo-SPLITBUF(2:1)
+           MOVE tor-data-ordine(1:8) TO tordini-k-promo-SPLITBUF(3:8)
+           MOVE tor-numero(1:8) TO tordini-k-promo-SPLITBUF(11:8)
+           MOVE tor-cod-cli(1:5) TO tordini-k-promo-SPLITBUF(19:5)
+           MOVE tor-prg-destino(1:5) TO tordini-k-promo-SPLITBUF(24:5)
+           .
+
+       tordini-k-or-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-or-SPLITBUF
+           MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
+           MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
+           .
+
+       tordini-k-tor-inviare-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-inviare-SPLITBUF
+           MOVE tor-da-inviare OF tordini(1:1) TO 
+           tordini-k-tor-inviare-SPLITBUF(1:1)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-inviare-SPLITBUF(2:12)
+           .
+
+       tordini-k-tor-tipocli-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-tipocli-SPLITBUF
+           MOVE tor-tipocli OF tordini(1:2) TO 
+           tordini-k-tor-tipocli-SPLITBUF(1:2)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(3:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(8:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-tipocli-SPLITBUF(13:12)
+           .
+
+       tordini-k-tor-gdo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-gdo-SPLITBUF
+           MOVE tor-gdo OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(1:5)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(6:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(11:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-gdo-SPLITBUF(16:12)
+           .
+
+       DataSet1-tordini-INITSTART.
+           IF DataSet1-tordini-KEY-Asc
+              MOVE Low-Value TO tor-chiave
+           ELSE
+              MOVE High-Value TO tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-INITEND.
+           IF DataSet1-tordini-KEY-Asc
+              MOVE High-Value TO tor-chiave
+           ELSE
+              MOVE Low-Value TO tor-chiave
+           END-IF
+           .
+
+      * tordini
+       DataSet1-tordini-START.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY >= tor-chiave
+           ELSE
+              START tordini KEY <= tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-START-NOTGREATER.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY <= tor-chiave
+           ELSE
+              START tordini KEY >= tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-START-GREATER.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY > tor-chiave
+           ELSE
+              START tordini KEY < tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-START-LESS.
+           IF DataSet1-tordini-KEY-Asc
+              START tordini KEY < tor-chiave
+           ELSE
+              START tordini KEY > tor-chiave
+           END-IF
+           .
+
+       DataSet1-tordini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tordini-LOCK
+              READ tordini WITH LOCK 
+              KEY tor-chiave
+           ELSE
+              READ tordini WITH NO LOCK 
+              KEY tor-chiave
+           END-IF
+           PERFORM tordini-k-causale-MERGE-SPLITBUF
+           PERFORM tordini-k1-MERGE-SPLITBUF
+           PERFORM tordini-k2-MERGE-SPLITBUF
+           PERFORM tordini-k-bolla-MERGE-SPLITBUF
+           PERFORM tordini-k3-MERGE-SPLITBUF
+           PERFORM tordini-k-fattura-MERGE-SPLITBUF
+           PERFORM tordini-k4-MERGE-SPLITBUF
+           PERFORM tordini-k-contab-MERGE-SPLITBUF
+           PERFORM tordini-k-tipo-MERGE-SPLITBUF
+           PERFORM tordini-k-data-MERGE-SPLITBUF
+           PERFORM tordini-k-agfatt-MERGE-SPLITBUF
+           PERFORM tordini-k-stbolle-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-clides-MERGE-SPLITBUF
+           PERFORM tordini-k-promo-MERGE-SPLITBUF
+           PERFORM tordini-k-or-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT 
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tordini-KEY-Asc
+              IF DataSet1-tordini-LOCK
+                 READ tordini NEXT WITH LOCK
+              ELSE
+                 READ tordini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tordini-LOCK
+                 READ tordini PREVIOUS WITH LOCK
+              ELSE
+                 READ tordini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tordini-k-causale-MERGE-SPLITBUF
+           PERFORM tordini-k1-MERGE-SPLITBUF
+           PERFORM tordini-k2-MERGE-SPLITBUF
+           PERFORM tordini-k-bolla-MERGE-SPLITBUF
+           PERFORM tordini-k3-MERGE-SPLITBUF
+           PERFORM tordini-k-fattura-MERGE-SPLITBUF
+           PERFORM tordini-k4-MERGE-SPLITBUF
+           PERFORM tordini-k-contab-MERGE-SPLITBUF
+           PERFORM tordini-k-tipo-MERGE-SPLITBUF
+           PERFORM tordini-k-data-MERGE-SPLITBUF
+           PERFORM tordini-k-agfatt-MERGE-SPLITBUF
+           PERFORM tordini-k-stbolle-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-clides-MERGE-SPLITBUF
+           PERFORM tordini-k-promo-MERGE-SPLITBUF
+           PERFORM tordini-k-or-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tordini-KEY-Asc
+              IF DataSet1-tordini-LOCK
+                 READ tordini PREVIOUS WITH LOCK
+              ELSE
+                 READ tordini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tordini-LOCK
+                 READ tordini NEXT WITH LOCK
+              ELSE
+                 READ tordini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tordini-k-causale-MERGE-SPLITBUF
+           PERFORM tordini-k1-MERGE-SPLITBUF
+           PERFORM tordini-k2-MERGE-SPLITBUF
+           PERFORM tordini-k-bolla-MERGE-SPLITBUF
+           PERFORM tordini-k3-MERGE-SPLITBUF
+           PERFORM tordini-k-fattura-MERGE-SPLITBUF
+           PERFORM tordini-k4-MERGE-SPLITBUF
+           PERFORM tordini-k-contab-MERGE-SPLITBUF
+           PERFORM tordini-k-tipo-MERGE-SPLITBUF
+           PERFORM tordini-k-data-MERGE-SPLITBUF
+           PERFORM tordini-k-agfatt-MERGE-SPLITBUF
+           PERFORM tordini-k-stbolle-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-data-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-cliente-MERGE-SPLITBUF
+           PERFORM tordini-k-andamento-clides-MERGE-SPLITBUF
+           PERFORM tordini-k-promo-MERGE-SPLITBUF
+           PERFORM tordini-k-or-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tordini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tordini TO TOTEM-ERR-STAT
+           MOVE "tordini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tordini, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       rordini-ror-k-promo-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-promo-SPLITBUF
+           MOVE ror-promo OF rordini(1:15) TO 
+           rordini-ror-k-promo-SPLITBUF(1:15)
+           .
+
+       rordini-ror-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-articolo-SPLITBUF
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-articolo-SPLITBUF(1:6)
+           MOVE ror-chiave OF rordini(1:17) TO 
+           rordini-ror-k-articolo-SPLITBUF(7:17)
+           .
+
+       rordini-ror-k-master-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-master-SPLITBUF
+           MOVE ror-chiave-ordine OF rordini(1:17) TO 
+           rordini-ror-k-master-SPLITBUF(1:17)
+           MOVE ror-chiave OF rordini(1:17) TO 
+           rordini-ror-k-master-SPLITBUF(18:17)
+           .
+
+       rordini-ror-k-stbolle-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-stbolle-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-stbolle-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-stbolle-SPLITBUF(5:8)
+           MOVE ror-chiave-ordine OF rordini(1:17) TO 
+           rordini-ror-k-stbolle-SPLITBUF(13:17)
+           .
+
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
+       DataSet1-rordini-INITSTART.
+           IF DataSet1-rordini-KEY-Asc
+              MOVE Low-Value TO ror-chiave OF rordini
+           ELSE
+              MOVE High-Value TO ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-INITEND.
+           IF DataSet1-rordini-KEY-Asc
+              MOVE High-Value TO ror-chiave OF rordini
+           ELSE
+              MOVE Low-Value TO ror-chiave OF rordini
+           END-IF
+           .
+
+      * rordini
+       DataSet1-rordini-START.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY >= ror-chiave OF rordini
+           ELSE
+              START rordini KEY <= ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-START-NOTGREATER.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY <= ror-chiave OF rordini
+           ELSE
+              START rordini KEY >= ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-START-GREATER.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY > ror-chiave OF rordini
+           ELSE
+              START rordini KEY < ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-START-LESS.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY < ror-chiave OF rordini
+           ELSE
+              START rordini KEY > ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-rordini-LOCK
+              READ rordini WITH LOCK 
+              KEY ror-chiave OF rordini
+           ELSE
+              READ rordini WITH NO LOCK 
+              KEY ror-chiave OF rordini
+           END-IF
+           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT 
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-rordini-KEY-Asc
+              IF DataSet1-rordini-LOCK
+                 READ rordini NEXT WITH LOCK
+              ELSE
+                 READ rordini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-rordini-LOCK
+                 READ rordini PREVIOUS WITH LOCK
+              ELSE
+                 READ rordini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-rordini-KEY-Asc
+              IF DataSet1-rordini-LOCK
+                 READ rordini PREVIOUS WITH LOCK
+              ELSE
+                 READ rordini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-rordini-LOCK
+                 READ rordini NEXT WITH LOCK
+              ELSE
+                 READ rordini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tof-rec OF tordforn
            INITIALIZE tge-rec OF tparamge
@@ -10671,6 +11585,8 @@
            INITIALIZE nfod-rec OF nforn-dest
            INITIALIZE prm-rec OF param
            INITIALIZE sco-rec OF tscorte
+           INITIALIZE tor-rec OF tordini
+           INITIALIZE ror-rec OF rordini
            .
 
 
@@ -11019,6 +11935,22 @@
                          ALPHABETIC    DATA BY SPACES
            .
 
+      * FD's Initialize Paragraph
+       DataSet1-tordini-INITREC.
+           INITIALIZE tor-rec OF tordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-rordini-INITREC.
+           INITIALIZE ror-rec OF rordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
       *
        DataSet1-DISPATCH-BUFTOFLD.
            EVALUATE TOTEM-Form-Index ALSO TOTEM-Frame-Index
@@ -11144,6 +12076,8 @@
                  PERFORM rb-gui-LinkTo
               WHEN Key-Status = 1003
                  PERFORM pb-note-LinkTo
+              WHEN Key-Status = 1010
+                 PERFORM pb-importa-LinkTo
               WHEN Key-Status = 1002
                  PERFORM pb-grid-nuovo-LinkTo
               WHEN Key-Status = 1005
@@ -13453,6 +14387,228 @@ LUBEXX           delete lockfile record invalid continue end-delete
            when other continue
            end-evaluate.
 
+       scr-importa-Open-Routine.
+           PERFORM scr-importa-Scrn
+           PERFORM scr-importa-Proc
+           .
+
+       scr-importa-Scrn.
+           PERFORM scr-importa-Create-Win
+           PERFORM scr-importa-Init-Value
+           PERFORM scr-importa-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           PERFORM scr-importa-DISPLAY
+           .
+
+       scr-importa-Create-Win.
+           Display Floating GRAPHICAL WINDOW
+              LINES 7,28,
+              SIZE 19,80,
+              HEIGHT-IN-CELLS,
+              WIDTH-IN-CELLS,
+              COLOR 65793,
+              CONTROL FONT Verdana12-Occidentale,
+              LINK TO THREAD,
+              NO SCROLL,
+              TITLE-BAR,
+              TITLE titolo,
+              WITH SYSTEM MENU,
+              USER-GRAY,
+              USER-WHITE,
+              No WRAP,
+              EVENT PROCEDURE scr-stampa-Event-Proc,
+              HANDLE IS scr-stampa-Handle,
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+      * Status-bar
+           DISPLAY scr-importa UPON scr-stampa-Handle
+      * DISPLAY-COLUMNS settings
+           .
+
+       scr-importa-PROC.
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, BeforeAccept>
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT scr-importa
+                 ON EXCEPTION
+                    PERFORM scr-importa-Evaluate-Func
+                 MOVE 2 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY scr-stampa-Handle
+           INITIALIZE Key-Status
+           .
+
+       scr-importa-Evaluate-Func.
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM scr-importa-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM scr-importa-Exit
+                 END-IF
+              WHEN Key-Status = 1000
+                 PERFORM pb-ricerca-ok-LinkTo
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       scr-importa-CLEAR.
+           PERFORM scr-importa-INIT-VALUE
+           PERFORM scr-importa-DISPLAY
+           .
+
+       scr-importa-DISPLAY.
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY scr-importa UPON scr-stampa-Handle
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       scr-importa-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       scr-importa-Init-Data.
+           MOVE 2 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+           .
+
+       scr-importa-Init-Value.
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, SetDefault>
+      * <TOTEM:END>
+           PERFORM scr-importa-FLD-TO-BUF
+           .
+
+
+       scr-importa-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       scr-importa-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       scr-importa-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       scr-importa-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       scr-importa-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform scr-importa-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       scr-importa-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM scr-importa-SHOW-MSG-ROUTINE
+           .
+
+       scr-importa-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM scr-importa-DISPLAY-MESSAGE
+           .
+
+       scr-importa-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       scr-importa-Save-Status.
+           .             
+
+       scr-importa-Restore-Status.
+           .
+
+
+      * Paragrafo per la struttura del codice in BEFORE sulla screen scr-importa
+      ***---
+       scr-importa-BEFORE-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione settaggio keyboard "." ---> ","
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen scr-importa
+      ***---
+       scr-importa-AFTER-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione risettaggio keyboard "." ---> "."
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
 
 
        Screen1-Ta-1-TABCHANGE.
@@ -13645,6 +14801,19 @@ LUBEXX           delete lockfile record invalid continue end-delete
            perform Form1-AFTER-SCREEN
            .
 
+       scr-importa-BeforeProcedure.
+           EVALUATE Control-Id
+           WHEN 5001 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5002 MOVE "." to TOTEM-HINT-TEXT
+           WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
+           END-EVALUATE
+           EVALUATE Control-Id
+           When 5001 PERFORM ef-anno-ord-BeforeProcedure
+           When 5002 PERFORM ef-numero-ord-BeforeProcedure
+           END-EVALUATE
+           perform scr-importa-BEFORE-SCREEN
+           .
+
        Form1-Event-Proc.
            .
 
@@ -13679,6 +14848,9 @@ LUBEXX           delete lockfile record invalid continue end-delete
                     Form1-Handle 
               PERFORM Form1-Gd-1-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
+           .
+
+       scr-stampa-Event-Proc.
            .
 
       * USER DEFINE PARAGRAPH
@@ -13741,10 +14913,12 @@ LUBEXX           delete lockfile record invalid continue end-delete
        TOOL-MODIFICA-BeforeProcedure.
       * <TOTEM:PARA. TOOL-MODIFICA-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        TOOL-MODIFICA-AfterProcedure.
       * <TOTEM:PARA. TOOL-MODIFICA-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
@@ -13759,45 +14933,54 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-num-ord-BeforeProcedure.
       * <TOTEM:PARA. ef-num-ord-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-data-BeforeProcedure.
       * <TOTEM:PARA. ef-data-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-data-pass-BeforeProcedure.
       * <TOTEM:PARA. ef-data-pass-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-pag-BeforeProcedure.
       * <TOTEM:PARA. ef-pag-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-1-BeforeProcedure.
       * <TOTEM:PARA. ef-note-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-data-cons-BeforeProcedure.
       * <TOTEM:PARA. ef-data-cons-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-2-BeforeProcedure.
       * <TOTEM:PARA. ef-note-2-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-3-BeforeProcedure.
       * <TOTEM:PARA. ef-note-3-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-4-BeforeProcedure.
       * <TOTEM:PARA. ef-note-4-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
@@ -13822,6 +15005,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -13834,6 +15018,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -13854,6 +15039,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -13873,6 +15059,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -13886,6 +15073,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -13898,6 +15086,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -13936,6 +15125,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -13948,6 +15138,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -13962,6 +15153,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -13969,15 +15161,18 @@ LUBEXX           delete lockfile record invalid continue end-delete
        rb-man-AfterProcedure.
       * <TOTEM:PARA. rb-man-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        rb-gui-AfterProcedure.
       * <TOTEM:PARA. rb-gui-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        rb-man-BeforeProcedure.
       * <TOTEM:PARA. rb-man-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
@@ -13996,15 +15191,18 @@ LUBEXX           delete lockfile record invalid continue end-delete
       *****        move 78-ID-rb-man to CONTROL-ID
       *****        move 4            to ACCEPT-CONTROL
       *****     end-if 
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-anno-BeforeProcedure.
       * <TOTEM:PARA. ef-anno-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cli-BeforeProcedure.
       * <TOTEM:PARA. ef-cli-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
@@ -14016,6 +15214,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -14029,6 +15228,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -14047,7 +15247,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
       *        move 0          to old-art-codice
       *     else
       *        move art-codice to old-art-codice
-      *     end-if 
+      *     end-if.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-art-AfterProcedure.
@@ -14059,6 +15260,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14066,8 +15268,9 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-qta-BeforeProcedure.
       * <TOTEM:PARA. ef-qta-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform BEFORE-CAMPI                                         
+           perform BEFORE-CAMPI.                                        
              
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-qta-AfterProcedure.
@@ -14085,6 +15288,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14092,7 +15296,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-uni-BeforeProcedure.
       * <TOTEM:PARA. ef-uni-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform BEFORE-CAMPI                           
+           perform BEFORE-CAMPI.                          
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-uni-AfterProcedure.
@@ -14104,6 +15309,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14111,7 +15317,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-cou-BeforeProcedure.
       * <TOTEM:PARA. ef-cou-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform BEFORE-CAMPI                           
+           perform BEFORE-CAMPI.                          
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cou-AfterProcedure.
@@ -14135,6 +15342,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14142,7 +15350,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-imp-BeforeProcedure.
       * <TOTEM:PARA. ef-imp-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform BEFORE-CAMPI                           
+           perform BEFORE-CAMPI.                          
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-imp-AfterProcedure.
@@ -14154,6 +15363,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14161,7 +15371,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-sconto-BeforeProcedure.
       * <TOTEM:PARA. ef-sconto-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform BEFORE-CAMPI                           
+           perform BEFORE-CAMPI.                          
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-sconto-AfterProcedure.
@@ -14197,6 +15408,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14204,7 +15416,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-cod-iva-BeforeProcedure.
       * <TOTEM:PARA. ef-cod-iva-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform BEFORE-CAMPI                           
+           perform BEFORE-CAMPI.                          
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cod-iva-AfterProcedure.
@@ -14216,6 +15429,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14223,7 +15437,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-cons-BeforeProcedure.
       * <TOTEM:PARA. ef-cons-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform BEFORE-CAMPI                           
+           perform BEFORE-CAMPI.                          
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cons-AfterProcedure.
@@ -14234,6 +15449,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -14344,6 +15560,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
        ef-cau-BeforeProcedure.
       * <TOTEM:PARA. ef-cau-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cau-AfterProcedure.
@@ -14354,6 +15571,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -14471,7 +15689,8 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  call "C$JUSTIFY" using ef-dest-buf, "L"
                  display ef-dest
               end-if
-           end-if 
+           end-if.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-dest-AfterProcedure.
@@ -14483,6 +15702,7 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -14490,10 +15710,12 @@ LUBEXX           delete lockfile record invalid continue end-delete
        Form1-DaCb-1-BeforeProcedure.
       * <TOTEM:PARA. Form1-DaCb-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Form1-DaCb-1-AfterProcedure.
       * <TOTEM:PARA. Form1-DaCb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
@@ -14505,17 +15727,20 @@ LUBEXX           delete lockfile record invalid continue end-delete
        chk-manuale-BeforeProcedure.
       * <TOTEM:PARA. chk-manuale-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
-           perform CHK-MANUALE-BEFOREPROC 
+           perform CHK-MANUALE-BEFOREPROC.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        chk-manuale-AfterProcedure.
       * <TOTEM:PARA. chk-manuale-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           perform CHK-MANUALE-AFTERPROC 
+           perform CHK-MANUALE-AFTERPROC.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        Form1-DaEf-1-BeforeProcedure.
       * <TOTEM:PARA. Form1-DaEf-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
@@ -14528,10 +15753,88 @@ LUBEXX           delete lockfile record invalid continue end-delete
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
 
+       pb-importa-BeforeProcedure.
+      * <TOTEM:PARA. pb-importa-BeforeProcedure>
+           modify pb-importa, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-importa-AfterProcedure.
+      * <TOTEM:PARA. pb-importa-AfterProcedure>
+           modify pb-importa, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-ricerca-ok-BeforeProcedure.
+      * <TOTEM:PARA. pb-ricerca-ok-BeforeProcedure>
+           modify pb-ricerca-ok, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-ricerca-ok-AfterProcedure.
+      * <TOTEM:PARA. pb-ricerca-ok-AfterProcedure>
+           modify pb-ricerca-ok, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-ricerca-cancel-BeforeProcedure.
+      * <TOTEM:PARA. pb-ricerca-cancel-BeforeProcedure>
+           modify pb-ricerca-cancel, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-ricerca-cancel-AfterProcedure.
+      * <TOTEM:PARA. pb-ricerca-cancel-AfterProcedure>
+           modify pb-ricerca-cancel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-importa-LinkTo.
+      * <TOTEM:PARA. pb-importa-LinkTo>
+           perform SCR-IMPORTA-OPEN-ROUTINE 
+           .
+      * <TOTEM:END>
+       ef-anno-ord-BeforeProcedure.
+      * <TOTEM:PARA. ef-anno-ord-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           modify ef-anno-ord, color = colore-nu 
+           .
+      * <TOTEM:END>
+       ef-numero-ord-BeforeProcedure.
+      * <TOTEM:PARA. ef-numero-ord-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           modify ef-numero-ord, color = colore-nu 
+           .
+      * <TOTEM:END>
+       ef-anno-ord-AfterProcedure.
+      * <TOTEM:PARA. ef-anno-ord-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           modify ef-anno-ord, color = colore-or 
+           .
+      * <TOTEM:END>
+       ef-numero-ord-AfterProcedure.
+      * <TOTEM:PARA. ef-numero-ord-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           modify ef-numero-ord, color = colore-or 
+           .
+      * <TOTEM:END>
+       pb-ricerca-ok-LinkTo.
+      * <TOTEM:PARA. pb-ricerca-ok-LinkTo>
+           inquire ef-anno-ord,   value in tor-anno.
+           inquire ef-numero-ord, value in tor-numero.
+           read tordini no lock
+                invalid
+                display message "Evasione non trovata"
+                          title tit-err
+                           icon 2
+            not invalid
+                perform IMPORTA-EVASIONE
+           end-read         
+           .
+      * <TOTEM:END>
 
       *{TOTEM}END
 
