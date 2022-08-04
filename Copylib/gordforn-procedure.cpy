@@ -1179,4 +1179,43 @@ PATCH         end-if
            end-start.
 
       ***---
-       IMPORTA-EVASIONE.
+       IMPORTA-EVASIONE.                 
+           move tor-chiave to ror-chiave.
+           move low-value  to ror-num-riga.
+           start rordini key >= ror-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rordini next at end exit perform end-read
+                    if ror-anno       not = tor-anno or
+                       ror-num-ordine not = tor-numero
+                       exit perform
+                    end-if
+                    initialize hid-rof-rec 
+                               replacing numeric data by zeroes
+                                    alphanumeric data by spaces
+                    move ror-cod-articolo to ef-art-buf
+                    move ror-qta          to ef-qta-buf
+                    move 10               to ef-uni-buf
+                    move ror-cod-iva      to tbliv-codice2
+                    move ror-cod-articolo to art-codice
+                    read articoli no lock
+                    move art-descrizione      to lab-art-buf     
+                    move ror-prg-tipo-imballo to ef-imb-ord-buf  
+                                                 imq-codice
+                    read timbalqta no lock
+                    move 0 to ef-sconto-1-BUF  ef-sconto-2-BUF 
+                              ef-sconto-3-BUF  ef-sconto-4-BUF
+                              ef-sconto-5-BUF  ef-add-BUF 
+                              ef-costi-agg-BUF ef-imp-BUF
+                              chk-manuale-BUF  ef-impforn-buf 
+                    move ror-prg-chiave   to hid-rof-prg-chiave
+                    move ror-peso-utf     to hid-rof-peso-utf 
+                    move ror-peso-non-utf to hid-rof-peso-non-utf
+                    compute hid-rof-qta-imballi =
+                            ror-qta / imq-qta-imb
+                    set NewRow to true
+                    perform ENTRY-TO-ROW
+                 end-perform
+           end-start,
+           move 27 to key-status.
