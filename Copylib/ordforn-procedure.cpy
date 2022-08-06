@@ -850,7 +850,11 @@ LUBEXX     end-if.
       *     end-if.
  
       ***---
-       SPOSTAMENTO.
+       SPOSTAMENTO.                              
+           modify ef-art, color = colore-or.     
+           modify ef-uni, color = colore-or.     
+           modify ef-qta, color = colore-or.     
+           modify ef-cod-iva, color = colore-or.
            inquire form1-gd-1, last-row in tot-righe.
            if event-data-2 >= 2 and
               event-data-2 <= tot-righe
@@ -874,14 +878,15 @@ LUBEXX     end-if.
                     continue 
               end-read
            end-if.           
-                                
-           perform CANCELLA-COLORE.      
+                                                   
            perform COLORE. 
 
       *****     set ArticoloSetFocus to true.
-           set event-action     to event-action-terminate.
-           set FromSpostamento  to true.
-           set ControllaCampi   to false.
+           set event-action    to event-action-terminate.
+           set FromSpostamento to true.
+           set ControllaCampi  to false.
+           move 78-id-ef-art   to control-id store-id.
+           move 4              to accept-control.
 
       ****---
       * SPOSTAMENTO-2.           

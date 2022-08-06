@@ -1202,8 +1202,6 @@ PATCH         end-if
                     read articoli no lock
                     move art-descrizione      to lab-art-buf     
                     move ror-prg-tipo-imballo to ef-imb-ord-buf  
-                                                 imq-codice
-                    read timbalqta no lock
                     move 0 to ef-sconto-1-BUF  ef-sconto-2-BUF 
                               ef-sconto-3-BUF  ef-sconto-4-BUF
                               ef-sconto-5-BUF  ef-add-BUF 
@@ -1212,10 +1210,11 @@ PATCH         end-if
                     move ror-prg-chiave   to hid-rof-prg-chiave
                     move ror-peso-utf     to hid-rof-peso-utf 
                     move ror-peso-non-utf to hid-rof-peso-non-utf
-                    compute hid-rof-qta-imballi =
-                            ror-qta / imq-qta-imb
+                    move ror-qta-imballi to hid-rof-qta-imballi
                     set NewRow to true
                     perform ENTRY-TO-ROW
+                    perform CANCELLA-COLORE
+                    perform PB-GRID-NUOVO-LINKTO
                  end-perform
            end-start,
            move 27 to key-status.
