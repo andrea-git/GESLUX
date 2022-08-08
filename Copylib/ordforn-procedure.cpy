@@ -635,6 +635,7 @@ LUBEXX     end-if.
                           evaluate true
                           when num-articoli = 1 
                                move prg-chiave to GiacenzaKey
+                               if importaDa exit perform end-if
                           when num-articoli > 1 
                                exit perform
                           end-evaluate

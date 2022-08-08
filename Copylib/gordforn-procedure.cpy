@@ -1198,18 +1198,40 @@ PATCH         end-if
                     move ror-cod-articolo to ef-art-buf
                     move ror-cod-articolo to art-codice
                     read articoli no lock
+                    evaluate true
+                    when art-bloccato
+                         display message "Articolo " art-codice
+                                         " BLOCCATO"
+                                   title tit-err
+                                    icon 2
+                         exit perform cycle
+                    when art-disattivo
+                         display message "Articolo " art-codice
+                                         " SOSPESO"
+                                   title tit-err
+                                    icon 2
+                         exit perform cycle
+                    end-evaluate
                     move art-descrizione      to lab-art-buf     
-                    set CheckAfterZoom to true                
-                    move ror-prg-chiave   to hid-rof-prg-chiave
-                                             prg-chiave         
+                    move ror-prg-chiave   to prg-chiave          
+                    read progmag no lock
+                    if prg-attivo
+                       set CheckAfterZoom to true                
+                    else
+                       perform FIND-MORE-ARTICOLI-ON-PROGMAG
+                       if num-articoli = 0
+                          display message "Articolo " art-codice
+                                          " non valido!"
+                                    title tit-err
+                                     icon 2
+                          exit perform cycle
+                       end-if
+                    end-if                   
+                    move prg-chiave  to hid-rof-prg-chiave       
                     move ror-cod-iva to tbliv-codice2
                     perform AFTER-ARTICOLO-OK
                     move ror-prg-tipo-imballo to ef-imb-ord-buf  
-                    move 0 to ef-sconto-1-BUF  ef-sconto-2-BUF 
-                              ef-sconto-3-BUF  ef-sconto-4-BUF
-                              ef-sconto-5-BUF  ef-add-BUF 
-                              ef-costi-agg-BUF ef-imp-BUF
-                              chk-manuale-BUF  ef-impforn-buf 
+                    move 0 to chk-manuale-BUF  ef-impforn-buf 
                     move ror-peso-utf     to hid-rof-peso-utf 
                     move ror-peso-non-utf to hid-rof-peso-non-utf
                     move ror-qta-imballi  to hid-rof-qta-imballi
