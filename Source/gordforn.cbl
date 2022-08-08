@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordforn.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        mercoledì 3 agosto 2022 02:00:08.
+       DATE-WRITTEN.        lunedì 8 agosto 2022 01:36:22.
        REMARKS.
       *{TOTEM}END
 
@@ -67,8 +67,8 @@
            COPY "nforn-dest.sl".
            COPY "param.sl".
            COPY "tscorte.sl".
-           COPY "tordini.sl".
            COPY "rordini.sl".
+           COPY "tordini.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -113,8 +113,8 @@
            COPY "nforn-dest.fd".
            COPY "param.fd".
            COPY "tscorte.fd".
-           COPY "tordini.fd".
            COPY "rordini.fd".
+           COPY "tordini.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -336,8 +336,8 @@
        77 TMP-DataSet1-nforn-dest-BUF     PIC X(379).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -528,16 +528,16 @@
        77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tscorte-KEY-Asc  VALUE "A".
           88 DataSet1-tscorte-KEY-Desc VALUE "D".
-       77 DataSet1-tordini-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tordini-LOCK  VALUE "Y".
-       77 DataSet1-tordini-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tordini-KEY-Asc  VALUE "A".
-          88 DataSet1-tordini-KEY-Desc VALUE "D".
        77 DataSet1-rordini-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-rordini-LOCK  VALUE "Y".
        77 DataSet1-rordini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-rordini-KEY-Asc  VALUE "A".
           88 DataSet1-rordini-KEY-Desc VALUE "D".
+       77 DataSet1-tordini-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tordini-LOCK  VALUE "Y".
+       77 DataSet1-tordini-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tordini-KEY-Asc  VALUE "A".
+          88 DataSet1-tordini-KEY-Desc VALUE "D".
 
        77 tordforn-tof-k-causale-SPLITBUF  PIC X(17).
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
@@ -582,6 +582,11 @@
        77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 distinteb-k-articolo-SPLITBUF  PIC X(12).
        77 distinteb-k-progmag-SPLITBUF  PIC X(21).
+       77 rordini-ror-k-promo-SPLITBUF  PIC X(16).
+       77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
+       77 rordini-ror-k-master-SPLITBUF  PIC X(35).
+       77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
        77 tordini-k2-SPLITBUF  PIC X(21).
@@ -602,11 +607,6 @@
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
-       77 rordini-ror-k-promo-SPLITBUF  PIC X(16).
-       77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
-       77 rordini-ror-k-master-SPLITBUF  PIC X(35).
-       77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
-       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-tmp-progmag-zoom-SPLIT-BUF1   PIC X(64).
 
@@ -3942,8 +3942,8 @@
            PERFORM OPEN-nforn-dest
            PERFORM OPEN-param
            PERFORM OPEN-tscorte
-           PERFORM OPEN-tordini
            PERFORM OPEN-rordini
+           PERFORM OPEN-tordini
       *    After Open
            .
 
@@ -4454,18 +4454,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-tordini.
-      * <TOTEM:EPT. INIT:gordforn, FD:tordini, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tordini
-           IF NOT Valid-STATUS-tordini
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:gordforn, FD:tordini, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-rordini.
       * <TOTEM:EPT. INIT:gordforn, FD:rordini, BeforeOpen>
       * <TOTEM:END>
@@ -4475,6 +4463,18 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:gordforn, FD:rordini, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-tordini.
+      * <TOTEM:EPT. INIT:gordforn, FD:tordini, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tordini
+           IF NOT Valid-STATUS-tordini
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gordforn, FD:tordini, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -4522,8 +4522,8 @@
            PERFORM CLOSE-nforn-dest
            PERFORM CLOSE-param
            PERFORM CLOSE-tscorte
-           PERFORM CLOSE-tordini
            PERFORM CLOSE-rordini
+           PERFORM CLOSE-tordini
       *    After Close
            .
 
@@ -4744,16 +4744,16 @@
            CLOSE tscorte
            .
 
-       CLOSE-tordini.
-      * <TOTEM:EPT. INIT:gordforn, FD:tordini, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tordini
-           .
-
        CLOSE-rordini.
       * <TOTEM:EPT. INIT:gordforn, FD:rordini, BeforeClose>
       * <TOTEM:END>
            CLOSE rordini
+           .
+
+       CLOSE-tordini.
+      * <TOTEM:EPT. INIT:gordforn, FD:tordini, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tordini
            .
 
        tordforn-tof-k-causale-MERGE-SPLITBUF.
@@ -10951,6 +10951,217 @@
       * <TOTEM:END>
            .
 
+       rordini-ror-k-promo-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-promo-SPLITBUF
+           MOVE ror-promo OF rordini(1:15) TO 
+           rordini-ror-k-promo-SPLITBUF(1:15)
+           .
+
+       rordini-ror-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-articolo-SPLITBUF
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-articolo-SPLITBUF(1:6)
+           MOVE ror-chiave OF rordini(1:17) TO 
+           rordini-ror-k-articolo-SPLITBUF(7:17)
+           .
+
+       rordini-ror-k-master-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-master-SPLITBUF
+           MOVE ror-chiave-ordine OF rordini(1:17) TO 
+           rordini-ror-k-master-SPLITBUF(1:17)
+           MOVE ror-chiave OF rordini(1:17) TO 
+           rordini-ror-k-master-SPLITBUF(18:17)
+           .
+
+       rordini-ror-k-stbolle-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-stbolle-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-stbolle-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-stbolle-SPLITBUF(5:8)
+           MOVE ror-chiave-ordine OF rordini(1:17) TO 
+           rordini-ror-k-stbolle-SPLITBUF(13:17)
+           .
+
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
+       DataSet1-rordini-INITSTART.
+           IF DataSet1-rordini-KEY-Asc
+              MOVE Low-Value TO ror-chiave OF rordini
+           ELSE
+              MOVE High-Value TO ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-INITEND.
+           IF DataSet1-rordini-KEY-Asc
+              MOVE High-Value TO ror-chiave OF rordini
+           ELSE
+              MOVE Low-Value TO ror-chiave OF rordini
+           END-IF
+           .
+
+      * rordini
+       DataSet1-rordini-START.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY >= ror-chiave OF rordini
+           ELSE
+              START rordini KEY <= ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-START-NOTGREATER.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY <= ror-chiave OF rordini
+           ELSE
+              START rordini KEY >= ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-START-GREATER.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY > ror-chiave OF rordini
+           ELSE
+              START rordini KEY < ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-START-LESS.
+           IF DataSet1-rordini-KEY-Asc
+              START rordini KEY < ror-chiave OF rordini
+           ELSE
+              START rordini KEY > ror-chiave OF rordini
+           END-IF
+           .
+
+       DataSet1-rordini-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-rordini-LOCK
+              READ rordini WITH LOCK 
+              KEY ror-chiave OF rordini
+           ELSE
+              READ rordini WITH NO LOCK 
+              KEY ror-chiave OF rordini
+           END-IF
+           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT 
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-rordini-KEY-Asc
+              IF DataSet1-rordini-LOCK
+                 READ rordini NEXT WITH LOCK
+              ELSE
+                 READ rordini NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-rordini-LOCK
+                 READ rordini PREVIOUS WITH LOCK
+              ELSE
+                 READ rordini PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-rordini-KEY-Asc
+              IF DataSet1-rordini-LOCK
+                 READ rordini PREVIOUS WITH LOCK
+              ELSE
+                 READ rordini PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-rordini-LOCK
+                 READ rordini NEXT WITH LOCK
+              ELSE
+                 READ rordini NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-rordini-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-rordini TO TOTEM-ERR-STAT
+           MOVE "rordini" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterDelete>
+      * <TOTEM:END>
+           .
+
        tordini-k-causale-MERGE-SPLITBUF.
            INITIALIZE tordini-k-causale-SPLITBUF
            MOVE tor-causale(1:4) TO tordini-k-causale-SPLITBUF(1:4)
@@ -11336,217 +11547,6 @@
       * <TOTEM:END>
            .
 
-       rordini-ror-k-promo-MERGE-SPLITBUF.
-           INITIALIZE rordini-ror-k-promo-SPLITBUF
-           MOVE ror-promo OF rordini(1:15) TO 
-           rordini-ror-k-promo-SPLITBUF(1:15)
-           .
-
-       rordini-ror-k-articolo-MERGE-SPLITBUF.
-           INITIALIZE rordini-ror-k-articolo-SPLITBUF
-           MOVE ror-cod-articolo OF rordini(1:6) TO 
-           rordini-ror-k-articolo-SPLITBUF(1:6)
-           MOVE ror-chiave OF rordini(1:17) TO 
-           rordini-ror-k-articolo-SPLITBUF(7:17)
-           .
-
-       rordini-ror-k-master-MERGE-SPLITBUF.
-           INITIALIZE rordini-ror-k-master-SPLITBUF
-           MOVE ror-chiave-ordine OF rordini(1:17) TO 
-           rordini-ror-k-master-SPLITBUF(1:17)
-           MOVE ror-chiave OF rordini(1:17) TO 
-           rordini-ror-k-master-SPLITBUF(18:17)
-           .
-
-       rordini-ror-k-stbolle-MERGE-SPLITBUF.
-           INITIALIZE rordini-ror-k-stbolle-SPLITBUF
-           MOVE ror-anno OF rordini(1:4) TO 
-           rordini-ror-k-stbolle-SPLITBUF(1:4)
-           MOVE ror-num-ordine OF rordini(1:8) TO 
-           rordini-ror-k-stbolle-SPLITBUF(5:8)
-           MOVE ror-chiave-ordine OF rordini(1:17) TO 
-           rordini-ror-k-stbolle-SPLITBUF(13:17)
-           .
-
-       rordini-ror-k-ord-art-MERGE-SPLITBUF.
-           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
-           MOVE ror-anno OF rordini(1:4) TO 
-           rordini-ror-k-ord-art-SPLITBUF(1:4)
-           MOVE ror-num-ordine OF rordini(1:8) TO 
-           rordini-ror-k-ord-art-SPLITBUF(5:8)
-           MOVE ror-cod-articolo OF rordini(1:6) TO 
-           rordini-ror-k-ord-art-SPLITBUF(13:6)
-           .
-
-       DataSet1-rordini-INITSTART.
-           IF DataSet1-rordini-KEY-Asc
-              MOVE Low-Value TO ror-chiave OF rordini
-           ELSE
-              MOVE High-Value TO ror-chiave OF rordini
-           END-IF
-           .
-
-       DataSet1-rordini-INITEND.
-           IF DataSet1-rordini-KEY-Asc
-              MOVE High-Value TO ror-chiave OF rordini
-           ELSE
-              MOVE Low-Value TO ror-chiave OF rordini
-           END-IF
-           .
-
-      * rordini
-       DataSet1-rordini-START.
-           IF DataSet1-rordini-KEY-Asc
-              START rordini KEY >= ror-chiave OF rordini
-           ELSE
-              START rordini KEY <= ror-chiave OF rordini
-           END-IF
-           .
-
-       DataSet1-rordini-START-NOTGREATER.
-           IF DataSet1-rordini-KEY-Asc
-              START rordini KEY <= ror-chiave OF rordini
-           ELSE
-              START rordini KEY >= ror-chiave OF rordini
-           END-IF
-           .
-
-       DataSet1-rordini-START-GREATER.
-           IF DataSet1-rordini-KEY-Asc
-              START rordini KEY > ror-chiave OF rordini
-           ELSE
-              START rordini KEY < ror-chiave OF rordini
-           END-IF
-           .
-
-       DataSet1-rordini-START-LESS.
-           IF DataSet1-rordini-KEY-Asc
-              START rordini KEY < ror-chiave OF rordini
-           ELSE
-              START rordini KEY > ror-chiave OF rordini
-           END-IF
-           .
-
-       DataSet1-rordini-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-rordini-LOCK
-              READ rordini WITH LOCK 
-              KEY ror-chiave OF rordini
-           ELSE
-              READ rordini WITH NO LOCK 
-              KEY ror-chiave OF rordini
-           END-IF
-           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
-           MOVE STATUS-rordini TO TOTEM-ERR-STAT 
-           MOVE "rordini" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rordini-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-rordini-KEY-Asc
-              IF DataSet1-rordini-LOCK
-                 READ rordini NEXT WITH LOCK
-              ELSE
-                 READ rordini NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-rordini-LOCK
-                 READ rordini PREVIOUS WITH LOCK
-              ELSE
-                 READ rordini PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
-           MOVE STATUS-rordini TO TOTEM-ERR-STAT
-           MOVE "rordini" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rordini-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-rordini-KEY-Asc
-              IF DataSet1-rordini-LOCK
-                 READ rordini PREVIOUS WITH LOCK
-              ELSE
-                 READ rordini PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-rordini-LOCK
-                 READ rordini NEXT WITH LOCK
-              ELSE
-                 READ rordini NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM rordini-ror-k-promo-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-master-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
-           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
-           MOVE STATUS-rordini TO TOTEM-ERR-STAT
-           MOVE "rordini" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rordini-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-rordini TO TOTEM-ERR-STAT
-           MOVE "rordini" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rordini-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-rordini TO TOTEM-ERR-STAT
-           MOVE "rordini" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-rordini-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-rordini TO TOTEM-ERR-STAT
-           MOVE "rordini" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:rordini, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-INIT-RECORD.
            INITIALIZE tof-rec OF tordforn
            INITIALIZE tge-rec OF tparamge
@@ -11585,8 +11585,8 @@
            INITIALIZE nfod-rec OF nforn-dest
            INITIALIZE prm-rec OF param
            INITIALIZE sco-rec OF tscorte
-           INITIALIZE tor-rec OF tordini
            INITIALIZE ror-rec OF rordini
+           INITIALIZE tor-rec OF tordini
            .
 
 
@@ -11936,16 +11936,16 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tordini-INITREC.
-           INITIALIZE tor-rec OF tordini
+       DataSet1-rordini-INITREC.
+           INITIALIZE ror-rec OF rordini
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
            .
 
       * FD's Initialize Paragraph
-       DataSet1-rordini-INITREC.
-           INITIALIZE ror-rec OF rordini
+       DataSet1-tordini-INITREC.
+           INITIALIZE tor-rec OF tordini
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -14431,6 +14431,10 @@ LUBEXX           delete lockfile record invalid continue end-delete
 
        scr-importa-PROC.
       * <TOTEM:EPT. FORM:scr-importa, FORM:scr-importa, BeforeAccept>
+           move 0 to ef-anno-ord-buf ef-numero-ord-buf.
+           display ef-anno-ord ef-numero-ord.
+
+           .
       * <TOTEM:END>
            PERFORM UNTIL Exit-Pushed
               ACCEPT scr-importa

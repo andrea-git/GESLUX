@@ -17,6 +17,8 @@
                   VALUE IS 0.
        77 ChkManualeBitmapNumber       PIC  99
                   VALUE IS 1.
+       01  filler          pic 9 value 0.
+         88 importaDa      value 1, false 0.
        77 mese-oggi        PIC  99.
        77 giorno           PIC  99.
        77 calcolo-piombo   PIC  x.

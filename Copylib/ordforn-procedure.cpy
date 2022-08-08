@@ -1870,30 +1870,7 @@ LUBEXX             end-if
                            initialize art-stato
                        not invalid
                            if art-attivo |or art-disattivo
-                              move tlis-chiave to rlis-codice
-                              move art-codice  to rlis-articolo
-                              read rlistini no lock
-                                   invalid
-                                   move 0 to rlis-codice
-                                   move 0 to rlis-prz-acq
-                                             rlis-sconto-1
-                                             rlis-sconto-2
-                                             rlis-sconto-3
-                                             rlis-sconto-4
-                                             rlis-sconto-5
-                                             rlis-costi-agg-tot
-                                             rlis-tipo-tratt-imposte
-                               not invalid
-                                    move rlis-tipo-tratt-imposte 
-                                      to imf-codice ef-impforn-buf
-                                    read impforn no lock
-                                    move imf-descrizione 
-                                      to lab-impforn-buf
-                                    display ef-impforn lab-impforn
-                              end-read
-                              if tutto-ok
-                                 perform VALORIZZA-RIGA-ARTICOLO
-                              end-if
+                              perform AFTER-ARTICOLO-OK
                            else
                               set errori to true
                            end-if
@@ -2392,6 +2369,33 @@ LUBEXX                end-if
                    tbliv-descrizione2 delimited by size
                    into lab-iva-buf
            end-string.
+
+      ***---
+       AFTER-ARTICOLO-OK.
+           move tlis-chiave to rlis-codice
+           move art-codice  to rlis-articolo
+           read rlistini no lock
+                invalid
+                move 0 to rlis-codice
+                move 0 to rlis-prz-acq
+                          rlis-sconto-1
+                          rlis-sconto-2
+                          rlis-sconto-3
+                          rlis-sconto-4
+                          rlis-sconto-5
+                          rlis-costi-agg-tot
+                          rlis-tipo-tratt-imposte
+            not invalid
+                 move rlis-tipo-tratt-imposte 
+                   to imf-codice ef-impforn-buf
+                 read impforn no lock
+                 move imf-descrizione 
+                   to lab-impforn-buf
+                 display ef-impforn lab-impforn
+           end-read
+           if tutto-ok
+              perform VALORIZZA-RIGA-ARTICOLO
+           end-if.
 
       ***---
        MOVE-DESCR-ESE-IVA.
@@ -4668,6 +4672,7 @@ LUBEXX     end-read.
                     set tof-da-confermare-si to true
                  end-if
            end-start. 
+
 
       ***---
        CALCOLA-IMPONIBILE.       
