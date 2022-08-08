@@ -292,7 +292,33 @@
            else
               set RichiamoSchedulato to false
               accept path-log from environment "PATH_ST"
-           end-if.
+           end-if.             
+
+           initialize path-logfile.                                             
+           inspect path-log    replacing trailing spaces by low-value
+           string path-log        delimited low-value
+                  "LOG_IMP-FIDO_" delimited size
+                  como-data       delimited size
+                  "_"             delimited size
+                  como-ora        delimited size
+                  ".log"          delimited size
+                  into path-logfile
+           end-string.
+           inspect path-log    replacing trailing low-value by spaces
+           
+           open output logfile.
+                                                  
+           accept como-ora  from time.  
+
+           move como-ora(1:2) to hh.
+           move como-ora(3:2) to mm.
+           move como-ora(5:2) to ss.
+
+           compute start-secondi = ( hh * 3600 ) + ( mm * 60   ) + ss.
+
+           move "INIZIO ELABORAZIONE" to como-riga.                             
+           perform SCRIVI-RIGA-LOG. 
+
            set tutto-ok     to true.
            set prima-volta  to true.   
 
@@ -305,6 +331,13 @@
                    function date-of-integer (como-data-2mesi).
                                                                     
            if path-import = spaces
+              
+              initialize como-riga
+              string "PATH IMPORT = SPACES. ELABORAZIONE TERMINATA"
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
               set errori to true
            else                 
       *       CONTROLLO L'ESISTENZA DELLA CARTELLA
@@ -314,7 +347,13 @@
 
               move RETURN-CODE        to Dir-import-Handle
 
-              if Dir-import-Handle = ZERO
+              if Dir-import-Handle = ZERO     
+                 initialize como-riga
+                 string "APERTURA NON RIUSCITA. PATH IMPORT= "
+                        path-import   delimited size
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
                  set errori             to true
               else
       *          cartella di backup
@@ -323,7 +362,14 @@
                                                "*.*"
          
                  move RETURN-CODE        to Dir-backup-Handle
-                 if dir-backup-handle = 0
+                 if dir-backup-handle = 0           
+                    initialize como-riga
+                    string "APERTURA NON RIUSCITA. PATH BACKUP= "
+                           path-backup   delimited size
+                      into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     set errori to true
                  else
                     call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, 
@@ -335,6 +381,12 @@
          
                     move RETURN-CODE        to Dir-log-Handle
                     if dir-log-handle = 0
+                       initialize como-riga
+                       string "APERTURA NON RIUSCITA. PATH LOG= "
+                              path-log   delimited size
+                         into como-riga
+                       end-string
+                       perform SCRIVI-RIGA-LOG
                        set errori to true
                     else
                        call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, 
@@ -348,30 +400,7 @@
            end-if.              
 
       ***---
-       OPEN-FILES.
-           initialize path-logfile.
-           string path-log        delimited low-value
-                  "LOG_IMP-FIDO_" delimited size
-                  como-data       delimited size
-                  "_"             delimited size
-                  como-ora        delimited size
-                  ".log"          delimited size
-                  into path-logfile
-           end-string.
-           open output logfile.
-                                                  
-           accept como-ora  from time.  
-
-           move como-ora(1:2) to hh.
-           move como-ora(3:2) to mm.
-           move como-ora(5:2) to ss.
-
-           compute start-secondi = ( hh * 3600 ) + ( mm * 60   ) + ss.
-
-           move "INIZIO ELABORAZIONE" to como-riga.
-           perform SCRIVI-RIGA-LOG.           
-
-                                                               
+       OPEN-FILES.                                             
            move path-import to como-riga.
            perform SCRIVI-RIGA-LOG.
            move path-backup to como-riga.

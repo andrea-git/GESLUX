@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        venerdì 29 luglio 2022 09:41:56.
+       DATE-WRITTEN.        lunedì 8 agosto 2022 14:37:33.
        REMARKS.
       *{TOTEM}END
 
@@ -13566,7 +13566,15 @@
                  end-if
               else                            
                  move "QTA STORICHE NON AGGIORNATE (1)" to como-riga
-                 perform SCRIVI-RIGA-LOG
+                 perform SCRIVI-RIGA-LOG      
+                 initialize como-riga
+                 inspect wstampa replacing trailing spaces by low-value
+                 string "PATH_VENDUTI: "       wstampa
+                        " - STATUS-LINESEQ1: " status-lineseq1
+                        delimited low-value
+                   into como-riga
+                 perform SCRIVI-RIGA-LOG                               
+                 inspect wstampa replacing trailing low-value by spaces
                  set errori to true
               end-if
            else   
@@ -13588,7 +13596,13 @@
                     end-if
                  else                
                     move "QTA STORICHE NON AGGIORNATE (2)" to como-riga
-                    perform SCRIVI-RIGA-LOG
+                    perform SCRIVI-RIGA-LOG                            
+                    initialize como-riga
+                    string "STATUS-QTA-PORDINI: " status-qta-pordini
+                           delimited size
+                      into como-riga
+                    perform SCRIVI-RIGA-LOG                             
+             
                     set errori to true
                  end-if
               else
