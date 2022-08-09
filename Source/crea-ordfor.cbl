@@ -191,6 +191,7 @@
        77  impegnato             pic s9(8).
        77  qta-utile-LBX         pic s9(8).
        77  save-riga             pic 9(5).
+       77  primo-mese            pic 99.
 
        01  sav-chiave.
            05 sav-cod-articolo   pic 9(6).
@@ -1911,9 +1912,9 @@
            |Partendo SEMPRE dalla somma delle qta da ordinare per i mesi 
            |di riferimento, devo fare un controllo in tempo reale tra 
            |quello che ho ordinato e quello che serve, considerando 
-           |sempre le quantità a bancali.
+           |sempre le quantità a bancali.    
            
-           if articolo-fisso > 0               
+           if articolo-fisso > 0    
               move mese1-fisso to cpfm-qta-m(1)
               move mese2-fisso to cpfm-qta-m(2)
               move mese3-fisso to cpfm-qta-m(3)
@@ -1925,13 +1926,26 @@
               end-if
            end-if.
 
-           compute tot-qta-m = cpfm-qta-m(1) + cpfm-qta-m(2) +
-                               cpfm-qta-m(3) + cpfm-qta-m(4) +
-                               cpfm-qta-m(5) + cpfm-qta-m(6).
-
+           move 0 to tot-qta-m primo-mese.
+           perform varying idx from 1 by 1 
+                     until idx > sco-m-rif
+              if cpfm-qta-m(idx) > 0 and primo-mese = 0
+                 move idx to primo-mese
+              end-if
+              add cpfm-qta-m(idx) to tot-qta-m
+           end-perform.
+                                          
            move cpfm-qta to s-cpfm-qta.
 
-           if art-qta-epal > 0 and tot-qta-m > art-qta-epal
+           if art-qta-epal > 0 and tot-qta-m > art-qta-epal 
+              if sco-m-rif < 6
+                 add 1 to sco-m-rif
+                 perform varying idx from sco-m-rif by 1 
+                           until idx > 6
+                    move 0 to cpfm-qta-m(idx)
+                 end-perform
+                 subtract 1 from sco-m-rif
+              end-if
            
               |La testate degli ordini in programmazione vengono
               |scritte in anticipo in base alla presenza delle qta mese.
@@ -1945,20 +1959,22 @@
                  move 0 to numero-ordf(idx)
               end-perform
            
-              |Mese 1
-              if cpfm-qta-m(1) > art-qta-epal
+              |Mese [primo] = sempre un pallet
+              if cpfm-qta-m(primo-mese) > art-qta-epal
                  move 0 to resto
-                 divide cpfm-qta-m(1) by art-qta-epal giving ris
+                 divide cpfm-qta-m(primo-mese) by art-qta-epal 
+                           giving ris
                         remainder resto
                  if resto > 0
                     add 1 to ris
                  end-if
-                 compute cpfm-qta-m(1) = art-qta-epal * ris
+                 compute cpfm-qta-m(primo-mese) = art-qta-epal * ris
               else
-                 move 0 to cpfm-qta-m(1)                       
-              end-if                              
-              perform varying como-mese from 2 by 1 
-                        until como-mese > 6
+                 move art-qta-epal to cpfm-qta-m(primo-mese)                       
+              end-if                         
+              add 1 to primo-mese
+              perform varying como-mese from primo-mese by 1 
+                        until como-mese > sco-m-rif
                  if cpfm-qta-m(como-mese) = 0
                     exit perform cycle
                  end-if
