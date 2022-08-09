@@ -126,3 +126,7 @@
 
            end-evaluate.
 
+      * Paragrafo per la struttura dei controlli sulla screen scr-importa
+           evaluate control-id
+           end-evaluate.
+

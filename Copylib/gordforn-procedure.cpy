@@ -1177,3 +1177,74 @@ PATCH         end-if
                     add aor-qta to tof-pz-tot
                  end-perform
            end-start.
+
+      ***---
+       IMPORTA-EVASIONE.                 
+           set importaDa to true.
+           move tor-chiave to ror-chiave.
+           move low-value  to ror-num-riga.
+           start rordini key >= ror-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rordini next at end exit perform end-read
+                    if ror-anno       not = tor-anno or
+                       ror-num-ordine not = tor-numero
+                       exit perform
+                    end-if
+                    initialize hid-rof-rec 
+                               replacing numeric data by zeroes
+                                    alphanumeric data by spaces               
+                    move ror-cod-articolo to ef-art-buf
+                    move ror-cod-articolo to art-codice
+                    read articoli no lock
+                    evaluate true
+                    when art-bloccato
+                         display message "Articolo " art-codice
+                                         " BLOCCATO"
+                                   title tit-err
+                                    icon 2
+                         exit perform cycle
+                    when art-disattivo
+                         display message "Articolo " art-codice
+                                         " SOSPESO"
+                                   title tit-err
+                                    icon 2
+                         exit perform cycle
+                    end-evaluate
+                    move art-descrizione      to lab-art-buf     
+                    move ror-prg-chiave   to prg-chiave          
+                    read progmag no lock
+                    if prg-attivo
+                       set CheckAfterZoom to true                
+                    else
+                       perform FIND-MORE-ARTICOLI-ON-PROGMAG
+                       if num-articoli = 0
+                          display message "Articolo " art-codice
+                                          " non valido!"
+                                    title tit-err
+                                     icon 2
+                          exit perform cycle
+                       end-if
+                    end-if                   
+                    move prg-chiave  to hid-rof-prg-chiave       
+                    move ror-cod-iva to tbliv-codice2
+                    perform AFTER-ARTICOLO-OK
+                    move ror-prg-tipo-imballo to ef-imb-ord-buf  
+                    move 0 to chk-manuale-BUF  ef-impforn-buf 
+                    move ror-peso-utf     to hid-rof-peso-utf 
+                    move ror-peso-non-utf to hid-rof-peso-non-utf
+                    move ror-qta-imballi  to hid-rof-qta-imballi
+                    move ror-qta          to ef-qta-buf
+                    move ef-uni-buf to rof-prz-unitario
+                    if rof-prz-unitario = 0
+                       move iva-omaggio to tbliv-codice2        
+                    end-if
+                    set NewRow to true
+                    perform ENTRY-TO-ROW
+                    perform CANCELLA-COLORE
+                    perform PB-GRID-NUOVO-LINKTO
+                 end-perform
+           end-start.                    
+           set importaDa to false.
+           move 27 to key-status.

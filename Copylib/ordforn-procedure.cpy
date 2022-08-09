@@ -635,6 +635,7 @@ LUBEXX     end-if.
                           evaluate true
                           when num-articoli = 1 
                                move prg-chiave to GiacenzaKey
+                               if importaDa exit perform end-if
                           when num-articoli > 1 
                                exit perform
                           end-evaluate
@@ -850,7 +851,11 @@ LUBEXX     end-if.
       *     end-if.
  
       ***---
-       SPOSTAMENTO.
+       SPOSTAMENTO.                              
+           modify ef-art, color = colore-or.     
+           modify ef-uni, color = colore-or.     
+           modify ef-qta, color = colore-or.     
+           modify ef-cod-iva, color = colore-or.
            inquire form1-gd-1, last-row in tot-righe.
            if event-data-2 >= 2 and
               event-data-2 <= tot-righe
@@ -874,14 +879,15 @@ LUBEXX     end-if.
                     continue 
               end-read
            end-if.           
-                                
-           perform CANCELLA-COLORE.      
+                                                   
            perform COLORE. 
 
       *****     set ArticoloSetFocus to true.
-           set event-action     to event-action-terminate.
-           set FromSpostamento  to true.
-           set ControllaCampi   to false.
+           set event-action    to event-action-terminate.
+           set FromSpostamento to true.
+           set ControllaCampi  to false.
+           move 78-id-ef-art   to control-id store-id.
+           move 4              to accept-control.
 
       ****---
       * SPOSTAMENTO-2.           
@@ -1865,30 +1871,7 @@ LUBEXX             end-if
                            initialize art-stato
                        not invalid
                            if art-attivo |or art-disattivo
-                              move tlis-chiave to rlis-codice
-                              move art-codice  to rlis-articolo
-                              read rlistini no lock
-                                   invalid
-                                   move 0 to rlis-codice
-                                   move 0 to rlis-prz-acq
-                                             rlis-sconto-1
-                                             rlis-sconto-2
-                                             rlis-sconto-3
-                                             rlis-sconto-4
-                                             rlis-sconto-5
-                                             rlis-costi-agg-tot
-                                             rlis-tipo-tratt-imposte
-                               not invalid
-                                    move rlis-tipo-tratt-imposte 
-                                      to imf-codice ef-impforn-buf
-                                    read impforn no lock
-                                    move imf-descrizione 
-                                      to lab-impforn-buf
-                                    display ef-impforn lab-impforn
-                              end-read
-                              if tutto-ok
-                                 perform VALORIZZA-RIGA-ARTICOLO
-                              end-if
+                              perform AFTER-ARTICOLO-OK
                            else
                               set errori to true
                            end-if
@@ -2387,6 +2370,33 @@ LUBEXX                end-if
                    tbliv-descrizione2 delimited by size
                    into lab-iva-buf
            end-string.
+
+      ***---
+       AFTER-ARTICOLO-OK.
+           move tlis-chiave to rlis-codice
+           move art-codice  to rlis-articolo
+           read rlistini no lock
+                invalid
+                move 0 to rlis-codice
+                move 0 to rlis-prz-acq
+                          rlis-sconto-1
+                          rlis-sconto-2
+                          rlis-sconto-3
+                          rlis-sconto-4
+                          rlis-sconto-5
+                          rlis-costi-agg-tot
+                          rlis-tipo-tratt-imposte
+            not invalid
+                 move rlis-tipo-tratt-imposte 
+                   to imf-codice ef-impforn-buf
+                 read impforn no lock
+                 move imf-descrizione 
+                   to lab-impforn-buf
+                 display ef-impforn lab-impforn
+           end-read
+           if tutto-ok
+              perform VALORIZZA-RIGA-ARTICOLO
+           end-if.
 
       ***---
        MOVE-DESCR-ESE-IVA.
@@ -4663,6 +4673,7 @@ LUBEXX     end-read.
                     set tof-da-confermare-si to true
                  end-if
            end-start. 
+
 
       ***---
        CALCOLA-IMPONIBILE.       
