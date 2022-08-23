@@ -623,8 +623,12 @@
            move cli-codice-SDi to codice-SDI.
            if codice-SDI = spaces
               move all "0" to codice-SDI
-           end-if.
-           inspect cli-codice-SDI replacing trailing spaces by low-value
+           end-if.            
+           |Le fatture estere devono avere FISSO "XXXXXXX" nel codice SDI
+           if cli-nazione not = "IT"
+              move "XXXXXXX" to codice-SDI
+           end-if.   
+           inspect codice-SDI replacing trailing spaces by low-value
            string 78-spazi 
                   78-spazi
                   78-spazi
@@ -1772,14 +1776,16 @@
            write line-riga.                                             
            inspect des-indirizzo replacing trailing spaces by low-value.
            inspect des-localita  replacing trailing spaces by low-value.
-           initialize line-riga.  
+           initialize line-riga. 
+           move des-indirizzo to como-des.
+           perform NORMALIZZA-DES.
            string 78-spazi 
                   78-spazi       
                   78-spazi       
                   78-spazi       
                   78-spazi                  
                   "<Indirizzo>"             
-                  des-indirizzo delimited low-value
+                  como-des delimited low-value
                   "</Indirizzo>"
              into line-riga.
 
