@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gagenti.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 22 gennaio 2021 11:36:34.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        martedì 6 settembre 2022 13:29:16.
        REMARKS.
       *{TOTEM}END
 
@@ -802,7 +802,7 @@
            ef-iscr-cciaa, 
            Entry-Field, 
            COL 16,57, 
-           LINE 31,77,
+           LINE 31,76,
            LINES 1,31 ,
            SIZE 16,00 ,
            BOXED,
@@ -822,7 +822,7 @@
            ef-num-enasarco, 
            Entry-Field, 
            COL 46,57, 
-           LINE 31,77,
+           LINE 31,76,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -843,7 +843,7 @@
            ef-num-iscr-albo, 
            Entry-Field, 
            COL 72,57, 
-           LINE 31,77,
+           LINE 31,76,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -864,7 +864,7 @@
            Screen1-Fr-1, 
            Frame, 
            COL 4,57, 
-           LINE 33,77,
+           LINE 33,76,
            LINES 4,00 ,
            SIZE 39,00 ,
            ENGRAVED,
@@ -880,7 +880,7 @@
            rb-mono, 
            Radio-Button, 
            COL 5,57, 
-           LINE 35,77,
+           LINE 35,76,
            LINES 0,92 ,
            SIZE 2,00 ,
            ENABLED MOD,
@@ -899,7 +899,7 @@
            rb-pluri, 
            Radio-Button, 
            COL 23,57, 
-           LINE 35,77,
+           LINE 35,76,
            LINES 0,92 ,
            SIZE 2,00 ,
            ENABLED MOD,
@@ -918,7 +918,7 @@
            Screen1-La-3, 
            Label, 
            COL 8,43, 
-           LINE 35,39,
+           LINE 35,38,
            LINES 0,85 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -934,7 +934,7 @@
            Screen1-La-3a, 
            Label, 
            COL 26,57, 
-           LINE 35,39,
+           LINE 35,38,
            LINES 0,85 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1142,7 +1142,7 @@
            Screen1-La-25, 
            Label, 
            COL 4,57, 
-           LINE 31,77,
+           LINE 31,76,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1158,7 +1158,7 @@
            Screen1-La-26, 
            Label, 
            COL 33,57, 
-           LINE 31,77,
+           LINE 31,76,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -1190,7 +1190,7 @@
            Screen1-La-26a, 
            Label, 
            COL 58,57, 
-           LINE 31,77,
+           LINE 31,76,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -1244,7 +1244,7 @@
            LINES 1,31 ,
            SIZE 11,43 ,
            FONT IS Small-Font,
-           ID IS 45,
+           ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1261,7 +1261,7 @@
            SIZE 50,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 1,
+           ID IS 4,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-cli-tipo-d-BUF,
@@ -1360,7 +1360,7 @@
            LINES 1,15 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
-           ID IS 15,
+           ID IS 6,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1681,7 +1681,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 7,
+           ID IS 34,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1730,7 +1730,7 @@
            SIZE 27,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 34,
+           ID IS 36,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6190,19 +6190,19 @@
 
                display lbl-des-naz
 
-           when 78-ID-ef-codfis
-                inquire ef-piva,   value in age-partita-iva
-                inquire ef-codfis, value in age-codice-fiscale
-                if ef-codfis-buf not = spaces
-                   set cf-contr-gen to true
-                   perform CHECK-CODFIS-PIVA
-                   if errori
-                      move 78-ID-ef-codfis to control-id 
-                      display message box MSG-Codifce-Fiscale-errato
-                              title = tit-err
-                              icon mb-warning-icon
-                   end-if
-                end-if
+      *****     when 78-ID-ef-codfis
+      *****          inquire ef-piva,   value in age-partita-iva
+      *****          inquire ef-codfis, value in age-codice-fiscale
+      *****          if ef-codfis-buf not = spaces
+      *****             set cf-contr-gen to true
+      *****             perform CHECK-CODFIS-PIVA
+      *****             if errori
+      *****                move 78-ID-ef-codfis to control-id 
+      *****                display message box MSG-Codifce-Fiscale-errato
+      *****                        title = tit-err
+      *****                        icon mb-warning-icon
+      *****             end-if
+      *****          end-if
       
            when 78-ID-ef-piva
                 inquire ef-piva,   value in age-partita-iva

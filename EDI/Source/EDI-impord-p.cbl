@@ -181,6 +181,7 @@
        77  riga-dettaglio        pic 9(5).
        77  como-div              pic 9(5).
        77  como-qta              pic 9(8).
+       77  resto                 pic 9(5).
        77  qta-ord-EDI           pic 9(8).
        77  qta-imb-EDI           pic 9(7).
        77  riga                  pic 9(5).
@@ -1916,10 +1917,10 @@
            if emro-qta-EDI not = 0
               if emro-qta-EDI not = emro-qta-GESLUX and not 
                  emro-si-blister
-                 set emro-bloccato  to true
+                 set emro-bloccato      to true
                  set emro-qtac-adattata to true
-                 set emto-bloccato  to true
-                 set emto-qta-ko    to true
+                 set emto-bloccato      to true
+                 set emto-qta-ko        to true
                  rewrite emto-rec end-rewrite
               else
                  set emro-qtac-ok to true
@@ -2155,7 +2156,18 @@
                     else
                        compute emro-qta-GESLUX = 
                                qta-ord-EDI * qta-imb-edi
-                    end-if
+                       |Faccio comunque un controllo 
+                       |che la qta EDI sia corretta  
+                       move 0 to resto
+                       divide emro-qta-GESLUX by imq-qta-imb
+                              giving como-qta 
+                           remainder resto
+                       if resto > 0
+                          add 1 to como-qta
+                          compute emro-qta-GESLUX = 
+                                  como-qta * imq-qta-imb
+                       end-if       
+                    end-if                      
                  end-if
               end-if
               perform VALORIZZA-PROGRESSIVO

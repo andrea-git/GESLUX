@@ -556,7 +556,7 @@
                                    alphanumeric data by spaces.
            if status-lineseq not = "00"
               exit paragraph
-           end-if.
+           end-if.               
            initialize line-riga.
            string 78-spazi 
                   "<FatturaElettronicaHeader>" 
@@ -625,7 +625,7 @@
               move all "0" to codice-SDI
            end-if.            
            |Le fatture estere devono avere FISSO "XXXXXXX" nel codice SDI
-           if cli-nazione not = "IT"
+           if cli-nazione not = "ITA"
               move "XXXXXXX" to codice-SDI
            end-if.   
            inspect codice-SDI replacing trailing spaces by low-value
@@ -864,7 +864,7 @@
              into line-riga
            end-string.
            write line-riga.     
-     
+                        
            move cli-nazione to naz-codice.
            read tnazioni no lock 
                 invalid move cli-nazione to naz-cod-edi
@@ -2739,6 +2739,9 @@
            inspect como-des replacing all "à"   by "a".
            inspect como-des replacing all "è"   by "e".
            inspect como-des replacing all "é"   by "e".
+           inspect como-des replacing all "ì"   by "i".
+           inspect como-des replacing all "ò"   by "o".
+           inspect como-des replacing all "ù"   by "u".
                                                    
            inspect como-des replacing all "/"   by " ".
            inspect como-des replacing all "."   by " ".
@@ -2746,11 +2749,12 @@
            inspect como-des replacing all "#"   by " ".
            inspect como-des replacing all "'"   by " ".
            inspect como-des replacing all "\"   by " ".
-           inspect como-des replacing all "È"   by " ".
-           inspect como-des replacing all "Ò"   by " ".
-           inspect como-des replacing all "À"   by " ".
-           inspect como-des replacing all "Ù"   by " ".
-           inspect como-des replacing all "Ì"   by " ".
+           inspect como-des replacing all "Ã"   by "A".
+           inspect como-des replacing all "È"   by "E".
+           inspect como-des replacing all "Ò"   by "O".
+           inspect como-des replacing all "À"   by "A".
+           inspect como-des replacing all "Ù"   by "U".
+           inspect como-des replacing all "Ì"   by "I".
            inspect como-des replacing all "%"   by " ".
            inspect como-des replacing all "ø"   by " ". 
            inspect como-des replacing all "<"   by " ".
@@ -2760,6 +2764,12 @@
                                                          
            inspect como-des replacing all x"0d" by x"20".
            inspect como-des replacing all x"0a" by x"20".
+           inspect como-des replacing all x"0D" by x"20". 
+           inspect como-des replacing all x"0A" by x"20".
+           inspect como-des replacing all x"a0" by x"20".
+           inspect como-des replacing all x"A0" by x"20".
+           inspect como-des replacing all x"A0" by x"20".
+           
 
       ***---
        NORMALIZZA-NOTE.

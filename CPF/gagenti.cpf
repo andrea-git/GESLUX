@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65D14366-875-2221817445
+PROGRAM_UNIQUE_CODE=TOTEM-7E69872331-851-3024512960
 
 {{@DESCRIPTION:
 
@@ -2525,7 +2525,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-iscr-cciaa
             SCREEN-COL        = 16,57
-            SCREEN-LINE       = 31,77
+            SCREEN-LINE       = 31,76
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = ef-iscr-cciaa
@@ -2588,7 +2588,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-num-enasarco
             SCREEN-COL        = 46,57
-            SCREEN-LINE       = 31,77
+            SCREEN-LINE       = 31,76
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = ef-num-enasarco
@@ -2651,7 +2651,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-num-iscr-albo
             SCREEN-COL        = 72,57
-            SCREEN-LINE       = 31,77
+            SCREEN-LINE       = 31,76
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = ef-num-iscr-albo
@@ -2714,7 +2714,7 @@ Begin Screen Form1
          End
          Begin Frame Screen1-Fr-1
             SCREEN-COL        = 4,57
-            SCREEN-LINE       = 33,77
+            SCREEN-LINE       = 33,76
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-Fr-1
@@ -2748,7 +2748,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
             Begin Data.Radio-Button rb-mono
                SCREEN-COL        = 5,57
-               SCREEN-LINE       = 35,77
+               SCREEN-LINE       = 35,76
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = rb-mono
@@ -2801,7 +2801,7 @@ Begin Screen Form1
             End
             Begin Data.Radio-Button rb-pluri
                SCREEN-COL        = 23,57
-               SCREEN-LINE       = 35,77
+               SCREEN-LINE       = 35,76
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = rb-pluri
@@ -2854,7 +2854,7 @@ Begin Screen Form1
             End
             Begin Label Screen1-La-3
                SCREEN-COL        = 8,43
-               SCREEN-LINE       = 35,39
+               SCREEN-LINE       = 35,38
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = Screen1-La-3
@@ -2888,7 +2888,7 @@ Begin Screen Form1
             End
             Begin Label Screen1-La-3a
                SCREEN-COL        = 26,57
-               SCREEN-LINE       = 35,39
+               SCREEN-LINE       = 35,38
                LOCK-CONTROL      = TRUE
                LEVEL             = 10
                (Name)            = Screen1-La-3a
@@ -3331,7 +3331,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-25
             SCREEN-COL        = 4,57
-            SCREEN-LINE       = 31,77
+            SCREEN-LINE       = 31,76
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-La-25
@@ -3365,7 +3365,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-26
             SCREEN-COL        = 33,57
-            SCREEN-LINE       = 31,77
+            SCREEN-LINE       = 31,76
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-La-26
@@ -3433,7 +3433,7 @@ Begin Screen Form1
          End
          Begin Label Screen1-La-26a
             SCREEN-COL        = 58,57
-            SCREEN-LINE       = 31,77
+            SCREEN-LINE       = 31,76
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Screen1-La-26a
@@ -3559,7 +3559,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 45
+            ID                = 3
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 24,54
@@ -3598,7 +3598,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 1
+            ID                = 4
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 24,46
@@ -3741,7 +3741,7 @@ Begin Screen Form1
                Height in Cells   = TRUE
                Help ID           = 0
                Hint              = Tipo agente Speciale
-               ID                = 4
+               ID                = 15
                ID Variable       = AUTO-ID
                Left Text         = FALSE
                Line              = 2,50
@@ -3818,7 +3818,7 @@ Begin Screen Form1
                Font Variable     = Small-Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 15
+               ID                = 6
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,31
@@ -3867,7 +3867,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la marginalità riconosciuta all'agente
-            ID                = 6
+            ID                = 7
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 4,23
@@ -4636,7 +4636,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 7
+            ID                = 34
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 4,23
@@ -4738,7 +4738,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 34
+            ID                = 36
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 7,08
@@ -6388,19 +6388,19 @@ BEGIN-TEXT
 
                display lbl-des-naz
 
-           when 78-ID-ef-codfis
-                inquire ef-piva,   value in age-partita-iva
-                inquire ef-codfis, value in age-codice-fiscale
-                if ef-codfis-buf not = spaces
-                   set cf-contr-gen to true
-                   perform CHECK-CODFIS-PIVA
-                   if errori
-                      move 78-ID-ef-codfis to control-id 
-                      display message box MSG-Codifce-Fiscale-errato
-                              title = tit-err
-                              icon mb-warning-icon
-                   end-if
-                end-if
+      *****     when 78-ID-ef-codfis
+      *****          inquire ef-piva,   value in age-partita-iva
+      *****          inquire ef-codfis, value in age-codice-fiscale
+      *****          if ef-codfis-buf not = spaces
+      *****             set cf-contr-gen to true
+      *****             perform CHECK-CODFIS-PIVA
+      *****             if errori
+      *****                move 78-ID-ef-codfis to control-id 
+      *****                display message box MSG-Codifce-Fiscale-errato
+      *****                        title = tit-err
+      *****                        icon mb-warning-icon
+      *****             end-if
+      *****          end-if
       
            when 78-ID-ef-piva
                 inquire ef-piva,   value in age-partita-iva
