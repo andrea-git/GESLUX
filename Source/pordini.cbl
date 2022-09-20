@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        lunedì 8 agosto 2022 14:37:33.
+       DATE-WRITTEN.        lunedì 19 settembre 2022 22:13:43.
        REMARKS.
       *{TOTEM}END
 
@@ -146,6 +146,8 @@
            COPY  "MAIL.DEF".
            COPY  "TROVA-PARAMETRO.DEF".
        77 como-giorno      PIC  9.
+       77 como-n1          PIC  s9(15)v999.
+       77 como-n2          PIC  s9(15)v999.
        77 LinkAuto         PIC  9.
        77 como-mese        PIC  99.
        77 FILLER           PIC  9.
@@ -859,7 +861,7 @@
        01  r-inizio              pic x(25).
 
        77  tentativi                  pic 9(2).
-       77  como-riga                  pic x(100).
+       77  como-riga                  pic x(250).
 
        77  data-odierna               pic 9(8).
       *{TOTEM}END
@@ -12273,11 +12275,11 @@
            set errori to true.
            accept data-odierna from century-date.
            inquire form1-gd-1, last-row in tot-righe.
-           perform varying riga from 2 by 1
+           perform varying riga from 3 by 1
                      until riga > tot-righe
               inquire form1-gd-1(riga, 37), cell-data in col-qta-ord
               move col-qta-ord to como-qta
-              set forza-conferma to false
+              set forza-conferma to false   
 
               if como-qta = 0
                  inquire form1-gd-1(riga, 1),
@@ -12322,13 +12324,21 @@
                          hidden-data in gruppo-hidden
                  move hid-chiave to ord2-chiave
                  read ordfor2 no lock
-                      invalid
-                      exit perform
+                      invalid           
+                      
+                      initialize como-riga
+                      string "** ERRORE LETTURA ARTICOLO: "
+                             ord2-articolo
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
+
+                      exit perform cycle
                   not invalid
                       |09/11: Richiesta di Walter. In automatico ordino
                       |solamente gli articoli la cui giacenza non
                       |copre l'impegnato e scorta "Ordine Auto"
-
+                                          
                       |28/08: Richiesta di Walter. In automatico ordino
                       |solamente gli articoli a scorta "Ordine Auto"
                       move ord2-articolo   to prg-cod-articolo
@@ -12347,7 +12357,24 @@
                          move ord2-articolo to art-codice
                          read articoli no lock invalid continue end-read
                          move art-scorta    to sco-codice
-                         read tscorte no lock
+                         read tscorte no lock                           
+              
+                      
+                         initialize como-riga
+                         string "ELABORAZIONE ARTICOLO: "
+                                ord2-articolo
+                                " - SCORTA: " 
+                                art-scorta
+                                " - ORDINE AUTO: "
+                                sco-ordine-auto
+                                " - IMMEDIATO: "
+                                sco-immediato
+                                " - IMPEGNATO: "
+                                como-impegnato
+                           into como-riga
+                         end-string
+                         perform SCRIVI-RIGA-LOG
+                      
                          if sco-ordine-auto-si
                             |Gli articoli "su richiesta" dovranno andare
                             |a copertura dell'impegnato soltanto quand'esso
@@ -12360,7 +12387,7 @@
                                      set ord2-listino-no to false
                                   end-if                 
                                   perform VERIFICA-GIORNO-MESE
-                                  rewrite ord2-rec
+                                  rewrite ord2-rec 
                                   set tutto-ok to true
                                end-if
                             else
@@ -12392,12 +12419,63 @@
                                         end-if
                                      end-if
                                   end-if
-                               end-if
+                               end-if                     
+                               
+                               compute como-n1 = ord2-giac + 
+           como-ordinato - ord2-promo
+                               compute como-n2 = ( ord2-riordino - 
+           ord2-consegna ) * sco-molt-pordini
+                               initialize como-riga  
 
-                               if ( ord2-giac + como-ordinato - 
-           ord2-promo ) <
-                                  ( ( ord2-riordino - ord2-consegna ) * 
-           sco-molt-pordini )
+                               if como-n1 < como-n2
+                                  string "ARTICOLO OK. "
+                                         " - N1 (" 
+                                         como-n1
+                                         ") < N2("
+                                         como-n2
+                                         "). ORD2-GIAC("
+                                         ord2-giac
+                                         ") + COMO-ORDINATO("
+                                         como-ordinato
+                                         ") - ORD2-PROMO("
+                                         ord2-promo
+                                         ") < ( ORD2-RIORDINO("
+                                         ord2-riordino
+                                         ") - ORD2-CONSEGNA("
+                                         ord2-consegna
+                                         ")) * SCO-MOLT-PORDINI("
+                                         sco-molt-pordini
+                                         ")"
+                                         como-impegnato
+                                    into como-riga
+                                  end-string
+                               else                
+                                  string "ARTICOLO KO. "
+                                         " - N1 (" 
+                                         como-n1
+                                         ") >= N2("
+                                         como-n2
+                                         "). ORD2-GIAC("
+                                         ord2-giac
+                                         ") + COMO-ORDINATO("
+                                         como-ordinato
+                                         ") - ORD2-PROMO("
+                                         ord2-promo
+                                         ") >= ( ORD2-RIORDINO("
+                                         ord2-riordino
+                                         ") - ORD2-CONSEGNA("
+                                         ord2-consegna
+                                         ")) * SCO-MOLT-PORDINI("
+                                         sco-molt-pordini
+                                         ")"
+                                         como-impegnato
+                                    into como-riga
+                                  end-string
+                               end-if
+                               
+                               perform SCRIVI-RIGA-LOG    
+
+                               if como-n1 < como-n2
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else
@@ -13566,15 +13644,7 @@
                  end-if
               else                            
                  move "QTA STORICHE NON AGGIORNATE (1)" to como-riga
-                 perform SCRIVI-RIGA-LOG      
-                 initialize como-riga
-                 inspect wstampa replacing trailing spaces by low-value
-                 string "PATH_VENDUTI: "       wstampa
-                        " - STATUS-LINESEQ1: " status-lineseq1
-                        delimited low-value
-                   into como-riga
-                 perform SCRIVI-RIGA-LOG                               
-                 inspect wstampa replacing trailing low-value by spaces
+                 perform SCRIVI-RIGA-LOG
                  set errori to true
               end-if
            else   
@@ -13596,13 +13666,7 @@
                     end-if
                  else                
                     move "QTA STORICHE NON AGGIORNATE (2)" to como-riga
-                    perform SCRIVI-RIGA-LOG                            
-                    initialize como-riga
-                    string "STATUS-QTA-PORDINI: " status-qta-pordini
-                           delimited size
-                      into como-riga
-                    perform SCRIVI-RIGA-LOG                             
-             
+                    perform SCRIVI-RIGA-LOG
                     set errori to true
                  end-if
               else
@@ -14543,7 +14607,8 @@
               end-if     
               move "FINE RICALCOLO" to como-riga
               perform SCRIVI-RIGA-LOG
-              if errori
+              if errori                  
+                 open exclusive i-o ordfor2
                  exit paragraph
               end-if
               close ordfor2

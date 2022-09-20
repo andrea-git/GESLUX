@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          tparamge.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 marzo 2021 11:54:59.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        martedì 20 settembre 2022 16:10:54.
        REMARKS.
       *{TOTEM}END
 
@@ -217,6 +217,8 @@
                    15 old-tge-num-NC-pdf           PIC  9(8).
       *(( XFD NAME = tge-alfa-vuoto_1_3 ))
                    15 old-tge-blocco-fido          PIC  s9(10)v99.
+      *(( XFD NAME = tge-alfa-vuoto_1_3 ))
+                   15 oLD-TGE-GIORNI-NOTE-BOLLA    PIC  9(4).
        77 como-ora4        PIC  9(4).
        77 Large-Font
                   USAGE IS HANDLE OF FONT LARGE-FONT.
@@ -271,6 +273,8 @@
               05 ef-blocco-fido-BUF PIC --.---.---.--9,99.
       * Data.Entry-Field
               05 ef-div-BUF PIC ---.--9,999.
+      * Data.Entry-Field
+              05 ef-gg-bolla-BUF PIC z.zz9.
       * Data.Entry-Field
               05 ef-perce-arrot-BUF PIC zz9,99.
       * Data.Entry-Field
@@ -404,23 +408,24 @@
        78  78-ID-ef-ditta-utf VALUE 5019.
        78  78-ID-ef-blocco-fido VALUE 5020.
        78  78-ID-ef-div VALUE 5021.
-       78  78-ID-ef-perce-arrot VALUE 5022.
-       78  78-ID-ef-perce-prog VALUE 5023.
-       78  78-ID-ef-perce-fido VALUE 5024.
-       78  78-ID-ef-pile VALUE 5025.
-       78  78-ID-ef-perce-fidoa VALUE 5026.
-       78  78-ID-ef-perce-fidob VALUE 5027.
-       78  78-ID-ef-vet VALUE 5028.
-       78  78-ID-ef-limite VALUE 5029.
-       78  78-ID-ef-gg-ini-pren VALUE 5030.
-       78  78-ID-ef-gg-vol-qta VALUE 5031.
-       78  78-ID-ef-vetaa VALUE 5032.
-       78  78-ID-ef-vetab VALUE 5033.
-       78  78-ID-ef-gg-max VALUE 5034.
-       78  78-ID-ef-limitea VALUE 5035.
-       78  78-ID-ef-vetaaa VALUE 5036.
-       78  78-ID-ef-gg-ini-prena VALUE 5037.
-       78  78-ID-ef-vetaba VALUE 5038.
+       78  78-ID-ef-gg-bolla VALUE 5022.
+       78  78-ID-ef-perce-arrot VALUE 5023.
+       78  78-ID-ef-perce-prog VALUE 5024.
+       78  78-ID-ef-perce-fido VALUE 5025.
+       78  78-ID-ef-pile VALUE 5026.
+       78  78-ID-ef-perce-fidoa VALUE 5027.
+       78  78-ID-ef-perce-fidob VALUE 5028.
+       78  78-ID-ef-vet VALUE 5029.
+       78  78-ID-ef-limite VALUE 5030.
+       78  78-ID-ef-gg-ini-pren VALUE 5031.
+       78  78-ID-ef-gg-vol-qta VALUE 5032.
+       78  78-ID-ef-vetaa VALUE 5033.
+       78  78-ID-ef-vetab VALUE 5034.
+       78  78-ID-ef-gg-max VALUE 5035.
+       78  78-ID-ef-limitea VALUE 5036.
+       78  78-ID-ef-vetaaa VALUE 5037.
+       78  78-ID-ef-gg-ini-prena VALUE 5038.
+       78  78-ID-ef-vetaba VALUE 5039.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -859,10 +864,30 @@
 
       * ENTRY FIELD
        05
+           ef-gg-bolla, 
+           Entry-Field, 
+           COL 23,00, 
+           LINE 35,85,
+           LINES 1,31 ,
+           SIZE 15,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED MOD,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-gg-bolla,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 4,
+           VALUE ef-gg-bolla-BUF,
+           .
+
+      * ENTRY FIELD
+       05
            ef-perce-arrot, 
            Entry-Field, 
            COL 23,00, 
-           LINE 37,62,
+           LINE 39,15,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -883,7 +908,7 @@
            ef-gg-part, 
            Entry-Field, 
            COL 56,14, 
-           LINE 37,62,
+           LINE 39,15,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -903,7 +928,7 @@
            ef-perce-prog, 
            Entry-Field, 
            COL 81,43, 
-           LINE 37,46,
+           LINE 39,00,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -924,7 +949,7 @@
            ef-perce-fido, 
            Entry-Field, 
            COL 23,00, 
-           LINE 39,85,
+           LINE 41,38,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -945,7 +970,7 @@
            ef-pile, 
            Entry-Field, 
            COL 55,86, 
-           LINE 39,85,
+           LINE 41,38,
            LINES 1,31 ,
            SIZE 20,00 ,
            BOXED,
@@ -965,7 +990,7 @@
            ef-perce-fidoa, 
            Entry-Field, 
            COL 23,00, 
-           LINE 42,08,
+           LINE 43,62,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -986,7 +1011,7 @@
            ef-perce-fidob, 
            Entry-Field, 
            COL 55,86, 
-           LINE 42,08,
+           LINE 43,62,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1007,7 +1032,7 @@
            ef-gg-chiuso, 
            Entry-Field, 
            COL 81,43, 
-           LINE 42,08,
+           LINE 43,62,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1027,7 +1052,7 @@
            ef-vet, 
            Entry-Field, 
            COL 23,00, 
-           LINE 46,31,
+           LINE 47,85,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1048,7 +1073,7 @@
            ef-limite, 
            Entry-Field, 
            COL 23,00, 
-           LINE 47,85,
+           LINE 49,38,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1069,7 +1094,7 @@
            ef-gg-ini-pren, 
            Entry-Field, 
            COL 48,86, 
-           LINE 47,85,
+           LINE 49,38,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1090,7 +1115,7 @@
            ef-gg-vol-qta, 
            Entry-Field, 
            COL 71,43, 
-           LINE 47,85,
+           LINE 49,38,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1111,7 +1136,7 @@
            ef-vetaa, 
            Entry-Field, 
            COL 23,00, 
-           LINE 49,31,
+           LINE 50,85,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1132,7 +1157,7 @@
            ef-vetab, 
            Entry-Field, 
            COL 48,86, 
-           LINE 49,31,
+           LINE 50,85,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1153,7 +1178,7 @@
            ef-gg-max, 
            Entry-Field, 
            COL 71,43, 
-           LINE 49,31,
+           LINE 50,85,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1174,7 +1199,7 @@
            ef-gg-cons, 
            Entry-Field, 
            COL 92,86, 
-           LINE 47,77,
+           LINE 49,31,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -1194,7 +1219,7 @@
            ef-limitea, 
            Entry-Field, 
            COL 23,00, 
-           LINE 54,08,
+           LINE 55,62,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1216,7 +1241,7 @@
            ef-vetaaa, 
            Entry-Field, 
            COL 23,00, 
-           LINE 55,92,
+           LINE 57,46,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -1237,7 +1262,7 @@
            ef-gg-ini-prena, 
            Entry-Field, 
            COL 56,00, 
-           LINE 54,08,
+           LINE 55,62,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1259,7 +1284,7 @@
            ef-vetaba, 
            Entry-Field, 
            COL 56,00, 
-           LINE 55,92,
+           LINE 57,46,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -1670,7 +1695,7 @@
            Screen1-La-4aeaaabaaaa, 
            Label, 
            COL 2,29, 
-           LINE 37,62,
+           LINE 39,15,
            LINES 2,00 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -1687,7 +1712,7 @@
            Screen1-La-4aeaaabaaaaa, 
            Label, 
            COL 2,29, 
-           LINE 39,85,
+           LINE 41,38,
            LINES 2,00 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -1704,7 +1729,7 @@
            Screen1-La-4aeaaabaaaaaa, 
            Label, 
            COL 2,29, 
-           LINE 42,08,
+           LINE 43,62,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -1721,7 +1746,7 @@
            Screen1-La-4aeaaabaaaaab, 
            Label, 
            COL 35,14, 
-           LINE 42,08,
+           LINE 43,62,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -1772,7 +1797,7 @@
            Screen1-La-4aeaaabaaaaaaa, 
            Label, 
            COL 2,29, 
-           LINE 47,85,
+           LINE 49,38,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -1789,7 +1814,7 @@
            Screen1-La-4aeaaabaaaaaba, 
            Label, 
            COL 2,29, 
-           LINE 46,31,
+           LINE 47,85,
            LINES 1,31 ,
            SIZE 15,86 ,
            FONT IS Small-Font,
@@ -1806,7 +1831,7 @@
            lab-vet, 
            Label, 
            COL 31,00, 
-           LINE 46,31,
+           LINE 47,85,
            LINES 1,31 ,
            SIZE 65,00 ,
            COLOR IS 5,
@@ -1823,7 +1848,7 @@
            Screen1-La-4aeaaabaaaaabaa, 
            Label, 
            COL 35,14, 
-           LINE 39,85,
+           LINE 41,38,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -1857,7 +1882,7 @@
            Screen1-La-4aeaaabaaaaababa, 
            Label, 
            COL 2,29, 
-           LINE 49,31,
+           LINE 50,85,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -1874,7 +1899,7 @@
            Screen1-La-4aeaaabaaaaababb, 
            Label, 
            COL 31,86, 
-           LINE 49,31,
+           LINE 50,85,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1891,7 +1916,7 @@
            Screen1-La-4aeaaabaaaaababba, 
            Label, 
            COL 55,43, 
-           LINE 49,31,
+           LINE 50,85,
            LINES 1,31 ,
            SIZE 14,50 ,
            FONT IS Small-Font,
@@ -1908,7 +1933,7 @@
            Screen1-La-4aeaaabaaaaababbaa, 
            Label, 
            COL 78,29, 
-           LINE 49,31,
+           LINE 50,85,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2010,7 +2035,7 @@
            Screen1-La-4aeaaabaaaaababbb, 
            Label, 
            COL 31,86, 
-           LINE 47,85,
+           LINE 49,38,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2027,7 +2052,7 @@
            Screen1-La-1, 
            Label, 
            COL 37,57, 
-           LINE 44,54,
+           LINE 46,08,
            LINES 1,38 ,
            SIZE 25,00 ,
            FONT IS Large-Font,
@@ -2044,7 +2069,7 @@
            Screen1-Br-1, 
            Bar,
            COL 63,14, 
-           LINE 45,23,
+           LINE 46,77,
            SIZE 36,14 ,
            ID IS 58,
            HEIGHT-IN-CELLS,
@@ -2057,7 +2082,7 @@
            Screen1-Br-1a, 
            Bar,
            COL 1,00, 
-           LINE 45,23,
+           LINE 46,77,
            SIZE 36,14 ,
            ID IS 59,
            HEIGHT-IN-CELLS,
@@ -2104,7 +2129,7 @@
            Screen1-La-4aeaaabaaaaababbaaa, 
            Label, 
            COL 66,86, 
-           LINE 42,08,
+           LINE 43,62,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2134,7 +2159,7 @@
            Screen1-Br-2a, 
            Bar,
            COL 1,00, 
-           LINE 36,69,
+           LINE 38,23,
            SIZE 98,29 ,
            ID IS 49,
            HEIGHT-IN-CELLS,
@@ -2164,7 +2189,7 @@
            Screen1-La-4aeaaabaaaab, 
            Label, 
            COL 35,43, 
-           LINE 37,62,
+           LINE 39,15,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -2181,7 +2206,7 @@
            Screen1-La-4aeaaabaaaaababbaaaa, 
            Label, 
            COL 66,86, 
-           LINE 37,46,
+           LINE 39,00,
            LINES 2,15 ,
            SIZE 13,14 ,
            FONT IS Small-Font,
@@ -2198,7 +2223,7 @@
            Screen1-La-4aeaaabaaaaababbba, 
            Label, 
            COL 55,43, 
-           LINE 47,85,
+           LINE 49,38,
            LINES 1,31 ,
            SIZE 14,50 ,
            FONT IS Small-Font,
@@ -2215,7 +2240,7 @@
            Screen1-La-4aeaaabaaaaaaaa, 
            Label, 
            COL 2,29, 
-           LINE 54,08,
+           LINE 55,62,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -2232,7 +2257,7 @@
            Screen1-La-4aeaaabaaaaababaa, 
            Label, 
            COL 2,29, 
-           LINE 55,92,
+           LINE 57,46,
            LINES 1,31 ,
            SIZE 20,00 ,
            FONT IS Small-Font,
@@ -2249,7 +2274,7 @@
            Screen1-La-4aeaaabaaaaababbc, 
            Label, 
            COL 39,00, 
-           LINE 55,92,
+           LINE 57,46,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2266,7 +2291,7 @@
            Screen1-La-4aeaaabaaaaababbbb, 
            Label, 
            COL 39,00, 
-           LINE 54,08,
+           LINE 55,62,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2283,7 +2308,7 @@
            Screen1-La-1a, 
            Label, 
            COL 40,14, 
-           LINE 51,92,
+           LINE 53,46,
            LINES 1,38 ,
            SIZE 20,00 ,
            FONT IS Large-Font,
@@ -2300,7 +2325,7 @@
            Screen1-Br-1aa, 
            Bar,
            COL 1,00, 
-           LINE 52,62,
+           LINE 54,15,
            SIZE 36,14 ,
            ID IS 72,
            HEIGHT-IN-CELLS,
@@ -2313,7 +2338,7 @@
            Screen1-Br-1b, 
            Bar,
            COL 63,14, 
-           LINE 52,62,
+           LINE 54,15,
            SIZE 36,14 ,
            ID IS 73,
            HEIGHT-IN-CELLS,
@@ -2353,6 +2378,23 @@
            LEFT,
            TRANSPARENT,
            TITLE "Divisore ins. automatico listini",
+           .
+
+      * LABEL
+       05
+           Screen1-La-4aeaaabaaabaaa, 
+           Label, 
+           COL 2,29, 
+           LINE 35,85,
+           LINES 1,31 ,
+           SIZE 20,00 ,
+           FONT IS Small-Font,
+           ID IS 75,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "GG aggiutna note consegna",
            .
 
       * TOOLBAR
@@ -4446,7 +4488,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 58,77,
+              LINES 60,08,
               SIZE 98,29,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -5063,12 +5105,20 @@
                MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-gg-bolla's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-gg-bolla-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5022 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-perce-arrot's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-perce-arrot-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5022 TO CONTROL-ID
+               MOVE 5023 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-part's Validation
@@ -5076,7 +5126,7 @@
            PERFORM ef-gg-part-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 23 TO CONTROL-ID
+               MOVE 24 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-perce-prog's Validation
@@ -5084,7 +5134,7 @@
            PERFORM ef-perce-prog-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-perce-fido's Validation
@@ -5092,7 +5142,7 @@
            PERFORM ef-perce-fido-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pile's Validation
@@ -5100,7 +5150,7 @@
            PERFORM ef-pile-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-perce-fidoa's Validation
@@ -5108,7 +5158,7 @@
            PERFORM ef-perce-fidoa-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-perce-fidob's Validation
@@ -5116,7 +5166,7 @@
            PERFORM ef-perce-fidob-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-chiuso's Validation
@@ -5124,7 +5174,7 @@
            PERFORM ef-gg-chiuso-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 29 TO CONTROL-ID
+               MOVE 30 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vet's Validation
@@ -5132,7 +5182,7 @@
            PERFORM ef-vet-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-limite's Validation
@@ -5140,7 +5190,7 @@
            PERFORM ef-limite-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-ini-pren's Validation
@@ -5148,7 +5198,7 @@
            PERFORM ef-gg-ini-pren-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-vol-qta's Validation
@@ -5156,7 +5206,7 @@
            PERFORM ef-gg-vol-qta-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vetaa's Validation
@@ -5164,7 +5214,7 @@
            PERFORM ef-vetaa-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vetab's Validation
@@ -5172,7 +5222,7 @@
            PERFORM ef-vetab-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-max's Validation
@@ -5180,7 +5230,7 @@
            PERFORM ef-gg-max-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-cons's Validation
@@ -5188,7 +5238,7 @@
            PERFORM ef-gg-cons-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 37 TO CONTROL-ID
+               MOVE 38 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-limitea's Validation
@@ -5196,7 +5246,7 @@
            PERFORM ef-limitea-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vetaaa's Validation
@@ -5204,7 +5254,7 @@
            PERFORM ef-vetaaa-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-ini-prena's Validation
@@ -5212,7 +5262,7 @@
            PERFORM ef-gg-ini-prena-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vetaba's Validation
@@ -5220,7 +5270,7 @@
            PERFORM ef-vetaba-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -5580,6 +5630,23 @@
            PERFORM ef-div-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-div-AFTER-VALIDATION
+           .
+
+       ef-gg-bolla-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-gg-bolla, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-gg-bolla-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-gg-bolla, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-gg-bolla's Validation
+       ef-gg-bolla-VALIDATION.
+           PERFORM ef-gg-bolla-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-gg-bolla-AFTER-VALIDATION
            .
 
        ef-perce-arrot-BEFORE-VALIDATION.
@@ -5968,6 +6035,8 @@
            MOVE ef-blocco-fido-BUF TO tge-blocco-fido
       * DB_Entry-Field : ef-div
            MOVE ef-div-BUF TO tge-divisore-lstgdo
+      * DB_Entry-Field : ef-gg-bolla
+           MOVE ef-gg-bolla-BUF TO tge-giorni-note-bolla
       * DB_Entry-Field : ef-perce-arrot
            MOVE ef-perce-arrot-BUF TO tge-perce-arrot-bancale
       * DB_Entry-Field : ef-gg-part
@@ -6080,6 +6149,8 @@
            MOVE tge-blocco-fido TO ef-blocco-fido-BUF
       * DB_Entry-Field : ef-div
            MOVE tge-divisore-lstgdo TO ef-div-BUF
+      * DB_Entry-Field : ef-gg-bolla
+           MOVE tge-giorni-note-bolla TO ef-gg-bolla-BUF
       * DB_Entry-Field : ef-perce-arrot
            MOVE tge-perce-arrot-bancale TO ef-perce-arrot-BUF
       * DB_Entry-Field : ef-gg-part
@@ -6449,6 +6520,13 @@
               move 78-ID-ef-div to store-id 
            end-if
 
+           if tge-giorni-note-bolla not = old-tge-giorni-note-bolla
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-gg-bolla è l'ID del campo ef-gg-bolla
+              move 78-ID-ef-gg-bolla to store-id 
+           end-if
+
            if tge-perce-arrot-bancale not = old-tge-perce-arrot-bancale
               and SiSalvato
               set NoSalvato to true
@@ -6459,8 +6537,8 @@
            if tge-gg-mail-volantino not = old-tge-gg-mail-volantino
               and SiSalvato
               set NoSalvato to true
-              |23 è l'ID del campo ef-gg-part
-              move 23 to store-id
+              |24 è l'ID del campo ef-gg-part
+              move 24 to store-id
            end-if
 
            if tge-perce-prog not = old-tge-perce-prog
@@ -6501,8 +6579,8 @@
            if tge-gg-master-chiuso not = old-tge-gg-master-chiuso
               and SiSalvato
               set NoSalvato to true
-              |29 è l'ID del campo ef-gg-chiuso
-              move 29 to store-id
+              |30 è l'ID del campo ef-gg-chiuso
+              move 30 to store-id
            end-if
 
            if tge-vettore-std-old not = old-tge-vettore-std-old
@@ -6560,8 +6638,8 @@
            old-tge-gg-plus-consegna-old
               and SiSalvato
               set NoSalvato to true
-              |37 è l'ID del campo ef-gg-cons
-              move 37 to store-id
+              |38 è l'ID del campo ef-gg-cons
+              move 38 to store-id
            end-if
 
 
@@ -6695,8 +6773,8 @@
            when 78-ID-ef-tipocli
                 move 1 to StatusHelp
                 perform STATUS-HELP
-           |29 è l'ID del campo ef-gg-chiuso
-           when 29
+           |30 è l'ID del campo ef-gg-chiuso
+           when 30
                 move 1 to StatusHelp
                 perform STATUS-HELP
            |78-ID-ef-vet è l'ID del campo ef-vet
@@ -6719,8 +6797,8 @@
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |23 è l'ID del campo ef-gg-part
-           when 23
+           |24 è l'ID del campo ef-gg-part
+           when 24
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
@@ -6839,8 +6917,8 @@
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
-           |29 è l'ID del campo ef-gg-chiuso
-           when 29
+           |30 è l'ID del campo ef-gg-chiuso
+           when 30
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -6867,8 +6945,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |23 è l'ID del campo ef-gg-part
-           when 23
+           |24 è l'ID del campo ef-gg-part
+           when 24
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -7002,11 +7080,14 @@
            |78-ID-ef-div è l'ID del campo ef-div
            when 78-ID-ef-div
                 perform CONTROLLO
+           |78-ID-ef-gg-bolla è l'ID del campo ef-gg-bolla
+           when 78-ID-ef-gg-bolla
+                perform CONTROLLO
            |78-ID-ef-perce-arrot è l'ID del campo ef-perce-arrot
            when 78-ID-ef-perce-arrot
                 perform CONTROLLO
-           |23 è l'ID del campo ef-gg-part
-           when 23
+           |24 è l'ID del campo ef-gg-part
+           when 24
                 perform CONTROLLO
            |78-ID-ef-perce-prog è l'ID del campo ef-perce-prog
            when 78-ID-ef-perce-prog
@@ -7014,8 +7095,8 @@
            |78-ID-ef-pile è l'ID del campo ef-pile
            when 78-ID-ef-pile
                 perform CONTROLLO
-           |29 è l'ID del campo ef-gg-chiuso
-           when 29
+           |30 è l'ID del campo ef-gg-chiuso
+           when 30
                 perform CONTROLLO
            |78-ID-ef-vet è l'ID del campo ef-vet
            when 78-ID-ef-vet
@@ -7035,8 +7116,8 @@
            |78-ID-ef-gg-max è l'ID del campo ef-gg-max
            when 78-ID-ef-gg-max
                 perform CONTROLLO
-           |37 è l'ID del campo ef-gg-cons
-           when 37
+           |38 è l'ID del campo ef-gg-cons
+           when 38
                 perform CONTROLLO
            |78-ID-ef-vetaaa è l'ID del campo ef-vetaaa
            when 78-ID-ef-vetaaa
@@ -7100,43 +7181,45 @@
            TOTEM-HINT-TEXT
            WHEN 5021 MOVE "Digitare valore blocco fido" to 
            TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Digitare la Percentuale di arrotondamento" 
+           WHEN 5022 MOVE "Digitare i giorni da aggiungere alla data di 
+      -    "cosegna delle bolle quando vuoto" to TOTEM-HINT-TEXT
+           WHEN 5023 MOVE "Digitare la Percentuale di arrotondamento" 
            to TOTEM-HINT-TEXT
-           WHEN 23 MOVE "gg da aggiungere alla data odierna per l'invio 
+           WHEN 24 MOVE "gg da aggiungere alla data odierna per l'invio 
       -    "csv dei volantini" to TOTEM-HINT-TEXT
-           WHEN 5023 MOVE "Percenutale massima di scostamento creazione 
+           WHEN 5024 MOVE "Percenutale massima di scostamento creazione 
       -    "progressivo" to TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Digitare la Percentuale" to TOTEM-HINT-TEXT
-           WHEN 5025 MOVE "Digitare il registro PILE" to TOTEM-HINT-TEXT
-           WHEN 5026 MOVE "Digitare il costo del trasporto fornitore" 
+           WHEN 5025 MOVE "Digitare la Percentuale" to TOTEM-HINT-TEXT
+           WHEN 5026 MOVE "Digitare il registro PILE" to TOTEM-HINT-TEXT
+           WHEN 5027 MOVE "Digitare il costo del trasporto fornitore" 
            to TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Digitare il costo del trasporto al cliente" 
+           WHEN 5028 MOVE "Digitare il costo del trasporto al cliente" 
            to TOTEM-HINT-TEXT
-           WHEN 29 MOVE "I master aventi data di creazione < (oggi - que
+           WHEN 30 MOVE "I master aventi data di creazione < (oggi - que
       -    "sto valore) si chiudono senza MAI riaprirsi." to 
            TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare il vettore standard" to 
+           WHEN 5029 MOVE "Digitare il vettore standard" to 
            TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Digitare il peso al di sotto del quale l'evas
+           WHEN 5030 MOVE "Digitare il peso al di sotto del quale l'evas
       -    "ione verrà evasa col vettore di cui sotto" to 
            TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "I volantini che iniziano oltre OGGI + questo 
+           WHEN 5031 MOVE "I volantini che iniziano oltre OGGI + questo 
       -    "valore non saranno considerati in prenotazione qta" to 
            TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "GG da aggiungere al volantino per valorizzare
+           WHEN 5032 MOVE "GG da aggiungere al volantino per valorizzare
       -    " i.master con qta (prenotazione)" to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "GG da aggiungere ad oggi per conisderare il v
+           WHEN 5033 MOVE "GG da aggiungere ad oggi per conisderare il v
       -    "olantino chiuso (EVASIONE E CHIUSURA)" to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Evazione Parziale: data cons INFERIORE a oggi
+           WHEN 5034 MOVE "Evazione Parziale: data cons INFERIORE a oggi
       -    " + questo valore" to TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Se la data di consegna è superiore a oggi + q
+           WHEN 5035 MOVE "Se la data di consegna è superiore a oggi + q
       -    "uesti giorni non verrà gestito" to TOTEM-HINT-TEXT
-           WHEN 37 MOVE "Giorni da aggiungere di default alla data conse
+           WHEN 38 MOVE "Giorni da aggiungere di default alla data conse
       -    "gna in creazione master" to TOTEM-HINT-TEXT
-           WHEN 5036 MOVE "Partendo da questo numero (+1) di fattura arr
+           WHEN 5037 MOVE "Partendo da questo numero (+1) di fattura arr
       -    "iva fino a quello indicato nei contatori" to 
            TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Partendo da questo numero (+1) di fattura arr
+           WHEN 5039 MOVE "Partendo da questo numero (+1) di fattura arr
       -    "iva fino a quello indicato nei contatori" to 
            TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
@@ -7164,23 +7247,24 @@
            When 5020 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5021 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5022 PERFORM Screen1-DaEf-1-BeforeProcedure
-           When 23 PERFORM Screen1-DaEf-1-BeforeProcedure
-           When 5023 PERFORM ef-perce-prog-BeforeProcedure
-           When 5024 PERFORM Screen1-DaEf-1-BeforeProcedure
-           When 5025 PERFORM ef-pile-BeforeProcedure
-           When 5026 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 5023 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 24 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 5024 PERFORM ef-perce-prog-BeforeProcedure
+           When 5025 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 5026 PERFORM ef-pile-BeforeProcedure
            When 5027 PERFORM Screen1-DaEf-1-BeforeProcedure
-           When 29 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5028 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 30 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5029 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5030 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5031 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5032 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5033 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5034 PERFORM Screen1-DaEf-1-BeforeProcedure
-           When 37 PERFORM Screen1-DaEf-1-BeforeProcedure
-           When 5036 PERFORM Screen1-DaEf-1-BeforeProcedure
-           When 5038 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 5035 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 38 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 5037 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 5039 PERFORM Screen1-DaEf-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -7210,25 +7294,26 @@
            When 5020 PERFORM ef-codiva-AfterProcedure
            When 5021 PERFORM ef-codiva-AfterProcedure
            When 5022 PERFORM ef-codiva-AfterProcedure
-           When 23 PERFORM ef-codiva-AfterProcedure
-           When 5023 PERFORM ef-perce-prog-AfterProcedure
-           When 5024 PERFORM ef-codiva-AfterProcedure
-           When 5025 PERFORM ef-pile-AfterProcedure
-           When 5026 PERFORM ef-codiva-AfterProcedure
+           When 5023 PERFORM ef-codiva-AfterProcedure
+           When 24 PERFORM ef-codiva-AfterProcedure
+           When 5024 PERFORM ef-perce-prog-AfterProcedure
+           When 5025 PERFORM ef-codiva-AfterProcedure
+           When 5026 PERFORM ef-pile-AfterProcedure
            When 5027 PERFORM ef-codiva-AfterProcedure
-           When 29 PERFORM ef-codiva-AfterProcedure
            When 5028 PERFORM ef-codiva-AfterProcedure
+           When 30 PERFORM ef-codiva-AfterProcedure
            When 5029 PERFORM ef-codiva-AfterProcedure
            When 5030 PERFORM ef-codiva-AfterProcedure
            When 5031 PERFORM ef-codiva-AfterProcedure
            When 5032 PERFORM ef-codiva-AfterProcedure
            When 5033 PERFORM ef-codiva-AfterProcedure
            When 5034 PERFORM ef-codiva-AfterProcedure
-           When 37 PERFORM ef-codiva-AfterProcedure
            When 5035 PERFORM ef-codiva-AfterProcedure
+           When 38 PERFORM ef-codiva-AfterProcedure
            When 5036 PERFORM ef-codiva-AfterProcedure
            When 5037 PERFORM ef-codiva-AfterProcedure
            When 5038 PERFORM ef-codiva-AfterProcedure
+           When 5039 PERFORM ef-codiva-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -8668,6 +8753,12 @@
               INQUIRE ef-div, VALUE IN tge-divisore-lstgdo
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-div-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-gg-bolla, VALUE IN tge-giorni-note-bolla
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-gg-bolla-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

@@ -672,8 +672,8 @@ LUBEXX        if mese-end = 12
       *****     compute ord2-consegna = ( wk-campo / 20 )  * ord2-lead-time.
            compute ord2-consegna = wk-campo.
            |ARROTONDAMENTO ALL'UNITA: SONO PEZZI!!!
-           add 0,5 to ord2-consegna.
-           move  0 to ord2-consegna(10:2).
+           add 0,5  to ord2-consegna.
+           move"00" to ord2-consegna(10:2).
 
       ***---
        CALCOLA-PUNTO-RIORDINO.

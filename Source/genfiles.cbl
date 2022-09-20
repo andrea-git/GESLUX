@@ -3478,15 +3478,13 @@ LABLAB     copy "blister.fd".
            end-if.
            close ordfor2.
 
-      *     open i-o ordfor2.
-      *     move low-value to ord2-chiave.
-      *     start ordfor2 key >= ord2-chiave
-      *     perform until 1 = 2
-      *        read ordfor2 next at end exit perform end-read
-      *        inspect ord2-consegna replacing all x"20" by x"30"
-      *        rewrite ord2-rec
-      *     end-perform
-      *     close ordfor2.
+           open i-o ordfor.
+           move low-value to ord-chiave.
+           start ordfor key >= ord-chiave
+           perform until 1 = 2
+              read ordfor next at end exit perform end-read
+           end-perform
+           close ordfor.
 
            open input ordfor-old.
            if status-ordfor-old = "35"

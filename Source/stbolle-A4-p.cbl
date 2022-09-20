@@ -1562,7 +1562,10 @@ LUBEXX*****                 start tordini key is >= k3 |KEY BOLLA
                     end-if
                  end-if
 
-                 if tor-ordine
+                 if tor-ordine       
+                                     
+                    perform AGGIUNGI-GG-DATA-CONSEGNA
+
                     if tor-note1        not = spaces or
                        tor-note2        not = spaces or
                        tor-note3        not = spaces or
@@ -1737,7 +1740,9 @@ LABLAB                             end-if
            set tutto-ok to true.
            read tordini with lock invalid continue end-read.
            perform RIPOSIZIONA-CURSORE-TORDINI.
-           if RecLocked
+           if not RecLocked
+              perform AGGIUNGI-GG-DATA-CONSEGNA
+           else
               move 1 to geslock-v-riprova
               move 1 to geslock-v-ignora
               move 1 to geslock-v-termina
@@ -2920,7 +2925,8 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
               perform STAMPA-RIGA 
            end-if.
 
-           if esiste-note
+           if esiste-note      
+              perform AGGIUNGI-GG-DATA-CONSEGNA
               move  tor-note1           to st-note-1
               if tor-data-note1 not = 0
                  move  tor-data-note1(1:4) to st-note-data(7:4)
@@ -3772,7 +3778,18 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
            write lr-riga from spaces    
            write lr-riga from spaces    
            move "   FIRMA: " to lr-riga
-           write lr-riga.
+           write lr-riga.      
+
+      ***---
+       AGGIUNGI-GG-DATA-CONSEGNA.
+           if tor-data-note1 = 0
+              accept tor-data-note1 from century-date
+              compute como-data = 
+                      function integer-of-date (tor-data-note1)
+              add tge-giorni-note-bolla to como-data
+              compute tor-data-note1 = 
+                      function date-of-integer (como-data)
+           end-if.
 
       ***---
        PARAGRAFO-COPY.
