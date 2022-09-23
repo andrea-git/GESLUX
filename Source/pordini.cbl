@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        lunedì 19 settembre 2022 22:13:43.
+       DATE-WRITTEN.        venerdì 23 settembre 2022 13:22:08.
        REMARKS.
       *{TOTEM}END
 
@@ -146,6 +146,7 @@
            COPY  "MAIL.DEF".
            COPY  "TROVA-PARAMETRO.DEF".
        77 como-giorno      PIC  9.
+       77 como-idx         PIC  99.
        77 como-n1          PIC  s9(15)v999.
        77 como-n2          PIC  s9(15)v999.
        77 LinkAuto         PIC  9.
@@ -10345,7 +10346,8 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10581,7 +10583,8 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -12381,6 +12384,13 @@
                             |è superiore alle zero
                             if sco-immediato-si
                                if como-impegnato > 0
+                                  string "ARTICOLO OK. "
+                                         " - COMO-IMPEGNATO("
+                                         como-impegnato
+                                         ") > 0"
+                                         como-impegnato
+                                    into como-riga
+                                  end-string
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else
@@ -12389,6 +12399,14 @@
                                   perform VERIFICA-GIORNO-MESE
                                   rewrite ord2-rec 
                                   set tutto-ok to true
+                               else       
+                                  string "ARTICOLO KO. "
+                                         " - COMO-IMPEGNATO("
+                                         como-impegnato
+                                         ") <= 0"
+                                         como-impegnato
+                                    into como-riga
+                                  end-string
                                end-if
                             else
                                move 0 to como-ordinato
@@ -12420,72 +12438,106 @@
                                      end-if
                                   end-if
                                end-if                     
-                               
-                               compute como-n1 = ord2-giac + 
-           como-ordinato - ord2-promo
-                               compute como-n2 = ( ord2-riordino - 
-           ord2-consegna ) * sco-molt-pordini
-                               initialize como-riga  
 
-                               if como-n1 < como-n2
-                                  string "ARTICOLO OK. "
-                                         " - N1 (" 
-                                         como-n1
-                                         ") < N2("
-                                         como-n2
-                                         "). ORD2-GIAC("
-                                         ord2-giac
-                                         ") + COMO-ORDINATO("
-                                         como-ordinato
-                                         ") - ORD2-PROMO("
-                                         ord2-promo
-                                         ") < ( ORD2-RIORDINO("
-                                         ord2-riordino
-                                         ") - ORD2-CONSEGNA("
-                                         ord2-consegna
-                                         ")) * SCO-MOLT-PORDINI("
-                                         sco-molt-pordini
-                                         ")"
-                                         como-impegnato
-                                    into como-riga
-                                  end-string
-                               else                
-                                  string "ARTICOLO KO. "
-                                         " - N1 (" 
-                                         como-n1
-                                         ") >= N2("
-                                         como-n2
-                                         "). ORD2-GIAC("
-                                         ord2-giac
-                                         ") + COMO-ORDINATO("
-                                         como-ordinato
-                                         ") - ORD2-PROMO("
-                                         ord2-promo
-                                         ") >= ( ORD2-RIORDINO("
-                                         ord2-riordino
-                                         ") - ORD2-CONSEGNA("
-                                         ord2-consegna
-                                         ")) * SCO-MOLT-PORDINI("
-                                         sco-molt-pordini
-                                         ")"
-                                         como-impegnato
-                                    into como-riga
-                                  end-string
-                               end-if
+                               if sco-codice = 13                      
+                                  compute como-idx = sco-m-rif - 1
+                                  initialize como-riga
+                                  if ord2-fabb-qta(como-idx) > 0
+                                     string "ARTICOLO OK. "
+                                            " - QTA MESE(" 
+                                            como-idx
+                                            ") > 0 ("
+                                            ord2-fabb-qta(como-idx)
+                                            ")"
+                                       into como-riga
+                                     end-string
+                                     perform SCRIVI-RIGA-LOG    
                                
-                               perform SCRIVI-RIGA-LOG    
-
-                               if como-n1 < como-n2
-                                  if forza-conferma
-                                     set ord2-listino-no to true
-                                  else
-                                     set ord2-listino-no to false
+                                     if forza-conferma
+                                        set ord2-listino-no to true
+                                     else
+                                        set ord2-listino-no to false
+                                     end-if
+                                     perform VERIFICA-GIORNO-MESE
+                                     rewrite ord2-rec
+                                     set tutto-ok to true
+                                  else                          
+                                     string "ARTICOLO KO. "
+                                            " - QTA MESE(" 
+                                            como-idx
+                                            ") <= 0 ("
+                                            ord2-fabb-qta(como-idx)
+                                            ")"
+                                       into como-riga
+                                     end-string
+                                     perform SCRIVI-RIGA-LOG    
                                   end-if
-                                  perform VERIFICA-GIORNO-MESE
-                                  rewrite ord2-rec
-                                  set tutto-ok to true
+                               else
+                                  compute como-n1 = ord2-giac + 
+           como-ordinato - ord2-promo
+                                  compute como-n2 = ( ord2-riordino - 
+           ord2-consegna ) * sco-molt-pordini
+                                  initialize como-riga  
+                               
+                                  if como-n1 < como-n2
+                                     string "ARTICOLO OK. "
+                                            " - N1 (" 
+                                            como-n1
+                                            ") < N2("
+                                            como-n2
+                                            "). ORD2-GIAC("
+                                            ord2-giac
+                                            ") + COMO-ORDINATO("
+                                            como-ordinato
+                                            ") - ORD2-PROMO("
+                                            ord2-promo
+                                            ") < ( ORD2-RIORDINO("
+                                            ord2-riordino
+                                            ") - ORD2-CONSEGNA("
+                                            ord2-consegna
+                                            ")) * SCO-MOLT-PORDINI("
+                                            sco-molt-pordini
+                                            ")"
+                                            como-impegnato
+                                       into como-riga
+                                     end-string
+                                  else                
+                                     string "ARTICOLO KO. "
+                                            " - N1 (" 
+                                            como-n1
+                                            ") >= N2("
+                                            como-n2
+                                            "). ORD2-GIAC("
+                                            ord2-giac
+                                            ") + COMO-ORDINATO("
+                                            como-ordinato
+                                            ") - ORD2-PROMO("
+                                            ord2-promo
+                                            ") >= ( ORD2-RIORDINO("
+                                            ord2-riordino
+                                            ") - ORD2-CONSEGNA("
+                                            ord2-consegna
+                                            ")) * SCO-MOLT-PORDINI("
+                                            sco-molt-pordini
+                                            ")"
+                                            como-impegnato
+                                       into como-riga
+                                     end-string
+                                  end-if
+                                  
+                                  perform SCRIVI-RIGA-LOG    
+                               
+                                  if como-n1 < como-n2
+                                     if forza-conferma
+                                        set ord2-listino-no to true
+                                     else
+                                        set ord2-listino-no to false
+                                     end-if
+                                     perform VERIFICA-GIORNO-MESE
+                                     rewrite ord2-rec
+                                     set tutto-ok to true
+                                  end-if
                                end-if
-
                             end-if
                          end-if
       *****                end-if
