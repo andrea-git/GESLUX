@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        venerdì 23 settembre 2022 13:22:08.
+       DATE-WRITTEN.        venerdì 23 settembre 2022 13:35:59.
        REMARKS.
       *{TOTEM}END
 
@@ -10346,8 +10346,7 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10583,8 +10582,7 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -12439,7 +12437,7 @@
                                   end-if
                                end-if                     
 
-                               if sco-codice = 13                      
+                               if sco-codice = 13 
                                   compute como-idx = sco-m-rif - 1
                                   initialize como-riga
                                   if ord2-fabb-qta(como-idx) > 0
