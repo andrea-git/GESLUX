@@ -1065,7 +1065,7 @@
                   "</Indirizzo>"
              into line-riga.
            write line-riga.
-           if cli-cap of clienti = "EE" or spaces
+           if cli-prov of clienti = "EE" or cli-cap of clienti = spaces
               move "00000" to cli-cap of clienti
            end-if.
            inspect cli-cap of clienti
@@ -1756,6 +1756,7 @@
                   78-spazi       
                   78-spazi                  
                   "</DatiAnagraficiVettore>"
+
              into line-riga.
            write line-riga. 
 
@@ -1791,7 +1792,7 @@
 
            write line-riga.     
                                           
-           if des-cap = "EE" or des-cap = spaces
+           if des-prov = "EE" or des-cap = spaces
               move "00000" to des-cap
            end-if.   
            inspect des-cap replacing trailing spaces by low-value.
