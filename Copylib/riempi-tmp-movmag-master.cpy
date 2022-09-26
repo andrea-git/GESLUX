@@ -114,6 +114,16 @@ LUBEXX           end-if
                     exit perform cycle
                  end-if
 
+                 if SaveAgente > 0 and
+                    SaveAgente not = mto-cod-agente 
+                    exit perform cycle
+                 end-if
+
+                 move mto-cod-agente to age-codice
+                 read agenti no lock
+                      invalid move spaces to age-ragsoc-1
+                 end-read
+
                  move mto-causale to tca-codice
                  read tcaumag  no lock invalid continue end-read
                  move tca-tipo to Save-CF
@@ -162,7 +172,9 @@ LUBEXX           end-if
            set trovato to true.
            initialize tmp-mov-rec replacing numeric data by zeroes
                                        alphanumeric data by spaces.
-
+                         
+           move age-codice         to tmp-mov-age-codice.
+           move age-ragsoc-1       to tmp-mov-age-ragsoc.
            move art-descrizione    to tmp-mov-desart.
            move mro-anno           to tmp-mov-anno. 
            move mro-numero         to tmp-mov-movim.
@@ -481,6 +493,10 @@ LUBEXX     move mro-prg-peso              to tmp-mov-peso.
               move como-data          to r-data-mov
                                                  
               move tmp-mov-marca      to r-marca
+                                              
+              move tmp-mov-age-codice to r-age
+              move tmp-mov-age-ragsoc to r-age-d
+
               move tmp-mov-magazz     to r-mag
               move tmp-mov-articolo   to r-articolo art-codice
 LUBEXX        move "N"                to r-utf
@@ -548,6 +564,10 @@ LUBEXX             end-if
                         separatore          delimited size
                         "Marca"             delimited size
                         separatore          delimited size
+                        "Agente"            delimited size
+                        separatore          delimited size
+                        "Ragione Sociale"   delimited size
+                        separatore          delimited size
                         "Mag."              delimited size
                         separatore          delimited size
                         "Articolo"          delimited size
@@ -612,6 +632,10 @@ LUBEXX             end-if
                      r-data-mov    delimited size
                      separatore    delimited size
                      r-marca       delimited size
+                     separatore    delimited size
+                     r-age         delimited size
+                     separatore    delimited size
+                     r-age-d       delimited size
                      separatore    delimited size
                      r-mag         delimited size
                      separatore    delimited size

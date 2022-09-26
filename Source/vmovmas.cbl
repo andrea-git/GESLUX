@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovmas.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 12 marzo 2022 12:58:08.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        lunedì 26 settembre 2022 14:04:58.
        REMARKS.
       *{TOTEM}END
 
@@ -42,8 +42,9 @@
            COPY "tgrupgdo.sl".
            COPY "mtordini.sl".
            COPY "mrordini.sl".
-           COPY "timbalqta.sl".
            COPY "timballi.sl".
+           COPY "timbalqta.sl".
+           COPY "agenti.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -63,8 +64,9 @@
            COPY "tgrupgdo.fd".
            COPY "mtordini.fd".
            COPY "mrordini.fd".
-           COPY "timbalqta.fd".
            COPY "timballi.fd".
+           COPY "timbalqta.fd".
+           COPY "agenti.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -92,13 +94,14 @@
            88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
        77 STATUS-tordini   PIC  X(2).
            88 Valid-STATUS-tordini VALUE IS "00" THRU "09". 
-       78 titolo VALUE IS "Geslux - Movimentazioni articoli su masrter"
-           . 
+       78 titolo VALUE IS "Geslux - Movimentazioni articoli su master". 
            COPY  "COMMON-EXCEL.DEF".
            COPY  "ACCETTA-NUM-REC-THIN.DEF".
            COPY  "LINK-GESLOCK.DEF".
        77 counter          PIC  9(10).
        77 counter2         PIC  9(10).
+       77 SaveAgente       PIC  9(5)
+                  VALUE IS 0.
        77 counter-edit     PIC  z(10).
        77 Form1-Tb-1-Handle
                   USAGE IS HANDLE OF WINDOW.
@@ -317,6 +320,8 @@
            05 r-numordcli      PIC  x(60).
            05 r-data-mov       PIC  99/99/9999.
            05 r-marca          PIC  z(4).
+           05 r-age            PIC  zzzz9.
+           05 r-age-d          PIC  x(40).
            05 r-mag            PIC  x(3).
            05 r-articolo       PIC  z(6).
            05 r-desart         PIC  x(50).
@@ -398,6 +403,8 @@
            88 Valid-STATUS-timballi VALUE IS "00" THRU "09". 
        77 STATUS-timbalqta PIC  X(2).
            88 Valid-STATUS-timbalqta VALUE IS "00" THRU "09". 
+       77 STATUS-agenti    PIC  X(2).
+           88 Valid-STATUS-agenti VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -424,6 +431,8 @@
               05 ef-marca-BUF PIC z(4).
       * Data.Entry-Field
               05 ef-art-BUF PIC z(6).
+      * Data.Entry-Field
+              05 ef-age-BUF PIC z(6).
       * Data.Label
               05 lab-cod-BUF PIC X(40).
       * Data.Label
@@ -436,6 +445,8 @@
               05 lab-tipo-BUF PIC X(35).
       * Data.Label
               05 lab-gdo-BUF PIC X(30).
+      * Data.Label
+              05 lab-age-BUF PIC X(50).
 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
@@ -486,8 +497,9 @@
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
-       77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
+       77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
+       77 TMP-DataSet1-agenti-BUF     PIC X(1233).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -568,16 +580,21 @@
        77 DataSet1-mrordini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-mrordini-KEY-Asc  VALUE "A".
           88 DataSet1-mrordini-KEY-Desc VALUE "D".
-       77 DataSet1-timbalqta-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-timbalqta-LOCK  VALUE "Y".
-       77 DataSet1-timbalqta-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-timbalqta-KEY-Asc  VALUE "A".
-          88 DataSet1-timbalqta-KEY-Desc VALUE "D".
        77 DataSet1-timballi-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-timballi-LOCK  VALUE "Y".
        77 DataSet1-timballi-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-timballi-KEY-Asc  VALUE "A".
           88 DataSet1-timballi-KEY-Desc VALUE "D".
+       77 DataSet1-timbalqta-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-timbalqta-LOCK  VALUE "Y".
+       77 DataSet1-timbalqta-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-timbalqta-KEY-Asc  VALUE "A".
+          88 DataSet1-timbalqta-KEY-Desc VALUE "D".
+       77 DataSet1-agenti-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-agenti-LOCK  VALUE "Y".
+       77 DataSet1-agenti-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-agenti-KEY-Asc  VALUE "A".
+          88 DataSet1-agenti-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -620,6 +637,7 @@
        78  78-ID-ef-des VALUE 5006.
        78  78-ID-ef-marca VALUE 5007.
        78  78-ID-ef-art VALUE 5008.
+       78  78-ID-ef-age VALUE 5009.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1175,7 +1193,7 @@
            Frame, 
            COL 1,50, 
            LINE 1,50,
-           LINES 20,61 ,
+           LINES 23,44 ,
            SIZE 44,60 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -1354,6 +1372,24 @@
            RIGHT,
            MAX-TEXT 6,
            VALUE ef-art-BUF,
+           .
+
+      * ENTRY FIELD
+       05
+           ef-age, 
+           Entry-Field, 
+           COL 13,00, 
+           LINE 21,78,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-age,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 6,
+           VALUE ef-age-BUF,
            .
 
       * LABEL
@@ -1616,12 +1652,43 @@
            TRANSPARENT,
            .
 
+      * LABEL
+       05
+           Screen4-La-4a, 
+           Label, 
+           COL 4,50, 
+           LINE 21,78,
+           LINES 1,33 ,
+           SIZE 8,00 ,
+           ID IS 18,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Agente",
+           .
+
+      * DB_LABEL
+       05
+           lab-age, 
+           Label, 
+           COL 20,50, 
+           LINE 21,78,
+           LINES 2,00 ,
+           SIZE 24,00 ,
+           COLOR IS 5,
+           ID IS 22,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE lab-age-BUF,
+           TRANSPARENT,
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 22,72,
+           LINE 24,94,
            LINES 2,78 ,
            SIZE 45,90 ,
            LOWERED,
@@ -1635,7 +1702,7 @@
            pb-ok, 
            Push-Button, 
            COL 30,90, 
-           LINE 23,41,
+           LINE 25,63,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -1654,7 +1721,7 @@
            pb-annulla, 
            Push-Button, 
            COL 38,80, 
-           LINE 23,41,
+           LINE 25,63,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -2719,8 +2786,9 @@
            PERFORM OPEN-tgrupgdo
            PERFORM OPEN-mtordini
            PERFORM OPEN-mrordini
-           PERFORM OPEN-timbalqta
            PERFORM OPEN-timballi
+           PERFORM OPEN-timbalqta
+           PERFORM OPEN-agenti
       *    After Open
            .
 
@@ -2904,6 +2972,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-timballi.
+      * <TOTEM:EPT. INIT:vmovmas, FD:timballi, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT timballi
+           IF NOT Valid-STATUS-timballi
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:vmovmas, FD:timballi, AfterOpen>
+      * <TOTEM:END>
+           .
+
        OPEN-timbalqta.
       * <TOTEM:EPT. INIT:vmovmas, FD:timbalqta, BeforeOpen>
       * <TOTEM:END>
@@ -2916,15 +2996,15 @@
       * <TOTEM:END>
            .
 
-       OPEN-timballi.
-      * <TOTEM:EPT. INIT:vmovmas, FD:timballi, BeforeOpen>
+       OPEN-agenti.
+      * <TOTEM:EPT. INIT:vmovmas, FD:agenti, BeforeOpen>
       * <TOTEM:END>
-           OPEN  INPUT timballi
-           IF NOT Valid-STATUS-timballi
+           OPEN  INPUT agenti
+           IF NOT Valid-STATUS-agenti
               PERFORM  Form1-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
            END-IF
-      * <TOTEM:EPT. INIT:vmovmas, FD:timballi, AfterOpen>
+      * <TOTEM:EPT. INIT:vmovmas, FD:agenti, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -2947,8 +3027,9 @@
            PERFORM CLOSE-tgrupgdo
            PERFORM CLOSE-mtordini
            PERFORM CLOSE-mrordini
-           PERFORM CLOSE-timbalqta
            PERFORM CLOSE-timballi
+           PERFORM CLOSE-timbalqta
+           PERFORM CLOSE-agenti
       *    After Close
            .
 
@@ -3040,16 +3121,22 @@
            CLOSE mrordini
            .
 
+       CLOSE-timballi.
+      * <TOTEM:EPT. INIT:vmovmas, FD:timballi, BeforeClose>
+      * <TOTEM:END>
+           CLOSE timballi
+           .
+
        CLOSE-timbalqta.
       * <TOTEM:EPT. INIT:vmovmas, FD:timbalqta, BeforeClose>
       * <TOTEM:END>
            CLOSE timbalqta
            .
 
-       CLOSE-timballi.
-      * <TOTEM:EPT. INIT:vmovmas, FD:timballi, BeforeClose>
+       CLOSE-agenti.
+      * <TOTEM:EPT. INIT:vmovmas, FD:agenti, BeforeClose>
       * <TOTEM:END>
-           CLOSE timballi
+           CLOSE agenti
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -5573,160 +5660,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-timbalqta-INITSTART.
-           IF DataSet1-timbalqta-KEY-Asc
-              MOVE Low-Value TO imq-chiave
-           ELSE
-              MOVE High-Value TO imq-chiave
-           END-IF
-           .
-
-       DataSet1-timbalqta-INITEND.
-           IF DataSet1-timbalqta-KEY-Asc
-              MOVE High-Value TO imq-chiave
-           ELSE
-              MOVE Low-Value TO imq-chiave
-           END-IF
-           .
-
-      * timbalqta
-       DataSet1-timbalqta-START.
-           IF DataSet1-timbalqta-KEY-Asc
-              START timbalqta KEY >= imq-chiave
-           ELSE
-              START timbalqta KEY <= imq-chiave
-           END-IF
-           .
-
-       DataSet1-timbalqta-START-NOTGREATER.
-           IF DataSet1-timbalqta-KEY-Asc
-              START timbalqta KEY <= imq-chiave
-           ELSE
-              START timbalqta KEY >= imq-chiave
-           END-IF
-           .
-
-       DataSet1-timbalqta-START-GREATER.
-           IF DataSet1-timbalqta-KEY-Asc
-              START timbalqta KEY > imq-chiave
-           ELSE
-              START timbalqta KEY < imq-chiave
-           END-IF
-           .
-
-       DataSet1-timbalqta-START-LESS.
-           IF DataSet1-timbalqta-KEY-Asc
-              START timbalqta KEY < imq-chiave
-           ELSE
-              START timbalqta KEY > imq-chiave
-           END-IF
-           .
-
-       DataSet1-timbalqta-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-timbalqta-LOCK
-              READ timbalqta WITH LOCK 
-              KEY imq-chiave
-           ELSE
-              READ timbalqta WITH NO LOCK 
-              KEY imq-chiave
-           END-IF
-           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT 
-           MOVE "timbalqta" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timbalqta-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-timbalqta-KEY-Asc
-              IF DataSet1-timbalqta-LOCK
-                 READ timbalqta NEXT WITH LOCK
-              ELSE
-                 READ timbalqta NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-timbalqta-LOCK
-                 READ timbalqta PREVIOUS WITH LOCK
-              ELSE
-                 READ timbalqta PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
-           MOVE "timbalqta" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timbalqta-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-timbalqta-KEY-Asc
-              IF DataSet1-timbalqta-LOCK
-                 READ timbalqta PREVIOUS WITH LOCK
-              ELSE
-                 READ timbalqta PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-timbalqta-LOCK
-                 READ timbalqta NEXT WITH LOCK
-              ELSE
-                 READ timbalqta NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
-           MOVE "timbalqta" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timbalqta-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
-           MOVE "timbalqta" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timbalqta-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
-           MOVE "timbalqta" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-timbalqta-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
-           MOVE "timbalqta" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-timballi-INITSTART.
            IF DataSet1-timballi-KEY-Asc
               MOVE Low-Value TO imb-chiave
@@ -5881,6 +5814,314 @@
       * <TOTEM:END>
            .
 
+       DataSet1-timbalqta-INITSTART.
+           IF DataSet1-timbalqta-KEY-Asc
+              MOVE Low-Value TO imq-chiave
+           ELSE
+              MOVE High-Value TO imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-INITEND.
+           IF DataSet1-timbalqta-KEY-Asc
+              MOVE High-Value TO imq-chiave
+           ELSE
+              MOVE Low-Value TO imq-chiave
+           END-IF
+           .
+
+      * timbalqta
+       DataSet1-timbalqta-START.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY >= imq-chiave
+           ELSE
+              START timbalqta KEY <= imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-START-NOTGREATER.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY <= imq-chiave
+           ELSE
+              START timbalqta KEY >= imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-START-GREATER.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY > imq-chiave
+           ELSE
+              START timbalqta KEY < imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-START-LESS.
+           IF DataSet1-timbalqta-KEY-Asc
+              START timbalqta KEY < imq-chiave
+           ELSE
+              START timbalqta KEY > imq-chiave
+           END-IF
+           .
+
+       DataSet1-timbalqta-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-timbalqta-LOCK
+              READ timbalqta WITH LOCK 
+              KEY imq-chiave
+           ELSE
+              READ timbalqta WITH NO LOCK 
+              KEY imq-chiave
+           END-IF
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT 
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-timbalqta-KEY-Asc
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta NEXT WITH LOCK
+              ELSE
+                 READ timbalqta NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta PREVIOUS WITH LOCK
+              ELSE
+                 READ timbalqta PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-timbalqta-KEY-Asc
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta PREVIOUS WITH LOCK
+              ELSE
+                 READ timbalqta PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-timbalqta-LOCK
+                 READ timbalqta NEXT WITH LOCK
+              ELSE
+                 READ timbalqta NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-timbalqta-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-timbalqta TO TOTEM-ERR-STAT
+           MOVE "timbalqta" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:timbalqta, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-INITSTART.
+           IF DataSet1-agenti-KEY-Asc
+              MOVE Low-Value TO age-chiave
+           ELSE
+              MOVE High-Value TO age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-INITEND.
+           IF DataSet1-agenti-KEY-Asc
+              MOVE High-Value TO age-chiave
+           ELSE
+              MOVE Low-Value TO age-chiave
+           END-IF
+           .
+
+      * agenti
+       DataSet1-agenti-START.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY >= age-chiave
+           ELSE
+              START agenti KEY <= age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-START-NOTGREATER.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY <= age-chiave
+           ELSE
+              START agenti KEY >= age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-START-GREATER.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY > age-chiave
+           ELSE
+              START agenti KEY < age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-START-LESS.
+           IF DataSet1-agenti-KEY-Asc
+              START agenti KEY < age-chiave
+           ELSE
+              START agenti KEY > age-chiave
+           END-IF
+           .
+
+       DataSet1-agenti-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-agenti-LOCK
+              READ agenti WITH LOCK 
+              KEY age-chiave
+           ELSE
+              READ agenti WITH NO LOCK 
+              KEY age-chiave
+           END-IF
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT 
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-agenti-KEY-Asc
+              IF DataSet1-agenti-LOCK
+                 READ agenti NEXT WITH LOCK
+              ELSE
+                 READ agenti NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-agenti-LOCK
+                 READ agenti PREVIOUS WITH LOCK
+              ELSE
+                 READ agenti PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-agenti-KEY-Asc
+              IF DataSet1-agenti-LOCK
+                 READ agenti PREVIOUS WITH LOCK
+              ELSE
+                 READ agenti PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-agenti-LOCK
+                 READ agenti NEXT WITH LOCK
+              ELSE
+                 READ agenti NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-agenti-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-agenti TO TOTEM-ERR-STAT
+           MOVE "agenti" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:agenti, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE mar-rec OF tmarche
@@ -5897,8 +6138,9 @@
            INITIALIZE gdo-rec OF tgrupgdo
            INITIALIZE mto-rec OF mtordini
            INITIALIZE mro-rec OF mrordini
-           INITIALIZE imq-rec OF timbalqta
            INITIALIZE imb-rec OF timballi
+           INITIALIZE imq-rec OF timbalqta
+           INITIALIZE age-rec OF agenti
            .
 
 
@@ -6091,6 +6333,14 @@
            .
 
       * FD's Initialize Paragraph
+       DataSet1-timballi-INITREC.
+           INITIALIZE imb-rec OF timballi
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
        DataSet1-timbalqta-INITREC.
            INITIALIZE imq-rec OF timbalqta
                REPLACING NUMERIC       DATA BY ZEROS
@@ -6099,8 +6349,8 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-timballi-INITREC.
-           INITIALIZE imb-rec OF timballi
+       DataSet1-agenti-INITREC.
+           INITIALIZE age-rec OF agenti
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -6638,7 +6888,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 24,50,
+              LINES 26,72,
               SIZE 45,90,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -6692,8 +6942,11 @@
            end-read.
                                                                      
            move "<<HELP>> Blank = TUTTE LE TIPOLOGIE" to lab-tipo-buf.
-           move "<<HELP>> Blank = TUTTI I CLIENTI"    to lab-cli-buf.
+           move "<<HELP>> Blank = TUTTI I CLIENTI"    to lab-cli-buf. 
            move "<<HELP>> Blank = TUTTI I DESTINI"    to lab-des-buf.
+           move "<<HELP>> Blank = TUTTE LE MARCHE"    to lab-marca-buf.
+           move "<<HELP>> Blank = TUTTI GLI ARTICOLI" to lab-art-buf.
+           move "<<HELP>> Blank = TUTTI GLI AGENTI"   to lab-age-buf.
 
            display Form1.
 
@@ -6772,12 +7025,20 @@
       * DB_LABEL
               MOVE "<<HELP>> Blank = TUTTI I CLIENTI" TO cli-ragsoc-1
       * DB_LABEL
+              MOVE "<<HELP>> Blank = TUTTI LE MARCHE" TO mar-descrizione
+      * DB_LABEL
+              MOVE "<<HELP>> Blank = TUTTI GLI ARTICOLI" TO 
+           art-descrizione
+      * DB_LABEL
               MOVE "<<HELP>> Blank = TUTTI I DESTINI" TO des-ragsoc-1
       * DB_LABEL
               MOVE "<<HELP>> Blank = TUTTE LE TIPOLOGIE" TO 
            tcl-descrizione
       * DB_LABEL
               MOVE "<<HELP>> Blank = TUTTI I GRUPPI" TO gdo-intestazione
+      * DB_LABEL
+              MOVE "<<HELP>> Blank = TUTTI GLI AGENTI" TO 
+           art-descrizione
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
       * <TOTEM:END>
            PERFORM Form1-FLD-TO-BUF
@@ -6836,6 +7097,14 @@
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5008 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-age's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-age-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5009 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -6942,6 +7211,23 @@
            PERFORM ef-art-AFTER-VALIDATION
            .
 
+       ef-age-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-age, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-age-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-age, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-age's Validation
+       ef-age-VALIDATION.
+           PERFORM ef-age-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-age-AFTER-VALIDATION
+           .
+
 
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
@@ -6958,6 +7244,8 @@
            MOVE ef-marca-BUF TO mar-codice
       * DB_Entry-Field : ef-art
            MOVE ef-art-BUF TO art-codice
+      * DB_Entry-Field : ef-age
+           MOVE ef-age-BUF TO art-codice
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
       * <TOTEM:END>
            .
@@ -6977,6 +7265,8 @@
            MOVE mar-codice TO ef-marca-BUF
       * DB_Entry-Field : ef-art
            MOVE art-codice TO ef-art-BUF
+      * DB_Entry-Field : ef-age
+           MOVE art-codice TO ef-age-BUF
       * DB_LABEL : lab-cod
               MOVE cli-ragsoc-1  TO lab-cod-BUF
       * DB_LABEL : lab-marca
@@ -6989,6 +7279,8 @@
               MOVE tcl-descrizione  TO lab-tipo-BUF
       * DB_LABEL : lab-gdo
               MOVE gdo-intestazione  TO lab-gdo-BUF
+      * DB_LABEL : lab-age
+              MOVE art-descrizione  TO lab-age-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
       * <TOTEM:END>
            .
@@ -7055,6 +7347,10 @@
            when 78-ID-ef-art
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella BEFORE della screen
@@ -7098,6 +7394,11 @@
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella AFTER della screen
@@ -7132,6 +7433,9 @@
                 perform CONTROLLO
            |78-ID-ef-art è l'ID del campo ef-art
            when 78-ID-ef-art
+                perform CONTROLLO
+           |78-ID-ef-age è l'ID del campo ef-age
+           when 78-ID-ef-age
                 perform CONTROLLO
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
@@ -8134,6 +8438,7 @@
            WHEN 5006 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5007 MOVE "." to TOTEM-HINT-TEXT
            WHEN 5008 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5009 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -8143,6 +8448,7 @@
            When 5006 PERFORM ef-des-BeforeProcedure
            When 5007 PERFORM ef-marca-BeforeProcedure
            When 5008 PERFORM ef-art-BeforeProcedure
+           When 5009 PERFORM ef-art-BeforeProcedure
            END-EVALUATE
            perform Form1-BEFORE-SCREEN
            .
@@ -8155,6 +8461,7 @@
            When 5006 PERFORM ef-des-AfterProcedure
            When 5007 PERFORM ef-marca-AfterProcedure
            When 5008 PERFORM ef-art-AfterProcedure
+           When 5009 PERFORM ef-art-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -8307,6 +8614,16 @@
                 cancel "zoom-gt"
                 if stato-zoom = 0
                    modify ef-art,   value art-codice
+                end-if        
+      *
+           when 78-ID-ef-age                      
+                inquire ef-age    value age-codice
+                move "agenti"  to Como-File
+                call   "zoom-gt" using como-file, age-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   modify ef-age,   value age-codice
                 end-if
       *
            end-evaluate 
@@ -8490,9 +8807,11 @@
                                    icon 2
                            move 78-ID-ef-marca to control-id 
                    end-read
+                else                        
+                   move "TUTTE LE MARCHE" to mar-descrizione
                 end-if     
                 move mar-descrizione to lab-marca-buf
-                display lab-marca
+                display lab-marca   
       *                        
            when 78-ID-ef-art
                 inquire ef-art,   value in art-codice
@@ -8520,10 +8839,33 @@
                            display ef-marca lab-marca
                         end-if
                    end-read    
+                else                        
+                   move "TUTTI GLI ARTICOLI" to art-descrizione
                 end-if     
                 move art-descrizione to lab-art-buf
                 display lab-art
                 move art-codice to SaveArticolo
+      *               
+      *                        
+           when 78-ID-ef-age
+                inquire ef-age,   value in age-codice
+                move spaces to age-ragsoc-1
+                if age-codice not = 0   
+                   read agenti no lock
+                        invalid
+                           set errori to true
+                           display message box "Inserimento agente NON v
+      -    "alido"
+                                   title = tit-err
+                                   icon 2
+                           move 78-ID-ef-age to control-id 
+                   end-read    
+                else                        
+                   move "TUTTI GLI AGENTI" to age-ragsoc-1
+                end-if     
+                move age-ragsoc-1 to lab-age-buf
+                display lab-age 
+                move age-codice to SaveAgente
       *               
            end-evaluate.
 
@@ -8855,6 +9197,12 @@
               INQUIRE ef-art, VALUE IN art-codice
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-art-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-age, VALUE IN art-codice
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-age-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

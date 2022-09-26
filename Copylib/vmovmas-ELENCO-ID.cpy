@@ -32,6 +32,10 @@
            when 78-ID-ef-art
                 inquire ef-art, value in ef-art-buf
 
+           |78-ID-ef-age è l'ID del control ef-age
+           when 78-ID-ef-age
+                inquire ef-age, value in ef-age-buf
+
            end-evaluate.
 
       * Paragrafo per la struttura dei controlli sulla screen form3
