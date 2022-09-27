@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        venerdì 23 settembre 2022 13:35:59.
+       DATE-WRITTEN.        martedì 27 settembre 2022 11:03:39.
        REMARKS.
       *{TOTEM}END
 
@@ -147,10 +147,22 @@
            COPY  "TROVA-PARAMETRO.DEF".
        77 como-giorno      PIC  9.
        77 como-idx         PIC  99.
-       77 como-n1          PIC  s9(15)v999.
-       77 como-n2          PIC  s9(15)v999.
+       77 como-n1          PIC  s9(15)v99.
+       77 como-n2          PIC  s9(15)v99.
        77 LinkAuto         PIC  9.
        77 como-mese        PIC  99.
+       77 como-edit-1      PIC  ----.---.---.---.---,--.
+       77 como-edit-2      PIC  ----.---.---.---.---,--.
+       77 como-edit-3      PIC  ----.---.---.---.---,--.
+       77 como-edit-4      PIC  ----.---.---.---.---,--.
+       77 como-edit-5      PIC  ----.---.---.---.---,--.
+       77 como-edit-6      PIC  ----.---.---.---.---,--.
+       77 como-edit-7      PIC  ----.---.---.---.---,--.
+       77 como-edit-8      PIC  ----.---.---.---.---,--.
+       77 countChar        PIC  99.
+       77 numberType       PIC  9.
+           88 integer VALUE IS 0. 
+           88 decimal VALUE IS 1. 
        77 FILLER           PIC  9.
            88 solo-uscita VALUE IS 1    WHEN SET TO FALSE  0. 
        77 calcolo-piombo   PIC  x.
@@ -12360,6 +12372,10 @@
                          move art-scorta    to sco-codice
                          read tscorte no lock                           
               
+
+                         set integer to true
+                         move como-impegnato to como-n1
+                         perform EDIT-NUMERO-1     
                       
                          initialize como-riga
                          string "ELABORAZIONE ARTICOLO: "
@@ -12371,7 +12387,7 @@
                                 " - IMMEDIATO: "
                                 sco-immediato
                                 " - IMPEGNATO: "
-                                como-impegnato
+                                como-edit-1 delimited low-value
                            into como-riga
                          end-string
                          perform SCRIVI-RIGA-LOG
@@ -12380,13 +12396,17 @@
                             |Gli articoli "su richiesta" dovranno andare
                             |a copertura dell'impegnato soltanto quand'esso
                             |è superiore alle zero
-                            if sco-immediato-si
+                            if sco-immediato-si      
+                         
+                               set integer to true
+                               move como-impegnato to como-n1
+                               perform EDIT-NUMERO-1     
+
                                if como-impegnato > 0
                                   string "ARTICOLO OK. "
                                          " - COMO-IMPEGNATO("
-                                         como-impegnato
-                                         ") > 0"
-                                         como-impegnato
+                                         como-edit-1 delimited low-value
+                                         ") > 0"       
                                     into como-riga
                                   end-string
                                   if forza-conferma
@@ -12400,9 +12420,8 @@
                                else       
                                   string "ARTICOLO KO. "
                                          " - COMO-IMPEGNATO("
-                                         como-impegnato
-                                         ") <= 0"
-                                         como-impegnato
+                                         como-edit-1 delimited low-value
+                                         ") <= 0"      
                                     into como-riga
                                   end-string
                                end-if
@@ -12437,7 +12456,13 @@
                                   end-if
                                end-if                     
 
-                               if sco-codice = 13 
+                               if sco-codice = 13   
+                         
+                                  set integer to true
+                                  move ord2-fabb-qta(como-idx) to 
+           como-n1
+                                  perform EDIT-NUMERO-1     
+
                                   compute como-idx = sco-m-rif - 1
                                   initialize como-riga
                                   if ord2-fabb-qta(como-idx) > 0
@@ -12445,7 +12470,8 @@
                                             " - QTA MESE(" 
                                             como-idx
                                             ") > 0 ("
-                                            ord2-fabb-qta(como-idx)
+                                            como-edit-1 delimited 
+           low-value
                                             ")"
                                        into como-riga
                                      end-string
@@ -12463,8 +12489,9 @@
                                      string "ARTICOLO KO. "
                                             " - QTA MESE(" 
                                             como-idx
-                                            ") <= 0 ("
-                                            ord2-fabb-qta(como-idx)
+                                            ") <= 0 ("                  
+                                            como-edit-1 delimited 
+           low-value
                                             ")"
                                        into como-riga
                                      end-string
@@ -12475,50 +12502,105 @@
            como-ordinato - ord2-promo
                                   compute como-n2 = ( ord2-riordino - 
            ord2-consegna ) * sco-molt-pordini
+                                                       
+                                  set decimal to true        
+                                  perform EDIT-NUMERO-1
+
+                                  set decimal to true        
+                                  move como-n1 to como-n2
+                                  perform EDIT-NUMERO-2
+
+                                  set integer to true        
+                                  move ord2-giac to como-n1
+                                  perform EDIT-NUMERO-3
+
+                                  set integer to true        
+                                  move como-ordinato to como-n1
+                                  perform EDIT-NUMERO-4
+
+                                  set integer to true        
+                                  move ord2-promo to como-n1
+                                  perform EDIT-NUMERO-5
+
+                                  set decimal to true        
+                                  move ord2-riordino to como-n1
+                                  perform EDIT-NUMERO-6
+
+                                  set decimal to true        
+                                  move ord2-consegna to como-n1
+                                  perform EDIT-NUMERO-7
+
+                                  set decimal to true        
+                                  move sco-molt-pordini to como-n1
+                                  perform EDIT-NUMERO-8
+                                 
                                   initialize como-riga  
-                               
                                   if como-n1 < como-n2
                                      string "ARTICOLO OK. "
                                             " - N1 (" 
-                                            como-n1
-                                            ") < N2("
-                                            como-n2
-                                            "). ORD2-GIAC("
-                                            ord2-giac
-                                            ") + COMO-ORDINATO("
-                                            como-ordinato
-                                            ") - ORD2-PROMO("
-                                            ord2-promo
-                                            ") < ( ORD2-RIORDINO("
-                                            ord2-riordino
-                                            ") - ORD2-CONSEGNA("
-                                            ord2-consegna
-                                            ")) * SCO-MOLT-PORDINI("
-                                            sco-molt-pordini
-                                            ")"
-                                            como-impegnato
+                                            como-edit-1 delimited 
+           low-value
+                                            ") < N2("                   
+              
+                                            como-edit-2 delimited 
+           low-value
+                                            "). ORD2-GIAC("             
+               
+                                            como-edit-3 delimited 
+           low-value
+                                            ") + COMO-ORDINATO("        
+               
+                                            como-edit-4 delimited 
+           low-value
+                                            ") - ORD2-PROMO("           
+               
+                                            como-edit-5 delimited 
+           low-value
+                                            ") < ( ORD2-RIORDINO("      
+               
+                                            como-edit-6 delimited 
+           low-value
+                                            ") - ORD2-CONSEGNA("        
+               
+                                            como-edit-7 delimited 
+           low-value
+                                            ")) * SCO-MOLT-PORDINI("    
+               
+                                            como-edit-8 delimited 
+           low-value
+                                            ")"                         
+               
                                        into como-riga
                                      end-string
                                   else                
                                      string "ARTICOLO KO. "
-                                            " - N1 (" 
-                                            como-n1
-                                            ") >= N2("
-                                            como-n2
+                                            " - N1 ("  
+                                            como-edit-1 delimited 
+           low-value
+                                            ") >= N2("                  
+              
+                                            como-edit-2 delimited 
+           low-value
                                             "). ORD2-GIAC("
-                                            ord2-giac
+                                            como-edit-3 delimited 
+           low-value
                                             ") + COMO-ORDINATO("
-                                            como-ordinato
-                                            ") - ORD2-PROMO("
-                                            ord2-promo
-                                            ") >= ( ORD2-RIORDINO("
-                                            ord2-riordino
-                                            ") - ORD2-CONSEGNA("
-                                            ord2-consegna
-                                            ")) * SCO-MOLT-PORDINI("
-                                            sco-molt-pordini
-                                            ")"
-                                            como-impegnato
+                                            como-edit-4 delimited 
+           low-value
+                                            ") - ORD2-PROMO("         
+                                            como-edit-5 delimited 
+           low-value
+                                            ") >= ( ORD2-RIORDINO("   
+                                            como-edit-6 delimited 
+           low-value
+                                            ") - ORD2-CONSEGNA("      
+                                            como-edit-7 delimited 
+           low-value
+                                            ")) * SCO-MOLT-PORDINI("  
+                                            como-edit-8 delimited 
+           low-value
+                                            ")"                         
+               
                                        into como-riga
                                      end-string
                                   end-if
@@ -12651,7 +12733,119 @@
                       set ord2-si-conferma to true
                    end-if
               end-evaluate
-           end-if 
+           end-if.                        
+
+      ***---
+       EDIT-NUMERO-1.           
+           move como-n1   to como-edit-1.
+           call "C$JUSTIFY" using como-edit-1, "L".
+           inspect como-edit-1 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-1 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-1(countChar:)                 
+              inspect como-edit-1 replacing trailing spaces by low-value
+           end-if.                
+
+      ***---
+       EDIT-NUMERO-2.           
+           move como-n1   to como-edit-2.
+           call "C$JUSTIFY" using como-edit-2, "L".
+           inspect como-edit-2 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-2 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-2(countChar:)                 
+              inspect como-edit-2 replacing trailing spaces by low-value
+           end-if.               
+
+      ***---
+       EDIT-NUMERO-3.           
+           move como-n1   to como-edit-3.
+           call "C$JUSTIFY" using como-edit-3, "L".
+           inspect como-edit-3 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-3 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-3(countChar:)                 
+              inspect como-edit-3 replacing trailing spaces by low-value
+           end-if.                      
+
+      ***---
+       EDIT-NUMERO-4.           
+           move como-n1   to como-edit-4.
+           call "C$JUSTIFY" using como-edit-4, "L".
+           inspect como-edit-4 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-4 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-4(countChar:)                 
+              inspect como-edit-4 replacing trailing spaces by low-value
+           end-if.               
+
+      ***---
+       EDIT-NUMERO-5.           
+           move como-n1   to como-edit-5.
+           call "C$JUSTIFY" using como-edit-5, "L".
+           inspect como-edit-5 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-5 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-5(countChar:)                 
+              inspect como-edit-5 replacing trailing spaces by low-value
+           end-if.                      
+
+      ***---
+       EDIT-NUMERO-6.           
+           move como-n1   to como-edit-6.
+           call "C$JUSTIFY" using como-edit-6, "L".
+           inspect como-edit-6 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-6 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-6(countChar:)                 
+              inspect como-edit-6 replacing trailing spaces by low-value
+           end-if.               
+
+      ***---
+       EDIT-NUMERO-7.           
+           move como-n1   to como-edit-7.
+           call "C$JUSTIFY" using como-edit-7, "L".
+           inspect como-edit-7 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-7 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-7(countChar:)                 
+              inspect como-edit-7 replacing trailing spaces by low-value
+           end-if.                                     
+
+      ***---
+       EDIT-NUMERO-8.           
+           move como-n1   to como-edit-8.
+           call "C$JUSTIFY" using como-edit-8, "L".
+           inspect como-edit-8 replacing trailing spaces by low-value.
+           if integer
+              move 0 to countChar
+              inspect como-edit-8 tallying countChar for characters 
+           before low-value
+              subtract 2 from countChar
+              move spaces to como-edit-8(countChar:)                 
+              inspect como-edit-8 replacing trailing spaces by low-value
+           end-if                  
            .
       * <TOTEM:END>
 
