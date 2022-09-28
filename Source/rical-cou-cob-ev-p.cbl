@@ -161,41 +161,61 @@
                             read tmarche no lock
                             perform CALCOLA-IMPOSTE
 
+                            if imposta-consumo not = ror-imp-consumo
+                               move imposta-consumo to ror-imp-consumo
+                               if TrattamentoGDO                    
+                                  compute ror-imponib-merce = 
+                                          ror-prz-unitario  -
+                                          ror-imp-consumo   -
+                                          ror-imp-cou-cobat -
+                                          ror-add-piombo
+                               end-if     
+                               rewrite ror-rec
+                                       invalid continue
+                                   not invalid add 1 to righe
+                               end-rewrite
+                            end-if
+
                             evaluate true   
                             when ImpostaCou
-                                 move imposta-cou 
-                                   to ror-imp-cou-cobat
-
-                                 if TrattamentoGDO
-           
-                                    compute ror-imponib-merce = 
-                                            ror-prz-unitario  -
-                                            ror-imp-consumo   -
-                                            ror-imp-cou-cobat -
-                                            ror-add-piombo
+                                 if imposta-cou not = ror-imp-cou-cobat
+                                    move imposta-cou 
+                                      to ror-imp-cou-cobat
+                                 
+                                    if TrattamentoGDO
+                                 
+                                       compute ror-imponib-merce = 
+                                               ror-prz-unitario  -
+                                               ror-imp-consumo   -
+                                               ror-imp-cou-cobat -
+                                               ror-add-piombo
+                                    end-if
+                                 
+                                    rewrite ror-rec
+                                            invalid continue
+                                        not invalid add 1 to righe
+                                    end-rewrite
                                  end-if
-
-                                 rewrite ror-rec
-                                         invalid continue
-                                     not invalid add 1 to righe
-                                 end-rewrite
                             when ImpostaCobat
-                                 move imposta-cobat
-                                   to ror-imp-cou-cobat
-
-                                 if TrattamentoGDO
-           
-                                    compute ror-imponib-merce = 
-                                            ror-prz-unitario  -
-                                            ror-imp-consumo   -
-                                            ror-imp-cou-cobat -
-                                            ror-add-piombo
+                                 if imposta-cobat not = 
+                                    ror-imp-cou-cobat 
+                                    move imposta-cobat
+                                      to ror-imp-cou-cobat
+                                 
+                                    if TrattamentoGDO
+                                 
+                                       compute ror-imponib-merce = 
+                                               ror-prz-unitario  -
+                                               ror-imp-consumo   -
+                                               ror-imp-cou-cobat -
+                                               ror-add-piombo
+                                    end-if
+                                 
+                                    rewrite ror-rec
+                                            invalid continue
+                                        not invalid add 1 to righe
+                                    end-rewrite
                                  end-if
-
-                                 rewrite ror-rec
-                                         invalid continue
-                                     not invalid add 1 to righe
-                                 end-rewrite
                             end-evaluate
 
                        end-read
