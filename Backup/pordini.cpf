@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E691B75629-683-3214212585
+PROGRAM_UNIQUE_CODE=TOTEM-7E691C93145-94-2732414362
 
 {{@DESCRIPTION:
 
@@ -11805,6 +11805,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-1.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.
            move como-n1   to como-edit-1.
            call "C$JUSTIFY" using como-edit-1, "L".
            inspect como-edit-1 replacing trailing spaces by low-value.
@@ -11818,6 +11826,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-2.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.    
            move como-n1   to como-edit-2.
            call "C$JUSTIFY" using como-edit-2, "L".
            inspect como-edit-2 replacing trailing spaces by low-value.
@@ -11831,6 +11847,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-3.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.    
            move como-n1   to como-edit-3.
            call "C$JUSTIFY" using como-edit-3, "L".
            inspect como-edit-3 replacing trailing spaces by low-value.
@@ -11844,6 +11868,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-4.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.    
            move como-n1   to como-edit-4.
            call "C$JUSTIFY" using como-edit-4, "L".
            inspect como-edit-4 replacing trailing spaces by low-value.
@@ -11857,6 +11889,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-5.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.    
            move como-n1   to como-edit-5.
            call "C$JUSTIFY" using como-edit-5, "L".
            inspect como-edit-5 replacing trailing spaces by low-value.
@@ -11870,6 +11910,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-6.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.    
            move como-n1   to como-edit-6.
            call "C$JUSTIFY" using como-edit-6, "L".
            inspect como-edit-6 replacing trailing spaces by low-value.
@@ -11883,6 +11931,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-7.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.    
            move como-n1   to como-edit-7.
            call "C$JUSTIFY" using como-edit-7, "L".
            inspect como-edit-7 replacing trailing spaces by low-value.
@@ -11896,6 +11952,14 @@ BEGIN-TEXT
 
       ***---
        EDIT-NUMERO-8.           
+           if como-n1 = 0
+              move "0,00" to  como-edit-1
+              if integer
+                 move "0" to como-edit-1 
+              end-if
+              inspect como-edit-1 replacing trailing spaces by low-value
+              exit paragraph
+           end-if.    
            move como-n1   to como-edit-8.
            call "C$JUSTIFY" using como-edit-8, "L".
            inspect como-edit-8 replacing trailing spaces by low-value.
