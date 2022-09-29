@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E691C93145-94-2732414362
+PROGRAM_UNIQUE_CODE=TOTEM-7E691D9118-732-214320513
 
 {{@DESCRIPTION:
 
@@ -11555,13 +11555,13 @@ BEGIN-TEXT
                                   end-if
                                end-if                     
 
-                               if sco-codice = 13   
+                               if sco-codice = 13            
+                                  compute como-idx = sco-m-rif - 1
                          
                                   set integer to true
                                   move ord2-fabb-qta(como-idx) to como-n1
                                   perform EDIT-NUMERO-1     
-
-                                  compute como-idx = sco-m-rif - 1
+                                                             
                                   initialize como-riga
                                   if ord2-fabb-qta(como-idx) > 0
                                      string "ARTICOLO OK. "

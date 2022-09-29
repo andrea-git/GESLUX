@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              Utente.
-       DATE-WRITTEN.        mercoledì 28 settembre 2022 11:35:51.
+       DATE-WRITTEN.        giovedì 29 settembre 2022 11:01:43.
        REMARKS.
       *{TOTEM}END
 
@@ -12456,14 +12456,14 @@
                                   end-if
                                end-if                     
 
-                               if sco-codice = 13   
+                               if sco-codice = 13            
+                                  compute como-idx = sco-m-rif - 1
                          
                                   set integer to true
                                   move ord2-fabb-qta(como-idx) to 
            como-n1
                                   perform EDIT-NUMERO-1     
-
-                                  compute como-idx = sco-m-rif - 1
+                                                             
                                   initialize como-riga
                                   if ord2-fabb-qta(como-idx) > 0
                                      string "ARTICOLO OK. "
