@@ -6086,7 +6086,7 @@
            move como-articolo to rof-cod-articolo.
            start rordforn key >= rof-k-articolo
                  invalid continue
-             not invalid
+             not invalid                
                  perform until 1 = 2
                     read rordforn next at end exit perform end-read
                     if rof-cod-articolo not = como-articolo

@@ -9963,7 +9963,7 @@
            move  0                      to xzoom-row.
            move  0                      to xzoom-cln.
            move  16                     to xzoom-lw.
-           move  135                    to xzoom-sw.
+           move  136                    to xzoom-sw.
 
            move ext-file                to xzoom-file-name(1).
            move  0                      to xzoom-file-key.
@@ -10104,15 +10104,17 @@
            move 9                           to xzoom-field-column(Idx).
            set xzoom-al-center(Idx)         to true.    
 
-      *    Definizione del campo 10
+      *    Definizione del campo 10                   
            add  1 to Idx.
-           move 1                           to xzoom-field-file(Idx).
-           move 0                           to xzoom-field-rel(Idx).
-           move 1                           to xzoom-field-length(idx).
-           move 112                         to xzoom-field-offset(idx).
-           move 8                           to xzoom-field-column(idx).
-           move "Confermata"                to xzoom-field-name(idx).  
-           set  xzoom-ft-alpha(idx)         to true. 
+           move 8                           to xzoom-field-length(idx).
+           move 104                         to xzoom-field-offset(idx).
+           move "Confermata"                to xzoom-field-name(idx).
+           set xzoom-field-unsigned(Idx)    to true.
+           set xzoom-ft-display(Idx)        to true.
+           move 8                           to xzoom-field-digits(Idx).
+           move 0                           to xzoom-field-dec(Idx).
+           move "AAAAMMGG-GG/MM/AAAA"       to xzoom-field-fmt(Idx).
+           move 9                           to xzoom-field-column(Idx).
            set xzoom-al-center(Idx)         to true.    
 
            move  idx                        to xzoom-fields.

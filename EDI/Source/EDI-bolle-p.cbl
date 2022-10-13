@@ -387,7 +387,7 @@
                     if tor-num-bolla > 78-min-bolla-serie-2 
                        exit perform
                     end-if
-                 end-if            
+                 end-if                  
                  perform CONTATORE-VIDEO
                  perform EXPORT-BOLLA
                  if errori exit perform end-if

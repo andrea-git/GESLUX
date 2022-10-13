@@ -10358,7 +10358,8 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10594,7 +10595,8 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10810,6 +10812,7 @@
        SCREEN-SEARCH-VALIDATION-ROUTINE.
            SET TOTEM-CHECK-OK TO TRUE
            .
+
 
 
        SCREEN-SEARCH-Buf-To-Fld.
@@ -12301,6 +12304,15 @@
                  read ordfor2 no lock
                       invalid continue
                   not invalid
+
+                      if ord2-articolo = 35340 or 9321 or 29534 or 35196
+                      or 35199 or 10094 or 27429 or 35191 or 6858 or
+                      35192 or 29523 or 35173 or 9132 or 34935 or 34806
+                      or 34401 or 33582 or 35121 or 35167 or 35166 or
+                      21727 or 33588 or 33584 or 33586 or 9935
+                      stop ord2-articolo
+                      end-if
+
                       set trovato-listino to false
                       if ord2-fabb-qta(ord2-mese-rif) > 0
                          move ord2-articolo   to rlis-articolo
