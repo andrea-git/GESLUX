@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4B1A105626-338-1259629134
+PROGRAM_UNIQUE_CODE=TOTEM-7E6A111483-207-495213551
 
 {{@DESCRIPTION:
 
@@ -4988,6 +4988,8 @@ BEGIN-TEXT
                     end-if
                     move rof-chiave to tof-chiave
                     read tordforn no lock
+                         invalid exit perform cycle
+                    end-read
                     if tof-chiuso or tof-inserito
                        continue
                     else

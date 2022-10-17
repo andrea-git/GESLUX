@@ -66,12 +66,6 @@
            copy "link-geslock.def".
 
        78  titolo    value "Storicizzazione listini GDO".
-
-       01  k.
-         03 k1 pic x(6).
-         03 kn redefines k1. 
-            05 kn1 pic 9(3).
-            05 kn2 pic 9(3).
                   
        77  counter          pic 9(10) value 0.
        77  counter2         pic 9(10) value 0.
@@ -133,16 +127,7 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.              
-           move 0 to kn1 kn2.
-           perform until 1 = 2
-              add 1 to kn2
-              if kn2 = 999
-                 add 1 to kn1
-                 move 0 to kn2
-              end-if
-           end-perform.
-           goback.
+       INIT.            
            accept  path-file from environment "PATH_ARCHIVI".
            inspect path-file replacing trailing spaces by low-value.
            string  path-file         delimited low-value

@@ -58421,9 +58421,9 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\storlisgdo.cbl]
+COPY_DEPENDENCE=FD\listini.sl;FD\lineseq.sl;FD\listini.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;Copylib\comune.def;Copylib\messaggi.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;Copylib\link-geslock.def;Copylib\accessoxx.cpy
 ADDITIONAL_OPTIONS=-Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=.\Object\@.acu
 NAME_ERROR_FILE=@.err

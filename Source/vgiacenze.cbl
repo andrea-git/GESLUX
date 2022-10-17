@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vgiacenze.
-       AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 26 novembre 2020 11:57:32.
+       AUTHOR.              Utente.
+       DATE-WRITTEN.        lunedì 17 ottobre 2022 16:17:14.
        REMARKS.
       *{TOTEM}END
 
@@ -341,7 +341,7 @@
        77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
@@ -452,6 +452,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
@@ -4025,6 +4026,14 @@
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            IF DataSet1-tordforn-KEY-Asc
               MOVE Low-Value TO tof-chiave
@@ -4090,6 +4099,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4121,6 +4131,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4152,6 +4163,7 @@
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -6086,7 +6098,7 @@
            move como-articolo to rof-cod-articolo.
            start rordforn key >= rof-k-articolo
                  invalid continue
-             not invalid                
+             not invalid
                  perform until 1 = 2
                     read rordforn next at end exit perform end-read
                     if rof-cod-articolo not = como-articolo
@@ -6094,6 +6106,8 @@
                     end-if
                     move rof-chiave to tof-chiave
                     read tordforn no lock
+                         invalid exit perform cycle
+                    end-read
                     if tof-chiuso or tof-inserito
                        continue
                     else
