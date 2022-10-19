@@ -521,10 +521,8 @@ LABLAB     copy "blister.fd".
            copy "EDI-status.def".
 
        78  titolo            value "Generazione files".
-
-       77  anno pic 9(4).
-       77  da pic 9(8).
-       77  a pic 9(8).
+                         
+       77  nn pic 9(10) value 0.
 
        LINKAGE SECTION.
        77  link-status       pic s9.
@@ -3590,7 +3588,21 @@ LABLAB     copy "blister.fd".
            open input listini.
            if status-listini = "35"
               open output listini
-           end-if.
+           end-if.                      
+           move low-value to lst-rec.
+           move 20210101  to lst-data.  
+           start listini key >= lst-k-data
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read listini next at end exit perform end-read
+                    if lst-data < 20210101
+                       exit perform cycle
+                    end-if               
+                    add 1 to nn
+                 end-perform
+           end-start.
+           display message nn.
            close listini.  
 
            open input tpromo.

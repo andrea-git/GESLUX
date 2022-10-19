@@ -74,11 +74,12 @@
        77  counter2         pic 9(10) value 0.
        77  counter-edit     pic zzz.zzz.zz9.
 
+       77  trovati          pic 9(10) value 0.
        77  n-csv            pic 9(10) value 0.
        77  n-gen            pic 9(10) value 0.
        77  n-csvNotFound    pic 9(10) value 0.
-       77  trovati          pic 9(10) value 0.
        77  n-rest           pic 9(10) value 0.
+       77  n-data           pic 9(10) value 0.
                   
        77  path-tmp-klis    pic x(256).
        77  status-tmp-klis  pic xx.
@@ -222,7 +223,7 @@
               move low-value     to lst-rec
               move r-gdo         to lst-gdo
               move como-articolo to lst-articolo
-              move 0 to trovati
+              move 0             to trovati
               start listini key >= lst-k-articolo
                     invalid continue
                 not invalid
@@ -237,7 +238,7 @@
                        if counter2 = 1000
                           move 0 to counter2
                           move counter to counter-edit
-                          display "FASE 1 - DELETE LISTINI:  " 
+                          display "FASE 1 - DELETE LISTINI CSV:  " 
                                   upon form1-handle 
                                   at column  2,00
                                        line  5,00
@@ -249,13 +250,51 @@
                        write tlst-rec          
                        delete listini record end-delete
                     end-perform
-              end-start
+              end-start  
               if trovati = 0
                  add 1 to n-csvNotFound
               end-if
-           end-perform.
-           if n-gen > 0         
-              display "FASE 2 - BACKUP LISTINI_STO                     " 
+                        
+           end-perform.  
+
+           move 0 to counter counter2.
+                                   
+           move low-value to lst-rec.
+           move 20210101  to lst-data.  
+           start listini key >= lst-k-data
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read listini next at end exit perform end-read
+                    if lst-data < 20210101
+                       exit perform cycle
+                    end-if                        
+                                          
+                    add 1 to counter counter2
+                    if counter2 = 1000
+                       move 0 to counter2
+                       move counter to counter-edit
+                       display "FASE 2 - DELETE LISTINI 20210101    " 
+                               upon form1-handle 
+                               at column  2,00
+                                    line  5,00
+                       display counter-edit upon form1-handle 
+                               at column 30,00
+                                    line  5,00
+                    end-if
+                                        
+                    move lst-rec to tlst-rec
+                    write tlst-rec 
+                          invalid continue
+                      not invalid         
+                          add 1 to n-data
+                          delete listini record end-delete
+                    end-write
+                 end-perform
+           end-start.
+
+           if n-gen > 0 or n-data > 0
+              display "FASE 3 - BACKUP LISTINI_STO                     " 
                       upon form1-handle 
                       at column  2,00
                            line  5,00
@@ -351,7 +390,7 @@
                        if counter2 = 1000
                           move 0 to counter2
                           move counter to counter-edit
-                          display "FASE 3 - RESTORE LISTINI:  " 
+                          display "FASE 4 - RESTORE LISTINI:  " 
                                   upon form1-handle              
                                   at column  2,00
                                        line  5,00
@@ -375,12 +414,13 @@
       ***---
        EXIT-PGM.       
            display message "Elaborazione terminata"
-                    x"0d0a""- elaborati da csv: " n-csv
-                    x"0d0a""- che hanno influito su righe: " n-gen
-                    x"0d0a""- non trovati: " n-csvNotFound
-                    x"0d0a""- conservati: " n-rest
+                    x"0d0a""- Elaborati da csv: " n-csv             
+                    x"0d0a""--- che hanno influito su righe: " n-gen
+                    x"0d0a""--- non trovate: " n-csvNotFound
+                    x"0d0a""- Con data >= 20210101: " n-data
+                    x"0d0a""- Conservati: " n-rest
                     x"0d0a""Creato file: " path-file-sto
                      title titolo
            goback.
 
-           copy "accessoxx.cpy".                                                 
+           copy "accessoxx.cpy".   
