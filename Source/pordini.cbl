@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        lunedì 17 ottobre 2022 11:36:31.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 19 ottobre 2022 22:51:36.
        REMARKS.
       *{TOTEM}END
 
@@ -9977,6 +9977,8 @@
                           end-if
                           move rof-chiave to tof-chiave
                           read tordforn no lock
+                               invalid exit perform cycle
+                          end-read
                           if tof-chiuso
                              continue
                           else

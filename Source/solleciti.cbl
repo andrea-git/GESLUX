@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 10 dicembre 2021 11:38:15.
+       DATE-WRITTEN.        mercoledì 19 ottobre 2022 22:50:58.
        REMARKS.
       *{TOTEM}END
 
@@ -8513,6 +8513,8 @@
                        end-if
                        move rof-chiave to tof-chiave
                        read tordforn no lock
+                            invalid exit perform cycle
+                       end-read
                        if tof-chiuso
                           continue
                        else

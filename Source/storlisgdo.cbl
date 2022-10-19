@@ -3,10 +3,13 @@
        REMARKS. Storicizzazione listini GDO.
                 Data una lista csv, prende le righe NON presenti e le 
                 trasferisce su un altro file.
-                Fase 1: trovo i listini validi (n per riga), li cancello
-                        e li salvo in un file parallelo tmp-klis
-                Fase 2: quello che resta dei listini lo rinomino in sto
-                Fase 3: Creo il nuovo file listini vuoto e ci riverso 
+                Fase 1: trovo i listini presenti sui listini indicati 
+                        nel csv (n per riga), li cancello e li salvo in 
+                        un file parallelo tmp-klis
+                Fase 2: aggiungo alla logica del punto 1 anche i listini
+                        che hanno validità >= 20210101
+                Fase 3: quello che resta dei listini lo rinomino in sto
+                Fase 4: creo il nuovo file listini vuoto e ci riverso 
                         il contenuto del file parallelo tmp-klis
        AUTHOR.                          Andrea.
       ******************************************************************
