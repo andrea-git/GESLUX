@@ -64,6 +64,7 @@
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
+           copy "acugui.def".
            copy "comune.def".
            copy "fonts.def".
            copy "link-geslock.def".
@@ -418,8 +419,9 @@
            delete file tmp-klis.
 
       ***---
-       EXIT-PGM.       
-           display message 
+       EXIT-PGM.  
+           perform until 1 = 2
+              display message 
                   "Elaborazione terminata"
            x"0d0a""1) Elaborati da csv: " n-csv             
            x"0d0a""  - corrispondenze trovate: " n-csvFound        
@@ -429,9 +431,18 @@
            x"0d0a""  - conservati: " n-data
            x"0d0a""  - già presenti (da csv): " n-already
            x"0d0a""3) Totale conservati: " n-rest        
-           x"0d0a"
+           x"0d0a"                             
            x"0d0a""Creato file: " path-file-sto
+           x"0d0a"
+           x"0d0a""Terminare l'elaborazione?"
                      title titolo
+                      type mb-yes-no
+                   default mb-no
+                    giving scelta
+              if scelta = mb-yes
+                 exit perform
+              end-if
+           end-perform.
            goback.
 
            copy "accessoxx.cpy".   
