@@ -78,8 +78,11 @@
        77  n-csv            pic 9(10) value 0.
        77  n-gen            pic 9(10) value 0.
        77  n-csvNotFound    pic 9(10) value 0.
+       77  n-csvFound       pic 9(10) value 0.
        77  n-rest           pic 9(10) value 0.
        77  n-data           pic 9(10) value 0.
+       77  n-data-tot       pic 9(10) value 0.                    
+       77  n-already        pic 9(10) value 0.
                   
        77  path-tmp-klis    pic x(256).
        77  status-tmp-klis  pic xx.
@@ -235,7 +238,7 @@
                        end-if
                        add 1 to trovati n-gen
                        add 1 to counter counter2
-                       if counter2 = 1000
+                       if counter2 = 5000
                           move 0 to counter2
                           move counter to counter-edit
                           display "FASE 1 - DELETE LISTINI CSV:  " 
@@ -253,6 +256,8 @@
               end-start  
               if trovati = 0
                  add 1 to n-csvNotFound
+              else
+                 add 1 to n-csvFound
               end-if
                         
            end-perform.  
@@ -270,8 +275,8 @@
                        exit perform cycle
                     end-if                        
                                           
-                    add 1 to counter counter2
-                    if counter2 = 1000
+                    add 1 to counter counter2 n-data-tot
+                    if counter2 = 10000
                        move 0 to counter2
                        move counter to counter-edit
                        display "FASE 2 - DELETE LISTINI 20210101    " 
@@ -285,7 +290,8 @@
                                         
                     move lst-rec to tlst-rec
                     write tlst-rec 
-                          invalid continue
+                          invalid 
+                          add 1 to n-already
                       not invalid         
                           add 1 to n-data
                           delete listini record end-delete
@@ -387,7 +393,7 @@
                     perform until 1 = 2
                        read tmp-klis next at end exit perform end-read
                        add 1 to counter counter2 n-rest
-                       if counter2 = 1000
+                       if counter2 = 10000
                           move 0 to counter2
                           move counter to counter-edit
                           display "FASE 4 - RESTORE LISTINI:  " 
@@ -413,13 +419,18 @@
 
       ***---
        EXIT-PGM.       
-           display message "Elaborazione terminata"
-                    x"0d0a""- Elaborati da csv: " n-csv             
-                    x"0d0a""--- che hanno influito su righe: " n-gen
-                    x"0d0a""--- non trovate: " n-csvNotFound
-                    x"0d0a""- Con data >= 20210101: " n-data
-                    x"0d0a""- Conservati: " n-rest
-                    x"0d0a""Creato file: " path-file-sto
+           display message 
+                  "Elaborazione terminata"
+           x"0d0a""1) Elaborati da csv: " n-csv             
+           x"0d0a""  - corrispondenze trovate: " n-csvFound        
+           x"0d0a""  - corrispondenze non trovate: " n-csvNotFound        
+           x"0d0a""  - che hanno influito su righe: " n-gen
+           x"0d0a""2) Restati con data >= 20210101: " n-data-tot
+           x"0d0a""  - conservati: " n-data
+           x"0d0a""  - già presenti (da csv): " n-already
+           x"0d0a""3) Totale conservati: " n-rest        
+           x"0d0a"
+           x"0d0a""Creato file: " path-file-sto
                      title titolo
            goback.
 

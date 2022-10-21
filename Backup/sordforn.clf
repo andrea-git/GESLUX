@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E4B1B115948-881-147763881
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E6A14132141-803-2759531148
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -184,9 +184,9 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=sof-num-vuoto-1
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=sof-data-conf
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -194,9 +194,9 @@ m_bFixed=1
 
 @}}
 [FDITEM19_]
-m_strName=sof-num-vuoto-2
-m_strRawPic=9(18)
-m_strPic=9(18)
+m_strName=sof-num-vuoto-1
+m_strRawPic=9(10)
+m_strPic=9(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -204,7 +204,7 @@ m_bFixed=1
 
 @}}
 [FDITEM20_]
-m_strName=sof-num-vuoto-3
+m_strName=sof-num-vuoto-2
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
@@ -214,9 +214,9 @@ m_bFixed=1
 
 @}}
 [FDITEM21_]
-m_strName=sof-dati-salvati
-m_strRawPic=x
-m_strPic=x
+m_strName=sof-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -224,31 +224,41 @@ m_bFixed=1
 
 @}}
 [FDITEM22_]
+m_strName=sof-dati-salvati
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_
+
+@}}
+[FDITEM23_]
 m_strName=sof-dati-salvati-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="X"
-{{@DataItem_m_strDescriptionFDITEM22_
+{{@DataItem_m_strDescriptionFDITEM23_
 
 @}}
-[FDITEM23_]
+[FDITEM24_]
 m_strName=sof-dati-salvati-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=" "
-{{@DataItem_m_strDescriptionFDITEM23_
+{{@DataItem_m_strDescriptionFDITEM24_
 
 @}}
-[FDITEM24_]
+[FDITEM25_]
 m_strName=sof-alfa-vuoto
 m_strRawPic=X(499)
 m_strPic=X(499)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM24_
+{{@DataItem_m_strDescriptionFDITEM25_
 
 @}}
 [CStoAcucobolSL_]

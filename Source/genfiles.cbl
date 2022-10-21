@@ -3589,20 +3589,20 @@ LABLAB     copy "blister.fd".
            if status-listini = "35"
               open output listini
            end-if.                      
-           move low-value to lst-rec.
-           move 20210101  to lst-data.  
-           start listini key >= lst-k-data
-                 invalid continue
-             not invalid
-                 perform until 1 = 2
-                    read listini next at end exit perform end-read
-                    if lst-data < 20210101
-                       exit perform cycle
-                    end-if               
-                    add 1 to nn
-                 end-perform
-           end-start.
-           display message nn.
+      *     move low-value to lst-rec.
+      *     move 20210101  to lst-data.  
+      *     start listini key >= lst-k-data
+      *           invalid continue
+      *       not invalid
+      *           perform until 1 = 2
+      *              read listini next at end exit perform end-read
+      *              if lst-data < 20210101
+      *                 exit perform cycle
+      *              end-if               
+      *              add 1 to nn
+      *           end-perform
+      *     end-start.
+      *     display message nn.
            close listini.  
 
            open input tpromo.
