@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 14 giugno 2022 11:15:49.
+       DATE-WRITTEN.        sabato 22 ottobre 2022 18:53:42.
        REMARKS.
       *{TOTEM}END
 
@@ -20533,6 +20533,17 @@ LABLAB        if tcl-si-recupero and
 
        ATTIVA-ORDINI.
       * <TOTEM:PARA. ATTIVA-ORDINI>
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "INIZIO ATTIVA-ORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            initialize tab-ordini.
            move 0 to idx-ordini primo-numero ultimo-numero.
                          
@@ -20595,11 +20606,33 @@ LABLAB        if tcl-si-recupero and
                       end-if
                       |||
                       
-                      if tutto-ok
+                      if tutto-ok          
+                         if RichiamoBatch 
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output           delimited size
+                                   "VALORIZZA NUMERO" delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
                          initialize mto-rec 
                                     replacing numeric data by zeroes
                                          alphanumeric data by spaces
-                         perform VALORIZZA-NUMERO  
+                         perform VALORIZZA-NUMERO     
+                         if RichiamoBatch 
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output              delimited size
+                                   "VALORIZZATO NUMERO " delimited size
+                                   mto-numero            delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
                       end-if
                       
                       if tutto-ok
@@ -20767,6 +20800,18 @@ LUBEXX                      read clienti no lock invalid continue
 
               end-read
            end-perform.
+
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "FINE ATTIVA-ORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
 
       ***---
        VALORIZZA-NUMERO.           

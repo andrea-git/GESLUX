@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E66E9920-624-294953622
+PROGRAM_UNIQUE_CODE=TOTEM-7E6A16164934-451-411186
 
 {{@DESCRIPTION:
 
@@ -19469,6 +19469,17 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = ATTIVA-ORDINI
 BEGIN-TEXT
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "INIZIO ATTIVA-ORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            initialize tab-ordini.
            move 0 to idx-ordini primo-numero ultimo-numero.
                          
@@ -19529,11 +19540,33 @@ BEGIN-TEXT
                       end-if
                       |||
                       
-                      if tutto-ok
+                      if tutto-ok          
+                         if RichiamoBatch 
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output           delimited size
+                                   "VALORIZZA NUMERO" delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
                          initialize mto-rec 
                                     replacing numeric data by zeroes
                                          alphanumeric data by spaces
-                         perform VALORIZZA-NUMERO  
+                         perform VALORIZZA-NUMERO     
+                         if RichiamoBatch 
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output              delimited size
+                                   "VALORIZZATO NUMERO " delimited size
+                                   mto-numero            delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
                       end-if
                       
                       if tutto-ok
@@ -19680,6 +19713,18 @@ LUBEXX                      read clienti no lock invalid continue end-read
 
               end-read
            end-perform.
+
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "FINE ATTIVA-ORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
 
       ***---
        VALORIZZA-NUMERO.           
