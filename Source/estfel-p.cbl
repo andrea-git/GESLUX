@@ -901,6 +901,10 @@
            if cli-piva(1:1) = "9"
               move spaces to cli-piva
            end-if.
+
+           if naz-extra-ue-si
+              move "OO99999999999" to cli-piva
+           end-if.
    
            if cli-piva not = spaces
               inspect cli-piva replacing trailing spaces by low-value
@@ -956,8 +960,21 @@
                   "</IdFiscaleIVA>"               
              into line-riga
            write line-riga. 
-                            
-           if cli-piva = spaces and cli-codfis not = spaces   
+
+           if naz-extra-ue-si
+              initialize line-riga
+              string 78-spazi   
+                     78-spazi   
+                     78-spazi   
+                     78-spazi       
+                     "<CodiceFiscale>"
+                     "OO99999999999" delimited low-value
+                     "</CodiceFiscale>" 
+                into line-riga
+              end-string           
+              write line-riga
+           else
+              if cli-piva = spaces and cli-codfis not = spaces   
               inspect cli-codfis replacing trailing spaces by low-value
               initialize line-riga
               string 78-spazi   

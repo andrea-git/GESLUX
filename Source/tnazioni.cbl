@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tnazioni.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 5 aprile 2022 09:34:19.
+       DATE-WRITTEN.        venerdì 21 ottobre 2022 09:32:44.
        REMARKS.
       *{TOTEM}END
 
@@ -96,6 +96,7 @@
            05 col-cod-edi      PIC  x(2).
            05 col-imp-esenti   PIC  x.
            05 col-fe           PIC  x.
+           05 col-extra        PIC  x.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui-73x21-bmp PIC  S9(9)
@@ -154,9 +155,10 @@
                    15 old-naz-num-vuoto-2  PIC  9(15).
                    15 old-naz-num-vuoto-3  PIC  9(15).
                    15 old-naz-cod-edi      PIC  x(2).
-                   15 old-naz-imposte-esenti pic x.
+                   15 old-naz-imposte-esenti pic x.    
                    15 old-naz-fe pic x.
-                   15 old-naz-alfa-vuoto-1 PIC  x(16).
+                   15 old-naz-extra-ue pic x.
+                   15 old-naz-alfa-vuoto-1 PIC  x(15).
                    15 old-naz-alfa-vuoto-2 PIC  x(20).
                    15 old-naz-alfa-vuoto-3 PIC  x(20).
       *{TOTEM}END
@@ -199,16 +201,16 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 2,33, 
+           COL 3,33, 
            LINE 1,92,
            LINES 37,00 ,
-           SIZE 85,17 ,
+           SIZE 93,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
-           DATA-COLUMNS (1, 4, 54, 56, 57),
-           ALIGNMENT ("L", "U", "L", "C", "C"),
-           SEPARATION (5, 5, 5, 5, 5),
-           DATA-TYPES ("X(3)", "X(30)", "X(2)", "U(1)", "U(1)"),
+           DATA-COLUMNS (1, 4, 54, 56, 57, 58),
+           ALIGNMENT ("L", "U", "L", "C", "C", "C"),
+           SEPARATION (5, 5, 5, 5, 5, 5),
+           DATA-TYPES ("X(3)", "X(30)", "X(2)", "U(1)", "U(1)", "U(1)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -222,7 +224,7 @@
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 82,
+           VIRTUAL-WIDTH 90,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -1035,7 +1037,7 @@
               SCREEN LINE 1,
               SCREEN COLUMN 0,
               LINES 39,00,
-              SIZE 87,83,
+              SIZE 98,00,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1062,7 +1064,7 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 59, 64, 75)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 59, 64, 75, 83)
            .
 
        Form1-PROC.
@@ -1863,7 +1865,7 @@
               move 2 to riga 
            end-if.
 
-           modify form1-gd-1, start-x = 1, x     = 5,
+           modify form1-gd-1, start-x = 1, x     = 6,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -1921,11 +1923,19 @@
                    display message box "Valori ammessi: S(i) / N(o)"
                            title = tit-err
                            icon mb-warning-icon
-                end-if
+                end-if 
            when 5
                 if naz-fe not = "S" and not = "N"
                    set errori to true
                    move 5 to colonna
+                   display message box "Valori ammessi: S(i) / N(o)"
+                           title = tit-err
+                           icon mb-warning-icon
+                end-if
+           when 6
+                if naz-extra-ue not = "S" and not = "N"
+                   set errori to true
+                   move 6 to colonna
                    display message box "Valori ammessi: S(i) / N(o)"
                            title = tit-err
                            icon mb-warning-icon
@@ -1966,8 +1976,9 @@
            modify form1-gd-1(1, 1), cell-data = "Codice".
            modify form1-gd-1(1, 2), cell-data = "Descrizione".
            modify form1-gd-1(1, 3), cell-data = "ISO".
-           modify form1-gd-1(1, 4), cell-data = "Imp. esenti".
-           modify form1-gd-1(1, 5), cell-data = "FE" 
+           modify form1-gd-1(1, 4), cell-data = "Imp. esenti".  
+           modify form1-gd-1(1, 5), cell-data = "FE".
+           modify form1-gd-1(1, 6), cell-data = "Extra UE" 
            .
       * <TOTEM:END>
 
@@ -1988,6 +1999,7 @@
                           move naz-cod-edi     to col-cod-edi
                           move naz-imp-esenti  to col-imp-esenti
                           move naz-fe          to col-fe
+                          move naz-extra-ue    to col-extra
                           modify form1-gd-1, record-to-add = rec-grid
                      end-read                                           
                   end-perform
@@ -2120,7 +2132,7 @@
                                cursor-y in riga.
 
            perform varying colonna from 1 by 1
-                     until colonna > 5
+                     until colonna > 6
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
@@ -2202,7 +2214,8 @@
            inquire form1-gd-1(riga, 2), cell-data naz-descrizione. 
            inquire form1-gd-1(riga, 3), cell-data naz-cod-edi. 
            inquire form1-gd-1(riga, 4), cell-data naz-imp-esenti.  
-           inquire form1-gd-1(riga, 5), cell-data naz-fe  
+           inquire form1-gd-1(riga, 5), cell-data naz-fe.   
+           inquire form1-gd-1(riga, 6), cell-data naz-extra-ue  
            .
       * <TOTEM:END>
 
