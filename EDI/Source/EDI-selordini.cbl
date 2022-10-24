@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 22 ottobre 2022 18:53:42.
+       DATE-WRITTEN.        lunedì 24 ottobre 2022 09:23:24.
        REMARKS.
       *{TOTEM}END
 
@@ -20753,6 +20753,16 @@ LABLAB                   end-if
                          set sost-art-batch to true
                          call   "sost-art" using sost-art-linkage
                          cancel "sost-art"
+
+                         call   "set-ini-log" using r-output
+                         cancel "set-ini-log"
+                         initialize lm-riga
+                         string r-output        delimited size
+                                "DOPO SOST-ART" delimited size
+                                mto-numero      delimited size
+                           into lm-riga
+                         end-string
+                         write lm-riga
 
                          if tcl-fido-nuovo-no
 LUBEXX                      close    clienti
