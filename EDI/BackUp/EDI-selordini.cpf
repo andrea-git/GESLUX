@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6A1871042-787-208944050
+PROGRAM_UNIQUE_CODE=TOTEM-7E6A189516-257-1329531070
 
 {{@DESCRIPTION:
 
@@ -19667,15 +19667,17 @@ LABLAB                   end-if
                          call   "sost-art" using sost-art-linkage
                          cancel "sost-art"
 
-                         call   "set-ini-log" using r-output
-                         cancel "set-ini-log"
-                         initialize lm-riga
-                         string r-output        delimited size
-                                "DOPO SOST-ART" delimited size
-                                mto-numero      delimited size
-                           into lm-riga
-                         end-string
-                         write lm-riga
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output        delimited size
+                                   "DOPO SOST-ART" delimited size
+                                   mto-numero      delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
 
                          if tcl-fido-nuovo-no
 LUBEXX                      close    clienti
