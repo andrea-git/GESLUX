@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>04628290159</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>41954</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>XXXXXXX</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00785630963</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>LUBEX SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Giuseppe di Vittorio</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>20090</CAP>
+        <Comune>Vimodrone</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>EX</IdPaese>
+          <IdCodice>42617352658</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>POLARIS LUKS LTD</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Mytropolita Vasylia Lypkivskoho 45</Indirizzo>
+        <CAP>00000</CAP>
+        <Comune>KIEV</Comune>
+        <Provincia>EE</Provincia>
+        <Nazione>EX</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-09-15</Data>
+        <Numero>33485</Numero>
+        <ImportoTotaleDocumento>6475.44</ImportoTotaleDocumento>
+        <Causale>VENDITA da deposito LUBEX </Causale>
+      </DatiGeneraliDocumento>
+      <DatiDDT>
+        <NumeroDDT>15805</NumeroDDT>
+        <DataDDT>2022-09-15</DataDDT>
+      </DatiDDT>
+      <DatiTrasporto>
+        <DatiAnagraficiVettore>
+          <IdFiscaleIVA>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>00000000000</IdCodice>
+          </IdFiscaleIVA>
+          <Anagrafica>
+            <Denominazione>DIRETTO</Denominazione>
+          </Anagrafica>
+        </DatiAnagraficiVettore>
+        <IndirizzoResa>
+          <Indirizzo>Mytropolita Vasylia Lypkivskoho 45</Indirizzo>
+          <CAP>00000</CAP>
+          <Comune>KIEV</Comune>
+          <Provincia>EE</Provincia>
+          <Nazione>EX</Nazione>
+        </IndirizzoResa>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>14491</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX LIQ RAD BLU PURO LT 200</Descrizione>
+        <Quantita>4.00</Quantita>
+        <PrezzoUnitario>256.41</PrezzoUnitario>
+        <PrezzoTotale>1025.64</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>13238</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX LIQ RAD ROSSO PURO LT 20</Descrizione>
+        <Quantita>5.00</Quantita>
+        <PrezzoUnitario>31.32</PrezzoUnitario>
+        <PrezzoTotale>156.60</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>14496</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX LIQ RAD ROSSO PURO LT200</Descrizione>
+        <Quantita>6.00</Quantita>
+        <PrezzoUnitario>279.65</PrezzoUnitario>
+        <PrezzoTotale>1677.90</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>10181</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8013826033383</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX PASTA LAVAMANI KG 1</Descrizione>
+        <Quantita>120.00</Quantita>
+        <PrezzoUnitario>1.03</PrezzoUnitario>
+        <PrezzoTotale>123.60</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>14488</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8013826037749</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX PASTA LAVAMANI KG 4</Descrizione>
+        <Quantita>40.00</Quantita>
+        <PrezzoUnitario>3.57</PrezzoUnitario>
+        <PrezzoTotale>142.80</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>11732</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8013826036100</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX PRO 75W80 LT 20          S</Descrizione>
+        <Quantita>10.00</Quantita>
+        <PrezzoUnitario>59.47</PrezzoUnitario>
+        <PrezzoTotale>594.70</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>11664</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8013826036124</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX PRO 75W90 LT 1           S</Descrizione>
+        <Quantita>120.00</Quantita>
+        <PrezzoUnitario>3.04</PrezzoUnitario>
+        <PrezzoTotale>364.80</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>11668</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8013826036131</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LUBEX PRO 75W90 LT 20          S</Descrizione>
+        <Quantita>30.00</Quantita>
+        <PrezzoUnitario>55.41</PrezzoUnitario>
+        <PrezzoTotale>1662.30</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>15345</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8158830205224</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>MOMO C ORGANIZER SEDILE -CO005</Descrizione>
+        <Quantita>90.00</Quantita>
+        <PrezzoUnitario>2.39</PrezzoUnitario>
+        <PrezzoTotale>215.10</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>33627</CodiceValore>
+        </CodiceArticolo>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8051380000991</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>MOMO CV SUPERGRIP MIS M 37 39  SWC014BG PU014 BG</Descrizione>
+        <Quantita>80.00</Quantita>
+        <PrezzoUnitario>6.40</PrezzoUnitario>
+        <PrezzoTotale>512.00</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>POLARIS LUKS LTD</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <ImponibileImporto>6475.44</ImponibileImporto>
+        <Imposta>00.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>Non Imp. art.8a ex-UEEsportazione extra Cee</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2022-09-15</DataScadenzaPagamento>
+        <ImportoPagamento>6475.44</ImportoPagamento>
+        <IBAN>IT31O0306933590100000061718</IBAN>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

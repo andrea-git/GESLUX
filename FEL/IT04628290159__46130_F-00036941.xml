@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>04628290159</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>46130</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>XXXXXXX</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00785630963</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>LUBEX SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Giuseppe di Vittorio</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>20090</CAP>
+        <Comune>Vimodrone</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>EX</IdPaese>
+          <IdCodice>OO999999999</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>TGS TECHNICAL GROUP SERVICES OIL e GAS</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>10-08-054, HATEM ATTAEI ST </Indirizzo>
+        <CAP>00000</CAP>
+        <Comune>ADHAHRA TRIPOLI</Comune>
+        <Provincia>EE</Provincia>
+        <Nazione>EX</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-10-11</Data>
+        <Numero>36941</Numero>
+        <ImportoTotaleDocumento>3324.38</ImportoTotaleDocumento>
+        <Causale>VENDITA da deposito LUBEX </Causale>
+      </DatiGeneraliDocumento>
+      <DatiDDT>
+        <NumeroDDT>17379</NumeroDDT>
+        <DataDDT>2022-10-11</DataDDT>
+      </DatiDDT>
+      <DatiTrasporto>
+        <DatiAnagraficiVettore>
+          <IdFiscaleIVA>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>00000000000</IdCodice>
+          </IdFiscaleIVA>
+          <Anagrafica>
+            <Denominazione>DIRETTO</Denominazione>
+          </Anagrafica>
+        </DatiAnagraficiVettore>
+        <IndirizzoResa>
+          <Indirizzo>LIBYAN BRANCH, GAS DIVISION TRIPOLI</Indirizzo>
+          <CAP>00000</CAP>
+          <Comune>TRIPOLI, LIBYA</Comune>
+          <Provincia>EE</Provincia>
+          <Nazione>EX</Nazione>
+        </IndirizzoResa>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>4243</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ENI GREASE MU 2 KG 18</Descrizione>
+        <Quantita>14.00</Quantita>
+        <PrezzoUnitario>88.61</PrezzoUnitario>
+        <PrezzoTotale>1240.54</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>MELLITAH OIL e GAS B V</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>35296</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>SHELL TELLUS S M32 KG 180</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>844.00</PrezzoUnitario>
+        <PrezzoTotale>844.00</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>MELLITAH OIL e GAS B V</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>INT</CodiceTipo>
+          <CodiceValore>35485</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>MOBIL UNIREX N3 KG 18</Descrizione>
+        <Quantita>8.00</Quantita>
+        <PrezzoUnitario>154.98</PrezzoUnitario>
+        <PrezzoTotale>1239.84</PrezzoTotale>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>RSD</TipoDato>
+          <RiferimentoTesto>MELLITAH OIL e GAS B V</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>00.00</AliquotaIVA>
+        <Natura>N3.1</Natura>
+        <ImponibileImporto>3324.38</ImponibileImporto>
+        <Imposta>00.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>Non Imp. art.8a ex-UEEsportazione extra Cee</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2022-10-11</DataScadenzaPagamento>
+        <ImportoPagamento>3324.38</ImportoPagamento>
+        <IBAN>IT31O0306933590100000061718</IBAN>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

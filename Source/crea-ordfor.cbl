@@ -1162,7 +1162,7 @@
                        exit perform cycle 
                     end-if
                  end-if
-                 
+                                             
                  if cpfm-programmazione-no
                     move cpfm-articolo to ord2-articolo
                     move "LBX"         to ord2-mag
@@ -1218,7 +1218,7 @@
                  end-if
                  read coperfab-mag next at end exit perform end-read 
                  move cpfm-articolo to ord2-articolo   
-
+                                          
                  if articolo-fisso not = 0
                     if articolo-fisso not = cpfm-articolo
                        exit perform cycle 
@@ -1952,11 +1952,17 @@
               |Siccome col nuovo ciclo posso cancellare delle qta devo
               |resettare la situazione 
               perform varying idx from 1 by 1 
-                        until idx > 6  
-                 move tge-anno         to tof-anno
-                 move numero-ordf(idx) to tof-numero
-                 delete tordforn invalid continue end-delete
-                 move 0 to numero-ordf(idx)
+                        until idx > 6      
+                 if numero-ordf(idx) > 0
+                    move tge-anno         to tof-anno
+                    move numero-ordf(idx) to tof-numero
+                    delete tordforn invalid continue end-delete
+                    move tof-chiave to tta-chiave
+                    delete tmp-tof-auto record 
+                           invalid continue 
+                    end-delete
+                    move 0 to numero-ordf(idx)
+                 end-if
               end-perform
            
               |Mese [primo] = sempre un pallet
@@ -2060,28 +2066,14 @@
                  end-if
                  rewrite tof-rec  invalid continue end-rewrite
               end-if
-           end-perform.                
-
-           |Resettare i numeri di inizio e fino generazione 
-           perform varying LinkFirst from LinkFirst by 1 
-                     until idx > LinkLast
-              move tge-anno  to tof-anno
-              move LinkFirst to tof-numero
-              read tordforn no lock
-                   invalid  continue
-               not invalid  exit perform
-              end-read
-           end-perform. 
-           perform varying LinkLast from LinkLast by 1 
-                     until idx < LinkFirst
-              move tge-anno  to tof-anno
-              move LinkFirst to tof-numero
-              read tordforn no lock
-                   invalid  continue
-               not invalid  exit perform
-              end-read
-           end-perform.                 
-
+           end-perform.             
+                                    
+           move 0 to numero-ordf(1).
+           move 0 to numero-ordf(2).
+           move 0 to numero-ordf(3).
+           move 0 to numero-ordf(4).
+           move 0 to numero-ordf(5).
+           move 0 to numero-ordf(6).
 
       ***---
        CALCOLA-QTA.
