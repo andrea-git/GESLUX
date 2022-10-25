@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 24 ottobre 2022 11:06:19.
+       DATE-WRITTEN.        martedì 25 ottobre 2022 09:30:13.
        REMARKS.
       *{TOTEM}END
 
@@ -20622,17 +20622,6 @@ LABLAB        if tcl-si-recupero and
                                     replacing numeric data by zeroes
                                          alphanumeric data by spaces
                          perform VALORIZZA-NUMERO     
-                         if RichiamoBatch 
-                            call   "set-ini-log" using r-output
-                            cancel "set-ini-log"
-                            initialize lm-riga
-                            string r-output              delimited size
-                                   "VALORIZZATO NUMERO " delimited size
-                                   mto-numero            delimited size
-                              into lm-riga
-                            end-string
-                            write lm-riga
-                         end-if
                       end-if
                       
                       if tutto-ok
@@ -20735,9 +20724,33 @@ LABLAB                   end-if
                          move emto-ev-immediata to mto-immediato
                          move emto-contrassegno to mto-contrassegno
                       
-                         move emto-chiave to mto-ordine-EDI
-                      
-                         write mto-rec
+                         move emto-chiave to mto-ordine-EDI      
+
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output        delimited size
+                                   "WRITE MTO-REC" delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
+                         write mto-rec                           
+
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output        delimited size
+                                   "WRITE MTO-REC" delimited size
+                                   "STATUS: "      delimited size
+                                   status-mtordini delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
                       
                          add 1 to idx-ordini
                          move mto-chiave to chiave-ordine(idx-ordini)  
@@ -20843,9 +20856,32 @@ LUBEXX                      read clienti no lock invalid continue
            end-if.
            move link-numero    to ultimo-numero.
            
-           if link-status-nambar = -1 set errori       to true
-           else                       move link-numero to mto-numero
-           end-if.
+           if link-status-nambar = -1 
+              set errori       to true                
+              if RichiamoBatch 
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output    delimited size
+                        "ERRORE!! " delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+           else                       
+              move link-numero to mto-numero          
+              if RichiamoBatch 
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output              delimited size
+                        "VALORIZZATO NUMERO " delimited size
+                        mto-numero            delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+           end-if.                                    
   
       ***---
        COUNTER-VIDEO.
