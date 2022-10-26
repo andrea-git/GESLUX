@@ -255,7 +255,7 @@ PATCH         start transaction
 PATCH            commit transaction
                  perform CANCELLA-NOTE
 PATCH            perform SCRIVI-FILE-BACKUP
-                 delete tordforn  record Invalid continue end-delete
+                 delete tordforn  record Invalid continue end-delete 
                  move 0 to mod
                  set SollecitiCambiati  to false
                  set SollecitiCambiatiT to false

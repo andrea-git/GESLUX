@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordfornvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 giugno 2022 14:28:08.
+       DATE-WRITTEN.        mercoledì 26 ottobre 2022 11:14:31.
        REMARKS.
       *{TOTEM}END
 
@@ -39,7 +39,6 @@
            COPY "tivaese.sl".
            COPY "tcodpag.sl".
            COPY "timballi.sl".
-           COPY "logfile.sl".
            COPY "tordforn.sl".
            COPY "nordforn.sl".
            COPY "tmp-nordforn.sl".
@@ -68,6 +67,7 @@
            COPY "impforn.sl".
            COPY "param.sl".
            COPY "tscorte.sl".
+           COPY "logfile.sl".
            COPY "lineseq-mail.sl".
       *{TOTEM}END
        DATA                 DIVISION.
@@ -85,7 +85,6 @@
            COPY "tivaese.fd".
            COPY "tcodpag.fd".
            COPY "timballi.fd".
-           COPY "logfile.fd".
            COPY "tordforn.fd".
            COPY "nordforn.fd".
            COPY "tmp-nordforn.fd".
@@ -114,6 +113,7 @@
            COPY "impforn.fd".
            COPY "param.fd".
            COPY "tscorte.fd".
+           COPY "logfile.fd".
            COPY "lineseq-mail.fd".
       *{TOTEM}END
 
@@ -334,7 +334,6 @@
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
-       77 TMP-DataSet1-logfile-BUF     PIC X(282).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-nordforn-BUF     PIC X(381).
        77 TMP-DataSet1-tmp-nordforn-BUF     PIC X(381).
@@ -360,6 +359,7 @@
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
+       77 TMP-DataSet1-logfile-BUF     PIC X(282).
        77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -425,11 +425,6 @@
        77 DataSet1-timballi-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-timballi-KEY-Asc  VALUE "A".
           88 DataSet1-timballi-KEY-Desc VALUE "D".
-       77 DataSet1-logfile-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-logfile-LOCK  VALUE "Y".
-       77 DataSet1-logfile-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-logfile-KEY-Asc  VALUE "A".
-          88 DataSet1-logfile-KEY-Desc VALUE "D".
        77 DataSet1-tordforn-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tordforn-LOCK  VALUE "Y".
        77 DataSet1-KEYIS   PIC 9(3) VALUE 1.
@@ -556,6 +551,11 @@
        77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tscorte-KEY-Asc  VALUE "A".
           88 DataSet1-tscorte-KEY-Desc VALUE "D".
+       77 DataSet1-logfile-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-logfile-LOCK  VALUE "Y".
+       77 DataSet1-logfile-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-logfile-KEY-Asc  VALUE "A".
+          88 DataSet1-logfile-KEY-Desc VALUE "D".
        77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
        77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
@@ -570,8 +570,6 @@
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
        77 tivaese-key01-SPLITBUF  PIC X(53).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
-       77 logfile-k-chiave-SPLITBUF  PIC X(22).
-       77 logfile-k-program-SPLITBUF  PIC X(22).
        77 tordforn-tof-k-causale-SPLITBUF  PIC X(17).
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
@@ -603,6 +601,8 @@
        77 distinteb-k-progmag-SPLITBUF  PIC X(21).
        77 tmp-progmag-zoom-key-des-SPLITBUF  PIC X(64).
        77 tmp-progmag-zoom-key-art-SPLITBUF  PIC X(7).
+       77 logfile-k-chiave-SPLITBUF  PIC X(22).
+       77 logfile-k-program-SPLITBUF  PIC X(22).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-tmp-progmag-zoom-SPLIT-BUF1   PIC X(64).
 
@@ -4890,7 +4890,6 @@
            PERFORM OPEN-tivaese
            PERFORM OPEN-tcodpag
            PERFORM OPEN-timballi
-           PERFORM OPEN-logfile
            PERFORM OPEN-tordforn
            PERFORM OPEN-nordforn
            PERFORM OPEN-tmp-nordforn
@@ -4921,6 +4920,7 @@
            PERFORM OPEN-impforn
            PERFORM OPEN-param
            PERFORM OPEN-tscorte
+           PERFORM OPEN-logfile
       *    lineseq-mail OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq-mail
       *    After Open
@@ -5074,25 +5074,6 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:gordfornvar, FD:timballi, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-logfile.
-      * <TOTEM:EPT. INIT:gordfornvar, FD:logfile, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  I-O logfile
-           IF STATUS-logfile = "35"
-              OPEN OUTPUT logfile
-                IF Valid-STATUS-logfile
-                   CLOSE logfile
-                   OPEN I-O logfile
-                END-IF
-           END-IF
-           IF NOT Valid-STATUS-logfile
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:gordfornvar, FD:logfile, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -5473,6 +5454,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-logfile.
+      * <TOTEM:EPT. INIT:gordfornvar, FD:logfile, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O logfile
+           IF STATUS-logfile = "35"
+              OPEN OUTPUT logfile
+                IF Valid-STATUS-logfile
+                   CLOSE logfile
+                   OPEN I-O logfile
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-logfile
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gordfornvar, FD:logfile, AfterOpen>
+      * <TOTEM:END>
+           .
+
        OPEN-lineseq-mail.
       * <TOTEM:EPT. INIT:gordfornvar, FD:lineseq-mail, BeforeOpen>
       * <TOTEM:END>
@@ -5501,7 +5501,6 @@
            PERFORM CLOSE-tivaese
            PERFORM CLOSE-tcodpag
            PERFORM CLOSE-timballi
-           PERFORM CLOSE-logfile
            PERFORM CLOSE-tordforn
            PERFORM CLOSE-nordforn
            PERFORM CLOSE-tmp-nordforn
@@ -5532,6 +5531,7 @@
            PERFORM CLOSE-impforn
            PERFORM CLOSE-param
            PERFORM CLOSE-tscorte
+           PERFORM CLOSE-logfile
       *    lineseq-mail CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq-mail
       *    After Close
@@ -5605,12 +5605,6 @@
       * <TOTEM:EPT. INIT:gordfornvar, FD:timballi, BeforeClose>
       * <TOTEM:END>
            CLOSE timballi
-           .
-
-       CLOSE-logfile.
-      * <TOTEM:EPT. INIT:gordfornvar, FD:logfile, BeforeClose>
-      * <TOTEM:END>
-           CLOSE logfile
            .
 
        CLOSE-tordforn.
@@ -5756,6 +5750,12 @@
       * <TOTEM:EPT. INIT:gordfornvar, FD:tscorte, BeforeClose>
       * <TOTEM:END>
            CLOSE tscorte
+           .
+
+       CLOSE-logfile.
+      * <TOTEM:EPT. INIT:gordfornvar, FD:logfile, BeforeClose>
+      * <TOTEM:END>
+           CLOSE logfile
            .
 
        CLOSE-lineseq-mail.
@@ -7615,181 +7615,6 @@
            MOVE "timballi" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:timballi, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       logfile-k-chiave-MERGE-SPLITBUF.
-           INITIALIZE logfile-k-chiave-SPLITBUF
-           MOVE log-chiave-file(1:20) TO logfile-k-chiave-SPLITBUF(1:20)
-           MOVE log-oper(1:1) TO logfile-k-chiave-SPLITBUF(21:1)
-           .
-
-       logfile-k-program-MERGE-SPLITBUF.
-           INITIALIZE logfile-k-program-SPLITBUF
-           MOVE log-pgm(1:20) TO logfile-k-program-SPLITBUF(1:20)
-           MOVE log-oper(1:1) TO logfile-k-program-SPLITBUF(21:1)
-           .
-
-       DataSet1-logfile-INITSTART.
-           IF DataSet1-logfile-KEY-Asc
-              MOVE Low-Value TO log-chiave
-           ELSE
-              MOVE High-Value TO log-chiave
-           END-IF
-           .
-
-       DataSet1-logfile-INITEND.
-           IF DataSet1-logfile-KEY-Asc
-              MOVE High-Value TO log-chiave
-           ELSE
-              MOVE Low-Value TO log-chiave
-           END-IF
-           .
-
-      * logfile
-       DataSet1-logfile-START.
-           IF DataSet1-logfile-KEY-Asc
-              START logfile KEY >= log-chiave
-           ELSE
-              START logfile KEY <= log-chiave
-           END-IF
-           .
-
-       DataSet1-logfile-START-NOTGREATER.
-           IF DataSet1-logfile-KEY-Asc
-              START logfile KEY <= log-chiave
-           ELSE
-              START logfile KEY >= log-chiave
-           END-IF
-           .
-
-       DataSet1-logfile-START-GREATER.
-           IF DataSet1-logfile-KEY-Asc
-              START logfile KEY > log-chiave
-           ELSE
-              START logfile KEY < log-chiave
-           END-IF
-           .
-
-       DataSet1-logfile-START-LESS.
-           IF DataSet1-logfile-KEY-Asc
-              START logfile KEY < log-chiave
-           ELSE
-              START logfile KEY > log-chiave
-           END-IF
-           .
-
-       DataSet1-logfile-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-logfile-LOCK
-              READ logfile WITH LOCK 
-              KEY log-chiave
-           ELSE
-              READ logfile WITH NO LOCK 
-              KEY log-chiave
-           END-IF
-           PERFORM logfile-k-chiave-MERGE-SPLITBUF
-           PERFORM logfile-k-program-MERGE-SPLITBUF
-           MOVE STATUS-logfile TO TOTEM-ERR-STAT 
-           MOVE "logfile" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-logfile-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-logfile-KEY-Asc
-              IF DataSet1-logfile-LOCK
-                 READ logfile NEXT WITH LOCK
-              ELSE
-                 READ logfile NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-logfile-LOCK
-                 READ logfile PREVIOUS WITH LOCK
-              ELSE
-                 READ logfile PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM logfile-k-chiave-MERGE-SPLITBUF
-           PERFORM logfile-k-program-MERGE-SPLITBUF
-           MOVE STATUS-logfile TO TOTEM-ERR-STAT
-           MOVE "logfile" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-logfile-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-logfile-KEY-Asc
-              IF DataSet1-logfile-LOCK
-                 READ logfile PREVIOUS WITH LOCK
-              ELSE
-                 READ logfile PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-logfile-LOCK
-                 READ logfile NEXT WITH LOCK
-              ELSE
-                 READ logfile NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM logfile-k-chiave-MERGE-SPLITBUF
-           PERFORM logfile-k-program-MERGE-SPLITBUF
-           MOVE STATUS-logfile TO TOTEM-ERR-STAT
-           MOVE "logfile" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-logfile-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeWrite>
-      * <TOTEM:END>
-           WRITE log-rec OF logfile.
-           MOVE STATUS-logfile TO TOTEM-ERR-STAT
-           MOVE "logfile" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-logfile-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRewrite>
-      * <TOTEM:END>
-           REWRITE log-rec OF logfile.
-           MOVE STATUS-logfile TO TOTEM-ERR-STAT
-           MOVE "logfile" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-logfile-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeDelete>
-      * <TOTEM:END>
-           DELETE logfile.
-           MOVE STATUS-logfile TO TOTEM-ERR-STAT
-           MOVE "logfile" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -12050,6 +11875,181 @@
       * <TOTEM:END>
            .
 
+       logfile-k-chiave-MERGE-SPLITBUF.
+           INITIALIZE logfile-k-chiave-SPLITBUF
+           MOVE log-chiave-file(1:20) TO logfile-k-chiave-SPLITBUF(1:20)
+           MOVE log-oper(1:1) TO logfile-k-chiave-SPLITBUF(21:1)
+           .
+
+       logfile-k-program-MERGE-SPLITBUF.
+           INITIALIZE logfile-k-program-SPLITBUF
+           MOVE log-pgm(1:20) TO logfile-k-program-SPLITBUF(1:20)
+           MOVE log-oper(1:1) TO logfile-k-program-SPLITBUF(21:1)
+           .
+
+       DataSet1-logfile-INITSTART.
+           IF DataSet1-logfile-KEY-Asc
+              MOVE Low-Value TO log-chiave
+           ELSE
+              MOVE High-Value TO log-chiave
+           END-IF
+           .
+
+       DataSet1-logfile-INITEND.
+           IF DataSet1-logfile-KEY-Asc
+              MOVE High-Value TO log-chiave
+           ELSE
+              MOVE Low-Value TO log-chiave
+           END-IF
+           .
+
+      * logfile
+       DataSet1-logfile-START.
+           IF DataSet1-logfile-KEY-Asc
+              START logfile KEY >= log-chiave
+           ELSE
+              START logfile KEY <= log-chiave
+           END-IF
+           .
+
+       DataSet1-logfile-START-NOTGREATER.
+           IF DataSet1-logfile-KEY-Asc
+              START logfile KEY <= log-chiave
+           ELSE
+              START logfile KEY >= log-chiave
+           END-IF
+           .
+
+       DataSet1-logfile-START-GREATER.
+           IF DataSet1-logfile-KEY-Asc
+              START logfile KEY > log-chiave
+           ELSE
+              START logfile KEY < log-chiave
+           END-IF
+           .
+
+       DataSet1-logfile-START-LESS.
+           IF DataSet1-logfile-KEY-Asc
+              START logfile KEY < log-chiave
+           ELSE
+              START logfile KEY > log-chiave
+           END-IF
+           .
+
+       DataSet1-logfile-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-logfile-LOCK
+              READ logfile WITH LOCK 
+              KEY log-chiave
+           ELSE
+              READ logfile WITH NO LOCK 
+              KEY log-chiave
+           END-IF
+           PERFORM logfile-k-chiave-MERGE-SPLITBUF
+           PERFORM logfile-k-program-MERGE-SPLITBUF
+           MOVE STATUS-logfile TO TOTEM-ERR-STAT 
+           MOVE "logfile" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-logfile-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-logfile-KEY-Asc
+              IF DataSet1-logfile-LOCK
+                 READ logfile NEXT WITH LOCK
+              ELSE
+                 READ logfile NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-logfile-LOCK
+                 READ logfile PREVIOUS WITH LOCK
+              ELSE
+                 READ logfile PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM logfile-k-chiave-MERGE-SPLITBUF
+           PERFORM logfile-k-program-MERGE-SPLITBUF
+           MOVE STATUS-logfile TO TOTEM-ERR-STAT
+           MOVE "logfile" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-logfile-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-logfile-KEY-Asc
+              IF DataSet1-logfile-LOCK
+                 READ logfile PREVIOUS WITH LOCK
+              ELSE
+                 READ logfile PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-logfile-LOCK
+                 READ logfile NEXT WITH LOCK
+              ELSE
+                 READ logfile NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM logfile-k-chiave-MERGE-SPLITBUF
+           PERFORM logfile-k-program-MERGE-SPLITBUF
+           MOVE STATUS-logfile TO TOTEM-ERR-STAT
+           MOVE "logfile" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-logfile-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeWrite>
+      * <TOTEM:END>
+           WRITE log-rec OF logfile.
+           MOVE STATUS-logfile TO TOTEM-ERR-STAT
+           MOVE "logfile" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-logfile-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE log-rec OF logfile.
+           MOVE STATUS-logfile TO TOTEM-ERR-STAT
+           MOVE "logfile" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-logfile-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, BeforeDelete>
+      * <TOTEM:END>
+           DELETE logfile.
+           MOVE STATUS-logfile TO TOTEM-ERR-STAT
+           MOVE "logfile" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:logfile, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-lineseq-mail-INITSTART.
            .
 
@@ -12133,7 +12133,6 @@
            INITIALIZE record-tbliv OF tivaese
            INITIALIZE record-tblpa OF tcodpag
            INITIALIZE imb-rec OF timballi
-           INITIALIZE log-rec OF logfile
            INITIALIZE tof-rec OF tordforn
            INITIALIZE nof-rec OF nordforn
            INITIALIZE tmp-nof-rec OF tmp-nordforn
@@ -12159,6 +12158,7 @@
            INITIALIZE imf-rec OF impforn
            INITIALIZE prm-rec OF param
            INITIALIZE sco-rec OF tscorte
+           INITIALIZE log-rec OF logfile
            INITIALIZE line-riga-mail OF lineseq-mail
            .
 
@@ -12306,14 +12306,6 @@
       * FD's Initialize Paragraph
        DataSet1-timballi-INITREC.
            INITIALIZE imb-rec OF timballi
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-logfile-INITREC.
-           INITIALIZE log-rec OF logfile
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -12514,6 +12506,14 @@
       * FD's Initialize Paragraph
        DataSet1-tscorte-INITREC.
            INITIALIZE sco-rec OF tscorte
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-logfile-INITREC.
+           INITIALIZE log-rec OF logfile
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES

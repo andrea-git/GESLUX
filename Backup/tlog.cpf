@@ -5,7 +5,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen1
-PROGRAM_UNIQUE_CODE=TOTEM-7DBC9104638-46-2323017525
+PROGRAM_UNIQUE_CODE=TOTEM-7E6A1A91639-163-306513130
 
 {{@DESCRIPTION:
 
@@ -340,7 +340,7 @@ BEGIN-TEXT
            modify gd-log, reset-grid = 1.
            perform GD-LOG-CONTENT.
            move low-value to log-chiave.
-           move 20100101  to log-data.
+           move 20210101  to log-data.
            modify gd-log, mass-update = 1.
            start logfile key >= log-chiave
                  invalid continue
