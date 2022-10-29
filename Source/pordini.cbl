@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 20 ottobre 2022 00:19:45.
+       DATE-WRITTEN.        sabato 29 ottobre 2022 15:21:33.
        REMARKS.
       *{TOTEM}END
 
@@ -11430,8 +11430,15 @@
                  move "NESSUN MOVIMENTO GENERATO" to como-riga
                  perform SCRIVI-RIGA-LOG
               end-if
-           else
-              compute diff = ultimo-numero - primo-numero + 1
+           else                                  
+              move tge-anno      to tof-anno
+              perform varying tof-numero from primo-numero by 1 
+                        until tof-numero > ultimo-numero
+                 read tordforn no lock 
+                      invalid continue
+                  not invalid add 1 to diff
+                 end-read
+              end-perform                                       
               move primo-numero  to primo-numero-z
               move ultimo-numero to ultimo-numero-z
               move diff to tot-ordini-z
@@ -11445,7 +11452,7 @@
                  set stof-scegli-stampante to true
                  call   "st-ordforn" using st-ordforn-linkage
                  cancel "st-ordforn"
-              else                  
+              else                         
                  move "STAMPE ORDINI" to como-riga
                  perform SCRIVI-RIGA-LOG
 
@@ -11456,36 +11463,42 @@
                  open i-o tordforn
                  move tge-anno     to tof-anno
                  move primo-numero to tof-numero
-                 start tordforn key >= tof-chiave end-start
-                 perform until 1 = 2
-                    read tordforn next at end exit perform end-read
-                    if tof-numero > ultimo-numero or
-                       tof-anno not = tge-anno
-                       exit perform
-                    end-if
-                    move tof-cod-forn to desf-codice
-                    move tof-destino  to desf-prog
-                    read destinif no lock
-                    move desf-ufficio to tof-stampante
-                    rewrite tof-rec
-                    evaluate true
-                    when desf-ufficio-non-gestito
-                         if primo-numero-A = 0
-                            move tof-numero to primo-numero-A
-                         end-if
-                         move tof-numero to ultimo-numero-A
-                    when desf-ufficio-LUCA
-                         if primo-numero-L = 0
-                            move tof-numero to primo-numero-L
-                         end-if
-                         move tof-numero to ultimo-numero-L
-                    when desf-ufficio-MASSIMO
-                         if primo-numero-M = 0
-                            move tof-numero to primo-numero-M
-                         end-if
-                         move tof-numero to ultimo-numero-M
-                    end-evaluate
-                 end-perform
+                 start tordforn key >= tof-chiave 
+                       invalid 
+                       move "NESSUN ORDINE TROVATO" to como-riga
+                       perform SCRIVI-RIGA-LOG
+                   not invalid
+                       perform until 1 = 2
+                          read tordforn next at end exit perform 
+           end-read
+                          if tof-numero > ultimo-numero or
+                             tof-anno not = tge-anno
+                             exit perform
+                          end-if
+                          move tof-cod-forn to desf-codice
+                          move tof-destino  to desf-prog
+                          read destinif no lock
+                          move desf-ufficio to tof-stampante
+                          rewrite tof-rec
+                          evaluate true
+                          when desf-ufficio-non-gestito
+                               if primo-numero-A = 0
+                                  move tof-numero to primo-numero-A
+                               end-if
+                               move tof-numero to ultimo-numero-A
+                          when desf-ufficio-LUCA
+                               if primo-numero-L = 0
+                                  move tof-numero to primo-numero-L
+                               end-if
+                               move tof-numero to ultimo-numero-L
+                          when desf-ufficio-MASSIMO
+                               if primo-numero-M = 0
+                                  move tof-numero to primo-numero-M
+                               end-if
+                               move tof-numero to ultimo-numero-M
+                          end-evaluate
+                       end-perform
+                 end-start
                  close tordforn
                  open input tordforn  
                                 
