@@ -137,15 +137,16 @@
          03 s-cpfm-qta-m       pic  9(8) occurs 6 times.
                                                      
        01 FILLER.
-           05 articolo-fisso   PIC  9(6).
-           05 mese1-fisso      PIC  9(5).
-           05 mese2-fisso      PIC  9(5).
-           05 mese3-fisso      PIC  9(5).
-           05 mese4-fisso      PIC  9(5).
-           05 mese5-fisso      PIC  9(5).
-           05 mese6-fisso      PIC  9(5).
-           05 qta-epal-fisso   pic  9(5).
-       77  pordini-fisso         PIC  x(100).
+           05 articolo-fisso     pic 9(6).
+           05 mese1-fisso        pic 9(5).
+           05 mese2-fisso        pic 9(5).
+           05 mese3-fisso        pic 9(5).
+           05 mese4-fisso        pic 9(5).
+           05 mese5-fisso        pic 9(5).
+           05 mese6-fisso        pic 9(5).
+           05 qta-epal-fisso     pic 9(5).
+           05 no-qta-fisso       pic x.
+       77  pordini-fisso         pic x(100).
 
        77  qta-ordinata          pic 9(12).
        77  qta-eccesso           pic 9(12).
@@ -700,6 +701,7 @@
                        mese5-fisso
                        mese6-fisso
                        qta-epal-fisso
+                       no-qta-fisso
               end-unstring
            end-if.                               
 
@@ -1594,6 +1596,8 @@
               end-evaluate
               compute data-consegna = 
                       function date-of-integer(como-data)  
+
+
               accept como-data from century-date
            else
               move   como-data(5:2) to mese-oggi
@@ -1845,9 +1849,9 @@
        SCRIVI-TESTA-PROGRAMMAZIONE.
            perform varying idx from 1 by 1
                      until idx > 6
-              if cpfm-qta-m(idx) > 0
+      *****        if cpfm-qta-m(idx) > 0
                  perform SCRIVI-TESTA-MESE
-              end-if
+      *****        end-if
            end-perform.
            unlock destinif all records.
 
@@ -1915,14 +1919,16 @@
            |sempre le quantità a bancali.    
            
            if articolo-fisso > 0    
-              move mese1-fisso to cpfm-qta-m(1)
-              move mese2-fisso to cpfm-qta-m(2)
-              move mese3-fisso to cpfm-qta-m(3)
-              move mese4-fisso to cpfm-qta-m(4)
-              move mese5-fisso to cpfm-qta-m(5)
-              move mese6-fisso to cpfm-qta-m(6)
-              if qta-epal-fisso > 0
-                 move qta-epal-fisso to art-qta-epal
+              if no-qta-fisso not = "S"
+                 move mese1-fisso to cpfm-qta-m(1)
+                 move mese2-fisso to cpfm-qta-m(2)
+                 move mese3-fisso to cpfm-qta-m(3)
+                 move mese4-fisso to cpfm-qta-m(4)
+                 move mese5-fisso to cpfm-qta-m(5)
+                 move mese6-fisso to cpfm-qta-m(6)
+                 if qta-epal-fisso > 0
+                    move qta-epal-fisso to art-qta-epal
+                 end-if
               end-if
            end-if.
 
@@ -1947,23 +1953,23 @@
                  subtract 1 from sco-m-rif
               end-if
            
-              |La testate degli ordini in programmazione vengono
-              |scritte in anticipo in base alla presenza delle qta mese.
-              |Siccome col nuovo ciclo posso cancellare delle qta devo
-              |resettare la situazione 
-              perform varying idx from 1 by 1 
-                        until idx > 6      
-                 if numero-ordf(idx) > 0
-                    move tge-anno         to tof-anno
-                    move numero-ordf(idx) to tof-numero
-                    delete tordforn invalid continue end-delete
-                    move tof-chiave to tta-chiave
-                    delete tmp-tof-auto record 
-                           invalid continue 
-                    end-delete
-                    move 0 to numero-ordf(idx)
-                 end-if
-              end-perform
+      *****        |La testate degli ordini in programmazione vengono
+      *****        |scritte in anticipo in base alla presenza delle qta mese.
+      *****        |Siccome col nuovo ciclo posso cancellare delle qta devo
+      *****        |resettare la situazione 
+      *****        perform varying idx from 1 by 1 
+      *****                  until idx > 6      
+      *****           if numero-ordf(idx) > 0
+      *****              move tge-anno         to tof-anno
+      *****              move numero-ordf(idx) to tof-numero
+      *****              delete tordforn invalid continue end-delete
+      *****              move tof-chiave to tta-chiave
+      *****              delete tmp-tof-auto record 
+      *****                     invalid continue 
+      *****              end-delete
+      *****              move 0 to numero-ordf(idx)
+      *****           end-if
+      *****        end-perform
            
               |Mese [primo] = sempre un pallet
               if cpfm-qta-m(primo-mese) > art-qta-epal
@@ -2068,12 +2074,12 @@
               end-if
            end-perform.             
                                     
-           move 0 to numero-ordf(1).
-           move 0 to numero-ordf(2).
-           move 0 to numero-ordf(3).
-           move 0 to numero-ordf(4).
-           move 0 to numero-ordf(5).
-           move 0 to numero-ordf(6).
+      *****     move 0 to numero-ordf(1).
+      *****     move 0 to numero-ordf(2).
+      *****     move 0 to numero-ordf(3).
+      *****     move 0 to numero-ordf(4).
+      *****     move 0 to numero-ordf(5).
+      *****     move 0 to numero-ordf(6).
 
       ***---
        CALCOLA-QTA.
@@ -2321,7 +2327,47 @@
            set EseguiCheck to true.
 
       ***---
-       CONTROLLA-ORDINI.
+       CONTROLLA-ORDINI.     
+           |Cancello le testate create ma senza righe: questo succede
+           |quando incontro delle qta in programmazione che inizilamente
+           |hanno delle qta, che vengono poi ripulite dalle nuove
+           |logiche di ordini a bancale
+           if primo-numero     not = 0         and 
+              primo-numero <= con-num-ord-forn and
+              con-num-ord-forn not = 0       
+              move 0 to LinkFirst LinkLast
+              perform varying primo-numero from primo-numero by 1
+                        until primo-numero > con-num-ord-forn
+
+                 move low-value    to rof-rec
+                 move tge-anno     to rof-anno   tof-anno
+                 move primo-numero to rof-numero tof-numero
+                 start rordforn key >= rof-chiave
+                       invalid 
+                       delete tordforn record 
+                              invalid continue 
+                       end-delete
+                   not invalid
+                       read rordforn next
+                       if rof-anno   not = tof-anno or
+                          rof-numero not = tof-numero
+                          delete tordforn record 
+                                 invalid continue 
+                          end-delete
+                          move tof-chiave to tta-chiave
+                          delete tmp-tof-auto record 
+                                 invalid continue 
+                          end-delete
+                       else
+                          if LinkFirst = 0
+                             move primo-numero to LinkFirst
+                          end-if
+                          move primo-numero    to LinkLast
+                       end-if
+                 end-start
+              end-perform
+           end-if.
+
            set trovato to false.
            move low-value to tta-rec.
            start tmp-tof-auto key >= tta-chiave.
@@ -2551,7 +2597,7 @@
            accept tnf-ora  from time.      
            move LinkFirst  to tnf-da-num.
            move LinkLast   to tnf-a-num.
-           write tnf-rec.
+           write tnf-rec.        
 
       ***---
        CLOSE-FILES.
