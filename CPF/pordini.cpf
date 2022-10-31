@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=10.129.4.7
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6A1D1395-1-1439724266
+PROGRAM_UNIQUE_CODE=TOTEM-7E6A1F145559-128-1589224134
 
 {{@DESCRIPTION:
 
@@ -11360,11 +11361,11 @@ BEGIN-TEXT
                  perform SCR-FINE-OPEN-ROUTINE
               end-if
            end-if.
-           if LK-BL-PROG-ID = "desktop"
-              move "RIEPILOGO VIA MAIL" to como-riga
-              perform SCRIVI-RIGA-LOG
-              perform RIEPILOGO-VIA-MAIL
-           end-if.
+      *****     if LK-BL-PROG-ID = "desktop"
+      *****        move "RIEPILOGO VIA MAIL" to como-riga
+      *****        perform SCRIVI-RIGA-LOG
+      *****        perform RIEPILOGO-VIA-MAIL
+      *****     end-if.
            open i-o coperfab.
            move 27 to key-status.
 END-TEXT
@@ -13110,14 +13111,9 @@ BEGIN-DATA
 BEGIN-TEXT
            initialize LinkMail replacing numeric data by zeroes
                                     alphanumeric data by spaces.
-
-           perform SETTA-INIZIO-RIGA.
-           initialize como-riga.
-           string r-inizio                 delimited size
-                  "INVIO MAIL IN CORSO..." delimited size
-                  into como-riga
-           end-string.
-           display como-riga upon syserr.
+                                      
+           move "INVIO MAIL IN CORSO" to como-riga
+           perform SCRIVI-RIGA-LOG
 
            move "RIEPILOGO ORDINI FORNITORI GENERATI" to LinkSubject.
            accept LinkAddress from environment "ORDFORN_ADDRESSES_AUTO".
@@ -13152,24 +13148,18 @@ BEGIN-TEXT
                
            perform SETTA-INIZIO-RIGA.
            initialize como-riga.
-           if mail-ok
-              string r-inizio               delimited size
-                     "INVIO MAIL RIUSCITO!" delimited size
-                     into como-riga
-              end-string
-           else
-              string r-inizio                   delimited size
-                     "INVIO MAIL NON RIUSCITO!" delimited size
-                     into como-riga
-              end-string
-           end-if.
-           display como-riga upon syserr.
+           if mail-ok         
+              move "INVIO MAIL RIUSCITO!" to como-riga
+              perform SCRIVI-RIGA-LOG
+           else                               
+              move "INVIO MAIL NON RIUSCITO!" to como-riga
+              perform SCRIVI-RIGA-LOG
+           end-if.                       
 
            delete file lineseq-mail. 
            
       ***---
-       AFTER-SEND-MAIL.
-           perform SETTA-INIZIO-RIGA.
+       AFTER-SEND-MAIL.              
            initialize como-riga
            string r-inizio          delimited size
                   "TENTATIVO N. "   delimited size
@@ -13178,9 +13168,11 @@ BEGIN-TEXT
                   StatusInvioMail   delimited size
                   " - "             delimited size
                   line-riga-mail    delimited size
+                  " - allegato: "   delimited size
+                  linkAttach        delimited size
              into como-riga
-           end-string.
-           display como-riga upon syserr.
+           end-string.               
+           perform SCRIVI-RIGA-LOG.
 END-TEXT
 END-DATA
 BEGIN-DATA

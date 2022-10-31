@@ -883,7 +883,9 @@
                  invalid continue
              not invalid
                  perform until 1 = 2
-                    read rlistini next at end exit perform end-read
+                    read rlistini next no lock 
+                      at end exit perform 
+                    end-read
                     if art-codice not = rlis-articolo
                        exit perform
                     end-if
@@ -922,6 +924,7 @@
                           move prz-confronto to s-prz-confronto
                           set trovato to true
                           move rlis-codice to s-codice
+                          exit perform
                        end-if
                     end-if
                  end-perform
@@ -980,13 +983,13 @@
               move low-value   to lst-rec
               move el-gdo(idx) to lst-gdo
               move art-codice  to lst-articolo
-              move high-value  to lst-data
+              move como-data   to lst-data
               set trovato to false
               start listini key <= lst-k-articolo   
                     invalid continue
                 not invalid
                     perform until 1 = 2
-                       read listini previous 
+                       read listini previous no lock
                          at end exit perform 
                        end-read
                        if lst-gdo      not = el-gdo(idx) or
@@ -994,19 +997,17 @@
                           exit perform
                        end-if
                        |Se il più recente non è FA
-                       if lst-data <= como-data 
-                          if lst-prezzo = 99999999,99
-                             set trovato to false
-                          else                       
-                             set trovato to true
-                          end-if
-                          exit perform
+                       if lst-prezzo = 99999999,99
+                          set trovato to false
+                       else                       
+                          set trovato to true
                        end-if
+                       exit perform
                     end-perform
-              end-start 
-              perform SETTA-INIZIO-RIGA
-              initialize como-riga                             
+              end-start                                  
               if not trovato
+                 perform SETTA-INIZIO-RIGA
+                 initialize como-riga
                  initialize lst-rec replacing numeric data by zeroes
                                          alphanumeric data by spaces
                  add 0,005 to s-prz-confronto giving lst-prezzo
@@ -1021,7 +1022,9 @@
                         " CON PREZZO: "                   delimited size
                         prz-confronto-ed                  delimited size
                    into como-riga
-                 end-string
+                 end-string       
+                 perform RIGA-LOG
+
                  move el-gdo(idx)     to lst-gdo
                  move como-data       to lst-data
                  move art-codice      to lst-articolo
@@ -1029,8 +1032,7 @@
                  accept lst-ora-creazione  from time
                  move "AUTO"          to lst-utente-creazione
                  add 1 to tot-righe
-                 write lst-rec
-                 perform RIGA-LOG
+                 write lst-rec    
               end-if    
            end-perform.
 
@@ -1059,7 +1061,7 @@
 
            initialize como-riga.
            string r-inizio            delimited size
-                  "FINe ELABORAZIONE" delimited size
+                  "FINE ELABORAZIONE" delimited size
                   into como-riga
            end-string.
            perform RIGA-LOG.
@@ -1077,18 +1079,13 @@
                  column 35,00
            end-if.
 
-           goback.
-
-      ***---
-       SETTA-RIGA-STAMPA.
-           perform SETTA-INIZIO-RIGA.
-           perform RIGA-LOG.        
+           goback.                  
 
       ***---
        RIGA-LOG.
            if RichiamoSchedulato
-              initialize line-riga of lineseq
-              write line-riga of lineseq from como-riga
+              initialize line-riga 
+              write line-riga from como-riga
            else
               display como-riga upon syserr
            end-if.
