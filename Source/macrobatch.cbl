@@ -91,7 +91,7 @@
            end-string.
 
            open output log-macrobatch.
-           open i-o    macrobatch lockfile.  
+           open i-o    macrobatch lockfile.             
 
            move high-value to mb-id.
            start macrobatch key <= mb-id
@@ -108,11 +108,15 @@
            call   "set-ini-log" using r-output.
            cancel "set-ini-log".
            initialize lm-riga.
-           string r-output            delimited size
-                  "INIZIO PROCEDURA " delimited size
+           string r-output                        delimited size
+                  "INIZIO PROCEDURA, INVIO MAIL " delimited size
              into lm-riga
            end-string.
-           write lm-riga.
+           write lm-riga.              
+           
+      
+           perform INVIO-MAIL-INI.
+
            initialize lck-rec replacing numeric data by zeroes 
                                    alphanumeric data by spaces. 
            move "MACROBATCH" to lck-nome-pgm.
@@ -187,10 +191,10 @@
            move spaces to user-cod.
            set environment "USER_CODI" to user-cod.  
           
-           perform INVIO-MAIL.    
+           perform INVIO-MAIL-FINE.    
 
       ***---
-       INVIO-MAIL.                                                   
+       INVIO-MAIL-FINE.                                                   
            accept LinkAddress   from environment "MACROBATCH_ADDRESS".
            accept LinkAddressCC from environment "MACROBATCH_ADDRESS_CC"
            accept LinkSubject   from environment "MACROBATCH_SUBJECT".
@@ -310,6 +314,58 @@
                 into lm-riga
               end-string
               write lm-riga
+           else            
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output      delimited size
+                     "INVIO DELLA MAIL RIEPOLOGATIVA AVVENUTO"
+                                   delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.    
+
+      ***---
+       INVIO-MAIL-INI.        
+           move "andrea.ae@live.it" to LinkAddress.
+           accept LinkAddressCC from environment "MACROBATCH_ADDRESS_CC"
+           accept LinkSubject   from environment "MACROBATCH_SUBJECT".
+           accept LinkAttach    from environment "DUMMY_ATTACH".
+                                            
+           initialize LinkBody.
+
+           move "Inizio elaborazione macrobatch" to LinkBody.
+           inspect LinkBody replacing trailing spaces by low-value.
+
+                                     
+           accept debugger-test from environment "DEBUGGER_TEST".
+           if debugger-test not = "S"
+              move 5 to tentativi-mail
+              move "macrobatch" to NomeProgramma
+              perform CICLO-SEND-MAIL
+           end-if.
+      
+           if mail-ko
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output      delimited size
+                     "ERRORE DURANTE L'INVIO DELLA MAIL INIZIALE"
+                                   delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           else            
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output      delimited size
+                     "INVIO DELLA MAIL INIZIALE AVVENUTO"
+                                   delimited size
+                into lm-riga
+              end-string
+              write lm-riga
            end-if.
         
       ***---
@@ -374,7 +430,7 @@
       ***---
        CALL-RICALDIN.
            call   "ricaldin-bat" using batch-linkage.
-           cancel "ricaldin-bat".
+           cancel "ricaldin-bat".                 
 
       ***---
        PARAGRAFO-COPY.
