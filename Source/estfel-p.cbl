@@ -870,18 +870,29 @@
                 invalid move cli-nazione to naz-cod-edi
            end-read.
            inspect naz-cod-edi replacing trailing spaces by low-value.
-
+                             
            initialize line-riga.
-           string 78-spazi   
-                  78-spazi   
-                  78-spazi           
-                  78-spazi       
-                  78-spazi       
-                  "<IdPaese>"    
-                  naz-cod-edi delimited low-value
-                  "</IdPaese>"   
-             into line-riga
-           end-string.
+           if naz-extra-ue-si
+              string 78-spazi   
+                     78-spazi   
+                     78-spazi           
+                     78-spazi       
+                     78-spazi       
+                     "<IdPaese>OO</IdPaese>"   
+                into line-riga
+              end-string
+           else              
+              string 78-spazi   
+                     78-spazi   
+                     78-spazi           
+                     78-spazi       
+                     78-spazi       
+                     "<IdPaese>"    
+                     naz-cod-edi delimited low-value
+                     "</IdPaese>"   
+                into line-riga
+              end-string
+           end-if.
            write line-riga. 
 
       * per evitare l’errore 00305 1.4.1.1.2. Questo è un errore molto comune. 
@@ -903,7 +914,7 @@
            end-if.
 
            if naz-extra-ue-si
-              move "OO99999999999" to cli-piva
+              move "99999999999" to cli-piva
            end-if.
    
            if cli-piva not = spaces
@@ -968,7 +979,7 @@
                      78-spazi   
                      78-spazi       
                      "<CodiceFiscale>"
-                     "OO99999999999" delimited low-value
+                     "99999999999" delimited low-value  
                      "</CodiceFiscale>" 
                 into line-riga
               end-string           
