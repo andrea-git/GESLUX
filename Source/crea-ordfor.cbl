@@ -1695,9 +1695,9 @@
               move cpfm-data-m(1)   to tof-data-consegna
               move cpfm-mese-rif(1) to tof-mese-rif   
            end-if.
-           if tof-mese-rif = 1
-              set tof-urgente to true
-           end-if.
+      *****     if tof-mese-rif = 1
+      *****        set tof-urgente to true
+      *****     end-if.
            if tof-email not = space
               set tof-invio-mail to true
            else
@@ -1885,9 +1885,9 @@
            move cli-iva-ese          to tof-cod-ese-iva.
            move cpfm-data-m(idx)     to tof-data-consegna.
            move cpfm-mese-rif(idx)   to tof-mese-rif.
-           if tof-mese-rif = 1
-              set tof-urgente        to true
-           end-if.
+      *****     if tof-mese-rif = 1
+      *****        set tof-urgente        to true
+      *****     end-if.
            if tof-email not = space
               set tof-invio-mail to true
            else
