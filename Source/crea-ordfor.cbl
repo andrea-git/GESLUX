@@ -36,6 +36,7 @@
            copy "tmp-rof-auto.sl".
            copy "param.sl".
            copy "tnumordf.sl".
+           copy "genlog.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -67,6 +68,7 @@
            copy "tmp-rof-auto.fd".
            copy "param.fd".   
            copy "tnumordf.fd".
+           copy "genlog.fd".
 
        WORKING-STORAGE SECTION.
       * COPY
@@ -104,9 +106,11 @@
        77  status-tmp-rof-auto   pic xx.
        77  status-param          pic xx.
        77  status-tnumordf       pic xx.
+       77  status-genlog         pic xx.
 
        77  path-tmp-tof-auto     pic x(256).
        77  path-tmp-rof-auto     pic x(256).
+       77  path-genlog           pic x(256) value spaces.
 
        77  path-coperfab-mag     pic x(256).
                                           
@@ -115,6 +119,9 @@
        77  tot-qta-mese4         pic 9(8).
        77  tot-qta-mese5         pic 9(8).
        77  tot-qta-mese6         pic 9(8).
+
+       77  r-inizio              pic x(25).
+       77  como-riga             pic x(800).
 
       * COSTANTI
        78  titolo                value "Creazione Ordini a Fornitori".
@@ -687,7 +694,7 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.                     
+       INIT.                                           
            accept pordini-fisso from environment "ART_PORDINI".
            if pordini-fisso = spaces
               move 0 to articolo-fisso
@@ -719,7 +726,7 @@
                   "_"               delimited size
                   como-ora          delimited size
                   ".tmp"            delimited size
-                  into path-coperfab-mag
+             into path-coperfab-mag
            end-string.
 
            initialize path-tmp-tof-auto.
@@ -734,7 +741,7 @@
                   "_"               delimited size
                   como-ora          delimited size
                   ".tmp"            delimited size
-                  into path-tmp-tof-auto
+             into path-tmp-tof-auto
            end-string.
 
            initialize path-tmp-rof-auto.
@@ -749,8 +756,20 @@
                   "_"               delimited size
                   como-ora          delimited size
                   ".tmp"            delimited size
-                  into path-tmp-rof-auto
-           end-string.
+             into path-tmp-rof-auto
+           end-string.     
+           if linkAuto = 1
+              accept  path-genlog from environment "SCHEDULER_PATH_LOG"
+              inspect path-genlog replacing trailing spaces by low-value
+              string  path-genlog        delimited low-value
+                      "LOG-CREA-ORDFOR_" delimited size
+                      como-data          delimited size
+                      "-"                delimited size
+                      como-ora           delimited size
+                      ".log"             delimited size
+                 into path-genlog
+              end-string
+           end-if.
 
 
       ***---
@@ -771,6 +790,9 @@
                  open i-o    coperfab-mag tmp-tof-auto tmp-rof-auto
                              ordfor2 tnumordf
               end-if
+           end-if.
+           if linkAuto = 1
+              open output genlog
            end-if.
 
       ***---
@@ -841,6 +863,8 @@
 
       ***---
        ELABORAZIONE.
+           move "INIZIO ELABORAZIONE" to como-riga.
+           perform SCRIVI-RIGA-LOG.
            |Se le qta sono a zero non devo scrivere niente per 
            |quel fornitore perciò conto quanti pezzi totali comprende
            |e nel caso sia > 0 lo metto in un occurs
@@ -876,13 +900,22 @@
                     if cpf-fornitore not = save-fornitore or
                        cpf-destino   not = save-destino
                        if tot-qta > 0
+
+                          initialize como-riga
+                          string "AGGIUNTO ARTICOLO: " cpf-articolo
+                                 " - FORNITORE: "      cpf-fornitore
+                                 " - QTA: "            tot-qta
+                            into como-riga
+                          end-string
+                          perform SCRIVI-RIGA-LOG
+
                           add 1 to idx-forn
                           move save-fornitore to el-forn(idx-forn)
                           move save-destino   to el-dest(idx-forn)
                        end-if
                        move cpf-fornitore to save-fornitore
                        move cpf-destino   to save-destino
-                       move cpf-qta to tot-qta 
+                       move cpf-qta       to tot-qta 
                     else
                        add cpf-qta to tot-qta
                     end-if
@@ -891,10 +924,19 @@
            end-if.
            if idx-forn not = 0
               perform CREA-ORDINI
+           else                    
+              move "NESSUN ORDINE DA CREARE" to como-riga
+              perform SCRIVI-RIGA-LOG
            end-if.
+                                   
+           move "FINE ELABORAZIONE" to como-riga.
+           perform SCRIVI-RIGA-LOG.
 
       ***---
-       CREA-ORDINI.
+       CREA-ORDINI.  
+           move "INIZIO CREAZIONE ORDINI" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            |Fase 1: separo gli ordini nei due magazzini (LBX e std)
            move low-value to cpf-rec.
            start coperfab key >= cpf-chiave
@@ -918,8 +960,7 @@
                     read articoli no lock invalid continue end-read
                     move cpf-articolo to ord2-articolo
                     move "LBX"        to ord2-mag
-                    read ordfor2 no lock invalid continue end-read
-
+                    read ordfor2 no lock invalid continue end-read 
 
                     |SE IL FORNITORE E' STRANIERO SEMPRE SU LBX
                     if art-mag-std not = "LBX"                 
@@ -1148,7 +1189,11 @@
 
               move tge-anno to con-anno
               read tcontat  no lock invalid continue end-read
-              add 1 to con-num-ord-forn giving primo-numero
+              add 1 to con-num-ord-forn giving primo-numero    
+                    
+              move "CICLO COPERTURA FABBISGNO NO PROGRAMMAZIONE" 
+                to como-riga
+              perform SCRIVI-RIGA-LOG
 
               move low-value to cpfm-rec
               start coperfab-mag key >= k-forn
@@ -1192,17 +1237,21 @@
                           if trovato
                              move 0 to SaveRiga
                              perform READ-FORNITORI-DESTINIF
-                             perform SCRIVI-TESTA
+                             perform SCRIVI-TESTA-ORDINE
                           end-if
                        end-if
                        if trovato
-                          perform SCRIVI-RIGA
+                          perform SCRIVI-RIGA-ORDINE
                        end-if
                     end-if
                     |I record di programmazione li tratto dopo
                     delete coperfab-mag record
                  end-if
-              end-perform
+              end-perform         
+
+              move "CICLO COPERTURA FABBISGNO PROGRAMMAZIONE" 
+                to como-riga
+              perform SCRIVI-RIGA-LOG
 
               |Solo quelli di programmazione
               |ciclo creo gli ordini in programmazione
@@ -1229,13 +1278,23 @@
                  
                  move "LBX"         to ord2-mag
                  read ordfor2 no lock invalid continue end-read
-                 if ord2-si-conferma and cpfm-programmazione-si
+                 if ord2-si-conferma and cpfm-programmazione-si   
+
                     if ( cpfm-qta-m(1) + 
                          cpfm-qta-m(2) +
                          cpfm-qta-m(3) +
                          cpfm-qta-m(4) +
                          cpfm-qta-m(5) +
-                         cpfm-qta-m(6) ) > 0
+                         cpfm-qta-m(6) ) > 0                     
+
+                       initialize como-riga
+                       string "TRATTO ARTICOLO: "
+                              ord2-articolo
+                              " - MAG: "
+                              ord2-mag
+                         into como-riga
+                       end-string
+                       perform SCRIVI-RIGA-LOG
 
                        if LinkAuto = 1             
                           move cpfm-articolo to art-codice     
@@ -1278,6 +1337,9 @@
               |Alla fine di tutto scrivo il contatore
               rewrite con-rec invalid continue end-rewrite
            end-if.
+                      
+           move "FINE CREAZIONE ORDINI" to como-riga.
+           perform SCRIVI-RIGA-LOG.
 
       ***---
        RICALCOLA-SCORTA-PROGRAMMAZIONE.
@@ -1329,8 +1391,17 @@
            end-perform.                    
            |Sto ordinando di più rispetto al MOQ
            if tot-qta-moq < art-moq
-              move art-moq to tot-qta-moq
-           end-if.                  
+              move art-moq to tot-qta-moq    
+
+              initialize como-riga
+              string "QTA TOT: "          tot-qta-moq
+                     " - MOQ ARTICOLO: "  art-moq
+                     ". UTILIZZO ART-MOQ"
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
+           end-if.                           
                   
            if art-qta-epal = 0 and art-qta-std not = 0
               move art-qta-std to art-qta-epal
@@ -1354,7 +1425,16 @@
               end-if
            else
               move 1 to num-bancali
-           end-if.
+           end-if.    
+
+           initialize como-riga
+           string "ULTIMO MESE MOQ: " ultimo-mese-moq
+                  " - TOT QTA MOQ: "  tot-qta-moq
+                  " - QTA EPAL: "     art-qta-epal
+                  " - BANCALI: "      num-bancali
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
                
            |4. trasformo la qta in pezzi
            compute tot-qta-moq = num-bancali * art-qta-epal.
@@ -1379,6 +1459,17 @@
                                    cpfm-qta-m(4) + 
                                    cpfm-qta-m(5) + 
                                    cpfm-qta-m(6).
+                                   
+           initialize como-riga
+           string "TOT QTA MOQ: " tot-qta-moq  
+                  " - MESE 2: "   tot-qta-mese2
+                  " - MESE 3: "   tot-qta-mese3
+                  " - MESE 4: "   tot-qta-mese4
+                  " - MESE 5: "   tot-qta-mese5
+                  " - MESE 6: "   tot-qta-mese6
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
 
            perform varying idx-mese from 1 by 1 
                      until idx-mese > ultimo-mese-moq
@@ -1466,7 +1557,19 @@
                     move 0 to cpfm-qta-m(idx-mese)
                  end-if
               end-if
-           end-perform.
+           end-perform.                            
+                                   
+           initialize como-riga
+           string "DOPO RICALCOLO MOQ:"        
+                  " - MESE 1: "   cpfm-qta-m(1)
+                  " - MESE 2: "   cpfm-qta-m(2)
+                  " - MESE 3: "   cpfm-qta-m(3)
+                  " - MESE 4: "   cpfm-qta-m(4)
+                  " - MESE 5: "   cpfm-qta-m(5)
+                  " - MESE 6: "   cpfm-qta-m(6)
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
 
       ***---
        PROGRAMMAZIONE-ORDINI.  
@@ -1574,7 +1677,19 @@
            move cpf-totale        to cpfm-totale.
            move cpf-prz-listino   to cpfm-prz-listino.
            move cpf-lead-time     to cpfm-lead-time.
-           write cpfm-rec invalid continue end-write.
+           write cpfm-rec invalid continue end-write.     
+                    
+           initialize como-riga.
+           string "SCRITTA COPERTURA PER ARTICOLO: " 
+                  cpfm-articolo
+                  " - FORNITORE: "
+                  cpfm-fornitore
+                  " - LISTINO: "
+                  cpfm-listino
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
 
       ***---
        CALCOLA-DATA-CONSEGNA.
@@ -1661,7 +1776,7 @@
            read destinif no lock invalid continue end-read.
 
       ***---
-       SCRIVI-TESTA.
+       SCRIVI-TESTA-ORDINE.
            add 1 to con-num-ord-forn.
            if LinkFirst = 0
               move con-num-ord-forn  to LinkFirst
@@ -1717,6 +1832,16 @@
                      tof-ora-ultima-modifica.
            move spaces to tof-utente-ultima-modifica.
            write tof-rec invalid continue end-write.
+
+           initialize como-riga.
+           string "SCRITTA TESTATA SINGOLA: "
+                  tof-anno
+                  " - "
+                  tof-numero
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
            perform VAL-NOTE-LISTINO.
            perform SCRIVI-TMP-CONTROLLO.
 
@@ -1746,7 +1871,7 @@
            end-start.
 
       ***---
-       SCRIVI-RIGA.                                
+       SCRIVI-RIGA-ORDINE.                                
            initialize rof-rec replacing numeric data by zeroes
                                    alphanumeric data by spaces.
 
@@ -1792,6 +1917,21 @@
                      rof-ora-ultima-modifica.
            move spaces to rof-utente-ultima-modifica.
            write rof-rec invalid continue end-write.
+
+           initialize como-riga.
+           string "SCRITTA RIGA NO PROGRAMMAZIONE: " 
+                  rof-anno
+                  " - "
+                  rof-numero
+                  " - "
+                  rof-riga
+                  " - ARTICOLO: "
+                  rof-cod-articolo
+                  " - QTA: "
+                  rof-qta-ord
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG
 
            add rof-qta-ord       to tof-pz-tot.
 
@@ -1908,6 +2048,16 @@
                      tof-ora-ultima-modifica.
            move spaces to tof-utente-ultima-modifica.
            write tof-rec invalid continue end-write.
+                           
+           initialize como-riga.
+           string "SCRITTA TESTATA PROGRAMMAZIONE: "
+                  tof-anno
+                  " - "
+                  tof-numero
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
            perform VAL-NOTE-LISTINO.
            perform SCRIVI-TMP-CONTROLLO.
 
@@ -2609,6 +2759,22 @@
 
            delete file coperfab-mag tmp-tof-auto tmp-rof-auto.
 
+           if linkAuto = 1
+              close genlog
+           end-if.
+
+      ***---
+       SCRIVI-RIGA-LOG.
+           if linkAuto not = 1 exit paragraph end-if.
+           inspect como-riga replacing trailing spaces by low-value.
+           perform SETTA-INIZIO-RIGA.
+           initialize gl-riga.
+           string r-inizio  delimited size
+                  como-riga delimited low-value
+             into gl-riga
+           end-string.
+           write gl-riga. 
+
       ***---
        EXIT-PGM.
            display "                                           "
@@ -2635,6 +2801,7 @@
            copy "trova-parametro.cpy".
            copy "prz-finito-forn.cpy".
            copy "costo-medio.cpy".
+           copy "setta-inizio-riga.cpy".
 
       ***--- DUMMY
        CALCOLA-TRASPORTO.
