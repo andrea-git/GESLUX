@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6A11141753-112-364812645
+PROGRAM_UNIQUE_CODE=TOTEM-7E6BA153613-798-1284013855
 
 {{@DESCRIPTION:
 
@@ -5025,8 +5025,9 @@ BEGIN-TEXT
                             move sof-data-arr     to toa-data-arrivo
                             move sof-qta          to toa-qta-soll
                             move sof-dati-salvati to toa-dati-salvati
+                            move sof-data-conf    to toa-data-ordine
                        end-read
-                       move tof-data-ordine    to toa-data-ordine
+      *                 move tof-data-ordine    to toa-data-ordine
 
                        write toa-rec
                     end-if

@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=form-solleciti
 BEFORE_PROGRAM=gnote-ordforn-Ev-Before-Program
 AFTER_PROGRAM=gnote-ordforn-Ev-After-Program
 AFTER_INIT=gsordforn-Ev-After-Init
-PROGRAM_UNIQUE_CODE=TOTEM-7E6A1871038-177-87874461
+PROGRAM_UNIQUE_CODE=TOTEM-7E6BA13180-726-13680619
 
 {{@DESCRIPTION:
 
@@ -514,74 +514,48 @@ m_nCopyFileLevel=1
 
 @}}
 [FDITEM17_LK]
-m_strName=LK-BLOCKPGM
-m_nItemLevel=1
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
-m_strCopyFile=blockpgm.lks
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
-m_nCopyFileLevel=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM17_LK
 
 @}}
 [FDITEM18_LK]
-m_strName=LK-BL-PROG-ID
-m_strRawPic=X(10)
-m_strPic=X(10)
-m_nItemLevel=5
+m_strName=gsordforn-data-conf
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
-m_strCopyFile=blockpgm.lks
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
-m_nCopyFileLevel=2
+m_strTrue=1
+m_strFalse=zero
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM18_LK
 
 @}}
 [FDITEM19_LK]
-m_strName=LK-BL-DATA
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=filler
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
-m_strCopyFile=blockpgm.lks
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
-m_nCopyFileLevel=2
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_strCopyFile=LINK-GSORDFORN.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-GSORDFORN.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM19_LK
 
 @}}
 [FDITEM20_LK]
-m_strName=LK-BL-ORA
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
-m_strCopyFile=blockpgm.lks
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
-m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM20_LK
-
-@}}
-[FDITEM21_LK]
-m_strName=LK-BL-TIPO-OP
-m_strRawPic=9(1)
-m_strPic=9(1)
-m_nItemLevel=5
-m_nSync=-1
-m_bFixed=1
-m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
-m_strCopyFile=blockpgm.lks
-m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
-m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM21_LK
-
-@}}
-[FDITEM22_LK]
 m_strName=LK-BL-LETTURA
 m_nItemLevel=88
 m_nSync=-1
@@ -591,10 +565,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=blockpgm.lks
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM22_LK
+{{@DataItem_m_strDescriptionFDITEM20_LK
 
 @}}
-[FDITEM23_LK]
+[FDITEM21_LK]
 m_strName=LK-BL-SCRITTURA
 m_nItemLevel=88
 m_nSync=-1
@@ -604,10 +578,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=blockpgm.lks
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM23_LK
+{{@DataItem_m_strDescriptionFDITEM21_LK
 
 @}}
-[FDITEM24_LK]
+[FDITEM22_LK]
 m_strName=LK-BL-CANCELLAZIONE
 m_nItemLevel=88
 m_nSync=-1
@@ -617,10 +591,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=blockpgm.lks
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM24_LK
+{{@DataItem_m_strDescriptionFDITEM22_LK
 
 @}}
-[FDITEM25_LK]
+[FDITEM23_LK]
 m_strName=LK-BL-USO
 m_strRawPic=9(1)
 m_strPic=9(1)
@@ -631,10 +605,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=blockpgm.lks
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM25_LK
+{{@DataItem_m_strDescriptionFDITEM23_LK
 
 @}}
-[FDITEM26_LK]
+[FDITEM24_LK]
 m_strName=LK-BL-IN-USO
 m_nItemLevel=88
 m_nSync=-1
@@ -644,10 +618,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=blockpgm.lks
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM26_LK
+{{@DataItem_m_strDescriptionFDITEM24_LK
 
 @}}
-[FDITEM27_LK]
+[FDITEM25_LK]
 m_strName=LK-HND-WIN
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -659,10 +633,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=blockpgm.lks
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\BLOCKPGM.LKS
 m_nCopyFileLevel=2
-{{@DataItem_m_strDescriptionFDITEM27_LK
+{{@DataItem_m_strDescriptionFDITEM25_LK
 
 @}}
-[FDITEM28_LK]
+[FDITEM26_LK]
 m_strName=USER-CODI
 m_strRawPic=X(10)
 m_strPic=X(10)
@@ -673,10 +647,10 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=common-linkage.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM28_LK
+{{@DataItem_m_strDescriptionFDITEM26_LK
 
 @}}
-[FDITEM29_LK]
+[FDITEM27_LK]
 m_strName=LIVELLO-ABIL
 m_strRawPic=9
 m_strPic=9
@@ -687,7 +661,7 @@ m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_strCopyFile=common-linkage.def
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\COMMON-LINKAGE.DEF
 m_nCopyFileLevel=1
-{{@DataItem_m_strDescriptionFDITEM29_LK
+{{@DataItem_m_strDescriptionFDITEM27_LK
 
 @}}
 
@@ -1559,6 +1533,7 @@ BEGIN-TEXT
       *     move gsordforn-sof-chiave to tmp-sof-chiave
       *     perform CANCELLA-FLAG.           
            set gsordforn-forza-testata to false.
+           set gsordforn-data-conf     to false.
            perform CURRENT-RECORD.
 
 
@@ -1727,6 +1702,13 @@ BEGIN-TEXT
               if scelta = mb-yes
                  set gsordforn-forza-testata to true
               end-if
+           else
+              perform DATE-TO-FILE
+              inquire ef-data, value in como-data
+              perform DATE-TO-FILE
+              if gsordforn-sof-data-arr not = como-data
+                 set gsordforn-data-conf to true
+              end-if
            end-if.
 
            perform varying CONTROL-ID from 78-ID-ef-data by 1
@@ -1741,7 +1723,7 @@ BEGIN-TEXT
       *        perform ABILITAZIONI
               move store-id to CONTROL-ID
               move 4        to ACCEPT-CONTROL
-           else                       
+           else                                   
               perform FORM-SOLLECITI-BUF-TO-FLD
               perform CANCELLA-COLORE 
                                      

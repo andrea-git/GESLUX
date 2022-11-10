@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          vgiacenze.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        lunedì 17 ottobre 2022 16:17:14.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 10 novembre 2022 16:37:44.
        REMARKS.
       *{TOTEM}END
 
@@ -6142,8 +6142,9 @@
                             move sof-data-arr     to toa-data-arrivo
                             move sof-qta          to toa-qta-soll
                             move sof-dati-salvati to toa-dati-salvati
+                            move sof-data-conf    to toa-data-ordine
                        end-read
-                       move tof-data-ordine    to toa-data-ordine
+      *                 move tof-data-ordine    to toa-data-ordine
 
                        write toa-rec
                     end-if

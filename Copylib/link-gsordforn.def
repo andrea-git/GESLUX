@@ -14,7 +14,11 @@
            05 gsordforn-mod    PIC  9.
            05 FILLER           PIC  9.
                88 gsordforn-cambiati VALUE IS 1    WHEN SET TO FALSE  
-           zero. 
+           zero.                    
            05 FILLER           PIC  9.
                88 gsordforn-forza-testata VALUE IS 1    WHEN SET TO 
            FALSE  zero. 
+           05 FILLER           PIC  9.
+               88 gsordforn-data-conf VALUE IS 1    WHEN SET TO 
+           FALSE  zero. 
+           05 filler pic x(100).

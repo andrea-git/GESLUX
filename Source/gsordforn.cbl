@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gsordforn.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        giovedì 29 giugno 2017 18:19:40.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 10 novembre 2022 16:29:47.
        REMARKS.
       *{TOTEM}END
 
@@ -42,7 +42,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -122,6 +122,7 @@
           88 DataSet1-articoli-KEY1-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
 
       * 77  riga-note      pic 9(4).
       * 77  riga-old-note  pic 9(4).
@@ -499,8 +500,8 @@
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
-       PROCEDURE  DIVISION USING gsordforn-linkage, LK-BLOCKPGM, 
-           USER-CODI, LIVELLO-ABIL.
+       PROCEDURE  DIVISION USING gsordforn-linkage, USER-CODI, 
+           LIVELLO-ABIL.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE
@@ -626,6 +627,12 @@
            articoli-art-k1-SPLITBUF(1:50)
            .
 
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
+           .
+
        DataSet1-articoli-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -727,6 +734,7 @@
               END-IF
            END-EVALUATE
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -758,6 +766,7 @@
               END-IF
            END-EVALUATE
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -789,6 +798,7 @@
               END-IF
            END-EVALUATE
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -898,6 +908,7 @@
       *     move gsordforn-sof-chiave to tmp-sof-chiave
       *     perform CANCELLA-FLAG.           
            set gsordforn-forza-testata to false.
+           set gsordforn-data-conf     to false.
            perform CURRENT-RECORD.
 
            .
@@ -1321,6 +1332,13 @@
               if scelta = mb-yes
                  set gsordforn-forza-testata to true
               end-if
+           else
+              perform DATE-TO-FILE
+              inquire ef-data, value in como-data
+              perform DATE-TO-FILE
+              if gsordforn-sof-data-arr not = como-data
+                 set gsordforn-data-conf to true
+              end-if
            end-if.
 
            perform varying CONTROL-ID from 78-ID-ef-data by 1
@@ -1335,7 +1353,7 @@
       *        perform ABILITAZIONI
               move store-id to CONTROL-ID
               move 4        to ACCEPT-CONTROL
-           else                       
+           else                                   
               perform FORM-SOLLECITI-BUF-TO-FLD
               perform CANCELLA-COLORE 
                                      

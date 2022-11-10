@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evasione.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 24 gennaio 2022 14:55:54.
+       DATE-WRITTEN.        giovedì 10 novembre 2022 14:08:34.
        REMARKS.
       *{TOTEM}END
 
@@ -45,7 +45,6 @@
            COPY "tparamge.sl".
            COPY "tcaumag.sl".
            COPY "destinif.sl".
-           COPY "sordforn.sl".
            COPY "param.sl".
            COPY "impforn.sl".
            COPY "rlistini.sl".
@@ -71,7 +70,6 @@
            COPY "tparamge.fd".
            COPY "tcaumag.fd".
            COPY "destinif.fd".
-           COPY "sordforn.fd".
            COPY "param.fd".
            COPY "impforn.fd".
            COPY "rlistini.fd".
@@ -338,7 +336,6 @@
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
-       77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
@@ -437,11 +434,6 @@
        77 DataSet1-destinif-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-destinif-KEY-Asc  VALUE "A".
           88 DataSet1-destinif-KEY-Desc VALUE "D".
-       77 DataSet1-sordforn-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-sordforn-LOCK  VALUE "Y".
-       77 DataSet1-sordforn-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-sordforn-KEY-Asc  VALUE "A".
-          88 DataSet1-sordforn-KEY-Desc VALUE "D".
        77 DataSet1-param-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-param-LOCK  VALUE "Y".
        77 DataSet1-param-KEY-ORDER  PIC X VALUE "A".
@@ -1412,7 +1404,6 @@
            PERFORM OPEN-tparamge
            PERFORM OPEN-tcaumag
            PERFORM OPEN-destinif
-           PERFORM OPEN-sordforn
            PERFORM OPEN-param
            PERFORM OPEN-impforn
            PERFORM OPEN-rlistini
@@ -1670,25 +1661,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-sordforn.
-      * <TOTEM:EPT. INIT:evasione, FD:sordforn, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  I-O sordforn
-           IF STATUS-sordforn = "35"
-              OPEN OUTPUT sordforn
-                IF Valid-STATUS-sordforn
-                   CLOSE sordforn
-                   OPEN I-O sordforn
-                END-IF
-           END-IF
-           IF NOT Valid-STATUS-sordforn
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:evasione, FD:sordforn, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-param.
       * <TOTEM:EPT. INIT:evasione, FD:param, BeforeOpen>
       * <TOTEM:END>
@@ -1746,7 +1718,6 @@
            PERFORM CLOSE-tparamge
            PERFORM CLOSE-tcaumag
            PERFORM CLOSE-destinif
-           PERFORM CLOSE-sordforn
            PERFORM CLOSE-param
            PERFORM CLOSE-impforn
            PERFORM CLOSE-rlistini
@@ -1858,12 +1829,6 @@
       * <TOTEM:EPT. INIT:evasione, FD:destinif, BeforeClose>
       * <TOTEM:END>
            CLOSE destinif
-           .
-
-       CLOSE-sordforn.
-      * <TOTEM:EPT. INIT:evasione, FD:sordforn, BeforeClose>
-      * <TOTEM:END>
-           CLOSE sordforn
            .
 
        CLOSE-param.
@@ -4876,163 +4841,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-sordforn-INITSTART.
-           IF DataSet1-sordforn-KEY-Asc
-              MOVE Low-Value TO sof-chiave OF sordforn
-           ELSE
-              MOVE High-Value TO sof-chiave OF sordforn
-           END-IF
-           .
-
-       DataSet1-sordforn-INITEND.
-           IF DataSet1-sordforn-KEY-Asc
-              MOVE High-Value TO sof-chiave OF sordforn
-           ELSE
-              MOVE Low-Value TO sof-chiave OF sordforn
-           END-IF
-           .
-
-      * sordforn
-       DataSet1-sordforn-START.
-           IF DataSet1-sordforn-KEY-Asc
-              START sordforn KEY >= sof-chiave OF sordforn
-           ELSE
-              START sordforn KEY <= sof-chiave OF sordforn
-           END-IF
-           .
-
-       DataSet1-sordforn-START-NOTGREATER.
-           IF DataSet1-sordforn-KEY-Asc
-              START sordforn KEY <= sof-chiave OF sordforn
-           ELSE
-              START sordforn KEY >= sof-chiave OF sordforn
-           END-IF
-           .
-
-       DataSet1-sordforn-START-GREATER.
-           IF DataSet1-sordforn-KEY-Asc
-              START sordforn KEY > sof-chiave OF sordforn
-           ELSE
-              START sordforn KEY < sof-chiave OF sordforn
-           END-IF
-           .
-
-       DataSet1-sordforn-START-LESS.
-           IF DataSet1-sordforn-KEY-Asc
-              START sordforn KEY < sof-chiave OF sordforn
-           ELSE
-              START sordforn KEY > sof-chiave OF sordforn
-           END-IF
-           .
-
-       DataSet1-sordforn-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-sordforn-LOCK
-              READ sordforn WITH LOCK 
-              KEY sof-chiave OF sordforn
-           ELSE
-              READ sordforn WITH NO LOCK 
-              KEY sof-chiave OF sordforn
-           END-IF
-           MOVE STATUS-sordforn TO TOTEM-ERR-STAT 
-           MOVE "sordforn" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-sordforn-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-sordforn-KEY-Asc
-              IF DataSet1-sordforn-LOCK
-                 READ sordforn NEXT WITH LOCK
-              ELSE
-                 READ sordforn NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-sordforn-LOCK
-                 READ sordforn PREVIOUS WITH LOCK
-              ELSE
-                 READ sordforn PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
-           MOVE "sordforn" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-sordforn-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-sordforn-KEY-Asc
-              IF DataSet1-sordforn-LOCK
-                 READ sordforn PREVIOUS WITH LOCK
-              ELSE
-                 READ sordforn PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-sordforn-LOCK
-                 READ sordforn NEXT WITH LOCK
-              ELSE
-                 READ sordforn NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
-           MOVE "sordforn" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-sordforn-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeWrite>
-      * <TOTEM:END>
-           WRITE sof-rec OF sordforn.
-           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
-           MOVE "sordforn" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-sordforn-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeRewrite>
-      * <TOTEM:END>
-           REWRITE sof-rec OF sordforn.
-           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
-           MOVE "sordforn" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-sordforn-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, BeforeDelete>
-      * <TOTEM:END>
-           DELETE sordforn.
-           MOVE STATUS-sordforn TO TOTEM-ERR-STAT
-           MOVE "sordforn" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:sordforn, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-param-INITSTART.
            IF DataSet1-param-KEY-Asc
               MOVE Low-Value TO prm-chiave OF param
@@ -5536,7 +5344,6 @@
            INITIALIZE tge-rec OF tparamge
            INITIALIZE tca-rec OF tcaumag
            INITIALIZE desf-rec OF destinif
-           INITIALIZE sof-rec OF sordforn
            INITIALIZE prm-rec OF param
            INITIALIZE imf-rec OF impforn
            INITIALIZE rlis-rec OF rlistini
@@ -5747,14 +5554,6 @@
       * FD's Initialize Paragraph
        DataSet1-destinif-INITREC.
            INITIALIZE desf-rec OF destinif
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-sordforn-INITREC.
-           INITIALIZE sof-rec OF sordforn
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES

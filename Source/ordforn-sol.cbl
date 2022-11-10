@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 13 gennaio 2022 15:14:06.
+       DATE-WRITTEN.        giovedì 10 novembre 2022 17:05:58.
        REMARKS.
       *{TOTEM}END
 
@@ -90,6 +90,9 @@
        77 chiave           PIC  9(5).
        77 nstart           PIC  9.
        77 como-numero-x    PIC  x(8).
+       77 FILLER           PIC  9
+                  VALUE IS 0.
+           88 dataCambiataR VALUE IS 1    WHEN SET TO FALSE  0. 
        77 como-x           PIC  x.
        77 tipoRead         PIC  xx.
            88 sortAZ VALUE IS "AZ"    WHEN SET TO FALSE  0. 
@@ -3842,6 +3845,10 @@
               move col-data-soll to como-data
               perform DATE-TO-FILE
               move como-data to sof-data-arr
+                                     
+              if dataCambiataR
+                 accept sof-data-conf from century-date
+              end-if
 
               rewrite sof-rec
               unlock sordforn all records
@@ -4109,7 +4116,9 @@
                         perform REWRITE-SOLLECITI
                    when tos-data-from-soll-r
                         move tos-tof-chiave to sof-chiave
-                        perform REWRITE-SOLLECITI
+                        set dataCambiataR to true
+                        perform REWRITE-SOLLECITI        
+                        set dataCambiataR to false
                    end-evaluate 
                 end-if
                 perform DATE-TO-SCREEN

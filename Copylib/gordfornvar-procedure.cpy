@@ -2241,10 +2241,16 @@ PATCH      end-if.
                    accept sof-data-creazione from century-date
                    accept sof-ora-creazione  from time
                    move rof-utente-creazione to sof-utente-creazione
+                   if gsordforn-data-conf
+                      accept sof-data-conf from century-date
+                   end-if
                    write sof-rec end-write
                not invalid
                    if t-dati-salvati not = sof-dati-salvati
-                      move t-dati-salvati to sof-dati-salvati
+                      move t-dati-salvati to sof-dati-salvati       
+                      if gsordforn-data-conf
+                         accept sof-data-conf from century-date
+                      end-if
                       rewrite sof-rec
                    end-if
               end-read
@@ -2870,12 +2876,17 @@ LUBEXX        perform VALORIZZA-OLD
 
               if forza-testata-solleciti = 1  
                  move t-sof-data-arr  to sof-data-arr
+                 accept sof-data-conf from century-date
               end-if
 
               move rof-chiave      to sof-chiave
               move rof-dati-comuni to sof-dati-comuni   
               if SollecitiCambiati
                  set sof-dati-salvati-si to true
+              end-if       
+
+              if gsordforn-data-conf
+                 accept sof-data-conf from century-date
               end-if
 
               write sof-rec 
@@ -2888,7 +2899,11 @@ LUBEXX        perform VALORIZZA-OLD
                  move rof-chiave      to sof-chiave
                  move t-sof-data-arr  to sof-data-arr
                  move tof-dati-comuni to sof-dati-comuni
-                 set sof-dati-salvati-si to true
+                 set sof-dati-salvati-si to true  
+
+                 if gsordforn-data-conf
+                    accept sof-data-conf from century-date
+                 end-if
 
                  write sof-rec 
                        invalid 
