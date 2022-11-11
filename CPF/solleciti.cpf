@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6BB103045-90-15199956
+PROGRAM_UNIQUE_CODE=TOTEM-7E6BB20151-847-422818711
 
 {{@DESCRIPTION:
 
@@ -5393,6 +5393,18 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM472_WK
 
 @}}
+[FDITEM473_WK]
+m_strName=excel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM473_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -9849,7 +9861,7 @@ Begin Screen scr-ordini
       Font              = Default Font
       Handle Variable   = Form1-Tb-1-Handleaa
       Help ID           = 0
-      Lines             = 2,79
+      Lines             = 3,29
       Tab Order         = 29
       Begin Push-Button TOOL-ESCIa
          SCREEN-COL        = 1,00
@@ -9943,6 +9955,51 @@ Begin Screen scr-ordini
          Visible           = NONE
          Width in Cells    = FALSE
          Link To           = TOOL-STAMPA-LinkTo
+      End
+      Begin Push-Button pb-excel
+         SCREEN-COL        = 187,67
+         SCREEN-LINE       = 1,43
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = pb-excel
+         Bitmap            = "..\RESOURCE\EXCEL.BMP"
+         Bitmap Frame      = FALSE
+         Bitmap Handle     = EXCEL-BMP
+         Bitmap Number     = 1
+         Bitmap Square     = TRUE
+         Clines            = 0
+         Clines Unit       = Default
+         Column            = 187,67
+         Copy Resource     = TRUE
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Exception Value   = 88
+         Flat              = TRUE
+         Font              = Small Font
+         Font Variable     = Small-Font
+         Height in Cells   = FALSE
+         Help ID           = 0
+         ID                = 30
+         Line              = 1,43
+         Lines             = 2,29
+         Lines in Pixels   = 32
+         Lines Unit        = Default
+         No Auto Default   = FALSE
+         No Tab            = FALSE
+         Occurs            = 0
+         Self Act          = TRUE
+         Size              = 5,00
+         Size in Pixels    = 28
+         Size Unit         = Default
+         Style             = Other
+         Tab Order         = 3
+         Termination Value = 0
+         Title             = "Export Excel"
+         Visible           = TRUE
+         Width in Cells    = FALSE
+         Link To           = pb-excel-LinkTo
       End
    End
 End
@@ -13997,6 +14054,7 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = TOOL-STAMPA-LinkTo
 BEGIN-TEXT
+           move 0 to stsolleciti-excel.
            perform STAMPA.
 END-TEXT
 END-DATA
@@ -14068,6 +14126,22 @@ BEGIN-DATA
    PARAGRAPH         = chk-chiuso-ini-AfterProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-excel-LinkTo
+BEGIN-TEXT
+           display message "Esportare in Excel?"
+                     title titolo
+                      icon 2
+                      type mb-yes-no
+                   default mb-no
+                    giving scelta
+           if scelta = mb-yes
+              move 1 to stsolleciti-excel
+              perform STAMPA
+           end-if.
 END-TEXT
 END-DATA
 

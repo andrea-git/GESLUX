@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 19 ottobre 2022 22:50:58.
+       DATE-WRITTEN.        venerdì 11 novembre 2022 22:15:55.
        REMARKS.
       *{TOTEM}END
 
@@ -563,6 +563,9 @@
        77 ef-tipo-buf      PIC  x(2).
        77 STATUS-stato-invio           PIC  X(2).
            88 Valid-STATUS-stato-invio VALUE IS "00" THRU "09". 
+       77 excel-bmp        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -2748,6 +2751,27 @@
            TITLE "Stampa (F7)",
            .
 
+      * PUSH BUTTON
+       05
+           pb-excel, 
+           Push-Button, 
+           COL 187,67, 
+           LINE 1,43,
+           LINES 32,00 ,
+           SIZE 28,00 ,
+           BITMAP-HANDLE EXCEL-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 88,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 30,
+           SELF-ACT,
+           TITLE "Export Excel",
+           VISIBLE 1,
+           .
+
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
@@ -2915,6 +2939,7 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, BLUE-FINO-28X24-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, toolbar-bmp
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, EXCEL-BMP
       *    After-Program
            PERFORM stdoc-Ev-After-Program
            EXIT PROGRAM TOTEM-PgmStatus
@@ -3022,6 +3047,10 @@
            COPY RESOURCE "TOOLBAR.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "TOOLBAR.BMP", 
                    GIVING TOOLBAR-BMP.
+      * pb-excel
+           COPY RESOURCE "EXCEL.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "EXCEL.BMP", 
+                   GIVING EXCEL-BMP.
            .
 
        INIT-RES.
@@ -8211,7 +8240,7 @@
 
       * Tool Bar    
            DISPLAY TOOL-BAR 
-              LINES 2,79,   
+              LINES 3,29,   
               HANDLE IN Form1-Tb-1-Handleaa
            DISPLAY Form1-Tb-1aa UPON Form1-Tb-1-Handleaa
 
@@ -8596,6 +8625,8 @@
                  PERFORM TOOL-CERCA-LinkTo
               WHEN Key-Status = 7
                  PERFORM TOOL-STAMPA-LinkTo
+              WHEN Key-Status = 88
+                 PERFORM pb-excel-LinkTo
            END-EVALUATE
       * avoid changing focus
            MOVE 4 TO Accept-Control
@@ -12663,6 +12694,7 @@
       * <TOTEM:END>
        TOOL-STAMPA-LinkTo.
       * <TOTEM:PARA. TOOL-STAMPA-LinkTo>
+           move 0 to stsolleciti-excel.
            perform STAMPA 
            .
       * <TOTEM:END>
@@ -12714,6 +12746,20 @@
        chk-chiuso-ini-AfterProcedure.
       * <TOTEM:PARA. chk-chiuso-ini-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       pb-excel-LinkTo.
+      * <TOTEM:PARA. pb-excel-LinkTo>
+           display message "Esportare in Excel?"
+                     title titolo
+                      icon 2
+                      type mb-yes-no
+                   default mb-no
+                    giving scelta
+           if scelta = mb-yes
+              move 1 to stsolleciti-excel
+              perform STAMPA
+           end-if 
            .
       * <TOTEM:END>
 

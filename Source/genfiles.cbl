@@ -173,7 +173,7 @@ LABLAB     copy "blister.sl".
 
            copy "macrobatch.sl".
            copy "hleb.sl".
-           copy "anacap.sl".
+           copy "anacap.sl".          
 
       *****************************************************************
        DATA DIVISION.
@@ -345,7 +345,7 @@ LABLAB     copy "blister.fd".
            copy "battsost.fd".
            copy "macrobatch.fd".  
            copy "hleb.fd".              
-           copy "anacap.fd".
+           copy "anacap.fd".     
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".

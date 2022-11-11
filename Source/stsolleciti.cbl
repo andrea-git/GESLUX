@@ -24,8 +24,7 @@
            copy "destini.sl".
            copy "mtordini.sl".
            copy "mrordini.sl".
-
-
+           copy "lineseq.sl".
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.
@@ -46,6 +45,7 @@
            copy "destini.fd".
            copy "mtordini.fd".
            copy "mrordini.fd".
+           copy "lineseq.fd".
 
        WORKING-STORAGE SECTION. 
            copy "acucobol.def".
@@ -69,7 +69,7 @@
            88 evasa-tutto VALUE IS 1    WHEN SET TO FALSE  0. 
        77  tot-evasa        PIC  9(10).
        77  num-evasioni     PIC  999.
-       77 como-evasa       PIC  9(8).
+       77  como-evasa       PIC  9(8).
 
        77  como-ora pic 9(8).
 
@@ -88,8 +88,15 @@
        77  status-destini          pic xx.
        77  status-mtordini         pic xx.
        77  status-mrordini         pic xx.
+       77  status-lineseq          pic xx.
+       77  path-lineseq            pic xx.
+
+       77  wstampa                 pic x(256).
+
        77  idx                     pic 9(5).
        77  path-tmp-solleciti-m    pic x(256).
+
+       77  separatore pic x.
 
        77 evasioni-valide  PIC  9(3).
        77 articoli-validi  PIC  9(3).
@@ -98,10 +105,7 @@
 
        78 78-tutti-vol VALUE IS "Tutti i volantini". 
 
-       77 como-data-x8     PIC  x(8).
-
-
-
+       77  como-data-x8       pic  x(8).
        77  messaggio          pic X(150) value spaces.
        77  font-size-dply     pic Z(5).
        77  WFONT-STATUS       pic s9(5) value 0.
@@ -170,33 +174,27 @@
        01  controlli          pic xx.
          88 tutto-ok          value "OK".
          88 errori            value "ER".
-
-
+                              
        77  num-pagina           pic 9(3)    value zero.
        77  num-pag-ed           pic z(3)    value zero.
        77  pronostico           pic 99,99.
        77  logo-handle          handle of bitmap.
-
-
+                              
        77  como-riga            pic 9(3).
        77  como-colonna         pic 9(3).
        77  art-ed               pic z(6).
-
-
+                              
        77 save-stato       PIC  x(10).
        77 save-blocco      PIC  x.
            88 save-blocco-si VALUE IS "S". 
            88 save-blocco-no VALUE IS "N". 
        01 FILLER           PIC  9.
            88 sostituito VALUE IS 1    WHEN SET TO FALSE  0. 
-
-
+                              
        77  save-sol-desart       PIC  x(40).
        77  save-sol-promo        PIC  x(100).
        77  save-sol-qta-o        PIC  9(8).
-
-       77  num-righe               pic 9(3).
-
+       77  num-righe             pic 9(3).
 
        LINKAGE SECTION.
            copy "link-stsolleciti.def".
@@ -230,9 +228,24 @@
            set tutto-ok   to true.
            set Prima-Volta to true.
 
-           set environment "PRINTER" to "-P SPOOLER"
-           CALL "w$bitmap" USING  WBITMAP-LOAD "logo-st.BMP", 
-                           GIVING logo-handle
+           if stsolleciti-excel = 1
+              accept separatore from environment "SEPARATORE"
+              accept  wstampa   from environment "PATH_ST"
+              inspect wstampa   replacing trailing spaces by low-value
+              string  wstampa   delimited low-value
+                      "STSOLL_" delimited size
+                      como-data delimited size
+                      "_"       delimited size
+                      como-ora  delimited size
+                      ".csv"    delimited size
+                 into wstampa
+              end-string      
+              set prima-volta to false
+           else
+              set environment "PRINTER" to "-P SPOOLER"
+              CALL "w$bitmap" USING  WBITMAP-LOAD "logo-st.BMP", 
+                              GIVING logo-handle
+           end-if.
            move stsolleciti-path-tmp   to path-tmp-solleciti-m.
 
 
@@ -262,18 +275,24 @@
            open input mtordini.
            open input mrordini.
 
+           if stsolleciti-excel = 1
+              open output lineseq
+           end-if.
+
       ***---
        ELABORAZIONE.
            move 90   to spl-riga
            perform STAMPA-RIGHE
            if not prima-volta
-              set spl-chiusura to true
-              call   "spooler" using spooler-link
-              cancel "spooler"
+              if stsolleciti-excel = 0
+                 set spl-chiusura to true
+                 perform CALL-SPOOLER
+                 cancel "spooler"
+              end-if
            end-if.
 
       ***---
-       STAMPA-INTESTAZIONE.
+       STAMPA-INTESTAZIONE.                     
            add 1 to num-pagina
 
            perform FINCATURA.
@@ -294,7 +313,8 @@
            string "PAGINA "  delimited by size
                   num-pag-ed delimited by size
                   into spl-riga-stampa
-           call "spooler" using spooler-link.
+                  
+           perform CALL-SPOOLER.
 
       *    posizionamento per partenza righe
            move 4,30 to spl-riga.
@@ -315,13 +335,13 @@
 
            set spl-stringa   to true.
            move riga-ordine  to spl-riga-stampa.
-           call "spooler" using spooler-link. 
-
+           perform CALL-SPOOLER.
 
            add 0,10 to spl-riga.
 
       ***---
-       RIQUADRO-FILTRI.
+       RIQUADRO-FILTRI.        
+           if stsolleciti-excel = 1 exit paragraph end-if.
            move 8     to spl-pen-with.
            move 2,1  to spl-riga.
            add 2,0  to spl-riga giving spl-riga-fine
@@ -333,7 +353,7 @@
            set  SPL-RETTANGOLO-ROUND  to true.
            set  spl-brush-null        to true.
            set  spl-nero              to true.
-           call "spooler"         using spooler-link.
+           perform CALL-SPOOLER.
 
            set  SPL-linea to true.
            move 4         to spl-pen-with.
@@ -345,7 +365,7 @@
            perform 5 times
               add 0,3        to spl-riga
               move spl-riga  to spl-riga-fine
-              call "spooler"         using spooler-link
+              perform CALL-SPOOLER
            end-perform.
 
            subtract 3,1        from spl-colonna
@@ -355,27 +375,27 @@
            subtract 1,75      from spl-riga.
       *     subtract 0,6      from spl-colonna.
            move "FILTRI DI VISUALIZZAZIONE"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            move "Data Ordine:"   to spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            move "Promo: "             to spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            move "Gruppo GDO: "        to spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            move "Cliente: "           to spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            move "Data di consegna successiva al: "   to spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            subtract 1,5  from spl-riga
            add 3,2        to spl-colonna
@@ -387,12 +407,12 @@
                   " al "                    delimited by size
                   stsolleciti-dt-a         delimited by size
                   into spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            move stsolleciti-promo   to spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            move stsolleciti-gdo  to gdo-codice
            read tgrupgdo
@@ -400,8 +420,8 @@
                  initialize gdo-intestazione 
            end-read
            move gdo-intestazione to spl-riga-stampa
-           add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           add 0,3  to spl-riga                                
+           perform CALL-SPOOLER.
 
            move stsolleciti-cli  to cli-codice
            set cli-tipo-c    to true
@@ -411,14 +431,15 @@
            end-read
            move cli-ragsoc-1  to spl-riga-stampa
            add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            move stsolleciti-data to spl-riga-stampa
            add 0,3  to spl-riga
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
       ***---
-       RIQUADRO-ARTICOLI.
+       RIQUADRO-ARTICOLI.      
+           if stsolleciti-excel = 1 exit paragraph end-if.
            move 8     to spl-pen-with.
            move 2,1  to spl-riga.
            add 2,0  to spl-riga giving spl-riga-fine
@@ -430,7 +451,7 @@
            set  SPL-RETTANGOLO-ROUND  to true.
            set  spl-brush-null     to true.
            set  spl-nero           to true.
-           call "spooler"         using spooler-link.
+           perform CALL-SPOOLER.
 
            set  SPL-linea to true.
            move 4         to spl-pen-with.
@@ -442,14 +463,14 @@
            perform 5 times
               add 0,3        to spl-riga
               move spl-riga  to spl-riga-fine
-              call "spooler"         using spooler-link
+              perform CALL-SPOOLER
            end-perform.
 
            set spl-stringa   to true.
            move arial6       to spl-hfont.
            subtract 1,75      from spl-riga.
-           move "FILTRI ARTICOLI"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           move "FILTRI ARTICOLI" to spl-riga-stampa
+           perform CALL-SPOOLER.
 
            move 1      to como-riga
            move zero   to como-colonna
@@ -468,7 +489,7 @@
                     add 0,3  to spl-riga
                     inspect spl-riga-stampa 
                                    replacing trailing low-value by space
-                    call "spooler" using spooler-link
+                    perform CALL-SPOOLER
                     initialize spl-riga-stampa
                     add 1 to como-riga
                     move 1   to como-colonna
@@ -484,8 +505,8 @@
               if como-riga < 5
                  inspect spl-riga-stampa 
                                    replacing trailing low-value by space
-                 add 0,3  to spl-riga
-                 call "spooler" using spooler-link
+                 add 0,3  to spl-riga   
+                 perform CALL-SPOOLER
               end-if
            end-if.
                  
@@ -493,7 +514,8 @@
            move zero   to spl-tipo-colonna.
 
       ***---
-       FINCATURA.
+       FINCATURA.                       
+           if stsolleciti-excel = 1 exit paragraph end-if.
       *    dati Lubex
            perform DATI-LUBEX.
 
@@ -504,15 +526,15 @@
            move 6,5 to spl-colonna
            move 1,2 to spl-bitmap-height
            move 2,8 to spl-bitmap-width
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
       *    riga Ordine
            set spl-stringa            to true.
            move Arial14BI             to spl-hfont.
            move 1,4                   to spl-riga.
            move 17,0                  to spl-colonna.
-           move "STAMPA SOLLECITI"   to spl-riga-stampa
-           call "spooler" using spooler-link.
+           move "STAMPA SOLLECITI"    to spl-riga-stampa
+           perform CALL-SPOOLER.
 
            set spl-nero   to true.
            move 20                 to spl-pen-with.
@@ -522,34 +544,33 @@
                          spl-riga-fine.
            set  spl-oggetto        to true.
            set  spl-linea          to true.
-           set  spl-pen-solid      to true.
-           call "spooler"       using spooler-link.
+           set  spl-pen-solid      to true.             
+           perform CALL-SPOOLER.
 
            move 22,3               to spl-colonna.
-           move 28,5               to spl-colonna-fine.
-           call "spooler"       using spooler-link.
+           move 28,5               to spl-colonna-fine. 
+           perform CALL-SPOOLER.
 
            add 2,4   to spl-riga 
            move spl-riga  to spl-riga-fine.
            move 0,6                to spl-colonna.
-           move 28,5               to spl-colonna-fine.
-           call "spooler"       using spooler-link.
+           move 28,5               to spl-colonna-fine. 
+           perform CALL-SPOOLER.
 
 
            add 14,6       to spl-riga 
            move 28,5      to spl-colonna-fine.
-           move spl-riga  to spl-riga-fine.
-           call "spooler"       using spooler-link.
+           move spl-riga  to spl-riga-fine.             
+           perform CALL-SPOOLER.
 
            move 4         to spl-pen-with.
            move 4,7       to spl-riga 
            move spl-riga  to spl-riga-fine.
-           call "spooler"       using spooler-link.
+           perform CALL-SPOOLER.
 
       ***---
        STAMPA-RIGHE.
-           perform SETTA-FILTRI.
-
+           perform SETTA-FILTRI.             
 
            move low-value to sol-rec of tmp-sol.
            set sol-testa  of tmp-sol to true.
@@ -594,7 +615,8 @@
            end-if.
 
       ***---
-       LINEA-DIVISORIA-1.
+       LINEA-DIVISORIA-1.               
+           if stsolleciti-excel = 1 exit paragraph end-if.
            set spl-nero         to true.
            set  spl-oggetto     to true.
            set  spl-linea       to true.
@@ -604,10 +626,11 @@
            move spl-riga        to spl-riga-fine.
            move 0,6             to spl-colonna.
            move 28,5            to spl-colonna-fine.
-           call "spooler"       using spooler-link.
+           perform CALL-SPOOLER.
 
       ***---
-       LINEA-DIVISORIA.
+       LINEA-DIVISORIA.                 
+           if stsolleciti-excel = 1 exit paragraph end-if.
            set spl-nero         to true.
            set  spl-oggetto     to true.
            set  spl-linea       to true.
@@ -617,7 +640,7 @@
            move spl-riga        to spl-riga-fine.
            move 0,6             to spl-colonna.
            move 28,5            to spl-colonna-fine.
-           call "spooler"       using spooler-link.
+           perform CALL-SPOOLER.
 
       ***---
        SCRIVI-RIGA-ORDINE.
@@ -654,7 +677,7 @@
            move 0,6   to spl-colonna 
            move 28,5  to spl-colonna-fine
            add 0,4  to spl-riga giving spl-riga-fine
-           call "spooler" using spooler-link. 
+           perform CALL-SPOOLER. 
 
            add 0,05 to spl-riga
 
@@ -684,7 +707,7 @@ colore*     set spl-nero   to true
       *           set SPL-VERDE     to true
       *     end-evaluate.
 
-           call "spooler" using spooler-link. 
+           perform CALL-SPOOLER. 
 
       *     set spl-nero   to true.
 
@@ -774,9 +797,7 @@ colore*     set spl-nero   to true
            read TMP-SOL no lock key is k-dt-testa 
               invalid
                  continue
-           end-read.
-
-
+           end-read.                    
 
       ***---
        RIGA-SALDO.
@@ -810,12 +831,9 @@ colore*     set spl-nero   to true
            set spl-stringa   to true
            perform SCRIVI-RIGA-ART-FINE.
 
-
-
       ***---
        SCRIVI-RIGA-ART-NO-EVA.
            perform SCRIVI-RIGA-ART-INIT.
-
 
            move sol-desart    of tmp-sol to ra-art
            move sol-promo     of tmp-sol to ra-promo
@@ -863,7 +881,6 @@ colore*     set spl-nero   to true
            perform SCRIVI-RETTANGOLI-COLORATI
 
            perform SCRIVI-RIGA-ART-FINE.
-
 
       ***---
        IMPOSTA-CLIENTE-BLOCCATO.
@@ -1001,7 +1018,7 @@ colore*     set spl-nero   to true
            add 0,30          to spl-riga
            set spl-stringa   to true.
            move riga-art     to spl-riga-stampa.
-           call "spooler" using spooler-link. 
+           perform CALL-SPOOLER. 
 
       ***---
        SCRIVI-RIGA-ART-INIT.
@@ -1016,9 +1033,8 @@ colore*     set spl-nero   to true
               perform INTESTA-ART
            end-if.
       
-           initialize riga-art.
-
-
+           initialize riga-art.         
+                                                        
       ***---
        INTESTA-ART.
            add 1,00 to spl-riga giving pronostico
@@ -1047,17 +1063,17 @@ colore*     set spl-nero   to true
            set spl-stringa   to true.
            move riga-art  to spl-riga-stampa.
            add 0,50       to spl-riga
-           call "spooler" using spooler-link. 
+           perform CALL-SPOOLER. 
       
       *    riga separazione articoli
            add 0,3   to spl-riga 
            perform LINEA-DIVISORIA.
       
-           subtract 0,2  from spl-riga.
-
+           subtract 0,2  from spl-riga. 
 
       ***---
-       SALTO-PAGINA.
+       SALTO-PAGINA.                    
+           if stsolleciti-excel = 1 exit paragraph end-if.
            if Prima-Volta
               initialize spooler-link
 
@@ -1073,7 +1089,7 @@ colore*     set spl-nero   to true
                  set spl-apertura to true
                  set SPL-HORIZONTAL to true
                  set WFDEVICE-WIN-PRINTER    to true
-                 call "spooler" using spooler-link
+                 perform CALL-SPOOLER
                  set Prima-Volta   to false
                  if spl-sta-annu 
                     exit paragraph 
@@ -1093,12 +1109,12 @@ colore*     set spl-nero   to true
                  set prima-volta   to false
               end-if
            else
-              set spl-salto-pagina     to true
-              call "spooler"        using spooler-link
+              set spl-salto-pagina     to true        
+              perform CALL-SPOOLER
               set spl-stringa to true
               move 0      to spl-riga
               move spaces to spl-riga-stampa
-              call "spooler" using spooler-link
+              perform CALL-SPOOLER
            end-if.
 
            if not prima-volta
@@ -1106,7 +1122,8 @@ colore*     set spl-nero   to true
            end-if.
 
       ***---
-       CARICA-FONT.
+       CARICA-FONT.                     
+           if stsolleciti-excel = 1 exit paragraph end-if.
            set tutto-ok             to true.
            initialize wfont-data.
            move 14                  to wfont-size.
@@ -1252,7 +1269,8 @@ colore*     set spl-nero   to true
            end-if.
 
       ***---
-       MESSAGGIO-ERR-FONT.
+       MESSAGGIO-ERR-FONT.              
+           if stsolleciti-excel = 1 exit paragraph end-if.
       * ISACCO (MESSAGGIO DI ERRORE ED USCITA SE NON TROVA UN FONT)
            initialize messaggio.
 
@@ -1285,68 +1303,67 @@ colore*     set spl-nero   to true
                  mtordini
                  mrordini.
 
-      ***---
-       EXIT-PGM.
-           set environment "PRINTER" to "-P SPOOLER-DIRECT".
-           destroy arial14bi.
-           destroy arial10b.
-           destroy Arial7.
-           destroy arial5B.
-           destroy arial5.
-           destroy arial6.
-           destroy arial7b.
+           if stsolleciti-excel = 1
+              close lineseq
+           end-if.
 
-      *     call "W$BITMAP" using wbitmap-destroy, bloccato-REG-bmp.
-      *     call "W$BITMAP" using wbitmap-destroy, bloccato-LAV-bmp.
-      *     call "W$BITMAP" using wbitmap-destroy, bloccato-SP-bmp.
-      *     call "W$BITMAP" using wbitmap-destroy, bloccato-ST-bmp.
-      *     call "W$BITMAP" using wbitmap-destroy, bloccato-FP-bmp.
-      *     call "W$BITMAP" using wbitmap-destroy, bloccato-FT-bmp.
-      *     call "W$BITMAP" using wbitmap-destroy, bloccato-CHIUSO-bmp.
+      ***---
+       EXIT-PGM.                        
+           if stsolleciti-excel = 0 
+              set environment "PRINTER" to "-P SPOOLER-DIRECT"
+              destroy arial14bi
+              destroy arial10b
+              destroy Arial7
+              destroy arial5B
+              destroy arial5
+              destroy arial6
+              destroy arial7b
+           end-if.
 
            goback.
 
       ***---
-       DATI-LUBEX.
+       DATI-LUBEX.          
+           if stsolleciti-excel = 1 exit paragraph end-if.
            move zero   to spl-tipo-colonna
            set spl-stringa       to true.
            move arial5B  to spl-hfont.
            move 0,1              to spl-riga.
            move 3,4              to spl-colonna.
            move "LUBEX S.p.a."  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            set spl-stringa       to true.
            move arial5  to spl-hfont.
            add 0,2              to spl-riga.
            move "Via G. Di Vittorio, 13/15"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            add 0,2              to spl-riga.
            move "20090 VIMODRONE"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            add 0,2              to spl-riga.
            move "(MILANO - ITALY)"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            add 0,4              to spl-riga.
            move ">> Tel:  02 26 51 551"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            add 0,2              to spl-riga.
            move ">> Fax: 02 26 515 549"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            add 4,1  to spl-colonna
            move 0,1              to spl-riga.
 
            add 0,2              to spl-riga.
            move "Capitale Sociale € 2.180.000 i.v."  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
            add 0,2              to spl-riga.
            move "P.IVA:   IT00785630963"  to spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
            add 3,1  to spl-colonna
            move 0,1              to spl-riga.
@@ -1366,7 +1383,7 @@ colore*     set spl-nero   to true
                   "."              delimited by size
                   como-ora(3:2)    delimited by size
                   into spl-riga-stampa
-           call "spooler" using spooler-link.
+           perform CALL-SPOOLER.
 
       ***---
        SETTA-FILTRI.
@@ -1689,11 +1706,12 @@ colore*     set spl-nero   to true
       *     move 0,9 to spl-bitmap-width
       *
       *     add 10,6   to spl-riga
-      *     call "spooler" using spooler-link
+      *     perform CALL-SPOOLER
       *     subtract 10,6   from spl-riga.
       *     set spl-stringa   to true.
 
-       CONTROLLO-SALTO-PAGINA.
+       CONTROLLO-SALTO-PAGINA.                  
+           if stsolleciti-excel = 1 exit paragraph end-if.
            add 1,5 to spl-riga giving pronostico
       
            if pronostico > maxrighe
@@ -1708,8 +1726,7 @@ colore*     set spl-nero   to true
               if pronostico > maxrighe
                  perform SALTO-PAGINA
               end-if
-           end-if.
-
+           end-if.                              
 
       ***---
        CONTA-RIGHE-APERTE.
@@ -1749,8 +1766,7 @@ colore*     set spl-nero   to true
               else
                  set evasa-tutto to false
               end-if
-
-
+                                                
               if sol-valido-si of tmp-sol
                  perform sol-evasioni of tmp-sol times
                     read tmp-sol next no lock 
@@ -1789,6 +1805,7 @@ colore*     set spl-nero   to true
 
       ***---
        SCRIVI-RETTANGOLI-COLORATI.
+           if stsolleciti-excel = 1 exit paragraph end-if.
            move zero            to SPL-PEN-WITH
       *     set SPL-BRUSH-BDIAGONAL to true
            set SPL-BRUSH-SOLID     to true
@@ -1804,22 +1821,49 @@ colore*     set spl-nero   to true
            add 0,3  to spl-riga 
            add 0,3  to spl-riga giving spl-riga-fine
 
-           call "spooler" using spooler-link. 
-
-
+           perform CALL-SPOOLER. 
 
            set spl-verde       to true
            move 19,0   to spl-colonna 
            move 22,0  to spl-colonna-fine
-           call "spooler" using spooler-link. 
+           perform CALL-SPOOLER. 
       *
            set spl-azzurro-2    to true
            move 22,0   to spl-colonna 
            move 24,9  to spl-colonna-fine
-           call "spooler" using spooler-link. 
+           perform CALL-SPOOLER. 
 
            subtract 0,3  from spl-riga 
-
-
            set spl-stringa   to true.
            set spl-nero      to true.
+
+      ***---
+       CALL-SPOOLER.                                      
+           if spl-stringa
+              if stsolleciti-excel = 1   
+                 initialize line-riga
+                 string ro-num
+                        separatore
+                        ro-clides 
+                        separatore
+                        ro-localita
+                        separatore
+                        ro-ord-cli 
+                        separatore
+                        ro-data-ord
+                        separatore
+                        ro-stato   
+                        separatore
+                        ro-nr-e    
+                        separatore
+                        ro-data-b  
+                        separatore
+                   into line-riga
+                 end-string
+                 write line-riga
+                 exit paragraph
+              end-if
+           else
+              if stsolleciti-excel = 1 exit paragraph end-if
+           end-if.
+           call "spooler" using spooler-link.
