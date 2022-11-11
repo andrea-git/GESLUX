@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E6BA13918-80-3016430167
+PROGRAM_UNIQUE_CODE=TOTEM-7E6BB103114-470-1176827171
 
 {{@DESCRIPTION:
 
@@ -2434,6 +2434,7 @@ BEGIN-TEXT
            move col-data-soll to como-data
            perform DATE-TO-FILE
            move como-data to sof-data-arr
+           accept sof-data-conf from century-date.
            write sof-rec
 
            set tos-data-from-soll-r to true.

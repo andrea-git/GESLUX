@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordforn-sol.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 10 novembre 2022 17:05:58.
+       DATE-WRITTEN.        venerdì 11 novembre 2022 11:26:14.
        REMARKS.
       *{TOTEM}END
 
@@ -3872,6 +3872,7 @@
            move col-data-soll to como-data
            perform DATE-TO-FILE
            move como-data to sof-data-arr
+           accept sof-data-conf from century-date.
            write sof-rec
 
            set tos-data-from-soll-r to true.

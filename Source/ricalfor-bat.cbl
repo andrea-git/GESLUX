@@ -128,6 +128,7 @@
        77  giacenza              pic 9(8).
        77  giac-positiva         pic 9(8).
        77  SaveImballo           pic x(3).
+       77  articolo-fisso        pic 9(6).
                                             
        77  FileDest              pic x(256).
        77  FileOrig              pic x(256).
