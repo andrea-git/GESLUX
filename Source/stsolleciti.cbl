@@ -75,8 +75,8 @@
        77  num-evasioni     PIC  999.
        77  como-evasa       PIC  9(8).
 
-       77  como-ora pic 9(8).
-       77  como-x   pic x(6).
+       77  como-ora           pic 9(8).
+       77  como-stato-invio   pic x(20).
 
        78  titolo             value "Stampa Solleciti".
 
@@ -100,7 +100,8 @@
 
        77  idx                     pic 9(5).
        77  path-tmp-solleciti-m    pic x(256).
-                            
+            
+       copy "link-invio-sol.def".
        copy "common-excel.def".
 
        77 evasioni-valide  PIC  9(3).
@@ -679,9 +680,11 @@
               move "Bloccato"   to ro-nr-e
       *        move "Creato"     to ro-data-e
       *        move space        to ro-nr-b
-              move "Cons."      to ro-data-b
+              move "Cons."      to ro-data-b       
               perform CALL-SPOOLER
            end-if.
+
+           move spaces to como-stato-invio
 
            initialize riga-ordine.
 
@@ -1085,6 +1088,7 @@ colore*     set spl-nero   to true
            move "Data F"           to ra-data-f 
            move "Vet"              to ra-vet    
            move "Stato Consegna"   to ra-esito  
+           move "INVIO"            to como-stato-invio
 
            move 3    to spl-tipo-colonna
            move 0,5     to spl-colonna
@@ -1894,7 +1898,7 @@ colore*     set spl-nero   to true
                     inspect ro-nr-e                               
                             replacing trailing spaces by low-value
                     inspect ro-data-b                             
-                            replacing trailing spaces by low-value
+                            replacing trailing spaces by low-value  
                     initialize line-riga
                     string ro-num      delimited low-value
                            separatore
@@ -1911,18 +1915,33 @@ colore*     set spl-nero   to true
                            ro-nr-e     delimited low-value
                            separatore
                            ro-data-b   delimited low-value
-                           separatore
+                           separatore                               
                       into line-riga
                     end-string
                     write line-riga
                  end-if   
                  if riga-articolo and riga-art not = spaces
-                    initialize line-riga
+                    initialize line-riga   
+                          
+                    move spaces to como-stato-invio
                     if ra-art = "ARTICOLO"
-                       move space to como-x
+                       move "INVIO" to como-stato-invio
                     else
-                       move "|-"  to como-x
-                    end-if  
+                       if sol-anno-e of tmp-sol not = 0
+                          if sol-anno-b of tmp-sol not = 0  
+                             set isol-stato to true
+                             move sol-anno-e  of tmp-sol to isol-anno
+                             move sol-num-e   of tmp-sol to isol-numero
+                             call   "invio-sol" using isol-linkage
+                             cancel "invio-sol"           
+                             evaluate isol-status
+                             when 0 move "INVIABILE" to como-stato-invio
+                             when 1 move "INVIATO"   to como-stato-invio
+                             end-evaluate
+                          end-if
+                       end-if
+                    end-if
+
                     inspect ra-art                                 
                             replacing trailing spaces by low-value
                     inspect ra-ord                                 
@@ -1946,6 +1965,8 @@ colore*     set spl-nero   to true
                     inspect ra-vet                                 
                             replacing trailing spaces by low-value
                     inspect ra-esito                               
+                            replacing trailing spaces by low-value
+                    inspect como-stato-invio                               
                             replacing trailing spaces by low-value
 
                     string separatore
@@ -1973,6 +1994,8 @@ colore*     set spl-nero   to true
                            ra-vet    delimited low-value
                            separatore  
                            ra-esito  delimited low-value
+                           separatore
+                           como-stato-invio delimited low-value
                            separatore
                       into line-riga
                     end-string
