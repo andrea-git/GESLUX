@@ -42,3 +42,7 @@
            evaluate control-id
            end-evaluate.
 
+      * Paragrafo per la struttura dei controlli sulla screen scr-excel
+           evaluate control-id
+           end-evaluate.
+

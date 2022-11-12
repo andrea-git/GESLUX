@@ -37,7 +37,8 @@
               10 stsolleciti-articoli.
                  15 stsolleciti-el-articolo PIC 9(6) OCCURS 50000 TIMES
                                             INDEXED  st-idx-art.
-
+               
            05 stsolleciti-excel          pic 9.
+           05 stsolleciti-user           pic x(10).
            05 filler                     pic x(100).
 

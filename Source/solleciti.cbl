@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 11 novembre 2022 22:15:55.
+       DATE-WRITTEN.        sabato 12 novembre 2022 01:01:38.
        REMARKS.
       *{TOTEM}END
 
@@ -566,6 +566,8 @@
        77 excel-bmp        PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 Verdana14I-Occidentale
+                  USAGE IS HANDLE OF FONT.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -583,6 +585,8 @@
        77 TMP-scr-ordini-mtordini-RESTOREBUF  PIC X(2122).
        77 TMP-scr-ordini-KEYIS  PIC 9(3) VALUE 1.
        77 scr-ordini-MULKEY-TMPBUF   PIC X(2122).
+       77 STATUS-scr-excel-FLAG-REFRESH PIC  9.
+          88 scr-excel-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
@@ -2772,6 +2776,31 @@
            VISIBLE 1,
            .
 
+      * FORM
+       01 
+           scr-excel, 
+           HELP-ID 1,
+           AFTER PROCEDURE  scr-excel-AFTER-SCREEN
+           .
+
+      * LABEL
+       05
+           scr-elab-La-1, 
+           Label, 
+           COL 3,90, 
+           LINE 1,00,
+           LINES 2,20 CELLS,
+           SIZE 30,00 CELLS,
+           COLOR IS 1,
+           FONT IS Verdana14I-Occidentale,
+           ID IS 13,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "Estrazione Excel in corso",
+           .
+
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
@@ -2933,6 +2962,7 @@
            DESTROY Verdana10-Occidentale
            DESTROY Verdana12BI-Occidentale
            DESTROY Arial8-Occidentale
+           DESTROY Verdana14I-Occidentale
            CALL "w$bitmap" USING WBITMAP-DESTROY, OK_73X21-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, CANCEL_73X21-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BLUE-DA-28X24-BMP
@@ -3020,6 +3050,19 @@
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
                      Arial8-Occidentale, WFONT-DATA
+      * Verdana14I-Occidentale
+           INITIALIZE WFONT-DATA Verdana14I-Occidentale
+           MOVE 14 TO WFONT-SIZE
+           MOVE "Verdana" TO WFONT-NAME
+           SET WFCHARSET-DONT-CARE TO TRUE
+           SET WFONT-BOLD TO FALSE
+           SET WFONT-ITALIC TO TRUE
+           SET WFONT-UNDERLINE TO FALSE
+           SET WFONT-STRIKEOUT TO FALSE
+           SET WFONT-FIXED-PITCH TO FALSE
+           MOVE 0 TO WFONT-CHAR-SET
+           CALL "W$FONT" USING WFONT-GET-FONT, 
+                     Verdana14I-Occidentale, WFONT-DATA
            .
 
        INIT-BMP.
@@ -9086,6 +9129,202 @@
            when other continue
            end-evaluate.
 
+       scr-excel-Open-Routine.
+           PERFORM scr-excel-Scrn
+           PERFORM scr-excel-Proc
+           .
+
+       scr-excel-Scrn.
+           PERFORM scr-excel-Create-Win
+           PERFORM scr-excel-Init-Value
+           PERFORM scr-excel-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           PERFORM scr-excel-DISPLAY
+           .
+
+       scr-excel-Create-Win.
+           Display Independent GRAPHICAL WINDOW
+              LINES 4,80,
+              SIZE 35,90,
+              CELL HEIGHT 10,
+              CELL WIDTH 10,
+              HEIGHT-IN-CELLS,
+              WIDTH-IN-CELLS,
+              COLOR 65793,
+              ERASE,
+              LABEL-OFFSET 0,
+              LINK TO THREAD,
+              RESIZABLE,
+              NO SCROLL,
+              USER-GRAY,
+              USER-WHITE,
+              No WRAP,
+              HANDLE IS scr-elab-HANDLE,
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+      * Status-bar
+           DISPLAY scr-excel UPON scr-elab-HANDLE
+      * DISPLAY-COLUMNS settings
+           .
+
+       scr-excel-PROC.
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, BeforeAccept>
+           call "w$mouse" using set-mouse-shape, wait-pointer   
+
+           move 1 to stsolleciti-excel
+           perform STAMPA
+
+           call "w$mouse" using set-mouse-shape, arrow-pointer.
+
+           perform SCR-EXCEL-EXIT.
+
+           .
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT OMITTED LINE 1 COL 1
+                 ON EXCEPTION
+                    PERFORM scr-excel-Evaluate-Func
+                 MOVE 4 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY scr-elab-HANDLE
+           INITIALIZE Key-Status
+           .
+
+       scr-excel-Evaluate-Func.
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM scr-excel-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM scr-excel-Exit
+                 END-IF
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       scr-excel-CLEAR.
+           PERFORM scr-excel-INIT-VALUE
+           PERFORM scr-excel-DISPLAY
+           .
+
+       scr-excel-DISPLAY.
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY scr-excel UPON scr-elab-HANDLE
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       scr-excel-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       scr-excel-Init-Data.
+           MOVE 4 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+           .
+
+       scr-excel-Init-Value.
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, SetDefault>
+      * <TOTEM:END>
+           PERFORM scr-excel-FLD-TO-BUF
+           .
+
+
+       scr-excel-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       scr-excel-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       scr-excel-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       scr-excel-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       scr-excel-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform scr-excel-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       scr-excel-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM scr-excel-SHOW-MSG-ROUTINE
+           .
+
+       scr-excel-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM scr-excel-DISPLAY-MESSAGE
+           .
+
+       scr-excel-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       scr-excel-Save-Status.
+           .             
+
+       scr-excel-Restore-Status.
+           .
+
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen scr-excel
+      ***---
+       scr-excel-AFTER-SCREEN.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
 
 
        Screen1-Ta-1-TABCHANGE.
@@ -11916,7 +12155,7 @@
            inquire chk-sp          value stsolleciti-sp
            inquire chk-st          value stsolleciti-st
            inquire chk-chiuso      value stsolleciti-chiuso
-
+           move user-codi to stsolleciti-user.
 
            inquire gd-art2, LAST-ROW tot-righe
            if tot-righe > 1
@@ -12756,9 +12995,8 @@
                       type mb-yes-no
                    default mb-no
                     giving scelta
-           if scelta = mb-yes
-              move 1 to stsolleciti-excel
-              perform STAMPA
+           if scelta = mb-yes          
+              perform SCR-EXCEL-OPEN-ROUTINE
            end-if 
            .
       * <TOTEM:END>

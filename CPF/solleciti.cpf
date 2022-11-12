@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6BB20151-847-422818711
+PROGRAM_UNIQUE_CODE=TOTEM-7E6BB232711-820-1925413214
 
 {{@DESCRIPTION:
 
@@ -5405,6 +5405,15 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM473_WK
 
 @}}
+[FDITEM474_WK]
+m_strName=Verdana14I-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM474_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -10004,6 +10013,91 @@ Begin Screen scr-ordini
    End
 End
 
+Begin Screen scr-excel
+   PREFIX            = scr-elab
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = TRUE
+   LEVEL             = 1
+   (Name)            = scr-excel
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = TRUE
+   Cell Height       = 10
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = TRUE
+   Font              = Default Font
+   Handle Variable   = scr-elab-HANDLE
+   Height in Cells   = TRUE
+   Help ID           = 1
+   Label Offset      = 0
+   Lines             = 4,80
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = FALSE
+   Operation Mode    = Interactive Mode
+   Resizable         = TRUE
+   Scroll            = FALSE
+   Size              = 35,90
+   System Menu       = FALSE
+   Title Bar         = FALSE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Independent
+   Wrap              = FALSE
+   Begin Label scr-elab-La-1
+      SCREEN-COL        = 3,90
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = scr-elab-La-1
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 1
+      Column            = 3,90
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Verdana/14/I/C0/@Occidentale
+      Font Variable     = Verdana14I-Occidentale
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 13
+      Justification     = Center
+      Label Offset      = 20
+      Line              = 1,00
+      Lines             = 2,20
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 30,00
+      Size Unit         = Default
+      Tab Order         = 1
+      Title             = "Estrazione Excel in corso"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+End
+
 END-SPDATA
 
 @}}
@@ -10603,6 +10697,36 @@ BEGIN-DATA
    ENTRYPOINT        = AfterDisplay
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-excel
+   ACTOBJ            = scr-excel
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = scr-excel
+   ACTOBJ            = scr-excel
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           call "w$mouse" using set-mouse-shape, wait-pointer   
+
+           move 1 to stsolleciti-excel
+           perform STAMPA
+
+           call "w$mouse" using set-mouse-shape, arrow-pointer.
+
+           perform SCR-EXCEL-EXIT.
+
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -13113,7 +13237,7 @@ BEGIN-TEXT
            inquire chk-sp          value stsolleciti-sp
            inquire chk-st          value stsolleciti-st
            inquire chk-chiuso      value stsolleciti-chiuso
-
+           move user-codi to stsolleciti-user.
 
            inquire gd-art2, LAST-ROW tot-righe
            if tot-righe > 1
@@ -14138,9 +14262,8 @@ BEGIN-TEXT
                       type mb-yes-no
                    default mb-no
                     giving scelta
-           if scelta = mb-yes
-              move 1 to stsolleciti-excel
-              perform STAMPA
+           if scelta = mb-yes          
+              perform SCR-EXCEL-OPEN-ROUTINE
            end-if.
 END-TEXT
 END-DATA

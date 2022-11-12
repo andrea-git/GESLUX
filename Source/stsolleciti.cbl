@@ -54,6 +54,10 @@
            copy "fonts.def".
            copy "selprint.lks".
 
+       01  tipo-riga        pic 9. 
+         88 riga-articolo   value 1.
+         88 riga-testa      value 2.
+
        01  save-sol-chiave.
            10 save-sol-data-ordine  PIC  9(8).
            10 save-sol-ordine.
@@ -72,6 +76,7 @@
        77  como-evasa       PIC  9(8).
 
        77  como-ora pic 9(8).
+       77  como-x   pic x(6).
 
        78  titolo             value "Stampa Solleciti".
 
@@ -95,8 +100,8 @@
 
        77  idx                     pic 9(5).
        77  path-tmp-solleciti-m    pic x(256).
-
-       77  separatore pic x.
+                            
+       copy "common-excel.def".
 
        77 evasioni-valide  PIC  9(3).
        77 articoli-validi  PIC  9(3).
@@ -161,6 +166,9 @@
 
        01  filler             pic 9.
          88 Prima-Volta       value 1, false 0.
+                                              
+       01  filler             pic 9 value 1.
+         88 prima-riga-excel  value 1, false 0.
 
        01  filler             pic 9.
          88 primo-passaggio   value 1, false 0.
@@ -191,10 +199,11 @@
        01 FILLER           PIC  9.
            88 sostituito VALUE IS 1    WHEN SET TO FALSE  0. 
                               
-       77  save-sol-desart       PIC  x(40).
-       77  save-sol-promo        PIC  x(100).
-       77  save-sol-qta-o        PIC  9(8).
+       77  save-sol-desart       PIC x(40).
+       77  save-sol-promo        PIC x(100).
+       77  save-sol-qta-o        PIC 9(8).
        77  num-righe             pic 9(3).
+       77  user-codi             pic x(10).
 
        LINKAGE SECTION.
            copy "link-stsolleciti.def".
@@ -229,6 +238,7 @@
            set Prima-Volta to true.
 
            if stsolleciti-excel = 1
+              move stsolleciti-user to user-codi
               accept separatore from environment "SEPARATORE"
               accept  wstampa   from environment "PATH_ST"
               inspect wstampa   replacing trailing spaces by low-value
@@ -239,8 +249,7 @@
                       como-ora  delimited size
                       ".csv"    delimited size
                  into wstampa
-              end-string      
-              set prima-volta to false
+              end-string              
            else
               set environment "PRINTER" to "-P SPOOLER"
               CALL "w$bitmap" USING  WBITMAP-LOAD "logo-st.BMP", 
@@ -321,6 +330,8 @@
            move arial10b   to spl-hfont.
            move 1   to spl-tipo-colonna
 
+           set riga-testa to true.
+
            move "Master"     to ro-num
            move "Destino"    to ro-clides
            move "Cliente"    to ro-localita
@@ -332,10 +343,11 @@
       *     move space        to ro-nr-b
            move "Cons."      to ro-data-b
 
-
            set spl-stringa   to true.
            move riga-ordine  to spl-riga-stampa.
-           perform CALL-SPOOLER.
+           if stsolleciti-excel = 0
+              perform CALL-SPOOLER
+           end-if.
 
            add 0,10 to spl-riga.
 
@@ -575,13 +587,11 @@
            move low-value to sol-rec of tmp-sol.
            set sol-testa  of tmp-sol to true.
            start tmp-sol key >= k-dt-testa 
-              invalid 
-                 continue 
-              not invalid
+                 invalid continue 
+             not invalid
                  perform until 1 = 2
-                    read tmp-sol next no lock
-                       at end      
-                          exit perform 
+                    read tmp-sol next no lock 
+                      at end exit perform 
                     end-read
                     if not sol-testa of tmp-sol
                        exit perform 
@@ -651,7 +661,27 @@
       *     end-if.
            if prima-volta
               exit paragraph
-           end-if
+           end-if                  
+
+           if stsolleciti-excel = 1
+              if prima-riga-excel
+                 set prima-riga-excel to false
+              else
+                 write line-riga from spaces
+              end-if
+              set riga-testa to true
+              move "Master"     to ro-num
+              move "Destino"    to ro-clides
+              move "Cliente"    to ro-localita
+              move "Nr. Ord"    to ro-ord-cli
+              move "Data O"     to ro-data-ord
+              move "Stato"      to ro-stato
+              move "Bloccato"   to ro-nr-e
+      *        move "Creato"     to ro-data-e
+      *        move space        to ro-nr-b
+              move "Cons."      to ro-data-b
+              perform CALL-SPOOLER
+           end-if.
 
            initialize riga-ordine.
 
@@ -663,6 +693,7 @@
            move sol-data-video of tmp-sol     to ro-data-ord
            move sol-data-cons of tmp-sol      to ro-data-b
            move sol-stato of tmp-sol          to ro-stato
+                  
 
            if sol-blocco-si of tmp-sol
               move "SI"   to ro-nr-e
@@ -707,7 +738,7 @@ colore*     set spl-nero   to true
       *           set SPL-VERDE     to true
       *     end-evaluate.
 
-           perform CALL-SPOOLER. 
+           perform CALL-SPOOLER.
 
       *     set spl-nero   to true.
 
@@ -726,13 +757,11 @@ colore*     set spl-nero   to true
            move 1               to sol-prog-art of tmp-sol.
            move 0               to sol-prog-eva of tmp-sol.
            start tmp-sol key >= sol-chiave  of tmp-sol
-              invalid 
-                 continue
+                 invalid continue
            end-start.
            perform until 1 = 2
               read tmp-sol next no lock 
-                 at end 
-                    exit perform 
+                 at end exit perform 
               end-read
               if sol-ordine      of tmp-sol not = save-sol-ordine   or
                  sol-data-ordine of tmp-sol not = save-sol-data-ordine
@@ -764,8 +793,7 @@ colore*     set spl-nero   to true
 
                  perform sol-evasioni of tmp-sol times
                     read tmp-sol next no lock 
-                       at end 
-                          exit perform 
+                       at end exit perform 
                     end-read
                           
                     if sol-valido-si of tmp-sol
@@ -795,8 +823,7 @@ colore*     set spl-nero   to true
 
            move save-sol-chiave to sol-chiave of tmp-sol   
            read TMP-SOL no lock key is k-dt-testa 
-              invalid
-                 continue
+                invalid continue
            end-read.                    
 
       ***---
@@ -844,7 +871,7 @@ colore*     set spl-nero   to true
            move sol-ordine       of tmp-sol to mto-chiave
            read mtordini no lock 
                 invalid 
-                 display message "Contattare assistenza con codice K1"
+                display message "Contattare assistenza con codice K1"
            end-read
            if mto-chiuso
               move "CHIUSO" to ra-stato
@@ -1027,10 +1054,12 @@ colore*     set spl-nero   to true
               perform INTESTA-ART
            end-if
       
-           add 0,30 to spl-riga giving pronostico
-           if pronostico > maxrighe
-              perform SALTO-PAGINA
-              perform INTESTA-ART
+           if stsolleciti-excel = 0
+              add 0,30 to spl-riga giving pronostico
+              if pronostico > maxrighe
+                 perform SALTO-PAGINA
+                 perform INTESTA-ART
+              end-if
            end-if.
       
            initialize riga-art.         
@@ -1042,6 +1071,7 @@ colore*     set spl-nero   to true
               perform SALTO-PAGINA
            end-if.
       
+           set riga-articolo to true.
            move "ARTICOLO"         to ra-art    
            move "PROMO"            to ra-promo  
            move "ORD"              to ra-ord    
@@ -1072,8 +1102,9 @@ colore*     set spl-nero   to true
            subtract 0,2  from spl-riga. 
 
       ***---
-       SALTO-PAGINA.                    
+       SALTO-PAGINA.                                      
            if stsolleciti-excel = 1 exit paragraph end-if.
+
            if Prima-Volta
               initialize spooler-link
 
@@ -1309,7 +1340,9 @@ colore*     set spl-nero   to true
 
       ***---
        EXIT-PGM.                        
-           if stsolleciti-excel = 0 
+           if stsolleciti-excel = 1
+              perform CALL-EXCEL
+           else
               set environment "PRINTER" to "-P SPOOLER-DIRECT"
               destroy arial14bi
               destroy arial10b
@@ -1711,7 +1744,13 @@ colore*     set spl-nero   to true
       *     set spl-stringa   to true.
 
        CONTROLLO-SALTO-PAGINA.                  
-           if stsolleciti-excel = 1 exit paragraph end-if.
+           if stsolleciti-excel = 1 
+              if prima-volta
+                 perform STAMPA-INTESTAZIONE
+                 set prima-volta to false
+              end-if                     
+              exit paragraph 
+           end-if.
            add 1,5 to spl-riga giving pronostico
       
            if pronostico > maxrighe
@@ -1770,14 +1809,14 @@ colore*     set spl-nero   to true
               if sol-valido-si of tmp-sol
                  perform sol-evasioni of tmp-sol times
                     read tmp-sol next no lock 
-                       at end 
-                          exit perform 
+                      at end exit perform 
                     end-read
                           
                     if sol-valido-si of tmp-sol
                        add 1         to num-righe
                     end-if
                  end-perform
+
                  evaluate num-evasioni
                  when 0
                       if not filtra-evasioni
@@ -1840,30 +1879,111 @@ colore*     set spl-nero   to true
       ***---
        CALL-SPOOLER.                                      
            if spl-stringa
-              if stsolleciti-excel = 1   
-                 initialize line-riga
-                 string ro-num
-                        separatore
-                        ro-clides 
-                        separatore
-                        ro-localita
-                        separatore
-                        ro-ord-cli 
-                        separatore
-                        ro-data-ord
-                        separatore
-                        ro-stato   
-                        separatore
-                        ro-nr-e    
-                        separatore
-                        ro-data-b  
-                        separatore
-                   into line-riga
-                 end-string
-                 write line-riga
+              if stsolleciti-excel = 1
+                 if riga-testa and riga-ordine not = spaces       
+                    inspect ro-clides                             
+                            replacing trailing spaces by low-value
+                    inspect ro-localita                           
+                            replacing trailing spaces by low-value
+                    inspect ro-ord-cli                            
+                            replacing trailing spaces by low-value
+                    inspect ro-data-ord                           
+                            replacing trailing spaces by low-value
+                    inspect ro-stato                              
+                            replacing trailing spaces by low-value
+                    inspect ro-nr-e                               
+                            replacing trailing spaces by low-value
+                    inspect ro-data-b                             
+                            replacing trailing spaces by low-value
+                    initialize line-riga
+                    string ro-num      delimited low-value
+                           separatore
+                           ro-clides   delimited low-value
+                           separatore
+                           ro-localita delimited low-value
+                           separatore
+                           ro-ord-cli  delimited low-value
+                           separatore
+                           ro-data-ord delimited low-value
+                           separatore
+                           ro-stato    delimited low-value
+                           separatore
+                           ro-nr-e     delimited low-value
+                           separatore
+                           ro-data-b   delimited low-value
+                           separatore
+                      into line-riga
+                    end-string
+                    write line-riga
+                 end-if   
+                 if riga-articolo and riga-art not = spaces
+                    initialize line-riga
+                    if ra-art = "ARTICOLO"
+                       move space to como-x
+                    else
+                       move "|-"  to como-x
+                    end-if  
+                    inspect ra-art                                 
+                            replacing trailing spaces by low-value
+                    inspect ra-ord                                 
+                            replacing trailing spaces by low-value
+                    inspect ra-eva                                 
+                            replacing trailing spaces by low-value
+                    inspect ra-stato                               
+                            replacing trailing spaces by low-value
+                    inspect ra-nr-e                                
+                            replacing trailing spaces by low-value
+                    inspect ra-data-e                              
+                            replacing trailing spaces by low-value
+                    inspect ra-nr-b                                
+                            replacing trailing spaces by low-value
+                    inspect ra-data-b                              
+                            replacing trailing spaces by low-value
+                    inspect ra-nr-f                                
+                            replacing trailing spaces by low-value
+                    inspect ra-data-f                              
+                            replacing trailing spaces by low-value
+                    inspect ra-vet                                 
+                            replacing trailing spaces by low-value
+                    inspect ra-esito                               
+                            replacing trailing spaces by low-value
+
+                    string separatore
+                           separatore
+                           ra-art    delimited low-value
+                           separatore
+                           ra-ord    delimited low-value
+                           separatore
+                           ra-eva    delimited low-value
+                           separatore
+                           ra-stato  delimited low-value
+                           separatore
+                           ra-nr-e   delimited low-value
+                           separatore
+                           ra-data-e delimited low-value  
+                           separatore
+                           ra-nr-b   delimited low-value 
+                           separatore
+                           ra-data-b delimited low-value 
+                           separatore
+                           ra-nr-f   delimited low-value
+                           separatore  
+                           ra-data-f delimited low-value 
+                           separatore
+                           ra-vet    delimited low-value
+                           separatore  
+                           ra-esito  delimited low-value
+                           separatore
+                      into line-riga
+                    end-string
+                    write line-riga  
                  exit paragraph
               end-if
            else
               if stsolleciti-excel = 1 exit paragraph end-if
            end-if.
            call "spooler" using spooler-link.
+
+      ***---
+       PARAGRAFO-COPY.
+           copy "common-excel.cpy".
