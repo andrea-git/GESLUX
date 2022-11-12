@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6BB232711-820-1925413214
+PROGRAM_UNIQUE_CODE=TOTEM-7E6BC03159-502-1254814542
 
 {{@DESCRIPTION:
 
@@ -5414,6 +5414,16 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM474_WK
 
 @}}
+[FDITEM475_WK]
+m_strName=tit-elab
+m_strRawPic=X(30)
+m_strPic=X(30)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM475_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -10091,7 +10101,7 @@ Begin Screen scr-excel
       Size              = 30,00
       Size Unit         = Default
       Tab Order         = 1
-      Title             = "Estrazione Excel in corso"
+      Title Variable    = tit-elab
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -10720,8 +10730,13 @@ BEGIN-DATA
 BEGIN-TEXT
            call "w$mouse" using set-mouse-shape, wait-pointer   
 
-           move 1 to stsolleciti-excel
-           perform STAMPA
+           if stsolleciti-excel = 1                          
+              move "Estrazione excel in corso..." to tit-elab
+           else
+              move "Stampa in corso..." to tit-elab
+           end-if.
+           display scr-excel.
+           perform STAMPA.
 
            call "w$mouse" using set-mouse-shape, arrow-pointer.
 
@@ -14179,7 +14194,7 @@ BEGIN-DATA
    PARAGRAPH         = TOOL-STAMPA-LinkTo
 BEGIN-TEXT
            move 0 to stsolleciti-excel.
-           perform STAMPA.
+           perform SCR-EXCEL-OPEN-ROUTINE.  
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -14262,7 +14277,8 @@ BEGIN-TEXT
                       type mb-yes-no
                    default mb-no
                     giving scelta
-           if scelta = mb-yes          
+           if scelta = mb-yes               
+              move 1 to stsolleciti-excel
               perform SCR-EXCEL-OPEN-ROUTINE
            end-if.
 END-TEXT

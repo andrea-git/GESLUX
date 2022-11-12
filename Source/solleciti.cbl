@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 12 novembre 2022 01:01:38.
+       DATE-WRITTEN.        sabato 12 novembre 2022 01:30:20.
        REMARKS.
       *{TOTEM}END
 
@@ -568,6 +568,7 @@
                   VALUE IS 0.
        77 Verdana14I-Occidentale
                   USAGE IS HANDLE OF FONT.
+       77 tit-elab         PIC  X(30).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -2798,7 +2799,7 @@
            WIDTH-IN-CELLS,
            CENTER,
            TRANSPARENT,
-           TITLE "Estrazione Excel in corso",
+           TITLE tit-elab,
            .
 
       *{TOTEM}END
@@ -9175,8 +9176,13 @@
       * <TOTEM:EPT. FORM:scr-excel, FORM:scr-excel, BeforeAccept>
            call "w$mouse" using set-mouse-shape, wait-pointer   
 
-           move 1 to stsolleciti-excel
-           perform STAMPA
+           if stsolleciti-excel = 1                          
+              move "Estrazione excel in corso..." to tit-elab
+           else
+              move "Stampa in corso..." to tit-elab
+           end-if.
+           display scr-excel.
+           perform STAMPA.
 
            call "w$mouse" using set-mouse-shape, arrow-pointer.
 
@@ -12934,7 +12940,7 @@
        TOOL-STAMPA-LinkTo.
       * <TOTEM:PARA. TOOL-STAMPA-LinkTo>
            move 0 to stsolleciti-excel.
-           perform STAMPA 
+           perform SCR-EXCEL-OPEN-ROUTINE   
            .
       * <TOTEM:END>
        chk-reg-ini-BeforeProcedure.
@@ -12995,7 +13001,8 @@
                       type mb-yes-no
                    default mb-no
                     giving scelta
-           if scelta = mb-yes          
+           if scelta = mb-yes               
+              move 1 to stsolleciti-excel
               perform SCR-EXCEL-OPEN-ROUTINE
            end-if 
            .
