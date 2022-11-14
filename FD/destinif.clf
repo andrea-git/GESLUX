@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E6BB102951-713-1341218356
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E6BE12918-362-2164230513
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -553,13 +553,42 @@ m_strTrue="S"
 
 @}}
 [FDITEM56_]
-m_strName=desf-alfa-vuoto
-m_strRawPic=X(495)
-m_strPic=X(495)
+m_strName=desf-invio-sol
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=desf-ev-immediata_
 {{@DataItem_m_strDescriptionFDITEM56_
+
+@}}
+[FDITEM57_]
+m_strName=desf-invio-sol-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=" ", "N"
+{{@DataItem_m_strDescriptionFDITEM57_
+
+@}}
+[FDITEM58_]
+m_strName=desf-invio-sol-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM58_
+
+@}}
+[FDITEM59_]
+m_strName=desf-alfa-vuoto
+m_strRawPic=X(494)
+m_strPic=X(494)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM59_
 
 @}}
 [CStoAcucobolSL_]

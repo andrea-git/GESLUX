@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 aprile 2022 17:32:51.
+       DATE-WRITTEN.        lunedì 14 novembre 2022 13:17:20.
        REMARKS.
       *{TOTEM}END
 
@@ -223,6 +223,8 @@
               10 ef-pag-d-BUF PIC x(3).
       * Data.Check-Box
               10 chk-immediata-d-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              10 chk-invio-sol-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
               10 ef-ref-ord-d-BUF PIC X(30).
       * Data.Entry-Field
@@ -2135,6 +2137,24 @@
            TITLE "Check Box",
            VALUE chk-immediata-d-BUF,
             .
+      * CHECK BOX
+       10
+           chk-invio-sol, 
+           Check-Box, 
+           COL 113,83, 
+           LINE 32,84,
+           LINES 1,31 ,
+           SIZE 2,83 ,
+           ENABLED mod-destini,
+           FLAT,
+           ID IS 76,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           NOTIFY,
+           SELF-ACT,
+           VALUE chk-invio-sol-BUF,
+           BEFORE PROCEDURE Form1-DaCb-1-BeforeProcedure, 
+            .
       * ENTRY FIELD
        10
            ef-ref-ord-d, 
@@ -3080,6 +3100,22 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Ev. obbligatoria",
+           .
+
+      * LABEL
+       10
+           Form1-La-18ba, 
+           Label, 
+           COL 99,33, 
+           LINE 32,84,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 198,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Invia sollecito",
            .
 
       * BAR
@@ -8340,6 +8376,8 @@
       * DB_CHECK BOX
               MOVE "N" TO desf-ev-immediata
       * DB_CHECK BOX
+              MOVE "0" TO desf-invio-sol
+      * DB_CHECK BOX
               MOVE SPACE TO desf-premio-netto
            MOVE ALL X'9' TO Form1-KEYISTMP2
            MOVE ALL X'9' TO Form1-PKEYTMP
@@ -9793,6 +9831,12 @@
               ELSE
                  MOVE "N" TO desf-ev-immediata
               END-IF
+      * DB_CHECK BOX : chk-invio-sol
+              IF chk-invio-sol-BUF = 1
+                 MOVE "1" TO desf-invio-sol
+              ELSE
+                 MOVE "0" TO desf-invio-sol
+              END-IF
       * DB_Entry-Field : ef-ref-ord-d
            MOVE ef-ref-ord-d-BUF TO desf-referente-ord
       * DB_Entry-Field : ef-tel-ord-d
@@ -9947,6 +9991,12 @@
                  MOVE 1 TO chk-immediata-d-BUF
               ELSE
                  MOVE 0 TO chk-immediata-d-BUF
+              END-IF
+      * DB_CHECK BOX : chk-invio-sol
+              IF desf-invio-sol = "1"
+                 MOVE 1 TO chk-invio-sol-BUF
+              ELSE
+                 MOVE 0 TO chk-invio-sol-BUF
               END-IF
       * DB_Entry-Field : ef-ref-ord-d
            MOVE desf-referente-ord TO ef-ref-ord-d-BUF
@@ -11128,6 +11178,7 @@
            When 76 PERFORM Form1-DaCb-1-AfterProcedure
            When 5046 PERFORM ef-pag-d-AfterProcedure
            When 37 PERFORM Form1-DaCb-1-AfterProcedure
+           When 76 PERFORM Form1-DaCb-1-AfterProcedure
            When 5047 PERFORM ef-ref-ord-AfterProcedure
            When 5048 PERFORM ef-tel-ord-AfterProcedure
            When 5049 PERFORM ef-perce-premi-AfterProcedure
