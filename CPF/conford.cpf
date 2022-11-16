@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
-PROGRAM_UNIQUE_CODE=TOTEM-7E6BB102951-898-1429521513
+PROGRAM_UNIQUE_CODE=TOTEM-7E6B1016536-370-2339530969
 
 {{@DESCRIPTION:
 
@@ -1424,6 +1424,44 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM125_WK
 
 @}}
+[FDITEM126_WK]
+m_strName=STATUS-rordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM126_WK
+
+@}}
+[FDITEM127_WK]
+m_strName=Valid-STATUS-rordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM127_WK
+
+@}}
+[FDITEM128_WK]
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM128_WK
+
+@}}
+[FDITEM129_WK]
+m_strName=Valid-STATUS-tordini
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM129_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -2351,9 +2389,14 @@ BEGIN-TEXT
               inspect path-fileseq replacing all ".pdf" by ".csv"
               accept como-data from century-date
               open output fileseq     
-              
-              move conf-chiave-ordine to mto-chiave
-              read mtordini no lock
+                                                                  
+              if PgmChiamante = "ordinevar"
+                 move conf-chiave-ordine to mto-chiave
+                 read mtordini no lock
+              else                         
+                 move conf-chiave-ordine to tor-chiave
+                 read tordini no lock
+              end-if
               
               string "Codice cliente"   delimited size
                      separatore         delimited size
@@ -2379,81 +2422,168 @@ BEGIN-TEXT
               end-string
               write rec-stampa
               
-              move mto-chiave to mro-chiave
-              move low-value to mro-riga
-              start mrordini key >= mro-chiave
-                    invalid continue
-                not invalid
-                    perform until 1 = 2
-                       read mrordini next at end exit perform end-read
-                       if mro-chiave-testa not = mto-chiave
-                          exit perform
-                       end-if
-                       move mro-cod-articolo to art-codice
-                       read articoli no lock
-                       compute saldo = mro-qta - mro-qta-e
-                       if art-codice-ean-1 not = 0
-                          move art-codice-ean-1 to como-ean
-                       else
-                          if art-codice-ean-2 not = 0
-                             move art-codice-ean-2 to como-ean
+                                                             
+              if PgmChiamante = "ordinevar"
+                 move mto-chiave to mro-chiave
+                 move low-value to mro-riga
+                 start mrordini key >= mro-chiave
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read mrordini next at end exit perform end-read
+                          if mro-chiave-testa not = mto-chiave
+                             exit perform
+                          end-if
+                          move mro-cod-articolo to art-codice
+                          read articoli no lock
+                          compute saldo = mro-qta - mro-qta-e
+                          if art-codice-ean-1 not = 0
+                             move art-codice-ean-1 to como-ean
                           else
-                             if art-codice-ean-3 not = 0
-                                move art-codice-ean-3 to como-ean
+                             if art-codice-ean-2 not = 0
+                                move art-codice-ean-2 to como-ean
                              else
-                                if art-codice-ean-4 not = 0
-                                   move art-codice-ean-4 to como-ean
+                                if art-codice-ean-3 not = 0
+                                   move art-codice-ean-3 to como-ean
                                 else
-                                   if art-codice-ean-5 not = 0
-                                      move art-codice-ean-5 to como-ean
+                                   if art-codice-ean-4 not = 0
+                                      move art-codice-ean-4 to como-ean
+                                   else
+                                      if art-codice-ean-5 not = 0
+                                         move art-codice-ean-5 to como-ean
+                                      end-if
                                    end-if
                                 end-if
                              end-if
                           end-if
-                       end-if
-                       move mro-prz-unitario to como-prz
+                          move mro-prz-unitario to como-prz
+              
+                          perform VALUTA-SOTTOCOSTO 
+              
+                          set cli-tipo-C to true
+                          move mto-cod-cli to cli-codice
+                          read clienti no lock
+                          move cli-codice      to des-codice
+                          move mto-prg-destino to des-prog
+                          read destini no lock
+                               invalid 
+                               move cli-ragsoc-1 to des-ragsoc-1
+                               move cli-localita to des-localita
+                          end-read
+                             
+                          initialize rec-stampa
+                          string cli-codice        delimited size
+                                 separatore        delimited size
+                                 cli-ragsoc-1      delimited size
+                                 separatore        delimited size
+                                 des-ragsoc-1      delimited size
+                                 separatore        delimited size
+                                 des-localita      delimited size
+                                 separatore        delimited size
+                                 mro-cod-articolo  delimited size
+                                 separatore        delimited size
+                                 art-descrizione   delimited size
+                                 separatore        delimited size
+                                 como-ean          delimited size
+                                 separatore        delimited size
+                                 mro-qta           delimited size
+                                 separatore        delimited size
+                                 saldo             delimited size
+                                 separatore        delimited size
+                                 como-prz          delimited size
+                                 separatore        delimited size
+                                 como-sc           delimited size
+                                 separatore        delimited size
+                             into rec-stampa
+                          end-string
+                          write rec-stampa
+                       end-perform
+                 end-start
+              else
+                 move tor-chiave to ror-chiave
+                 move low-value  to ror-num-riga
+                 start rordini key >= ror-chiave
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read rordini next at end exit perform end-read
+                          if ror-anno       not = tor-anno or
+                             ror-num-ordine not = tor-numero
+                             exit perform
+                          end-if
+                          move ror-cod-articolo to art-codice
+                          read articoli no lock
+                          compute saldo = mro-qta - mro-qta-e
+                          if art-codice-ean-1 not = 0
+                             move art-codice-ean-1 to como-ean
+                          else
+                             if art-codice-ean-2 not = 0
+                                move art-codice-ean-2 to como-ean
+                             else
+                                if art-codice-ean-3 not = 0
+                                   move art-codice-ean-3 to como-ean
+                                else
+                                   if art-codice-ean-4 not = 0
+                                      move art-codice-ean-4 to como-ean
+                                   else
+                                      if art-codice-ean-5 not = 0
+                                         move art-codice-ean-5 to como-ean
+                                      end-if
+                                   end-if
+                                end-if
+                             end-if
+                          end-if
+                          move ror-prz-unitario to como-prz
+                                
+                          move ror-prg-cod-articolo to mro-prg-cod-articolo                                 
+                          move ror-prg-chiave       to mro-prg-chiave
+                          move ror-imp-consumo      to mro-imp-consumo  
+                          move ror-imp-cou-cobat    to mro-imp-cou-cobat
+                          move ror-add-piombo       to mro-add-piombo   
+                          move ror-imponib-merce    to mro-imponib-merce
 
-                       perform VALUTA-SOTTOCOSTO 
-
-                       set cli-tipo-C to true
-                       move mto-cod-cli to cli-codice
-                       read clienti no lock
-                       move cli-codice      to des-codice
-                       move mto-prg-destino to des-prog
-                       read destini no lock
-                            invalid 
-                            move cli-ragsoc-1 to des-ragsoc-1
-                            move cli-localita to des-localita
-                       end-read
-                          
-                       initialize rec-stampa
-                       string cli-codice        delimited size
-                              separatore        delimited size
-                              cli-ragsoc-1      delimited size
-                              separatore        delimited size
-                              des-ragsoc-1      delimited size
-                              separatore        delimited size
-                              des-localita      delimited size
-                              separatore        delimited size
-                              mro-cod-articolo  delimited size
-                              separatore        delimited size
-                              art-descrizione   delimited size
-                              separatore        delimited size
-                              como-ean          delimited size
-                              separatore        delimited size
-                              mro-qta           delimited size
-                              separatore        delimited size
-                              saldo             delimited size
-                              separatore        delimited size
-                              como-prz          delimited size
-                              separatore        delimited size
-                              como-sc           delimited size
-                              separatore        delimited size
-                          into rec-stampa
-                       end-string
-                       write rec-stampa
-                    end-perform
-              end-start
+                          perform VALUTA-SOTTOCOSTO 
+              
+                          set cli-tipo-C to true
+                          move tor-cod-cli to cli-codice
+                          read clienti no lock
+                          move cli-codice      to des-codice
+                          move tor-prg-destino to des-prog
+                          read destini no lock
+                               invalid 
+                               move cli-ragsoc-1 to des-ragsoc-1
+                               move cli-localita to des-localita
+                          end-read
+                             
+                          initialize rec-stampa
+                          string cli-codice        delimited size
+                                 separatore        delimited size
+                                 cli-ragsoc-1      delimited size
+                                 separatore        delimited size
+                                 des-ragsoc-1      delimited size
+                                 separatore        delimited size
+                                 des-localita      delimited size
+                                 separatore        delimited size
+                                 ror-cod-articolo  delimited size
+                                 separatore        delimited size
+                                 art-descrizione   delimited size
+                                 separatore        delimited size
+                                 como-ean          delimited size
+                                 separatore        delimited size
+                                 ror-qta           delimited size
+                                 separatore        delimited size
+                                 saldo             delimited size
+                                 separatore        delimited size
+                                 como-prz          delimited size
+                                 separatore        delimited size
+                                 como-sc           delimited size
+                                 separatore        delimited size
+                             into rec-stampa
+                          end-string
+                          write rec-stampa
+                       end-perform
+                 end-start
+              end-if
               close fileseq
 
               perform INVIO-MAIL
@@ -2971,8 +3101,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=124
-REL_SYM_INFO_L=20
+REL_SYM_SIZE=136
+REL_SYM_INFO_L=22
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1180089954
 REL_SYM_INFO_X1=2301
@@ -3013,6 +3143,10 @@ REL_SYM_INFO_X18=2301
 REL_SYM_INFO_Y18=2033330107
 REL_SYM_INFO_X19=2301
 REL_SYM_INFO_Y19=1200192770
+REL_SYM_INFO_X20=2301
+REL_SYM_INFO_Y20=2003028579
+REL_SYM_INFO_X21=2301
+REL_SYM_INFO_Y21=1679308654
 
 [DRAW_BASESYMBOL_2301_1180089954]
 OBJ_NAME=2301
@@ -3974,6 +4108,102 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1679308654]
+OBJ_NAME=2301
+OBJ_ID=1679308654
+KIND=1
+{{@LABEL_2301_1679308654
+tordini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2031
+TOP=566
+RIGHT=2431
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_2003028579]
+OBJ_NAME=2301
+OBJ_ID=2003028579
+KIND=1
+{{@LABEL_2301_2003028579
+rordini
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=50
+RIGHT=2148
+BOTTOM=272
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_2092763770]
 OBJ_NAME=0
 OBJ_ID=2092763770
@@ -4600,6 +4830,68 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=0
 DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1679308654]
+OBJ_NAME=0
+OBJ_ID=1679308654
+REL_M_OBJ_ID=0
+ENTITY=tordini
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tor-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1679308654
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_2003028579]
+OBJ_NAME=0
+OBJ_ID=2003028579
+REL_M_OBJ_ID=0
+ENTITY=rordini
+LINK=0
+LINK_NAME=
+DSN_SIZE=53
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=ror-chiave OF rordini
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_2003028579
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=
