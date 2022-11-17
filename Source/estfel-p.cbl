@@ -626,7 +626,11 @@
            end-if.            
            |Le fatture estere devono avere FISSO "XXXXXXX" nel codice SDI
            if cli-nazione not = "ITA"
-              move "XXXXXXX" to codice-SDI
+              if cli-nazione = "RSM"
+                 move "2R4GTO8" to codice-SDI
+              else
+                 move "XXXXXXX" to codice-SDI
+              end-if
            end-if.   
            inspect codice-SDI replacing trailing spaces by low-value
            string 78-spazi 
