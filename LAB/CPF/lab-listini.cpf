@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E67B123030-178-855717396
+PROGRAM_UNIQUE_CODE=TOTEM-7E6B15143135-899-700519718
 
 {{@DESCRIPTION:
 
@@ -5695,6 +5695,7 @@ BEGIN-DATA
    PARAGRAPH         = Other Working
 BEGIN-TEXT
            copy "common-excel.def".
+       77  como-peso      pic zz.zz9,999.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -6212,41 +6213,45 @@ BEGIN-TEXT
            inspect wstampa replacing trailing low-value by spaces.
            perform ACCETTA-SEPARATORE.
            open output lineseq.
-           string "N."            delimited size
-                  separatore      delimited size
-                  "Articolo"      delimited size
-                  separatore      delimited size
-                  "Valido dal"    delimited size
-                  separatore      delimited size
-                  "Art Cod Cli"   delimited size
-                  separatore      delimited size
-                  "Descrizione"   delimited size
-                  separatore      delimited size
-                  "Imb"           delimited size
-                  separatore      delimited size
-                  "EAN"           delimited size
-                  separatore      delimited size
-                  "Prod."         delimited size
-                  separatore      delimited size
-                  "Cons."         delimited size
-                  separatore      delimited size
-                  "Cou/Cob"       delimited size
-                  separatore      delimited size
-                  "Add. Pb"       delimited size
-                  separatore      delimited size
-                  "Prezzo"        delimited size
-                  separatore      delimited size
-                  "Prezzo Promo"  delimited size
-                  separatore      delimited size
-                  "Faro"          delimited size
-                  separatore      delimited size
+           initialize line-riga.
+           string "N."             delimited size
+                  separatore       delimited size
+                  "Articolo"       delimited size
+                  separatore       delimited size
+                  "Valido dal"     delimited size
+                  separatore       delimited size
+                  "Art Cod Cli"    delimited size
+                  separatore       delimited size
+                  "Descrizione"    delimited size
+                  separatore       delimited size
+                  "Imb"            delimited size
+                  separatore       delimited size
+                  "EAN"            delimited size
+                  separatore       delimited size
+                  "Prod."          delimited size
+                  separatore       delimited size
+                  "Cons."          delimited size
+                  separatore       delimited size
+                  "Cou/Cob"        delimited size
+                  separatore       delimited size
+                  "Add. Pb"        delimited size
+                  separatore       delimited size
+                  "Prezzo"         delimited size
+                  separatore       delimited size
+                  "Prezzo Promo"   delimited size
+                  separatore       delimited size
+                  "Peso specifico" delimited size
+                  separatore       delimited size
              into line-riga
            end-string.
            write line-riga.
 
            inquire gd-listini, last-row tot-righe.
            perform varying riga from 2 by 1 
-                     until riga > tot-righe
+                     until riga > tot-righe       
+              inquire gd-listini(riga, 3), hidden-data prg-chiave
+              move prg-peso to como-peso
+
               inquire gd-listini(riga, 1),  cell-data col-num    
               inquire gd-listini(riga, 2),  cell-data col-art    
               inquire gd-listini(riga, 3),  cell-data col-data   
@@ -6288,7 +6293,7 @@ BEGIN-TEXT
                      separatore    delimited size
                      col-promo     delimited size
                      separatore    delimited size
-                     col-faro      delimited size
+                     como-peso     delimited size
                      separatore    delimited size
                 into line-riga
              end-string

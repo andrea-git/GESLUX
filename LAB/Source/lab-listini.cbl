@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
-       AUTHOR.              Utente.
-       DATE-WRITTEN.        lunedì 11 luglio 2022 14:14:28.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 21 novembre 2022 15:50:33.
        REMARKS.
       *{TOTEM}END
 
@@ -465,6 +465,7 @@
        77 listini1-lst-k-data-SPLITBUF  PIC X(29).
 
            copy "common-excel.def".
+       77  como-peso      pic zz.zz9,999.
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -6449,41 +6450,45 @@
            inspect wstampa replacing trailing low-value by spaces.
            perform ACCETTA-SEPARATORE.
            open output lineseq.
-           string "N."            delimited size
-                  separatore      delimited size
-                  "Articolo"      delimited size
-                  separatore      delimited size
-                  "Valido dal"    delimited size
-                  separatore      delimited size
-                  "Art Cod Cli"   delimited size
-                  separatore      delimited size
-                  "Descrizione"   delimited size
-                  separatore      delimited size
-                  "Imb"           delimited size
-                  separatore      delimited size
-                  "EAN"           delimited size
-                  separatore      delimited size
-                  "Prod."         delimited size
-                  separatore      delimited size
-                  "Cons."         delimited size
-                  separatore      delimited size
-                  "Cou/Cob"       delimited size
-                  separatore      delimited size
-                  "Add. Pb"       delimited size
-                  separatore      delimited size
-                  "Prezzo"        delimited size
-                  separatore      delimited size
-                  "Prezzo Promo"  delimited size
-                  separatore      delimited size
-                  "Faro"          delimited size
-                  separatore      delimited size
+           initialize line-riga.
+           string "N."             delimited size
+                  separatore       delimited size
+                  "Articolo"       delimited size
+                  separatore       delimited size
+                  "Valido dal"     delimited size
+                  separatore       delimited size
+                  "Art Cod Cli"    delimited size
+                  separatore       delimited size
+                  "Descrizione"    delimited size
+                  separatore       delimited size
+                  "Imb"            delimited size
+                  separatore       delimited size
+                  "EAN"            delimited size
+                  separatore       delimited size
+                  "Prod."          delimited size
+                  separatore       delimited size
+                  "Cons."          delimited size
+                  separatore       delimited size
+                  "Cou/Cob"        delimited size
+                  separatore       delimited size
+                  "Add. Pb"        delimited size
+                  separatore       delimited size
+                  "Prezzo"         delimited size
+                  separatore       delimited size
+                  "Prezzo Promo"   delimited size
+                  separatore       delimited size
+                  "Peso specifico" delimited size
+                  separatore       delimited size
              into line-riga
            end-string.
            write line-riga.
 
            inquire gd-listini, last-row tot-righe.
            perform varying riga from 2 by 1 
-                     until riga > tot-righe
+                     until riga > tot-righe       
+              inquire gd-listini(riga, 3), hidden-data prg-chiave
+              move prg-peso to como-peso
+
               inquire gd-listini(riga, 1),  cell-data col-num    
               inquire gd-listini(riga, 2),  cell-data col-art    
               inquire gd-listini(riga, 3),  cell-data col-data   
@@ -6525,7 +6530,7 @@
                      separatore    delimited size
                      col-promo     delimited size
                      separatore    delimited size
-                     col-faro      delimited size
+                     como-peso     delimited size
                      separatore    delimited size
                 into line-riga
              end-string
