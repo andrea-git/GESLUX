@@ -61,7 +61,7 @@
        copy "mail.def".
        copy "common-linkage.def".
        copy "comune.def".
-       copy "link-batch.def".
+      * copy "link-batch.def".
                           
        PROCEDURE DIVISION.
        DECLARATIVES.
@@ -241,7 +241,7 @@
                  add 1 to idx
                  if mb-evacli-mag-codice(idx) = spaces
                     exit perform
-                 end-if 
+                 end-if                     
                  inspect LinkBody replacing trailing 
                                   spaces by low-value
                  string LinkBody              delimited low-value
@@ -255,29 +255,38 @@
                         x"0d0a"  delimited size
                    into LinkBody
                  end-string
+                 inspect LinkBody replacing trailing 
+                                  spaces by low-value
+                 string LinkBody              delimited low-value
+                        "GENERATO LOG: " path-log-macrobatch
+                        x"0d0a"  delimited size
+                   into LinkBody
+                 end-string
+
+                 
               end-perform
            end-if.     
            inspect LinkBody replacing trailing spaces by low-value.
-           if batch-status = 0
-              string LinkBody delimited low-value
-                     x"0d0a""RICALCOLO IMPEGNATO" x"0d0a"
-                     x"0d0a"
-                     "ESEGUITO CON SUCCESSO. DETTAGLI LOG:" 
-                     x"0d0a"
-                     batch-log delimited size
-                into LinkBody
-              end-string
-           else
-              string LinkBody delimited low-value
-                     x"0d0a""RICALCOLO IMPEGNATO" x"0d0a"
-                     x"0d0a"
-                     "ESEGUITO CON ERRORI. DETTAGLI LOG:" 
-                     x"0d0a"
-                     batch-log
-                     delimited size
-                into LinkBody
-              end-string
-           end-if.                
+      *     if batch-status = 0
+      *        string LinkBody delimited low-value
+      *               x"0d0a""RICALCOLO IMPEGNATO" x"0d0a"
+      *               x"0d0a"
+      *               "ESEGUITO CON SUCCESSO. DETTAGLI LOG:" 
+      *               x"0d0a"
+      *               batch-log delimited size
+      *          into LinkBody
+      *        end-string
+      *     else
+      *        string LinkBody delimited low-value
+      *               x"0d0a""RICALCOLO IMPEGNATO" x"0d0a"
+      *               x"0d0a"
+      *               "ESEGUITO CON ERRORI. DETTAGLI LOG:" 
+      *               x"0d0a"
+      *               batch-log
+      *               delimited size
+      *          into LinkBody
+      *        end-string
+      *     end-if.                
 
            accept como-data from time.
            accept como-ora  from century-date.
@@ -428,9 +437,9 @@
            cancel "shi-exp".
 
       ***---
-       CALL-RICALDIN.
-           call   "ricaldin-bat" using batch-linkage.
-           cancel "ricaldin-bat".                 
+      * CALL-RICALDIN.
+      *     call   "ricaldin-bat" using batch-linkage.
+      *     cancel "ricaldin-bat".                 
 
       ***---
        PARAGRAFO-COPY.

@@ -8,7 +8,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen1
 BEFORE_PROGRAM=nambar-Ev-Before-Program
 AFTER_PROGRAM=nambar-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E2919115241-231-1100513086
+PROGRAM_UNIQUE_CODE=TOTEM-7E6B1982941-344-354011963
 
 {{@DESCRIPTION:
 
@@ -1494,7 +1494,7 @@ Begin Screen Screen1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1516,7 +1516,7 @@ Begin Screen Screen1
       Size              = 38,00
       Size Unit         = Default
       Tab Order         = 8
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Width in Cells    = TRUE
@@ -1726,7 +1726,7 @@ Begin Screen Screen1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1a
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1749,7 +1749,7 @@ Begin Screen Screen1
       Size              = 38,00
       Size Unit         = Default
       Tab Order         = 13
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Visible Variable  = v-secondo-numero
@@ -2228,88 +2228,123 @@ BEGIN-DATA
 BEGIN-TEXT
            set tutto-ok to true.
            perform LEGGI-NUMERO.
+
            if tutto-ok
-              evaluate true
-              when link-fatman
-              when link-gordc
-              when link-gordcvart
-                   move link-anno      to tor-anno
-                   move con-num-ordine to tor-numero
-                   read tordini no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-ordine
-                   move link-anno        to mto-anno
-                   move con-num-ordine-m to mto-numero
-                   read mtordini no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-evasione
-                   move link-anno        to teva-anno
-                   move con-num-evasione to teva-numero
-                   read teva no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-evasione-imp
-                   move link-anno        to teva-anno
-                   move SaveNumeroStart  to teva-numero
-                   perform link-num-record times
-                      add  1       to teva-numero
+              perform until 1 = 2   
+
+                 evaluate true
+                 when link-gordc
+                 when link-gordcvart 
+                      add 1 to con-num-ordine
+                 when link-ordine
+                      add 1 to con-num-ordine-m
+                 when link-gordforn
+                      add 1 to con-num-ord-forn
+                 when link-gmovmag   
+                 when link-gmovmagr
+                      add 1 to con-ult-num-movim
+                 when link-gmovdis   
+                      move con-ult-num-movim to SaveNumeroStart
+                 when link-notacr    
+                      add 1 to con-ult-num-nc
+                 when link-bnotacr   
+                      add 1 to con-num-bozza
+                 when link-fatman    
+                      add 1 to con-num-ordine
+                 when link-gcontest  
+                      add 1 to con-num-cont
+                 when link-evasione
+                      add 1 to con-num-evasione
+                 when link-evasione-imp
+                      move con-num-evasione to SaveNumeroStart
+                 end-evaluate
+
+                 set tutto-ok to true    
+                 evaluate true
+                 when link-fatman
+                 when link-gordc
+                 when link-gordcvart
+                      move link-anno      to tor-anno
+                      move con-num-ordine to tor-numero
+                      read tordini no lock 
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-ordine
+                      move link-anno        to mto-anno
+                      move con-num-ordine-m to mto-numero
+                      read mtordini no lock 
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-evasione
+                      move link-anno        to teva-anno
+                      move con-num-evasione to teva-numero
                       read teva no lock 
                            invalid continue
                        not invalid set errori to true
                       end-read
-                   end-perform
-              when link-gordforn
-                   move link-anno        to tof-anno
-                   move con-num-ord-forn to tof-numero
-                   read tordforn no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-gmovdis
-                   move link-anno       to tmo-anno
-                   move SaveNumeroStart to tmo-numero
-                   perform link-num-record times
-                      add  1       to tmo-numero
+                 when link-evasione-imp
+                      move link-anno        to teva-anno
+                      move SaveNumeroStart  to teva-numero
+                      perform link-num-record times
+                         add  1       to teva-numero
+                         read teva no lock 
+                              invalid continue
+                          not invalid set errori to true
+                         end-read
+                      end-perform
+                 when link-gordforn
+                      move link-anno        to tof-anno
+                      move con-num-ord-forn to tof-numero
+                      read tordforn no lock 
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-gmovdis
+                      move link-anno       to tmo-anno
+                      move SaveNumeroStart to tmo-numero
+                      perform link-num-record times
+                         add  1       to tmo-numero
+                         read tmovmag no lock 
+                              invalid continue
+                          not invalid set errori to true
+                         end-read
+                      end-perform
+                 when link-gmovmag
+                 when link-gmovmagr
+                      move link-anno         to tmo-anno
+                      move con-ult-num-movim to tmo-numero
                       read tmovmag no lock 
                            invalid continue
                        not invalid set errori to true
                       end-read
-                   end-perform
-              when link-gmovmag
-              when link-gmovmagr
-                   move link-anno         to tmo-anno
-                   move con-ult-num-movim to tmo-numero
-                   read tmovmag no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-notacr
-                   move link-anno          to tno-anno
-                   move con-ult-num-nc     to tno-numero
-                   read tnotacr no lock
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-bnotacr
-                   move link-anno          to btno-anno
-                   move con-num-bozza      to btno-numero
-                   read btnotacr no lock
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-gcontest
-                   move link-anno         to cnt-anno
-                   move con-num-cont      to cnt-numero
-                   read contestazioni no lock
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              end-evaluate
+                 when link-notacr
+                      move link-anno          to tno-anno
+                      move con-ult-num-nc     to tno-numero
+                      read tnotacr no lock
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-bnotacr
+                      move link-anno          to btno-anno
+                      move con-num-bozza      to btno-numero
+                      read btnotacr no lock
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-gcontest
+                      move link-anno         to cnt-anno
+                      move con-num-cont      to cnt-numero
+                      read contestazioni no lock
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 end-evaluate
+                 if tutto-ok
+                    exit perform
+                 end-if        
+              end-perform
            end-if.
 
            if errori    
@@ -2322,14 +2357,14 @@ BEGIN-TEXT
                         delimited size
                         into geslock-messaggio
                  end-string
-              else
-                 string "GRAVE ERRORE!!"
-                 x"0d0a""---------------"
-                 x"0d0a""Registrazione già in archivio."
-                 x"0d0a""Prendere nota e contattare assistenza!" 
-                        delimited size
-                        into geslock-messaggio
-                 end-string
+      *****        else
+      *****           string "GRAVE ERRORE!!"
+      *****           x"0d0a""---------------"
+      *****           x"0d0a""Registrazione già in archivio."
+      *****           x"0d0a""Prendere nota e contattare assistenza!" 
+      *****                  delimited size
+      *****                  into geslock-messaggio
+      *****           end-string
               end-if
               set geslock-contatore to true
               evaluate true
@@ -2373,34 +2408,7 @@ BEGIN-TEXT
            read tcontat
                 invalid 
                 set errori to true
-                move 0 to con-anno
-            not invalid           
-                evaluate true
-                when link-gordc
-                when link-gordcvart 
-                     add 1 to con-num-ordine
-                when link-ordine
-                     add 1 to con-num-ordine-m
-                when link-gordforn
-                     add 1 to con-num-ord-forn
-                when link-gmovmag   
-                when link-gmovmagr
-                     add 1 to con-ult-num-movim
-                when link-gmovdis   
-                     move con-ult-num-movim to SaveNumeroStart
-                when link-notacr    
-                     add 1 to con-ult-num-nc
-                when link-bnotacr   
-                     add 1 to con-num-bozza
-                when link-fatman    
-                     add 1 to con-num-ordine
-                when link-gcontest  
-                     add 1 to con-num-cont
-                when link-evasione
-                     add 1 to con-num-evasione
-                when link-evasione-imp
-                     move con-num-evasione to SaveNumeroStart
-                end-evaluate
+                move 0 to con-anno        
            end-read.
 END-TEXT
 END-DATA

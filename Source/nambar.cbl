@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          nambar.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 25 settembre 2018 13:59:52.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        venerdì 25 novembre 2022 12:55:24.
        REMARKS.
       *{TOTEM}END
 
@@ -59,7 +59,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -157,7 +157,7 @@
        77 STATUS-Screen1-FLAG-REFRESH PIC  9.
           88 Screen1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-tmovmag-BUF     PIC X(256).
        77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
        77 TMP-DataSet1-btnotacr-BUF     PIC X(912).
@@ -232,7 +232,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -265,6 +265,7 @@
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
        77 tordforn-tof-k-data-SPLITBUF  PIC X(21).
+       77 tordforn-tof-k-consegna-SPLITBUF  PIC X(21).
        77 teva-teva-stato-SPLITBUF  PIC X(14).
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
@@ -421,11 +422,9 @@
            LINE 5,92,
            LINES 5,00 ,
            SIZE 38,00 ,
-           RAISED,
            ID IS 4,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            .
 
       * LABEL
@@ -525,11 +524,9 @@
            LINE lines-2-numero-3,
            LINES 5,00 ,
            SIZE 38,00 ,
-           RAISED,
            ID IS 14,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            VISIBLE v-secondo-numero,
            .
 
@@ -1353,7 +1350,7 @@ LUBEXX                   x"0d0a"tipo-status
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -2505,6 +2502,14 @@ LUBEXX                   x"0d0a"tipo-status
            tordforn-tof-k-data-SPLITBUF(9:12)
            .
 
+       tordforn-tof-k-consegna-MERGE-SPLITBUF.
+           INITIALIZE tordforn-tof-k-consegna-SPLITBUF
+           MOVE tof-data-consegna OF tordforn(1:8) TO 
+           tordforn-tof-k-consegna-SPLITBUF(1:8)
+           MOVE tof-chiave OF tordforn(1:12) TO 
+           tordforn-tof-k-consegna-SPLITBUF(9:12)
+           .
+
        DataSet1-tordforn-INITSTART.
            IF DataSet1-tordforn-KEY-Asc
               MOVE Low-Value TO tof-chiave
@@ -2570,6 +2575,7 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT 
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2601,6 +2607,7 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2632,6 +2639,7 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM tordforn-tof-k-stato-MERGE-SPLITBUF
            PERFORM tordforn-k-fornitore-MERGE-SPLITBUF
            PERFORM tordforn-tof-k-data-MERGE-SPLITBUF
+           PERFORM tordforn-tof-k-consegna-MERGE-SPLITBUF
            MOVE STATUS-tordforn TO TOTEM-ERR-STAT
            MOVE "tordforn" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -3539,88 +3547,123 @@ PATCH         open input tcontat
       * <TOTEM:PARA. CHECK-ESISTENZA>
            set tutto-ok to true.
            perform LEGGI-NUMERO.
+
            if tutto-ok
-              evaluate true
-              when link-fatman
-              when link-gordc
-              when link-gordcvart
-                   move link-anno      to tor-anno
-                   move con-num-ordine to tor-numero
-                   read tordini no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-ordine
-                   move link-anno        to mto-anno
-                   move con-num-ordine-m to mto-numero
-                   read mtordini no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-evasione
-                   move link-anno        to teva-anno
-                   move con-num-evasione to teva-numero
-                   read teva no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-evasione-imp
-                   move link-anno        to teva-anno
-                   move SaveNumeroStart  to teva-numero
-                   perform link-num-record times
-                      add  1       to teva-numero
+              perform until 1 = 2   
+
+                 evaluate true
+                 when link-gordc
+                 when link-gordcvart 
+                      add 1 to con-num-ordine
+                 when link-ordine
+                      add 1 to con-num-ordine-m
+                 when link-gordforn
+                      add 1 to con-num-ord-forn
+                 when link-gmovmag   
+                 when link-gmovmagr
+                      add 1 to con-ult-num-movim
+                 when link-gmovdis   
+                      move con-ult-num-movim to SaveNumeroStart
+                 when link-notacr    
+                      add 1 to con-ult-num-nc
+                 when link-bnotacr   
+                      add 1 to con-num-bozza
+                 when link-fatman    
+                      add 1 to con-num-ordine
+                 when link-gcontest  
+                      add 1 to con-num-cont
+                 when link-evasione
+                      add 1 to con-num-evasione
+                 when link-evasione-imp
+                      move con-num-evasione to SaveNumeroStart
+                 end-evaluate
+
+                 set tutto-ok to true    
+                 evaluate true
+                 when link-fatman
+                 when link-gordc
+                 when link-gordcvart
+                      move link-anno      to tor-anno
+                      move con-num-ordine to tor-numero
+                      read tordini no lock 
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-ordine
+                      move link-anno        to mto-anno
+                      move con-num-ordine-m to mto-numero
+                      read mtordini no lock 
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-evasione
+                      move link-anno        to teva-anno
+                      move con-num-evasione to teva-numero
                       read teva no lock 
                            invalid continue
                        not invalid set errori to true
                       end-read
-                   end-perform
-              when link-gordforn
-                   move link-anno        to tof-anno
-                   move con-num-ord-forn to tof-numero
-                   read tordforn no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-gmovdis
-                   move link-anno       to tmo-anno
-                   move SaveNumeroStart to tmo-numero
-                   perform link-num-record times
-                      add  1       to tmo-numero
+                 when link-evasione-imp
+                      move link-anno        to teva-anno
+                      move SaveNumeroStart  to teva-numero
+                      perform link-num-record times
+                         add  1       to teva-numero
+                         read teva no lock 
+                              invalid continue
+                          not invalid set errori to true
+                         end-read
+                      end-perform
+                 when link-gordforn
+                      move link-anno        to tof-anno
+                      move con-num-ord-forn to tof-numero
+                      read tordforn no lock 
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-gmovdis
+                      move link-anno       to tmo-anno
+                      move SaveNumeroStart to tmo-numero
+                      perform link-num-record times
+                         add  1       to tmo-numero
+                         read tmovmag no lock 
+                              invalid continue
+                          not invalid set errori to true
+                         end-read
+                      end-perform
+                 when link-gmovmag
+                 when link-gmovmagr
+                      move link-anno         to tmo-anno
+                      move con-ult-num-movim to tmo-numero
                       read tmovmag no lock 
                            invalid continue
                        not invalid set errori to true
                       end-read
-                   end-perform
-              when link-gmovmag
-              when link-gmovmagr
-                   move link-anno         to tmo-anno
-                   move con-ult-num-movim to tmo-numero
-                   read tmovmag no lock 
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-notacr
-                   move link-anno          to tno-anno
-                   move con-ult-num-nc     to tno-numero
-                   read tnotacr no lock
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-bnotacr
-                   move link-anno          to btno-anno
-                   move con-num-bozza      to btno-numero
-                   read btnotacr no lock
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              when link-gcontest
-                   move link-anno         to cnt-anno
-                   move con-num-cont      to cnt-numero
-                   read contestazioni no lock
-                        invalid continue
-                    not invalid set errori to true
-                   end-read
-              end-evaluate
+                 when link-notacr
+                      move link-anno          to tno-anno
+                      move con-ult-num-nc     to tno-numero
+                      read tnotacr no lock
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-bnotacr
+                      move link-anno          to btno-anno
+                      move con-num-bozza      to btno-numero
+                      read btnotacr no lock
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 when link-gcontest
+                      move link-anno         to cnt-anno
+                      move con-num-cont      to cnt-numero
+                      read contestazioni no lock
+                           invalid continue
+                       not invalid set errori to true
+                      end-read
+                 end-evaluate
+                 if tutto-ok
+                    exit perform
+                 end-if        
+              end-perform
            end-if.
 
            if errori    
@@ -3633,14 +3676,14 @@ PATCH         open input tcontat
                         delimited size
                         into geslock-messaggio
                  end-string
-              else
-                 string "GRAVE ERRORE!!"
-                 x"0d0a""---------------"
-                 x"0d0a""Registrazione già in archivio."
-                 x"0d0a""Prendere nota e contattare assistenza!" 
-                        delimited size
-                        into geslock-messaggio
-                 end-string
+      *****        else
+      *****           string "GRAVE ERRORE!!"
+      *****           x"0d0a""---------------"
+      *****           x"0d0a""Registrazione già in archivio."
+      *****           x"0d0a""Prendere nota e contattare assistenza!" 
+      *****                  delimited size
+      *****                  into geslock-messaggio
+      *****           end-string
               end-if
               set geslock-contatore to true
               evaluate true
@@ -3683,34 +3726,7 @@ PATCH         open input tcontat
            read tcontat
                 invalid 
                 set errori to true
-                move 0 to con-anno
-            not invalid           
-                evaluate true
-                when link-gordc
-                when link-gordcvart 
-                     add 1 to con-num-ordine
-                when link-ordine
-                     add 1 to con-num-ordine-m
-                when link-gordforn
-                     add 1 to con-num-ord-forn
-                when link-gmovmag   
-                when link-gmovmagr
-                     add 1 to con-ult-num-movim
-                when link-gmovdis   
-                     move con-ult-num-movim to SaveNumeroStart
-                when link-notacr    
-                     add 1 to con-ult-num-nc
-                when link-bnotacr   
-                     add 1 to con-num-bozza
-                when link-fatman    
-                     add 1 to con-num-ordine
-                when link-gcontest  
-                     add 1 to con-num-cont
-                when link-evasione
-                     add 1 to con-num-evasione
-                when link-evasione-imp
-                     move con-num-evasione to SaveNumeroStart
-                end-evaluate
+                move 0 to con-anno        
            end-read 
            .
       * <TOTEM:END>
