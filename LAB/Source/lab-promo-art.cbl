@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-promo-art.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 4 giugno 2019 11:12:45.
+       DATE-WRITTEN.        martedì 6 dicembre 2022 09:03:20.
        REMARKS.
       *{TOTEM}END
 
@@ -38,6 +38,7 @@
            COPY "locali.sl".
            COPY "tmp-promo-art.sl".
            COPY "blister.sl".
+           COPY "tmarche.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -53,16 +54,16 @@
            COPY "locali.fd".
            COPY "tmp-promo-art.fd".
            COPY "blister.fd".
+           COPY "tmarche.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUGUI.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\ACUCOBOL.DEF"
-           .
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\FONTS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\CRTVARS.DEF".
-               COPY "C:\ACUCORP\ACUCBL610\ACUGT\SAMPLE\DEF\SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "fonts.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END
@@ -147,6 +148,7 @@
            05 col-fine-dpo     PIC  x(10).
            05 col-ini-vol      PIC  x(10).
            05 col-fine-vol     PIC  x(10).
+           05 col-qta          PIC  zzz.zzz.zz9.
            05 col-nome         PIC  X(50).
        77 hid-codice       PIC  9(15).
        77 lab-art-buf      PIC  X(50).
@@ -158,6 +160,8 @@
        77 save-fine        PIC  9(8)
                   VALUE IS 0.
        77 save-articolo    PIC  9(6)
+                  VALUE IS 0.
+       77 save-marca       PIC  9(4)
                   VALUE IS 0.
        77 save-cliente     PIC  9(5).
        77 save-destino     PIC  9(5).
@@ -185,6 +189,13 @@
            88 Valid-STATUS-tmp-promo-art VALUE IS "00" THRU "09". 
        77 STATUS-blister   PIC  X(2).
            88 Valid-STATUS-blister VALUE IS "00" THRU "09". 
+       77 lab-marca-buf    PIC  X(50)
+                  VALUE IS "<<HELP>> 0 = TUTTE".
+       77 ef-marca-buf     PIC  z(4).
+       77 e-marca          PIC  9
+                  VALUE IS 1.
+       77 STATUS-tmarche   PIC  X(2).
+           88 Valid-STATUS-tmarche VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -194,14 +205,15 @@
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
        77 TMP-DataSet1-rpromo-BUF     PIC X(209).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tmp-destini-BUF     PIC X(170).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(900).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-locali-BUF     PIC X(203).
-       77 TMP-DataSet1-tmp-promo-art-BUF     PIC X(227).
+       77 TMP-DataSet1-tmp-promo-art-BUF     PIC X(188).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
+       77 TMP-DataSet1-tmarche-BUF     PIC X(217).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -262,6 +274,11 @@
        77 DataSet1-blister-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-blister-KEY-Asc  VALUE "A".
           88 DataSet1-blister-KEY-Desc VALUE "D".
+       77 DataSet1-tmarche-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tmarche-LOCK  VALUE "Y".
+       77 DataSet1-tmarche-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tmarche-KEY-Asc  VALUE "A".
+          88 DataSet1-tmarche-KEY-Desc VALUE "D".
 
        77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 tpromo-tpr-chiave-ricerca-SPLITBUF  PIC X(22).
@@ -272,7 +289,7 @@
        77 tpromo-tpr-k-fine-vol-SPLITBUF  PIC X(22).
        77 tpromo-tpr-k-data-ins-SPLITBUF  PIC X(29).
        77 rpromo-k-stampa-SPLITBUF  PIC X(32).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -303,6 +320,7 @@
        78  78-ID-ef-ini VALUE 5002.
        78  78-ID-ef-fine VALUE 5003.
        78  78-ID-ef-art VALUE 5004.
+       78  78-ID-ef-marca VALUE 5005.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -323,9 +341,9 @@
        05
            frame-limiti, 
            Frame, 
-           COL 14,10, 
+           COL 18,30, 
            LINE 1,50,
-           LINES 10,56 ,
+           LINES 11,89 ,
            SIZE 85,00 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -338,7 +356,7 @@
        05
            ef-gdo, 
            Entry-Field, 
-           COL 28,10, 
+           COL 32,30, 
            LINE 3,50,
            LINES 1,33 ,
            SIZE 7,00 ,
@@ -357,7 +375,7 @@
        05
            ef-ini, 
            Entry-Field, 
-           COL 28,10, 
+           COL 32,30, 
            LINE 5,50,
            LINES 1,33 ,
            SIZE 11,00 ,
@@ -376,7 +394,7 @@
        05
            ef-fine, 
            Entry-Field, 
-           COL 50,10, 
+           COL 54,30, 
            LINE 5,50,
            LINES 1,33 ,
            SIZE 11,00 ,
@@ -395,7 +413,7 @@
        05
            pb-dest, 
            Push-Button, 
-           COL 28,10, 
+           COL 32,30, 
            LINE 7,50,
            LINES 1,17 ,
            SIZE 3,00 ,
@@ -410,7 +428,7 @@
        05
            pb-pn, 
            Push-Button, 
-           COL 32,10, 
+           COL 36,30, 
            LINE 7,50,
            LINES 1,17 ,
            SIZE 3,00 ,
@@ -425,7 +443,7 @@
        05
            ef-art, 
            Entry-Field, 
-           COL 28,10, 
+           COL 32,30, 
            LINE 9,50,
            LINES 1,33 ,
            SIZE 7,00 ,
@@ -444,7 +462,7 @@
        05
            Screen3-La-1aa, 
            Label, 
-           COL 16,10, 
+           COL 20,30, 
            LINE 3,50,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -459,7 +477,7 @@
        05
            lab-gdo, 
            Label, 
-           COL 36,10, 
+           COL 40,30, 
            LINE 3,50,
            LINES 1,33 ,
            SIZE 61,00 ,
@@ -475,7 +493,7 @@
        05
            Screen3-La-1aaa, 
            Label, 
-           COL 16,10, 
+           COL 20,30, 
            LINE 5,50,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -490,7 +508,7 @@
        05
            Screen3-La-1aad, 
            Label, 
-           COL 16,10, 
+           COL 20,30, 
            LINE 9,50,
            LINES 1,17 ,
            SIZE 10,50 ,
@@ -505,7 +523,7 @@
        05
            lab-art, 
            Label, 
-           COL 36,10, 
+           COL 40,30, 
            LINE 9,50,
            LINES 1,33 ,
            SIZE 61,00 ,
@@ -521,7 +539,7 @@
        05
            Screen3-La-1aada, 
            Label, 
-           COL 16,10, 
+           COL 20,30, 
            LINE 7,50,
            LINES 1,17 ,
            SIZE 10,50 ,
@@ -536,7 +554,7 @@
        05
            lab-citta, 
            Label, 
-           COL 36,10, 
+           COL 40,30, 
            LINE 7,39,
            LINES 1,17 ,
            SIZE 30,00 ,
@@ -552,7 +570,7 @@
        05
            lab-via, 
            Label, 
-           COL 67,10, 
+           COL 71,30, 
            LINE 7,50,
            LINES 1,17 ,
            SIZE 30,00 ,
@@ -568,7 +586,7 @@
        05
            Screen3-La-1aaaa, 
            Label, 
-           COL 41,10, 
+           COL 45,30, 
            LINE 5,50,
            LINES 1,33 ,
            SIZE 8,00 ,
@@ -583,7 +601,7 @@
        05
            Screen4-blockpgm-1, 
            Label, 
-           COL 67,20, 
+           COL 71,40, 
            LINE 3,89,
            LINES 1,17 ,
            SIZE 11,10 ,
@@ -599,7 +617,7 @@
        05
            Screen4-Custom1-1, 
            Label, 
-           COL 82,10, 
+           COL 86,30, 
            LINE 5,22,
            LINES 2,22 ,
            SIZE 5,00 ,
@@ -610,14 +628,65 @@
            VISIBLE v-custom,
            .
 
+      * ENTRY FIELD
+       05
+           ef-marca, 
+           Entry-Field, 
+           COL 32,30, 
+           LINE 11,50,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED e-marca,
+           ID IS 78-ID-ef-marca,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           VALUE ef-marca-buf,
+           AFTER PROCEDURE ef-marca-AfterProcedure, 
+           .
+
+      * LABEL
+       05
+           Screen3-La-1aadb, 
+           Label, 
+           COL 20,30, 
+           LINE 11,50,
+           LINES 1,17 ,
+           SIZE 10,50 ,
+           ID IS 15,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Marca",
+           .
+
+      * LABEL
+       05
+           lab-marca, 
+           Label, 
+           COL 40,30, 
+           LINE 11,50,
+           LINES 1,33 ,
+           SIZE 61,00 ,
+           COLOR IS 5,
+           ID IS 20,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-marca-buf,
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 31,67,
+           LINE 42,28,
            LINES 2,83 ,
-           SIZE 111,20 ,
+           SIZE 119,70 ,
            ID IS 29,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -627,8 +696,8 @@
        05
            pb-ok, 
            Push-Button, 
-           COL 95,90, 
-           LINE 32,29,
+           COL 104,90, 
+           LINE 42,90,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -646,8 +715,8 @@
        05
            pb-annulla, 
            Push-Button, 
-           COL 103,70, 
-           LINE 32,29,
+           COL 112,60, 
+           LINE 42,90,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -667,15 +736,16 @@
        05
            gd1, 
            Grid, 
-           COL 2,00, 
-           LINE 13,00,
-           LINES 18,17 ,
-           SIZE 109,10 ,
+           COL 2,30, 
+           LINE 14,06,
+           LINES 27,89 ,
+           SIZE 117,10 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
-           DATA-COLUMNS (1, 7, 8, 58, 68, 73, 83, 93, 103, 113),
-           ALIGNMENT ("R", "C", "U", "R", "C", "C", "C", "C", "C", "U"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           DATA-COLUMNS (1, 7, 8, 58, 68, 73, 83, 93, 103, 113, 124),
+           ALIGNMENT ("R", "C", "U", "R", "C", "C", "C", "C", "C", "R", 
+           "U"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 0,
@@ -688,7 +758,7 @@
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 134,
+           VIRTUAL-WIDTH 144,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Screen4-Gd-1-Event-Proc,
@@ -937,6 +1007,7 @@
       *    tmp-promo-art OPEN MODE IS FALSE
       *    PERFORM OPEN-tmp-promo-art
            PERFORM OPEN-blister
+           PERFORM OPEN-tmarche
       *    After Open
            .
 
@@ -1072,6 +1143,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tmarche.
+      * <TOTEM:EPT. INIT:lab-promo-art, FD:tmarche, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tmarche
+           IF NOT Valid-STATUS-tmarche
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-promo-art, FD:tmarche, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tgrupgdo
@@ -1088,6 +1171,7 @@
       *    tmp-promo-art CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tmp-promo-art
            PERFORM CLOSE-blister
+           PERFORM CLOSE-tmarche
       *    After Close
            .
 
@@ -1152,6 +1236,12 @@
       * <TOTEM:EPT. INIT:lab-promo-art, FD:blister, BeforeClose>
       * <TOTEM:END>
            CLOSE blister
+           .
+
+       CLOSE-tmarche.
+      * <TOTEM:EPT. INIT:lab-promo-art, FD:tmarche, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tmarche
            .
 
        tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
@@ -1772,9 +1862,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -3043,6 +3133,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tmarche-INITSTART.
+           IF DataSet1-tmarche-KEY-Asc
+              MOVE Low-Value TO mar-chiave
+           ELSE
+              MOVE High-Value TO mar-chiave
+           END-IF
+           .
+
+       DataSet1-tmarche-INITEND.
+           IF DataSet1-tmarche-KEY-Asc
+              MOVE High-Value TO mar-chiave
+           ELSE
+              MOVE Low-Value TO mar-chiave
+           END-IF
+           .
+
+      * tmarche
+       DataSet1-tmarche-START.
+           IF DataSet1-tmarche-KEY-Asc
+              START tmarche KEY >= mar-chiave
+           ELSE
+              START tmarche KEY <= mar-chiave
+           END-IF
+           .
+
+       DataSet1-tmarche-START-NOTGREATER.
+           IF DataSet1-tmarche-KEY-Asc
+              START tmarche KEY <= mar-chiave
+           ELSE
+              START tmarche KEY >= mar-chiave
+           END-IF
+           .
+
+       DataSet1-tmarche-START-GREATER.
+           IF DataSet1-tmarche-KEY-Asc
+              START tmarche KEY > mar-chiave
+           ELSE
+              START tmarche KEY < mar-chiave
+           END-IF
+           .
+
+       DataSet1-tmarche-START-LESS.
+           IF DataSet1-tmarche-KEY-Asc
+              START tmarche KEY < mar-chiave
+           ELSE
+              START tmarche KEY > mar-chiave
+           END-IF
+           .
+
+       DataSet1-tmarche-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tmarche-LOCK
+              READ tmarche WITH LOCK 
+              KEY mar-chiave
+           ELSE
+              READ tmarche WITH NO LOCK 
+              KEY mar-chiave
+           END-IF
+           MOVE STATUS-tmarche TO TOTEM-ERR-STAT 
+           MOVE "tmarche" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmarche-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tmarche-KEY-Asc
+              IF DataSet1-tmarche-LOCK
+                 READ tmarche NEXT WITH LOCK
+              ELSE
+                 READ tmarche NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmarche-LOCK
+                 READ tmarche PREVIOUS WITH LOCK
+              ELSE
+                 READ tmarche PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmarche TO TOTEM-ERR-STAT
+           MOVE "tmarche" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmarche-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tmarche-KEY-Asc
+              IF DataSet1-tmarche-LOCK
+                 READ tmarche PREVIOUS WITH LOCK
+              ELSE
+                 READ tmarche PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmarche-LOCK
+                 READ tmarche NEXT WITH LOCK
+              ELSE
+                 READ tmarche NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmarche TO TOTEM-ERR-STAT
+           MOVE "tmarche" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmarche-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tmarche TO TOTEM-ERR-STAT
+           MOVE "tmarche" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmarche-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tmarche TO TOTEM-ERR-STAT
+           MOVE "tmarche" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmarche-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tmarche TO TOTEM-ERR-STAT
+           MOVE "tmarche" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmarche, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE gdo-rec OF tgrupgdo
            INITIALIZE tpr-rec OF tpromo
@@ -3055,6 +3299,7 @@
            INITIALIZE loc-rec OF locali
            INITIALIZE tpa-rec OF tmp-promo-art
            INITIALIZE bli-rec OF blister
+           INITIALIZE mar-rec OF tmarche
            .
 
 
@@ -3086,6 +3331,9 @@
                 CELL-DATA = "Fine Vol",
       * CELLS' SETTING
               MODIFY gd1, X = 10, Y = 1,
+                CELL-DATA = "Quantità",
+      * CELLS' SETTING
+              MODIFY gd1, X = 11, Y = 1,
                 CELL-DATA = "Nome volantino",
       * COLUMNS' SETTING
               MODIFY gd1, X = 4  
@@ -3181,6 +3429,14 @@
                          ALPHABETIC    DATA BY SPACES
            .
 
+      * FD's Initialize Paragraph
+       DataSet1-tmarche-INITREC.
+           INITIALIZE mar-rec OF tmarche
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
       *
        DataSet1-DISPATCH-BUFTOFLD.
            .
@@ -3202,8 +3458,8 @@
 
        Form1-Create-Win.
            Display Floating GRAPHICAL WINDOW
-              LINES 33,50,
-              SIZE 111,20,
+              LINES 44,11,
+              SIZE 119,70,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -3234,7 +3490,7 @@
            DISPLAY Form1 UPON form1-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gd1, DISPLAY-COLUMNS (1, 9, 12, 42, 51, 58, 69, 
-           80, 91, 102)
+           80, 91, 102, 112)
            .
 
        Form1-PROC.
@@ -3251,10 +3507,11 @@
 
            perform GD1-CONTENT.
 
-           move "<<HELP>> Blank = TUTTI I GDO"    to lab-gdo-buf.
+           move "<<HELP>> Blank = TUTTI I GDO"    to lab-gdo-buf. 
            move "<<HELP>> 0 = TUTTI GLI ARTICOLI" to lab-art-buf.
+           move "<<HELP>> 0 = TUTTE LE MARCHE"    to lab-marca-buf.
 
-           display lab-gdo lab-art.
+           display lab-gdo lab-art lab-marca.
 
            set CallManutenzione to false.
 
@@ -3420,6 +3677,7 @@
       -    "lantino locale" to TOTEM-HINT-TEXT
            WHEN 5 MOVE "Creazione Promo Nazionale" to TOTEM-HINT-TEXT
            WHEN 5004 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5005 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -3427,6 +3685,7 @@
            When 5002 PERFORM ef-ini-dpo-BeforeProcedure
            When 5003 PERFORM ef-fine-BeforeProcedure
            When 5004 PERFORM ef-art-BeforeProcedure
+           When 5005 PERFORM ef-marca-BeforeProcedure
            END-EVALUATE
            .
 
@@ -3548,10 +3807,11 @@
            modify gd1, reset-grid  = 1.
            perform GD1-CONTENT.
            move 2 to riga.
-           inquire ef-gdo,  value in save-gdo.
-           inquire ef-ini,  value in save-ini.
-           inquire ef-fine, value in save-fine.
-           inquire ef-art,  value in save-articolo.
+           inquire ef-gdo,   value in save-gdo.
+           inquire ef-ini,   value in save-ini.
+           inquire ef-fine,  value in save-fine.   
+           inquire ef-art,   value in save-articolo.
+           inquire ef-marca, value in save-marca.
 
            move save-ini  to como-data.
            perform DATE-TO-FILE.
@@ -3678,16 +3938,25 @@
                        if rpr-codice not = tpr-codice
                           exit perform
                        end-if
-                       perform RECORD-OK
+                       if save-marca not = 0
+                          move rpr-articolo to art-codice
+                          read articoli no lock invalid continue 
+           end-read
+                          if art-marca-prodotto = save-marca
+                             perform RECORD-OK
+                          end-if
+                       else
+                          perform RECORD-OK
+                       end-if
                     end-perform
               end-start
-           end-if.
-
+           end-if.  
 
       ***---
        RECORD-OK.  
            set  prima-volta  to false.
            move rpr-articolo to col-art art-codice.
+           move rpr-qta      to col-qta.
 
            read articoli no lock 
                 invalid
@@ -3779,7 +4048,7 @@
                       perform CREA-TMP-DESTINI
                       perform CARICA-GRID
                    end-if
-                end-if
+                end-if     
 
            when 78-ID-ef-art
                 inquire ef-art, value in art-codice
@@ -3794,6 +4063,24 @@
                    display ef-art lab-art
 
                    if art-codice not = save-articolo
+                      perform CARICA-GRID
+                   end-if
+                                        
+                end-if
+
+           when 78-ID-ef-marca
+                inquire ef-marca, value in mar-codice
+                move "tmarche-alfa"      to Como-File
+                call   "zoom-gt" using como-file, mar-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+
+                   move mar-codice      to ef-marca-buf
+                   move mar-descrizione to lab-marca-buf
+                   display ef-marca lab-marca       
+
+                   if mar-codice not = save-marca
                       perform CARICA-GRID
                    end-if
                                         
@@ -3857,13 +4144,15 @@
                              title tit-err
                               icon 2
                    move 78-ID-ef-ini to control-id
-                end-if
+                end-if    
 
            when 78-ID-ef-art
                 inquire ef-art, value in art-codice
                 if art-codice = 0
                    move "TUTTI GLI ARTICOLI" to lab-art-buf
-                else
+                   move 1 to e-marca
+                else                                       
+                   move 0 to e-marca
                    read articoli no lock
                         invalid
                         move art-codice to bli-codice
@@ -3878,9 +4167,30 @@
                              move bli-descrizione to art-descrizione
                         end-read
                    end-read
-                   move art-descrizione to lab-art-buf
+                   move art-descrizione    to lab-art-buf
+                   move art-marca-prodotto to ef-marca-buf mar-codice
+                   read tmarche no lock invalid continue end-read
+                   move mar-descrizione to lab-marca-buf
                 end-if
                 display lab-art
+                display ef-marca lab-marca
+
+           when 78-ID-ef-marca
+                inquire ef-marca, value in mar-codice
+                if mar-codice = 0
+                   move "TUTTE LE MARCHE" to lab-marca-buf
+                else                                      
+                   read tmarche no lock
+                        invalid
+                        move spaces to mar-descrizione
+                        set errori to true
+                        display message "Marca non valida"
+                                  title tit-err
+                                   icon 2
+                   end-read
+                   move mar-descrizione    to lab-marca-buf
+                end-if
+                display lab-marca
            end-evaluate.
       
            if errori
@@ -3915,7 +4225,7 @@
            end-if.
 
            modify gd1, start-y = event-data-2, y = event-data-2,
-                       start-x = 1,            x = 10,
+                       start-x = 1,            x = 11,
                        region-color = 481 
            .
       * <TOTEM:END>
@@ -3941,6 +4251,7 @@
            if not RecLocked
 
               string separatore              delimited size
+                     separatore              delimited size
                      "** PERIODO RICHIESTO " delimited size
                      ef-ini-buf              delimited size
                      " - "                   delimited size
@@ -3951,7 +4262,8 @@
               write line-riga from spaces
 
               initialize line-riga
-              string "ARTICOLO"       delimited size
+              string "ARTICOLO"       delimited size  
+                     separatore       delimited size
                      separatore       delimited size
                      "DESCRIZIONE"    delimited size
                      separatore       delimited size
@@ -3965,7 +4277,9 @@
                      separatore       delimited size
                      "INIZIO VOL"     delimited size
                      separatore       delimited size
-                     "FINE VOL"       delimited size
+                     "FINE VOL"       delimited size   
+                     separatore       delimited size
+                     "QUANTITA'"      delimited size
                      separatore       delimited size
                      "NOME VOLANTINO" delimited size
                      into line-riga
@@ -3983,11 +4297,12 @@
                  inquire gd1(riga, 7) cell-data in col-fine-dpo     
                  inquire gd1(riga, 8) cell-data in col-ini-vol
                  inquire gd1(riga, 9) cell-data in col-fine-vol
-                 inquire gd1(riga, 10) cell-data in col-nome
+                 inquire gd1(riga, 10) cell-data in col-qta
+                 inquire gd1(riga, 11) cell-data in col-nome
 
                  initialize line-riga
-                 string col-art      delimited size
-                        separatore   delimited size
+                 string col-art      delimited size 
+                        separatore   delimited size 
                         col-tipo     delimited size
                         separatore   delimited size
                         col-des      delimited size
@@ -4003,6 +4318,8 @@
                         col-ini-vol  delimited size
                         separatore   delimited size
                         col-fine-vol delimited size
+                        separatore   delimited size
+                        col-qta      delimited size
                         separatore   delimited size
                         col-nome     delimited size
                         into line-riga
@@ -4255,6 +4572,27 @@
        lab-promo-art-Ev-Before-Program.
       * <TOTEM:PARA. lab-promo-art-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID 
+           .
+      * <TOTEM:END>
+       ef-marca-BeforeProcedure.
+      * <TOTEM:PARA. ef-marca-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to e-cerca.
+           modify tool-cerca, enabled e-cerca.
+           inquire ef-marca, value in save-marca 
+           .
+      * <TOTEM:END>
+       ef-marca-AfterProcedure.
+      * <TOTEM:PARA. ef-marca-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           move 0 to e-cerca.
+           modify tool-cerca, enabled e-cerca.
+           perform CONTROLLO.
+           if tutto-ok
+              if mar-codice not = save-marca
+                 perform CARICA-GRID
+              end-if
+           end-if 
            .
       * <TOTEM:END>
 

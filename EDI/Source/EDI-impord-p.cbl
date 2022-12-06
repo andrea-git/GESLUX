@@ -166,7 +166,7 @@
        77  save-ecd-import-importi  pic 9.
          88 save-ecd-import-importi-si value 1.
          88 save-ecd-import-importi-no value 0.
-
+          
        77  start-secondi         pic 9(18).
        77  end-secondi           pic 9(18).
        77  tot-secondi           pic 9(18).
@@ -1214,7 +1214,7 @@
            |In caso trovassi il valore LBX devo cercare direttamente 
            |sui file GESLUX
            if emto-01T22-NAB-QCODBUYER = "LBX" or 
-              emto-01T22-NAB-QCODBUYER = "CLBX"
+              emto-01T22-NAB-QCODBUYER = "CLBX" 
 
               |Li forzo a negativi in quanto non saranno mai
               |recuperati dalla scheda 
@@ -1307,13 +1307,20 @@
                              if cli-fuori-fido |and cli-fido-extra = 0
                                 set emto-cliente-fuori-fido to true
                                 set emto-cliente-non-attivo to true
-                             end-if
-           
-                             if cli-destino-auto-EDI-no
-                                set emto-clides-non-valido to true
+                             end-if                   
+                                           
+                             | Questi ordini devono SEMPRE creare un nuovo destino
+                             if emto-01T22-NAB-QCODBUYER = 14 and
+                                emto-01T21-NAB-CODBUYER = 8001120009005
+                                perform AGGIUNGI-DESTINO
                              else
-                                if emto-01T30-NAD-RAGSOCD not = spaces
-                                   perform AGGIUNGI-DESTINO
+                                if cli-destino-auto-EDI-no
+                                   set emto-clides-non-valido to true
+                                else
+                                   if emto-01T30-NAD-RAGSOCD 
+                                      not = spaces
+                                      perform AGGIUNGI-DESTINO
+                                   end-if
                                 end-if
                              end-if
                         end-read
@@ -1325,7 +1332,7 @@
                         invalid
                         set emto-cliente-non-valido to true
                     not invalid
-                        perform RECUPERA-DATI-CLIENTE
+                        perform RECUPERA-DATI-CLIENTE 
                      
                         if cli-bloccato or cli-disattivo
                            set emto-cliente-non-attivo to true
@@ -1335,19 +1342,25 @@
                         if cli-fuori-fido |and cli-fido-extra = 0
                            set emto-cliente-fuori-fido to true
                            set emto-cliente-non-attivo to true
-                        end-if
-           
-                        if ecd-prg-destino not = 0
-                           move ecd-cli-codice  to des-codice
-                           move ecd-prg-destino to des-prog
-                           read destini no lock
-                                invalid 
-                                set emto-destino-non-valido to true
-                            not invalid
-                                if des-bloccato or des-disattivo
-                                   set emto-destino-non-attivo to true
-                                end-if
-                           end-read
+                        end-if        
+                                           
+                        | Questi ordini devono SEMPRE creare un nuovo destino
+                        if emto-01T22-NAB-QCODBUYER = 14 and
+                           emto-01T21-NAB-CODBUYER = 8001120009005
+                           perform AGGIUNGI-DESTINO
+                        else
+                           if ecd-prg-destino not = 0
+                              move ecd-cli-codice  to des-codice
+                              move ecd-prg-destino to des-prog
+                              read destini no lock
+                                   invalid 
+                                   set emto-destino-non-valido to true
+                               not invalid
+                                   if des-bloccato or des-disattivo
+                                     set emto-destino-non-attivo to true
+                                   end-if
+                              end-read
+                           end-if
                         end-if
                    end-read
               end-read
@@ -1606,7 +1619,7 @@
                          end-perform
                    end-start
               end-read
-           end-if.
+           end-if.          
 
            initialize des-rec replacing numeric data by zeroes
                                    alphanumeric data by spaces.

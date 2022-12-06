@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=lab-promo-art-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E65D142214-930-877023988
+PROGRAM_UNIQUE_CODE=TOTEM-7E6C674123-892-602716554
 
 {{@DESCRIPTION:
 
@@ -1035,9 +1035,9 @@ m_bFixed=1
 
 @}}
 [FDITEM86_WK]
-m_strName=col-nome
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=col-qta
+m_strRawPic=zzz.zzz.zz9
+m_strPic=zzz.zzz.zz9
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -1045,19 +1045,19 @@ m_bFixed=1
 
 @}}
 [FDITEM87_WK]
-m_strName=hid-codice
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=77
+m_strName=col-nome
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
 [FDITEM88_WK]
-m_strName=lab-art-buf
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=hid-codice
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1065,9 +1065,9 @@ m_bFixed=1
 
 @}}
 [FDITEM89_WK]
-m_strName=ef-art-buf
-m_strRawPic=z(6)
-m_strPic=z(6)
+m_strName=lab-art-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1075,10 +1075,9 @@ m_bFixed=1
 
 @}}
 [FDITEM90_WK]
-m_strName=save-gdo
-m_strRawPic=x(5)
-m_strPic=x(5)
-m_strDefaultValue=spaces
+m_strName=ef-art-buf
+m_strRawPic=z(6)
+m_strPic=z(6)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1086,10 +1085,10 @@ m_bFixed=1
 
 @}}
 [FDITEM91_WK]
-m_strName=save-ini
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_strDefaultValue=0
+m_strName=save-gdo
+m_strRawPic=x(5)
+m_strPic=x(5)
+m_strDefaultValue=spaces
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1097,7 +1096,7 @@ m_bFixed=1
 
 @}}
 [FDITEM92_WK]
-m_strName=save-fine
+m_strName=save-ini
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_strDefaultValue=0
@@ -1108,9 +1107,9 @@ m_bFixed=1
 
 @}}
 [FDITEM93_WK]
-m_strName=save-articolo
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=save-fine
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
@@ -1119,9 +1118,10 @@ m_bFixed=1
 
 @}}
 [FDITEM94_WK]
-m_strName=save-cliente
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=save-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1129,9 +1129,10 @@ m_bFixed=1
 
 @}}
 [FDITEM95_WK]
-m_strName=save-destino
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=save-marca
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1139,9 +1140,9 @@ m_bFixed=1
 
 @}}
 [FDITEM96_WK]
-m_strName=lab-citta-buf
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=save-cliente
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1149,9 +1150,9 @@ m_bFixed=1
 
 @}}
 [FDITEM97_WK]
-m_strName=lab-via-buf
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=save-destino
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1159,8 +1160,9 @@ m_bFixed=1
 
 @}}
 [FDITEM98_WK]
-m_strName=Verdana10-Occidentale
-m_nUsage=26
+m_strName=lab-citta-buf
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1168,9 +1170,9 @@ m_bFixed=1
 
 @}}
 [FDITEM99_WK]
-m_strName=path-tmp-destini
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=lab-via-buf
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1178,9 +1180,8 @@ m_bFixed=1
 
 @}}
 [FDITEM100_WK]
-m_strName=STATUS-tmp-destini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana10-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1188,18 +1189,19 @@ m_bFixed=1
 
 @}}
 [FDITEM101_WK]
-m_strName=Valid-STATUS-tmp-destini
-m_nItemLevel=88
+m_strName=path-tmp-destini
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM101_WK
 
 @}}
 [FDITEM102_WK]
-m_strName=como-x
-m_strRawPic=x
-m_strPic=x
+m_strName=STATUS-tmp-destini
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1207,19 +1209,18 @@ m_bFixed=1
 
 @}}
 [FDITEM103_WK]
-m_strName=ef-fine-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
-m_nItemLevel=77
+m_strName=Valid-STATUS-tmp-destini
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM103_WK
 
 @}}
 [FDITEM104_WK]
-m_strName=ef-ini-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=como-x
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1227,9 +1228,9 @@ m_bFixed=1
 
 @}}
 [FDITEM105_WK]
-m_strName=como-data-to
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=ef-fine-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1237,8 +1238,9 @@ m_bFixed=1
 
 @}}
 [FDITEM106_WK]
-m_strName=Verdana10B-Occidentale
-m_nUsage=26
+m_strName=ef-ini-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1246,9 +1248,9 @@ m_bFixed=1
 
 @}}
 [FDITEM107_WK]
-m_strName=como-user
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=como-data-to
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1256,9 +1258,8 @@ m_bFixed=1
 
 @}}
 [FDITEM108_WK]
-m_strName=wstampa
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=Verdana10B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1266,9 +1267,9 @@ m_bFixed=1
 
 @}}
 [FDITEM109_WK]
-m_strName=STATUS-lineseq
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=como-user
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1276,16 +1277,17 @@ m_bFixed=1
 
 @}}
 [FDITEM110_WK]
-m_strName=Valid-STATUS-lineseq
-m_nItemLevel=88
+m_strName=wstampa
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM110_WK
 
 @}}
 [FDITEM111_WK]
-m_strName=STATUS-locali
+m_strName=STATUS-lineseq
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1295,7 +1297,7 @@ m_bFixed=1
 
 @}}
 [FDITEM112_WK]
-m_strName=Valid-STATUS-locali
+m_strName=Valid-STATUS-lineseq
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1304,9 +1306,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM113_WK]
-m_strName=path-tmp-promo-art
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=STATUS-locali
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1314,26 +1316,26 @@ m_bFixed=1
 
 @}}
 [FDITEM114_WK]
-m_strName=STATUS-tmp-promo-art
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM114_WK
-
-@}}
-[FDITEM115_WK]
-m_strName=Valid-STATUS-tmp-promo-art
+m_strName=Valid-STATUS-locali
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM114_WK
+
+@}}
+[FDITEM115_WK]
+m_strName=path-tmp-promo-art
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM115_WK
 
 @}}
 [FDITEM116_WK]
-m_strName=STATUS-blister
+m_strName=STATUS-tmp-promo-art
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1343,12 +1345,82 @@ m_bFixed=1
 
 @}}
 [FDITEM117_WK]
-m_strName=Valid-STATUS-blister
+m_strName=Valid-STATUS-tmp-promo-art
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM117_WK
+
+@}}
+[FDITEM118_WK]
+m_strName=STATUS-blister
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM118_WK
+
+@}}
+[FDITEM119_WK]
+m_strName=Valid-STATUS-blister
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM119_WK
+
+@}}
+[FDITEM120_WK]
+m_strName=lab-marca-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_strDefaultValue="<<HELP>> 0 = TUTTE"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM120_WK
+
+@}}
+[FDITEM121_WK]
+m_strName=ef-marca-buf
+m_strRawPic=z(4)
+m_strPic=z(4)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM121_WK
+
+@}}
+[FDITEM122_WK]
+m_strName=e-marca
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM122_WK
+
+@}}
+[FDITEM123_WK]
+m_strName=STATUS-tmarche
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM123_WK
+
+@}}
+[FDITEM124_WK]
+m_strName=Valid-STATUS-tmarche
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM124_WK
 
 @}}
 
@@ -1552,7 +1624,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Screen4
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = FALSE
+   LOCK-CONTROL      = TRUE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -1578,7 +1650,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 33,50
+   Lines             = 44,11
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -1589,7 +1661,7 @@ Begin Screen Form1
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 111,20
+   Size              = 119,70
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = TITOLO
@@ -1602,7 +1674,7 @@ Begin Screen Form1
    Wrap              = FALSE
    Event Procedure   = Screen4-Event-Proc
    Begin Frame frame-limiti
-      SCREEN-COL        = 14,10
+      SCREEN-COL        = 18,30
       SCREEN-LINE       = 1,50
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1612,7 +1684,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 14,10
+      Column            = 18,30
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -1623,7 +1695,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 9
       Line              = 1,50
-      Lines             = 10,56
+      Lines             = 11,89
       Lines Unit        = Default
       Low Color         = 0
       Size              = 85,00
@@ -1635,7 +1707,7 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Entry-Field ef-gdo
-         SCREEN-COL        = 28,10
+         SCREEN-COL        = 32,30
          SCREEN-LINE       = 3,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1692,7 +1764,7 @@ Begin Screen Form1
          After Procedure   = ef-gdo-AfterProcedure
       End
       Begin Entry-Field ef-ini
-         SCREEN-COL        = 28,10
+         SCREEN-COL        = 32,30
          SCREEN-LINE       = 5,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1749,7 +1821,7 @@ Begin Screen Form1
          After Procedure   = ef-ini-dpo-AfterProcedure
       End
       Begin Entry-Field ef-fine
-         SCREEN-COL        = 50,10
+         SCREEN-COL        = 54,30
          SCREEN-LINE       = 5,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1806,7 +1878,7 @@ Begin Screen Form1
          After Procedure   = ef-fine-AfterProcedure
       End
       Begin Push-Button pb-dest
-         SCREEN-COL        = 28,10
+         SCREEN-COL        = 32,30
          SCREEN-LINE       = 7,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1847,7 +1919,7 @@ Begin Screen Form1
          Link To           = pb-dest-LinkTo
       End
       Begin Push-Button pb-pn
-         SCREEN-COL        = 32,10
+         SCREEN-COL        = 36,30
          SCREEN-LINE       = 7,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1888,7 +1960,7 @@ Begin Screen Form1
          Link To           = pb-pn-LinkTo
       End
       Begin Entry-Field ef-art
-         SCREEN-COL        = 28,10
+         SCREEN-COL        = 32,30
          SCREEN-LINE       = 9,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1945,7 +2017,7 @@ Begin Screen Form1
          After Procedure   = ef-art-AfterProcedure
       End
       Begin Label Screen3-La-1aa
-         SCREEN-COL        = 16,10
+         SCREEN-COL        = 20,30
          SCREEN-LINE       = 3,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -1978,7 +2050,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label lab-gdo
-         SCREEN-COL        = 36,10
+         SCREEN-COL        = 40,30
          SCREEN-LINE       = 3,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2013,7 +2085,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label Screen3-La-1aaa
-         SCREEN-COL        = 16,10
+         SCREEN-COL        = 20,30
          SCREEN-LINE       = 5,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2046,7 +2118,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label Screen3-La-1aad
-         SCREEN-COL        = 16,10
+         SCREEN-COL        = 20,30
          SCREEN-LINE       = 9,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2079,7 +2151,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label lab-art
-         SCREEN-COL        = 36,10
+         SCREEN-COL        = 40,30
          SCREEN-LINE       = 9,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2114,7 +2186,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label Screen3-La-1aada
-         SCREEN-COL        = 16,10
+         SCREEN-COL        = 20,30
          SCREEN-LINE       = 7,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2147,7 +2219,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label lab-citta
-         SCREEN-COL        = 36,10
+         SCREEN-COL        = 40,30
          SCREEN-LINE       = 7,39
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2181,7 +2253,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label lab-via
-         SCREEN-COL        = 67,10
+         SCREEN-COL        = 71,30
          SCREEN-LINE       = 7,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2215,7 +2287,7 @@ Begin Screen Form1
          Width in Cells    = TRUE
       End
       Begin Label Screen3-La-1aaaa
-         SCREEN-COL        = 41,10
+         SCREEN-COL        = 45,30
          SCREEN-LINE       = 5,50
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -2250,7 +2322,7 @@ Begin Screen Form1
       Begin CsCtrl.blockpgm Label Screen4-blockpgm-1
          CUST-SYMBOL       = blockpgm
          CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
-         SCREEN-COL        = 67,20
+         SCREEN-COL        = 71,40
          SCREEN-LINE       = 3,89
          LOCK-CONTROL      = FALSE
          LEVEL             = 5
@@ -2286,7 +2358,7 @@ Begin Screen Form1
       Begin CsCtrl.Custom1 Label Screen4-Custom1-1
          CUST-SYMBOL       = Custom1
          CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
-         SCREEN-COL        = 82,10
+         SCREEN-COL        = 86,30
          SCREEN-LINE       = 5,22
          LOCK-CONTROL      = FALSE
          LEVEL             = 5
@@ -2322,11 +2394,137 @@ Begin Screen Form1
          Visible Variable  = v-custom
          Width in Cells    = FALSE
       End
+      Begin Entry-Field ef-marca
+         SCREEN-COL        = 32,30
+         SCREEN-LINE       = 11,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-marca
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Upper
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 15,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Enable Variable   = e-marca
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         Hint              = .
+         ID                = 11
+         ID Variable       = AUTO-ID
+         Justification     = Right
+         Line              = 11,00
+         Lines             = 1,33
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 0
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 7,00
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 18
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Value Picture     = z(4)
+         Value Variable    = ef-marca-buf
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = ef-marca-BeforeProcedure
+         After Procedure   = ef-marca-AfterProcedure
+      End
+      Begin Label Screen3-La-1aadb
+         SCREEN-COL        = 20,30
+         SCREEN-LINE       = 11,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen3-La-1aadb
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 3,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 15
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 11,00
+         Lines             = 1,17
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 10,50
+         Size Unit         = Default
+         Tab Order         = 19
+         Title             = "Marca"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label lab-marca
+         SCREEN-COL        = 40,30
+         SCREEN-LINE       = 11,50
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = lab-marca
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 5
+         Column            = 23,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 20
+         Justification     = Unaligned
+         Label Offset      = 20
+         Line              = 11,00
+         Lines             = 1,33
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 61,00
+         Size Unit         = Default
+         Tab Order         = 20
+         Title             = "<<HELP>> 0 = TUTTE"
+         Title Picture     = X(50)
+         Title Variable    = lab-marca-buf
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
    End
    Begin Frame Screen4-Fr-1
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 31,67
-      LOCK-CONTROL      = FALSE
+      SCREEN-LINE       = 42,28
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Fr-1
       3D Style          = Normal
@@ -2344,11 +2542,11 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 29
-      Line              = 31,67
+      Line              = 42,28
       Lines             = 2,83
       Lines Unit        = Default
       Low Color         = 0
-      Size              = 111,20
+      Size              = 119,70
       Size Unit         = Default
       Tab Order         = 2
       Thickness         = Default
@@ -2356,8 +2554,8 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Push-Button pb-ok
-         SCREEN-COL        = 95,90
-         SCREEN-LINE       = 32,29
+         SCREEN-COL        = 104,90
+         SCREEN-LINE       = 42,90
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-ok
@@ -2368,7 +2566,7 @@ Begin Screen Form1
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 95,90
+         Column            = 104,90
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -2401,8 +2599,8 @@ Begin Screen Form1
          Link To           = pb-ok-LinkTo
       End
       Begin Push-Button pb-annulla
-         SCREEN-COL        = 103,70
-         SCREEN-LINE       = 32,29
+         SCREEN-COL        = 112,60
+         SCREEN-LINE       = 42,90
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-annulla
@@ -2413,7 +2611,7 @@ Begin Screen Form1
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 103,70
+         Column            = 112,60
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -2446,8 +2644,8 @@ Begin Screen Form1
       End
    End
    Begin Grid gd1
-      SCREEN-COL        = 2,00
-      SCREEN-LINE       = 13,00
+      SCREEN-COL        = 2,30
+      SCREEN-LINE       = 14,06
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = gd1
@@ -2462,10 +2660,11 @@ Begin Screen Form1
       Cells' Setting    = ( X = 7, Y = 1, Data = "Fine DPO" )
       Cells' Setting    = ( X = 8, Y = 1, Data = "Inizio Vol" )
       Cells' Setting    = ( X = 9, Y = 1, Data = "Fine Vol" )
-      Cells' Setting    = ( X = 10, Y = 1, Data = "Nome volantino" )
+      Cells' Setting    = ( X = 10, Y = 1, Data = "Quantità" )
+      Cells' Setting    = ( X = 11, Y = 1, Data = "Nome volantino" )
       Centered Headings = FALSE
       Color             = 0
-      Column            = 2,00
+      Column            = 2,30
       Column Headings   = TRUE
       Columns' Setting  = ( X = 1, Name = col-art, READONLY = 0 )
       Columns' Setting  = ( PIC = "z(6)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
@@ -2496,7 +2695,10 @@ Begin Screen Form1
       Columns' Setting  = ( X = 9, Name = col-fine-vol, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(10)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
-      Columns' Setting  = ( X = 10, Name = col-nome, READONLY = 0 )
+      Columns' Setting  = ( X = 10, Name = col-qta, READONLY = 0 )
+      Columns' Setting  = ( PIC = "zzz.zzz.zz9", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( X = 11, Name = col-nome, READONLY = 0 )
       Columns' Setting  = ( PIC = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
       Columns' Setting  = ( DISP = 33, SEPA = 5, DIVI = 1 )
       Cursor Color      = 0
@@ -2518,24 +2720,24 @@ Begin Screen Form1
       Hscroll           = FALSE
       ID                = 3
       Last Row          = 0
-      Line              = 13,00
-      Lines             = 18,17
+      Line              = 14,06
+      Lines             = 27,89
       Lines Unit        = Default
       No Tab            = FALSE
       Num Col Headings  = 1
-      Num Columns       = 10
+      Num Columns       = 11
       Num Rows          = 0
       Occurs            = 0
       Paged             = FALSE
       Record Data       = rec-grid
       Row Dividers      = 1
       Row Headings      = FALSE
-      Size              = 109,10
+      Size              = 117,10
       Size Unit         = Default
       Tab Order         = 3
       Tiled Headings    = TRUE
       Use Tab           = FALSE
-      Virtual Width     = 134
+      Virtual Width     = 144
       Visible           = NONE
       Vpadding          = 50
       Vscroll           = TRUE
@@ -2711,10 +2913,11 @@ BEGIN-TEXT
 
            perform GD1-CONTENT.
 
-           move "<<HELP>> Blank = TUTTI I GDO"    to lab-gdo-buf.
+           move "<<HELP>> Blank = TUTTI I GDO"    to lab-gdo-buf. 
            move "<<HELP>> 0 = TUTTI GLI ARTICOLI" to lab-art-buf.
+           move "<<HELP>> 0 = TUTTE LE MARCHE"    to lab-marca-buf.
 
-           display lab-gdo lab-art.
+           display lab-gdo lab-art lab-marca.
 
            set CallManutenzione to false.
 END-TEXT
@@ -2891,10 +3094,11 @@ BEGIN-TEXT
            modify gd1, reset-grid  = 1.
            perform GD1-CONTENT.
            move 2 to riga.
-           inquire ef-gdo,  value in save-gdo.
-           inquire ef-ini,  value in save-ini.
-           inquire ef-fine, value in save-fine.
-           inquire ef-art,  value in save-articolo.
+           inquire ef-gdo,   value in save-gdo.
+           inquire ef-ini,   value in save-ini.
+           inquire ef-fine,  value in save-fine.   
+           inquire ef-art,   value in save-articolo.
+           inquire ef-marca, value in save-marca.
 
            move save-ini  to como-data.
            perform DATE-TO-FILE.
@@ -3020,16 +3224,24 @@ BEGIN-TEXT
                        if rpr-codice not = tpr-codice
                           exit perform
                        end-if
-                       perform RECORD-OK
+                       if save-marca not = 0
+                          move rpr-articolo to art-codice
+                          read articoli no lock invalid continue end-read
+                          if art-marca-prodotto = save-marca
+                             perform RECORD-OK
+                          end-if
+                       else
+                          perform RECORD-OK
+                       end-if
                     end-perform
               end-start
-           end-if.
-
+           end-if.  
 
       ***---
        RECORD-OK.  
            set  prima-volta  to false.
            move rpr-articolo to col-art art-codice.
+           move rpr-qta      to col-qta.
 
            read articoli no lock 
                 invalid
@@ -3122,7 +3334,7 @@ BEGIN-TEXT
                       perform CREA-TMP-DESTINI
                       perform CARICA-GRID
                    end-if
-                end-if
+                end-if     
 
            when 78-ID-ef-art
                 inquire ef-art, value in art-codice
@@ -3137,6 +3349,24 @@ BEGIN-TEXT
                    display ef-art lab-art
 
                    if art-codice not = save-articolo
+                      perform CARICA-GRID
+                   end-if
+                                        
+                end-if
+
+           when 78-ID-ef-marca
+                inquire ef-marca, value in mar-codice
+                move "tmarche-alfa"      to Como-File
+                call   "zoom-gt" using como-file, mar-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+
+                   move mar-codice      to ef-marca-buf
+                   move mar-descrizione to lab-marca-buf
+                   display ef-marca lab-marca       
+
+                   if mar-codice not = save-marca
                       perform CARICA-GRID
                    end-if
                                         
@@ -3201,13 +3431,15 @@ BEGIN-TEXT
                              title tit-err
                               icon 2
                    move 78-ID-ef-ini to control-id
-                end-if
+                end-if    
 
            when 78-ID-ef-art
                 inquire ef-art, value in art-codice
                 if art-codice = 0
                    move "TUTTI GLI ARTICOLI" to lab-art-buf
-                else
+                   move 1 to e-marca
+                else                                       
+                   move 0 to e-marca
                    read articoli no lock
                         invalid
                         move art-codice to bli-codice
@@ -3222,9 +3454,30 @@ BEGIN-TEXT
                              move bli-descrizione to art-descrizione
                         end-read
                    end-read
-                   move art-descrizione to lab-art-buf
+                   move art-descrizione    to lab-art-buf
+                   move art-marca-prodotto to ef-marca-buf mar-codice
+                   read tmarche no lock invalid continue end-read
+                   move mar-descrizione to lab-marca-buf
                 end-if
                 display lab-art
+                display ef-marca lab-marca
+
+           when 78-ID-ef-marca
+                inquire ef-marca, value in mar-codice
+                if mar-codice = 0
+                   move "TUTTE LE MARCHE" to lab-marca-buf
+                else                                      
+                   read tmarche no lock
+                        invalid
+                        move spaces to mar-descrizione
+                        set errori to true
+                        display message "Marca non valida"
+                                  title tit-err
+                                   icon 2
+                   end-read
+                   move mar-descrizione    to lab-marca-buf
+                end-if
+                display lab-marca
            end-evaluate.
       
            if errori
@@ -3261,7 +3514,7 @@ BEGIN-TEXT
            end-if.
 
            modify gd1, start-y = event-data-2, y = event-data-2,
-                       start-x = 1,            x = 10,
+                       start-x = 1,            x = 11,
                        region-color = 481.
 END-TEXT
 END-DATA
@@ -3288,6 +3541,7 @@ BEGIN-TEXT
            if not RecLocked
 
               string separatore              delimited size
+                     separatore              delimited size
                      "** PERIODO RICHIESTO " delimited size
                      ef-ini-buf              delimited size
                      " - "                   delimited size
@@ -3298,7 +3552,8 @@ BEGIN-TEXT
               write line-riga from spaces
 
               initialize line-riga
-              string "ARTICOLO"       delimited size
+              string "ARTICOLO"       delimited size  
+                     separatore       delimited size
                      separatore       delimited size
                      "DESCRIZIONE"    delimited size
                      separatore       delimited size
@@ -3312,7 +3567,9 @@ BEGIN-TEXT
                      separatore       delimited size
                      "INIZIO VOL"     delimited size
                      separatore       delimited size
-                     "FINE VOL"       delimited size
+                     "FINE VOL"       delimited size   
+                     separatore       delimited size
+                     "QUANTITA'"      delimited size
                      separatore       delimited size
                      "NOME VOLANTINO" delimited size
                      into line-riga
@@ -3330,11 +3587,12 @@ BEGIN-TEXT
                  inquire gd1(riga, 7) cell-data in col-fine-dpo     
                  inquire gd1(riga, 8) cell-data in col-ini-vol
                  inquire gd1(riga, 9) cell-data in col-fine-vol
-                 inquire gd1(riga, 10) cell-data in col-nome
+                 inquire gd1(riga, 10) cell-data in col-qta
+                 inquire gd1(riga, 11) cell-data in col-nome
 
                  initialize line-riga
-                 string col-art      delimited size
-                        separatore   delimited size
+                 string col-art      delimited size 
+                        separatore   delimited size 
                         col-tipo     delimited size
                         separatore   delimited size
                         col-des      delimited size
@@ -3350,6 +3608,8 @@ BEGIN-TEXT
                         col-ini-vol  delimited size
                         separatore   delimited size
                         col-fine-vol delimited size
+                        separatore   delimited size
+                        col-qta      delimited size
                         separatore   delimited size
                         col-nome     delimited size
                         into line-riga
@@ -3648,6 +3908,31 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
 END-TEXT
 END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-marca-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-1 **>>    
+           move 1 to e-cerca.
+           modify tool-cerca, enabled e-cerca.
+           inquire ef-marca, value in save-marca.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-marca-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-1 **>>  
+           move 0 to e-cerca.
+           modify tool-cerca, enabled e-cerca.
+           perform CONTROLLO.
+           if tutto-ok
+              if mar-codice not = save-marca
+                 perform CARICA-GRID
+              end-if
+           end-if.
+END-TEXT
+END-DATA
 
 @}}
 
@@ -3733,8 +4018,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=70
-REL_SYM_INFO_L=11
+REL_SYM_SIZE=76
+REL_SYM_INFO_L=12
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=807173647
 REL_SYM_INFO_X1=2301
@@ -3757,6 +4042,8 @@ REL_SYM_INFO_X9=2301
 REL_SYM_INFO_Y9=1287198872
 REL_SYM_INFO_X10=2301
 REL_SYM_INFO_Y10=934638232
+REL_SYM_INFO_X11=2301
+REL_SYM_INFO_Y11=1119286792
 
 [DRAW_BASESYMBOL_2301_807173647]
 OBJ_NAME=2301
@@ -4286,6 +4573,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1119286792]
+OBJ_NAME=2301
+OBJ_ID=1119286792
+KIND=1
+{{@LABEL_2301_1119286792
+tmarche
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=1598
+RIGHT=2148
+BOTTOM=1820
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1865930328]
 OBJ_NAME=0
 OBJ_ID=1865930328
@@ -4628,6 +4963,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_934638232
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1119286792]
+OBJ_NAME=0
+OBJ_ID=1119286792
+REL_M_OBJ_ID=0
+ENTITY=tmarche
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mar-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1119286792
 
 @}}
 DSN_INFO_PRIMARY=0

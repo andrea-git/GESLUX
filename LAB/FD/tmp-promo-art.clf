@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E669124611-230-1621326569
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E6C6124547-496-2957311328
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -152,9 +152,9 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=tpa-col-nome
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=tpa-col-qta
+m_strRawPic=zzz.zzz.zz9
+m_strPic=zzz.zzz.zz9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -178,6 +178,7 @@ m_strAssignToName=path-tmp-promo-art
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-tmp-promo-art
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 
@@ -198,8 +199,10 @@ m_strName=k-ord
 
 @}}
 [SLKEYATOM0_SLINDEX0_]
-m_strName=tpa-col-des
+m_strName=tpa-col-nome
 [SLKEYATOM1_SLINDEX0_]
-m_strName=tpa-col-ini-dpo
+m_strName=tpa-col-des
 [SLKEYATOM2_SLINDEX0_]
+m_strName=tpa-col-ini-dpo
+[SLKEYATOM3_SLINDEX0_]
 m_strName=tpa-col-fine-dpo
