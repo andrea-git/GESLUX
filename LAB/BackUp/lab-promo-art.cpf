@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=lab-promo-art-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6C674123-892-602716554
+PROGRAM_UNIQUE_CODE=TOTEM-7E6C782449-62-2008216580
 
 {{@DESCRIPTION:
 
@@ -3172,6 +3172,8 @@ BEGIN-TEXT
                        end-if
                     end-if
                     if tpr-ini-dpo > como-data-to exit perform end-if
+
+                    if tpr-locale exit perform cycle end-if
              
                     if tpr-ini-dpo  >= start-data   and
                        tpr-fine-dpo <= como-data-to |and 

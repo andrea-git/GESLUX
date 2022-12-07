@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-promo-art.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 6 dicembre 2022 09:03:20.
+       DATE-WRITTEN.        mercoledì 7 dicembre 2022 09:29:58.
        REMARKS.
       *{TOTEM}END
 
@@ -305,7 +305,7 @@
        77 locali-loc-chiave-fine-SPLITBUF  PIC X(32).
        77 locali-loc-chiave-ini-SPLITBUF  PIC X(32).
        77 tmp-promo-art-key01-SPLITBUF  PIC X(22).
-       77 tmp-promo-art-k-ord-SPLITBUF  PIC X(71).
+       77 tmp-promo-art-k-ord-SPLITBUF  PIC X(121).
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
       * FOR SPLIT KEY BUFFER
@@ -2818,11 +2818,12 @@
 
        tmp-promo-art-k-ord-MERGE-SPLITBUF.
            INITIALIZE tmp-promo-art-k-ord-SPLITBUF
-           MOVE tpa-col-des(1:50) TO tmp-promo-art-k-ord-SPLITBUF(1:50)
+           MOVE tpa-col-nome(1:50) TO tmp-promo-art-k-ord-SPLITBUF(1:50)
+           MOVE tpa-col-des(1:50) TO tmp-promo-art-k-ord-SPLITBUF(51:50)
            MOVE tpa-col-ini-dpo(1:10) TO 
-           tmp-promo-art-k-ord-SPLITBUF(51:10)
+           tmp-promo-art-k-ord-SPLITBUF(101:10)
            MOVE tpa-col-fine-dpo(1:10) TO 
-           tmp-promo-art-k-ord-SPLITBUF(61:10)
+           tmp-promo-art-k-ord-SPLITBUF(111:10)
            .
 
        DataSet1-tmp-promo-art-INITSTART.
@@ -3888,6 +3889,8 @@
                        end-if
                     end-if
                     if tpr-ini-dpo > como-data-to exit perform end-if
+
+                    if tpr-locale exit perform cycle end-if
              
                     if tpr-ini-dpo  >= start-data   and
                        tpr-fine-dpo <= como-data-to |and 
