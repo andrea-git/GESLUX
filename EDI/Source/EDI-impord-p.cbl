@@ -1307,8 +1307,8 @@
                              if cli-fuori-fido |and cli-fido-extra = 0
                                 set emto-cliente-fuori-fido to true
                                 set emto-cliente-non-attivo to true
-                             end-if                   
-                                           
+                             end-if
+        
                              | Questi ordini devono SEMPRE creare un nuovo destino
                              if emto-01T22-NAB-QCODBUYER = 14 and
                                 emto-01T21-NAB-CODBUYER = 8001120009005
@@ -1343,24 +1343,18 @@
                            set emto-cliente-fuori-fido to true
                            set emto-cliente-non-attivo to true
                         end-if        
-                                           
-                        | Questi ordini devono SEMPRE creare un nuovo destino
-                        if emto-01T22-NAB-QCODBUYER = 14 and
-                           emto-01T21-NAB-CODBUYER = 8001120009005
-                           perform AGGIUNGI-DESTINO
-                        else
-                           if ecd-prg-destino not = 0
-                              move ecd-cli-codice  to des-codice
-                              move ecd-prg-destino to des-prog
-                              read destini no lock
-                                   invalid 
-                                   set emto-destino-non-valido to true
-                               not invalid
-                                   if des-bloccato or des-disattivo
-                                     set emto-destino-non-attivo to true
-                                   end-if
-                              end-read
-                           end-if
+                                                           
+                        if ecd-prg-destino not = 0
+                           move ecd-cli-codice  to des-codice
+                           move ecd-prg-destino to des-prog
+                           read destini no lock
+                                invalid 
+                                set emto-destino-non-valido to true
+                            not invalid
+                                if des-bloccato or des-disattivo
+                                  set emto-destino-non-attivo to true
+                                end-if
+                           end-read
                         end-if
                    end-read
               end-read
@@ -1809,7 +1803,7 @@
                  end-read
               end-if
            end-if.
-
+                                     
            move emro-02D17-QTAORD to NumericEDI.
            perform TRATTA-NUMERICO.
            if not NotNumericFound and como-numero > 0
@@ -1867,8 +1861,7 @@
            set trovato-movim to false.
            move emro-02D19-LIN-PRZUNI to NumericEDI.
            perform TRATTA-NUMERICO.
-           compute emro-prz-EDI rounded = como-numero.
-
+           compute emro-prz-EDI rounded = como-numero.  
            if emro-prz-EDI = 0 or NotNumericFound
               set emro-prezzo-non-valido to true
               set emro-bloccato          to true
