@@ -18147,7 +18147,8 @@ LABLAB          end-if
 
        CERCA-PROMO-LISTINO.
       * <TOTEM:PARA. CERCA-PROMO-LISTINO>
-
+
+
            move col-art to art-codice.
            move ef-des-buf to emto-prg-destino.
            set trovato      to false.

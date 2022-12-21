@@ -2085,8 +2085,8 @@
                   not invalid                                 
                       set trovato-progressivo to true
                       if save-ecd-import-articoli-si
-                         compute emro-qta-GESLUX = 
-                                 emro-qta-GESLUX * imq-qta-imb
+      *****                   compute emro-qta-GESLUX = 
+      *****                           emro-qta-GESLUX * imq-qta-imb
                          perform VALORIZZA-PROGRESSIVO
                          set emro-progressivo-valido     to true
                       else
@@ -2140,7 +2140,8 @@
               move prg-tipo-imballo to imq-codice
               read timbalqta no lock
               if save-ecd-import-articoli-si
-                 compute emro-qta-GESLUX = emro-qta-GESLUX * imq-qta-imb
+                 continue
+      *****           compute emro-qta-GESLUX = emro-qta-GESLUX * imq-qta-imb
               else          
                  if qta-imb-edi = 0
                     if emro-qta-GESLUX < imq-qta-imb

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 16:24:50.
+       DATE-WRITTEN.        mercoledì 21 dicembre 2022 12:06:44.
        REMARKS.
       *{TOTEM}END
 
@@ -154,6 +154,7 @@
            COPY  "VERSIONE-EVASIONE.DEF".
            COPY  "LINK-GPGMEXE.DEF".
            COPY  "MAIL.DEF".
+           COPY  "SELPRINT.LKS".
        77 Verdana12BI-Occidentale
                   USAGE IS HANDLE OF FONT.
       *
@@ -14098,13 +14099,29 @@
                  perform AGGIORNA-STATO-MASTER
               end-perform
                                       
+              move spaces to selprint-stampante
               perform varying idx-tipocli from 1 by 1 
                         until idx-tipocli > tot-idx-tipocli
+                 if tipo-evasione = 2
+                    if idx-tipocli = 1                              
+                       call   "selprint" using selprint-linkage
+                       cancel "selprint"                          
+                       if selprint-stampante = spaces
+                          display message "Processo di stampa annullato 
+      -    "dall'utente"
+                                    title tit-err
+                                     icon 2
+                          exit perform
+                       end-if
+                    end-if
+                    move selprint-stampante to stordc-stampante
+                 end-if
+
                  move el-tipocli(idx-tipocli) to stordc-tipocli
                  set stordc-evasioni to true
                  call   "stordcp" using stordcp-limiti
                  cancel "stordcp"
-              end-perform
+              end-perform                                        
       
       *****        set ok-messaggio to false
       *****        perform CONTROLLA-CLIENTE

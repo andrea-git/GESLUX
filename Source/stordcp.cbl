@@ -1869,13 +1869,17 @@ LUBEXX     end-if.
 
       ***---
        APRI-STAMPA.
-           if stordc-tipocli not = spaces
-              move stordc-tipocli to tcl-codice
-              read ttipocli no lock
-              move tcl-stampante to selprint-stampante
+           if stordc-stampante not = spaces
+              move stordc-stampante to selprint-stampante
            else
-              call   "selprint" using selprint-linkage
-              cancel "selprint"
+              if stordc-tipocli not = spaces
+                 move stordc-tipocli to tcl-codice
+                 read ttipocli no lock
+                 move tcl-stampante to selprint-stampante
+              else
+                 call   "selprint" using selprint-linkage
+                 cancel "selprint"
+              end-if
            end-if.
 
            if selprint-stampante not = space

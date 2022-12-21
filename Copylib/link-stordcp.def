@@ -11,3 +11,5 @@
                88 stordc-GDO VALUE IS "G". 
                88 stordc-tutti VALUE IS "T". 
            05 stordc-tipocli PIC  xx.
+           05 stordc-stampante pic x(200).
+           05 filler           pic x(500).
