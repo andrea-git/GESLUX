@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 aprile 2022 17:20:32.
+       DATE-WRITTEN.        giovedì 22 dicembre 2022 11:59:19.
        REMARKS.
       *{TOTEM}END
 
@@ -6541,7 +6541,6 @@
            WIDTH-IN-CELLS,
            SELF-ACT,
            VALUE chk-imp-a-BUF,
-           BEFORE PROCEDURE Form1-DaCb-1-BeforeProcedure, 
             .
       * CHECK BOX
        10
@@ -6630,7 +6629,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Articoli in imballi",
+           TITLE "Articoli in pezzi",
            .
 
       * LABEL
@@ -21130,6 +21129,9 @@
            TOTEM-HINT-TEXT
            WHEN 5102 MOVE "Se valorizzato sostituisce il valore dei para
       -    "metri generali" to TOTEM-HINT-TEXT
+           WHEN 5125 MOVE "Se spuntato considera il campo in qta pezzi (
+      -    "17) SENZA moltiplicare pergli imballi (22)" to 
+           TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -21231,6 +21233,7 @@
            When 5100 PERFORM chk-saldo-banco-e-BeforeProcedure
            When 5101 PERFORM chk-saldo-promo-e-BeforeProcedure
            When 5102 PERFORM ef-gg-e-BeforeProcedure
+           When 5125 PERFORM Form1-DaCb-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN

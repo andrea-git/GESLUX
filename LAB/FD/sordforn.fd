@@ -20,7 +20,8 @@
                    15 sof-ora-ultima-modifica      PIC  9(8).
                    15 sof-utente-ultima-modifica   PIC  X(10).
                10 sof-vuoti.
-                   15 sof-num-vuoto-1  PIC  9(18).
+                   15 sof-data-conf    PIC  9(8).
+                   15 sof-num-vuoto-1  PIC  9(10).
                    15 sof-num-vuoto-2  PIC  9(18).
                    15 sof-num-vuoto-3  PIC  9(18).
                    15 sof-dati-salvati PIC  x.

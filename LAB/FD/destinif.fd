@@ -55,4 +55,7 @@
                    15 desf-ev-immediata            PIC  x.
                        88 desf-ev-immediata-no VALUE IS " ", "N". 
                        88 desf-ev-immediata-si VALUE IS "S". 
-                   15 desf-alfa-vuoto  PIC  X(495).
+                   15 desf-invio-sol   PIC  x.
+                       88 desf-invio-sol-no VALUE IS " ", "N". 
+                       88 desf-invio-sol-si VALUE IS "S". 
+                   15 desf-alfa-vuoto  PIC  X(494).

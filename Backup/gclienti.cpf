@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E641415432-307-979423438
+PROGRAM_UNIQUE_CODE=TOTEM-7E6C16105736-203-2722418995
 
 {{@DESCRIPTION:
 
@@ -21230,6 +21230,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
+               Hint              = Se spuntato considera il campo in qta pezzi (17) SENZA moltiplicare pergli imballi (22)
                ID                = 286
                ID Variable       = AUTO-ID
                Left Text         = FALSE
@@ -21454,7 +21455,7 @@ Begin Screen Form1
                Size              = 18,00
                Size Unit         = Default
                Tab Order         = 8
-               Title             = "Articoli in imballi"
+               Title             = "Articoli in pezzi"
                Transparent       = TRUE
                Visible           = NONE
                Width in Cells    = TRUE

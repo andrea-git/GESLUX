@@ -22,6 +22,9 @@
                    15 naz-fe           PIC  x(1).
                        88 naz-fe-si VALUE IS "S". 
                        88 naz-fe-no VALUE IS "N", " ". 
-                   15 naz-alfa-vuoto-1 PIC  x(16).
+                   15 naz-extra-ue     PIC  x(1).
+                       88 naz-extra-ue-si VALUE IS "S". 
+                       88 naz-extra-ue-no VALUE IS "N", " ". 
+                   15 naz-alfa-vuoto-1 PIC  x(15).
                    15 naz-alfa-vuoto-2 PIC  x(20).
                    15 naz-alfa-vuoto-3 PIC  x(20).

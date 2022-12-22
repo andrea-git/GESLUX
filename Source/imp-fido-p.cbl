@@ -333,9 +333,8 @@
            if path-import = spaces
               
               initialize como-riga
-              string "PATH IMPORT = SPACES. ELABORAZIONE TERMINATA"
-                into como-riga
-              end-string
+              move "PATH IMPORT = SPACES. ELABORAZIONE TERMINATA"
+                to como-riga
               perform SCRIVI-RIGA-LOG
 
               set errori to true
