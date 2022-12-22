@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          chvet.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:13:54.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 22 dicembre 2022 12:18:06.
        REMARKS.
       *{TOTEM}END
 
@@ -49,9 +49,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -146,10 +144,10 @@
           88 scr-fine-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-elab-FLAG-REFRESH PIC  9.
           88 scr-elab-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tvettori-BUF     PIC X(1787).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tregioni-BUF     PIC X(190).
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
-       77 TMP-DataSet1-ttipocli-BUF     PIC X(193).
+       77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -661,11 +659,9 @@
            LINE 1,30,
            LINES 18,80 CELLS,
            SIZE 22,20 CELLS,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            .
 
       * LABEL
@@ -1876,9 +1872,11 @@
        scr-stampa-PROC.
       * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, BeforeAccept>
            move "0 = Vettore corrente su  Cliente/Destino"
-             to lab-old-vet-buf.
+             to lab-old-vet-buf.                       
            move "Blank = Tutte le provincie della regione"
              to lab-prov-buf.
+           move "0 = Tutte le regioni"
+             to lab-reg-buf.
            move 1 to tipo-cliente.
            display scr-stampa.
 
@@ -2467,8 +2465,14 @@
            when 78-ID-ef-reg
                 inquire ef-reg, value in reg-codice
                 if reg-codice = 0
-                   move spaces to lab-reg-buf
-                else
+                   move "Tutte le regioni" to lab-reg-buf
+                   modify ef-prov, enabled false
+                   move "Tutte le province" to lab-prov-buf
+                   display lab-prov
+                   move spaces to ef-prov-buf
+                   display ef-prov
+                else                                     
+                   modify ef-prov, enabled true
                    read tregioni no lock
                         invalid
                         set errori to true
@@ -2482,38 +2486,44 @@
                 end-if
                 display lab-reg
 
-           when 78-ID-ef-prov
-                inquire ef-reg,  value in reg-codice
-                inquire ef-prov, value in prv-codice
-                if prv-codice = spaces
-                   if reg-codice = 0
-                      set errori to true
-                      display message "Regione o provincia obbligatorie"
-                                title tit-err
-                                 icon 2
-                      move 78-ID-ef-reg to control-id
-                      move spaces to lab-prov-buf
+           when 78-ID-ef-prov                  
+                inquire ef-reg, value in reg-codice
+                if reg-codice not = 0
+                   inquire ef-reg,  value in reg-codice
+                   inquire ef-prov, value in prv-codice
+                   if prv-codice = spaces
+                      if reg-codice = 0
+                         set errori to true
+                         display message "Regione o provincia obbligator
+      -    "ie"
+                                   title tit-err
+                                    icon 2
+                         move 78-ID-ef-reg to control-id
+                         move spaces to lab-prov-buf
+                      else
+                         move "Tutte le provincie" to lab-prov-buf
+                      end-if
                    else
-                      move "Tutte le provincie" to lab-prov-buf
+                      read tprov no lock
+                           invalid
+                           display message "Provincia NON valida"
+                                     title tit-err
+                                      icon 2
+                           set errori   to true
+                           move spaces  to lab-prov-buf
+                       not invalid
+                           move prv-descrizione to lab-prov-buf
+                           move prv-regione     to ef-reg-buf reg-codice
+                           read tregioni no lock
+                                invalid move spaces          to 
+           lab-reg-buf
+                            not invalid move reg-descrizione to 
+           lab-reg-buf
+                           end-read
+                      end-read
                    end-if
-                else
-                   read tprov no lock
-                        invalid
-                        display message "Provincia NON valida"
-                                  title tit-err
-                                   icon 2
-                        set errori   to true
-                        move spaces  to lab-prov-buf
-                    not invalid
-                        move prv-descrizione to lab-prov-buf
-                        move prv-regione     to ef-reg-buf reg-codice
-                        read tregioni no lock
-                             invalid move spaces          to lab-reg-buf
-                         not invalid move reg-descrizione to lab-reg-buf
-                        end-read
-                   end-read
+                   display lab-prov lab-reg ef-reg
                 end-if
-                display lab-prov lab-reg ef-reg
 
            when 78-ID-ef-tipo
                 inquire ef-tipo, value in tcl-codice

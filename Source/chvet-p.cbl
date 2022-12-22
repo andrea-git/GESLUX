@@ -252,19 +252,25 @@
               end-if
 
               if cli-tipo-F exit perform end-if
-              if chvet-prov = spaces
-                 move cli-prov to prv-codice
-                 read tprov no lock invalid continue
-                  not invalid
-                      if prv-regione = chvet-reg
-                         set record-ok to true
-                      end-if   
-                 end-read
+
+              if chvet-reg = 0
+                 set record-ok to true
               else
-                 if cli-prov = chvet-prov
-                    set record-ok to true
+                 if chvet-prov = spaces
+                    move cli-prov to prv-codice
+                    read tprov no lock invalid continue
+                     not invalid
+                         if prv-regione = chvet-reg
+                            set record-ok to true
+                         end-if   
+                    end-read
+                 else
+                    if cli-prov = chvet-prov
+                       set record-ok to true
+                    end-if
                  end-if
               end-if
+
 LUBEXX        if record-ok
 LUBEXX           if chvet-tipo not = spaces and
 LUBEXX              chvet-tipo not = cli-tipo
@@ -353,19 +359,24 @@ LUBEXX        end-if
                  move 0 to counter2
               end-if
 
-              if chvet-prov = spaces
-                 move des-prov to prv-codice
-                 read tprov no lock invalid continue
-                  not invalid
-                      if prv-regione = chvet-reg
-                         set record-ok to true
-                      end-if   
-                 end-read
+              if chvet-reg = 0
+                 set record-ok to true
               else
-                 if des-prov = chvet-prov
-                    set record-ok to true
+                 if chvet-prov = spaces
+                    move des-prov to prv-codice
+                    read tprov no lock invalid continue
+                     not invalid
+                         if prv-regione = chvet-reg
+                            set record-ok to true
+                         end-if   
+                    end-read
+                 else
+                    if des-prov = chvet-prov
+                       set record-ok to true
+                    end-if
                  end-if
               end-if
+
               if record-ok
                  move des-codice to cli-codice
                  set  cli-tipo-C to true
