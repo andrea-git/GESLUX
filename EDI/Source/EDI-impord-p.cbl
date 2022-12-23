@@ -1913,7 +1913,11 @@
              |Un ordine con LBX ha già i prezzi corretti
               if emto-01T22-NAB-QCODBUYER = "LBX" or
                  emto-01T22-NAB-QCODBUYER = "PLBX"
-                 perform RECUPERA-SOLO-PROMO
+                 if tcl-gdo-si                                  
+                    perform RECUPERA-PREZZO
+                 else
+                    perform RECUPERA-SOLO-PROMO
+                 end-if
               else                          
                  perform RECUPERA-PREZZO
               end-if
