@@ -1560,6 +1560,10 @@
 
       ***---
        AGGIUNGI-DESTINO.  
+           if emto-01T30-NAD-RAGSOCD = spaces      
+              set emto-destino-non-valido to true
+              exit paragraph 
+           end-if.
            initialize des-rec replacing numeric data by zeroes
                                    alphanumeric data by spaces.
 
