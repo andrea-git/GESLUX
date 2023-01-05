@@ -1502,7 +1502,7 @@
            set tcl-gdo-si      to true.
            set ttipocli-gdo    to true.
            set tcl-si-recupero to true.
-           if emto-cliente-valido
+           if not ( emto-cliente-non-valido )
               move cli-tipo to tcl-codice
               read ttipocli no lock invalid continue end-read
            end-if.
@@ -1607,6 +1607,7 @@
                                move des-prov to prv-codice
                                read tprov no lock
                                     invalid continue
+
                                 not invalid
                                     if prv-regione = sav-regione
                                        move des-vettore to sav-vettore

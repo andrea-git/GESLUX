@@ -20,6 +20,9 @@
            move "BOSS" to USER-CODI.
            move 3      to livello-abil.
 
+           set environment "ESERCIZIO"    to "2023".
+           set environment "ESERCIZIO_G2" to "C3".
+
            call nomepgm using lk-blockpgm, user-codi, livello-abil.
 
            goback.
