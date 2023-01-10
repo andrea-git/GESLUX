@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E63B12111-285-1303520327
+PROGRAM_UNIQUE_CODE=TOTEM-7E71A121516-165-2306818529
 
 {{@DESCRIPTION:
 
@@ -7155,6 +7154,29 @@ m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM513_WK
 
 @}}
+[FDITEM514_WK]
+m_strName=copia-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM514_WK
+
+@}}
+[FDITEM515_WK]
+m_strName=v-copiada
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM515_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -7382,7 +7404,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 55,23
+   Lines             = 56,08
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -7468,7 +7490,7 @@ Begin Screen Form1
    End
    Begin Tab-Control Screen1-Ta-1
       SCREEN-COL        = 2,00
-      SCREEN-LINE       = 5,00
+      SCREEN-LINE       = 5,77
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Ta-1
@@ -7482,7 +7504,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 5000
-      Line              = 5,00
+      Line              = 5,77
       Lines             = 48,77
       Lines Unit        = Default
       Multiline         = FALSE
@@ -7508,7 +7530,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-1-Visible
          Begin Data.Label lab-dest
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 41,92
+            SCREEN-LINE       = 42,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-dest
@@ -7546,7 +7568,7 @@ Begin Screen Form1
          End
          Begin Frame Form1-Fr-1
             SCREEN-COL        = 96,84
-            SCREEN-LINE       = 36,46
+            SCREEN-LINE       = 37,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Fr-1
@@ -7579,7 +7601,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-des1
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 7,69
+            SCREEN-LINE       = 8,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-des1
@@ -7642,7 +7664,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-des2
             SCREEN-COL        = 67,67
-            SCREEN-LINE       = 7,69
+            SCREEN-LINE       = 8,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-des2
@@ -7705,7 +7727,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-des-altern
             SCREEN-COL        = 118,67
-            SCREEN-LINE       = 7,69
+            SCREEN-LINE       = 8,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-des-altern
@@ -7768,7 +7790,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-coll
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 9,69
+            SCREEN-LINE       = 10,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-coll
@@ -7831,7 +7853,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-setmerc
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-setmerc
@@ -7894,7 +7916,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-iva
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-iva
@@ -7957,7 +7979,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-marca
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-marca
@@ -8020,7 +8042,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-mag
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-mag
@@ -8083,7 +8105,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-classe-1
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-classe-1
@@ -8146,7 +8168,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-classe-2
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-classe-2
@@ -8209,7 +8231,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-classe-3
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-classe-3
@@ -8272,7 +8294,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-classe-4
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-classe-4
@@ -8335,7 +8357,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-udm
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-udm
@@ -8398,7 +8420,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-imballo
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-imballo
@@ -8461,7 +8483,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-udm-imballo
             SCREEN-COL        = 157,00
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-udm-imballo
@@ -8524,7 +8546,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-dogana
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-dogana
@@ -8587,7 +8609,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-utf
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-utf
@@ -8638,7 +8660,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-utf
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-utf
@@ -8701,7 +8723,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-non-utf
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-non-utf
@@ -8764,7 +8786,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prodener
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prodener
@@ -8825,12 +8847,12 @@ Begin Screen Form1
             Before Procedure  = ef-dogana-BeforeProcedure
             After Procedure   = ef-dogana-AfterProcedure
          End
-         Begin Data.Check-Box ef-novita
+         Begin Data.Check-Box chk-novita
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-novita
+            (Name)            = chk-novita
             Bitmap Frame      = FALSE
             Bitmap Number     = 1
             Bitmap Square     = TRUE
@@ -8844,17 +8866,16 @@ Begin Screen Form1
             Csize             = 0
             Csize Unit        = Default
             Destroy Type      = Automatic
-            Enable            = FALSE
+            Enable            = NONE
             Enable Variable   = mod-campi
-            Exception Value   = 1000
+            Exception Value   = 0
             Field Variable    = art-novita OF articoli
             File              = articoli
             Flat              = TRUE
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            Hint              = Imposta il flag CEPSA
-            ID                = 62
+            ID                = 170
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 18,00
@@ -8868,18 +8889,15 @@ Begin Screen Form1
             Size Unit         = Default
             Tab Order         = 23
             Termination Value = 0
-            Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
-            Visible           = TRUE
+            Visible           = NONE
             Width in Cells    = TRUE
-            My Property       = "CONTROLLO-OLD="
-            Before Procedure  = chk-utf-BeforeProcedure
-            After Procedure   = chk-utf-AfterProcedure
-            Link To           = chk-imposte-LinkTo
+            Before Procedure  = Form1-DaCb-1-BeforeProcedure
+            After Procedure   = Form1-DaCb-1-AfterProcedure
          End
          Begin Data.Radio-Button Form1-DaRb-1
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaRb-1
@@ -8932,7 +8950,7 @@ Begin Screen Form1
          End
          Begin Data.Radio-Button Form1-DaRb-2
             SCREEN-COL        = 145,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-DaRb-2
@@ -8985,7 +9003,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-imposte
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-imposte
@@ -9036,7 +9054,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-perce-imposte
             SCREEN-COL        = 56,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-perce-imposte
@@ -9099,7 +9117,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-perce-cou
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-perce-cou
@@ -9162,7 +9180,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-scorta
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-scorta
@@ -9225,7 +9243,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-moq
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-moq
@@ -9289,7 +9307,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-cobat
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-cobat
@@ -9340,7 +9358,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-amperaggio
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-amperaggio
@@ -9403,7 +9421,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-cobat
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-cobat
@@ -9452,7 +9470,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-reale
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-reale
@@ -9516,7 +9534,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prezzo-acq
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prezzo-acq
@@ -9579,7 +9597,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-acquisto
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-sconto-acquisto
@@ -9642,7 +9660,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prz-vend
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prz-vend
@@ -9705,7 +9723,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-litri
             SCREEN-COL        = 155,17
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-litri
@@ -9767,7 +9785,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-prezzo-banco
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 31,69
+            SCREEN-LINE       = 32,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-prezzo-banco
@@ -9830,7 +9848,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-sconto-agente
             SCREEN-COL        = 56,67
-            SCREEN-LINE       = 31,69
+            SCREEN-LINE       = 32,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-sconto-agente
@@ -9893,7 +9911,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-min-vend
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 31,69
+            SCREEN-LINE       = 32,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-min-vend
@@ -9956,7 +9974,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-1
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-1
@@ -10019,7 +10037,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-2
             SCREEN-COL        = 56,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-2
@@ -10082,7 +10100,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-3
             SCREEN-COL        = 91,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-3
@@ -10145,7 +10163,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-4
             SCREEN-COL        = 127,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-4
@@ -10208,7 +10226,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-ean-5
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 35,92
+            SCREEN-LINE       = 36,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-ean-5
@@ -10271,7 +10289,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-art-for
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 37,92
+            SCREEN-LINE       = 38,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-art-for
@@ -10334,7 +10352,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-forn
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 39,92
+            SCREEN-LINE       = 40,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-forn
@@ -10397,7 +10415,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-destino
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 41,92
+            SCREEN-LINE       = 42,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-destino
@@ -10460,7 +10478,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note2
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 46,23
+            SCREEN-LINE       = 47,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note2
@@ -10522,7 +10540,7 @@ Begin Screen Form1
          End
          Begin Combo-Box cbo-stato
             SCREEN-COL        = 150,00
-            SCREEN-LINE       = 46,31
+            SCREEN-LINE       = 47,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = cbo-stato
@@ -10573,7 +10591,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-ala
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 37,77
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-ala
@@ -10625,7 +10643,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-agenti
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 37,77
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-agenti
@@ -10677,7 +10695,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-eg
             SCREEN-COL        = 145,34
-            SCREEN-LINE       = 37,84
+            SCREEN-LINE       = 38,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-eg
@@ -10729,7 +10747,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-cepsa
             SCREEN-COL        = 160,34
-            SCREEN-LINE       = 37,84
+            SCREEN-LINE       = 38,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-cepsa
@@ -10781,7 +10799,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-gda
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 40,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-gda
@@ -10833,7 +10851,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-specialist
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 40,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-specialist
@@ -10885,7 +10903,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-gds
             SCREEN-COL        = 145,34
-            SCREEN-LINE       = 39,84
+            SCREEN-LINE       = 40,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-gds
@@ -10937,7 +10955,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-gruppi
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 42,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-gruppi
@@ -10989,7 +11007,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-estero
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 42,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-estero
@@ -11041,7 +11059,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-web
             SCREEN-COL        = 145,34
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 42,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-web
@@ -11093,7 +11111,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-SPI
             SCREEN-COL        = 110,67
-            SCREEN-LINE       = 43,77
+            SCREEN-LINE       = 44,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-SPI
@@ -11145,7 +11163,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-AT
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 43,77
+            SCREEN-LINE       = 44,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-AT
@@ -11197,7 +11215,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-ATa
             SCREEN-COL        = 145,34
-            SCREEN-LINE       = 43,77
+            SCREEN-LINE       = 44,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-ATa
@@ -11249,7 +11267,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-1
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 7,69
+            SCREEN-LINE       = 8,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-1
@@ -11283,7 +11301,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-2
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-2
@@ -11317,7 +11335,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-3
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-3
@@ -11351,7 +11369,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-4
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-4
@@ -11385,7 +11403,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-6
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-6
@@ -11419,7 +11437,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-7
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-7
@@ -11453,7 +11471,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-8
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8
@@ -11487,7 +11505,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-9
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-9
@@ -11521,7 +11539,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-10
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 39,92
+            SCREEN-LINE       = 40,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-10
@@ -11555,7 +11573,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12
@@ -11589,7 +11607,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-13
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-13
@@ -11623,7 +11641,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-14
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-14
@@ -11657,7 +11675,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-16
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-16
@@ -11691,7 +11709,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-17
             SCREEN-COL        = 41,67
-            SCREEN-LINE       = 31,69
+            SCREEN-LINE       = 32,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-17
@@ -11725,7 +11743,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18
@@ -11759,7 +11777,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-19
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-19
@@ -11793,7 +11811,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21
@@ -11827,7 +11845,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22
             SCREEN-COL        = 41,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22
@@ -11861,7 +11879,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-11
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-11
@@ -11895,7 +11913,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-24
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-24
@@ -11929,7 +11947,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-25
             SCREEN-COL        = 41,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-25
@@ -11963,7 +11981,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-26
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-26
@@ -11997,7 +12015,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-27
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 33,92
+            SCREEN-LINE       = 34,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-27
@@ -12031,7 +12049,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 35,92
+            SCREEN-LINE       = 36,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28
@@ -12065,7 +12083,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-setmerc
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-setmerc
@@ -12103,7 +12121,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-marca
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-marca
@@ -12141,7 +12159,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-31
             SCREEN-COL        = 82,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-31
@@ -12175,7 +12193,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32
@@ -12209,7 +12227,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33
@@ -12243,7 +12261,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-34
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-34
@@ -12277,7 +12295,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-classe
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-classe
@@ -12315,7 +12333,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-udm
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-udm
@@ -12353,7 +12371,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-35
             SCREEN-COL        = 144,67
-            SCREEN-LINE       = 46,31
+            SCREEN-LINE       = 47,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-35
@@ -12387,7 +12405,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-dogana
             SCREEN-COL        = 40,67
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 22,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-dogana
@@ -12425,7 +12443,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-8a
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-8a
@@ -12459,7 +12477,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22a
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22a
@@ -12493,7 +12511,7 @@ Begin Screen Form1
          End
          Begin Label lab-iva
             SCREEN-COL        = 100,34
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-iva
@@ -12528,7 +12546,7 @@ Begin Screen Form1
          End
          Begin Label lab-imballo
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 19,69
+            SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-imballo
@@ -12563,7 +12581,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-forn
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 39,92
+            SCREEN-LINE       = 40,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-forn
@@ -12601,7 +12619,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-2a
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-2a
@@ -12635,7 +12653,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-22aa
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-22aa
@@ -12669,7 +12687,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-1a
             SCREEN-COL        = 106,67
-            SCREEN-LINE       = 7,31
+            SCREEN-LINE       = 8,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-1a
@@ -12703,7 +12721,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32a
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 37,77
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32a
@@ -12737,7 +12755,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33a
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 40,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33a
@@ -12771,7 +12789,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aa
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 42,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aa
@@ -12805,7 +12823,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33aa
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 37,77
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33aa
@@ -12839,7 +12857,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18a
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 31,31
+            SCREEN-LINE       = 32,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18a
@@ -12873,7 +12891,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28b
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 37,92
+            SCREEN-LINE       = 38,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28b
@@ -12907,7 +12925,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18aa
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 31,69
+            SCREEN-LINE       = 32,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18aa
@@ -12941,7 +12959,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aaa
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 42,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aaa
@@ -12975,7 +12993,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33ab
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 39,84
+            SCREEN-LINE       = 40,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33ab
@@ -13009,7 +13027,7 @@ Begin Screen Form1
          End
          Begin Label lab-moq
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 26,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-moq
@@ -13044,7 +13062,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33aba
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 37,84
+            SCREEN-LINE       = 38,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33aba
@@ -13078,7 +13096,7 @@ Begin Screen Form1
          End
          Begin Label lab-reale
             SCREEN-COL        = 140,67
-            SCREEN-LINE       = 27,69
+            SCREEN-LINE       = 28,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-reale
@@ -13113,7 +13131,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-2aa
             SCREEN-COL        = 76,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-2aa
@@ -13147,7 +13165,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-mag
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-mag
@@ -13185,7 +13203,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-2ab
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 9,69
+            SCREEN-LINE       = 10,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-2ab
@@ -13219,7 +13237,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-10a
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 41,92
+            SCREEN-LINE       = 42,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-10a
@@ -13253,7 +13271,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-des-coll
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 9,69
+            SCREEN-LINE       = 10,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-des-coll
@@ -13291,7 +13309,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-prodener
             SCREEN-COL        = 40,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-prodener
@@ -13329,7 +13347,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-21a
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-21a
@@ -13363,7 +13381,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12a
             SCREEN-COL        = 113,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12a
@@ -13397,7 +13415,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12aa
             SCREEN-COL        = 132,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12aa
@@ -13431,7 +13449,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-12aaa
             SCREEN-COL        = 148,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-12aaa
@@ -13465,7 +13483,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33abb
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 41,77
+            SCREEN-LINE       = 42,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33abb
@@ -13499,7 +13517,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aab
             SCREEN-COL        = 98,00
-            SCREEN-LINE       = 43,77
+            SCREEN-LINE       = 44,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aab
@@ -13533,7 +13551,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aaba
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 43,77
+            SCREEN-LINE       = 44,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aaba
@@ -13567,7 +13585,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aabaa
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 43,77
+            SCREEN-LINE       = 44,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aabaa
@@ -13601,7 +13619,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aabaaa
             SCREEN-COL        = 151,84
-            SCREEN-LINE       = 37,84
+            SCREEN-LINE       = 38,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aabaaa
@@ -13635,7 +13653,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-10aa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 46,23
+            SCREEN-LINE       = 47,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-10aa
@@ -13669,7 +13687,7 @@ Begin Screen Form1
          End
          Begin Label lab-realea
             SCREEN-COL        = 147,34
-            SCREEN-LINE       = 29,69
+            SCREEN-LINE       = 30,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-realea
@@ -13703,7 +13721,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18aaa
             SCREEN-COL        = 115,50
-            SCREEN-LINE       = 39,46
+            SCREEN-LINE       = 40,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18aaa
@@ -13737,7 +13755,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-classe-2
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-classe-2
@@ -13775,7 +13793,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-classe-4
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-classe-4
@@ -13813,7 +13831,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-classe-3
             SCREEN-COL        = 30,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-classe-3
@@ -13849,12 +13867,12 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
          End
-         Begin Label Form1-La-32aabaaaa
+         Begin Label Form1-La-20
             SCREEN-COL        = 82,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 24,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = Form1-La-32aabaaaa
+            (Name)            = Form1-La-20
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
@@ -13863,11 +13881,10 @@ Begin Screen Form1
             Csize Unit        = Default
             Destroy Type      = Automatic
             Enable            = NONE
-            Font              = Small Font
-            Font Variable     = Small-Font
+            Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 684
+            ID                = 172
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 18,00
@@ -13880,7 +13897,7 @@ Begin Screen Form1
             Tab Order         = 140
             Title             = "Novità"
             Transparent       = TRUE
-            Visible           = TRUE
+            Visible           = NONE
             Width in Cells    = TRUE
          End
       End
@@ -13896,7 +13913,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-4-Visible
          Begin Data.Entry-Field ef-note-agg
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 9,69
+            SCREEN-LINE       = 10,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note-agg
@@ -13959,7 +13976,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-note
             SCREEN-COL        = 161,67
-            SCREEN-LINE       = 9,69
+            SCREEN-LINE       = 10,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-note
@@ -14000,7 +14017,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-foto
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-foto
@@ -14063,7 +14080,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-foto
             SCREEN-COL        = 161,67
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-foto
@@ -14104,7 +14121,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-brand
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-brand
@@ -14167,7 +14184,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-brand
             SCREEN-COL        = 161,67
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-brand
@@ -14208,7 +14225,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-scheda
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-scheda
@@ -14271,7 +14288,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-scheda
             SCREEN-COL        = 161,67
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-scheda
@@ -14312,7 +14329,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-toss
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-toss
@@ -14375,7 +14392,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-altezza-pz
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-altezza-pz
@@ -14438,7 +14455,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-larghezza-pz
             SCREEN-COL        = 58,34
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-larghezza-pz
@@ -14501,7 +14518,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-profondita-pz
             SCREEN-COL        = 88,67
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-profondita-pz
@@ -14564,7 +14581,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-cartone
             SCREEN-COL        = 122,34
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-cartone
@@ -14627,7 +14644,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-stda
             SCREEN-COL        = 151,67
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-stda
@@ -14690,7 +14707,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-adr
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 24,92
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-adr
@@ -14753,7 +14770,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-SHI
             SCREEN-COL        = 58,34
-            SCREEN-LINE       = 24,92
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-SHI
@@ -14815,7 +14832,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-GET
             SCREEN-COL        = 88,67
-            SCREEN-LINE       = 24,92
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-GET
@@ -14878,7 +14895,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-altezza
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 29,38
+            SCREEN-LINE       = 30,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-altezza
@@ -14941,7 +14958,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-larghezza
             SCREEN-COL        = 54,67
-            SCREEN-LINE       = 29,38
+            SCREEN-LINE       = 30,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-larghezza
@@ -15004,7 +15021,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-profondita
             SCREEN-COL        = 88,67
-            SCREEN-LINE       = 29,38
+            SCREEN-LINE       = 30,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-profondita
@@ -15067,7 +15084,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-epal
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 31,38
+            SCREEN-LINE       = 32,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-epal
@@ -15130,7 +15147,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-std
             SCREEN-COL        = 54,67
-            SCREEN-LINE       = 31,38
+            SCREEN-LINE       = 32,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-std
@@ -15193,7 +15210,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-T1
             SCREEN-COL        = 9,00
-            SCREEN-LINE       = 36,23
+            SCREEN-LINE       = 37,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-T1
@@ -15245,7 +15262,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-T2
             SCREEN-COL        = 19,17
-            SCREEN-LINE       = 36,23
+            SCREEN-LINE       = 37,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-T2
@@ -15297,7 +15314,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-T3
             SCREEN-COL        = 30,17
-            SCREEN-LINE       = 36,23
+            SCREEN-LINE       = 37,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-T3
@@ -15349,7 +15366,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-toss
             SCREEN-COL        = 161,67
-            SCREEN-LINE       = 17,69
+            SCREEN-LINE       = 18,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-toss
@@ -15390,7 +15407,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-23aa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 9,69
+            SCREEN-LINE       = 10,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-23aa
@@ -15424,7 +15441,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-29b
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 11,69
+            SCREEN-LINE       = 12,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-29b
@@ -15458,7 +15475,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-30b
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 15,69
+            SCREEN-LINE       = 16,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-30b
@@ -15492,7 +15509,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-30aa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 17,38
+            SCREEN-LINE       = 18,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-30aa
@@ -15526,7 +15543,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-29aa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 13,69
+            SCREEN-LINE       = 14,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-29aa
@@ -15560,7 +15577,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28ada
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28ada
@@ -15594,7 +15611,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28aaaa
             SCREEN-COL        = 39,34
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaa
@@ -15628,7 +15645,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28abaa
             SCREEN-COL        = 72,84
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28abaa
@@ -15662,7 +15679,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acba
             SCREEN-COL        = 105,67
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acba
@@ -15696,7 +15713,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acaaa
             SCREEN-COL        = 137,34
-            SCREEN-LINE       = 22,92
+            SCREEN-LINE       = 23,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acaaa
@@ -15730,7 +15747,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28abb
             SCREEN-COL        = 72,84
-            SCREEN-LINE       = 29,38
+            SCREEN-LINE       = 30,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28abb
@@ -15764,7 +15781,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28aab
             SCREEN-COL        = 37,67
-            SCREEN-LINE       = 29,38
+            SCREEN-LINE       = 30,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aab
@@ -15798,7 +15815,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28ae
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 29,38
+            SCREEN-LINE       = 30,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28ae
@@ -15832,7 +15849,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acc
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 31,38
+            SCREEN-LINE       = 32,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acc
@@ -15866,7 +15883,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acab
             SCREEN-COL        = 37,67
-            SCREEN-LINE       = 31,38
+            SCREEN-LINE       = 32,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acab
@@ -15900,7 +15917,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28baa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 24,92
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28baa
@@ -15934,7 +15951,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacba
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 7,69
+            SCREEN-LINE       = 8,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacba
@@ -15967,7 +15984,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aba
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 8,39
+            SCREEN-LINE       = 9,16
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aba
@@ -15998,7 +16015,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacbaa
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 20,92
+            SCREEN-LINE       = 21,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacbaa
@@ -16031,7 +16048,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2abaa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 21,61
+            SCREEN-LINE       = 22,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2abaa
@@ -16062,7 +16079,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacbaaa
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 27,38
+            SCREEN-LINE       = 28,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacbaaa
@@ -16095,7 +16112,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2abaaa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 28,07
+            SCREEN-LINE       = 28,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2abaaa
@@ -16126,7 +16143,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28aaaaa
             SCREEN-COL        = 43,34
-            SCREEN-LINE       = 24,92
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaaa
@@ -16160,7 +16177,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32ac
             SCREEN-COL        = 5,00
-            SCREEN-LINE       = 36,23
+            SCREEN-LINE       = 37,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32ac
@@ -16194,7 +16211,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33ac
             SCREEN-COL        = 15,17
-            SCREEN-LINE       = 36,23
+            SCREEN-LINE       = 37,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33ac
@@ -16228,7 +16245,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aac
             SCREEN-COL        = 26,17
-            SCREEN-LINE       = 36,23
+            SCREEN-LINE       = 37,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aac
@@ -16262,7 +16279,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacbaaaa
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 34,15
+            SCREEN-LINE       = 34,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacbaaaa
@@ -16295,7 +16312,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2abaaaa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 34,84
+            SCREEN-LINE       = 35,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2abaaaa
@@ -16326,7 +16343,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28aaaaaa
             SCREEN-COL        = 72,84
-            SCREEN-LINE       = 24,92
+            SCREEN-LINE       = 25,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaaaa
@@ -16371,7 +16388,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-2-Visible
          Begin Data.Entry-Field ef-peso-utf-prg
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 10,07
+            SCREEN-LINE       = 10,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-utf-prg
@@ -16431,7 +16448,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-non-utf-prg
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 10,07
+            SCREEN-LINE       = 10,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-non-utf-prg
@@ -16491,7 +16508,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-COSTO-ULTIMO
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 14,69
+            SCREEN-LINE       = 15,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-COSTO-ULTIMO
@@ -16551,7 +16568,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-COSTO-MEDIO
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 14,69
+            SCREEN-LINE       = 15,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-COSTO-MEDIO
@@ -16611,7 +16628,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-COSTO-MP
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 14,69
+            SCREEN-LINE       = 15,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-COSTO-MP
@@ -16671,7 +16688,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-GIACENZA
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 16,69
+            SCREEN-LINE       = 17,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-GIACENZA
@@ -16731,7 +16748,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-CLI
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 16,69
+            SCREEN-LINE       = 17,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-CLI
@@ -16791,7 +16808,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-giac-buona
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 16,69
+            SCREEN-LINE       = 17,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-giac-buona
@@ -16851,7 +16868,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-FORN
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 20,19
+            SCREEN-LINE       = 20,96
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-FORN
@@ -16911,7 +16928,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-FORNa
             SCREEN-COL        = 40,00
-            SCREEN-LINE       = 20,23
+            SCREEN-LINE       = 21,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-FORNa
@@ -16972,7 +16989,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-FORNb
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 20,23
+            SCREEN-LINE       = 21,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-FORNb
@@ -17033,7 +17050,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-FORNc
             SCREEN-COL        = 80,67
-            SCREEN-LINE       = 20,23
+            SCREEN-LINE       = 21,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-FORNc
@@ -17094,7 +17111,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-FORNca
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 20,23
+            SCREEN-LINE       = 21,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-FORNca
@@ -17154,7 +17171,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ORD-FORNcb
             SCREEN-COL        = 120,67
-            SCREEN-LINE       = 20,23
+            SCREEN-LINE       = 21,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ORD-FORNcb
@@ -17214,7 +17231,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-INI-UDM
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 26,54
+            SCREEN-LINE       = 27,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-INI-UDM
@@ -17274,7 +17291,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-INI-KG
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 26,54
+            SCREEN-LINE       = 27,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-INI-KG
@@ -17334,7 +17351,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-INI-VALORE
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 26,54
+            SCREEN-LINE       = 27,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-INI-VALORE
@@ -17394,7 +17411,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ACQ-UDM
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 28,54
+            SCREEN-LINE       = 29,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ACQ-UDM
@@ -17454,7 +17471,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ACQ-KG
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 28,54
+            SCREEN-LINE       = 29,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ACQ-KG
@@ -17514,7 +17531,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-ACQ-VALORE
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 28,54
+            SCREEN-LINE       = 29,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-ACQ-VALORE
@@ -17574,7 +17591,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-VEN-UDM
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 30,54
+            SCREEN-LINE       = 31,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-VEN-UDM
@@ -17634,7 +17651,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-VEN-KG
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 30,54
+            SCREEN-LINE       = 31,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-VEN-KG
@@ -17694,7 +17711,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-VEN-VALORE
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 30,54
+            SCREEN-LINE       = 31,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-VEN-VALORE
@@ -17754,7 +17771,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-VAR-UDM
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 32,54
+            SCREEN-LINE       = 33,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-VAR-UDM
@@ -17814,7 +17831,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-VAR-KG
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 32,54
+            SCREEN-LINE       = 33,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-VAR-KG
@@ -17874,7 +17891,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-VAR-VALORE
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 32,54
+            SCREEN-LINE       = 33,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-VAR-VALORE
@@ -17934,7 +17951,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-FORN-UDM
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 34,54
+            SCREEN-LINE       = 35,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-FORN-UDM
@@ -17994,7 +18011,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-FORN-KG
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 34,54
+            SCREEN-LINE       = 35,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-FORN-KG
@@ -18054,7 +18071,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-FORN-VALORE
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 34,54
+            SCREEN-LINE       = 35,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-FORN-VALORE
@@ -18114,7 +18131,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-CLI-UDM
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 36,54
+            SCREEN-LINE       = 37,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-CLI-UDM
@@ -18174,7 +18191,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-CLI-KG
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 36,54
+            SCREEN-LINE       = 37,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-CLI-KG
@@ -18234,7 +18251,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-CLI-VALORE
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 36,54
+            SCREEN-LINE       = 37,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-CLI-VALORE
@@ -18294,7 +18311,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-FORN-UDMa
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 38,54
+            SCREEN-LINE       = 39,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-FORN-UDMa
@@ -18354,7 +18371,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-FORN-KGa
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 38,54
+            SCREEN-LINE       = 39,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-FORN-KGa
@@ -18414,7 +18431,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-FORN-VALOREa
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 38,54
+            SCREEN-LINE       = 39,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-FORN-VALOREa
@@ -18474,7 +18491,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-CLI-UDMa
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 40,54
+            SCREEN-LINE       = 41,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-CLI-UDMa
@@ -18534,7 +18551,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-CLI-KGa
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 40,54
+            SCREEN-LINE       = 41,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-CLI-KGa
@@ -18594,7 +18611,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field EF-CLI-VALOREa
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 40,54
+            SCREEN-LINE       = 41,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = EF-CLI-VALOREa
@@ -18654,7 +18671,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2a
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 12,77
+            SCREEN-LINE       = 13,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2a
@@ -18685,7 +18702,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaaa
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 14,69
+            SCREEN-LINE       = 15,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaaa
@@ -18718,7 +18735,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-gia-udm
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 42,54
+            SCREEN-LINE       = 43,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-gia-udm
@@ -18778,7 +18795,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-gia-kg
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 42,54
+            SCREEN-LINE       = 43,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-gia-kg
@@ -18838,7 +18855,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaab
             SCREEN-COL        = 40,00
-            SCREEN-LINE       = 14,69
+            SCREEN-LINE       = 15,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaab
@@ -18871,7 +18888,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaa
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 16,69
+            SCREEN-LINE       = 17,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaa
@@ -18904,7 +18921,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabab
             SCREEN-COL        = 40,00
-            SCREEN-LINE       = 16,69
+            SCREEN-LINE       = 17,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabab
@@ -18937,7 +18954,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaa
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 20,19
+            SCREEN-LINE       = 20,96
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaa
@@ -18970,7 +18987,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaab
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 26,54
+            SCREEN-LINE       = 27,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaab
@@ -19003,7 +19020,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaac
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 12,23
+            SCREEN-LINE       = 13,00
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaac
@@ -19036,7 +19053,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaaca
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 22,84
+            SCREEN-LINE       = 23,61
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaaca
@@ -19069,7 +19086,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2aa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 23,38
+            SCREEN-LINE       = 24,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2aa
@@ -19100,7 +19117,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabb
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 28,54
+            SCREEN-LINE       = 29,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabb
@@ -19133,7 +19150,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabba
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 30,54
+            SCREEN-LINE       = 31,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabba
@@ -19166,7 +19183,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabbaa
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 32,54
+            SCREEN-LINE       = 33,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabbaa
@@ -19199,7 +19216,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabbab
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 34,54
+            SCREEN-LINE       = 35,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabbab
@@ -19232,7 +19249,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabbaba
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 36,54
+            SCREEN-LINE       = 37,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabbaba
@@ -19265,7 +19282,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaba
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 24,54
+            SCREEN-LINE       = 25,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaba
@@ -19298,7 +19315,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabaa
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 24,54
+            SCREEN-LINE       = 25,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabaa
@@ -19331,7 +19348,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabab
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 24,54
+            SCREEN-LINE       = 25,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabab
@@ -19364,7 +19381,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabbabb
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 38,54
+            SCREEN-LINE       = 39,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabbabb
@@ -19397,7 +19414,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabbabaa
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 40,54
+            SCREEN-LINE       = 41,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabbabaa
@@ -19430,7 +19447,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaabbac
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 42,54
+            SCREEN-LINE       = 43,31
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaabbac
@@ -19463,7 +19480,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabb
             SCREEN-COL        = 40,00
-            SCREEN-LINE       = 10,07
+            SCREEN-LINE       = 10,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabb
@@ -19496,7 +19513,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaaaa
             SCREEN-COL        = 4,17
-            SCREEN-LINE       = 10,07
+            SCREEN-LINE       = 10,84
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaaaa
@@ -19529,7 +19546,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacb
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 7,61
+            SCREEN-LINE       = 8,38
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacb
@@ -19562,7 +19579,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2ab
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 8,15
+            SCREEN-LINE       = 8,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2ab
@@ -19593,7 +19610,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaaba
             SCREEN-COL        = 80,67
-            SCREEN-LINE       = 14,69
+            SCREEN-LINE       = 15,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaaba
@@ -19626,7 +19643,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-15
             SCREEN-COL        = 136,00
-            SCREEN-LINE       = 44,61
+            SCREEN-LINE       = 45,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-15
@@ -19660,7 +19677,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaaa
             SCREEN-COL        = 19,67
-            SCREEN-LINE       = 18,77
+            SCREEN-LINE       = 19,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaaa
@@ -19693,7 +19710,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaaaa
             SCREEN-COL        = 40,00
-            SCREEN-LINE       = 18,77
+            SCREEN-LINE       = 19,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaaaa
@@ -19726,7 +19743,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaaab
             SCREEN-COL        = 60,34
-            SCREEN-LINE       = 18,77
+            SCREEN-LINE       = 19,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaaab
@@ -19759,7 +19776,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaaac
             SCREEN-COL        = 80,67
-            SCREEN-LINE       = 18,77
+            SCREEN-LINE       = 19,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaaac
@@ -19792,7 +19809,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaaaca
             SCREEN-COL        = 100,67
-            SCREEN-LINE       = 18,77
+            SCREEN-LINE       = 19,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaaaca
@@ -19825,7 +19842,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabaaaaacb
             SCREEN-COL        = 120,67
-            SCREEN-LINE       = 18,77
+            SCREEN-LINE       = 19,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabaaaaacb
@@ -19858,7 +19875,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaababa
             SCREEN-COL        = 80,67
-            SCREEN-LINE       = 16,61
+            SCREEN-LINE       = 17,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaababa
@@ -19902,7 +19919,7 @@ Begin Screen Form1
          Visible Variable  = Form1-Pg-3-Visible
          Begin Data.Entry-Field ef-dt-val-da
             SCREEN-COL        = 14,67
-            SCREEN-LINE       = 8,69
+            SCREEN-LINE       = 9,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-dt-val-da
@@ -19963,7 +19980,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-dt-val-a
             SCREEN-COL        = 33,67
-            SCREEN-LINE       = 8,69
+            SCREEN-LINE       = 9,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-dt-val-a
@@ -20024,7 +20041,7 @@ Begin Screen Form1
          End
          Begin Grid gd-list
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 10,69
+            SCREEN-LINE       = 11,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = gd-list
@@ -20116,7 +20133,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaabba
             SCREEN-COL        = 29,67
-            SCREEN-LINE       = 8,69
+            SCREEN-LINE       = 9,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaabba
@@ -20149,7 +20166,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaaaaa
             SCREEN-COL        = 4,67
-            SCREEN-LINE       = 8,69
+            SCREEN-LINE       = 9,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaaaaa
@@ -20184,8 +20201,8 @@ Begin Screen Form1
    End
    Begin Bar Form1-Br-2
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 3,62
-      LOCK-CONTROL      = TRUE
+      SCREEN-LINE       = 4,08
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Form1-Br-2
       Clines            = 0
@@ -20199,32 +20216,32 @@ Begin Screen Form1
       Help ID           = 0
       ID                = 194
       Kind              = Horizontal
-      Line              = 3,62
+      Line              = 4,08
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
-      COLORS            = ( 8, 8 )
-      SHADING           = ( -1, 1 )
+      COLORS            = ( 8 )
+      SHADING           = ( -1 )
       Size (Lines)      = 168,33
       Size (Lines) in Pixels = 1010
       Size (Lines) Unit = Default
       Tab Order         = 3
       Visible           = NONE
-      Width             = 2
+      Width             = 1
       Width in Cells    = TRUE
    End
    Begin CsCtrl.blockpgm Label CST-BLOCKPGM
       CUST-SYMBOL       = blockpgm
       CUST-MODIFYFLAG   = 100000000000000000000000000000001000000000000000000
-      SCREEN-COL        = 141,67
-      SCREEN-LINE       = 1,62
-      LOCK-CONTROL      = TRUE
+      SCREEN-COL        = 4,67
+      SCREEN-LINE       = 4,31
+      LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = CST-BLOCKPGM
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 141,67
+      Column            = 4,67
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -20235,12 +20252,12 @@ Begin Screen Form1
       ID                = 999
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 1,62
+      Line              = 4,31
       Lines             = 1,00
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 13,86
+      Size              = 3,00
       Size Unit         = Default
       Tab Order         = 4
       Title             = "BlockPgm"
@@ -20286,8 +20303,8 @@ Begin Screen Form1
       CUST-SYMBOL       = Custom1
       CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
       SCREEN-COL        = 67,67
-      SCREEN-LINE       = 4,00
-      LOCK-CONTROL      = FALSE
+      SCREEN-LINE       = 4,77
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Custom1-1
       Ccol              = 0
@@ -20307,7 +20324,7 @@ Begin Screen Form1
       ID                = 666
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 4,00
+      Line              = 4,77
       Lines             = 0,62
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -20323,7 +20340,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-frn
       SCREEN-COL        = 76,83
-      SCREEN-LINE       = 3,77
+      SCREEN-LINE       = 4,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-frn
@@ -20346,7 +20363,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 1761
-      Line              = 3,77
+      Line              = 4,54
       Lines             = 2,27
       Lines in Pixels   = 29
       Lines Unit        = Default
@@ -20368,7 +20385,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-distinta
       SCREEN-COL        = 89,67
-      SCREEN-LINE       = 3,77
+      SCREEN-LINE       = 4,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-distinta
@@ -20392,7 +20409,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 1762
-      Line              = 3,77
+      Line              = 4,54
       Lines             = 2,27
       Lines in Pixels   = 29
       Lines Unit        = Default
@@ -20415,7 +20432,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-codici
       SCREEN-COL        = 102,67
-      SCREEN-LINE       = 3,77
+      SCREEN-LINE       = 4,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-codici
@@ -20439,7 +20456,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 1763
-      Line              = 3,77
+      Line              = 4,54
       Lines             = 2,27
       Lines in Pixels   = 29
       Lines Unit        = Default
@@ -20462,7 +20479,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-lista
       SCREEN-COL        = 115,83
-      SCREEN-LINE       = 3,77
+      SCREEN-LINE       = 4,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-lista
@@ -20485,7 +20502,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 1764
-      Line              = 3,77
+      Line              = 4,54
       Lines             = 2,27
       Lines in Pixels   = 29
       Lines Unit        = Default
@@ -20507,7 +20524,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-dettagli
       SCREEN-COL        = 129,00
-      SCREEN-LINE       = 3,77
+      SCREEN-LINE       = 4,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-dettagli
@@ -20530,7 +20547,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 1765
-      Line              = 3,77
+      Line              = 4,54
       Lines             = 2,27
       Lines in Pixels   = 29
       Lines Unit        = Default
@@ -20552,7 +20569,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-stampa
       SCREEN-COL        = 142,00
-      SCREEN-LINE       = 3,77
+      SCREEN-LINE       = 4,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-stampa
@@ -20575,7 +20592,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 760
-      Line              = 3,77
+      Line              = 4,54
       Lines             = 2,27
       Lines in Pixels   = 29
       Lines Unit        = Default
@@ -20597,7 +20614,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-ean
       SCREEN-COL        = 155,00
-      SCREEN-LINE       = 3,77
+      SCREEN-LINE       = 4,54
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-ean
@@ -20620,7 +20637,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 761
-      Line              = 3,77
+      Line              = 4,54
       Lines             = 2,27
       Lines in Pixels   = 29
       Lines Unit        = Default
@@ -20674,6 +20691,52 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
    End
+   Begin Push-Button pb-copiada
+      SCREEN-COL        = 151,33
+      SCREEN-LINE       = 1,15
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-copiada
+      Bitmap            = "..\RESOURCE\COPIA.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = COPIA-BMP
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 151,33
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1357
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 763
+      Line              = 1,15
+      Lines             = 2,35
+      Lines in Pixels   = 30
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = TRUE
+      Size              = 16,83
+      Size in Pixels    = 99
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 15
+      Termination Value = 0
+      Visible           = FALSE
+      Visible Variable  = v-copiada
+      Width in Cells    = FALSE
+      Before Procedure  = pb-copiada-BeforeProcedure
+      After Procedure   = pb-copiada-AfterProcedure
+      Link To           = pb-copiada-LinkTo
+   End
    Begin Toolbar Form1-Tb-1
       SCREEN-LINE       = 1,00
       LOCK-CONTROL      = TRUE
@@ -20685,7 +20748,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 15
+      Tab Order         = 16
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -21361,7 +21424,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 90, 35, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 16
+      Tab Order         = 17
    End
 End
 
@@ -24100,6 +24163,45 @@ BEGIN-DATA
    PARAGRAPH         = pb-annullaa-AfterProcedure
 BEGIN-TEXT
            modify pb-annullaa, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-copiada-BeforeProcedure
+BEGIN-TEXT
+           modify pb-copiada, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-copiada-AfterProcedure
+BEGIN-TEXT
+           modify pb-copiada, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-copiada-LinkTo
+BEGIN-TEXT
+           perform PB-COPIADA-PRESSED.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaCb-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1a **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaCb-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1a **>>
 END-TEXT
 END-DATA
 

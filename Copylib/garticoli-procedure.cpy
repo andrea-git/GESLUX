@@ -254,6 +254,7 @@
                  perform FORM1-CLEAR
 
                  set vecchio to true
+                 move 0 to v-copiada
                  perform CANCELLA-COLORE
                  perform INIT-OLD-REC
                             
@@ -1436,6 +1437,7 @@
                  end-if   
                  perform FORM1-IUD-DISPLAY
                  set vecchio to true
+                 move 0 to v-copiada
                  if mod = 1                        
                     move 1 to NumBitmapCodici
                     set StatusModifica to true
@@ -2446,6 +2448,7 @@ LUBEXX        if tutto-ok
                  cancel "G2Agg"
 
                  set vecchio to true       
+                 move 0 to v-copiada
                  perform TORNA-IN-VISUA
 LUBEXX        end-if
            end-if.
@@ -2670,14 +2673,11 @@ LUBEXX        end-if
        VALORIZZA-NUOVO.
            move high-value to art-codice of articoli.
            start articoli key <= art-codice of articoli
-              invalid     
-                 move 1 to art-codice of articoli
-              not invalid
+                 invalid move 1 to art-codice of articoli
+             not invalid
                  read articoli previous with no lock
-                    at end   
-                       move 1 to art-codice of articoli
-                    not at end   
-                       add  1 to art-codice of articoli
+                      at end move 1 to art-codice of articoli
+                  not at end add  1 to art-codice of articoli
                  end-read
            end-start.
            move "00" to status-articoli.  
@@ -2692,6 +2692,7 @@ LUBEXX        end-if
            perform FORM1-FLD-TO-BUF.
 
            set nuovo to true.  
+           move 1 to v-copiada.
 
            move 3 to BitmapNumDistinta.
            move 0 to e-distinta.
@@ -2710,6 +2711,7 @@ LUBEXX        end-if
        VALORIZZA-OLD.
            move art-rec of articoli   to old-art-rec.
            set vecchio                to true.
+           move 0 to v-copiada.
 
            if old-art-soggetto-imposte = spaces             
               set old-art-no-imposte to true
@@ -2927,6 +2929,7 @@ LUBEXX        end-if
       ***---
        GARTICOLI-BEFORE-FLD-TO-BUF.
       * CLIENTI-PROGRESSIVI
+           if key-status = 1357 exit paragraph end-if.
            move 0 to giac-buona.
            initialize prg-rec replacing alphanumeric data by spaces
                                              numeric data by zeroes.
@@ -3485,11 +3488,12 @@ LUBEXX        end-if
            end-if.
 
       ***---
-       CARICA-LISTINI.
+       CARICA-LISTINI.                                
            accept data-oggi from century-date
            modify gd-list mass-update 1
-           modify gd-list reset-grid  1
-           perform GD-LIST-CONTENT
+           modify gd-list reset-grid  1               
+           perform GD-LIST-CONTENT                    
+           if key-status = 1357 exit paragraph end-if.
            
            sort sort-art-list
               on descending key sart-prz-conf
@@ -3897,3 +3901,50 @@ LUBEXX        end-if
       *****     display ef-scorta.
            |||
 
+      ***---
+       PB-COPIADA-PRESSED.
+           move   "articoli-all" to     como-file.
+           call   "zoom-gt"  using  como-file, art-rec of articoli
+                             giving stato-zoom.
+           cancel "zoom-gt".
+      
+           if stato-zoom = 0  
+              inquire ef-codice, value in save-chiave                     
+              move art-codice of articoli to ef-codice-buf
+              modify ef-codice, VALUE = art-codice of articoli
+              set ReadSecca to true 
+              perform CANCELLA-COLORE
+              perform CURRENT-RECORD                 
+              set nuovo to true
+              move save-chiave to ef-codice-buf
+              modify ef-codice, value ef-codice-buf
+              
+              |******          
+              move 1 to mod
+              move 0 to mod-k
+              modify tool-modifica,  value = mod
+              
+              move 1 to mod-campi,   mod-peso-non-utf
+              move 0 to mod-imposte, mod-cobat, mod-peso-utf 
+              move 1 to NumBitmapCodici
+
+              move 0 to v-moq
+              move 0 to v-reale
+
+              move 1 to v-copiada
+                        
+              display form1
+
+              perform ABILITAZIONI
+
+              move 78-ID-ef-des1 to control-id
+              move 4 to accept-control 
+              
+              set StatusIns to true
+              perform STATUS-BAR-MSG 
+              unlock articoli all records
+                                     
+              perform INIT-OLD-REC
+                                   
+              move 0 to key-status
+           end-if.
