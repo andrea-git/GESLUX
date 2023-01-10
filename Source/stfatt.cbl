@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          stfatt.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 6 febbraio 2018 12:22:22.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 10 gennaio 2023 17:41:12.
        REMARKS.
       *{TOTEM}END
 
@@ -49,7 +49,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -141,8 +141,8 @@
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
-       77 TMP-DataSet1-tcontat-BUF     PIC X(257).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -173,6 +173,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
 
       *{TOTEM}END
 
@@ -1586,6 +1587,14 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
        DataSet1-tgrupgdo-INITSTART.
            IF DataSet1-tgrupgdo-KEY-Asc
               MOVE Low-Value TO gdo-chiave OF tgrupgdo
@@ -1647,6 +1656,7 @@
               READ tgrupgdo WITH NO LOCK 
               KEY gdo-chiave OF tgrupgdo
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1674,6 +1684,7 @@
                  READ tgrupgdo PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1701,6 +1712,7 @@
                  READ tgrupgdo NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
