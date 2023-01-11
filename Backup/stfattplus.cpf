@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E71A162648-823-2829618745
+PROGRAM_UNIQUE_CODE=TOTEM-7E71B101346-815-19833894
 
 {{@DESCRIPTION:
 
@@ -604,6 +605,26 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM51_WK
 
 @}}
+[FDITEM52_WK]
+m_strName=magg
+m_strRawPic=9(5)v99
+m_strPic=9(5)v99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=ef-magg-buf
+m_strRawPic=zz.zz9,99
+m_strPic=zz.zz9,99
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -654,7 +675,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 11,56
+   Lines             = 13,78
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -680,7 +701,7 @@ Begin Screen Form1
    Begin Frame frame-limiti
       SCREEN-COL        = 1,30
       SCREEN-LINE       = 1,22
-      LOCK-CONTROL      = FALSE
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = frame-limiti
       3D Style          = Normal
@@ -699,7 +720,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 9
       Line              = 1,22
-      Lines             = 8,39
+      Lines             = 10,72
       Lines Unit        = Default
       Low Color         = 0
       Size              = 26,60
@@ -711,7 +732,7 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Entry-Field ef-anno
-         SCREEN-COL        = 15,30
+         SCREEN-COL        = 16,30
          SCREEN-LINE       = 2,72
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -723,7 +744,7 @@ Begin Screen Form1
          Clines            = 0
          Clines Unit       = Default
          Color             = 513
-         Column            = 15,00
+         Column            = 16,00
          Csize             = 0
          Csize Unit        = Default
          Cursor            = 0
@@ -767,7 +788,7 @@ Begin Screen Form1
          After Procedure   = Screen4-Ef-1-AfterProcedure
       End
       Begin Entry-Field ef-num
-         SCREEN-COL        = 15,30
+         SCREEN-COL        = 16,30
          SCREEN-LINE       = 4,72
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -779,7 +800,7 @@ Begin Screen Form1
          Clines            = 0
          Clines Unit       = Default
          Color             = 513
-         Column            = 15,00
+         Column            = 16,00
          Csize             = 0
          Csize Unit        = Default
          Cursor            = 0
@@ -823,7 +844,7 @@ Begin Screen Form1
          After Procedure   = Screen4-Ef-1-AfterProcedure
       End
       Begin Combo-Box cbo-documento
-         SCREEN-COL        = 15,30
+         SCREEN-COL        = 16,30
          SCREEN-LINE       = 6,89
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
@@ -833,7 +854,7 @@ Begin Screen Form1
          Clines            = 0
          Clines Unit       = Default
          Color             = 513
-         Column            = 15,00
+         Column            = 16,00
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
@@ -866,6 +887,62 @@ Begin Screen Form1
          Before Procedure  = Screen4-Cm-1-BeforeProcedure
          After Procedure   = Screen4-Cm-1-AfterProcedure
       End
+      Begin Entry-Field ef-magg
+         SCREEN-COL        = 16,30
+         SCREEN-LINE       = 9,11
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = ef-magg
+         Auto              = FALSE
+         Auto Decimal      = 0
+         Border            = Boxed
+         Case              = Mixed
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 513
+         Column            = 16,00
+         Csize             = 0
+         Csize Unit        = Default
+         Cursor            = 0
+         Cursor Col        = 0
+         Cursor Row        = 0
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 23
+         ID Variable       = AUTO-ID
+         Justification     = Right
+         Line              = 8,89
+         Lines             = 1,31
+         Lines Unit        = Default
+         Max Lines         = 0
+         Max Text          = 0
+         Max Value         = 0
+         Min Value         = 0
+         No AutoSel        = FALSE
+         No Tab            = FALSE
+         Notify Change     = FALSE
+         Numeric           = FALSE
+         Occurs            = 0
+         Read Only         = FALSE
+         Required          = FALSE
+         Secure            = FALSE
+         Size              = 6,67
+         Size Unit         = Default
+         Style             = Singleline
+         Tab Order         = 4
+         Use Return        = FALSE
+         Use Tab           = FALSE
+         Value Multiple    = FALSE
+         Value Picture     = zz.zz9,99
+         Value Variable    = ef-magg-buf
+         Visible           = NONE
+         Width in Cells    = TRUE
+         Before Procedure  = Screen4-Ef-1-BeforeProcedure
+         After Procedure   = ef-magg-AfterProcedure
+      End
       Begin Label Screen3-La-1a
          SCREEN-COL        = 3,30
          SCREEN-LINE       = 4,72
@@ -893,7 +970,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 7,00
          Size Unit         = Default
-         Tab Order         = 4
+         Tab Order         = 5
          Title             = "&Numero"
          Transparent       = TRUE
          Visible           = NONE
@@ -926,7 +1003,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 7,00
          Size Unit         = Default
-         Tab Order         = 5
+         Tab Order         = 6
          Title             = "Anno"
          Transparent       = TRUE
          Visible           = NONE
@@ -964,7 +1041,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 4,40
          Size Unit         = Default
-         Tab Order         = 6
+         Tab Order         = 7
          Title             = "CUSTOM CONTROL"
          Transparent       = TRUE
          Visible           = NONE
@@ -998,8 +1075,41 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 9,00
          Size Unit         = Default
-         Tab Order         = 7
+         Tab Order         = 8
          Title             = "Documento"
+         Transparent       = TRUE
+         Visible           = NONE
+         Width in Cells    = TRUE
+      End
+      Begin Label Screen3-La-1ab
+         SCREEN-COL        = 3,30
+         SCREEN-LINE       = 9,11
+         LOCK-CONTROL      = TRUE
+         LEVEL             = 5
+         (Name)            = Screen3-La-1ab
+         Clines            = 0
+         Clines Unit       = Default
+         Color             = 0
+         Column            = 3,00
+         Csize             = 0
+         Csize Unit        = Default
+         Destroy Type      = Automatic
+         Enable            = NONE
+         Font              = Default Font
+         Height in Cells   = TRUE
+         Help ID           = 0
+         ID                = 24
+         Justification     = Left
+         Label Offset      = 20
+         Line              = 8,89
+         Lines             = 1,33
+         Lines Unit        = Default
+         No Key Letter     = FALSE
+         Occurs            = 0
+         Size              = 12,00
+         Size Unit         = Default
+         Tab Order         = 9
+         Title             = "Maggiorazione"
          Transparent       = TRUE
          Visible           = NONE
          Width in Cells    = TRUE
@@ -1007,7 +1117,7 @@ Begin Screen Form1
    End
    Begin Frame Screen4-Fr-1
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 9,78
+      SCREEN-LINE       = 12,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Fr-1
@@ -1026,7 +1136,7 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 29
-      Line              = 9,78
+      Line              = 12,00
       Lines             = 2,78
       Lines Unit        = Default
       Low Color         = 0
@@ -1039,7 +1149,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
       Begin Push-Button pb-ok
          SCREEN-COL        = 11,90
-         SCREEN-LINE       = 10,39
+         SCREEN-LINE       = 12,61
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-ok
@@ -1084,7 +1194,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-annulla
          SCREEN-COL        = 19,80
-         SCREEN-LINE       = 10,39
+         SCREEN-LINE       = 12,61
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-annulla
@@ -1161,7 +1271,7 @@ BEGIN-DATA
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
       * SPECIFICO PER PROGRAMMI CON SCREEN DI ACCETTAZIONE LIMITI
-LUBEXX     move tge-anno to anno.
+           move 0 to magg ef-magg-buf anno ef-num-buf.
            display Form1.
            
            modify cbo-documento, reset-list  = 1.
@@ -1190,6 +1300,7 @@ BEGIN-TEXT
 
            evaluate CONTROL-ID 
            when 78-ID-ef-anno
+                inquire ef-anno, value in anno
                 if anno = 0
                    display message box "Inserimento anno mancante!"
                            title = tit-err
@@ -1197,7 +1308,7 @@ BEGIN-TEXT
                    move 78-ID-ef-anno to control-id
                    move 4             to accept-control
                    set errori         to true
-                end-if      
+                end-if                        
            when 78-ID-ef-num
                 move ef-num-buf to como-data
                 if como-data = 0
@@ -1207,7 +1318,18 @@ BEGIN-TEXT
                    move 78-ID-ef-num to control-id
                    move 4            to accept-control
                    set errori        to true
-                end-if      
+                end-if                        
+           when 78-ID-ef-magg
+                inquire ef-magg, value in ef-magg-buf
+                move ef-magg-buf to magg
+                if magg = 0
+                   display message box "Inserimento maggiorazione mancante!"
+                           title = tit-err
+                           icon 2
+                   move 78-ID-ef-magg to control-id
+                   move 4             to accept-control
+                   set errori         to true
+                end-if                        
            end-evaluate.
 
            if errori
@@ -1246,6 +1368,7 @@ BEGIN-DATA
    PARAGRAPH         = Screen4-Ef-1-BeforeProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
+           set environment "KEYSTROKE" to "DATA=44   46"
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1291,7 +1414,7 @@ BEGIN-TEXT
            move CONTROL-ID to mem-id.
 
            perform  varying CONTROL-ID from 78-id-ef-anno by 1
-                      until CONTROL-ID    > 78-id-ef-num
+                      until CONTROL-ID    > 78-id-ef-magg
               perform CONTROLLO
               
               if errori 
@@ -1329,8 +1452,10 @@ BEGIN-TEXT
               initialize stfatt-linkage replacing numeric data by zeroes
                                              alphanumeric data by spaces
               move anno            to LinkAnno
-              move 1               to LinkElab
+              move 3               to LinkElab
               move 1               to link-tipo-stampa
+
+              compute lotto = magg * 100
 
               set tutte    to true
               move 1 to num-copie 
@@ -1363,6 +1488,16 @@ BEGIN-DATA
    PARAGRAPH         = Screen4-Cm-1-AfterProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-magg-AfterProcedure
+BEGIN-TEXT
+           perform CONTROLLO.
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>  
+           set environment "KEYSTROKE" to "DATA=44   44"
+           set environment "KEYSTROKE" to "DATA=46   46"
 END-TEXT
 END-DATA
 

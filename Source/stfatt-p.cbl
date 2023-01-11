@@ -93,7 +93,14 @@
        77  path-log         pic x(200).
        77  calling-pgm      pic x(15).
        77  path-bmp         pic x(200).
-       77  path-bmp-fatture pic x(200).
+       77  path-bmp-fatture pic x(200). 
+                                               
+       77  prz-3dec              pic 9(9)v9(3).
+       77  como-prz              pic 9(9)v9(3).
+       01  filler                pic 9 value 0.
+           88 ristampa-maggiorazione   value 1, false 0.
+
+       77  magg pic 9(5)v99.
                                       
        01  filler                pic 9 value 0.
            88 RichiamoSchedulato       value 1, false 0.   
@@ -604,6 +611,11 @@
        ELABORAZIONE.
            move spaces to tge-chiave.
            read tparamge no lock invalid continue end-read.
+           if LinkElab = 3
+              move 1 to LinkElab
+              set ristampa-maggiorazione to true
+              compute magg = lotto / 100
+           end-if.
            if LinkElab = 1
               evaluate true
               when Tutti
@@ -1098,7 +1110,8 @@ LUBEXX           end-if
               if ror-anno       not = tor-anno  or
                  ror-num-ordine not = tor-numero
                  exit perform
-              end-if                
+              end-if              
+              perform MAGGIORAZIONE
               perform STAMPA-RIGHE
            end-perform.
 
@@ -1182,6 +1195,7 @@ LUBEXX           end-if
                  exit perform
               end-if
               perform MOVE-RIGHE-NOTE-TO-ORDINE
+              perform MAGGIORAZIONE
 
               perform STAMPA-RIGHE
            end-perform.
@@ -1190,6 +1204,28 @@ LUBEXX           end-if
            perform STAMPA-DICHIARAZIONE.
            perform STAMPA-PIE-PAGINA.
            perform STAMPA-SCADENZE.
+
+      ***---
+       MAGGIORAZIONE.   
+           if ristampa-maggiorazione                          
+              if ror-imponib-merce > 0
+                 compute prz-3dec = ror-imponib-merce +
+                                    ror-imp-consumo   +
+                                    ror-imp-cou-cobat +
+                                    ror-add-piombo
+                 compute prz-3dec = 
+                         prz-3dec * magg / 100 + 
+                         prz-3dec
+                 move prz-3dec to como-prz
+                 compute prz-3dec = como-prz -  
+                                    ror-imp-consumo   -
+                                    ror-imp-cou-cobat -
+                                    ror-add-piombo
+
+                 add 0,005 to prz-3dec giving ror-imponib-merce
+                 move ror-imponib-merce to ror-prz-unitario
+              end-if
+           end-if.
 
       ***---
        CREA-PDF.

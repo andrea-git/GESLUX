@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          stfattplus.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 10 gennaio 2023 17:42:57.
+       DATE-WRITTEN.        mercoledì 11 gennaio 2023 12:23:27.
        REMARKS.
       *{TOTEM}END
 
@@ -120,6 +120,8 @@
            88 Valid-STATUS-tnotacr VALUE IS "00" THRU "09". 
        77 STATUS-tordini   PIC  X(2).
            88 Valid-STATUS-tordini VALUE IS "00" THRU "09". 
+       77 magg PIC  9(5)v99.
+       77 ef-magg-buf      PIC  zz.zz9,99.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -189,6 +191,7 @@
        78  78-ID-ef-anno VALUE 5001.
        78  78-ID-ef-num VALUE 5002.
        78  78-ID-cbo-documento VALUE 5003.
+       78  78-ID-ef-magg VALUE 5004.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -209,7 +212,7 @@
            Frame, 
            COL 1,30, 
            LINE 1,22,
-           LINES 8,39 ,
+           LINES 10,72 ,
            SIZE 26,60 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -222,7 +225,7 @@
        05
            ef-anno, 
            Entry-Field, 
-           COL 15,30, 
+           COL 16,30, 
            LINE 2,72,
            LINES 1,31 ,
            SIZE 6,67 ,
@@ -241,7 +244,7 @@
        05
            ef-num, 
            Entry-Field, 
-           COL 15,30, 
+           COL 16,30, 
            LINE 4,72,
            LINES 1,33 ,
            SIZE 10,00 ,
@@ -261,7 +264,7 @@
        05
            cbo-documento, 
            Combo-Box, 
-           COL 15,30, 
+           COL 16,30, 
            LINE 6,89,
            LINES 2,72 ,
            SIZE 10,00 ,
@@ -276,6 +279,25 @@
            AFTER PROCEDURE Screen4-Cm-1-AfterProcedure, 
            BEFORE PROCEDURE Screen4-Cm-1-BeforeProcedure, 
            .
+      * ENTRY FIELD
+       05
+           ef-magg, 
+           Entry-Field, 
+           COL 16,30, 
+           LINE 9,11,
+           LINES 1,31 ,
+           SIZE 6,67 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-magg,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           VALUE ef-magg-buf,
+           AFTER PROCEDURE ef-magg-AfterProcedure, 
+           BEFORE PROCEDURE Screen4-Ef-1-BeforeProcedure, 
+           .
+
       * LABEL
        05
            Screen3-La-1a, 
@@ -339,12 +361,28 @@
            TITLE "Documento",
            .
 
+      * LABEL
+       05
+           Screen3-La-1ab, 
+           Label, 
+           COL 3,30, 
+           LINE 9,11,
+           LINES 1,33 ,
+           SIZE 12,00 ,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "Maggiorazione",
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 9,78,
+           LINE 12,00,
            LINES 2,78 ,
            SIZE 27,50 ,
            ID IS 29,
@@ -357,7 +395,7 @@
            pb-ok, 
            Push-Button, 
            COL 11,90, 
-           LINE 10,39,
+           LINE 12,61,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -376,7 +414,7 @@
            pb-annulla, 
            Push-Button, 
            COL 19,80, 
-           LINE 10,39,
+           LINE 12,61,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -1488,7 +1526,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 11,56,
+              LINES 13,78,
               SIZE 27,50,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -1518,7 +1556,7 @@
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
       * SPECIFICO PER PROGRAMMI CON SCREEN DI ACCETTAZIONE LIMITI
-LUBEXX     move tge-anno to anno.
+           move 0 to magg ef-magg-buf anno ef-num-buf.
            display Form1.
            
            modify cbo-documento, reset-list  = 1.
@@ -1663,6 +1701,7 @@ LUBEXX     move tge-anno to anno.
 
            evaluate CONTROL-ID 
            when 78-ID-ef-anno
+                inquire ef-anno, value in anno
                 if anno = 0
                    display message box "Inserimento anno mancante!"
                            title = tit-err
@@ -1670,7 +1709,7 @@ LUBEXX     move tge-anno to anno.
                    move 78-ID-ef-anno to control-id
                    move 4             to accept-control
                    set errori         to true
-                end-if      
+                end-if                        
            when 78-ID-ef-num
                 move ef-num-buf to como-data
                 if como-data = 0
@@ -1680,7 +1719,19 @@ LUBEXX     move tge-anno to anno.
                    move 78-ID-ef-num to control-id
                    move 4            to accept-control
                    set errori        to true
-                end-if      
+                end-if                        
+           when 78-ID-ef-magg
+                inquire ef-magg, value in ef-magg-buf
+                move ef-magg-buf to magg
+                if magg = 0
+                   display message box "Inserimento maggiorazione mancan
+      -    "te!"
+                           title = tit-err
+                           icon 2
+                   move 78-ID-ef-magg to control-id
+                   move 4             to accept-control
+                   set errori         to true
+                end-if                        
            end-evaluate.
 
            if errori
@@ -1712,6 +1763,7 @@ LUBEXX     move tge-anno to anno.
        Screen4-Ef-1-BeforeProcedure.
       * <TOTEM:PARA. Screen4-Ef-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           set environment "KEYSTROKE" to "DATA=44   46"
            .
       * <TOTEM:END>
        Screen4-Ef-1-AfterProcedure.
@@ -1745,7 +1797,7 @@ LUBEXX     move tge-anno to anno.
            move CONTROL-ID to mem-id.
 
            perform  varying CONTROL-ID from 78-id-ef-anno by 1
-                      until CONTROL-ID    > 78-id-ef-num
+                      until CONTROL-ID    > 78-id-ef-magg
               perform CONTROLLO
               
               if errori 
@@ -1783,8 +1835,10 @@ LUBEXX     move tge-anno to anno.
               initialize stfatt-linkage replacing numeric data by zeroes
                                              alphanumeric data by spaces
               move anno            to LinkAnno
-              move 1               to LinkElab
+              move 3               to LinkElab
               move 1               to link-tipo-stampa
+
+              compute lotto = magg * 100
 
               set tutte    to true
               move 1 to num-copie 
@@ -1813,6 +1867,14 @@ LUBEXX     move tge-anno to anno.
        Screen4-Cm-1-AfterProcedure.
       * <TOTEM:PARA. Screen4-Cm-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       ef-magg-AfterProcedure.
+      * <TOTEM:PARA. ef-magg-AfterProcedure>
+           perform CONTROLLO.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           set environment "KEYSTROKE" to "DATA=44   44"
+           set environment "KEYSTROKE" to "DATA=46   46"
            .
       * <TOTEM:END>
 
