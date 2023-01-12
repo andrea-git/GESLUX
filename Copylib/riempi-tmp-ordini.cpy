@@ -278,6 +278,31 @@ OMAGGI              end-if
            move art-marca-prodotto to tmp-ord-marca.
                                                       
            move tor-num-bolla    to tmp-ord-numdoc.
+           move ror-prg-tipo-imballo to tmp-ord-imb imq-codice.
+           initialize tmp-ord-imb-d.
+           read timbalqta no lock 
+                invalid continue
+            not invalid
+                move imq-tipo to imb-codice
+                read timballi no lock
+                     invalid continue
+                 not invalid
+                     move imq-qta-imb to qta-x           
+                     inspect qta-x replacing leading x"30" by x"20"
+                     call "C$JUSTIFY" using qta-x, "L"
+                     inspect qta-x replacing 
+                               trailing spaces by low-value
+                     inspect imb-descrizione replacing trailing spaces
+                                             by low-value
+                     string  imb-descrizione delimited low-value
+                             " DA "          delimited size
+                             qta-x           delimited low-value
+                        into tmp-ord-imb-d
+                     end-string
+                end-read
+           end-read.
+           move ror-num-colli    to tmp-ord-colli.
+
            move ror-cod-articolo to tmp-ord-articolo.
            move tor-data-bolla   to tmp-ord-datadoc.
 
@@ -510,53 +535,65 @@ OMAGGI              end-if
                         "Cod. Pag."         delimited size
                         separatore          delimited size
                         "Descrizione"       delimited size
+                        separatore          delimited size
+                        "N. colli"          delimited size
+                        separatore          delimited size
+                        "Imballo"           delimited size
+                        separatore          delimited size
+                        "Descrizione"       delimited size
                         into line-riga
                  end-string
                  write line-riga
                  set prima-volta to false
               end-if
               initialize line-riga
-              string r-causale  delimited size
-                     separatore delimited size
-                     r-codice   delimited size
-                     separatore delimited size
-                     r-ragsoc   delimited size
-                     separatore delimited size
-                     r-destino  delimited size
-                     separatore delimited size 
-                     r-age      delimited size
-                     separatore delimited size
-                     r-age-d    delimited size
-                     separatore delimited size
-                     r-data-mov delimited size
-                     separatore delimited size
-                     r-evasione delimited size
-                     separatore delimited size
-                     r-numdoc   delimited size
-                     separatore delimited size
-                     r-datadoc  delimited size
-                     separatore delimited size
-                     r-marca    delimited size
-                     separatore delimited size
-                     r-articolo delimited size
-                     separatore delimited size
-                     r-desart   delimited size
-                     separatore delimited size
-                     r-qta      delimited size
-                     separatore delimited size
-                     r-prezzo   delimited size
-                     separatore delimited size
-                     r-tot      delimited size
-                     separatore delimited size
-                     r-peso     delimited size  
-                     separatore delimited size
-                     tmp-ord-cli-tipo   delimited size
-                     separatore         delimited size
-                     tmp-ord-cli-tipo-d delimited size
-                     separatore         delimited size
-                     tmp-ord-pag        delimited size
-                     separatore         delimited size
-                     tmp-ord-pag-d      delimited size
+              string r-causale            delimited size
+                     separatore           delimited size
+                     r-codice             delimited size
+                     separatore           delimited size
+                     r-ragsoc             delimited size
+                     separatore           delimited size
+                     r-destino            delimited size
+                     separatore           delimited size 
+                     r-age                delimited size
+                     separatore           delimited size
+                     r-age-d              delimited size
+                     separatore           delimited size
+                     r-data-mov           delimited size
+                     separatore           delimited size
+                     r-evasione           delimited size
+                     separatore           delimited size
+                     r-numdoc             delimited size
+                     separatore           delimited size
+                     r-datadoc            delimited size
+                     separatore           delimited size
+                     r-marca              delimited size
+                     separatore           delimited size
+                     r-articolo           delimited size
+                     separatore           delimited size
+                     r-desart             delimited size
+                     separatore           delimited size
+                     r-qta                delimited size
+                     separatore           delimited size
+                     r-prezzo             delimited size
+                     separatore           delimited size
+                     r-tot                delimited size
+                     separatore           delimited size
+                     r-peso               delimited size  
+                     separatore           delimited size
+                     tmp-ord-cli-tipo     delimited size
+                     separatore           delimited size
+                     tmp-ord-cli-tipo-d   delimited size
+                     separatore           delimited size
+                     tmp-ord-pag          delimited size
+                     separatore           delimited size
+                     tmp-ord-pag-d        delimited size
+                     separatore           delimited size
+                     tmp-ord-colli        delimited size
+                     separatore           delimited size
+                     tmp-ord-imb          delimited size
+                     separatore           delimited size
+                     tmp-ord-imb-d        delimited size
                      into line-riga
               end-string
               write line-riga
