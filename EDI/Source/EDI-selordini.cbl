@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 25 ottobre 2022 09:30:13.
+       DATE-WRITTEN.        giovedì 12 gennaio 2023 23:31:24.
        REMARKS.
       *{TOTEM}END
 
@@ -795,6 +795,9 @@
            88 Valid-STATUS-EDI-clides VALUE IS "00" THRU "09". 
        77 STATUS-anacap    PIC  X(2).
            88 Valid-STATUS-anacap VALUE IS "00" THRU "09". 
+       77 lab-forzato-buf  PIC  X(50).
+       77 v-blister        PIC  9
+                  VALUE IS 1.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -3303,7 +3306,7 @@
            Form1-Gd-1, 
            Grid, 
            COL 1,71, 
-           LINE 32,93,
+           LINE 34,93,
            LINES 17,73 ,
            SIZE 144,71 ,
            ADJUSTABLE-COLUMNS,
@@ -3338,7 +3341,7 @@
            pb-aggiungi, 
            Push-Button, 
            COL 146,71, 
-           LINE 32,60,
+           LINE 34,60,
            LINES 40,00 ,
            SIZE 40,00 ,
            BITMAP-HANDLE AGGIUNGI-BMP,
@@ -3360,7 +3363,7 @@
            pb-elimina, 
            Push-Button, 
            COL 146,71, 
-           LINE 35,60,
+           LINE 37,60,
            LINES 40,00 ,
            SIZE 40,00 ,
            BITMAP-HANDLE ELIMINA-BMP,
@@ -3889,7 +3892,7 @@
            pb-cambia, 
            Push-Button, 
            COL 146,71, 
-           LINE 38,60,
+           LINE 40,60,
            LINES 3,13 ,
            SIZE 6,86 ,
            BITMAP-HANDLE cambia-bmp,
@@ -4296,6 +4299,40 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Contrassegno",
+           .
+
+      * PUSH BUTTON
+       05
+           pb-forza, 
+           Push-Button, 
+           COL 1,71, 
+           LINE 32,67,
+           LINES 1,80 ,
+           SIZE 14,00 ,
+           ENABLED MOD,
+           EXCEPTION-VALUE 1004,
+           ID IS 32,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Forza &volantino",
+           .
+
+      * LABEL
+       05
+           lab-forzato, 
+           Label, 
+           COL 16,71, 
+           LINE 32,67,
+           LINES 1,80 ,
+           SIZE 69,00 ,
+           COLOR IS 5,
+           FONT IS Small-Font,
+           ID IS 90,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-forzato-buf,
+           VISIBLE v-blister,
            .
 
       * TOOLBAR
@@ -15125,7 +15162,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 50,27,
+              LINES 52,27,
               SIZE 153,43,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -15274,6 +15311,8 @@
                  PERFORM pb-elimina-LinkTo
               WHEN Key-Status = 1002
                  PERFORM pb-cambia-LinkTo
+              WHEN Key-Status = 1004
+                 PERFORM pb-forza-LinkTo
               WHEN Key-Status = 2
                  PERFORM NUOVO-LinkTo
               WHEN Key-Status = 4
@@ -18147,8 +18186,7 @@ LABLAB          end-if
 
        CERCA-PROMO-LISTINO.
       * <TOTEM:PARA. CERCA-PROMO-LISTINO>
-
-
+
            move col-art to art-codice.
            move ef-des-buf to emto-prg-destino.
            set trovato      to false.
@@ -22801,6 +22839,84 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
            .
       * <TOTEM:END>
 
+       pb-forza-LinkTo.
+      * <TOTEM:PARA. pb-forza-LinkTo>
+           set trovato to false.
+           move low-value to tpr-rec.
+           move cli-gdo     to tpr-gdo.
+           move ef-data-buf to como-data.
+           perform DATE-TO-FILE.
+           add 1 to como-data.
+           move como-data   to tpr-ini-dpo.
+           start tpromo key >= tpr-chiave-ricerca
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tpromo next at end  exit perform end-read
+                    if tpr-gdo not = cli-gdo exit perform end-if
+                    if not trovato
+                       perform APRI-TMP-PROMO-PRZ
+                       set trovato to true
+                    end-if
+                    move tpr-codice      to tprz-codice
+                    move cli-gdo         to tprz-gdo
+                    move tpr-descrizione to tprz-descr
+                    move tpr-ini-dpo     to tprz-ini-dpo
+                    move tpr-fine-dpo    to tprz-fine-dpo
+                    write tprz-rec invalid continue end-write
+                 end-perform
+                 if tor-prg-destino not = 0
+                    move low-value       to loc-rec
+                    move cli-gdo         to loc-gdo
+                    move cli-codice      to loc-cliente
+                    move tor-prg-destino to loc-destino
+                    move como-data       to loc-ini-dpo
+                    start locali key >= loc-chiave-ricerca
+                          invalid continue
+                      not invalid
+                          perform until 1 = 2
+                             read locali next 
+                                  at end exit perform 
+                             end-read
+                             if loc-gdo     not = cli-gdo    or
+                                loc-cliente not = cli-codice or
+                                loc-destino not = tor-prg-destino
+                                exit perform
+                             end-if
+                             move loc-codice to tpr-codice
+                             if not trovato
+                                perform APRI-TMP-PROMO-PRZ
+                                set trovato to true
+                             end-if
+                             move loc-codice      to tprz-codice
+                             move cli-gdo         to tprz-gdo
+                             move tpr-descrizione to tprz-descr
+                             move loc-ini-dpo     to tprz-ini-dpo
+                             move loc-fine-dpo    to tprz-fine-dpo
+                             write tprz-rec invalid continue end-write
+                          end-perform
+                    end-start      
+                 end-if
+
+                 if trovato
+                    close tmp-promo-prz
+                    move path-tmp-promo-prz to ext-file
+                    move "tmp-promo-prz2"   to como-file
+                    call "zoom-gt"       using como-file, 
+                                               tprz-rec
+                                        giving stato-zoom
+                    end-call
+                    cancel "zoom-gt"
+                    if stato-zoom = 0
+      *                 move tprz-codice to volantino-forzato
+                       move tprz-descr  to lab-forzato-buf
+                       display lab-forzato
+                    end-if
+                    delete file tmp-promo-prz
+                 end-if
+           end-start  
+           .
+      * <TOTEM:END>
 
       *{TOTEM}END
 

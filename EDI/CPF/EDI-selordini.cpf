@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6C1683549-135-2568711752
+PROGRAM_UNIQUE_CODE=TOTEM-7E71C221433-251-405315375
 
 {{@DESCRIPTION:
 
@@ -7161,6 +7161,27 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM659_WK
 
 @}}
+[FDITEM660_WK]
+m_strName=lab-forzato-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM660_WK
+
+@}}
+[FDITEM661_WK]
+m_strName=v-blister
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM661_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -10418,7 +10439,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 20
-   Lines             = 50,27
+   Lines             = 52,27
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -11820,7 +11841,7 @@ Begin Screen Form1
    End
    Begin Grid Form1-Gd-1
       SCREEN-COL        = 1,71
-      SCREEN-LINE       = 32,93
+      SCREEN-LINE       = 34,93
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Gd-1
@@ -11899,7 +11920,7 @@ Begin Screen Form1
       ID                = 2000
       ID Variable       = AUTO-ID
       Last Row          = 0
-      Line              = 32,93
+      Line              = 34,93
       Lines             = 17,73
       Lines Unit        = Default
       No Tab            = FALSE
@@ -11932,7 +11953,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-aggiungi
       SCREEN-COL        = 146,71
-      SCREEN-LINE       = 32,60
+      SCREEN-LINE       = 34,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-aggiungi
@@ -11957,7 +11978,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 4
-      Line              = 32,60
+      Line              = 34,60
       Lines             = 2,63
       Lines in Pixels   = 40
       Lines Unit        = Default
@@ -11980,7 +12001,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-elimina
       SCREEN-COL        = 146,71
-      SCREEN-LINE       = 35,60
+      SCREEN-LINE       = 37,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-elimina
@@ -12005,7 +12026,7 @@ Begin Screen Form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 5
-      Line              = 35,60
+      Line              = 37,60
       Lines             = 2,63
       Lines in Pixels   = 40
       Lines Unit        = Default
@@ -13135,7 +13156,7 @@ Begin Screen Form1
    End
    Begin Push-Button pb-cambia
       SCREEN-COL        = 146,71
-      SCREEN-LINE       = 38,60
+      SCREEN-LINE       = 40,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-cambia
@@ -13160,7 +13181,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 6
-      Line              = 38,60
+      Line              = 40,60
       Lines             = 3,13
       Lines in Pixels   = 40
       Lines Unit        = Default
@@ -14069,6 +14090,83 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
    End
+   Begin Push-Button pb-forza
+      SCREEN-COL        = 1,71
+      SCREEN-LINE       = 32,67
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = pb-forza
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Column            = 1,71
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = MOD
+      Exception Value   = 1004
+      Flat              = FALSE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 32
+      Line              = 32,67
+      Lines             = 1,80
+      Lines Unit        = Default
+      No Auto Default   = FALSE
+      No Tab            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 14,00
+      Size Unit         = Default
+      Style             = Other
+      Tab Order         = 87
+      Termination Value = 0
+      Title             = "Forza &volantino"
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Link To           = pb-forza-LinkTo
+   End
+   Begin Label lab-forzato
+      SCREEN-COL        = 16,71
+      SCREEN-LINE       = 32,67
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-forzato
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 16,71
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 90
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 32,67
+      Lines             = 1,80
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 69,00
+      Size Unit         = Default
+      Tab Order         = 88
+      Title Picture     = X(50)
+      Title Variable    = lab-forzato-buf
+      Transparent       = TRUE
+      Visible           = NONE
+      Visible Variable  = v-blister
+      Width in Cells    = TRUE
+   End
    Begin Toolbar Form1-Tb-1
       SCREEN-LINE       = 1,00
       LOCK-CONTROL      = TRUE
@@ -14080,7 +14178,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 3,07
-      Tab Order         = 87
+      Tab Order         = 89
       Begin Push-Button TOOL-ESCIa
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,00
@@ -21833,6 +21931,86 @@ BEGIN-TEXT
            move 0 to StatusHelp.
            perform STATUS-HELP.
            perform CONTROLLO.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-forza-LinkTo
+BEGIN-TEXT
+           set trovato to false.
+           move low-value to tpr-rec.
+           move cli-gdo     to tpr-gdo.
+           move ef-data-buf to como-data.
+           perform DATE-TO-FILE.
+           add 1 to como-data.
+           move como-data   to tpr-ini-dpo.
+           start tpromo key >= tpr-chiave-ricerca
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read tpromo next at end  exit perform end-read
+                    if tpr-gdo not = cli-gdo exit perform end-if
+                    if not trovato
+                       perform APRI-TMP-PROMO-PRZ
+                       set trovato to true
+                    end-if
+                    move tpr-codice      to tprz-codice
+                    move cli-gdo         to tprz-gdo
+                    move tpr-descrizione to tprz-descr
+                    move tpr-ini-dpo     to tprz-ini-dpo
+                    move tpr-fine-dpo    to tprz-fine-dpo
+                    write tprz-rec invalid continue end-write
+                 end-perform
+                 if tor-prg-destino not = 0
+                    move low-value       to loc-rec
+                    move cli-gdo         to loc-gdo
+                    move cli-codice      to loc-cliente
+                    move tor-prg-destino to loc-destino
+                    move como-data       to loc-ini-dpo
+                    start locali key >= loc-chiave-ricerca
+                          invalid continue
+                      not invalid
+                          perform until 1 = 2
+                             read locali next 
+                                  at end exit perform 
+                             end-read
+                             if loc-gdo     not = cli-gdo    or
+                                loc-cliente not = cli-codice or
+                                loc-destino not = tor-prg-destino
+                                exit perform
+                             end-if
+                             move loc-codice to tpr-codice
+                             if not trovato
+                                perform APRI-TMP-PROMO-PRZ
+                                set trovato to true
+                             end-if
+                             move loc-codice      to tprz-codice
+                             move cli-gdo         to tprz-gdo
+                             move tpr-descrizione to tprz-descr
+                             move loc-ini-dpo     to tprz-ini-dpo
+                             move loc-fine-dpo    to tprz-fine-dpo
+                             write tprz-rec invalid continue end-write
+                          end-perform
+                    end-start      
+                 end-if
+
+                 if trovato
+                    close tmp-promo-prz
+                    move path-tmp-promo-prz to ext-file
+                    move "tmp-promo-prz2"   to como-file
+                    call "zoom-gt"       using como-file, 
+                                               tprz-rec
+                                        giving stato-zoom
+                    end-call
+                    cancel "zoom-gt"
+                    if stato-zoom = 0
+      *                 move tprz-codice to volantino-forzato
+                       move tprz-descr  to lab-forzato-buf
+                       display lab-forzato
+                    end-if
+                    delete file tmp-promo-prz
+                 end-if
+           end-start. 
 END-TEXT
 END-DATA
 
