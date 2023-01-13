@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 gennaio 2023 23:31:24.
+       DATE-WRITTEN.        venerdì 13 gennaio 2023 10:06:52.
        REMARKS.
       *{TOTEM}END
 
@@ -183,6 +183,7 @@
        77 data-evadi-dal-old           PIC  9(8)
                   VALUE IS 0.
        77 mult PIC  9v99.
+       77 promo-forzata    PIC  9(15).
        77 tot-righe-edi    PIC  9(10).
        77 tot-doc          PIC  9(10)v99.
        77 riga-edi         PIC  9(10).
@@ -798,6 +799,8 @@
        77 lab-forzato-buf  PIC  X(50).
        77 v-blister        PIC  9
                   VALUE IS 1.
+       77 v-forza          PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -4315,6 +4318,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Forza &volantino",
+           VISIBLE v-forza,
            .
 
       * LABEL
@@ -15204,9 +15208,15 @@
            perform ABILITAZIONI.
            accept data-oggi from century-date.
 
-           perform CURRENT-RECORD. 
-           
-           
+           perform CURRENT-RECORD.
+           move spaces to lab-forzato-buf.
+           display lab-forzato.
+
+           move 0 to v-forza.
+           if tcl-gdo-si or tcl-gdo-opz
+              move 1 to v-forza
+           end-if.
+           display pb-forza.
 
       *****     
       *****             15 emto-righe       PIC  9.
@@ -20177,7 +20187,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               SiSalvato 
               set NoSalvato to true
               move 78-ID-chk-contrassegno to store-id
-           end-if.
+           end-if.       
          
            set tutto-ok to true.
 
@@ -22911,6 +22921,20 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       *                 move tprz-codice to volantino-forzato
                        move tprz-descr  to lab-forzato-buf
                        display lab-forzato
+
+                       inquire Form1-Gd-1, last-row in tot-righe
+                       perform varying riga from 2 by 1 
+                                 until riga > tot-righe
+                          move tprz-codice to rpr-codice promo-forzata
+                          inquire form1-gd-1(riga, 2), cell-data in 
+           rpr-articolo
+                          read rpromo no lock invalid exit perform 
+           cycle end-read
+                          move rpr-prz-ven to col-prz 
+                          modify form1-gd-1(riga, 9), cell-data col-prz
+                          move riga to event-data-2
+                          perform IMPOSTA-PREZZO
+                       end-perform
                     end-if
                     delete file tmp-promo-prz
                  end-if

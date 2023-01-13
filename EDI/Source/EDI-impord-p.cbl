@@ -1453,6 +1453,9 @@
            accept emto-evadi-dal from century-date.
 
            move ultimo-numero to emto-numero.
+
+           set emto-contrassegno-no to true.
+
            perform until 1 = 2
               add 1 to emto-numero ultimo-numero
               write emto-rec
@@ -3172,6 +3175,7 @@ LABLAB***---
                  end-start
               else
                  move cli-gdo          to loc-gdo
+
                  move cli-codice       to loc-cliente
                  move emto-prg-destino to loc-destino
                  move emto-data-ordine to loc-fine-dpo

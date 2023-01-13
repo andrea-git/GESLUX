@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          stfattplus.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 11 gennaio 2023 12:23:27.
+       DATE-WRITTEN.        venerdì 13 gennaio 2023 12:54:09.
        REMARKS.
       *{TOTEM}END
 
@@ -197,6 +197,7 @@
 
        LINKAGE          SECTION.
       *{TOTEM}LINKAGE
+           COPY  "COMMON-LINKAGE.DEF".
       *{TOTEM}END
 
        SCREEN           SECTION.
@@ -377,6 +378,22 @@
            TITLE "Maggiorazione",
            .
 
+      * LABEL
+       05
+           Screen4-blockpgm-1, 
+           Label, 
+           COL 24,70, 
+           LINE 3,00,
+           LINES 1,33 ,
+           SIZE 2,10 ,
+           ID IS 1,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "BlockPgm",
+           VISIBLE v-custom,
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
@@ -433,7 +450,7 @@
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
-       PROCEDURE        DIVISION.
+       PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE
@@ -1608,6 +1625,13 @@
       * <TOTEM:END>
            DISPLAY Form1 UPON form1-Handle
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
       * <TOTEM:END>
            .
 
@@ -1754,10 +1778,14 @@
        ginqui-Ev-Before-Program.
       * <TOTEM:PARA. ginqui-Ev-Before-Program>
     
+           move LK-BL-PROG-ID    TO COMO-PROG-ID 
            .
       * <TOTEM:END>
        ginqui-Ev-After-Program.
       * <TOTEM:PARA. ginqui-Ev-After-Program>
+           SET LK-BL-CANCELLAZIONE TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM 
            .
       * <TOTEM:END>
        Screen4-Ef-1-BeforeProcedure.
