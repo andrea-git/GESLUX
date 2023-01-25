@@ -15,7 +15,7 @@ LUBEXX     copy "tgrupgdo.sl".
 
            copy "DOCDI.sl".
            copy "CLI.sl".
-           copy "FRN.sl".
+      *     copy "FRN.sl".
            copy "TBLNA.sl". |NAZIONI
            copy "TBLCA.sl". |CATEGORIE
            copy "TBLAG.sl". |AGENTI
@@ -37,7 +37,7 @@ LUBEXX     copy "tgrupgdo.fd".
 
            copy "DOCDI.fd".
            copy "CLI.fd".
-           copy "FRN.fd".
+      *     copy "FRN.fd".
            copy "TBLNA.fd". |NAZIONI
            copy "TBLCA.fd". |CATEGORIE
            copy "TBLAG.fd". |AGENTI
@@ -61,7 +61,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
        77  status-TBLME         pic xx.
        77  status-DOCDI         pic xx.
        77  status-CLI           pic xx.
-       77  status-FRN           pic xx.
+      * 77  status-FRN           pic xx.
        77  status-G2            pic xx.     
        77  status-art           pic xx.    
        77  status-fpgruppics    pic xx.
@@ -103,34 +103,34 @@ LUBEXX 77  status-tgrupgdo      pic xx.
            end-start.
            close clienti. 
 
-           |Elaborazione clienti - FRN
-           open i-o frn.
-           move low-value to record-frn.
-           start frn key >= frn-codice
-                 invalid continue
-             not invalid
-                 perform until 1 = 2
-                    read frn next at end exit perform end-read
-                    delete frn record invalid continue end-delete
-                 end-perform
-           end-start.
-           close frn.
-           open input clienti.
-           move low-value to cli-chiave.
-           set cli-tipo-f to true.
-           start clienti key >= cli-chiave
-                 invalid continue
-             not invalid
-                 perform until 1 = 2
-                    read clienti next at end exit perform end-read
-                    move cli-codice  to G2Agg-codice
-                    set G2Agg-for    to true
-                    set G2Agg-insert to true
-                    call   "g2agg" using G2Agg-linkage
-                    cancel "g2agg"
-                 end-perform
-           end-start.
-           close clienti.        
+      *     |Elaborazione clienti - FRN
+      *     open i-o frn.
+      *     move low-value to record-frn.
+      *     start frn key >= frn-codice
+      *           invalid continue
+      *       not invalid
+      *           perform until 1 = 2
+      *              read frn next at end exit perform end-read
+      *              delete frn record invalid continue end-delete
+      *           end-perform
+      *     end-start.
+      *     close frn.
+      *     open input clienti.
+      *     move low-value to cli-chiave.
+      *     set cli-tipo-f to true.
+      *     start clienti key >= cli-chiave
+      *           invalid continue
+      *       not invalid
+      *           perform until 1 = 2
+      *              read clienti next at end exit perform end-read
+      *              move cli-codice  to G2Agg-codice
+      *              set G2Agg-for    to true
+      *              set G2Agg-insert to true
+      *              call   "g2agg" using G2Agg-linkage
+      *              cancel "g2agg"
+      *           end-perform
+      *     end-start.
+      *     close clienti.        
 
            |Elaborazione articoli - ART
            open i-o art.
