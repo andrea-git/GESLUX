@@ -13,7 +13,6 @@
 LUBEXX     copy "tgrupgdo.sl".                           
            copy "articoli.sl".
 
-           copy "DOCDI.sl".
            copy "CLI.sl".
            copy "FRN.sl".
            copy "TBLNA.sl". |NAZIONI
@@ -35,7 +34,6 @@ LUBEXX     copy "tgrupgdo.sl".
 LUBEXX     copy "tgrupgdo.fd".                           
            copy "articoli.fd".
 
-           copy "DOCDI.fd".
            copy "CLI.fd".
            copy "FRN.fd".
            copy "TBLNA.fd". |NAZIONI
@@ -59,7 +57,6 @@ LUBEXX 77  status-tgrupgdo      pic xx.
        77  status-TBLAG         pic xx.
        77  status-TBLCA         pic xx.
        77  status-TBLME         pic xx.
-       77  status-DOCDI         pic xx.
        77  status-CLI           pic xx.
        77  status-FRN           pic xx.
        77  status-G2            pic xx.     

@@ -20,6 +20,7 @@
            copy "TBLCA.sl".
            copy "TBLAG.sl".
            copy "TBLTR.sl".
+           copy "TBLPA.sl".
            copy "TBLPC.sl". 
            copy "TBLVA.sl".
            copy "TBLME.sl".
