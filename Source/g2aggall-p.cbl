@@ -102,7 +102,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
        MAIN.             
            if chk-cli = 1 or chk-tut = 1
               move 0 to counter counter-2
-              display "ELABOTAZIONE CLIENTI - CLI" 
+              display "ELABORAZIONE CLIENTI - CLI" 
                   upon form1-handle 
                   line 20,00 
                    col  2,00
@@ -150,7 +150,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                                            
            if chk-frn = 1 or chk-tut = 1
               move 0 to counter counter-2
-              display "ELABOTAZIONE FORNITORI - FRN" 
+              display "ELABORAZIONE FORNITORI - FRN" 
                   upon form1-handle 
                   line 20,00 
                    col  2,00
@@ -197,7 +197,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                                                               
            if chk-art = 1 or chk-tut = 1
               move 0 to counter counter-2
-              display "ELABOTAZIONE ARTICOLI - ART"
+              display "ELABORAZIONE ARTICOLI - ART"
                   upon form1-handle 
                   line 20,00 
                    col  2,00
@@ -244,7 +244,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                                                               
            if chk-naz = 1 or chk-tut = 1
               move 0 to counter counter-2
-              display "ELABOTAZIONE NAZIONI - TBLNA"
+              display "ELABORAZIONE NAZIONI - TBLNA"
                   upon form1-handle 
                   line 20,00 
                    col  2,00
@@ -271,7 +271,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                     perform until 1 = 2
                        read tnazioni next at end exit perform end-read  
                        add 1 to counter counter-2
-                       if counter-2 = 100
+                       if counter-2 = 10
                           move 0 to counter-2
                           move counter to counter-edit
                           display counter-edit upon form1-handle 
@@ -294,7 +294,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                                  
            if chk-age = 1 or chk-tut = 1
               move 0 to counter counter-2
-              display "ELABOTAZIONE AGENTI - TBLAG"
+              display "ELABORAZIONE AGENTI - TBLAG"
                   upon form1-handle 
                   line 20,00 
                    col  2,00
@@ -321,16 +321,16 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                     perform until 1 = 2
                        read agenti next at end exit perform end-read 
                        add 1 to counter counter-2
-                       if counter-2 = 100
+                       if counter-2 = 10
                           move 0 to counter-2
                           move counter to counter-edit
                           display counter-edit upon form1-handle 
                                                line 20,50
                                                 col 26,00
                        end-if
-                       move naz-codice  to G2Agg-agente
+                       move age-codice  to G2Agg-agente
                        set G2Agg-insert to true
-                       set g2AGG-naz    to true
+                       set g2AGG-age    to true
                        call   "G2Agg" using G2Agg-linkage
                        cancel "G2Agg"
                     end-perform
@@ -343,7 +343,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                               
            if chk-tip = 1 or chk-tut = 1
               move 0 to counter counter-2
-              display "ELABOTAZIONE TIPOLOGIE - TBLCA"
+              display "ELABORAZIONE TIPOLOGIE - TBLCA"
                   upon form1-handle 
                   line 20,00 
                    col  2,00
@@ -370,7 +370,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                     perform until 1 = 2
                        read ttipocli next at end exit perform end-read 
                        add 1 to counter counter-2
-                       if counter-2 = 100
+                       if counter-2 = 10
                           move 0 to counter-2
                           move counter to counter-edit
                           display counter-edit upon form1-handle 
@@ -392,7 +392,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
            
            if chk-gdo = 1 or chk-tut = 1
               move 0 to counter counter-2
-              display "ELABOTAZIONE GDO - FPGRUPPICS"
+              display "ELABORAZIONE GDO - FPGRUPPICS"
                   upon form1-handle 
                   line 20,00 
                    col  2,00
@@ -435,7 +435,7 @@ LUBEXX 77  status-tgrupgdo      pic xx.
                        read tgrupgdo next at end exit perform end-read 
                        if gdo-codice-G2 = spaces  
                           add 1 to counter counter-2
-                          if counter-2 = 100
+                          if counter-2 = 10
                              move 0 to counter-2
                              move counter to counter-edit
                              display counter-edit upon form1-handle 
