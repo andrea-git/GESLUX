@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E71D73740-589-2413323950
+PROGRAM_UNIQUE_CODE=TOTEM-7E724132420-882-1266825541
 
 {{@DESCRIPTION:
 
@@ -15877,6 +15877,7 @@ BEGIN-TEXT
            accept data-oggi from century-date.
 
            perform CURRENT-RECORD.
+           move 0 to promo-forzata.
            move spaces to lab-forzato-buf.
            display lab-forzato.
 
@@ -19446,6 +19447,9 @@ PATCH       bitmap-number = BitmapNumSave.
               move col-qta-GESLUX to emro-qta-GESLUX
               move col-qta        to emro-qta
               move col-prz-EDI    to emro-prz-EDI
+              if promo-forzata > 0
+                 move promo-forzata to emro-promo
+              end-if
               move col-prz-GESLUX to emro-prz-GESLUX
               move col-prz        to emro-prz
               move col-evadi-dal  to como-data
@@ -22035,11 +22039,11 @@ BEGIN-TEXT
       *                 move tprz-codice to volantino-forzato
                        move tprz-descr  to lab-forzato-buf
                        display lab-forzato
-
+                                                                      
+                       move tprz-codice to rpr-codice promo-forzata
                        inquire Form1-Gd-1, last-row in tot-righe
                        perform varying riga from 2 by 1 
-                                 until riga > tot-righe
-                          move tprz-codice to rpr-codice promo-forzata
+                                 until riga > tot-righe               
                           inquire form1-gd-1(riga, 2), cell-data in rpr-articolo
                           read rpromo no lock invalid exit perform cycle end-read
                           move rpr-prz-ven to col-prz 

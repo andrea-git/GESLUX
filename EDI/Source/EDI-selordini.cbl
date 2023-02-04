@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 gennaio 2023 10:06:52.
+       DATE-WRITTEN.        sabato 4 febbraio 2023 14:32:52.
        REMARKS.
       *{TOTEM}END
 
@@ -15209,6 +15209,7 @@
            accept data-oggi from century-date.
 
            perform CURRENT-RECORD.
+           move 0 to promo-forzata.
            move spaces to lab-forzato-buf.
            display lab-forzato.
 
@@ -20437,6 +20438,9 @@ PATCH       bitmap-number = BitmapNumSave.
               move col-qta-GESLUX to emro-qta-GESLUX
               move col-qta        to emro-qta
               move col-prz-EDI    to emro-prz-EDI
+              if promo-forzata > 0
+                 move promo-forzata to emro-promo
+              end-if
               move col-prz-GESLUX to emro-prz-GESLUX
               move col-prz        to emro-prz
               move col-evadi-dal  to como-data
@@ -22921,11 +22925,11 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       *                 move tprz-codice to volantino-forzato
                        move tprz-descr  to lab-forzato-buf
                        display lab-forzato
-
+                                                                      
+                       move tprz-codice to rpr-codice promo-forzata
                        inquire Form1-Gd-1, last-row in tot-righe
                        perform varying riga from 2 by 1 
-                                 until riga > tot-righe
-                          move tprz-codice to rpr-codice promo-forzata
+                                 until riga > tot-righe               
                           inquire form1-gd-1(riga, 2), cell-data in 
            rpr-articolo
                           read rpromo no lock invalid exit perform 
