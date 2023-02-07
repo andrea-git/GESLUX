@@ -1130,10 +1130,25 @@ LUBEXX     end-if.
 
       *    ** VALORIZZAZIONE DEFAULT SE NUOVO **
            if G2Agg-insert
+
+              if cli-prov not = "EE"
+                 move "0311" to cli-codice-pc
+              else           
+                 move "0312" to cli-codice-pc
+                 move cli-nazione to naz-codice
+                 read tnazioni no lock
+                      invalid continue
+                  not invalid
+                       if naz-extra-ue-si 
+                          move "0313" to cli-codice-pc
+                       end-if
+                 end-read
+              end-if
+
               |Richiesta in data 28/02/06 di Trivella.
               |I mastri sono già stati decisi!!!
       *****        move docdi-tblpc-cli       to cli-codice-pc
-              move "0313"                to cli-codice-pc
+      *****        move "0313"                to cli-codice-pc
               move docdi-tblce-cli       to cli-codice-ce
               move "S"                   to cli-partite  
               move "S"                   to cli-scadenze
