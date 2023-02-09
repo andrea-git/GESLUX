@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 4 febbraio 2023 14:32:52.
+       DATE-WRITTEN.        giovedì 9 febbraio 2023 12:18:08.
        REMARKS.
       *{TOTEM}END
 
@@ -185,6 +185,7 @@
        77 mult PIC  9v99.
        77 promo-forzata    PIC  9(15).
        77 tot-righe-edi    PIC  9(10).
+       77 old-des          PIC  9(5).
        77 tot-doc          PIC  9(10)v99.
        77 riga-edi         PIC  9(10).
        77 old-des-cap      PIC  x(5).
@@ -18706,6 +18707,22 @@ LABLAB          end-if
                    if des-prog = 0
                       move cli-nazione to des-nazione
                       move cli-utf to des-deposito-utf
+                   else               
+                      if des-prog not = old-des
+                         move des-prov to ef-prov-d-buf
+                         display ef-prov-d
+                         move des-cap to ef-cap-d-buf
+                         display ef-cap-d
+                      else
+                         if ef-prov-d-buf = spaces
+                            move des-prov to ef-prov-d-buf
+                            display ef-prov-d
+                         end-if
+                         if ef-cap-d-buf = spaces
+                            move des-cap  to ef-cap-d-buf
+                            display ef-cap-d 
+                         end-if
+                      end-if
                    end-if
                 end-if
 
@@ -21406,7 +21423,8 @@ LUBEXX                      read clienti no lock invalid continue
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            move 1 to StatusHelp.
-           perform STATUS-HELP 
+           perform STATUS-HELP.
+           inquire ef-des, value in old-des 
            .
       * <TOTEM:END>
        Screen2-DaEf-3-AfterProcedure.
