@@ -12,4 +12,7 @@
            tmo-destino, tmo-data-movim
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS k-data = tmo-data-movim, tmo-numero
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS tmo-k-bolla = tmo-data-doc, 
+           tmo-numdoc-clifor, tmo-chiave
            WITH DUPLICATES .

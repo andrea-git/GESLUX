@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          ricaltras.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:18:17.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 13 febbraio 2023 22:52:28.
        REMARKS.
       *{TOTEM}END
 
@@ -43,9 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -116,19 +114,20 @@
        77 toolbar-bmp      PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
-       77 link-user        PIC  x(20).
        77 STATUS-tvettori  PIC  X(2).
            88 Valid-STATUS-tvettori VALUE IS "00" THRU "09". 
        77 ef-vet-buf       PIC  z(5).
        77 lab-vet-buf      PIC  X(50)
                   VALUE IS "<<HELP>> 0 = Tutti i vettori".
+       77 chk-completo-buf PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
       ***********************************************************
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tvettori-BUF     PIC X(1787).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -142,6 +141,13 @@
 
        77 tvettori-k-des-SPLITBUF  PIC X(41).
 
+       77  tot-mov-from-tras      pic 9(5).
+       77  ult-num-mov            pic 9(8).
+       77  link-user              pic x(20).
+       77  link-result            pic 9.
+       77  scr-oper-handle        handle of window.
+       77  caltras-data-from      pic 9(8).
+       77  caltras-data-to        pic 9(8).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -171,13 +177,11 @@
            Frame, 
            COL 1,50, 
            LINE 1,17,
-           LINES 6,33 ,
+           LINES 9,72 ,
            SIZE 46,00 ,
-           RAISED,
            ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            TITLE "Selezione limiti",
            TITLE-POSITION 2,
            .
@@ -245,6 +249,23 @@
            BEFORE PROCEDURE Screen4-Ef-2-BeforeProcedure, 
            .
 
+      * CHECK BOX
+       05
+           chk-completo, 
+           Check-Box, 
+           COL 5,00, 
+           LINE 7,89,
+           LINES 1,00 ,
+           SIZE 2,00 ,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 2,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-completo-buf,
+           AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
+           BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
+           .
       * LABEL
        05
            Screen3-La-1a, 
@@ -350,12 +371,28 @@
            TITLE lab-vet-buf,
            .
 
+      * LABEL
+       05
+           Screen4-La-1a, 
+           Label, 
+           COL 8,50, 
+           LINE 7,34,
+           LINES 2,06 ,
+           SIZE 32,50 ,
+           ID IS 208,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Ricalcolo completo importi (da movimenti di con dati b
+      -    "olla)",
+           .
+
       * FRAME
        05
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 7,72,
+           LINE 11,06,
            LINES 2,78 ,
            SIZE 47,20 ,
            LOWERED,
@@ -369,7 +406,7 @@
            pb-ok, 
            Push-Button, 
            COL 32,30, 
-           LINE 8,41,
+           LINE 11,75,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -388,7 +425,7 @@
            pb-annulla, 
            Push-Button, 
            COL 40,10, 
-           LINE 8,41,
+           LINE 11,75,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -848,7 +885,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 9,50,
+              LINES 12,83,
               SIZE 47,20,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -1216,6 +1253,7 @@
                                          vet-codice
                                          link-user
                                          form1-handle
+                                         chk-completo-buf
               cancel "ricaltras-p"
               
               modify form1-handle, visible = 1
@@ -1258,6 +1296,16 @@
            move 0 to e-cerca.
            modify tool-cerca, enabled e-cerca.
            perform CONTROLLO 
+           .
+      * <TOTEM:END>
+       Screen4-Cb-1-BeforeProcedure.
+      * <TOTEM:PARA. Screen4-Cb-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       Screen4-Cb-1-AfterProcedure.
+      * <TOTEM:PARA. Screen4-Cb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 

@@ -109,20 +109,29 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
            88   50-kg            value 4.
            88  100-kg            value 5.
 
+       77  nargs                 pic 9(3) comp-1.
+       01  filler                pic 9 value 0.
+         88 ricalcolo                  value 1, false 0.
+
        LINKAGE SECTION.
        77  tot-mov-from-tras      pic 9(5).
        77  ult-num-mov            pic 9(8).
        77  link-user              pic x(20).
        77  link-result            pic 9.
        77  scr-oper-handle        handle of window.
+       77  caltras-data-from      pic 9(8).
+       77  caltras-data-to        pic 9(8).
+       77  link-vettore           pic 9(5).
 
       ******************************************************************
        PROCEDURE DIVISION using tot-mov-from-tras
                                 ult-num-mov
                                 link-user
                                 link-result
-                                scr-oper-handle.
-
+                                scr-oper-handle
+                                caltras-data-from
+                                caltras-data-to
+                                link-vettore.
        DECLARATIVES.
 
       ***---
@@ -461,6 +470,11 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
 
       ***---
        INIT.
+           call "c$narg" using nargs.
+           if nargs > 5
+              set ricalcolo to true
+           end-if.
+           
            move 0 to counter counter2.
            move 0 to tot-mov-from-tras
                      ult-num-mov.
@@ -506,6 +520,7 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
       ***---
        LEGGI-PARAMETRI.
            move esercizio to tra-anno.
+           if ricalcolo exit paragraph end-if.
            read tmovtrat no lock 
                 invalid 
                 display message 
@@ -520,45 +535,74 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
 
       ***---
        ELABORAZIONE.
-           move tra-anno         to tmo-anno.
-           move tra-ult-mov-tras to tmo-numero.
-           start tmovmag key is >= tmo-chiave
-                 invalid
-                 set errori to true
-           end-start.
+           if ricalcolo                   
+              move low-value to tmo-rec 
+              move caltras-data-from to tmo-data-doc
+              start tmovmag key is >= tmo-k-bolla
+                    invalid
+                    set errori to true
+              end-start
+           else
+              move tra-anno         to tmo-anno
+              move tra-ult-mov-tras to tmo-numero
+              start tmovmag key is >= tmo-chiave
+                    invalid
+                    set errori to true
+              end-start
+           end-if.
 
            if tutto-ok
 
+              if not ricalcolo
               |RIPULISCO LA SCREEN DAL CONTATORE
-              display "                          "
-                 upon scr-oper-handle at column 34
-                                           line 25
-              display "                          "
-                 upon scr-oper-handle at column 30
-                                           line 26
+                 display "                          "
+                    upon scr-oper-handle at column 34
+                                              line 25
+                 display "                          "
+                    upon scr-oper-handle at column 30
+                                              line 26
               ||||||||
+              end-if
 
               perform until 1 = 2
                  set record-ok to false
                  read tmovmag next no lock at end exit perform end-read
+
+                 if ricalcolo
+                    if tmo-data-doc > caltras-data-to
+                       exit perform
+                    end-if      
                  
-                 if tmo-anno not = esercizio 
-                    exit perform 
+                    if link-vettore not = 0 and
+                       link-vettore not = tmo-vettore
+                       exit perform cycle
+                    end-if
+
+                 else
+                    if tmo-anno not = esercizio 
+                       exit perform 
+                    end-if
                  end-if
 
                  add 1 to counter
                  add 1 to counter2
                  if counter2 = 100
                     move counter to counter-edit
-                    display counter-edit
-                       upon scr-oper-handle at column 34
+                    if ricalcolo
+                       display counter-edit 
+                          upon scr-oper-handle column 22,00 line 12,00
+                    else
+                       display counter-edit
+                          upon scr-oper-handle at column 34
                                                  line 25
-                    move 0 to counter2
-                    if counter = 100
-                       display " CALTRAS COUNTER" 
-                          upon scr-oper-handle at column 30
-                                                    line 26
+                       if counter = 100
+                          display " CALTRAS COUNTER" 
+                             upon scr-oper-handle at column 30
+                                                       line 26
+                       end-if
                     end-if
+                    move 0 to counter2
+                    
                  end-if
                  if tmo-cliente
                     |CONSIDERO SOLAMENTE I MOVIMENTI GIA' BOLLETTATI
@@ -606,14 +650,16 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
               if not trovato
                  move 0 to link-result
               else
-                 move 1 to link-result
-                 |SCRITTURA FILE TMOVTRAT!!!
+                 move 1 to link-result      
                  set  tutto-ok to true
-                 read tmovtrat lock invalid continue end-read
-                 if not RecLocked
-                    move ult-num-mov to tra-ult-mov-tras
-                    rewrite tra-rec invalid continue end-rewrite
-                    unlock tmovtrat all record
+                 if not ricalcolo
+                    |SCRITTURA FILE TMOVTRAT!!!
+                    read tmovtrat lock invalid continue end-read
+                    if not RecLocked
+                       move ult-num-mov to tra-ult-mov-tras
+                       rewrite tra-rec invalid continue end-rewrite
+                       unlock tmovtrat all record
+                    end-if
                  end-if
               end-if
            

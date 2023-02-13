@@ -48,8 +48,15 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
            88 RecLocked          value 1, false 0.
        77  filler                pic 9.
            88 trovato            value 1, false 0.
-       77  filler                pic 9.
-           88 record-ok          value 1, false 0.
+
+       77  tot-mov-from-tras     pic 9(5)  value 0.
+       77  ult-num-mov           pic 9(8)  value 0.
+       77  link-result           pic 9     value 0.   
+       77  num-rec               pic 9(18) value 0.
+
+       77  tot-trs-qta-kg        pic 9(15)v999 value 0.
+       77  tot-trs-qta-arrot     pic 9(15)v999 value 0.
+       77  tot-trs-tariffa       pic 9(15)v99  value 0.
 
        LINKAGE SECTION.
        77  como-data-from        pic 9(8).
@@ -57,14 +64,15 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
        77  link-vettore          pic 9(5).
        77  link-user             pic x(20).
        77  link-handle           handle of window.
+       77  link-completo         pic 9.
 
       ******************************************************************
        PROCEDURE DIVISION using como-data-from 
                                 como-data-to   
                                 link-vettore
                                 link-user      
-                                link-handle.
-                                
+                                link-handle
+                                link-completo.
 
        DECLARATIVES.
       ***---
@@ -203,19 +211,31 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
       ***---
        ELABORAZIONE.
            move low-value      to trs-rec.
-           move como-data-from to trs-data-fattura.
-           start trasporti key >= k-data-fattura
-                 invalid set errori to true
-           end-start.
+           if link-completo = 1
+              move como-data-from to trs-data-bolla
+              start trasporti key >= k-data-bolla
+                    invalid set errori to true
+              end-start
+           else
+              move como-data-from to trs-data-fattura
+              start trasporti key >= k-data-fattura
+                    invalid set errori to true
+              end-start
+           end-if.
       
            if tutto-ok
 
-              perform until 1 = 2
-                 set record-ok to false
+              perform until 1 = 2      
                  read trasporti next at end exit perform end-read
 
-                 if trs-data-fattura > como-data-to
-                    exit perform
+                 if link-completo = 1
+                    if trs-data-bolla > como-data-to
+                       exit perform
+                    end-if
+                 else
+                    if trs-data-fattura > como-data-to
+                       exit perform
+                    end-if
                  end-if
 
                  add 1 to counter
@@ -223,22 +243,25 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                  if counter2 = 200
                     move counter to counter-edit
                     display counter-edit 
-                       upon link-handle at column 22,00 line 09,00
+                       upon link-handle at column 22,00 line 12,00
                     move 0 to counter2
                  end-if
-                 set record-ok to false
-
-                 if trs-vettore not = 0
-                    if trs-vettore = link-vettore
-                       set record-ok to true
-                    else
-                       if link-vettore = 0
-                          set record-ok to true
-                       end-if
-                    end-if
+                 
+                 if link-vettore not = 0 and
+                    link-vettore not = trs-vettore
+                    exit perform cycle
                  end-if
 
-                 if record-ok
+                 if link-completo = 1
+                    add 1 to num-rec
+
+                    add trs-qta-kg    to tot-trs-qta-kg   
+                    add trs-qta-arrot to tot-trs-qta-arrot
+                    add trs-tariffa   to tot-trs-tariffa  
+                    delete trasporti record 
+                           invalid continue 
+                    end-delete
+                 else
                     move trs-vettore to vet-codice
                     read tvettori no lock 
                          invalid 
@@ -252,13 +275,63 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                          add 1 to num-rec-ok
                     end-read
                  end-if
+                 
+              end-perform                                    
+              display message "RECORD CANCELLATI: " num-rec
+                       x"0d0a""QTA KG: "    tot-trs-qta-kg   
+                       x"0d0a""QTA ARROT: " tot-trs-qta-arrot
+                       x"0d0a""TARIFFA: "   tot-trs-tariffa  
+              if link-completo = 1     
+                 close      trasporti
+                 open input trasporti
+                 call   "caltras" using tot-mov-from-tras
+                                        ult-num-mov
+                                        link-user
+                                        link-result
+                                        link-handle
+                                        como-data-from
+                                        como-data-to
+                                        link-vettore
+                 cancel "caltras"
+                 move tot-mov-from-tras to num-rec-ok   
+                 display message "RECORD DA CALCOLO: " num-rec-ok
+                 move low-value to trs-rec
+                 move como-data-from to trs-data-bolla
+                 start trasporti key >= k-data-bolla
+                       invalid set errori to true
+                 end-start
+                 move 0 to num-rec                        
+                           tot-trs-qta-kg   
+                           tot-trs-qta-arrot
+                           tot-trs-tariffa  
+                 perform until 1 = 2
+                    read trasporti next at end exit perform end-read
+                   
+                    if trs-data-bolla > como-data-to
+                       exit perform
+                    end-if             
+                 
+                    if link-vettore not = 0 and
+                       link-vettore not = trs-vettore
+                       exit perform cycle
+                    end-if
 
-              end-perform
+                    add 1 to num-rec
+                    add trs-qta-kg    to tot-trs-qta-kg   
+                    add trs-qta-arrot to tot-trs-qta-arrot
+                    add trs-tariffa   to tot-trs-tariffa  
+                 end-perform
+                 display message "RECORD RITROVATI: " num-rec  
+                          x"0d0a""QTA KG: "    tot-trs-qta-kg   
+                          x"0d0a""QTA ARROT: " tot-trs-qta-arrot
+                          x"0d0a""TARIFFA: "   tot-trs-tariffa  
+              end-if
+
               if num-rec-ok = 0
                  display message "Nessuna rettifica effettuata!"
                            title titolo
                             icon 2
-              else
+              else                                      
                  if num-rec-ko = 0
                     display message 
                             "Rettificati " num-rec-ok, " trasporti"
@@ -445,5 +518,5 @@ LUBEXX              end-if
       ***---
        EXIT-PGM.
            display "                                                   "
-              upon link-handle at column 22,00 line 10,00.
+              upon link-handle at column 22,00 line 12,00.
            goback.
