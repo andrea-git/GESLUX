@@ -11,6 +11,7 @@
            copy "trasporti.sl".
            copy "tvettori.sl".
            copy "tarifvet.sl".
+           copy "lineseq.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -18,6 +19,7 @@
            copy "trasporti.fd".
            copy "tvettori.fd".
            copy "tarifvet.fd".
+           copy "lineseq.fd".
 
        WORKING-STORAGE SECTION.
       * COPY
@@ -30,6 +32,8 @@
        77  status-trasporti      pic xx.
        77  status-tvettori       pic xx.
        77  status-tarifvet       pic xx.
+       77  status-lineseq        pic xx.
+       77  wstampa               pic x(256).
 
       * VARIABILI
        77  num-rec-ok            pic 9(10) value 0.
@@ -53,10 +57,20 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
        77  ult-num-mov           pic 9(8)  value 0.
        77  link-result           pic 9     value 0.   
        77  num-rec               pic 9(18) value 0.
-
-       77  tot-trs-qta-kg        pic 9(15)v999 value 0.
-       77  tot-trs-qta-arrot     pic 9(15)v999 value 0.
-       77  tot-trs-tariffa       pic 9(15)v99  value 0.
+                 
+       77  tot-trs-qta-kg            pic 9(15)v999 value 0.
+       77  tot-trs-qta-arrot         pic 9(15)v999 value 0.
+       77  tot-trs-tariffa           pic 9(15)v99  value 0.
+       77  tot-trs-qta-kg-SHI        pic 9(15)v999 value 0.
+       77  tot-trs-qta-arrot-SHI     pic 9(15)v999 value 0.
+       77  tot-trs-tariffa-SHI       pic 9(15)v99  value 0.
+       77  tot-trs-qta-kg-GET        pic 9(15)v999 value 0.
+       77  tot-trs-qta-arrot-GET     pic 9(15)v999 value 0.
+       77  tot-trs-tariffa-GET       pic 9(15)v99  value 0.
+                                          
+       77  como-data             pic 9(8).
+       77  como-ora              pic 9(8).
+       77  r-output              pic x(25).
 
        LINKAGE SECTION.
        77  como-data-from        pic 9(8).
@@ -201,8 +215,26 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                          tarifvet
               if errori
                  close trasporti
+              else
+                 if link-completo = 1
+                    accept como-data from century-date
+                    accept como-ora  from time
+                    accept  wstampa from environment "PATH_ST"
+                    inspect wstampa 
+                            replacing trailing spaces by low-value
+                    string wstampa      delimited low-value
+                           "ricaltras_" delimited size
+                           como-data    delimited size
+                           "-"          delimited size
+                           como-ora     delimited size
+                           ".log"       delimited size
+                      into wstampa
+                    end-string
+                    open output lineseq
+                 end-if
               end-if
-           end-if.
+                     
+           end-if   .
 
       ***---
        OPEN-IO-TRASPORTI-LOCK.
@@ -251,37 +283,58 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                     link-vettore not = trs-vettore
                     exit perform cycle
                  end-if
-
-                 if link-completo = 1
-                    add 1 to num-rec
-
-                    add trs-qta-kg    to tot-trs-qta-kg   
-                    add trs-qta-arrot to tot-trs-qta-arrot
-                    add trs-tariffa   to tot-trs-tariffa  
-                    delete trasporti record 
-                           invalid continue 
-                    end-delete
-                 else
-                    move trs-vettore to vet-codice
-                    read tvettori no lock 
-                         invalid 
-                         add 1 to num-rec-ko
-                     not invalid
+                                  
+                 move trs-vettore to vet-codice
+                 read tvettori no lock 
+                      invalid 
+                      add 1 to num-rec-ko
+                  not invalid
+                      if link-completo = 1
+                         add trs-qta-kg        to tot-trs-qta-kg   
+                         add trs-qta-arrot     to tot-trs-qta-arrot
+                         add trs-tariffa       to tot-trs-tariffa  
+                         add trs-qta-kg-SHI    to tot-trs-qta-kg-SHI
+                         add trs-qta-arrot-SHI to tot-trs-qta-arrot-SHI
+                         add trs-tariffa-SHI   to tot-trs-tariffa-SHI
+                         add trs-qta-kg-GET    to tot-trs-qta-kg-GET
+                         add trs-qta-arrot-GET to tot-trs-qta-arrot-GET
+                         add trs-tariffa-GET   to tot-trs-tariffa-GET
+                         delete trasporti record 
+                                invalid continue 
+                            not invalid add 1 to num-rec-ok
+                         end-delete
+                      else
                          perform TROVA-TARIFFA-E-VALORIZZA-CAMPO
                          perform TROVA-TARIFFA-E-VALORIZZA-CAMPO-SHI
                          perform TROVA-TARIFFA-E-VALORIZZA-CAMPO-GET
                          perform VALORIZZA-DATI-COMUNI
                          rewrite trs-rec invalid continue end-rewrite
                          add 1 to num-rec-ok
-                    end-read
-                 end-if
+                      end-if
+                 end-read
                  
-              end-perform                                    
-              display message "RECORD CANCELLATI: " num-rec
-                       x"0d0a""QTA KG: "    tot-trs-qta-kg   
-                       x"0d0a""QTA ARROT: " tot-trs-qta-arrot
-                       x"0d0a""TARIFFA: "   tot-trs-tariffa  
-              if link-completo = 1     
+              end-perform    
+
+              if link-completo = 1                                     
+                                                  
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"                
+                 initialize line-riga
+                 string r-output delimited low-value
+                        "Record cancellati: " num-rec-ok    
+                        " - Qta Kg: " tot-trs-qta-kg   
+                        " - Qta Arrot: " tot-trs-qta-arrot
+                        " - Tariffa: "   tot-trs-tariffa 
+                        " - Qta Kg SHI: " tot-trs-qta-kg-SHI
+                        " - Qta Arrot SHI: " tot-trs-qta-arrot-SHI
+                        " - Tariffa SHI: "   tot-trs-tariffa-SHI
+                        " - Qta Kg GET: " tot-trs-qta-kg-GET
+                        " - Qta Arrot GET: " tot-trs-qta-arrot-GET
+                        " - Tariffa GET: "   tot-trs-tariffa-GET
+                   into line-riga
+                 end-string
+                 write line-riga
+
                  close      trasporti
                  open input trasporti
                  call   "caltras" using tot-mov-from-tras
@@ -293,14 +346,19 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                                         como-data-to
                                         link-vettore
                  cancel "caltras"
-                 move tot-mov-from-tras to num-rec-ok   
-                 display message "RECORD DA CALCOLO: " num-rec-ok
+                 initialize line-riga
+                 string r-output delimited low-value
+                        "Record da calcolo: " 
+                        tot-mov-from-tras
+                   into line-riga
+                 end-string
+                 write line-riga
                  move low-value to trs-rec
                  move como-data-from to trs-data-bolla
                  start trasporti key >= k-data-bolla
                        invalid set errori to true
                  end-start
-                 move 0 to num-rec                        
+                 move 0 to num-rec 
                            tot-trs-qta-kg   
                            tot-trs-qta-arrot
                            tot-trs-tariffa  
@@ -316,15 +374,32 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                        exit perform cycle
                     end-if
 
-                    add 1 to num-rec
-                    add trs-qta-kg    to tot-trs-qta-kg   
-                    add trs-qta-arrot to tot-trs-qta-arrot
-                    add trs-tariffa   to tot-trs-tariffa  
+                    add 1 to num-rec                                   
+                    add trs-qta-kg        to tot-trs-qta-kg   
+                    add trs-qta-arrot     to tot-trs-qta-arrot
+                    add trs-tariffa       to tot-trs-tariffa  
+                    add trs-qta-kg-SHI    to tot-trs-qta-kg-SHI
+                    add trs-qta-arrot-SHI to tot-trs-qta-arrot-SHI
+                    add trs-tariffa-SHI   to tot-trs-tariffa-SHI
+                    add trs-qta-kg-GET    to tot-trs-qta-kg-GET
+                    add trs-qta-arrot-GET to tot-trs-qta-arrot-GET
+                    add trs-tariffa-GET   to tot-trs-tariffa-GET
                  end-perform
-                 display message "RECORD RITROVATI: " num-rec  
-                          x"0d0a""QTA KG: "    tot-trs-qta-kg   
-                          x"0d0a""QTA ARROT: " tot-trs-qta-arrot
-                          x"0d0a""TARIFFA: "   tot-trs-tariffa  
+                 initialize line-riga
+                 string r-output delimited low-value
+                        "Record presenti: " num-rec    
+                        " - Qta Kg: " tot-trs-qta-kg   
+                        " - Qta Arrot: " tot-trs-qta-arrot
+                        " - Tariffa: "   tot-trs-tariffa 
+                        " - Qta Kg SHI: " tot-trs-qta-kg-SHI
+                        " - Qta Arrot SHI: " tot-trs-qta-arrot-SHI
+                        " - Tariffa SHI: "   tot-trs-tariffa-SHI
+                        " - Qta Kg GET: " tot-trs-qta-kg-GET
+                        " - Qta Arrot GET: " tot-trs-qta-arrot-GET
+                        " - Tariffa GET: "   tot-trs-tariffa-GET
+                   into line-riga
+                 end-string
+                 write line-riga
               end-if
 
               if num-rec-ok = 0
@@ -513,10 +588,14 @@ LUBEXX              end-if
        CLOSE-FILES.
            unlock trasporti all records.
            close  trasporti
-                  tarifvet.
+                  tarifvet.   
+           if link-completo = 1
+              close lineseq
+           end-if.
       
       ***---
        EXIT-PGM.
            display "                                                   "
               upon link-handle at column 22,00 line 12,00.
            goback.
+                  

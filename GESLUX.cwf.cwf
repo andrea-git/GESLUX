@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=RELEASE
+CURRENT_CONFIGURATION=Debug Mode
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -53966,7 +53966,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\ricaltras-p.cbl]
-COPY_DEPENDENCE=FD\trasporti.sl;FD\tvettori.sl;FD\tarifvet.sl;FD\trasporti.fd;FD\tvettori.fd;FD\tarifvet.fd;Copylib\link-geslock.def
+COPY_DEPENDENCE=FD\trasporti.sl;FD\tvettori.sl;FD\tarifvet.sl;FD\lineseq.sl;FD\trasporti.fd;FD\tvettori.fd;FD\tarifvet.fd;FD\lineseq.fd;Copylib\link-geslock.def
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
