@@ -1,13 +1,17 @@
 ; CaseMaker Totem Program Structure File, Version 6.1
 ; WARNING: DO NOT MODIFY THIS FILE!
 
+[MONITOR_FILE]
+Adesk-andre=169.254.95.20
+
+
 [PROGRAM_CONTENT]
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E72D205829-356-2431717249
+PROGRAM_UNIQUE_CODE=TOTEM-7E72E131117-225-291117317
 
 {{@DESCRIPTION:
 
@@ -114,7 +118,7 @@ m_bFixed=1
 
 @}}
 [FDITEM9_WK]
-m_strName=ok-73x21-bmp
+m_strName=cancel-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -126,7 +130,7 @@ m_bFixed=1
 
 @}}
 [FDITEM10_WK]
-m_strName=cancel-73x21-bmp
+m_strName=BLUE-FINO-28X24-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -138,7 +142,7 @@ m_bFixed=1
 
 @}}
 [FDITEM11_WK]
-m_strName=BLUE-FINO-28X24-BMP
+m_strName=BLUE-DA-28X24-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -150,11 +154,9 @@ m_bFixed=1
 
 @}}
 [FDITEM12_WK]
-m_strName=BLUE-DA-28X24-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=como-data-to
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -162,7 +164,7 @@ m_bFixed=1
 
 @}}
 [FDITEM13_WK]
-m_strName=como-data-to
+m_strName=como-data-from
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -172,9 +174,8 @@ m_bFixed=1
 
 @}}
 [FDITEM14_WK]
-m_strName=como-data-from
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=Form1-Tb-1-Handlea
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -182,15 +183,6 @@ m_bFixed=1
 
 @}}
 [FDITEM15_WK]
-m_strName=Form1-Tb-1-Handlea
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM15_WK
-
-@}}
-[FDITEM16_WK]
 m_strName=E-CERCA
 m_strRawPic=9
 m_strPic=9
@@ -198,11 +190,21 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM15_WK
+
+@}}
+[FDITEM16_WK]
+m_strName=ef-data-from-buf
+m_strRawPic=99/99/9999
+m_strPic=99/99/9999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM16_WK
 
 @}}
 [FDITEM17_WK]
-m_strName=ef-data-from-buf
+m_strName=ef-data-to-buf
 m_strRawPic=99/99/9999
 m_strPic=99/99/9999
 m_nItemLevel=77
@@ -212,9 +214,11 @@ m_bFixed=1
 
 @}}
 [FDITEM18_WK]
-m_strName=ef-data-to-buf
-m_strRawPic=99/99/9999
-m_strPic=99/99/9999
+m_strName=ESCI-73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -222,7 +226,7 @@ m_bFixed=1
 
 @}}
 [FDITEM19_WK]
-m_strName=ESCI-73X21-BMP
+m_strName=bottone-ok-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -234,7 +238,7 @@ m_bFixed=1
 
 @}}
 [FDITEM20_WK]
-m_strName=bottone-ok-bmp
+m_strName=bottone-cancel-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -246,7 +250,7 @@ m_bFixed=1
 
 @}}
 [FDITEM21_WK]
-m_strName=bottone-cancel-bmp
+m_strName=BOTTONE-EXIT-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -258,11 +262,8 @@ m_bFixed=1
 
 @}}
 [FDITEM22_WK]
-m_strName=BOTTONE-EXIT-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -270,8 +271,8 @@ m_bFixed=1
 
 @}}
 [FDITEM23_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
+m_strName=Screen1-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -279,8 +280,8 @@ m_bFixed=1
 
 @}}
 [FDITEM24_WK]
-m_strName=Screen1-Handle
-m_nUsage=24
+m_strName=Verdana12B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -288,15 +289,6 @@ m_bFixed=1
 
 @}}
 [FDITEM25_WK]
-m_strName=Verdana12B-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM25_WK
-
-@}}
-[FDITEM26_WK]
 m_strName=toolbar-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -305,39 +297,39 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM26_WK
+{{@DataItem_m_strDescriptionFDITEM25_WK
 
 @}}
-[FDITEM27_WK]
+[FDITEM26_WK]
 m_strName=STATUS-tvettori
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM27_WK
+{{@DataItem_m_strDescriptionFDITEM26_WK
 
 @}}
-[FDITEM28_WK]
+[FDITEM27_WK]
 m_strName=Valid-STATUS-tvettori
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM28_WK
+{{@DataItem_m_strDescriptionFDITEM27_WK
 
 @}}
-[FDITEM29_WK]
+[FDITEM28_WK]
 m_strName=ef-vet-buf
 m_strRawPic=z(5)
 m_strPic=z(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM29_WK
+{{@DataItem_m_strDescriptionFDITEM28_WK
 
 @}}
-[FDITEM30_WK]
+[FDITEM29_WK]
 m_strName=lab-vet-buf
 m_strRawPic=X(50)
 m_strPic=X(50)
@@ -345,18 +337,7 @@ m_strDefaultValue="<<HELP>> 0 = Tutti i vettori"
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM30_WK
-
-@}}
-[FDITEM31_WK]
-m_strName=chk-completo-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM31_WK
+{{@DataItem_m_strDescriptionFDITEM29_WK
 
 @}}
 
@@ -560,7 +541,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Screen4
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = FALSE
+   LOCK-CONTROL      = TRUE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -586,7 +567,7 @@ Begin Screen Form1
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 23
-   Lines             = 12,83
+   Lines             = 9,50
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -631,7 +612,7 @@ Begin Screen Form1
       High Color        = 0
       ID                = 9
       Line              = 1,17
-      Lines             = 9,72
+      Lines             = 6,17
       Lines Unit        = Default
       Low Color         = 0
       Size              = 46,00
@@ -812,50 +793,6 @@ Begin Screen Form1
          Before Procedure  = Screen4-Ef-2-BeforeProcedure
          After Procedure   = Screen4-Ef-2-AfterProcedure
       End
-      Begin Check-Box chk-completo
-         SCREEN-COL        = 5,00
-         SCREEN-LINE       = 7,89
-         LOCK-CONTROL      = TRUE
-         LEVEL             = 5
-         (Name)            = chk-completo
-         Bitmap Frame      = FALSE
-         Bitmap Number     = 1
-         Bitmap Square     = TRUE
-         Clines            = 0
-         Clines Unit       = Default
-         Color             = 0
-         Column            = 4,50
-         Copy Resource     = TRUE
-         Csize             = 0
-         Csize Unit        = Default
-         Destroy Type      = Automatic
-         Enable            = NONE
-         Exception Value   = 0
-         Flat              = TRUE
-         Font              = Small Font
-         Font Variable     = Small-Font
-         Height in Cells   = TRUE
-         Help ID           = 0
-         ID                = 2
-         Left Text         = FALSE
-         Line              = 7,72
-         Lines             = 1,00
-         Lines Unit        = Default
-         No Tab            = FALSE
-         Notify            = FALSE
-         Occurs            = 0
-         Self Act          = FALSE
-         Size              = 2,00
-         Size Unit         = Default
-         Tab Order         = 4
-         Termination Value = 0
-         Value             = 0:FALSE
-         Value Variable    = chk-completo-buf
-         Visible           = NONE
-         Width in Cells    = TRUE
-         Before Procedure  = Screen4-Cb-1-BeforeProcedure
-         After Procedure   = Screen4-Cb-1-AfterProcedure
-      End
       Begin Label Screen3-La-1a
          SCREEN-COL        = 21,00
          SCREEN-LINE       = 2,95
@@ -883,7 +820,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 7,00
          Size Unit         = Default
-         Tab Order         = 5
+         Tab Order         = 4
          Title             = "Data"
          Transparent       = TRUE
          Visible           = NONE
@@ -916,7 +853,7 @@ Begin Screen Form1
          Size              = 2,80
          Size in Pixels    = 28
          Size Unit         = Default
-         Tab Order         = 6
+         Tab Order         = 5
          Transparent Color = 0
          Transparent Color Variable = TR-COLOR
          Visible           = NONE
@@ -949,7 +886,7 @@ Begin Screen Form1
          Size              = 2,80
          Size in Pixels    = 28
          Size Unit         = Default
-         Tab Order         = 7
+         Tab Order         = 6
          Transparent Color = 0
          Transparent Color Variable = TR-COLOR
          Visible           = NONE
@@ -984,7 +921,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 1,60
          Size Unit         = Default
-         Tab Order         = 8
+         Tab Order         = 7
          Title             = "BlockPgm"
          Transparent       = TRUE
          Visible           = NONE
@@ -1022,7 +959,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 2,20
          Size Unit         = Default
-         Tab Order         = 9
+         Tab Order         = 8
          Title             = "CUSTOM CONTROL"
          Transparent       = TRUE
          Visible           = NONE
@@ -1056,7 +993,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 6,00
          Size Unit         = Default
-         Tab Order         = 10
+         Tab Order         = 9
          Title             = "Vettore"
          Transparent       = TRUE
          Visible           = NONE
@@ -1089,7 +1026,7 @@ Begin Screen Form1
          Occurs            = 0
          Size              = 30,00
          Size Unit         = Default
-         Tab Order         = 11
+         Tab Order         = 10
          Title             = "<<HELP>> 0 = Tutti i vettori"
          Title Picture     = X(50)
          Title Variable    = lab-vet-buf
@@ -1097,47 +1034,14 @@ Begin Screen Form1
          Visible           = NONE
          Width in Cells    = TRUE
       End
-      Begin Label Screen4-La-1a
-         SCREEN-COL        = 8,50
-         SCREEN-LINE       = 7,34
-         LOCK-CONTROL      = TRUE
-         LEVEL             = 5
-         (Name)            = Screen4-La-1a
-         Clines            = 0
-         Clines Unit       = Default
-         Color             = 0
-         Column            = 8,00
-         Csize             = 0
-         Csize Unit        = Default
-         Destroy Type      = Automatic
-         Enable            = NONE
-         Font              = Default Font
-         Height in Cells   = TRUE
-         Help ID           = 0
-         ID                = 208
-         Justification     = Unaligned
-         Label Offset      = 20
-         Line              = 7,17
-         Lines             = 2,06
-         Lines Unit        = Default
-         No Key Letter     = FALSE
-         Occurs            = 0
-         Size              = 32,50
-         Size Unit         = Default
-         Tab Order         = 12
-         Title             = "Ricalcolo completo importi (da movimenti di con dati bolla)"
-         Transparent       = TRUE
-         Visible           = NONE
-         Width in Cells    = TRUE
-      End
    End
    Begin Frame Screen4-Fr-1
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 11,06
+      SCREEN-LINE       = 7,72
       LOCK-CONTROL      = FALSE
       LEVEL             = 5
       (Name)            = Screen4-Fr-1
-      3D Style          = Lowered
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1152,7 +1056,7 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 29
-      Line              = 11,06
+      Line              = 7,72
       Lines             = 2,78
       Lines Unit        = Default
       Low Color         = 0
@@ -1165,7 +1069,7 @@ Begin Screen Form1
       Width in Cells    = TRUE
       Begin Push-Button pb-ok
          SCREEN-COL        = 32,30
-         SCREEN-LINE       = 11,75
+         SCREEN-LINE       = 8,41
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-ok
@@ -1210,7 +1114,7 @@ Begin Screen Form1
       End
       Begin Push-Button pb-annulla
          SCREEN-COL        = 40,10
-         SCREEN-LINE       = 11,75
+         SCREEN-LINE       = 8,41
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-annulla
@@ -1395,7 +1299,7 @@ BEGIN-DATA
    NODESTYLE         = 7
    PARAGRAPH         = DeletedCode
 BEGIN-TEXT
-
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>======================================================      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1616,7 +1520,6 @@ BEGIN-TEXT
                                          vet-codice
                                          link-user
                                          form1-handle
-                                         chk-completo-buf
               cancel "ricaltras-p"
               
               modify form1-handle, visible = 1
@@ -1669,20 +1572,6 @@ BEGIN-TEXT
            move 0 to e-cerca.
            modify tool-cerca, enabled e-cerca.
            perform CONTROLLO.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = Screen4-Cb-1-BeforeProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = Screen4-Cb-1-AfterProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
 END-TEXT
 END-DATA
 
