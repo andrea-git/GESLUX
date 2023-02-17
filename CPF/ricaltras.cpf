@@ -2,7 +2,6 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=169.254.95.20
 
 
 [PROGRAM_CONTENT]
@@ -11,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E72E131117-225-291117317
+PROGRAM_UNIQUE_CODE=TOTEM-7E721183631-352-702021903
 
 {{@DESCRIPTION:
 
@@ -1037,8 +1036,8 @@ Begin Screen Form1
    End
    Begin Frame Screen4-Fr-1
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 7,72
-      LOCK-CONTROL      = FALSE
+      SCREEN-LINE       = 7,61
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Fr-1
       3D Style          = Normal
@@ -1056,8 +1055,8 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 29
-      Line              = 7,72
-      Lines             = 2,78
+      Line              = 7,61
+      Lines             = 2,89
       Lines Unit        = Default
       Low Color         = 0
       Size              = 47,20
@@ -1068,8 +1067,8 @@ Begin Screen Form1
       Visible           = NONE
       Width in Cells    = TRUE
       Begin Push-Button pb-ok
-         SCREEN-COL        = 32,30
-         SCREEN-LINE       = 8,41
+         SCREEN-COL        = 32,10
+         SCREEN-LINE       = 8,30
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-ok
@@ -1080,7 +1079,7 @@ Begin Screen Form1
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 32,30
+         Column            = 32,10
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default
@@ -1113,8 +1112,8 @@ Begin Screen Form1
          Link To           = pb-ok-LinkTo
       End
       Begin Push-Button pb-annulla
-         SCREEN-COL        = 40,10
-         SCREEN-LINE       = 8,41
+         SCREEN-COL        = 39,90
+         SCREEN-LINE       = 8,30
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = pb-annulla
@@ -1125,7 +1124,7 @@ Begin Screen Form1
          Bitmap Square     = TRUE
          Clines            = 0
          Clines Unit       = Default
-         Column            = 40,10
+         Column            = 39,90
          Copy Resource     = TRUE
          Csize             = 0
          Csize Unit        = Default

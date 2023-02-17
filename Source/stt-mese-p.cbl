@@ -570,6 +570,10 @@
                      ttrs-tipocli       delimited by size
                      separatore         delimited by size
                      ttrs-tipocli-d     delimited by size
+                     separatore         delimited by size
+                     ttrs-cau           delimited by size
+                     separatore         delimited by size
+                     ttrs-mag           delimited by size
                      into line-riga
               end-string
               write line-riga
@@ -635,10 +639,14 @@
                   separatore 
                   "POD"                            
                   separatore 
-                  "Tipol. cliente" delimited by size
+                  "Tipol. cliente" 
                   separatore 
-                  "Descrizione" delimited by size
-                  into line-riga
+                  "Descrizione" 
+                  separatore 
+                  "Causale"           
+                  separatore 
+                  "Mag. rif. causale" 
+             into line-riga
            end-string
 
            write line-riga.
@@ -900,6 +908,11 @@
            read tordini key k-bolla
                 invalid continue
             not invalid
+                move tor-causale to ttrs-cau tca-codice
+                read tcaumag no lock 
+                     invalid move "Null" to tca-cod-magaz 
+                end-read
+                move tca-cod-magaz to ttrs-mag
                 |Cerco la bozza di reso prima tramite bolla, poi tramite fattura
                 move tor-anno-bolla to btno-anno-bolla
                 move tor-num-bolla  to btno-num-bolla

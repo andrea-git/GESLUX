@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ricaltras.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 14 febbraio 2023 14:12:45.
+       DATE-WRITTEN.        venerdì 17 febbraio 2023 13:50:17.
        REMARKS.
       *{TOTEM}END
 
@@ -354,8 +354,8 @@
            Screen4-Fr-1, 
            Frame, 
            COL 1,00, 
-           LINE 7,72,
-           LINES 2,78 ,
+           LINE 7,61,
+           LINES 2,89 ,
            SIZE 47,20 ,
            ID IS 29,
            HEIGHT-IN-CELLS,
@@ -366,8 +366,8 @@
        05
            pb-ok, 
            Push-Button, 
-           COL 32,30, 
-           LINE 8,41,
+           COL 32,10, 
+           LINE 8,30,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -385,8 +385,8 @@
        05
            pb-annulla, 
            Push-Button, 
-           COL 40,10, 
-           LINE 8,41,
+           COL 39,90, 
+           LINE 8,30,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,

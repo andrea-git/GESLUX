@@ -238,7 +238,7 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
       ***---
        ELABORAZIONE.
            move low-value      to trs-rec.
-           move como-data-from to trs-data-fattura
+           move 20221004 to trs-data-fattura
            start trasporti key >= k-data-fattura
                  invalid set errori to true
            end-start.
@@ -251,6 +251,8 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                  if trs-data-fattura > como-data-to
                     exit perform
                  end-if
+
+                 if trs-num-bolla not = 16736 exit perform cycle end-if
 
                  add 1 to counter
                  add 1 to counter2
@@ -283,6 +285,7 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                       perform VALORIZZA-DATI-COMUNI
                       rewrite trs-rec invalid continue end-rewrite
                       add 1 to num-rec-ok
+                      exit perform
                  end-read
                  
               end-perform    

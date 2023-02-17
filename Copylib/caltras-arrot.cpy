@@ -70,20 +70,17 @@ LUBEXX*****                         end-if
                                   cifra(12) not = 0
                                   add como-arrot to tot-peso-qli
                                end-if
-                            else
-                               add como-arrot to tot-peso-qli
-                            end-if
-
-                            if 20-kg
-
-                               |Ad es. 1,600 è già a posto
-                               if cifra(11) not = 0 or
-                                  cifra(12) not = 0
+                            else      
+                               if 20-kg 
+                                  |Ad es. 1,600 è già a posto
+                                  if cifra(11) not = 0 or
+                                     cifra(12) not = 0
+                                     add como-arrot to tot-peso-qli
+                                  end-if
+                               else
                                   add como-arrot to tot-peso-qli
                                end-if
-                            else
-                               add como-arrot to tot-peso-qli
-                            end-if
+                            end-if   
 
                             if 50-kg
                                evaluate true
