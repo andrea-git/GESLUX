@@ -66,18 +66,16 @@
        77  como-idx              pic 9(5).
        77  idx                   pic 9(5).
        77  tot-peso-kg           pic 9(9)v999.
-       77  tot-peso-qli-arrot    pic 9(9)v99.
-       77  tot-peso-qli          pic 9(9)v999999.
-       01  tot-peso-qli-red      redefines tot-peso-qli.
-           05 cifra              pic 9 occurs 15.
        77  tot-peso-kg-SHI       pic 9(9)v999.
+       77  tot-peso-kg-GET       pic 9(9)v999. 
+
+       77  tot-peso-qli-arrot    pic 9(9)v99.
+       77  s-tot-peso-qli        pic 9(9)v999999.
+       01  s-tot-peso-qli-red    redefines s-tot-peso-qli.
+           05 cifra              pic 9 occurs 15.
+       77  tot-peso-qli          pic 9(9)v999999.
        77  tot-peso-qli-SHI      pic 9(9)v999999.
-       01  tot-peso-qli-SHI-red  redefines tot-peso-qli-SHI.
-           05 cifra-SHI          pic 9 occurs 15.
-       77  tot-peso-kg-GET       pic 9(9)v999.
-       77  tot-peso-qli-GET      pic 9(9)v999999.
-       01  tot-peso-qli-GET-red  redefines tot-peso-qli-GET.
-           05 cifra-GET          pic 9 occurs 15.
+       77  tot-peso-qli-GET      pic 9(9)v999999. 
        77  counter               pic 9(10).
        77  counter2              pic 9(10).
        77  counter-edit          pic z(10).

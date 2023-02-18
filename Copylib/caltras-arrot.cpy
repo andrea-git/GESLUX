@@ -28,95 +28,9 @@
                       add 1 to idx 
                    end-perform
                    if trovato-scaglione
-                      move vet-valore-arrot(idx) to como-arrot
-                      evaluate como-arrot
-                      when 0   move  0     to idx
-                               set nessuno to true
-                      when 0,1 move 10     to idx
-                               set  10-kg  to true
-                      when 0,2 move 10     to idx
-                               set  20-kg  to true
-                      when 0,5 move 10     to idx
-                               set  50-kg  to true
-                      when 1   move  9     to idx
-                               set 100-kg  to true
-                      end-evaluate
-
-                      if idx > 0
-                         add  1 to idx giving como-idx
-                         move 0 to comodo1
-                         perform varying como-idx from como-idx by 1 
-                                   until como-idx > 15
-                            if cifra(como-idx) > 0
-                               move cifra(idx) to comodo1
-                               exit perform
-                            end-if
-                         end-perform
-LUBEXX*****                         if comodo1 = 0 |E' già arrotondato
-LUBEXX*****                            move 0 to idx
-LUBEXX*****                         end-if
-                      end-if
-
-                      if idx > 0
-                         |Se ho 57,000 ho comunque
-                         |un valore già arrotondato
-                         if cifra(10) not = 0 or
-                            cifra(11) not = 0 or 
-                            cifra(12) not = 0 
-
-                            if 10-kg
-                               |Ad es. 1,600 è già a posto
-                               if cifra(11) not = 0 or
-                                  cifra(12) not = 0
-                                  add como-arrot to tot-peso-qli
-                               end-if
-                            else      
-                               if 20-kg 
-                                  |Ad es. 1,600 è già a posto
-                                  if cifra(11) not = 0 or
-                                     cifra(12) not = 0
-                                     add como-arrot to tot-peso-qli
-                                  end-if
-                               else
-                                  add como-arrot to tot-peso-qli
-                               end-if
-                            end-if   
-
-                            if 50-kg
-                               evaluate true
-                               when cifra(10) > 5
-                                    move 5 to cifra(10)
-                               when cifra(10) = 5
-                                    if cifra(11) = 0 and
-                                       cifra(12) = 0
-                                       move 0 to cifra(10)
-                                    else
-                                       move 5 to cifra(10)
-                                    end-if
-                               when cifra(10) = 0
-                                    move 0 to cifra(10)
-                                    |Rientra ad esempio un 
-                                    |peso di 150,000 kg.
-                                    if cifra(11) = 0 and
-                                       cifra(12) = 0
-                                       subtract 1 from cifra(9)
-                                       move 5 to cifra(10)
-                                    end-if
-                               when cifra(10) < 5
-                                    move 0 to cifra(10)
-                               end-evaluate
-                            end-if
-
-                            add 1 to idx giving como-idx
-                            perform varying como-idx from como-idx by 1 
-                                      until como-idx > 15
-                               move 0 to cifra(como-idx)
-                            end-perform
-
-                         end-if
-                      end-if
-
-                      move tot-peso-qli to trs-qta-arrot
+                      move tot-peso-qli to s-tot-peso-qli
+                      perform ARROTONDA                     
+                      move s-tot-peso-qli to trs-qta-arrot
                    else
                       if not esiste-scaglione
                          move tot-peso-qli to trs-qta-arrot
@@ -154,98 +68,10 @@ LUBEXX*****                         end-if
                       end-if
                       add 1 to idx 
                    end-perform
-                   if trovato-scaglione
-                      move vet-valore-arrot(idx) to como-arrot
-                      evaluate como-arrot
-                      when 0   move  0     to idx
-                               set nessuno to true    
-                      when 0,1 move 10     to idx
-                               set  10-kg  to true
-                      when 0,2 move 10     to idx
-                               set  20-kg  to true
-                      when 0,5 move 10     to idx
-                               set  50-kg  to true
-                      when 1   move  9     to idx
-                               set 100-kg  to true
-                      end-evaluate
-
-                      if idx > 0
-                         add  1 to idx giving como-idx
-                         move 0 to comodo1
-                         perform varying como-idx from como-idx by 1 
-                                   until como-idx > 15
-                            if cifra-SHI(como-idx) > 0
-                               move cifra-SHI(idx) to comodo1
-                               exit perform
-                            end-if
-                         end-perform
-LUBEXX*****                         if comodo1 = 0 |E' già arrotondato
-LUBEXX*****                            move 0 to idx
-LUBEXX*****                         end-if
-                      end-if
-
-                      if idx > 0
-                         |Se ho 57,000 ho comunque
-                         |un valore già arrotondato
-                         if cifra-SHI(10) not = 0 or
-                            cifra-SHI(11) not = 0 or 
-                            cifra-SHI(12) not = 0
-
-                            if 10-kg
-                               |Ad es. 1,600 è già a posto
-                               if cifra-SHI(11) not = 0 or
-                                  cifra-SHI(12) not = 0
-                                  add como-arrot to tot-peso-qli-SHI
-                               end-if
-                            else
-                               add como-arrot to tot-peso-qli-SHI
-                            end-if
-
-                            if 20-kg
-                               |Ad es. 1,600 è già a posto
-                               if cifra-SHI(11) not = 0 or
-                                  cifra-SHI(12) not = 0
-                                  add como-arrot to tot-peso-qli-SHI
-                               end-if
-                            else
-                               add como-arrot to tot-peso-qli-SHI
-                            end-if
-
-                            if 50-kg
-                               evaluate true
-                               when cifra-SHI(10) > 5
-                                    move 5 to cifra-SHI(10)
-                               when cifra-SHI(10) = 5
-                                    if cifra-SHI(11) = 0 and
-                                       cifra-SHI(12) = 0
-                                       move 0 to cifra-SHI(10)
-                                    else
-                                       move 5 to cifra-SHI(10)
-                                    end-if
-                               when cifra-SHI(10) = 0
-                                    move 0 to cifra-SHI(10)
-                                    |Rientra ad esempio un 
-                                    |peso di 150,000 kg.
-                                    if cifra-SHI(11) = 0 and
-                                       cifra-SHI(12) = 0
-                                       subtract 1 from cifra-SHI(9)
-                                       move 5 to cifra-SHI(10)
-                                    end-if
-                               when cifra-SHI(10) < 5
-                                    move 0 to cifra-SHI(10)
-                               end-evaluate
-                            end-if
-
-                            add 1 to idx giving como-idx
-                            perform varying como-idx from como-idx by 1 
-                                      until como-idx > 15
-                               move 0 to cifra-SHI(como-idx)
-                            end-perform
-
-                         end-if
-                      end-if
-
-                      move tot-peso-qli-SHI to trs-qta-arrot-SHI
+                   if trovato-scaglione                        
+                      move tot-peso-qli-SHI to s-tot-peso-qli
+                      perform ARROTONDA                      
+                      move s-tot-peso-qli to trs-qta-arrot-SHI
                    else
                       if not esiste-scaglione
                          move tot-peso-qli-SHI to trs-qta-arrot-SHI
@@ -283,98 +109,10 @@ LUBEXX*****                         end-if
                       end-if
                       add 1 to idx 
                    end-perform
-                   if trovato-scaglione
-                      move vet-valore-arrot(idx) to como-arrot
-                      evaluate como-arrot
-                      when 0   move  0     to idx
-                               set nessuno to true
-                      when 0,1 move 10     to idx
-                               set  10-kg  to true
-                      when 0,2 move 10     to idx
-                               set  20-kg  to true
-                      when 0,5 move 10     to idx
-                               set  50-kg  to true
-                      when 1   move  9     to idx
-                               set 100-kg  to true
-                      end-evaluate
-
-                      if idx > 0
-                         add  1 to idx giving como-idx
-                         move 0 to comodo1
-                         perform varying como-idx from como-idx by 1 
-                                   until como-idx > 15
-                            if cifra-GET(como-idx) > 0
-                               move cifra-GET(idx) to comodo1
-                               exit perform
-                            end-if
-                         end-perform
-LUBEXX*****                         if comodo1 = 0 |E' già arrotondato
-LUBEXX*****                            move 0 to idx
-LUBEXX*****                         end-if
-                      end-if
-
-                      if idx > 0
-                         |Se ho 57,000 ho comunque
-                         |un valore già arrotondato
-                         if cifra-GET(10) not = 0 or
-                            cifra-GET(11) not = 0 or 
-                            cifra-GET(12) not = 0  
-
-                            if 10-kg
-                               |Ad es. 1,600 è già a posto
-                               if cifra-GET(11) not = 0 or
-                                  cifra-GET(12) not = 0
-                                  add como-arrot to tot-peso-qli-GET
-                               end-if
-                            else
-                               add como-arrot to tot-peso-qli-GET
-                            end-if
-
-                            if 20-kg
-                               |Ad es. 1,600 è già a posto
-                               if cifra-GET(11) not = 0 or
-                                  cifra-GET(12) not = 0
-                                  add como-arrot to tot-peso-qli-GET
-                               end-if
-                            else
-                               add como-arrot to tot-peso-qli-GET
-                            end-if
-
-                            if 50-kg
-                               evaluate true
-                               when cifra-GET(10) > 5
-                                    move 5 to cifra-GET(10)
-                               when cifra-GET(10) = 5
-                                    if cifra-GET(11) = 0 and
-                                       cifra-GET(12) = 0
-                                       move 0 to cifra-GET(10)
-                                    else
-                                       move 5 to cifra-GET(10)
-                                    end-if
-                               when cifra-GET(10) = 0
-                                    move 0 to cifra-GET(10)
-                                    |Rientra ad esempio un 
-                                    |peso di 150,000 kg.
-                                    if cifra-GET(11) = 0 and
-                                       cifra-GET(12) = 0
-                                       subtract 1 from cifra-GET(9)
-                                       move 5 to cifra-GET(10)
-                                    end-if
-                               when cifra-GET(10) < 5
-                                    move 0 to cifra-GET(10)
-                               end-evaluate
-                            end-if
-
-                            add 1 to idx giving como-idx
-                            perform varying como-idx from como-idx by 1 
-                                      until como-idx > 15
-                               move 0 to cifra-GET(como-idx)
-                            end-perform
-
-                         end-if
-                      end-if
-
-                      move tot-peso-qli-GET to trs-qta-arrot-GET
+                   if trovato-scaglione             
+                      move tot-peso-qli-GET to s-tot-peso-qli
+                      perform ARROTONDA                      
+                      move s-tot-peso-qli to trs-qta-arrot-GET
                    else
                       if not esiste-scaglione
                          move tot-peso-qli-GET to trs-qta-arrot-GET
@@ -382,3 +120,219 @@ LUBEXX*****                         end-if
                    end-if
                 end-if
            end-read.
+
+      ***---                                                     
+       ARROTONDA.               stop "K"                 
+           |Se ho 57,000 ho comunque
+           |un valore già arrotondato
+           if cifra(10) = 0 and
+              cifra(11) = 0 and 
+              cifra(12) = 0 and 
+              cifra(13) = 0 and 
+              cifra(14) = 0 
+              exit paragraph
+           end-if.
+
+           move vet-valore-arrot(idx) to como-arrot.
+           evaluate como-arrot
+           when 0   exit paragraph
+           when 0,1 
+                if cifra(11) = 0 and 
+                   cifra(12) = 0 and 
+                   cifra(13) = 0 and 
+                   cifra(14) = 0
+                   continue
+                else
+                   move 0 to cifra(11) cifra(12) cifra(13) cifra(14)
+                   if cifra(10) = 9
+                      move 0 to cifra(10)
+                      add  1 to cifra(9)
+                   else
+                      add  1 to cifra(10)
+                   end-if                  
+                end-if
+
+           when 0,2                        
+                if cifra(11) = 0 and 
+                   cifra(12) = 0 and 
+                   cifra(13) = 0 and 
+                   cifra(14) = 0
+                   evaluate cifra(10)              
+                   when 1 move 2 to cifra(10)
+                   when 3 move 4 to cifra(10)
+                   when 5 move 6 to cifra(10)
+                   when 7 move 8 to cifra(10)
+                   when 9 move 0 to cifra(10)
+                          add  1 to cifra(9)
+                   end-evaluate            
+                else                                                
+                   move 0 to cifra(11) cifra(12) cifra(13) cifra(14)
+                   evaluate cifra(10)              
+                   when 0 
+                   when 1 move 2 to cifra(10)
+                   when 2
+                   when 3 move 4 to cifra(10)
+                   when 4
+                   when 5 move 6 to cifra(10)
+                   when 6
+                   when 7 move 8 to cifra(10)
+                   when 8
+                   when 9 move 0 to cifra(10)
+                          add  1 to cifra(9)
+                   end-evaluate               
+                end-if
+           when 0,5                               
+                if cifra(11) = 0 and 
+                   cifra(12) = 0 and 
+                   cifra(13) = 0 and 
+                   cifra(14) = 0
+                   evaluate cifra(10)  
+                   when 0 
+                   when 1 
+                   when 2  
+                   when 3 
+                   when 4 move 5 to cifra(10)
+                   when 5 continue
+                   when other move 0 to cifra(10)
+                              add  1 to cifra(9)
+                   end-evaluate             
+                else                                  
+                   move 0 to cifra(11) cifra(12) cifra(13) cifra(14)
+                   evaluate cifra(10)  
+                   when 0 
+                   when 1 
+                   when 2  
+                   when 3 
+                   when 4 move 5 to cifra(10)
+                   when other move 0 to cifra(10)
+                              add  1 to cifra(9)
+                   end-evaluate               
+                end-if
+           when 1            
+                move 0 to cifra(10) 
+                          cifra(11) 
+                          cifra(12) 
+                          cifra(13) 
+                          cifra(13)  
+                add  1 to cifra(9)
+           end-evaluate           
+  
+      *****     move 245,85 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 255 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 301 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 300 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 295 to tot-peso-kg.
+      *****     perform ARRTOP.                       
+      *****     move 260 to tot-peso-kg.
+      *****     perform ARRTOP.   
+      *****     move 265 to tot-peso-kg.
+      *****     perform ARRTOP.     
+      *****     move 250 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 280 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 290 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 191,56 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     goback.
+      *****
+      ********---
+      ***** ARRTOP.
+      *****     divide tot-peso-kg by 100 giving tot-peso-qli.
+      *****     |Se ho 57,000 ho comunque
+      *****     |un valore già arrotondato
+      *****     if cifra(10) = 0 and
+      *****        cifra(11) = 0 and 
+      *****        cifra(12) = 0 
+      *****        move tot-peso-qli to p10 p20 p50 p100
+      *****
+      *****     else               
+      *****        move tot-peso-qli to s-tot-peso-qli
+      *****
+      *****        if cifra(11) = 0 and cifra(12) = 0   
+      *****           move tot-peso-qli to p10
+      *****        else
+      *****           move 0 to cifra(11) cifra(12)
+      *****           if cifra(10) = 9
+      *****              move 0 to cifra(10)
+      *****              add  1 to cifra(9)
+      *****           else
+      *****              add  1 to cifra(10)
+      *****           end-if
+      *****           move tot-peso-qli to p10
+      *****        end-if
+      *****                                              
+      *****        move s-tot-peso-qli to tot-peso-qli
+      *****        if cifra(11) = 0 and cifra(12) = 0
+      *****           evaluate cifra(10)              
+      *****           when 1 move 2 to cifra(10)
+      *****           when 3 move 4 to cifra(10)
+      *****           when 5 move 6 to cifra(10)
+      *****           when 7 move 8 to cifra(10)
+      *****           when 9 move 0 to cifra(10)
+      *****                  add  1 to cifra(9)
+      *****           end-evaluate            
+      *****           move tot-peso-qli to p20
+      *****        else                                  
+      *****           move 0 to cifra(11) cifra(12)
+      *****           evaluate cifra(10)              
+      *****           when 0 
+      *****           when 1 move 2 to cifra(10)
+      *****           when 2
+      *****           when 3 move 4 to cifra(10)
+      *****           when 4
+      *****           when 5 move 6 to cifra(10)
+      *****           when 6
+      *****           when 7 move 8 to cifra(10)
+      *****           when 8
+      *****           when 9 move 0 to cifra(10)
+      *****                  add  1 to cifra(9)
+      *****           end-evaluate      
+      *****           move tot-peso-qli to p20   
+      *****        end-if
+      *****         
+      *****        move s-tot-peso-qli to tot-peso-qli
+      *****                                              
+      *****        if cifra(11) = 0 and cifra(12) = 0
+      *****           evaluate cifra(10)  
+      *****           when 0 
+      *****           when 1 
+      *****           when 2  
+      *****           when 3 
+      *****           when 4 move 5 to cifra(10)
+      *****           when 5 continue
+      *****           when other move 0 to cifra(10)
+      *****                      add  1 to cifra(9)
+      *****           end-evaluate            
+      *****           move tot-peso-qli to p50
+      *****        else                                  
+      *****           move 0 to cifra(11) cifra(12)  
+      *****           evaluate cifra(10)  
+      *****           when 0 
+      *****           when 1 
+      *****           when 2  
+      *****           when 3 
+      *****           when 4 move 5 to cifra(10)
+      *****           when other move 0 to cifra(10)
+      *****                      add  1 to cifra(9)
+      *****           end-evaluate            
+      *****           move tot-peso-qli to p50   
+      *****        end-if
+      *****
+      *****                                        
+      *****        move s-tot-peso-qli to tot-peso-qli
+      *****        move 0 to cifra(10) cifra(11) cifra(12)  
+      *****        add  1 to cifra(9)
+      *****        move tot-peso-qli to p100   
+      *****     end-if.                          
+      *****
+      *****           display message "PESO: " s-tot-peso-qli
+      *****           x"0d0a""100 - "p100
+      *****           x"0d0a""50 - "p50
+      *****           x"0d0a""20 - "p20
+      *****                      x"0d0a""10 - " p10

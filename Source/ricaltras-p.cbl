@@ -37,6 +37,7 @@
        77  counter               pic 9(10).
        77  counter2              pic 9(10).
        77  counter-edit          pic z(10).
+                             
 
       * FLAGS
        77  controllo             pic xx.
@@ -56,28 +57,18 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
        77  tot-peso-kg           pic 9(9)v999.
        77  tot-peso-kg-SHI       pic 9(9)v999.
        77  tot-peso-kg-GET       pic 9(9)v999. 
-
-       77  comodo1               pic 9(3).
+                                                
        77  como-arrot            pic 9(9)v99.
        77  como-idx              pic 9(5).
        77  idx                   pic 9(5).
-       77  tot-peso-qli-arrot    pic 9(9)v99.
-       77  tot-peso-qli          pic 9(9)v999999.
-       01  tot-peso-qli-red      redefines tot-peso-qli.
+       77  tot-peso-qli-arrot    pic 9(9)v99.     
+       77  s-tot-peso-qli        pic 9(9)v999999.
+       01  s-tot-peso-qli-red    redefines s-tot-peso-qli.
            05 cifra              pic 9 occurs 15.
+       77  tot-peso-qli          pic 9(9)v999999.
        77  tot-peso-qli-SHI      pic 9(9)v999999.
-       01  tot-peso-qli-SHI-red  redefines tot-peso-qli-SHI.
-           05 cifra-SHI          pic 9 occurs 15.
-       77  tot-peso-qli-GET      pic 9(9)v999999.
-       01  tot-peso-qli-GET-red  redefines tot-peso-qli-GET.
-           05 cifra-GET          pic 9 occurs 15.         
-       77  tipo-arrot            pic 9.
-           88 nessuno            value 1.
-           88   10-kg            value 2.
-           88   20-kg            value 3.
-           88   50-kg            value 4.
-           88  100-kg            value 5.         
-
+       77  tot-peso-qli-GET      pic 9(9)v999999.         
+       
        77  filler                pic 9.
            88 esiste-scaglione   value 1, false 0.
        77  filler                pic 9.
@@ -211,7 +202,130 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.           
+      *****     stop "K"
+      *****     move 245,85 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 255 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 301 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 300 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 295 to tot-peso-kg.
+      *****     perform ARRTOP.                       
+      *****     move 260 to tot-peso-kg.
+      *****     perform ARRTOP.   
+      *****     move 265 to tot-peso-kg.
+      *****     perform ARRTOP.     
+      *****     move 250 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 280 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 290 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     move 191,56 to tot-peso-kg.
+      *****     perform ARRTOP.
+      *****     goback.
+      *****
+      ********---
+      ***** ARRTOP.
+      *****     divide tot-peso-kg by 100 giving tot-peso-qli.
+      *****     |Se ho 57,000 ho comunque
+      *****     |un valore già arrotondato
+      *****     if cifra(10) = 0 and
+      *****        cifra(11) = 0 and 
+      *****        cifra(12) = 0 
+      *****        move tot-peso-qli to p10 p20 p50 p100
+      *****
+      *****     else               
+      *****        move tot-peso-qli to s-tot-peso-qli
+      *****
+      *****        if cifra(11) = 0 and cifra(12) = 0   
+      *****           move tot-peso-qli to p10
+      *****        else
+      *****           move 0 to cifra(11) cifra(12)
+      *****           if cifra(10) = 9
+      *****              move 0 to cifra(10)
+      *****              add  1 to cifra(9)
+      *****           else
+      *****              add  1 to cifra(10)
+      *****           end-if
+      *****           move tot-peso-qli to p10
+      *****        end-if
+      *****                                              
+      *****        move s-tot-peso-qli to tot-peso-qli
+      *****        if cifra(11) = 0 and cifra(12) = 0
+      *****           evaluate cifra(10)              
+      *****           when 1 move 2 to cifra(10)
+      *****           when 3 move 4 to cifra(10)
+      *****           when 5 move 6 to cifra(10)
+      *****           when 7 move 8 to cifra(10)
+      *****           when 9 move 0 to cifra(10)
+      *****                  add  1 to cifra(9)
+      *****           end-evaluate            
+      *****           move tot-peso-qli to p20
+      *****        else                                  
+      *****           move 0 to cifra(11) cifra(12)
+      *****           evaluate cifra(10)              
+      *****           when 0 
+      *****           when 1 move 2 to cifra(10)
+      *****           when 2
+      *****           when 3 move 4 to cifra(10)
+      *****           when 4
+      *****           when 5 move 6 to cifra(10)
+      *****           when 6
+      *****           when 7 move 8 to cifra(10)
+      *****           when 8
+      *****           when 9 move 0 to cifra(10)
+      *****                  add  1 to cifra(9)
+      *****           end-evaluate      
+      *****           move tot-peso-qli to p20   
+      *****        end-if
+      *****         
+      *****        move s-tot-peso-qli to tot-peso-qli
+      *****                                              
+      *****        if cifra(11) = 0 and cifra(12) = 0
+      *****           evaluate cifra(10)  
+      *****           when 0 
+      *****           when 1 
+      *****           when 2  
+      *****           when 3 
+      *****           when 4 move 5 to cifra(10)
+      *****           when 5 continue
+      *****           when other move 0 to cifra(10)
+      *****                      add  1 to cifra(9)
+      *****           end-evaluate            
+      *****           move tot-peso-qli to p50
+      *****        else                                  
+      *****           move 0 to cifra(11) cifra(12)  
+      *****           evaluate cifra(10)  
+      *****           when 0 
+      *****           when 1 
+      *****           when 2  
+      *****           when 3 
+      *****           when 4 move 5 to cifra(10)
+      *****           when other move 0 to cifra(10)
+      *****                      add  1 to cifra(9)
+      *****           end-evaluate            
+      *****           move tot-peso-qli to p50   
+      *****        end-if
+      *****
+      *****                                        
+      *****        move s-tot-peso-qli to tot-peso-qli
+      *****        move 0 to cifra(10) cifra(11) cifra(12)  
+      *****        add  1 to cifra(9)
+      *****        move tot-peso-qli to p100   
+      *****     end-if.                          
+      *****
+      *****           display message "PESO: " s-tot-peso-qli
+      *****           x"0d0a""100 - "p100
+      *****           x"0d0a""50 - "p50
+      *****           x"0d0a""20 - "p20
+      *****                      x"0d0a""10 - " p10
+
+
+
            move 0 to counter counter2.
            set tutto-ok to true.
 
