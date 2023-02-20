@@ -122,7 +122,7 @@
            end-read.
 
       ***---                                                     
-       ARROTONDA.               stop "K"                 
+       ARROTONDA.               
            |Se ho 57,000 ho comunque
            |un valore già arrotondato
            if cifra(10) = 0 and
