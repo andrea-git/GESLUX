@@ -114,7 +114,7 @@
 
       ***---
        CERCA.
-           evaluate control-id
+           evaluate control-id 
            when 78-ID-ef-cap               
                 move "anacap"        to como-file         
                 inquire ef-cap,   value in anc-cap
@@ -125,6 +125,20 @@
                 if stato-zoom = 0
                    move anc-cap to ef-cap-buf
                    display ef-cap 
+                end-if      
+  
+           when 78-ID-ef-gdo
+                move "tgrupgdo"      to como-file         
+                inquire ef-gdo,   value in gdo-codice
+                call "zoom-gt"   using como-file, gdo-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move gdo-codice to ef-gdo-buf
+                   display ef-gdo
+                   move gdo-intestazione to lab-gdo-buf
+                   display lab-gdo
                 end-if        
 
            when 78-ID-ef-cap-d
@@ -488,7 +502,7 @@ LUBEXX*****           inquire ef-piva     value cf-piva.
                    display message box "Provincia NON valida"
                            title = tit-err
                            icon mb-warning-icon
-                end-if
+                end-if 
 
            |78-ID-ef-nazione è l'ID del campo ef-nazione
            when 78-ID-ef-nazione
@@ -500,7 +514,22 @@ LUBEXX*****           inquire ef-piva     value cf-piva.
                    display message box "Nazione NON valida"
                            title = tit-err
                            icon mb-warning-icon
-                end-if        
+                end-if 
+
+           |78-ID-ef-GDO è l'ID del campo ef-gdo
+           when 78-ID-ef-gdo
+                move "tgrupgdo" to nome-file
+                perform RELAZIONI-CLIENTI
+
+                if gdo-codice not = spaces
+                   if not trovato
+                      set errori to true
+                      move 78-ID-ef-gdo to control-id
+                      display message box "Gruppo GDO NON valido"
+                              title = tit-err
+                              icon mb-warning-icon
+                   end-if        
+                end-if 
 
            |78-ID-ef-vettore è l'ID del campo ef-vettore
            when 78-ID-ef-vettore
@@ -1142,7 +1171,7 @@ LUBEXX          end-if
                    cbo-stato, ef-note, ef-note-agg, 
                    pb-note, ef-codfis, ef-piva, ef-iva, 
                    ef-pag, ef-cab, ef-abi, pb-nota-pie,
-                   lab-vettore, lab-nazione, lab-citta, 
+                   lab-vettore, lab-nazione, lab-citta, lab-gdo,
                    lab-regione, TOOL-ESCI, TOOL-NUOVO, TOOL-CANCELLA, 
                    TOOL-SALVA, TOOL-ANTEPRIMA, TOOL-MODIFICA,
                    TOOL-STAMPA, TOOL-CERCA, TOOL-SELEZIONA, Form1-Pb-1a, 
@@ -1811,7 +1840,7 @@ LUBEXX          end-if
       ***---
        PAGE-2-CLEAR.
            move spaces to lab-citta-d-buf   lab-regione-d-buf
-                          lab-nazione-d-buf lab-vettore-d-buf.
+                          lab-nazione-d-buf lab-vettore-d-buf .
            display lab-citta-d   lab-regione-d
                    lab-nazione-d lab-vettore-d.
            move 1 to riga-nuova.
@@ -1907,11 +1936,18 @@ LUBEXX          end-if
            when "tivaese"    perform READ-TIVAESE
            when "tcodpag"    perform READ-TCODPAG
            when "ABI"        perform READ-ABI
+           when "tgrupgdo"   perform READ-TGRUPGDO
            end-evaluate.    
 
       ***---
        READ-ANACAP.
            read anacap no lock
+                invalid set trovato to false
+           end-read. 
+
+      ***---
+       READ-TGRUPGDO.
+           read tgrupgdo no lock
                 invalid set trovato to false
            end-read. 
 
@@ -1982,6 +2018,14 @@ LUBEXX          end-if
            when "anacap"  
                 move ef-cap-buf to anc-cap
                 perform RELATIONS
+           when "tgrupgdo"  
+                move spaces to lab-gdo-buf
+                move ef-gdo-buf to gdo-codice
+                if gdo-codice not = spaces
+                   perform RELATIONS
+                   move gdo-intestazione to lab-gdo-buf
+                end-if    
+                display lab-gdo
            when "tvettori"  
                 move spaces to lab-vettore-buf
                 move ef-vettore-buf to vet-codice
@@ -2889,10 +2933,14 @@ LUBEXX*****     end-if.
 
       * CLIENTI-CODICI DI PAGAMENTO
            move "tcodpag" to nome-file.
-           perform RELAZIONI-CLIENTI. 
+           perform RELAZIONI-CLIENTI.  
 
       * CLIENTI-BANCHE
            move "ABI" to nome-file.
+           perform RELAZIONI-CLIENTI. 
+
+      * CLIENTI-GDO
+           move "tgrupgdo" to nome-file.
            perform RELAZIONI-CLIENTI. 
                           
       * Relazioni per il file dei DESTINI

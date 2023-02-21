@@ -1223,9 +1223,11 @@ LUBEXX     end-if.
            move cli-nazione              of cli-rec
              to frn-codice-na            of record-frn.
            move cli-tel-1                of cli-rec
-             to frn-telefono             of record-frn.
+             to frn-telefono             of record-frn.   
            move cli-fax                  of cli-rec
              to frn-fax                  of record-frn.   
+           move cli-gdo                  of cli-rec
+             to frn-codice-alternativo   of record-frn.
 
            if cli-prov not = "EE"
               move cli-codfis               of cli-rec

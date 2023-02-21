@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 14 novembre 2022 13:17:20.
+       DATE-WRITTEN.        martedì 21 febbraio 2023 09:58:09.
        REMARKS.
       *{TOTEM}END
 
@@ -46,6 +46,7 @@
            COPY "tmp-nforn-dest.sl".
            COPY "nforn-dest.sl".
            COPY "anacap.sl".
+           COPY "tgrupgdo.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -69,6 +70,7 @@
            COPY "tmp-nforn-dest.fd".
            COPY "nforn-dest.fd".
            COPY "anacap.fd".
+           COPY "tgrupgdo.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -111,6 +113,8 @@
                   USAGE IS COMP-4
                   VALUE IS 0.
        78 78-ID-ef-st-tipo VALUE IS 10003. 
+       77 STATUS-tgrupgdo  PIC  X(2).
+           88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -156,6 +160,9 @@
               10 ef-referente-BUF PIC X(30).
       * Data.Entry-Field
               10 ef-vettore-BUF PIC 9(5).
+      * Data.Entry-Field
+              10 ef-gdo-BUF PIC X(5).
+              10 ef-gdo-VALUEBUF PIC X(5).
       * Data.Check-Box
               10 chk-utf-BUF PIC 9 VALUE ZERO.
               10 chk-utf-VALUEBUF PIC 9 VALUE ZERO.
@@ -187,6 +194,8 @@
               10 lab-citta-BUF PIC X(30).
       * Data.Label
               10 lab-regione-BUF PIC X(30).
+      * Data.Label
+              10 lab-gdo-BUF PIC X(30).
       * Page
               05 PAGE-2-BUF.
       * Data.Entry-Field
@@ -291,6 +300,7 @@
        77 TMP-DataSet1-tmp-nforn-dest-BUF     PIC X(379).
        77 TMP-DataSet1-nforn-dest-BUF     PIC X(379).
        77 TMP-DataSet1-anacap-BUF     PIC X(1209).
+       77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -379,6 +389,11 @@
        77 DataSet1-anacap-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-anacap-KEY-Asc  VALUE "A".
           88 DataSet1-anacap-KEY-Desc VALUE "D".
+       77 DataSet1-tgrupgdo-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tgrupgdo-LOCK  VALUE "Y".
+       77 DataSet1-tgrupgdo-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tgrupgdo-KEY-Asc  VALUE "A".
+          88 DataSet1-tgrupgdo-KEY-Desc VALUE "D".
 
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
@@ -392,6 +407,7 @@
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
        77 anacap-k-prov-SPLITBUF  PIC X(158).
        77 anacap-k-comune-SPLITBUF  PIC X(158).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
       * FOR SPLIT KEY BUFFER
        77 DataSet1-clienti-SPLIT-BUF2   PIC X(47).
 
@@ -415,48 +431,49 @@
        78  78-ID-ef-url VALUE 5013.
        78  78-ID-ef-referente VALUE 5014.
        78  78-ID-ef-vettore VALUE 5015.
-       78  78-ID-chk-utf VALUE 5016.
-       78  78-ID-chk-saldi VALUE 5017.
-       78  78-ID-cbo-stato VALUE 5018.
-       78  78-ID-ef-note VALUE 5019.
-       78  78-ID-ef-note-agg VALUE 5020.
-       78  78-ID-rb-pers VALUE 5021.
-       78  78-ID-rb-soc VALUE 5022.
-       78  78-ID-ef-codfis VALUE 5023.
-       78  78-ID-ef-piva VALUE 5024.
-       78  78-ID-ef-iva VALUE 5025.
-       78  78-ID-ef-pag VALUE 5026.
-       78  78-ID-ef-abi VALUE 5027.
-       78  78-ID-ef-cab VALUE 5028.
-       78  78-ID-form1-gd-1 VALUE 5029.
-       78  78-ID-ef-ragsoc-1-d VALUE 5030.
-       78  78-ID-ef-ragsoc-2-d VALUE 5031.
-       78  78-ID-ef-indirizzo-d VALUE 5032.
-       78  78-ID-ef-cap-d VALUE 5033.
-       78  78-ID-ef-localita-d VALUE 5034.
-       78  78-ID-ef-prov-d VALUE 5035.
-       78  78-ID-ef-nazione-d VALUE 5036.
-       78  78-ID-ef-telef-1-d VALUE 5037.
-       78  78-ID-ef-telef-2-d VALUE 5038.
-       78  78-ID-ef-fax-d VALUE 5039.
-       78  78-ID-cbo-ufficio-d VALUE 5040.
-       78  78-ID-ef-mail-d VALUE 5041.
-       78  78-ID-ef-referente-d VALUE 5042.
-       78  78-ID-ef-vettore-d VALUE 5043.
-       78  78-ID-ef-gg VALUE 5044.
-       78  78-ID-cbo-stato-d VALUE 5045.
-       78  78-ID-ef-pag-d VALUE 5046.
-       78  78-ID-ef-ref-ord-d VALUE 5047.
-       78  78-ID-ef-tel-ord-d VALUE 5048.
-       78  78-ID-ef-perce-premi-d VALUE 5049.
-       78  78-ID-chk-netto-PFA-d VALUE 5050.
-       78  78-ID-ef-mail-ord-d VALUE 5051.
-       78  78-ID-ef-mail-ord-cc VALUE 5052.
-       78  78-ID-ef-note-1 VALUE 5053.
-       78  78-ID-ef-note-data VALUE 5054.
-       78  78-ID-ef-note-2 VALUE 5055.
-       78  78-ID-ef-note-3 VALUE 5056.
-       78  78-ID-ef-note-4 VALUE 5057.
+       78  78-ID-ef-gdo VALUE 5016.
+       78  78-ID-chk-utf VALUE 5017.
+       78  78-ID-chk-saldi VALUE 5018.
+       78  78-ID-cbo-stato VALUE 5019.
+       78  78-ID-ef-note VALUE 5020.
+       78  78-ID-ef-note-agg VALUE 5021.
+       78  78-ID-rb-pers VALUE 5022.
+       78  78-ID-rb-soc VALUE 5023.
+       78  78-ID-ef-codfis VALUE 5024.
+       78  78-ID-ef-piva VALUE 5025.
+       78  78-ID-ef-iva VALUE 5026.
+       78  78-ID-ef-pag VALUE 5027.
+       78  78-ID-ef-abi VALUE 5028.
+       78  78-ID-ef-cab VALUE 5029.
+       78  78-ID-form1-gd-1 VALUE 5030.
+       78  78-ID-ef-ragsoc-1-d VALUE 5031.
+       78  78-ID-ef-ragsoc-2-d VALUE 5032.
+       78  78-ID-ef-indirizzo-d VALUE 5033.
+       78  78-ID-ef-cap-d VALUE 5034.
+       78  78-ID-ef-localita-d VALUE 5035.
+       78  78-ID-ef-prov-d VALUE 5036.
+       78  78-ID-ef-nazione-d VALUE 5037.
+       78  78-ID-ef-telef-1-d VALUE 5038.
+       78  78-ID-ef-telef-2-d VALUE 5039.
+       78  78-ID-ef-fax-d VALUE 5040.
+       78  78-ID-cbo-ufficio-d VALUE 5041.
+       78  78-ID-ef-mail-d VALUE 5042.
+       78  78-ID-ef-referente-d VALUE 5043.
+       78  78-ID-ef-vettore-d VALUE 5044.
+       78  78-ID-ef-gg VALUE 5045.
+       78  78-ID-cbo-stato-d VALUE 5046.
+       78  78-ID-ef-pag-d VALUE 5047.
+       78  78-ID-ef-ref-ord-d VALUE 5048.
+       78  78-ID-ef-tel-ord-d VALUE 5049.
+       78  78-ID-ef-perce-premi-d VALUE 5050.
+       78  78-ID-chk-netto-PFA-d VALUE 5051.
+       78  78-ID-ef-mail-ord-d VALUE 5052.
+       78  78-ID-ef-mail-ord-cc VALUE 5053.
+       78  78-ID-ef-note-1 VALUE 5054.
+       78  78-ID-ef-note-data VALUE 5055.
+       78  78-ID-ef-note-2 VALUE 5056.
+       78  78-ID-ef-note-3 VALUE 5057.
+       78  78-ID-ef-note-4 VALUE 5058.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -804,12 +821,32 @@
            VALUE ef-vettore-BUF,
            .
 
+      * ENTRY FIELD
+       10
+           ef-gdo, 
+           Entry-Field, 
+           COL 95,50, 
+           LINE 21,77,
+           LINES 1,31 ,
+           SIZE 9,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-gdo,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 5,
+           VALUE ef-gdo-BUF,
+           .
+
       * CHECK BOX
        10
            chk-utf, 
            Check-Box, 
            COL 20,50, 
-           LINE 21,84,
+           LINE 23,77,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -827,7 +864,7 @@
            chk-saldi, 
            Check-Box, 
            COL 43,67, 
-           LINE 21,84,
+           LINE 23,77,
            LINES 1,31 ,
            SIZE 2,83 ,
            ENABLED mod-destini,
@@ -846,7 +883,7 @@
            cbo-stato, 
            Combo-Box, 
            COL 95,50, 
-           LINE 21,84,
+           LINE 23,77,
            LINES 5,00 ,
            SIZE 17,00 ,
            3-D,
@@ -869,7 +906,7 @@
            ef-note, 
            Entry-Field, 
            COL 20,50, 
-           LINE 23,84,
+           LINE 25,77,
            LINES 3,00 ,
            SIZE 133,00 ,
            BOXED,
@@ -890,7 +927,7 @@
            ef-note-agg, 
            Entry-Field, 
            COL 20,50, 
-           LINE 27,84,
+           LINE 29,77,
            LINES 1,31 ,
            SIZE 130,00 ,
            BOXED,
@@ -909,7 +946,7 @@
            pb-note, 
            Push-Button, 
            COL 150,50, 
-           LINE 27,84,
+           LINE 28,23,
            LINES 1,31 ,
            SIZE 3,00 ,
            EXCEPTION-VALUE 1001,
@@ -925,7 +962,7 @@
            rb-pers, 
            Radio-Button, 
            COL 20,50, 
-           LINE 31,84,
+           LINE 33,77,
            LINES 1,15 ,
            SIZE 2,50 ,
            ENABLED mod-campi,
@@ -944,7 +981,7 @@
            rb-soc, 
            Radio-Button, 
            COL 38,50, 
-           LINE 31,84,
+           LINE 33,77,
            LINES 1,15 ,
            SIZE 2,50 ,
            ENABLED mod-campi,
@@ -963,7 +1000,7 @@
            ef-codfis, 
            Entry-Field, 
            COL 20,50, 
-           LINE 33,84,
+           LINE 35,77,
            LINES 1,31 ,
            SIZE 24,00 ,
            BOXED,
@@ -983,7 +1020,7 @@
            ef-piva, 
            Entry-Field, 
            COL 58,50, 
-           LINE 33,84,
+           LINE 35,77,
            LINES 1,31 ,
            SIZE 20,00 ,
            BOXED,
@@ -1003,7 +1040,7 @@
            ef-iva, 
            Entry-Field, 
            COL 96,50, 
-           LINE 33,84,
+           LINE 35,77,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1022,7 +1059,7 @@
            ef-pag, 
            Entry-Field, 
            COL 20,50, 
-           LINE 35,84,
+           LINE 37,77,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1041,7 +1078,7 @@
            ef-abi, 
            Entry-Field, 
            COL 20,50, 
-           LINE 37,84,
+           LINE 39,77,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -1061,7 +1098,7 @@
            ef-cab, 
            Entry-Field, 
            COL 58,50, 
-           LINE 37,84,
+           LINE 39,77,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -1081,7 +1118,7 @@
            pb-nota-pie, 
            Push-Button, 
            COL 134,50, 
-           LINE 37,84,
+           LINE 39,77,
            LINES 23,00 ,
            SIZE 109,00 ,
            BITMAP-HANDLE NOTE_109X23-BMP,
@@ -1131,7 +1168,7 @@
            Form1-La-1abbbaa, 
            Label, 
            COL 3,50, 
-           LINE 29,84,
+           LINE 31,77,
            LINES 1,31 ,
            SIZE 16,83 ,
            COLOR IS 80,
@@ -1147,7 +1184,7 @@
            Form1-Br-2acaa, 
            Bar,
            COL 21,17, 
-           LINE 30,54,
+           LINE 32,46,
            SIZE 135,00 ,
            ID IS 562,
            HEIGHT-IN-CELLS,
@@ -1274,7 +1311,7 @@
            Form1-La-9, 
            Label, 
            COL 4,50, 
-           LINE 33,84,
+           LINE 35,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1290,7 +1327,7 @@
            Form1-La-10, 
            Label, 
            COL 46,50, 
-           LINE 33,84,
+           LINE 35,77,
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Small-Font,
@@ -1419,7 +1456,7 @@
            Form1-La-21, 
            Label, 
            COL 80,50, 
-           LINE 33,84,
+           LINE 35,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1435,7 +1472,7 @@
            Form1-La-22, 
            Label, 
            COL 4,50, 
-           LINE 35,84,
+           LINE 37,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -1452,7 +1489,7 @@
            Form1-La-27, 
            Label, 
            COL 46,50, 
-           LINE 37,84,
+           LINE 39,77,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -1468,7 +1505,7 @@
            Form1-La-28, 
            Label, 
            COL 4,50, 
-           LINE 37,84,
+           LINE 39,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -1485,7 +1522,7 @@
            Form1-La-29, 
            Label, 
            COL 81,50, 
-           LINE 21,84,
+           LINE 23,77,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -1501,7 +1538,7 @@
            Form1-La-32, 
            Label, 
            COL 4,50, 
-           LINE 21,84,
+           LINE 23,77,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1517,7 +1554,7 @@
            Form1-La-33, 
            Label, 
            COL 4,50, 
-           LINE 23,84,
+           LINE 25,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1533,7 +1570,7 @@
            Form1-La-34, 
            Label, 
            COL 4,50, 
-           LINE 27,84,
+           LINE 29,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -1621,7 +1658,7 @@
            lab-banca, 
            Label, 
            COL 71,50, 
-           LINE 38,84,
+           LINE 40,77,
            LINES 2,00 ,
            SIZE 62,00 ,
            COLOR IS 5,
@@ -1639,7 +1676,7 @@
            lab-iva, 
            Label, 
            COL 104,50, 
-           LINE 33,84,
+           LINE 35,77,
            LINES 1,31 ,
            SIZE 51,00 ,
            COLOR IS 5,
@@ -1657,7 +1694,7 @@
            lab-pag, 
            Label, 
            COL 28,50, 
-           LINE 35,61,
+           LINE 37,53,
            LINES 1,54 ,
            SIZE 50,00 ,
            COLOR IS 5,
@@ -1675,7 +1712,7 @@
            Form1-La-66, 
            Label, 
            COL 24,50, 
-           LINE 31,84,
+           LINE 33,77,
            LINES 1,15 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1691,7 +1728,7 @@
            Form1-La-67, 
            Label, 
            COL 42,50, 
-           LINE 31,84,
+           LINE 33,77,
            LINES 1,15 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1707,7 +1744,7 @@
            Form1-La-18a, 
            Label, 
            COL 29,33, 
-           LINE 21,84,
+           LINE 23,77,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -1733,6 +1770,40 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Codice SDI",
+           .
+
+      * LABEL
+       10
+           Form1-La-17a, 
+           Label, 
+           COL 81,50, 
+           LINE 21,77,
+           LINES 1,31 ,
+           SIZE 9,00 ,
+           FONT IS Small-Font,
+           ID IS 32,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "GDO",
+           .
+
+      * DB_LABEL
+       10
+           lab-gdo, 
+           Label, 
+           COL 105,50, 
+           LINE 21,76,
+           LINES 1,31 ,
+           SIZE 38,00 ,
+           COLOR IS 5,
+           FONT IS Small-Font,
+           ID IS 72,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE lab-gdo-BUF,
+           NO-KEY-LETTER,
+           TRANSPARENT,
            .
 
       * PAGE
@@ -2147,7 +2218,7 @@
            SIZE 2,83 ,
            ENABLED mod-destini,
            FLAT,
-           ID IS 76,
+           ID IS 38,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            NOTIFY,
@@ -2281,7 +2352,7 @@
            EXCEPTION-VALUE 1008,
            FLAT,
            FONT IS Small-Font,
-           ID IS 45,
+           ID IS 46,
            TITLE "&Note a pié bolla",
            AFTER PROCEDURE pb-nota-ord-d-AfterProcedure, 
            BEFORE PROCEDURE pb-nota-ord-d-BeforeProcedure, 
@@ -2851,7 +2922,7 @@
            EXCEPTION-VALUE 1005,
            FLAT,
            FONT IS Small-Font,
-           ID IS 46,
+           ID IS 47,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -3111,7 +3182,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 198,
+           ID IS 205,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4220,6 +4291,7 @@
       *    PERFORM OPEN-tmp-nforn-dest
            PERFORM OPEN-nforn-dest
            PERFORM OPEN-anacap
+           PERFORM OPEN-tgrupgdo
       *    After Open
            .
 
@@ -4471,6 +4543,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tgrupgdo.
+      * <TOTEM:EPT. INIT:gforn, FD:tgrupgdo, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tgrupgdo
+           IF NOT Valid-STATUS-tgrupgdo
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gforn, FD:tgrupgdo, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tvettori
@@ -4491,6 +4575,7 @@
       *    PERFORM CLOSE-tmp-nforn-dest
            PERFORM CLOSE-nforn-dest
            PERFORM CLOSE-anacap
+           PERFORM CLOSE-tgrupgdo
       *    After Close
            .
 
@@ -4586,6 +4671,12 @@
       * <TOTEM:EPT. INIT:gforn, FD:anacap, BeforeClose>
       * <TOTEM:END>
            CLOSE anacap
+           .
+
+       CLOSE-tgrupgdo.
+      * <TOTEM:EPT. INIT:gforn, FD:tgrupgdo, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tgrupgdo
            .
 
        tvettori-k-des-MERGE-SPLITBUF.
@@ -7482,6 +7573,171 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
+       DataSet1-tgrupgdo-INITSTART.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              MOVE Low-Value TO gdo-chiave OF tgrupgdo
+           ELSE
+              MOVE High-Value TO gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-INITEND.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              MOVE High-Value TO gdo-chiave OF tgrupgdo
+           ELSE
+              MOVE Low-Value TO gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+      * tgrupgdo
+       DataSet1-tgrupgdo-START.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY >= gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY <= gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-START-NOTGREATER.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY <= gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY >= gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-START-GREATER.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY > gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY < gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-START-LESS.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY < gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY > gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tgrupgdo-LOCK
+              READ tgrupgdo WITH LOCK 
+              KEY gdo-chiave OF tgrupgdo
+           ELSE
+              READ tgrupgdo WITH NO LOCK 
+              KEY gdo-chiave OF tgrupgdo
+           END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tgrupgdo-KEY-Asc
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo NEXT WITH LOCK
+              ELSE
+                 READ tgrupgdo NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo PREVIOUS WITH LOCK
+              ELSE
+                 READ tgrupgdo PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tgrupgdo-KEY-Asc
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo PREVIOUS WITH LOCK
+              ELSE
+                 READ tgrupgdo PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo NEXT WITH LOCK
+              ELSE
+                 READ tgrupgdo NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE vet-rec OF tvettori
            INITIALIZE naz-rec OF tnazioni
@@ -7499,6 +7755,7 @@
            INITIALIZE tmp-nfod-rec OF tmp-nforn-dest
            INITIALIZE nfod-rec OF nforn-dest
            INITIALIZE anc-rec OF anacap
+           INITIALIZE gdo-rec OF tgrupgdo
            .
 
 
@@ -7762,6 +8019,14 @@
       * FD's Initialize Paragraph
        DataSet1-anacap-INITREC.
            INITIALIZE anc-rec OF anacap
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tgrupgdo-INITREC.
+           INITIALIZE gdo-rec OF tgrupgdo
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -8551,6 +8816,16 @@
                MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-gdo's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-gdo-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5016 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-note's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-note-VALIDATION
@@ -8558,7 +8833,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5019 TO CONTROL-ID
+               MOVE 5020 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-agg's Validation
@@ -8568,7 +8843,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-codfis's Validation
@@ -8578,7 +8853,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-piva's Validation
@@ -8588,7 +8863,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5024 TO CONTROL-ID
+               MOVE 5025 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-iva's Validation
@@ -8598,7 +8873,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5025 TO CONTROL-ID
+               MOVE 5026 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pag's Validation
@@ -8608,7 +8883,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-abi's Validation
@@ -8618,7 +8893,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cab's Validation
@@ -8628,7 +8903,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-1-d's Validation
@@ -8638,7 +8913,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5030 TO CONTROL-ID
+               MOVE 5031 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-2-d's Validation
@@ -8648,7 +8923,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5031 TO CONTROL-ID
+               MOVE 5032 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-indirizzo-d's Validation
@@ -8658,7 +8933,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5032 TO CONTROL-ID
+               MOVE 5033 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cap-d's Validation
@@ -8668,7 +8943,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5033 TO CONTROL-ID
+               MOVE 5034 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-localita-d's Validation
@@ -8678,7 +8953,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5034 TO CONTROL-ID
+               MOVE 5035 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prov-d's Validation
@@ -8688,7 +8963,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5035 TO CONTROL-ID
+               MOVE 5036 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-nazione-d's Validation
@@ -8698,7 +8973,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5036 TO CONTROL-ID
+               MOVE 5037 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-telef-1-d's Validation
@@ -8708,7 +8983,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5037 TO CONTROL-ID
+               MOVE 5038 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-telef-2-d's Validation
@@ -8718,7 +8993,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fax-d's Validation
@@ -8728,7 +9003,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5039 TO CONTROL-ID
+               MOVE 5040 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail-d's Validation
@@ -8738,7 +9013,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5041 TO CONTROL-ID
+               MOVE 5042 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-referente-d's Validation
@@ -8748,7 +9023,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5042 TO CONTROL-ID
+               MOVE 5043 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vettore-d's Validation
@@ -8758,7 +9033,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5043 TO CONTROL-ID
+               MOVE 5044 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg's Validation
@@ -8768,7 +9043,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5044 TO CONTROL-ID
+               MOVE 5045 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pag-d's Validation
@@ -8778,7 +9053,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5046 TO CONTROL-ID
+               MOVE 5047 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ref-ord-d's Validation
@@ -8788,7 +9063,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5047 TO CONTROL-ID
+               MOVE 5048 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tel-ord-d's Validation
@@ -8798,7 +9073,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5048 TO CONTROL-ID
+               MOVE 5049 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-perce-premi-d's Validation
@@ -8808,7 +9083,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5049 TO CONTROL-ID
+               MOVE 5050 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail-ord-d's Validation
@@ -8818,7 +9093,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5051 TO CONTROL-ID
+               MOVE 5052 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail-ord-cc's Validation
@@ -8828,7 +9103,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5052 TO CONTROL-ID
+               MOVE 5053 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -8838,7 +9113,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5053 TO CONTROL-ID
+               MOVE 5054 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-data's Validation
@@ -8848,7 +9123,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5054 TO CONTROL-ID
+               MOVE 5055 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -8858,7 +9133,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5055 TO CONTROL-ID
+               MOVE 5056 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -8868,7 +9143,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5056 TO CONTROL-ID
+               MOVE 5057 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -8878,7 +9153,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5057 TO CONTROL-ID
+               MOVE 5058 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -9153,6 +9428,23 @@
            PERFORM ef-vettore-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-vettore-AFTER-VALIDATION
+           .
+
+       ef-gdo-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-gdo, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-gdo-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-gdo, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-gdo's Validation
+       ef-gdo-VALIDATION.
+           PERFORM ef-gdo-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-gdo-AFTER-VALIDATION
            .
 
        ef-note-BEFORE-VALIDATION.
@@ -9752,6 +10044,8 @@
            MOVE ef-referente-BUF TO cli-referente
       * DB_Entry-Field : ef-vettore
            MOVE ef-vettore-BUF TO cli-vettore
+      * DB_Entry-Field : ef-gdo
+           MOVE ef-gdo-BUF TO cli-gdo
       * DB_CHECK BOX : chk-utf
               IF chk-utf-BUF = 1
                  MOVE "S" TO cli-utf
@@ -9905,6 +10199,8 @@
            MOVE cli-referente TO ef-referente-BUF
       * DB_Entry-Field : ef-vettore
            MOVE cli-vettore TO ef-vettore-BUF
+      * DB_Entry-Field : ef-gdo
+           MOVE cli-gdo TO ef-gdo-BUF
       * DB_CHECK BOX : chk-utf
               IF cli-utf = "S"
                  MOVE 1 TO chk-utf-BUF
@@ -9950,6 +10246,8 @@
               MOVE prv-descrizione  TO lab-citta-BUF
       * DB_LABEL : lab-regione
               MOVE reg-descrizione  TO lab-regione-BUF
+      * DB_LABEL : lab-gdo
+              MOVE gdo-intestazione  TO lab-gdo-BUF
       * DB_Entry-Field : ef-ragsoc-1-d
            MOVE desf-ragsoc-1 TO ef-ragsoc-1-d-BUF
       * DB_Entry-Field : ef-ragsoc-2-d
@@ -10155,6 +10453,13 @@
               move 78-ID-ef-vettore to store-id 
            end-if
 
+           if cli-gdo not = old-cli-gdo
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-gdo è l'ID del campo ef-gdo
+              move 78-ID-ef-gdo to store-id 
+           end-if
+
            if cli-utf not = old-cli-utf
               and SiSalvato
               set NoSalvato to true
@@ -10310,6 +10615,10 @@
            when 78-ID-ef-vettore
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-gdo è l'ID del campo ef-gdo
+           when 78-ID-ef-gdo
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |78-ID-ef-iva è l'ID del campo ef-iva
            when 78-ID-ef-iva
                 move 1 to StatusHelp
@@ -10376,6 +10685,11 @@
 
            |78-ID-ef-vettore è l'ID del campo ef-vettore
            when 78-ID-ef-vettore
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-gdo è l'ID del campo ef-gdo
+           when 78-ID-ef-gdo
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -10458,6 +10772,9 @@
                 perform CONTROLLO
            |78-ID-ef-vettore è l'ID del campo ef-vettore
            when 78-ID-ef-vettore
+                perform CONTROLLO
+           |78-ID-ef-gdo è l'ID del campo ef-gdo
+           when 78-ID-ef-gdo
                 perform CONTROLLO
            |78-ID-cbo-stato è l'ID del campo cbo-stato
            when 78-ID-cbo-stato
@@ -10991,79 +11308,81 @@
            WHEN 5014 MOVE "Digitare il referente" to TOTEM-HINT-TEXT
            WHEN 5015 MOVE "Digitare il codice del vettore" to 
            TOTEM-HINT-TEXT
-           WHEN 5016 MOVE "UTF/Non UTF" to TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Se attivo chiude l'ordine fornitore EXD al mo
+           WHEN 5016 MOVE "Digitare il codice del gruppo GDO" to 
+           TOTEM-HINT-TEXT
+           WHEN 5017 MOVE "UTF/Non UTF" to TOTEM-HINT-TEXT
+           WHEN 5018 MOVE "Se attivo chiude l'ordine fornitore EXD al mo
       -    "mento dell'evasione manuale" to TOTEM-HINT-TEXT
-           WHEN 5018 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5019 MOVE "Digitare le note" to TOTEM-HINT-TEXT
-           WHEN 5020 MOVE "Digitare il path delle note aggiuntive" to 
+           WHEN 5019 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5020 MOVE "Digitare le note" to TOTEM-HINT-TEXT
+           WHEN 5021 MOVE "Digitare il path delle note aggiuntive" to 
            TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Fornitore persona fisica" to TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Fornitore persona giuridica" to 
+           WHEN 5022 MOVE "Fornitore persona fisica" to TOTEM-HINT-TEXT
+           WHEN 5023 MOVE "Fornitore persona giuridica" to 
            TOTEM-HINT-TEXT
-           WHEN 5023 MOVE "Digitare il codice fiscale" to 
+           WHEN 5024 MOVE "Digitare il codice fiscale" to 
            TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Digitare la partita IVA" to TOTEM-HINT-TEXT
-           WHEN 5025 MOVE "Digitare il codice IVA" to TOTEM-HINT-TEXT
-           WHEN 5026 MOVE "Digitare il codice di pagamento" to 
+           WHEN 5025 MOVE "Digitare la partita IVA" to TOTEM-HINT-TEXT
+           WHEN 5026 MOVE "Digitare il codice IVA" to TOTEM-HINT-TEXT
+           WHEN 5027 MOVE "Digitare il codice di pagamento" to 
            TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Digitare il codice CAB" to TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare il codice ABI" to TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Digitare la Ragione Sociale I di destinazione
+           WHEN 5028 MOVE "Digitare il codice CAB" to TOTEM-HINT-TEXT
+           WHEN 5029 MOVE "Digitare il codice ABI" to TOTEM-HINT-TEXT
+           WHEN 5031 MOVE "Digitare la Ragione Sociale I di destinazione
       -    "" to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Digitare la Ragione Sociale II di destinazion
+           WHEN 5032 MOVE "Digitare la Ragione Sociale II di destinazion
       -    "e" to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "Digitare l'indirizzo di destinazione" to 
+           WHEN 5033 MOVE "Digitare l'indirizzo di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Digitare il CAP di destinazione" to 
+           WHEN 5034 MOVE "Digitare il CAP di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Digitare la località di destinazione" to 
+           WHEN 5035 MOVE "Digitare la località di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Digitare la provincia di destinazione" to 
+           WHEN 5036 MOVE "Digitare la provincia di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5036 MOVE "Digitare la nazione di destinazione" to 
+           WHEN 5037 MOVE "Digitare la nazione di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5037 MOVE "Digitare il numero di telefono I di destinazi
+           WHEN 5038 MOVE "Digitare il numero di telefono I di destinazi
       -    "one" to TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Digitare il numero di telefono II di destinaz
+           WHEN 5039 MOVE "Digitare il numero di telefono II di destinaz
       -    "ione" to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE "Digitare il numero di fax di destinazione" 
+           WHEN 5040 MOVE "Digitare il numero di fax di destinazione" 
            to TOTEM-HINT-TEXT
-           WHEN 5041 MOVE "Digitare l'indirizzo e-mail di destinazione" 
+           WHEN 5042 MOVE "Digitare l'indirizzo e-mail di destinazione" 
            to TOTEM-HINT-TEXT
-           WHEN 5042 MOVE "Digitare il referente di destinazione" to 
+           WHEN 5043 MOVE "Digitare il referente di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5043 MOVE "Digitare il vettore di destinazione" to 
+           WHEN 5044 MOVE "Digitare il vettore di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5044 MOVE "Digitare il n. di gg utili al fornitore per c
+           WHEN 5045 MOVE "Digitare il n. di gg utili al fornitore per c
       -    "onsegnare la merce" to TOTEM-HINT-TEXT
            WHEN 76 MOVE "Se attivo chiude l'ordine fornitore EXD al mome
       -    "nto dell'evasione manuale" to TOTEM-HINT-TEXT
-           WHEN 5045 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5046 MOVE "Digitare il codice pagamento del destino" to 
+           WHEN 5046 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5047 MOVE "Digitare il codice pagamento del destino" to 
            TOTEM-HINT-TEXT
            WHEN 37 MOVE "Se attivo chiude l'ordine fornitore EXD al mome
       -    "nto dell'evasione manuale" to TOTEM-HINT-TEXT
-           WHEN 5047 MOVE "Digitare il referente" to TOTEM-HINT-TEXT
-           WHEN 5048 MOVE "Digitare il numero di telefono diretto" to 
+           WHEN 5048 MOVE "Digitare il referente" to TOTEM-HINT-TEXT
+           WHEN 5049 MOVE "Digitare il numero di telefono diretto" to 
            TOTEM-HINT-TEXT
-           WHEN 5049 MOVE "Digitare la % premi fine anno" to 
+           WHEN 5050 MOVE "Digitare la % premi fine anno" to 
            TOTEM-HINT-TEXT
-           WHEN 5050 MOVE "Indica se il calcolo del PFA deve tener conto
+           WHEN 5051 MOVE "Indica se il calcolo del PFA deve tener conto
       -    " o no delle imposte" to TOTEM-HINT-TEXT
-           WHEN 5051 MOVE "Digitare l'indirizzo di posta elettronica" 
-           to TOTEM-HINT-TEXT
            WHEN 5052 MOVE "Digitare l'indirizzo di posta elettronica" 
            to TOTEM-HINT-TEXT
-           WHEN 5053 MOVE "Digitare i dati di consegna" to 
+           WHEN 5053 MOVE "Digitare l'indirizzo di posta elettronica" 
+           to TOTEM-HINT-TEXT
+           WHEN 5054 MOVE "Digitare i dati di consegna" to 
            TOTEM-HINT-TEXT
-           WHEN 5054 MOVE "Digitare la data di Consegna" to 
-           TOTEM-HINT-TEXT
-           WHEN 5055 MOVE "Digitare le note di destinazione" to 
+           WHEN 5055 MOVE "Digitare la data di Consegna" to 
            TOTEM-HINT-TEXT
            WHEN 5056 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 5057 MOVE "Digitare le note di destinazione" to 
+           TOTEM-HINT-TEXT
+           WHEN 5058 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
@@ -11084,48 +11403,49 @@
            When 5013 PERFORM ef-url-BeforeProcedure
            When 5014 PERFORM ef-referente-BeforeProcedure
            When 5015 PERFORM ef-vettore-BeforeProcedure
-           When 5016 PERFORM chk-utf-BeforeProcedure
-           When 5017 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5018 PERFORM cbo-stato-BeforeProcedure
-           When 5019 PERFORM ef-note-BeforeProcedure
-           When 5020 PERFORM ef-note-agg-BeforeProcedure
-           When 5021 PERFORM Form1-DaRb-1-BeforeProcedure
+           When 5016 PERFORM ef-vettore-BeforeProcedure
+           When 5017 PERFORM chk-utf-BeforeProcedure
+           When 5018 PERFORM Form1-DaCb-1-BeforeProcedure
+           When 5019 PERFORM cbo-stato-BeforeProcedure
+           When 5020 PERFORM ef-note-BeforeProcedure
+           When 5021 PERFORM ef-note-agg-BeforeProcedure
            When 5022 PERFORM Form1-DaRb-1-BeforeProcedure
-           When 5023 PERFORM ef-codfis-BeforeProcedure
-           When 5024 PERFORM ef-piva-BeforeProcedure
-           When 5025 PERFORM ef-iva-BeforeProcedure
-           When 5026 PERFORM ef-pag-BeforeProcedure
-           When 5027 PERFORM ef-cab-BeforeProcedure
-           When 5028 PERFORM ef-abi-BeforeProcedure
-           When 5030 PERFORM ef-ragsoc-1-d-BeforeProcedure
-           When 5031 PERFORM ef-ragsoc-2-d-BeforeProcedure
-           When 5032 PERFORM ef-indirizzo-d-BeforeProcedure
-           When 5033 PERFORM ef-cap-d-BeforeProcedure
-           When 5034 PERFORM ef-localita-d-BeforeProcedure
-           When 5035 PERFORM ef-prov-d-BeforeProcedure
-           When 5036 PERFORM ef-nazione-d-BeforeProcedure
-           When 5037 PERFORM ef-telef-1-d-BeforeProcedure
-           When 5038 PERFORM ef-telef-2-d-BeforeProcedure
-           When 5039 PERFORM ef-fax-d-BeforeProcedure
-           When 5041 PERFORM ef-mail-d-BeforeProcedure
-           When 5042 PERFORM ef-referente-d-BeforeProcedure
-           When 5043 PERFORM ef-vettore-d-BeforeProcedure
-           When 5044 PERFORM ef-note-agg-BeforeProcedure
+           When 5023 PERFORM Form1-DaRb-1-BeforeProcedure
+           When 5024 PERFORM ef-codfis-BeforeProcedure
+           When 5025 PERFORM ef-piva-BeforeProcedure
+           When 5026 PERFORM ef-iva-BeforeProcedure
+           When 5027 PERFORM ef-pag-BeforeProcedure
+           When 5028 PERFORM ef-cab-BeforeProcedure
+           When 5029 PERFORM ef-abi-BeforeProcedure
+           When 5031 PERFORM ef-ragsoc-1-d-BeforeProcedure
+           When 5032 PERFORM ef-ragsoc-2-d-BeforeProcedure
+           When 5033 PERFORM ef-indirizzo-d-BeforeProcedure
+           When 5034 PERFORM ef-cap-d-BeforeProcedure
+           When 5035 PERFORM ef-localita-d-BeforeProcedure
+           When 5036 PERFORM ef-prov-d-BeforeProcedure
+           When 5037 PERFORM ef-nazione-d-BeforeProcedure
+           When 5038 PERFORM ef-telef-1-d-BeforeProcedure
+           When 5039 PERFORM ef-telef-2-d-BeforeProcedure
+           When 5040 PERFORM ef-fax-d-BeforeProcedure
+           When 5042 PERFORM ef-mail-d-BeforeProcedure
+           When 5043 PERFORM ef-referente-d-BeforeProcedure
+           When 5044 PERFORM ef-vettore-d-BeforeProcedure
+           When 5045 PERFORM ef-note-agg-BeforeProcedure
            When 76 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5045 PERFORM cbo-stato-d-BeforeProcedure
-           When 5046 PERFORM ef-pag-d-BeforeProcedure
+           When 5046 PERFORM cbo-stato-d-BeforeProcedure
+           When 5047 PERFORM ef-pag-d-BeforeProcedure
            When 37 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5047 PERFORM ef-ref-ord-BeforeProcedure
-           When 5048 PERFORM ef-tel-ord-BeforeProcedure
-           When 5049 PERFORM ef-perce-premi-BeforeProcedure
-           When 5050 PERFORM Form1-DaCb-1-BeforeProcedure
-           When 5051 PERFORM ef-mail-ord-BeforeProcedure
+           When 5048 PERFORM ef-ref-ord-BeforeProcedure
+           When 5049 PERFORM ef-tel-ord-BeforeProcedure
+           When 5050 PERFORM ef-perce-premi-BeforeProcedure
+           When 5051 PERFORM Form1-DaCb-1-BeforeProcedure
            When 5052 PERFORM ef-mail-ord-BeforeProcedure
-           When 5053 PERFORM ef-note-1-BeforeProcedure
-           When 5054 PERFORM Form1-DaEf-1-BeforeProcedure
-           When 5055 PERFORM ef-note-2-BeforeProcedure
-           When 5056 PERFORM ef-note-3-BeforeProcedure
-           When 5057 PERFORM ef-note-4-BeforeProcedure
+           When 5053 PERFORM ef-mail-ord-BeforeProcedure
+           When 5054 PERFORM ef-note-1-BeforeProcedure
+           When 5055 PERFORM Form1-DaEf-1-BeforeProcedure
+           When 5056 PERFORM ef-note-2-BeforeProcedure
+           When 5057 PERFORM ef-note-3-BeforeProcedure
+           When 5058 PERFORM ef-note-4-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -11149,47 +11469,48 @@
            When 5013 PERFORM ef-url-AfterProcedure
            When 5014 PERFORM ef-referente-AfterProcedure
            When 5015 PERFORM ef-vettore-AfterProcedure
-           When 5016 PERFORM chk-utf-AfterProcedure
-           When 5017 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5019 PERFORM ef-note-AfterProcedure
-           When 5020 PERFORM ef-note-agg-AfterProcedure
-           When 5021 PERFORM Form1-DaRb-1-AfterProcedure
+           When 5016 PERFORM ef-vettore-AfterProcedure
+           When 5017 PERFORM chk-utf-AfterProcedure
+           When 5018 PERFORM Form1-DaCb-1-AfterProcedure
+           When 5020 PERFORM ef-note-AfterProcedure
+           When 5021 PERFORM ef-note-agg-AfterProcedure
            When 5022 PERFORM Form1-DaRb-1-AfterProcedure
-           When 5023 PERFORM ef-codfis-AfterProcedure
-           When 5024 PERFORM ef-piva-AfterProcedure
-           When 5025 PERFORM ef-iva-AfterProcedure
-           When 5026 PERFORM ef-pag-AfterProcedure
-           When 5027 PERFORM ef-cab-AfterProcedure
-           When 5028 PERFORM ef-abi-AfterProcedure
-           When 5030 PERFORM ef-ragsoc-1-d-AfterProcedure
-           When 5031 PERFORM ef-ragsoc-2-d-AfterProcedure
-           When 5032 PERFORM ef-indirizzo-d-AfterProcedure
-           When 5033 PERFORM ef-cap-d-AfterProcedure
-           When 5034 PERFORM ef-localita-d-AfterProcedure
-           When 5035 PERFORM ef-prov-d-AfterProcedure
-           When 5036 PERFORM ef-nazione-d-AfterProcedure
-           When 5037 PERFORM ef-telef-1-d-AfterProcedure
-           When 5038 PERFORM ef-telef-2-d-AfterProcedure
-           When 5039 PERFORM ef-fax-d-AfterProcedure
-           When 5041 PERFORM ef-mail-d-AfterProcedure
-           When 5042 PERFORM ef-referente-d-AfterProcedure
-           When 5043 PERFORM ef-vettore-d-AfterProcedure
-           When 5044 PERFORM ef-note-agg-AfterProcedure
+           When 5023 PERFORM Form1-DaRb-1-AfterProcedure
+           When 5024 PERFORM ef-codfis-AfterProcedure
+           When 5025 PERFORM ef-piva-AfterProcedure
+           When 5026 PERFORM ef-iva-AfterProcedure
+           When 5027 PERFORM ef-pag-AfterProcedure
+           When 5028 PERFORM ef-cab-AfterProcedure
+           When 5029 PERFORM ef-abi-AfterProcedure
+           When 5031 PERFORM ef-ragsoc-1-d-AfterProcedure
+           When 5032 PERFORM ef-ragsoc-2-d-AfterProcedure
+           When 5033 PERFORM ef-indirizzo-d-AfterProcedure
+           When 5034 PERFORM ef-cap-d-AfterProcedure
+           When 5035 PERFORM ef-localita-d-AfterProcedure
+           When 5036 PERFORM ef-prov-d-AfterProcedure
+           When 5037 PERFORM ef-nazione-d-AfterProcedure
+           When 5038 PERFORM ef-telef-1-d-AfterProcedure
+           When 5039 PERFORM ef-telef-2-d-AfterProcedure
+           When 5040 PERFORM ef-fax-d-AfterProcedure
+           When 5042 PERFORM ef-mail-d-AfterProcedure
+           When 5043 PERFORM ef-referente-d-AfterProcedure
+           When 5044 PERFORM ef-vettore-d-AfterProcedure
+           When 5045 PERFORM ef-note-agg-AfterProcedure
            When 76 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5046 PERFORM ef-pag-d-AfterProcedure
+           When 5047 PERFORM ef-pag-d-AfterProcedure
            When 37 PERFORM Form1-DaCb-1-AfterProcedure
-           When 76 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5047 PERFORM ef-ref-ord-AfterProcedure
-           When 5048 PERFORM ef-tel-ord-AfterProcedure
-           When 5049 PERFORM ef-perce-premi-AfterProcedure
-           When 5050 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5051 PERFORM ef-mail-ord-AfterProcedure
+           When 38 PERFORM Form1-DaCb-1-AfterProcedure
+           When 5048 PERFORM ef-ref-ord-AfterProcedure
+           When 5049 PERFORM ef-tel-ord-AfterProcedure
+           When 5050 PERFORM ef-perce-premi-AfterProcedure
+           When 5051 PERFORM Form1-DaCb-1-AfterProcedure
            When 5052 PERFORM ef-mail-ord-AfterProcedure
-           When 5053 PERFORM ef-note-1-AfterProcedure
-           When 5054 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5055 PERFORM ef-note-2-AfterProcedure
-           When 5056 PERFORM ef-note-3-AfterProcedure
-           When 5057 PERFORM ef-note-4-AfterProcedure
+           When 5053 PERFORM ef-mail-ord-AfterProcedure
+           When 5054 PERFORM ef-note-1-AfterProcedure
+           When 5055 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5056 PERFORM ef-note-2-AfterProcedure
+           When 5057 PERFORM ef-note-3-AfterProcedure
+           When 5058 PERFORM ef-note-4-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -11211,22 +11532,22 @@
        Form1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5029 ALSO
+           WHEN Msg-Begin-Drag ALSO 5030 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5029 ALSO
+           WHEN Msg-Begin-Entry ALSO 5030 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5029 ALSO
+           WHEN Msg-End-Drag ALSO 5030 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5029 ALSO
+           WHEN Msg-Goto-Cell ALSO 5030 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5029 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5030 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5029 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5030 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -11959,6 +12280,12 @@
               INQUIRE ef-vettore, VALUE IN cli-vettore
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-vettore-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-gdo, VALUE IN cli-gdo
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-gdo-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

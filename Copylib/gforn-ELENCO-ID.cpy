@@ -32,6 +32,10 @@
            when 78-ID-ef-vettore
                 inquire ef-vettore, value in ef-vettore-buf
 
+           |78-ID-ef-gdo è l'ID del control ef-gdo
+           when 78-ID-ef-gdo
+                inquire ef-gdo, value in ef-gdo-buf
+
            |78-ID-cbo-stato è l'ID del control cbo-stato
            when 78-ID-cbo-stato
                 inquire cbo-stato, value in cbo-stato-buf
