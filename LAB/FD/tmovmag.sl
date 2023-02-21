@@ -12,4 +12,10 @@
            tmo-destino, tmo-data-movim
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS k-data = tmo-data-movim, tmo-numero
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS tmo-k-bolla = tmo-tipo, 
+           tmo-data-doc, tmo-numdoc-clifor
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS tmo-k-fattura = tmo-tipo, 
+           tmo-anno-fattura, tmo-num-fattura
            WITH DUPLICATES .

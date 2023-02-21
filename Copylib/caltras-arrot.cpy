@@ -1,16 +1,24 @@
-
-
       ***---
        CALCOLA-QTA-ARROTONDATA-TARIFFA.
-           divide tot-peso-kg by 100 giving tot-peso-qli.
-           divide tot-peso-kg by 100 giving tot-peso-qli-arrot rounded.
+           divide tot-peso-kg(idx-serie) by 100 
+                  giving tot-peso-qli.
+           divide tot-peso-kg(idx-serie) by 100 
+                  giving tot-peso-qli-arrot rounded.
            move trs-vettore to vet-codice.
            read tvettori no lock
-                invalid move 0 to trs-qta-arrot
-                        move 0 to trs-tariffa
+                invalid 
+                evaluate idx-serie
+                when 1 move 0 to trs-qta-arrot-s1 trs-tariffa-s1
+                when 2 move 0 to trs-qta-arrot-s2 trs-tariffa-s2
+                when 3 move 0 to trs-qta-arrot-s3 trs-tariffa-s3
+                end-evaluate
             not invalid
                 if tot-peso-qli < vet-min-tass
-                   move vet-min-tass to trs-qta-arrot
+                   evaluate idx-serie                       
+                   when 1 move vet-min-tass to trs-qta-arrot-s1
+                   when 2 move vet-min-tass to trs-qta-arrot-s2
+                   when 3 move vet-min-tass to trs-qta-arrot-s3
+                   end-evaluate
                 else
                    move 1 to idx
                    set esiste-scaglione  to false
@@ -30,96 +38,22 @@
                    if trovato-scaglione
                       move tot-peso-qli to s-tot-peso-qli
                       perform ARROTONDA                     
-                      move s-tot-peso-qli to trs-qta-arrot
+                      evaluate idx-serie                                  
+                      when 1 move s-tot-peso-qli to trs-qta-arrot-s1
+                      when 2 move s-tot-peso-qli to trs-qta-arrot-s2
+                      when 3 move s-tot-peso-qli to trs-qta-arrot-s3
+                      end-evaluate
                    else
                       if not esiste-scaglione
-                         move tot-peso-qli to trs-qta-arrot
+                         evaluate idx-serie                                
+                         when 1 move tot-peso-qli to trs-qta-arrot-s1
+                         when 2 move tot-peso-qli to trs-qta-arrot-s2
+                         when 3 move tot-peso-qli to trs-qta-arrot-s3
+                         end-evaluate
                       end-if
                    end-if
                 end-if
-           end-read.
-
-      ***---
-       CALCOLA-QTA-ARROTONDATA-TARIFFA-SHI.
-           divide tot-peso-kg-SHI by 100 giving tot-peso-qli-SHI.  
-           divide tot-peso-kg-SHI by 100 giving tot-peso-qli-arrot 
-                                                rounded.
-           move trs-vettore to vet-codice.
-           read tvettori no lock
-                invalid move 0 to trs-qta-arrot-SHI
-                        move 0 to trs-tariffa-SHI
-            not invalid
-                if tot-peso-qli-SHI < vet-min-tass and
-                   tot-peso-qli-SHI not = 0
-                   move vet-min-tass to trs-qta-arrot-SHI
-                else
-                   move 1 to idx
-                   set esiste-scaglione  to false
-                   set trovato-scaglione to false
-                   perform 10 times
-                      if vet-qli-a-arrot(idx)  not = 0 or
-                         vet-qli-da-arrot(idx) not = 0
-                         set esiste-scaglione to true
-                      end-if
-                      if tot-peso-qli-arrot <= vet-qli-a-arrot(idx)  and
-                         tot-peso-qli-arrot >= vet-qli-da-arrot(idx)
-                         set trovato-scaglione to true
-                         exit perform
-                      end-if
-                      add 1 to idx 
-                   end-perform
-                   if trovato-scaglione                        
-                      move tot-peso-qli-SHI to s-tot-peso-qli
-                      perform ARROTONDA                      
-                      move s-tot-peso-qli to trs-qta-arrot-SHI
-                   else
-                      if not esiste-scaglione
-                         move tot-peso-qli-SHI to trs-qta-arrot-SHI
-                      end-if
-                   end-if
-                end-if
-           end-read.
-
-      ***---
-       CALCOLA-QTA-ARROTONDATA-TARIFFA-GET.
-           divide tot-peso-kg-GET by 100 giving tot-peso-qli-GET.  
-           divide tot-peso-kg-GET by 100 giving tot-peso-qli-arrot 
-                                                rounded.
-           move trs-vettore to vet-codice.
-           read tvettori no lock
-                invalid move 0 to trs-qta-arrot-GET
-                        move 0 to trs-tariffa-GET
-            not invalid
-                if tot-peso-qli-GET < vet-min-tass and
-                   tot-peso-qli-GET not = 0
-                   move vet-min-tass to trs-qta-arrot-GET
-                else
-                   move 1 to idx
-                   set esiste-scaglione  to false
-                   set trovato-scaglione to false
-                   perform 10 times
-                      if vet-qli-a-arrot(idx)  not = 0 or
-                         vet-qli-da-arrot(idx) not = 0
-                         set esiste-scaglione to true
-                      end-if
-                      if tot-peso-qli-arrot <= vet-qli-a-arrot(idx)  and
-                         tot-peso-qli-arrot >= vet-qli-da-arrot(idx)
-                         set trovato-scaglione to true
-                         exit perform
-                      end-if
-                      add 1 to idx 
-                   end-perform
-                   if trovato-scaglione             
-                      move tot-peso-qli-GET to s-tot-peso-qli
-                      perform ARROTONDA                      
-                      move s-tot-peso-qli to trs-qta-arrot-GET
-                   else
-                      if not esiste-scaglione
-                         move tot-peso-qli-GET to trs-qta-arrot-GET
-                      end-if
-                   end-if
-                end-if
-           end-read.
+           end-read.                   
 
       ***---                                                     
        ARROTONDA.               
@@ -215,7 +149,7 @@
                           cifra(13) 
                           cifra(13)  
                 add  1 to cifra(9)
-           end-evaluate           
+           end-evaluate.
   
       *****     move 245,85 to tot-peso-kg.
       *****     perform ARRTOP.
@@ -336,3 +270,56 @@
       *****           x"0d0a""50 - "p50
       *****           x"0d0a""20 - "p20
       *****                      x"0d0a""10 - " p10
+
+      ***---
+       TROVA-TARIFFA-E-VALORIZZA-CAMPO.
+           move 0          to trs-tariffa-s1.
+           move low-value  to tfv-rec.
+           move vet-codice to tfv-codice.
+
+           start tarifvet key is >= tfv-chiave
+                 invalid continue
+             not invalid
+LUBEXX           set trovata-tariffa to false
+                 perform until 1 = 2
+                    read tarifvet next no lock
+                         at end exit perform
+                    end-read
+                    if tfv-codice not = vet-codice
+                       exit perform
+                    end-if
+
+LUBEXX              evaluate true
+LUBEXX              when vet-regione
+LUBEXX                   if trs-regione = tfv-campo1
+LUBEXX                      set trovata-tariffa to true
+LUBEXX                   end-if
+LUBEXX              when vet-prov
+LUBEXX                   if trs-provincia = tfv-prov
+LUBEXX                      set trovata-tariffa to true
+LUBEXX                   end-if
+LUBEXX              when vet-cliente
+LUBEXX                   if trs-cliente = tfv-campo1
+LUBEXX                      set trovata-tariffa to true
+LUBEXX                   end-if
+LUBEXX              when vet-clides
+LUBEXX                   if trs-cliente = tfv-campo1 and
+LUBEXX                      trs-destino = tfv-campo2
+LUBEXX                      set trovata-tariffa to true
+LUBEXX                   end-if
+LUBEXX              end-evaluate
+
+LUBEXX              if trovata-tariffa
+                       if qta-arrot(idx-serie) >= tfv-qli-da and
+                          qta-arrot(idx-serie) <= tfv-qli-a
+                          evaluate idx-serie                 
+                          when 1 move tfv-euro to trs-tariffa-s1
+                          when 2 move tfv-euro to trs-tariffa-s2
+                          when 3 move tfv-euro to trs-tariffa-s3
+                          end-evaluate
+                          exit perform
+                       end-if
+LUBEXX              end-if
+
+                 end-perform
+           end-start.                 

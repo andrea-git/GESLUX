@@ -54,16 +54,16 @@
               initialize cmd                                          
               inspect nome-file  replacing trailing spaces by low-value
               inspect nome-file2 replacing trailing spaces by low-value
-              string "move "
-                    x"22"
-                     dir-m
-                     nome-file delimited low-value
-                    x"22"
-                     " "                          
-                    x"22"
-                     dir-m
+              string "move "    delimited size
+                    x"22"       delimited size
+                     dir-m      delimited size
+                     nome-file  delimited low-value
+                    x"22"       delimited size
+                     " "        delimited size                  
+                    x"22"       delimited size
+                     dir-m      delimited size
                      nome-file2 delimited low-value
-                    x"22"
+                    x"22"       delimited size
                 into cmd
               end-string
               call "C$SYSTEM" using cmd, 225

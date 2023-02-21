@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          gtrasporti.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:16:45.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 21 febbraio 2023 17:44:20.
        REMARKS.
       *{TOTEM}END
 
@@ -54,9 +54,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -140,9 +138,9 @@
                10 old-trs-destino  PIC  9(5).
                10 old-trs-regione  PIC  9(3).
                10 old-trs-provincia            PIC  x(2).
-               10 old-trs-qta-kg   PIC  9(9)v999.
-               10 old-trs-qta-arrot            PIC  9(9)v999.
-               10 old-trs-tariffa  PIC  9(9)v99.
+               10 old-trs-qta-kg-s1            PIC  9(9)v999.
+               10 old-trs-qta-arrot-s1         PIC  9(9)v999.
+               10 old-trs-tariffa-s1           PIC  9(9)v99.
                10 old-trs-note     PIC  x(500).
                10 old-trs-dati-comuni.
                    15 old-trs-data-creazione       PIC  9(8).
@@ -153,14 +151,14 @@
                    15 old-trs-utente-ultima-modifica           PIC  
            X(10).
                10 old-trs-vuoti.
-                   15 old-trs-qta-kg-SHI           PIC  9(9)v999.
-                   15 old-trs-qta-arrot-SHI        PIC  9(9)v999.
-                   15 old-trs-TARIFFA-shi          PIC  9(9)v99.
+                   15 old-trs-qta-kg-S2            PIC  9(9)v999.
+                   15 old-trs-qta-arrot-S2         PIC  9(9)v999.
+                   15 old-trs-TARIFFA-s2           PIC  9(9)v99.
                    15 old-trs-num-vuoto-2          PIC  9(1).
                    15 old-trs-num-vuoto-3          PIC  9(18).
-                   15 old-trs-qta-kg-GET           PIC  9(9)v999.
-                   15 old-trs-qta-arrot-GET        PIC  9(9)v999.
-                   15 old-trs-TARIFFA-GET          PIC  9(9)v99.
+                   15 old-trs-qta-kg-s3            PIC  9(9)v999.
+                   15 old-trs-qta-arrot-s3         PIC  9(9)v999.
+                   15 old-trs-TARIFFA-s3           PIC  9(9)v99.
                    15 old-trs-alfa-vuoto           PIC  X(464).
        77 lab-cli-buf      PIC  x(50).
        77 lab-vet-buf      PIC  x(50).
@@ -204,34 +202,34 @@
       * Data.Entry-Field
               05 ef-prov-BUF PIC X(2).
       * Data.Entry-Field
-              05 ef-qta-kg-BUF PIC zzz.zzz.zz9,999.
+              05 ef-qta-kg-s1-BUF PIC zzz.zzz.zz9,999.
       * Data.Entry-Field
-              05 ef-qta-arrot-BUF PIC zzz.zzz.zz9,999.
+              05 ef-qta-arrot-s1-BUF PIC zzz.zzz.zz9,999.
       * Data.Entry-Field
-              05 ef-qta-kg-SHI-BUF PIC zzz.zzz.zz9,999.
+              05 ef-tariffa-s1-BUF PIC zzz.zzz.zz9,99.
       * Data.Entry-Field
-              05 ef-qta-arrot-SHI-BUF PIC zzz.zzz.zz9,999.
+              05 ef-qta-kg-S2-BUF PIC zzz.zzz.zz9,999.
       * Data.Entry-Field
-              05 ef-tariffa-SHI-BUF PIC zzz.zzz.zz9,99.
+              05 ef-qta-arrot-S2-BUF PIC zzz.zzz.zz9,999.
       * Data.Entry-Field
-              05 ef-qta-kg-GET-BUF PIC zzz.zzz.zz9,999.
-      * Data.Entry-Field
-              05 ef-qta-arrot-GET-BUF PIC zzz.zzz.zz9,999.
-      * Data.Entry-Field
-              05 ef-tariffa-GET-BUF PIC zzz.zzz.zz9,999.
-      * Data.Entry-Field
-              05 ef-tariffa-BUF PIC zzz.zzz.zz9,99.
+              05 ef-tariffa-S2-BUF PIC zzz.zzz.zz9,99.
       * Data.Entry-Field
               05 ef-note-BUF PIC x(500).
+      * Data.Entry-Field
+              05 ef-anno-m-BUF PIC 9(4).
+      * Data.Entry-Field
+              05 ef-num-m-BUF PIC z(8).
+      * Data.Entry-Field
+              05 ef-cau-m-BUF PIC x(4).
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-trasporti-RESTOREBUF  PIC X(1207).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
        77 Form1-MULKEY-TMPBUF   PIC X(1207).
        77 TMP-DataSet1-trasporti-BUF     PIC X(1207).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(445).
-       77 TMP-DataSet1-tvettori-BUF     PIC X(1787).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tregioni-BUF     PIC X(190).
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
        77 TMP-DataSet1-zoom-trasporti-BUF     PIC X(112).
@@ -281,7 +279,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
 
@@ -299,15 +297,12 @@
        78  78-ID-ef-dest VALUE 5008.
        78  78-ID-ef-reg VALUE 5009.
        78  78-ID-ef-prov VALUE 5010.
-       78  78-ID-ef-qta-kg VALUE 5011.
-       78  78-ID-ef-qta-arrot VALUE 5012.
-       78  78-ID-ef-qta-kg-SHI VALUE 5013.
-       78  78-ID-ef-qta-arrot-SHI VALUE 5014.
-       78  78-ID-ef-tariffa-SHI VALUE 5015.
-       78  78-ID-ef-qta-kg-GET VALUE 5016.
-       78  78-ID-ef-qta-arrot-GET VALUE 5017.
-       78  78-ID-ef-tariffa-GET VALUE 5018.
-       78  78-ID-ef-tariffa VALUE 5019.
+       78  78-ID-ef-qta-kg-s1 VALUE 5011.
+       78  78-ID-ef-qta-arrot-s1 VALUE 5012.
+       78  78-ID-ef-tariffa-s1 VALUE 5013.
+       78  78-ID-ef-qta-kg-S2 VALUE 5014.
+       78  78-ID-ef-qta-arrot-S2 VALUE 5015.
+       78  78-ID-ef-tariffa-S2 VALUE 5016.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -517,175 +512,244 @@
            VALUE ef-prov-BUF,
            .
 
-      * ENTRY FIELD
+      * FRAME
        05
-           ef-qta-kg, 
-           Entry-Field, 
-           COL 22,00, 
-           LINE 26,00,
-           LINES 1,31 ,
-           SIZE 12,00 ,
-           BOXED,
-           COLOR IS 513,
-           ENABLED mod,
-           ID IS 78-ID-ef-qta-kg,                
+           Form1-Fr-1, 
+           Frame, 
+           COL 16,83, 
+           LINE 24,15,
+           LINES 7,69 ,
+           SIZE 36,50 ,
+           ID IS 17,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           RIGHT,
-           MAX-TEXT 13,
-           VALUE ef-qta-kg-BUF,
+           TITLE "Serie bolle 1",
+           TITLE-POSITION 2,
            .
 
       * ENTRY FIELD
        05
-           ef-qta-arrot, 
+           ef-qta-kg-s1, 
            Entry-Field, 
-           COL 22,00, 
-           LINE 28,00,
+           COL 38,66, 
+           LINE 25,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 78-ID-ef-qta-arrot,                
+           ID IS 78-ID-ef-qta-kg-s1,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 13,
-           VALUE ef-qta-arrot-BUF,
+           VALUE ef-qta-kg-s1-BUF,
+           BEFORE PROCEDURE Form1-DaEf-6-BeforeProcedure, 
            .
 
       * ENTRY FIELD
        05
-           ef-qta-kg-SHI, 
+           ef-qta-arrot-s1, 
            Entry-Field, 
-           COL 58,67, 
-           LINE 26,00,
+           COL 38,66, 
+           LINE 27,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 78-ID-ef-qta-kg-SHI,                
+           ID IS 78-ID-ef-qta-arrot-s1,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 13,
-           VALUE ef-qta-kg-SHI-BUF,
+           VALUE ef-qta-arrot-s1-BUF,
+           BEFORE PROCEDURE Form1-DaEf-8-BeforeProcedure, 
            .
 
       * ENTRY FIELD
        05
-           ef-qta-arrot-SHI, 
+           ef-tariffa-s1, 
            Entry-Field, 
-           COL 58,67, 
-           LINE 28,00,
+           COL 38,66, 
+           LINE 29,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 78-ID-ef-qta-arrot-SHI,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           RIGHT,
-           MAX-TEXT 13,
-           VALUE ef-qta-arrot-SHI-BUF,
-           .
-
-      * ENTRY FIELD
-       05
-           ef-tariffa-SHI, 
-           Entry-Field, 
-           COL 58,67, 
-           LINE 30,00,
-           LINES 1,31 ,
-           SIZE 12,00 ,
-           BOXED,
-           COLOR IS 513,
-           ENABLED mod,
-           ID IS 78-ID-ef-tariffa-SHI,                
+           ID IS 78-ID-ef-tariffa-s1,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 12,
-           VALUE ef-tariffa-SHI-BUF,
+           VALUE ef-tariffa-s1-BUF,
+           BEFORE PROCEDURE Form1-DaEf-13-BeforeProcedure, 
+           .
+
+      * LABEL
+       05
+           Form1-La-7, 
+           Label, 
+           COL 18,83, 
+           LINE 25,69,
+           LINES 1,31 ,
+           SIZE 18,00 ,
+           ID IS 16,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Q.tà effettiva in Kg.",
+           .
+
+      * LABEL
+       05
+           Form1-La-9, 
+           Label, 
+           COL 18,83, 
+           LINE 27,53,
+           LINES 1,31 ,
+           SIZE 18,00 ,
+           ID IS 19,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Q.tà arrotondata (q.li)",
+           .
+
+      * LABEL
+       05
+           Form1-La-12, 
+           Label, 
+           COL 18,83, 
+           LINE 29,46,
+           LINES 1,31 ,
+           SIZE 18,00 ,
+           ID IS 23,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tariffa unitaria",
+           .
+
+      * FRAME
+       05
+           Form1-Fr-2, 
+           Frame, 
+           COL 58,50, 
+           LINE 24,15,
+           LINES 7,69 ,
+           SIZE 36,50 ,
+           ID IS 24,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Serie bolle 2",
+           TITLE-POSITION 2,
            .
 
       * ENTRY FIELD
        05
-           ef-qta-kg-GET, 
+           ef-qta-kg-S2, 
            Entry-Field, 
-           COL 95,33, 
-           LINE 26,00,
+           COL 80,50, 
+           LINE 25,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 78-ID-ef-qta-kg-GET,                
+           ID IS 78-ID-ef-qta-kg-S2,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 13,
-           VALUE ef-qta-kg-GET-BUF,
+           VALUE ef-qta-kg-S2-BUF,
+           BEFORE PROCEDURE Form1-DaEf-6-BeforeProcedure, 
            .
 
       * ENTRY FIELD
        05
-           ef-qta-arrot-GET, 
+           ef-qta-arrot-S2, 
            Entry-Field, 
-           COL 95,33, 
-           LINE 28,00,
+           COL 80,50, 
+           LINE 27,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 78-ID-ef-qta-arrot-GET,                
+           ID IS 78-ID-ef-qta-arrot-S2,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 13,
-           VALUE ef-qta-arrot-GET-BUF,
+           VALUE ef-qta-arrot-S2-BUF,
+           BEFORE PROCEDURE Form1-DaEf-8-BeforeProcedure, 
            .
 
       * ENTRY FIELD
        05
-           ef-tariffa-GET, 
+           ef-tariffa-S2, 
            Entry-Field, 
-           COL 95,33, 
-           LINE 30,00,
+           COL 80,50, 
+           LINE 29,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 78-ID-ef-tariffa-GET,                
+           ID IS 78-ID-ef-tariffa-S2,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            MAX-TEXT 12,
-           VALUE ef-tariffa-GET-BUF,
+           VALUE ef-tariffa-S2-BUF,
+           BEFORE PROCEDURE Form1-DaEf-13-BeforeProcedure, 
            .
 
-      * ENTRY FIELD
+      * LABEL
        05
-           ef-tariffa, 
-           Entry-Field, 
-           COL 22,00, 
-           LINE 30,00,
+           Form1-La-7a, 
+           Label, 
+           COL 61,00, 
+           LINE 25,69,
            LINES 1,31 ,
-           SIZE 12,00 ,
-           BOXED,
-           COLOR IS 513,
-           ENABLED mod,
-           ID IS 78-ID-ef-tariffa,                
+           SIZE 17,00 ,
+           ID IS 48,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           RIGHT,
-           MAX-TEXT 12,
-           VALUE ef-tariffa-BUF,
+           TRANSPARENT,
+           TITLE "Q.tà effettiva in Kg.",
+           .
+
+      * LABEL
+       05
+           Form1-La-9a, 
+           Label, 
+           COL 61,00, 
+           LINE 27,69,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           ID IS 49,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Q.tà arrotondata (q.li)",
+           .
+
+      * LABEL
+       05
+           Form1-La-12b, 
+           Label, 
+           COL 61,00, 
+           LINE 29,69,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           ID IS 50,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tariffa unitaria",
            .
 
       * ENTRY FIELD
@@ -857,51 +921,6 @@
 
       * LABEL
        05
-           Form1-La-7, 
-           Label, 
-           COL 2,17, 
-           LINE 26,00,
-           LINES 1,31 ,
-           SIZE 18,00 ,
-           ID IS 16,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Q.tà effettiva in Kg.",
-           .
-
-      * LABEL
-       05
-           Form1-La-9, 
-           Label, 
-           COL 2,17, 
-           LINE 28,00,
-           LINES 1,31 ,
-           SIZE 18,00 ,
-           ID IS 19,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Q.tà arrotondata (q.li)",
-           .
-
-      * LABEL
-       05
-           Form1-La-12, 
-           Label, 
-           COL 2,17, 
-           LINE 30,00,
-           LINES 1,31 ,
-           SIZE 18,00 ,
-           ID IS 23,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Tariffa unitaria",
-           .
-
-      * LABEL
-       05
            lab-vet, 
            Label, 
            COL 31,00, 
@@ -1056,94 +1075,123 @@
            TITLE "Note",
            .
 
-      * LABEL
+      * FRAME
        05
-           Form1-La-7a, 
-           Label, 
-           COL 37,00, 
-           LINE 26,00,
-           LINES 1,31 ,
-           SIZE 20,00 ,
-           ID IS 48,
+           Form1-Fr-2a, 
+           Frame, 
+           COL 81,83, 
+           LINE 32,08,
+           LINES 7,69 ,
+           SIZE 26,50 ,
+           ID IS 24,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Q.tà effettiva in Kg. SHI",
+           TITLE "Dati movimento di magazzino",
+           TITLE-POSITION 2,
            .
 
-      * LABEL
+      * ENTRY FIELD
        05
-           Form1-La-9a, 
-           Label, 
-           COL 37,00, 
-           LINE 28,00,
+           ef-anno-m, 
+           Entry-Field, 
+           COL 95,50, 
+           LINE 33,62,
            LINES 1,31 ,
-           SIZE 20,00 ,
-           ID IS 49,
+           SIZE 5,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           ID IS 21,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Q.tà arrotondata (q.li) SHI",
+           RIGHT,
+           MAX-TEXT 4,
+           READ-ONLY,
+           VALUE ef-anno-m-BUF,
+           BEFORE PROCEDURE Form1-DaEf-6-BeforeProcedure, 
            .
-
-      * LABEL
+      * ENTRY FIELD
        05
-           Form1-La-12b, 
-           Label, 
-           COL 37,00, 
-           LINE 30,00,
+           ef-num-m, 
+           Entry-Field, 
+           COL 95,50, 
+           LINE 35,62,
            LINES 1,31 ,
-           SIZE 18,00 ,
-           ID IS 50,
+           SIZE 10,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           ID IS 22,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Tariffa unitaria SHI",
+           RIGHT,
+           MAX-TEXT 8,
+           READ-ONLY,
+           VALUE ef-num-m-BUF,
+           BEFORE PROCEDURE Form1-DaEf-8-BeforeProcedure, 
            .
-
+      * ENTRY FIELD
+       05
+           ef-cau-m, 
+           Entry-Field, 
+           COL 95,50, 
+           LINE 37,62,
+           LINES 1,31 ,
+           SIZE 6,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           ID IS 28,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 4,
+           READ-ONLY,
+           VALUE ef-cau-m-BUF,
+           BEFORE PROCEDURE Form1-DaEf-13-BeforeProcedure, 
+           .
       * LABEL
        05
            Form1-La-7aa, 
            Label, 
-           COL 73,67, 
-           LINE 26,00,
+           COL 84,33, 
+           LINE 33,62,
            LINES 1,31 ,
-           SIZE 20,00 ,
-           ID IS 51,
+           SIZE 7,00 ,
+           ID IS 48,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Q.tà effettiva in Kg. GET",
+           TITLE "Anno",
            .
 
       * LABEL
        05
            Form1-La-9aa, 
            Label, 
-           COL 73,67, 
-           LINE 28,00,
+           COL 84,33, 
+           LINE 35,62,
            LINES 1,31 ,
-           SIZE 21,00 ,
-           ID IS 52,
+           SIZE 7,00 ,
+           ID IS 49,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Q.tà arrotondata (q.li) GET",
+           TITLE "Numero",
            .
 
       * LABEL
        05
            Form1-La-12ba, 
            Label, 
-           COL 73,67, 
-           LINE 30,00,
+           COL 84,33, 
+           LINE 37,62,
            LINES 1,31 ,
-           SIZE 18,00 ,
-           ID IS 53,
+           SIZE 7,00 ,
+           ID IS 50,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Tariffa unitaria GET",
+           TITLE "Causale",
            .
 
       * TOOLBAR
@@ -2314,9 +2362,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -3722,76 +3770,52 @@
                MOVE 5010 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-qta-kg's Validation
+      * ef-qta-kg-s1's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-qta-kg-VALIDATION
+           PERFORM ef-qta-kg-s1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5011 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-qta-arrot's Validation
+      * ef-qta-arrot-s1's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-qta-arrot-VALIDATION
+           PERFORM ef-qta-arrot-s1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5012 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-qta-kg-SHI's Validation
+      * ef-tariffa-s1's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-qta-kg-SHI-VALIDATION
+           PERFORM ef-tariffa-s1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5013 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-qta-arrot-SHI's Validation
+      * ef-qta-kg-S2's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-qta-arrot-SHI-VALIDATION
+           PERFORM ef-qta-kg-S2-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5014 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-tariffa-SHI's Validation
+      * ef-qta-arrot-S2's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-tariffa-SHI-VALIDATION
+           PERFORM ef-qta-arrot-S2-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-qta-kg-GET's Validation
+      * ef-tariffa-S2's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-qta-kg-GET-VALIDATION
+           PERFORM ef-tariffa-S2-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5016 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * ef-qta-arrot-GET's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-qta-arrot-GET-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * ef-tariffa-GET's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-tariffa-GET-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5018 TO CONTROL-ID
-               EXIT PARAGRAPH
-           END-IF
-      * ef-tariffa's Validation
-           SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-tariffa-VALIDATION
-           IF NOT TOTEM-CHECK-OK
-               MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5019 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note's Validation
@@ -3800,6 +3824,30 @@
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 33 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-anno-m's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-anno-m-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 21 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-num-m's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-num-m-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 22 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-cau-m's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-cau-m-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 28 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -3974,157 +4022,106 @@
            PERFORM ef-prov-AFTER-VALIDATION
            .
 
-       ef-qta-kg-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg, BeforeValidation>
+       ef-qta-kg-s1-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-s1, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-qta-kg-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg, AfterValidation>
+       ef-qta-kg-s1-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-s1, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-qta-kg's Validation
-       ef-qta-kg-VALIDATION.
-           PERFORM ef-qta-kg-BEFORE-VALIDATION
+      * ef-qta-kg-s1's Validation
+       ef-qta-kg-s1-VALIDATION.
+           PERFORM ef-qta-kg-s1-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-qta-kg-AFTER-VALIDATION
+           PERFORM ef-qta-kg-s1-AFTER-VALIDATION
            .
 
-       ef-qta-arrot-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot, BeforeValidation>
+       ef-qta-arrot-s1-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-s1, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-qta-arrot-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot, AfterValidation>
+       ef-qta-arrot-s1-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-s1, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-qta-arrot's Validation
-       ef-qta-arrot-VALIDATION.
-           PERFORM ef-qta-arrot-BEFORE-VALIDATION
+      * ef-qta-arrot-s1's Validation
+       ef-qta-arrot-s1-VALIDATION.
+           PERFORM ef-qta-arrot-s1-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-qta-arrot-AFTER-VALIDATION
+           PERFORM ef-qta-arrot-s1-AFTER-VALIDATION
            .
 
-       ef-qta-kg-SHI-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-SHI, BeforeValidation>
+       ef-tariffa-s1-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-s1, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-qta-kg-SHI-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-SHI, AfterValidation>
+       ef-tariffa-s1-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-s1, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-qta-kg-SHI's Validation
-       ef-qta-kg-SHI-VALIDATION.
-           PERFORM ef-qta-kg-SHI-BEFORE-VALIDATION
+      * ef-tariffa-s1's Validation
+       ef-tariffa-s1-VALIDATION.
+           PERFORM ef-tariffa-s1-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-qta-kg-SHI-AFTER-VALIDATION
+           PERFORM ef-tariffa-s1-AFTER-VALIDATION
            .
 
-       ef-qta-arrot-SHI-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-SHI, BeforeValidation>
+       ef-qta-kg-S2-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-S2, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-qta-arrot-SHI-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-SHI, AfterValidation>
+       ef-qta-kg-S2-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-S2, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-qta-arrot-SHI's Validation
-       ef-qta-arrot-SHI-VALIDATION.
-           PERFORM ef-qta-arrot-SHI-BEFORE-VALIDATION
+      * ef-qta-kg-S2's Validation
+       ef-qta-kg-S2-VALIDATION.
+           PERFORM ef-qta-kg-S2-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-qta-arrot-SHI-AFTER-VALIDATION
+           PERFORM ef-qta-kg-S2-AFTER-VALIDATION
            .
 
-       ef-tariffa-SHI-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-SHI, BeforeValidation>
+       ef-qta-arrot-S2-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-S2, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-tariffa-SHI-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-SHI, AfterValidation>
+       ef-qta-arrot-S2-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-S2, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-tariffa-SHI's Validation
-       ef-tariffa-SHI-VALIDATION.
-           PERFORM ef-tariffa-SHI-BEFORE-VALIDATION
+      * ef-qta-arrot-S2's Validation
+       ef-qta-arrot-S2-VALIDATION.
+           PERFORM ef-qta-arrot-S2-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-tariffa-SHI-AFTER-VALIDATION
+           PERFORM ef-qta-arrot-S2-AFTER-VALIDATION
            .
 
-       ef-qta-kg-GET-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-GET, BeforeValidation>
+       ef-tariffa-S2-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-S2, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-qta-kg-GET-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-kg-GET, AfterValidation>
+       ef-tariffa-S2-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-S2, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-qta-kg-GET's Validation
-       ef-qta-kg-GET-VALIDATION.
-           PERFORM ef-qta-kg-GET-BEFORE-VALIDATION
+      * ef-tariffa-S2's Validation
+       ef-tariffa-S2-VALIDATION.
+           PERFORM ef-tariffa-S2-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-qta-kg-GET-AFTER-VALIDATION
-           .
-
-       ef-qta-arrot-GET-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-GET, BeforeValidation>
-      * <TOTEM:END>
-           .
-
-       ef-qta-arrot-GET-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-qta-arrot-GET, AfterValidation>
-      * <TOTEM:END>
-           .
-
-      * ef-qta-arrot-GET's Validation
-       ef-qta-arrot-GET-VALIDATION.
-           PERFORM ef-qta-arrot-GET-BEFORE-VALIDATION
-           SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-qta-arrot-GET-AFTER-VALIDATION
-           .
-
-       ef-tariffa-GET-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-GET, BeforeValidation>
-      * <TOTEM:END>
-           .
-
-       ef-tariffa-GET-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa-GET, AfterValidation>
-      * <TOTEM:END>
-           .
-
-      * ef-tariffa-GET's Validation
-       ef-tariffa-GET-VALIDATION.
-           PERFORM ef-tariffa-GET-BEFORE-VALIDATION
-           SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-tariffa-GET-AFTER-VALIDATION
-           .
-
-       ef-tariffa-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa, BeforeValidation>
-      * <TOTEM:END>
-           .
-
-       ef-tariffa-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-tariffa, AfterValidation>
-      * <TOTEM:END>
-           .
-
-      * ef-tariffa's Validation
-       ef-tariffa-VALIDATION.
-           PERFORM ef-tariffa-BEFORE-VALIDATION
-           SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-tariffa-AFTER-VALIDATION
+           PERFORM ef-tariffa-S2-AFTER-VALIDATION
            .
 
        ef-note-BEFORE-VALIDATION.
@@ -4142,6 +4139,57 @@
            PERFORM ef-note-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-note-AFTER-VALIDATION
+           .
+
+       ef-anno-m-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-anno-m, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-anno-m-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-anno-m, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-anno-m's Validation
+       ef-anno-m-VALIDATION.
+           PERFORM ef-anno-m-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-anno-m-AFTER-VALIDATION
+           .
+
+       ef-num-m-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-num-m, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-num-m-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-num-m, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-num-m's Validation
+       ef-num-m-VALIDATION.
+           PERFORM ef-num-m-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-num-m-AFTER-VALIDATION
+           .
+
+       ef-cau-m-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-cau-m, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-cau-m-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-cau-m, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-cau-m's Validation
+       ef-cau-m-VALIDATION.
+           PERFORM ef-cau-m-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-cau-m-AFTER-VALIDATION
            .
 
 
@@ -4168,26 +4216,26 @@
            MOVE ef-reg-BUF TO trs-regione
       * DB_Entry-Field : ef-prov
            MOVE ef-prov-BUF TO trs-provincia
-      * DB_Entry-Field : ef-qta-kg
-           MOVE ef-qta-kg-BUF TO trs-qta-kg
-      * DB_Entry-Field : ef-qta-arrot
-           MOVE ef-qta-arrot-BUF TO trs-qta-arrot
-      * DB_Entry-Field : ef-qta-kg-SHI
-           MOVE ef-qta-kg-SHI-BUF TO trs-qta-kg-SHI
-      * DB_Entry-Field : ef-qta-arrot-SHI
-           MOVE ef-qta-arrot-SHI-BUF TO trs-qta-arrot-SHI
-      * DB_Entry-Field : ef-tariffa-SHI
-           MOVE ef-tariffa-SHI-BUF TO trs-tariffa-SHI
-      * DB_Entry-Field : ef-qta-kg-GET
-           MOVE ef-qta-kg-GET-BUF TO trs-qta-kg-GET
-      * DB_Entry-Field : ef-qta-arrot-GET
-           MOVE ef-qta-arrot-GET-BUF TO trs-qta-arrot-GET
-      * DB_Entry-Field : ef-tariffa-GET
-           MOVE ef-tariffa-GET-BUF TO trs-tariffa-GET
-      * DB_Entry-Field : ef-tariffa
-           MOVE ef-tariffa-BUF TO trs-tariffa
+      * DB_Entry-Field : ef-qta-kg-s1
+           MOVE ef-qta-kg-s1-BUF TO trs-qta-kg-s1
+      * DB_Entry-Field : ef-qta-arrot-s1
+           MOVE ef-qta-arrot-s1-BUF TO trs-qta-arrot-s1
+      * DB_Entry-Field : ef-tariffa-s1
+           MOVE ef-tariffa-s1-BUF TO trs-tariffa-s1
+      * DB_Entry-Field : ef-qta-kg-S2
+           MOVE ef-qta-kg-S2-BUF TO trs-qta-kg-S2
+      * DB_Entry-Field : ef-qta-arrot-S2
+           MOVE ef-qta-arrot-S2-BUF TO trs-qta-arrot-S2
+      * DB_Entry-Field : ef-tariffa-S2
+           MOVE ef-tariffa-S2-BUF TO trs-tariffa-S2
       * DB_Entry-Field : ef-note
            MOVE ef-note-BUF TO trs-note
+      * DB_Entry-Field : ef-anno-m
+           MOVE ef-anno-m-BUF TO trs-tmo-anno
+      * DB_Entry-Field : ef-num-m
+           MOVE ef-num-m-BUF TO trs-tmo-numero
+      * DB_Entry-Field : ef-cau-m
+           MOVE ef-cau-m-BUF TO trs-causale
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
            move ef-data-buf to como-data.
            perform DATE-TO-FILE.
@@ -4224,26 +4272,26 @@
            MOVE trs-regione TO ef-reg-BUF
       * DB_Entry-Field : ef-prov
            MOVE trs-provincia TO ef-prov-BUF
-      * DB_Entry-Field : ef-qta-kg
-           MOVE trs-qta-kg TO ef-qta-kg-BUF
-      * DB_Entry-Field : ef-qta-arrot
-           MOVE trs-qta-arrot TO ef-qta-arrot-BUF
-      * DB_Entry-Field : ef-qta-kg-SHI
-           MOVE trs-qta-kg-SHI TO ef-qta-kg-SHI-BUF
-      * DB_Entry-Field : ef-qta-arrot-SHI
-           MOVE trs-qta-arrot-SHI TO ef-qta-arrot-SHI-BUF
-      * DB_Entry-Field : ef-tariffa-SHI
-           MOVE trs-tariffa-SHI TO ef-tariffa-SHI-BUF
-      * DB_Entry-Field : ef-qta-kg-GET
-           MOVE trs-qta-kg-GET TO ef-qta-kg-GET-BUF
-      * DB_Entry-Field : ef-qta-arrot-GET
-           MOVE trs-qta-arrot-GET TO ef-qta-arrot-GET-BUF
-      * DB_Entry-Field : ef-tariffa-GET
-           MOVE trs-tariffa-GET TO ef-tariffa-GET-BUF
-      * DB_Entry-Field : ef-tariffa
-           MOVE trs-tariffa TO ef-tariffa-BUF
+      * DB_Entry-Field : ef-qta-kg-s1
+           MOVE trs-qta-kg-s1 TO ef-qta-kg-s1-BUF
+      * DB_Entry-Field : ef-qta-arrot-s1
+           MOVE trs-qta-arrot-s1 TO ef-qta-arrot-s1-BUF
+      * DB_Entry-Field : ef-tariffa-s1
+           MOVE trs-tariffa-s1 TO ef-tariffa-s1-BUF
+      * DB_Entry-Field : ef-qta-kg-S2
+           MOVE trs-qta-kg-S2 TO ef-qta-kg-S2-BUF
+      * DB_Entry-Field : ef-qta-arrot-S2
+           MOVE trs-qta-arrot-S2 TO ef-qta-arrot-S2-BUF
+      * DB_Entry-Field : ef-tariffa-S2
+           MOVE trs-tariffa-S2 TO ef-tariffa-S2-BUF
       * DB_Entry-Field : ef-note
            MOVE trs-note TO ef-note-BUF
+      * DB_Entry-Field : ef-anno-m
+           MOVE trs-tmo-anno TO ef-anno-m-BUF
+      * DB_Entry-Field : ef-num-m
+           MOVE trs-tmo-numero TO ef-num-m-BUF
+      * DB_Entry-Field : ef-cau-m
+           MOVE trs-causale TO ef-cau-m-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
            move trs-vettore to vet-codice.
            read tvettori no lock 
@@ -4360,67 +4408,46 @@
               move 78-ID-ef-prov to store-id 
            end-if
 
-           if trs-qta-kg not = old-trs-qta-kg
+           if trs-qta-kg-s1 not = old-trs-qta-kg-s1
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-qta-kg è l'ID del campo ef-qta-kg
-              move 78-ID-ef-qta-kg to store-id 
+              |78-ID-ef-qta-kg-s1 è l'ID del campo ef-qta-kg-s1
+              move 78-ID-ef-qta-kg-s1 to store-id 
            end-if
 
-           if trs-qta-arrot not = old-trs-qta-arrot
+           if trs-qta-arrot-s1 not = old-trs-qta-arrot-s1
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-qta-arrot è l'ID del campo ef-qta-arrot
-              move 78-ID-ef-qta-arrot to store-id 
+              |78-ID-ef-qta-arrot-s1 è l'ID del campo ef-qta-arrot-s1
+              move 78-ID-ef-qta-arrot-s1 to store-id 
            end-if
 
-           if trs-qta-kg-SHI not = old-trs-qta-kg-SHI
+           if trs-tariffa-s1 not = old-trs-tariffa-s1
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-qta-kg-SHI è l'ID del campo ef-qta-kg-SHI
-              move 78-ID-ef-qta-kg-SHI to store-id 
+              |78-ID-ef-tariffa-s1 è l'ID del campo ef-tariffa-s1
+              move 78-ID-ef-tariffa-s1 to store-id 
            end-if
 
-           if trs-qta-arrot-SHI not = old-trs-qta-arrot-SHI
+           if trs-qta-kg-S2 not = old-trs-qta-kg-S2
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-qta-arrot-SHI è l'ID del campo ef-qta-arrot-SHI
-              move 78-ID-ef-qta-arrot-SHI to store-id 
+              |78-ID-ef-qta-kg-S2 è l'ID del campo ef-qta-kg-S2
+              move 78-ID-ef-qta-kg-S2 to store-id 
            end-if
 
-           if trs-tariffa-SHI not = old-trs-tariffa-SHI
+           if trs-qta-arrot-S2 not = old-trs-qta-arrot-S2
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-tariffa-SHI è l'ID del campo ef-tariffa-SHI
-              move 78-ID-ef-tariffa-SHI to store-id 
+              |78-ID-ef-qta-arrot-S2 è l'ID del campo ef-qta-arrot-S2
+              move 78-ID-ef-qta-arrot-S2 to store-id 
            end-if
 
-           if trs-qta-kg-GET not = old-trs-qta-kg-GET
+           if trs-tariffa-S2 not = old-trs-tariffa-S2
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-qta-kg-GET è l'ID del campo ef-qta-kg-GET
-              move 78-ID-ef-qta-kg-GET to store-id 
-           end-if
-
-           if trs-qta-arrot-GET not = old-trs-qta-arrot-GET
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-ef-qta-arrot-GET è l'ID del campo ef-qta-arrot-GET
-              move 78-ID-ef-qta-arrot-GET to store-id 
-           end-if
-
-           if trs-tariffa-GET not = old-trs-tariffa-GET
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-ef-tariffa-GET è l'ID del campo ef-tariffa-GET
-              move 78-ID-ef-tariffa-GET to store-id 
-           end-if
-
-           if trs-tariffa not = old-trs-tariffa
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-ef-tariffa è l'ID del campo ef-tariffa
-              move 78-ID-ef-tariffa to store-id 
+              |78-ID-ef-tariffa-S2 è l'ID del campo ef-tariffa-S2
+              move 78-ID-ef-tariffa-S2 to store-id 
            end-if
 
            if trs-note not = old-trs-note
@@ -4512,64 +4539,43 @@
 
       * Generazione settaggio keyboard "." ---> ","
            evaluate control-id
-           |78-ID-ef-qta-kg è l'ID del campo ef-qta-kg
-           when 78-ID-ef-qta-kg
+           |78-ID-ef-qta-kg-s1 è l'ID del campo ef-qta-kg-s1
+           when 78-ID-ef-qta-kg-s1
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |78-ID-ef-qta-arrot è l'ID del campo ef-qta-arrot
-           when 78-ID-ef-qta-arrot
+           |78-ID-ef-qta-arrot-s1 è l'ID del campo ef-qta-arrot-s1
+           when 78-ID-ef-qta-arrot-s1
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |78-ID-ef-qta-kg-SHI è l'ID del campo ef-qta-kg-SHI
-           when 78-ID-ef-qta-kg-SHI
+           |78-ID-ef-tariffa-s1 è l'ID del campo ef-tariffa-s1
+           when 78-ID-ef-tariffa-s1
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |78-ID-ef-qta-arrot-SHI è l'ID del campo ef-qta-arrot-SHI
-           when 78-ID-ef-qta-arrot-SHI
+           |78-ID-ef-qta-kg-S2 è l'ID del campo ef-qta-kg-S2
+           when 78-ID-ef-qta-kg-S2
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |78-ID-ef-tariffa-SHI è l'ID del campo ef-tariffa-SHI
-           when 78-ID-ef-tariffa-SHI
+           |78-ID-ef-qta-arrot-S2 è l'ID del campo ef-qta-arrot-S2
+           when 78-ID-ef-qta-arrot-S2
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |78-ID-ef-qta-kg-GET è l'ID del campo ef-qta-kg-GET
-           when 78-ID-ef-qta-kg-GET
-                if  KeyboardReleased
-                   set KeyboardSaved to true
-      *            sostituisco il punto come virgola
-                   set environment "KEYSTROKE" to "DATA=44 46"
-                end-if
-           |78-ID-ef-qta-arrot-GET è l'ID del campo ef-qta-arrot-GET
-           when 78-ID-ef-qta-arrot-GET
-                if  KeyboardReleased
-                   set KeyboardSaved to true
-      *            sostituisco il punto come virgola
-                   set environment "KEYSTROKE" to "DATA=44 46"
-                end-if
-           |78-ID-ef-tariffa-GET è l'ID del campo ef-tariffa-GET
-           when 78-ID-ef-tariffa-GET
-                if  KeyboardReleased
-                   set KeyboardSaved to true
-      *            sostituisco il punto come virgola
-                   set environment "KEYSTROKE" to "DATA=44 46"
-                end-if
-           |78-ID-ef-tariffa è l'ID del campo ef-tariffa
-           when 78-ID-ef-tariffa
+           |78-ID-ef-tariffa-S2 è l'ID del campo ef-tariffa-S2
+           when 78-ID-ef-tariffa-S2
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
@@ -4627,8 +4633,8 @@
 
       * Generazione risettaggio keyboard "." ---> "."
            evaluate control-id
-           |78-ID-ef-qta-kg è l'ID del campo ef-qta-kg
-           when 78-ID-ef-qta-kg
+           |78-ID-ef-qta-kg-s1 è l'ID del campo ef-qta-kg-s1
+           when 78-ID-ef-qta-kg-s1
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -4636,8 +4642,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |78-ID-ef-qta-arrot è l'ID del campo ef-qta-arrot
-           when 78-ID-ef-qta-arrot
+           |78-ID-ef-qta-arrot-s1 è l'ID del campo ef-qta-arrot-s1
+           when 78-ID-ef-qta-arrot-s1
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -4645,8 +4651,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |78-ID-ef-qta-kg-SHI è l'ID del campo ef-qta-kg-SHI
-           when 78-ID-ef-qta-kg-SHI
+           |78-ID-ef-tariffa-s1 è l'ID del campo ef-tariffa-s1
+           when 78-ID-ef-tariffa-s1
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -4654,8 +4660,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |78-ID-ef-qta-arrot-SHI è l'ID del campo ef-qta-arrot-SHI
-           when 78-ID-ef-qta-arrot-SHI
+           |78-ID-ef-qta-kg-S2 è l'ID del campo ef-qta-kg-S2
+           when 78-ID-ef-qta-kg-S2
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -4663,8 +4669,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |78-ID-ef-tariffa-SHI è l'ID del campo ef-tariffa-SHI
-           when 78-ID-ef-tariffa-SHI
+           |78-ID-ef-qta-arrot-S2 è l'ID del campo ef-qta-arrot-S2
+           when 78-ID-ef-qta-arrot-S2
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -4672,35 +4678,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |78-ID-ef-qta-kg-GET è l'ID del campo ef-qta-kg-GET
-           when 78-ID-ef-qta-kg-GET
-                if  KeyboardSaved
-                   set KeyboardReleased to true
-      *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
-                   set environment "KEYSTROKE" to "DATA=44   44"
-                   set environment "KEYSTROKE" to "DATA=46   46"
-                end-if
-
-           |78-ID-ef-qta-arrot-GET è l'ID del campo ef-qta-arrot-GET
-           when 78-ID-ef-qta-arrot-GET
-                if  KeyboardSaved
-                   set KeyboardReleased to true
-      *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
-                   set environment "KEYSTROKE" to "DATA=44   44"
-                   set environment "KEYSTROKE" to "DATA=46   46"
-                end-if
-
-           |78-ID-ef-tariffa-GET è l'ID del campo ef-tariffa-GET
-           when 78-ID-ef-tariffa-GET
-                if  KeyboardSaved
-                   set KeyboardReleased to true
-      *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
-                   set environment "KEYSTROKE" to "DATA=44   44"
-                   set environment "KEYSTROKE" to "DATA=46   46"
-                end-if
-
-           |78-ID-ef-tariffa è l'ID del campo ef-tariffa
-           when 78-ID-ef-tariffa
+           |78-ID-ef-tariffa-S2 è l'ID del campo ef-tariffa-S2
+           when 78-ID-ef-tariffa-S2
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -4766,23 +4745,17 @@
            |78-ID-ef-prov è l'ID del campo ef-prov
            when 78-ID-ef-prov
                 perform CONTROLLO
-           |78-ID-ef-qta-kg è l'ID del campo ef-qta-kg
-           when 78-ID-ef-qta-kg
+           |78-ID-ef-qta-kg-s1 è l'ID del campo ef-qta-kg-s1
+           when 78-ID-ef-qta-kg-s1
                 perform CONTROLLO
-           |78-ID-ef-qta-arrot è l'ID del campo ef-qta-arrot
-           when 78-ID-ef-qta-arrot
+           |78-ID-ef-qta-arrot-s1 è l'ID del campo ef-qta-arrot-s1
+           when 78-ID-ef-qta-arrot-s1
                 perform CONTROLLO
-           |78-ID-ef-qta-kg-SHI è l'ID del campo ef-qta-kg-SHI
-           when 78-ID-ef-qta-kg-SHI
+           |78-ID-ef-qta-kg-S2 è l'ID del campo ef-qta-kg-S2
+           when 78-ID-ef-qta-kg-S2
                 perform CONTROLLO
-           |78-ID-ef-qta-arrot-SHI è l'ID del campo ef-qta-arrot-SHI
-           when 78-ID-ef-qta-arrot-SHI
-                perform CONTROLLO
-           |78-ID-ef-qta-kg-GET è l'ID del campo ef-qta-kg-GET
-           when 78-ID-ef-qta-kg-GET
-                perform CONTROLLO
-           |78-ID-ef-qta-arrot-GET è l'ID del campo ef-qta-arrot-GET
-           when 78-ID-ef-qta-arrot-GET
+           |78-ID-ef-qta-arrot-S2 è l'ID del campo ef-qta-arrot-S2
+           when 78-ID-ef-qta-arrot-S2
                 perform CONTROLLO
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
@@ -4814,24 +4787,6 @@
            TOTEM-HINT-TEXT
            WHEN 5010 MOVE "Inserire il codice della provincia" to 
            TOTEM-HINT-TEXT
-           WHEN 5011 MOVE "Inserire la quantià effettiva in Kg." to 
-           TOTEM-HINT-TEXT
-           WHEN 5012 MOVE "Inserire la quantità arrotondata espressa in 
-      -    "quintali" to TOTEM-HINT-TEXT
-           WHEN 5013 MOVE "Inserire la quantià effettiva in Kg. (SHI)" 
-           to TOTEM-HINT-TEXT
-           WHEN 5014 MOVE "Inserire la quantità arrotondata espressa in 
-      -    "quintali (SHI)" to TOTEM-HINT-TEXT
-           WHEN 5015 MOVE "Inserire la tariffa unitaria SHI" to 
-           TOTEM-HINT-TEXT
-           WHEN 5016 MOVE "Inserire la quantià effettiva in Kg. (GET)" 
-           to TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Inserire la quantità arrotondata espressa in 
-      -    "quintali (GET)" to TOTEM-HINT-TEXT
-           WHEN 5018 MOVE "Inserire la tariffa unitaria GET" to 
-           TOTEM-HINT-TEXT
-           WHEN 5019 MOVE "Inserire la tariffa unitaria" to 
-           TOTEM-HINT-TEXT
            WHEN 33 MOVE "Inserire le note" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
@@ -4846,15 +4801,6 @@
            When 5008 PERFORM Form1-DaEf-4-BeforeProcedure
            When 5009 PERFORM Form1-DaEf-3-BeforeProcedure
            When 5010 PERFORM Form1-DaEf-2-BeforeProcedure
-           When 5011 PERFORM Form1-DaEf-6-BeforeProcedure
-           When 5012 PERFORM Form1-DaEf-8-BeforeProcedure
-           When 5013 PERFORM Form1-DaEf-6-BeforeProcedure
-           When 5014 PERFORM Form1-DaEf-8-BeforeProcedure
-           When 5015 PERFORM Form1-DaEf-13-BeforeProcedure
-           When 5016 PERFORM Form1-DaEf-6-BeforeProcedure
-           When 5017 PERFORM Form1-DaEf-8-BeforeProcedure
-           When 5018 PERFORM Form1-DaEf-13-BeforeProcedure
-           When 5019 PERFORM Form1-DaEf-13-BeforeProcedure
            When 33 PERFORM Form1-DaEf-13-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
@@ -4875,14 +4821,14 @@
            When 5010 PERFORM Form1-DaEf-2-AfterProcedure
            When 5011 PERFORM Form1-DaEf-6-AfterProcedure
            When 5012 PERFORM Form1-DaEf-8-AfterProcedure
-           When 5013 PERFORM Form1-DaEf-6-AfterProcedure
-           When 5014 PERFORM Form1-DaEf-8-AfterProcedure
-           When 5015 PERFORM Form1-DaEf-13-AfterProcedure
-           When 5016 PERFORM Form1-DaEf-6-AfterProcedure
-           When 5017 PERFORM Form1-DaEf-8-AfterProcedure
-           When 5018 PERFORM Form1-DaEf-13-AfterProcedure
-           When 5019 PERFORM Form1-DaEf-13-AfterProcedure
+           When 5013 PERFORM Form1-DaEf-13-AfterProcedure
+           When 5014 PERFORM Form1-DaEf-6-AfterProcedure
+           When 5015 PERFORM Form1-DaEf-8-AfterProcedure
+           When 5016 PERFORM Form1-DaEf-13-AfterProcedure
            When 33 PERFORM Form1-DaEf-13-AfterProcedure
+           When 21 PERFORM Form1-DaEf-6-AfterProcedure
+           When 22 PERFORM Form1-DaEf-8-AfterProcedure
+           When 28 PERFORM Form1-DaEf-13-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -5249,27 +5195,27 @@
                 else
                    move spaces to lab-reg-buf
                 end-if
-                display lab-reg
+                display lab-reg 
       
            |78-ID-ef-qta-kg è l'ID del control ef-qta-kg
-           when 78-ID-ef-qta-kg
-                inquire ef-qta-kg, value in ef-qta-kg-buf
-                move ef-qta-kg-buf to trs-qta-kg
-                if trs-qta-kg = 0
+           when 78-ID-ef-qta-kg-s1
+                inquire ef-qta-kg-s1, value in ef-qta-kg-s1-buf
+                move ef-qta-kg-s1-buf to trs-qta-kg-s1
+                if trs-qta-kg-s1 = 0
                    set errori to true
-                   display message "Inserimento q.tà Kg mancante"
+                   display message "Inserimento q.tà Kg S1 mancante"
                              title tit-err
                               icon 2
                 end-if
       
            |78-ID-ef-qta-arrot è l'ID del control ef-qta-arrot
-           when 78-ID-ef-qta-arrot
-                inquire ef-qta-arrot, value in ef-qta-arrot-buf
-                move ef-qta-arrot-buf to trs-qta-arrot
-                if trs-qta-arrot = 0
+           when 78-ID-ef-qta-arrot-s1
+                inquire ef-qta-arrot-s1, value in ef-qta-arrot-s1-buf
+                move ef-qta-arrot-s1-buf to trs-qta-arrot-s1
+                if trs-qta-arrot-s1 = 0
                    set errori to true
-                   display message "Inserimento q.tà arrotondata mancant
-      -    "e"
+                   display message "Inserimento q.tà arrotondata S1 manc
+      -    "ante"
                              title tit-err
                               icon 2
                 end-if
@@ -5601,7 +5547,7 @@
            set tutto-ok to true.
       
            perform varying control-id from 78-ID-ef-anno by 1
-                     until control-id > 78-ID-ef-qta-arrot
+                     until control-id > 78-ID-ef-qta-arrot-S1
               perform CONTROLLO
               if errori 
                  exit perform 
@@ -6036,21 +5982,21 @@
       * <TOTEM:END>
        Form1-DaEf-6-AfterProcedure.
       * <TOTEM:PARA. Form1-DaEf-6-AfterProcedure>
-              INQUIRE ef-qta-kg, VALUE IN trs-qta-kg
+              INQUIRE ef-qta-kg-s1, VALUE IN trs-qta-kg-s1
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-qta-kg-VALIDATION
+              PERFORM ef-qta-kg-s1-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-qta-kg-SHI, VALUE IN trs-qta-kg-SHI
+              INQUIRE ef-qta-kg-S2, VALUE IN trs-qta-kg-S2
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-qta-kg-SHI-VALIDATION
+              PERFORM ef-qta-kg-S2-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-qta-kg-GET, VALUE IN trs-qta-kg-GET
+              INQUIRE ef-anno-m, VALUE IN trs-tmo-anno
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-qta-kg-GET-VALIDATION
+              PERFORM ef-anno-m-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -6066,21 +6012,21 @@
       * <TOTEM:END>
        Form1-DaEf-8-AfterProcedure.
       * <TOTEM:PARA. Form1-DaEf-8-AfterProcedure>
-              INQUIRE ef-qta-arrot, VALUE IN trs-qta-arrot
+              INQUIRE ef-qta-arrot-s1, VALUE IN trs-qta-arrot-s1
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-qta-arrot-VALIDATION
+              PERFORM ef-qta-arrot-s1-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-qta-arrot-SHI, VALUE IN trs-qta-arrot-SHI
+              INQUIRE ef-qta-arrot-S2, VALUE IN trs-qta-arrot-S2
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-qta-arrot-SHI-VALIDATION
+              PERFORM ef-qta-arrot-S2-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-qta-arrot-GET, VALUE IN trs-qta-arrot-GET
+              INQUIRE ef-num-m, VALUE IN trs-tmo-numero
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-qta-arrot-GET-VALIDATION
+              PERFORM ef-num-m-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -6096,27 +6042,27 @@
       * <TOTEM:END>
        Form1-DaEf-13-AfterProcedure.
       * <TOTEM:PARA. Form1-DaEf-13-AfterProcedure>
-              INQUIRE ef-tariffa-SHI, VALUE IN trs-tariffa-SHI
+              INQUIRE ef-tariffa-s1, VALUE IN trs-tariffa-s1
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-tariffa-SHI-VALIDATION
+              PERFORM ef-tariffa-s1-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-tariffa-GET, VALUE IN trs-tariffa-GET
+              INQUIRE ef-tariffa-S2, VALUE IN trs-tariffa-S2
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-tariffa-GET-VALIDATION
-              IF NOT TOTEM-CHECK-OK
-                 MOVE 1 TO ACCEPT-CONTROL
-              END-IF
-              INQUIRE ef-tariffa, VALUE IN trs-tariffa
-              SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-tariffa-VALIDATION
+              PERFORM ef-tariffa-S2-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
               INQUIRE ef-note, VALUE IN trs-note
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-note-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-cau-m, VALUE IN trs-causale
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-cau-m-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

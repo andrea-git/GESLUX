@@ -10,7 +10,7 @@
 
       *****************************************************************
        DATA DIVISION.
-       FILE SECTION.
+       FILE SECTION.           
            copy "clienti.fd".
            copy "lineseq.fd".
 

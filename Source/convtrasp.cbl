@@ -28,8 +28,9 @@
        DATA DIVISION.
        FILE SECTION.
            copy "trasporti.fd".
+           
        FD  trasporti-old.
-       01  old-trs-rec.
+       01 old-trs-rec.
            05 old-trs-chiave.
                10 old-trs-anno         PIC  9(4).
                10 old-trs-num-bolla    PIC  9(8).
@@ -43,9 +44,10 @@
                10 old-trs-destino      PIC  9(5).
                10 old-trs-regione      PIC  9(3).
                10 old-trs-provincia    PIC  x(2).
-               10 old-trs-qta-kg       PIC  9(9)v999.
-               10 old-trs-qta-arrot    PIC  9(9)v999.
-               10 old-trs-tariffa      PIC  9(9)v99.
+               10 old-trs-qta-kg-s1    PIC  9(9)v999.
+               10 old-trs-qta-arrot-s1 PIC  9(9)v999.
+               10 old-trs-tariffa-s1   PIC  9(9)v99.
+               10 old-trs-note         PIC  x(500).
                10 old-trs-dati-comuni.
                    15 old-trs-data-creazione           PIC  9(8).
                    15 old-trs-ora-creazione            PIC  9(8).
@@ -53,13 +55,20 @@
                    15 old-trs-data-ultima-modifica     PIC  9(8).
                    15 old-trs-ora-ultima-modifica      PIC  9(8).
                    15 old-trs-utente-ultima-modifica   PIC  X(10).
-               10 trs-vuoti.
-                   15 old-trs-num-vuoto-1  PIC  9(13).
-                   15 old-trs-num-vuoto-2  PIC  9(15).
-                   15 old-trs-num-vuoto-3  PIC  9(15).
-                   15 old-trs-alfa-vuoto1  PIC  X(20).
-                   15 old-trs-alfa-vuoto-2 PIC  X(20).
-                   15 old-trs-alfa-vuoto-3 PIC  X(20).
+               10 old-trs-vuoti.
+                   15 old-trs-qta-kg-s2    PIC  9(9)v999.
+                   15 old-trs-qta-arrot-s2 PIC  9(9)v999.
+                   15 old-trs-tariffa-s2   PIC  9(9)v99.
+                   15 old-trs-num-vuoto-2  PIC  9(1).
+                   15 old-trs-num-vuoto-3  PIC  9(18).
+                   15 old-trs-qta-kg-s3    PIC  9(9)v999.
+                   15 old-trs-qta-arrot-s3 PIC  9(9)v999.
+                   15 old-trs-tariffa-s3   PIC  9(9)v99.
+               10 old-trs-tmo-chiave.
+                   15 old-trs-tmo-anno     PIC  9(4).
+                   15 old-trs-tmo-numero   PIC  9(8).
+               10 old-trs-causale      PIC  x(4).
+               10 old-trs-alfa-vuoto   PIC  X(449).
 
        WORKING-STORAGE SECTION.
            copy "acucobol.def".
@@ -152,10 +161,18 @@
            move old-trs-destino       to trs-destino     
            move old-trs-regione       to trs-regione     
            move old-trs-provincia     to trs-provincia   
-           move old-trs-qta-kg        to trs-qta-kg      
-           move old-trs-qta-arrot     to trs-qta-arrot   
-           move old-trs-tariffa       to trs-tariffa     
+           move old-trs-qta-kg-s1     to trs-qta-kg-s1
+           move old-trs-qta-arrot-s1  to trs-qta-arrot-s1   
+           move old-trs-tariffa-s1    to trs-tariffa-s1
+           move old-trs-qta-kg-s2     to trs-qta-kg-s2
+           move old-trs-qta-arrot-s2  to trs-qta-arrot-s2
+           move old-trs-tariffa-s2    to trs-tariffa-s2
+           move old-trs-qta-kg-s3     to trs-qta-kg-s3
+           move old-trs-qta-arrot-s3  to trs-qta-arrot-s3
+           move old-trs-tariffa-s3    to trs-tariffa-s3
            move old-trs-dati-comuni   to trs-dati-comuni 
+           move old-trs-tmo-chiave    to trs-tmo-chiave.
+           move old-trs-causale       to trs-causale.
                                       
            initialize trs-note. 
                                       

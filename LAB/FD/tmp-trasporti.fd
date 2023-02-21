@@ -15,20 +15,25 @@
                10 ttrs-dest-citta  PIC  x(35).
                10 ttrs-regione     PIC  x(30).
                10 ttrs-provincia   PIC  x(2).
-               10 ttrs-qta-kg      PIC  ---.---.--9,999.
-               10 ttrs-qta-arrot   PIC  ---.---.--9,999.
-               10 ttrs-tariffa     PIC  ---.---.--9,99.
-               10 ttrs-importo     PIC  ---.---.--9,99.
-               10 ttrs-qta-kg-SHI  PIC  ---.---.--9,999.
-               10 ttrs-qta-arrot-SHI           PIC  ---.---.--9,999.
-               10 ttrs-tariffa-SHI PIC  ---.---.--9,99.
-               10 ttrs-importo-SHI PIC  ---.---.--9,99.
-               10 ttrs-qta-kg-GET  PIC  ---.---.--9,999.
-               10 ttrs-qta-arrot-GET           PIC  ---.---.--9,999.
-               10 ttrs-tariffa-GET PIC  ---.---.--9,99.
-               10 ttrs-importo-GET PIC  ---.---.--9,99.
+               10 ttrs-qta-kg-s1   PIC  ---.---.--9,999.
+               10 ttrs-qta-arrot-s1            PIC  ---.---.--9,999.
+               10 ttrs-tariffa-s1  PIC  ---.---.--9,99.
+               10 ttrs-importo-s1  PIC  ---.---.--9,99.
+               10 ttrs-qta-kg-s2   PIC  ---.---.--9,999.
+               10 ttrs-qta-arrot-s2            PIC  ---.---.--9,999.
+               10 ttrs-tariffa-s2  PIC  ---.---.--9,99.
+               10 ttrs-importo-s2  PIC  ---.---.--9,99.
+               10 ttrs-qta-kg-s3   PIC  ---.---.--9,999.
+               10 ttrs-qta-arrot-s3            PIC  ---.---.--9,999.
+               10 ttrs-tariffa-s3  PIC  ---.---.--9,99.
+               10 ttrs-importo-s3  PIC  ---.---.--9,99.
                10 ttrs-note        PIC  x(500).
                10 ttrs-esito       PIC  x(50).
                10 ttrs-pod         PIC  x.
                10 ttrs-tipocli     PIC  xx.
                10 ttrs-tipocli-d   PIC  x(100).
+               10 ttrs-cau         PIC  x(4).
+               10 ttrs-mag         PIC  xxx.
+               10 ttrs-tmo-chiave.
+                   15 ttrs-tmo-anno    PIC  9(4).
+                   15 ttrs-tmo-numero  PIC  z(8).

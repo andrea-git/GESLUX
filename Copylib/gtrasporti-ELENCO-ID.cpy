@@ -32,29 +32,21 @@
            when 78-ID-ef-prov
                 inquire ef-prov, value in ef-prov-buf
 
-           |78-ID-ef-qta-kg è l'ID del control ef-qta-kg
-           when 78-ID-ef-qta-kg
-                inquire ef-qta-kg, value in ef-qta-kg-buf
+           |78-ID-ef-qta-kg-s1 è l'ID del control ef-qta-kg-s1
+           when 78-ID-ef-qta-kg-s1
+                inquire ef-qta-kg-s1, value in ef-qta-kg-s1-buf
 
-           |78-ID-ef-qta-arrot è l'ID del control ef-qta-arrot
-           when 78-ID-ef-qta-arrot
-                inquire ef-qta-arrot, value in ef-qta-arrot-buf
+           |78-ID-ef-qta-arrot-s1 è l'ID del control ef-qta-arrot-s1
+           when 78-ID-ef-qta-arrot-s1
+                inquire ef-qta-arrot-s1, value in ef-qta-arrot-s1-buf
 
-           |78-ID-ef-qta-kg-SHI è l'ID del control ef-qta-kg-SHI
-           when 78-ID-ef-qta-kg-SHI
-                inquire ef-qta-kg-SHI, value in ef-qta-kg-SHI-buf
+           |78-ID-ef-qta-kg-S2 è l'ID del control ef-qta-kg-S2
+           when 78-ID-ef-qta-kg-S2
+                inquire ef-qta-kg-S2, value in ef-qta-kg-S2-buf
 
-           |78-ID-ef-qta-arrot-SHI è l'ID del control ef-qta-arrot-SHI
-           when 78-ID-ef-qta-arrot-SHI
-                inquire ef-qta-arrot-SHI, value in ef-qta-arrot-SHI-buf
-
-           |78-ID-ef-qta-kg-GET è l'ID del control ef-qta-kg-GET
-           when 78-ID-ef-qta-kg-GET
-                inquire ef-qta-kg-GET, value in ef-qta-kg-GET-buf
-
-           |78-ID-ef-qta-arrot-GET è l'ID del control ef-qta-arrot-GET
-           when 78-ID-ef-qta-arrot-GET
-                inquire ef-qta-arrot-GET, value in ef-qta-arrot-GET-buf
+           |78-ID-ef-qta-arrot-S2 è l'ID del control ef-qta-arrot-S2
+           when 78-ID-ef-qta-arrot-S2
+                inquire ef-qta-arrot-S2, value in ef-qta-arrot-S2-buf
 
            end-evaluate.
 

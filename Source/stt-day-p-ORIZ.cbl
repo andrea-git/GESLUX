@@ -376,7 +376,7 @@
                    invalid move "** NON TROVATO **" to cli-ragsoc-1
               end-read
               move cli-ragsoc-1        to tstt-cliente
-              move trs-qta-kg          to tstt-qta-kg
+              move trs-qta-kg-s1       to tstt-qta-kg-s1
 
               initialize vet-rec
               move trs-vettore  to vet-codice tstt-vet-codice
@@ -430,7 +430,7 @@
                  move tstt-data-bolla      to r-data-bolla
                  move tstt-num-bolla       to r-num-bolla
                  move tstt-cliente         to r-cliente
-                 move tstt-qta-kg          to r-qta-kg
+                 move tstt-qta-kg-s1       to r-qta-kg
       *           move tstt-vet-descrizione to r-vettore
                  move tstt-vet-codice       to r-vettore
                  move tstt-note            to r-note
@@ -439,10 +439,10 @@
                  move r-riga to line-riga
                  perform STAMPA-RIGA
                  
-                 move tstt-qta-kg to trs-qta-kg
+                 move tstt-qta-kg-s1 to trs-qta-kg-s1
             
-                 add 1          to tot-bolle
-                 add trs-qta-kg to tot-kg
+                 add 1             to tot-bolle
+                 add trs-qta-kg-s1 to tot-kg
                  set trovato to true
 
               end-perform

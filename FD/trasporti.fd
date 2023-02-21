@@ -13,9 +13,9 @@
                10 trs-destino      PIC  9(5).
                10 trs-regione      PIC  9(3).
                10 trs-provincia    PIC  x(2).
-               10 trs-qta-kg       PIC  9(9)v999.
-               10 trs-qta-arrot    PIC  9(9)v999.
-               10 trs-tariffa      PIC  9(9)v99.
+               10 trs-qta-kg-s1    PIC  9(9)v999.
+               10 trs-qta-arrot-s1 PIC  9(9)v999.
+               10 trs-tariffa-s1   PIC  9(9)v99.
                10 trs-note         PIC  x(500).
                10 trs-dati-comuni.
                    15 trs-data-creazione           PIC  9(8).
@@ -25,12 +25,21 @@
                    15 trs-ora-ultima-modifica      PIC  9(8).
                    15 trs-utente-ultima-modifica   PIC  X(10).
                10 trs-vuoti.
-                   15 trs-qta-kg-SHI   PIC  9(9)v999.
-                   15 trs-qta-arrot-SHI            PIC  9(9)v999.
-                   15 trs-tariffa-SHI  PIC  9(9)v99.
+                   15 trs-qta-kg-s2    PIC  9(9)v999.
+      *(( XFD NAME = trs-qta-arrot-s2_1 ))
+                   15 trs-qta-arrot-s2 PIC  9(9)v999.
+                   15 trs-tariffa-s2   PIC  9(9)v99.
                    15 trs-num-vuoto-2  PIC  9(1).
                    15 trs-num-vuoto-3  PIC  9(18).
-                   15 trs-qta-kg-GET   PIC  9(9)v999.
-                   15 trs-qta-arrot-GET            PIC  9(9)v999.
-                   15 trs-tariffa-GET  PIC  9(9)v99.
-                   15 trs-alfa-vuoto   PIC  X(465).
+      *solo impostata, non usata
+                   15 trs-qta-kg-s3    PIC  9(9)v999.
+      *solo impostata, non usata
+                   15 trs-qta-arrot-s3 PIC  9(9)v999.
+      *solo impostata, non usata
+                   15 trs-tariffa-s3   PIC  9(9)v99.
+               10 trs-tmo-chiave.
+                   15 trs-tmo-anno     PIC  9(4).
+                   15 trs-tmo-numero   PIC  9(8).
+      *(( XFD NAME = trs-tmo-numero_1 ))
+               10 trs-causale      PIC  x(4).
+               10 trs-alfa-vuoto   PIC  X(449).

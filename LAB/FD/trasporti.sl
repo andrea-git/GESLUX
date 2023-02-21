@@ -1,3 +1,4 @@
+      *serie 3 solo impostata, non usata
        SELECT trasporti
            ASSIGN       TO  "trasporti"
            ORGANIZATION IS INDEXED

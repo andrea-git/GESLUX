@@ -22,6 +22,7 @@
            copy "tmp-trasporti.sl".
            copy "tcaumag.sl".
            copy "ttipocli.sl".
+           copy "tmovmag.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -39,6 +40,7 @@
            copy "tmp-trasporti.fd".
            copy "tcaumag.fd". 
            copy "ttipocli.fd".
+           copy "tmovmag.fd".
 
        WORKING-STORAGE SECTION.
        copy "Acugui.def".
@@ -66,6 +68,7 @@
        77  status-tcaumag        pic xx.
        77  status-ttipocli       pic xx.
        77  status-tmp-trasporti  pic xx.
+       77  status-tmovmag        pic xx. 
 
        77  path-csv              pic x(256).
        77  path-txt              pic x(256).
@@ -430,6 +433,7 @@
                          tescons
                          tcaumag
                          ttipocli
+                         tmovmag
            end-if.
 
       ***---
@@ -537,29 +541,29 @@
                      separatore         delimited by size
                      ttrs-provincia     delimited by size
                      separatore         delimited by size
-                     ttrs-qta-kg        delimited by size
+                     ttrs-qta-kg-s1     delimited by size
                      separatore         delimited by size
-                     ttrs-qta-arrot     delimited by size
+                     ttrs-qta-arrot-s1  delimited by size
                      separatore         delimited by size
-                     ttrs-tariffa       delimited by size
+                     ttrs-tariffa-s1    delimited by size
                      separatore         delimited by size
-                     ttrs-importo       delimited by size
+                     ttrs-importo-s1    delimited by size
                      separatore         delimited by size
-                     ttrs-qta-kg-SHI    delimited by size
+                     ttrs-qta-kg-S2     delimited by size
                      separatore         delimited by size
-                     ttrs-qta-arrot-SHI delimited by size
+                     ttrs-qta-arrot-S2  delimited by size
                      separatore         delimited by size
-                     ttrs-tariffa-SHI   delimited by size
+                     ttrs-tariffa-S2    delimited by size
                      separatore         delimited by size
-                     ttrs-importo-SHI   delimited by size
+                     ttrs-importo-S2    delimited by size
                      separatore         delimited by size
-                     ttrs-qta-kg-GET    delimited by size
+                     ttrs-qta-kg-s3     delimited by size
                      separatore         delimited by size
-                     ttrs-qta-arrot-GET delimited by size
+                     ttrs-qta-arrot-s3  delimited by size
                      separatore         delimited by size
-                     ttrs-tariffa-GET   delimited by size
+                     ttrs-tariffa-s3    delimited by size
                      separatore         delimited by size
-                     ttrs-importo-GET   delimited by size
+                     ttrs-importo-s3    delimited by size
                      separatore         delimited by size
                      ttrs-note          delimited by low-value
                      separatore         delimited by size
@@ -574,6 +578,11 @@
                      ttrs-cau           delimited by size
                      separatore         delimited by size
                      ttrs-mag           delimited by size
+                     separatore         delimited by size
+                     ttrs-tmo-anno      delimited by size
+                     separatore         delimited by size
+                     ttrs-tmo-numero    delimited by size
+                     separatore         delimited by size
                      into line-riga
               end-string
               write line-riga
@@ -609,29 +618,29 @@
                   separatore
                   "Pr"
                   separatore
-                  "Kg. bolla"
+                  "Kg. bolla S1"
                   separatore        
-                  "Q.li/FT"
+                  "Q.li/FT S1"
                   separatore        
-                  "Tariffa"    
+                  "Tariffa S1"    
                   separatore
-                  "IMPORTO"
+                  "IMPORTO S1"
                   separatore
-                  "Kg. bolla SHI"
+                  "Kg. bolla S2"
                   separatore        
-                  "Q.li/FT SHI"
+                  "Q.li/FT S2"
                   separatore        
-                  "Tariffa SHI"
+                  "Tariffa S2"
                   separatore
-                  "IMPORTO SHI" 
+                  "IMPORTO S2" 
                   separatore
-                  "Kg. bolla GET"
+                  "Kg. bolla S3"
                   separatore        
-                  "Q.li/FT GET"
+                  "Q.li/FT S3"
                   separatore        
-                  "Tariffa GET"
+                  "Tariffa S3"
                   separatore
-                  "IMPORTO GET" 
+                  "IMPORTO S3" 
                   separatore
                   "NOTE" 
                   separatore
@@ -645,7 +654,10 @@
                   separatore 
                   "Causale"           
                   separatore 
-                  "Mag. rif. causale" 
+                  "Anno movimento"
+                  separatore 
+                  "N. movimento"          
+                  separatore 
              into line-riga
            end-string
 
@@ -880,39 +892,45 @@
 
            move trs-provincia to ttrs-provincia.
 
-           move trs-qta-kg    to ttrs-qta-kg.
-           move trs-qta-arrot to ttrs-qta-arrot.
-           move trs-tariffa   to ttrs-tariffa.
-           compute com-importo = trs-qta-arrot * trs-tariffa.
-           move com-importo   to ttrs-importo.
+           move trs-qta-kg-s1    to ttrs-qta-kg-s1.
+           move trs-qta-arrot-s1 to ttrs-qta-arrot-s1.
+           move trs-tariffa-s1   to ttrs-tariffa-s1.
+           compute com-importo = trs-qta-arrot-s1 * trs-tariffa-s1.
+           move com-importo   to ttrs-importo-s1.
            
-           move trs-qta-kg-SHI    to ttrs-qta-kg-SHI.
-           move trs-qta-arrot-SHI to ttrs-qta-arrot-SHI.
-           move trs-tariffa-SHI   to ttrs-tariffa-SHI.
-           compute com-importo = trs-qta-arrot-SHI * trs-tariffa-SHI.
-           move com-importo   to ttrs-importo-SHI.
+           move trs-qta-kg-S2    to ttrs-qta-kg-S2.
+           move trs-qta-arrot-S2 to ttrs-qta-arrot-S2.
+           move trs-tariffa-S2   to ttrs-tariffa-S2.
+           compute com-importo = trs-qta-arrot-S2 * trs-tariffa-S2.
+           move com-importo   to ttrs-importo-S2.
 
-           move trs-qta-kg-GET    to ttrs-qta-kg-GET.
-           move trs-qta-arrot-GET to ttrs-qta-arrot-GET.
-           move trs-tariffa-GET   to ttrs-tariffa-GET.
-           compute com-importo = trs-qta-arrot-GET * trs-tariffa-GET.
-           move com-importo   to ttrs-importo-GET.
+           move trs-qta-kg-s3    to ttrs-qta-kg-s3.
+           move trs-qta-arrot-s3 to ttrs-qta-arrot-s3.
+           move trs-tariffa-s3   to ttrs-tariffa-s3.
+           compute com-importo = trs-qta-arrot-s3 * trs-tariffa-s3.
+           move com-importo   to ttrs-importo-s3.
 
            set tec-forza-pod-no to true.
            move trs-note to ttrs-note.
            set trovata-bozza-reso to false.
+
+           move trs-tmo-chiave to tmo-chiave
+
+           read tmovmag no lock invalid continue end-read
+           move tmo-causale to ttrs-cau tca-codice
+           read tcaumag no lock 
+                invalid move "Null" to tca-cod-magaz 
+           end-read.
+           move trs-tmo-chiave to ttrs-tmo-chiave.
+           move tca-cod-magaz  to ttrs-mag.
+
            |23/05/2012 
            move spaces               to ttrs-esito.
            move trs-num-bolla        to tor-num-bolla.
            move trs-data-bolla(1:4)  to tor-anno-bolla.
            read tordini key k-bolla
                 invalid continue
-            not invalid
-                move tor-causale to ttrs-cau tca-codice
-                read tcaumag no lock 
-                     invalid move "Null" to tca-cod-magaz 
-                end-read
-                move tca-cod-magaz to ttrs-mag
+            not invalid                           
                 |Cerco la bozza di reso prima tramite bolla, poi tramite fattura
                 move tor-anno-bolla to btno-anno-bolla
                 move tor-num-bolla  to btno-num-bolla
@@ -991,7 +1009,7 @@
       ***---
        CLOSE-FILES.
            close trasporti tvettori clienti destini tregioni eordini
-                 tordini tescons btnotacr tcaumag ttipocli.
+                 tordini tescons btnotacr tcaumag ttipocli tmovmag.
            close tmp-trasporti.
            delete file tmp-trasporti.
   

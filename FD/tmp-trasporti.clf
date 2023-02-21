@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E721585143-357-53309490
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E7215135144-919-3108310068
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -162,7 +162,7 @@ m_bFixed=1
 
 @}}
 [FDITEM15_]
-m_strName=ttrs-qta-kg
+m_strName=ttrs-qta-kg-s1
 m_strRawPic=---.---.--9,999
 m_strPic=---.---.--9,999
 m_nItemLevel=10
@@ -172,7 +172,7 @@ m_bFixed=1
 
 @}}
 [FDITEM16_]
-m_strName=ttrs-qta-arrot
+m_strName=ttrs-qta-arrot-s1
 m_strRawPic=---.---.--9,999
 m_strPic=---.---.--9,999
 m_nItemLevel=10
@@ -182,7 +182,7 @@ m_bFixed=1
 
 @}}
 [FDITEM17_]
-m_strName=ttrs-tariffa
+m_strName=ttrs-tariffa-s1
 m_strRawPic=---.---.--9,99
 m_strPic=---.---.--9,99
 m_nItemLevel=10
@@ -192,7 +192,7 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=ttrs-importo
+m_strName=ttrs-importo-s1
 m_strRawPic=---.---.--9,99
 m_strPic=---.---.--9,99
 m_nItemLevel=10
@@ -202,7 +202,7 @@ m_bFixed=1
 
 @}}
 [FDITEM19_]
-m_strName=ttrs-qta-kg-SHI
+m_strName=ttrs-qta-kg-s2
 m_strRawPic=---.---.--9,999
 m_strPic=---.---.--9,999
 m_nItemLevel=10
@@ -212,7 +212,7 @@ m_bFixed=1
 
 @}}
 [FDITEM20_]
-m_strName=ttrs-qta-arrot-SHI
+m_strName=ttrs-qta-arrot-s2
 m_strRawPic=---.---.--9,999
 m_strPic=---.---.--9,999
 m_nItemLevel=10
@@ -222,7 +222,7 @@ m_bFixed=1
 
 @}}
 [FDITEM21_]
-m_strName=ttrs-tariffa-SHI
+m_strName=ttrs-tariffa-s2
 m_strRawPic=---.---.--9,99
 m_strPic=---.---.--9,99
 m_nItemLevel=10
@@ -232,7 +232,7 @@ m_bFixed=1
 
 @}}
 [FDITEM22_]
-m_strName=ttrs-importo-SHI
+m_strName=ttrs-importo-s2
 m_strRawPic=---.---.--9,99
 m_strPic=---.---.--9,99
 m_nItemLevel=10
@@ -242,7 +242,7 @@ m_bFixed=1
 
 @}}
 [FDITEM23_]
-m_strName=ttrs-qta-kg-GET
+m_strName=ttrs-qta-kg-s3
 m_strRawPic=---.---.--9,999
 m_strPic=---.---.--9,999
 m_nItemLevel=10
@@ -252,7 +252,7 @@ m_bFixed=1
 
 @}}
 [FDITEM24_]
-m_strName=ttrs-qta-arrot-GET
+m_strName=ttrs-qta-arrot-s3
 m_strRawPic=---.---.--9,999
 m_strPic=---.---.--9,999
 m_nItemLevel=10
@@ -262,7 +262,7 @@ m_bFixed=1
 
 @}}
 [FDITEM25_]
-m_strName=ttrs-tariffa-GET
+m_strName=ttrs-tariffa-s3
 m_strRawPic=---.---.--9,99
 m_strPic=---.---.--9,99
 m_nItemLevel=10
@@ -272,7 +272,7 @@ m_bFixed=1
 
 @}}
 [FDITEM26_]
-m_strName=ttrs-importo-GET
+m_strName=ttrs-importo-s3
 m_strRawPic=---.---.--9,99
 m_strPic=---.---.--9,99
 m_nItemLevel=10
@@ -349,6 +349,34 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_
+
+@}}
+[FDITEM34_]
+m_strName=ttrs-tmo-chiave
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
+m_strName=ttrs-tmo-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=ttrs-tmo-numero
+m_strRawPic=z(8)
+m_strPic=z(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
 
 @}}
 [CStoAcucobolSL_]

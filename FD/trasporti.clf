@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E72158433-845-3063814670
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E721516321-417-1790232576
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -151,7 +151,7 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=trs-qta-kg
+m_strName=trs-qta-kg-s1
 m_strRawPic=9(9)v999
 m_strPic=9(9)V999
 m_nItemLevel=10
@@ -161,7 +161,7 @@ m_bFixed=1
 
 @}}
 [FDITEM15_]
-m_strName=trs-qta-arrot
+m_strName=trs-qta-arrot-s1
 m_strRawPic=9(9)v999
 m_strPic=9(9)V999
 m_nItemLevel=10
@@ -171,7 +171,7 @@ m_bFixed=1
 
 @}}
 [FDITEM16_]
-m_strName=trs-tariffa
+m_strName=trs-tariffa-s1
 m_strRawPic=9(9)v99
 m_strPic=9(9)V99
 m_nItemLevel=10
@@ -267,7 +267,7 @@ m_bFixed=1
 
 @}}
 [FDITEM26_]
-m_strName=trs-qta-kg-SHI
+m_strName=trs-qta-kg-s2
 m_strRawPic=9(9)v999
 m_strPic=9(9)V999
 m_nItemLevel=15
@@ -277,17 +277,18 @@ m_bFixed=1
 
 @}}
 [FDITEM27_]
-m_strName=trs-qta-arrot-SHI
+m_strName=trs-qta-arrot-s2
 m_strRawPic=9(9)v999
 m_strPic=9(9)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=trs-qta-arrot-s2_1
 {{@DataItem_m_strDescriptionFDITEM27_
 
 @}}
 [FDITEM28_]
-m_strName=trs-tariffa-SHI
+m_strName=trs-tariffa-s2
 m_strRawPic=9(9)v99
 m_strPic=9(9)V99
 m_nItemLevel=15
@@ -317,43 +318,82 @@ m_bFixed=1
 
 @}}
 [FDITEM31_]
-m_strName=trs-qta-kg-GET
+m_strName=trs-qta-kg-s3
 m_strRawPic=9(9)v999
 m_strPic=9(9)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM31_
-
+solo impostata, non usata
 @}}
 [FDITEM32_]
-m_strName=trs-qta-arrot-GET
+m_strName=trs-qta-arrot-s3
 m_strRawPic=9(9)v999
 m_strPic=9(9)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM32_
-
+solo impostata, non usata
 @}}
 [FDITEM33_]
-m_strName=trs-tariffa-GET
+m_strName=trs-tariffa-s3
 m_strRawPic=9(9)v99
 m_strPic=9(9)V99
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_
-
+solo impostata, non usata
 @}}
 [FDITEM34_]
-m_strName=trs-alfa-vuoto
-m_strRawPic=X(465)
-m_strPic=X(465)
-m_nItemLevel=15
+m_strName=trs-tmo-chiave
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM34_
+
+@}}
+[FDITEM35_]
+m_strName=trs-tmo-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=trs-tmo-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM36_
+
+@}}
+[FDITEM37_]
+m_strName=trs-causale
+m_strRawPic=x(4)
+m_strPic=x(4)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=trs-tmo-numero_1
+{{@DataItem_m_strDescriptionFDITEM37_
+
+@}}
+[FDITEM38_]
+m_strName=trs-alfa-vuoto
+m_strRawPic=X(449)
+m_strPic=X(449)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM38_
 
 @}}
 [CStoAcucobolSL_]
@@ -365,7 +405,7 @@ m_strFileStatus=STATUS-trasporti
 m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
-
+serie 3 solo impostata, non usata
 @}}
 [SLPKEY_]
 m_strName=trs-chiave

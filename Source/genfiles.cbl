@@ -3522,7 +3522,7 @@ LABLAB     copy "blister.fd".
            if status-trasporti = "35"
               open output trasporti
            end-if.
-           close trasporti.
+           close trasporti. 
 
            open input statmese.
            if status-statmese = "35"

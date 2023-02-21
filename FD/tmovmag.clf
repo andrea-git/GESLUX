@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E72E131437-841-760416021
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E7215164438-749-1632621545
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -545,3 +545,25 @@ m_strName=k-data
 m_strName=tmo-data-movim
 [SLKEYATOM1_SLINDEX2_]
 m_strName=tmo-numero
+[SLINDEX3_]
+m_strName=tmo-k-bolla
+{{@Key_m_strDescriptionSLINDEX3_
+
+@}}
+[SLKEYATOM0_SLINDEX3_]
+m_strName=tmo-tipo
+[SLKEYATOM1_SLINDEX3_]
+m_strName=tmo-data-doc
+[SLKEYATOM2_SLINDEX3_]
+m_strName=tmo-numdoc-clifor
+[SLINDEX4_]
+m_strName=tmo-k-fattura
+{{@Key_m_strDescriptionSLINDEX4_
+
+@}}
+[SLKEYATOM0_SLINDEX4_]
+m_strName=tmo-tipo
+[SLKEYATOM1_SLINDEX4_]
+m_strName=tmo-anno-fattura
+[SLKEYATOM2_SLINDEX4_]
+m_strName=tmo-num-fattura

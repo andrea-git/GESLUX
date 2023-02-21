@@ -50,13 +50,14 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
        77  filler                pic 9.
            88 trovato            value 1, false 0.
 
+       77  idx-serie             pic 9.
+
        77  tot-mov-from-tras     pic 9(5)  value 0.
        77  ult-num-mov           pic 9(8)  value 0.
        77  link-result           pic 9     value 0.   
        77  num-rec               pic 9(18) value 0.    
-       77  tot-peso-kg           pic 9(9)v999.
-       77  tot-peso-kg-SHI       pic 9(9)v999.
-       77  tot-peso-kg-GET       pic 9(9)v999. 
+       77  tot-peso-kg           pic 9(9)v999 occurs 3.
+       77  qta-arrot             pic 9(9)v999 occurs 3.
                                                 
        77  como-arrot            pic 9(9)v99.
        77  como-idx              pic 9(5).
@@ -65,9 +66,7 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
        77  s-tot-peso-qli        pic 9(9)v999999.
        01  s-tot-peso-qli-red    redefines s-tot-peso-qli.
            05 cifra              pic 9 occurs 15.
-       77  tot-peso-qli          pic 9(9)v999999.
-       77  tot-peso-qli-SHI      pic 9(9)v999999.
-       77  tot-peso-qli-GET      pic 9(9)v999999.         
+       77  tot-peso-qli          pic 9(9)v999999.         
        
        77  filler                pic 9.
            88 esiste-scaglione   value 1, false 0.
@@ -385,15 +384,20 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                       invalid 
                       add 1 to num-rec-ko
                   not invalid                  
-                      move trs-qta-kg     to tot-peso-kg
-                      move trs-qta-kg-SHI to tot-peso-kg-SHI
-                      move trs-qta-kg-GET to tot-peso-kg-GET
-                      perform CALCOLA-QTA-ARROTONDATA-TARIFFA
-                      perform TROVA-TARIFFA-E-VALORIZZA-CAMPO    
-                      perform CALCOLA-QTA-ARROTONDATA-TARIFFA-SHI
-                      perform TROVA-TARIFFA-E-VALORIZZA-CAMPO-SHI
-                      perform CALCOLA-QTA-ARROTONDATA-TARIFFA-GET
-                      perform TROVA-TARIFFA-E-VALORIZZA-CAMPO-GET
+                      move trs-qta-kg-s1 to tot-peso-kg(1)
+                      move trs-qta-kg-S2 to tot-peso-kg(2)
+                      move trs-qta-kg-s3 to tot-peso-kg(3)
+                                                        
+                      move trs-qta-arrot-s1 to qta-arrot(1)
+                      move trs-qta-arrot-s2 to qta-arrot(2)
+                      move trs-qta-arrot-s3 to qta-arrot(3)
+
+                      perform varying idx-serie from 1 by 1 
+                                until idx-serie > 3
+                         perform CALCOLA-QTA-ARROTONDATA-TARIFFA
+                         perform TROVA-TARIFFA-E-VALORIZZA-CAMPO
+                      end-perform
+
                       perform VALORIZZA-DATI-COMUNI
                       rewrite trs-rec invalid continue end-rewrite
                       add 1 to num-rec-ok
@@ -436,153 +440,6 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
            accept trs-data-ultima-modifica from century-date.
            accept trs-ora-ultima-modifica  from time.
            move link-user to trs-utente-ultima-modifica.
-
-      ***---
-       TROVA-TARIFFA-E-VALORIZZA-CAMPO.
-           move 0          to trs-tariffa.
-           move low-value  to tfv-rec.
-           move vet-codice to tfv-codice.
-
-           start tarifvet key is >= tfv-chiave
-                 invalid continue
-             not invalid
-LUBEXX           set trovata-tariffa to false
-                 perform until 1 = 2
-                    read tarifvet next no lock
-                         at end exit perform
-                    end-read
-                    if tfv-codice not = vet-codice
-                       exit perform
-                    end-if
-
-LUBEXX              evaluate true
-LUBEXX              when vet-regione
-LUBEXX                   if trs-regione = tfv-campo1
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-prov
-LUBEXX                   if trs-provincia = tfv-prov
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-cliente
-LUBEXX                   if trs-cliente = tfv-campo1
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-clides
-LUBEXX                   if trs-cliente = tfv-campo1 and
-LUBEXX                      trs-destino = tfv-campo2
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              end-evaluate
-
-LUBEXX              if trovata-tariffa
-                       if trs-qta-arrot >= tfv-qli-da and
-                          trs-qta-arrot <= tfv-qli-a
-                          move tfv-euro to trs-tariffa
-                          exit perform
-                       end-if
-LUBEXX              end-if
-
-                 end-perform
-           end-start.
-
-      ***---
-       TROVA-TARIFFA-E-VALORIZZA-CAMPO-SHI.
-           move 0          to trs-tariffa-SHI.
-           move low-value  to tfv-rec.
-           move vet-codice to tfv-codice.
-
-           start tarifvet key is >= tfv-chiave
-                 invalid continue
-             not invalid
-LUBEXX           set trovata-tariffa to false
-                 perform until 1 = 2
-                    read tarifvet next no lock
-                         at end exit perform
-                    end-read
-                    if tfv-codice not = vet-codice
-                       exit perform
-                    end-if
-
-LUBEXX              evaluate true
-LUBEXX              when vet-regione
-LUBEXX                   if trs-regione = tfv-campo1
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-prov
-LUBEXX                   if trs-provincia = tfv-prov
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-cliente
-LUBEXX                   if trs-cliente = tfv-campo1
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-clides
-LUBEXX                   if trs-cliente = tfv-campo1 and
-LUBEXX                      trs-destino = tfv-campo2
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              end-evaluate
-
-LUBEXX              if trovata-tariffa
-                       if trs-qta-arrot-SHI >= tfv-qli-da and
-                          trs-qta-arrot-SHI <= tfv-qli-a
-                          move tfv-euro to trs-tariffa-SHI
-                          exit perform
-                       end-if
-LUBEXX              end-if
-
-                 end-perform
-           end-start.
-
-      ***---
-       TROVA-TARIFFA-E-VALORIZZA-CAMPO-GET.
-           move 0          to trs-tariffa-GET.
-           move low-value  to tfv-rec.
-           move vet-codice to tfv-codice.
-
-           start tarifvet key is >= tfv-chiave
-                 invalid continue
-             not invalid
-LUBEXX           set trovata-tariffa to false
-                 perform until 1 = 2
-                    read tarifvet next no lock
-                         at end exit perform
-                    end-read
-                    if tfv-codice not = vet-codice
-                       exit perform
-                    end-if
-
-LUBEXX              evaluate true
-LUBEXX              when vet-regione
-LUBEXX                   if trs-regione = tfv-campo1
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-prov
-LUBEXX                   if trs-provincia = tfv-prov
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-cliente
-LUBEXX                   if trs-cliente = tfv-campo1
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              when vet-clides
-LUBEXX                   if trs-cliente = tfv-campo1 and
-LUBEXX                      trs-destino = tfv-campo2
-LUBEXX                      set trovata-tariffa to true
-LUBEXX                   end-if
-LUBEXX              end-evaluate
-
-LUBEXX              if trovata-tariffa
-                       if trs-qta-arrot-GET >= tfv-qli-da and
-                          trs-qta-arrot-GET <= tfv-qli-a
-                          move tfv-euro to trs-tariffa-GET
-                          exit perform
-                       end-if
-LUBEXX              end-if
-
-                 end-perform
-           end-start.
 
       ***--
        CLOSE-FILES.
