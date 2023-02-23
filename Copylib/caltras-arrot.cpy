@@ -4,14 +4,20 @@
                   giving tot-peso-qli.
            divide tot-peso-kg(idx-serie) by 100 
                   giving tot-peso-qli-arrot rounded.
-           move trs-vettore to vet-codice.
-           read tvettori no lock
+           move trs-vettore to vet-codice.      
+           read tvettori no lock                
                 invalid 
+                move 0 to trs-qta-arrot-s1 
+                          trs-qta-arrot-s2 
+                          trs-qta-arrot-s3
+                          trs-tariffa-s1 
+                          trs-tariffa-s2 
+                          trs-tariffa-s3
                 evaluate idx-serie
-                when 1 move 0 to trs-qta-arrot-s1 trs-tariffa-s1
-                when 2 move 0 to trs-qta-arrot-s2 trs-tariffa-s2
-                when 3 move 0 to trs-qta-arrot-s3 trs-tariffa-s3
-                end-evaluate
+                when 1 move tot-peso-qli-arrot to trs-qta-arrot-s1
+                when 2 move tot-peso-qli-arrot to trs-qta-arrot-s2
+                when 3 move tot-peso-qli-arrot to trs-qta-arrot-s3
+                end-evaluate                            
             not invalid
                 if tot-peso-qli < vet-min-tass
                    evaluate idx-serie                       

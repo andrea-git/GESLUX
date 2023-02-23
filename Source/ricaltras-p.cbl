@@ -31,8 +31,10 @@
        77  status-tvettori       pic xx.
        77  status-tarifvet       pic xx.
 
-      * VARIABILI
+      * VARIABILI    
        77  num-rec-ok            pic 9(10) value 0.
+       77  num-rec-okv           pic 9(10) value 0.
+       77  num-rec-oks           pic 9(10) value 0.
        77  num-rec-ko            pic 9(10) value 0.
        77  counter               pic 9(10).
        77  counter2              pic 9(10).
@@ -364,7 +366,7 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                  if trs-data-fattura > como-data-to
                     exit perform
                  end-if
-
+                                              
                  add 1 to counter
                  add 1 to counter2
                  if counter2 = 200
@@ -378,30 +380,60 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                     link-vettore not = trs-vettore
                     exit perform cycle
                  end-if
-                                  
-                 move trs-vettore to vet-codice
-                 read tvettori no lock 
-                      invalid 
-                      add 1 to num-rec-ko
-                  not invalid                  
-                      move trs-qta-kg-s1 to tot-peso-kg(1)
-                      move trs-qta-kg-S2 to tot-peso-kg(2)
-                      move trs-qta-kg-s3 to tot-peso-kg(3)
-                                                        
-                      move trs-qta-arrot-s1 to qta-arrot(1)
-                      move trs-qta-arrot-s2 to qta-arrot(2)
-                      move trs-qta-arrot-s3 to qta-arrot(3)
-
-                      perform varying idx-serie from 1 by 1 
-                                until idx-serie > 3
-                         perform CALCOLA-QTA-ARROTONDATA-TARIFFA
-                         perform TROVA-TARIFFA-E-VALORIZZA-CAMPO
-                      end-perform
-
-                      perform VALORIZZA-DATI-COMUNI
-                      rewrite trs-rec invalid continue end-rewrite
-                      add 1 to num-rec-ok
-                 end-read
+                 
+                 if trs-vettore  = 0                  
+                    move trs-qta-kg-s1 to tot-peso-kg(1)
+                    move trs-qta-kg-S2 to tot-peso-kg(2)
+                    move trs-qta-kg-s3 to tot-peso-kg(3)
+                 
+                    perform varying idx-serie from 1 by 1 
+                              until idx-serie > 3
+                       if tot-peso-kg(idx-serie) = 0
+                          exit perform cycle
+                       end-if
+                       perform CALCOLA-QTA-ARROTONDATA-TARIFFA
+                                                      
+                       move trs-qta-arrot-s1 to qta-arrot(1)
+                       move trs-qta-arrot-s2 to qta-arrot(2)
+                       move trs-qta-arrot-s3 to qta-arrot(3)
+                 
+                       perform TROVA-TARIFFA-E-VALORIZZA-CAMPO
+                    end-perform
+                 
+                    perform VALORIZZA-DATI-COMUNI
+                    rewrite trs-rec invalid continue end-rewrite
+                    add 1 to num-rec-ok
+                    add 1 to num-rec-oks
+                 else
+                    move trs-vettore to vet-codice
+                    read tvettori no lock 
+                         invalid 
+                         add 1 to num-rec-ko
+                     not invalid                  
+                         move trs-qta-kg-s1 to tot-peso-kg(1)
+                         move trs-qta-kg-S2 to tot-peso-kg(2)
+                         move trs-qta-kg-s3 to tot-peso-kg(3)
+                 
+                         perform varying idx-serie from 1 by 1 
+                                   until idx-serie > 3
+                            if tot-peso-kg(idx-serie) = 0
+                               exit perform cycle
+                            end-if
+                            perform CALCOLA-QTA-ARROTONDATA-TARIFFA
+                                                           
+                            move trs-qta-arrot-s1 to qta-arrot(1)
+                            move trs-qta-arrot-s2 to qta-arrot(2)
+                            move trs-qta-arrot-s3 to qta-arrot(3)
+                 
+                            perform TROVA-TARIFFA-E-VALORIZZA-CAMPO
+                         end-perform
+                 
+                         perform VALORIZZA-DATI-COMUNI
+                         rewrite trs-rec invalid continue end-rewrite
+                         add 1 to num-rec-ok
+                         add 1 to num-rec-okv
+                    end-read
+                 end-if
                  
               end-perform    
                            
@@ -412,14 +444,18 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                             icon 2
               else                                      
                  if num-rec-ko = 0
-                    display message 
-                            "Rettificati " num-rec-ok, " trasporti"
+                    display message                       
+                    "Rettificati " num-rec-ok, " trasporti totali"
+             x"0d0a""con vettore " num-rec-okv
+             x"0d0a""senza vettore " num-rec-oks
                               title titolo
                                icon 2
                  else
-                    display message 
-                    "Rettificati " num-rec-ok, " trasporti"
-              x"0d0a"num-rec-ko, " non rettificati vettore non valido"
+                    display message                        
+                    "Rettificati " num-rec-ok, " trasporti totali"
+             x"0d0a""con vettore " num-rec-okv
+             x"0d0a""senza vettore " num-rec-oks
+             x"0d0a"num-rec-ko, " non rettificati vettore non valido"
                               title titolo
                                icon 2
               end-if

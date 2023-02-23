@@ -112,19 +112,13 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
        77  link-user              pic x(20).
        77  link-result            pic 9.
        77  scr-oper-handle        handle of window.
-       77  caltras-data-from      pic 9(8).
-       77  caltras-data-to        pic 9(8).
-       77  link-vettore           pic 9(5).
 
       ******************************************************************
        PROCEDURE DIVISION using tot-mov-from-tras
                                 ult-num-mov
                                 link-user
                                 link-result
-                                scr-oper-handle
-                                caltras-data-from
-                                caltras-data-to
-                                link-vettore.
+                                scr-oper-handle.
        DECLARATIVES.
 
       ***---
@@ -632,7 +626,12 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
            end-start.
 
            if tutto-ok
-              move tmo-causale to tca-codice
+              move tmo-causale to tca-codice                  
+              if tmo-numdoc-clifor <= 400000
+                 move 1 to idx-serie
+              else
+                 move 2 to idx-serie
+              end-if
               read tcaumag  no lock
               set record-ok to false
               move 0 to tot-peso-kg(1) tot-peso-kg(2) tot-peso-kg(3)
@@ -642,18 +641,11 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
                     rmo-movim not = tmo-numero
                     exit perform
                  end-if
-                 set record-ok to true
-                 if tmo-numdoc-clifor <= 400000
-                    compute tot-peso-kg(1) =
-                            tot-peso-kg(1)  +
-                            rmo-peso-tot + 
-                            rmo-peso-tot-utf 
-                 else
-                    compute tot-peso-kg(2) =
-                            tot-peso-kg(2)  +
-                            rmo-peso-tot + 
-                            rmo-peso-tot-utf   
-                 end-if
+                 set record-ok to true                          
+                 compute tot-peso-kg(idx-serie) =
+                         tot-peso-kg(idx-serie)  +
+                         rmo-peso-tot + 
+                         rmo-peso-tot-utf 
                
       *****           if tca-cod-magaz = "SHI"
       *****              move rmo-articolo to art-codice
@@ -693,14 +685,20 @@ LUBEXX     88 trovata-tariffa    value 1, false 0.
 
               move tmo-causale        to trs-causale
               move tmo-chiave         to trs-tmo-chiave
-                                                
-              move trs-qta-arrot-s1 to qta-arrot(1)
-              move trs-qta-arrot-s2 to qta-arrot(2)
-              move trs-qta-arrot-s3 to qta-arrot(3)
 
               perform varying idx-serie from 1 by 1 
                         until idx-serie > 3
+
+                 if tot-peso-kg(idx-serie) = 0
+                    exit perform cycle
+                 end-if
+                        
                  perform CALCOLA-QTA-ARROTONDATA-TARIFFA
+                                                        
+                 move trs-qta-arrot-s1 to qta-arrot(1)
+                 move trs-qta-arrot-s2 to qta-arrot(2)
+                 move trs-qta-arrot-s3 to qta-arrot(3)
+
                  perform TROVA-TARIFFA-E-VALORIZZA-CAMPO
               end-perform
 
