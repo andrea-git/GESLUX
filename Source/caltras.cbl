@@ -74,7 +74,12 @@
        77  s-tot-peso-qli        pic 9(9)v999999.
        01  s-tot-peso-qli-red    redefines s-tot-peso-qli.
            05 cifra              pic 9 occurs 15.
-       77  tot-peso-qli          pic 9(9)v999999. 
+       77  tot-peso-qli          pic 9(9)v999999.
+       
+       77  como-num              pic 9(9).
+       01  como-num-red          redefines como-num.
+           05 como-cifra         pic 9 occurs 9.
+        
        77  counter               pic 9(10).
        77  counter2              pic 9(10).
        77  counter-edit          pic z(10).

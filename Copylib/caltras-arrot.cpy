@@ -103,7 +103,7 @@
                    when 5 move 6 to cifra(10)
                    when 7 move 8 to cifra(10)
                    when 9 move 0 to cifra(10)
-                          add  1 to cifra(9)
+                          perform ADD-1
                    end-evaluate            
                 else                                                
                    move 0 to cifra(11) cifra(12) cifra(13) cifra(14)
@@ -118,7 +118,7 @@
                    when 7 move 8 to cifra(10)
                    when 8
                    when 9 move 0 to cifra(10)
-                          add  1 to cifra(9)
+                          perform ADD-1
                    end-evaluate               
                 end-if
            when 0,5                               
@@ -134,7 +134,7 @@
                    when 4 move 5 to cifra(10)
                    when 5 continue
                    when other move 0 to cifra(10)
-                              add  1 to cifra(9)
+                              perform ADD-1
                    end-evaluate             
                 else                                  
                    move 0 to cifra(11) cifra(12) cifra(13) cifra(14)
@@ -145,7 +145,7 @@
                    when 3 
                    when 4 move 5 to cifra(10)
                    when other move 0 to cifra(10)
-                              add  1 to cifra(9)
+                              perform ADD-1
                    end-evaluate               
                 end-if
            when 1            
@@ -154,8 +154,30 @@
                           cifra(12) 
                           cifra(13) 
                           cifra(13)  
-                add  1 to cifra(9)
+                perform ADD-1
            end-evaluate.
+
+      ***---
+       ADD-1.                             
+           move cifra(1) to como-cifra(1).
+           move cifra(2) to como-cifra(2).
+           move cifra(3) to como-cifra(3).
+           move cifra(4) to como-cifra(4).
+           move cifra(5) to como-cifra(5).
+           move cifra(6) to como-cifra(6).
+           move cifra(7) to como-cifra(7).
+           move cifra(8) to como-cifra(8).
+           move cifra(9) to como-cifra(9).
+           add 1 to como-num.             
+           move como-cifra(1) to cifra(1).
+           move como-cifra(2) to cifra(2).
+           move como-cifra(3) to cifra(3).
+           move como-cifra(4) to cifra(4).
+           move como-cifra(5) to cifra(5).
+           move como-cifra(6) to cifra(6).
+           move como-cifra(7) to cifra(7).
+           move como-cifra(8) to cifra(8).
+           move como-cifra(9) to cifra(9).
   
       *****     move 245,85 to tot-peso-kg.
       *****     perform ARRTOP.
