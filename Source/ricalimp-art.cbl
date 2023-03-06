@@ -224,19 +224,36 @@
            end-if.
 
            perform until 1 = 2
+              set RecLocked to false
               open i-o ra-semaforo allowing readers
               if status-ra-semaforo not = "00"
+                 |Se va in errore di open ma non per il lock
+                 |provo a ricreare il file...
+                 if not RecLocked           
+                    call "C$SLEEP" using "1"
+                    open output ra-semaforo
+                    |... ma se non riesco allora esco per un 
+                    |intervento manuale
+                    if status-ra-semaforo not = "00"
+                       display message 
+                               "ELABORAZIONE INTERROTTA."
+                        x"0d0a""CONTATTARE ASSISTENZA CON CODICE RA-2"
+                                 title tit-err
+                       goback
+                    end-if
+                    close ra-semaforo
+                    exit perform cycle
+                 end-if
                  if ra-utente-in-uso = spaces                      
                    |per dare tempo eventualmente all'altro processo
                    |di arrivare alla write immediatamente dopo la open
                    |altrimenti può verificarsi che ancora non ha aggiornato
                    |e troverebbe l'utente della sessione precedente
-                    call "C$SLEEP" using "1"                     
+                    call "C$SLEEP" using "1"
                     open input ra-semaforo
                     move spaces to ra-chiave
                     read  ra-semaforo
                     close ra-semaforo
-                    exit perform cycle
                  end-if
               else
                  exit perform
