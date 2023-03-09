@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gtrasporti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 21 febbraio 2023 17:44:20.
+       DATE-WRITTEN.        giovedì 9 marzo 2023 15:03:15.
        REMARKS.
       *{TOTEM}END
 
@@ -1083,7 +1083,7 @@
            LINE 32,08,
            LINES 7,69 ,
            SIZE 26,50 ,
-           ID IS 24,
+           ID IS 51,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "Dati movimento di magazzino",
@@ -1101,7 +1101,7 @@
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 21,
+           ID IS 52,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -1121,7 +1121,7 @@
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 22,
+           ID IS 53,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -1141,7 +1141,7 @@
            BOXED,
            COLOR IS 513,
            ENABLED mod,
-           ID IS 28,
+           ID IS 54,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            MAX-TEXT 4,
@@ -1157,7 +1157,7 @@
            LINE 33,62,
            LINES 1,31 ,
            SIZE 7,00 ,
-           ID IS 48,
+           ID IS 55,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1172,7 +1172,7 @@
            LINE 35,62,
            LINES 1,31 ,
            SIZE 7,00 ,
-           ID IS 49,
+           ID IS 56,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1187,7 +1187,7 @@
            LINE 37,62,
            LINES 1,31 ,
            SIZE 7,00 ,
-           ID IS 50,
+           ID IS 57,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3831,7 +3831,7 @@
            PERFORM ef-anno-m-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 21 TO CONTROL-ID
+               MOVE 52 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-num-m's Validation
@@ -3839,7 +3839,7 @@
            PERFORM ef-num-m-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 22 TO CONTROL-ID
+               MOVE 53 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cau-m's Validation
@@ -3847,7 +3847,7 @@
            PERFORM ef-cau-m-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 28 TO CONTROL-ID
+               MOVE 54 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -4826,9 +4826,9 @@
            When 5015 PERFORM Form1-DaEf-8-AfterProcedure
            When 5016 PERFORM Form1-DaEf-13-AfterProcedure
            When 33 PERFORM Form1-DaEf-13-AfterProcedure
-           When 21 PERFORM Form1-DaEf-6-AfterProcedure
-           When 22 PERFORM Form1-DaEf-8-AfterProcedure
-           When 28 PERFORM Form1-DaEf-13-AfterProcedure
+           When 52 PERFORM Form1-DaEf-6-AfterProcedure
+           When 53 PERFORM Form1-DaEf-8-AfterProcedure
+           When 54 PERFORM Form1-DaEf-13-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -5197,28 +5197,27 @@
                 end-if
                 display lab-reg 
       
-           |78-ID-ef-qta-kg è l'ID del control ef-qta-kg
-           when 78-ID-ef-qta-kg-s1
-                inquire ef-qta-kg-s1, value in ef-qta-kg-s1-buf
-                move ef-qta-kg-s1-buf to trs-qta-kg-s1
-                if trs-qta-kg-s1 = 0
-                   set errori to true
-                   display message "Inserimento q.tà Kg S1 mancante"
-                             title tit-err
-                              icon 2
-                end-if
-      
-           |78-ID-ef-qta-arrot è l'ID del control ef-qta-arrot
-           when 78-ID-ef-qta-arrot-s1
-                inquire ef-qta-arrot-s1, value in ef-qta-arrot-s1-buf
-                move ef-qta-arrot-s1-buf to trs-qta-arrot-s1
-                if trs-qta-arrot-s1 = 0
-                   set errori to true
-                   display message "Inserimento q.tà arrotondata S1 manc
-      -    "ante"
-                             title tit-err
-                              icon 2
-                end-if
+      *****     |78-ID-ef-qta-kg è l'ID del control ef-qta-kg
+      *****     when 78-ID-ef-qta-kg-s1
+      *****          inquire ef-qta-kg-s1, value in ef-qta-kg-s1-buf
+      *****          move ef-qta-kg-s1-buf to trs-qta-kg-s1
+      *****          if trs-qta-kg-s1 = 0
+      *****             set errori to true
+      *****             display message "Inserimento q.tà Kg S1 mancante"
+      *****                       title tit-err
+      *****                        icon 2
+      *****          end-if
+      *****
+      *****     |78-ID-ef-qta-arrot è l'ID del control ef-qta-arrot
+      *****     when 78-ID-ef-qta-arrot-s1
+      *****          inquire ef-qta-arrot-s1, value in ef-qta-arrot-s1-buf
+      *****          move ef-qta-arrot-s1-buf to trs-qta-arrot-s1
+      *****          if trs-qta-arrot-s1 = 0
+      *****             set errori to true
+      *****             display message "Inserimento q.tà arrotondata S1 mancante"
+      *****                       title tit-err
+      *****                        icon 2
+      *****          end-if
       
            end-evaluate.
       *****

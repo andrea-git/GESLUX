@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7215164018-852-127372898
+PROGRAM_UNIQUE_CODE=TOTEM-7E73914245-782-21656971
 
 {{@DESCRIPTION:
 
@@ -3077,7 +3077,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       High Color        = 0
-      ID                = 24
+      ID                = 51
       Line              = 32,08
       Lines             = 7,69
       Lines Unit        = Default
@@ -3120,7 +3120,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 21
+         ID                = 52
          Justification     = Right
          Line              = 2,54
          Lines             = 1,31
@@ -3179,7 +3179,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 22
+         ID                = 53
          Justification     = Right
          Line              = 4,54
          Lines             = 1,31
@@ -3238,7 +3238,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 28
+         ID                = 54
          Justification     = Unaligned
          Line              = 6,54
          Lines             = 1,31
@@ -3284,7 +3284,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 48
+         ID                = 55
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 2,54
@@ -3317,7 +3317,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 49
+         ID                = 56
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 4,54
@@ -3350,7 +3350,7 @@ Begin Screen Form1
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 50
+         ID                = 57
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 6,54
@@ -4769,27 +4769,27 @@ BEGIN-TEXT
                 end-if
                 display lab-reg 
       
-           |78-ID-ef-qta-kg è l'ID del control ef-qta-kg
-           when 78-ID-ef-qta-kg-s1
-                inquire ef-qta-kg-s1, value in ef-qta-kg-s1-buf
-                move ef-qta-kg-s1-buf to trs-qta-kg-s1
-                if trs-qta-kg-s1 = 0
-                   set errori to true
-                   display message "Inserimento q.tà Kg S1 mancante"
-                             title tit-err
-                              icon 2
-                end-if
-      
-           |78-ID-ef-qta-arrot è l'ID del control ef-qta-arrot
-           when 78-ID-ef-qta-arrot-s1
-                inquire ef-qta-arrot-s1, value in ef-qta-arrot-s1-buf
-                move ef-qta-arrot-s1-buf to trs-qta-arrot-s1
-                if trs-qta-arrot-s1 = 0
-                   set errori to true
-                   display message "Inserimento q.tà arrotondata S1 mancante"
-                             title tit-err
-                              icon 2
-                end-if
+      *****     |78-ID-ef-qta-kg è l'ID del control ef-qta-kg
+      *****     when 78-ID-ef-qta-kg-s1
+      *****          inquire ef-qta-kg-s1, value in ef-qta-kg-s1-buf
+      *****          move ef-qta-kg-s1-buf to trs-qta-kg-s1
+      *****          if trs-qta-kg-s1 = 0
+      *****             set errori to true
+      *****             display message "Inserimento q.tà Kg S1 mancante"
+      *****                       title tit-err
+      *****                        icon 2
+      *****          end-if
+      *****
+      *****     |78-ID-ef-qta-arrot è l'ID del control ef-qta-arrot
+      *****     when 78-ID-ef-qta-arrot-s1
+      *****          inquire ef-qta-arrot-s1, value in ef-qta-arrot-s1-buf
+      *****          move ef-qta-arrot-s1-buf to trs-qta-arrot-s1
+      *****          if trs-qta-arrot-s1 = 0
+      *****             set errori to true
+      *****             display message "Inserimento q.tà arrotondata S1 mancante"
+      *****                       title tit-err
+      *****                        icon 2
+      *****          end-if
       
            end-evaluate.
       *****
