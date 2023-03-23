@@ -2778,22 +2778,47 @@ LUBEXX        end-if
       *****                              icon 2
       *****                   move 78-ID-ef-peso-utf to store-id
       *****                   set errori to true
+      *****              when "11"
+      *****                   display message
+      *****                "Impossibile cambiare i valori di IMBALLO e PESO."
+      *****         x"0d0a""Occorre registrare un nuovo progressivo a zero."
+      *****                             title titolo
+      *****                              icon 2
+      *****                   move 78-ID-ef-imballo to store-id
+      *****                   set errori to true     
+      *****              when "11"
+      *****              when "01"
+      *****                   display message
+      *****                   "Impossibile cambiare il valore dell'IMBALLO."
+      *****          x"0d0a""Occorre registrare un nuovo progressivo a zero."
+      *****                             title titolo
+      *****                              icon 2
+      *****                   move 78-ID-ef-imballo to store-id
+      *****                   set errori to true    
+                    |Walter: 23-03-2023
+                    |Metti solo il controllo che l'imballo nuovo riportato 
+                    |sia presente tra i progressivi del magazzino STD 
+                    |riportato sempre in anagrafica.
                     when "11"
-                         display message
-                      "Impossibile cambiare i valori di IMBALLO e PESO."
-               x"0d0a""Occorre registrare un nuovo progressivo a zero."
-                                   title titolo
-                                    icon 2
-                         move 78-ID-ef-imballo to store-id
-                         set errori to true
                     when "01"
-                         display message
-                         "Impossibile cambiare il valore dell'IMBALLO."
-                x"0d0a""Occorre registrare un nuovo progressivo a zero."
-                                   title titolo
-                                    icon 2
-                         move 78-ID-ef-imballo to store-id
-                         set errori to true
+                         move art-codice of articoli  
+                           to prg-cod-articolo
+                         move ef-mag-buf
+                           to prg-cod-magazzino
+                         move art-imballo-standard of articoli
+                           to prg-tipo-imballo
+                         compute prg-peso = art-peso-utf of articoli + 
+                                            art-peso-non-utf of articoli
+                         read progmag no lock
+                              invalid
+                              set errori to true
+                              display message
+                              "Impossibile cambiare il valore del PESO."
+                       x"0d0a""Progressivo di magazzino non presente."
+                                        title titolo
+                                         icon 2
+                              move 78-ID-ef-imballo to store-id
+                         end-read
                     end-evaluate
                  end-if
               end-if
