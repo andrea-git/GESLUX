@@ -114,7 +114,7 @@
        77  pattern          pic x(10).
        77  dir-handle       handle.
 
-       77  path-st          pic x(256).
+       77  path-elab        pic x(256).
 
        77  counter          pic 9(10) value 0.
        77  counter2         pic 9(10) value 0.
@@ -247,9 +247,10 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.                                 
-           accept  path-st from environment "PATH_ST".
-           inspect path-st replacing trailing spaces by low-value.
+       INIT.
+           accept  path-elab from environment "SITUACONT_PATH_ELAB".
+
+           inspect path-elab replacing trailing spaces by low-value.
            set trovato  to false.
            set tutto-ok to true.
            CALL "C$NARG" USING narg.
@@ -333,7 +334,7 @@
            perform RIGA-LOG.
 
            initialize wstampa.
-           string  path-st   delimited low-value
+           string  path-elab      delimited low-value
                    "M32092"       delimited size
                    como-data(1:4) delimited size
                    como-data(5:2) delimited size
@@ -346,7 +347,7 @@
            string  "M32092"       delimited size
                    como-data(1:4) delimited size
                    como-data(5:2) delimited size
-                   ".csv"       delimited size
+                   ".csv"         delimited size
               into FileName1
            end-string.
 
@@ -744,7 +745,7 @@
            accept  como-data from century-date.
            accept  como-ora  from time.
            initialize wstampa.
-           string  path-st        delimited low-value
+           string  path-elab      delimited low-value
                    "C32092"       delimited size
                    como-data(1:4) delimited size
                    como-data(5:2) delimited size
@@ -844,6 +845,7 @@
                  open extend lineseq
                  inspect file-name 
                          replacing trailing spaces by low-value
+                 initialize wstampa
                  string situacont-path-fileseq delimited low-value
                         file-name              delimited low-value
                    into wstampa
@@ -975,7 +977,7 @@
            write line-riga of lineseq.
 
       ***---
-       EXPORT-FTP.            
+       EXPORT-FTP.
            initialize como-riga.
            perform SETTA-INIZIO-RIGA.
            string r-inizio      delimited size
@@ -1030,7 +1032,7 @@
                              
            initialize iniFtp-riga.
            string "put "         delimited size
-                  path-st        delimited low-value
+                  path-elab      delimited low-value
                   FileName1      delimited low-value
                   " "            delimited size
                   ftp-remote-dir delimited low-value
@@ -1041,7 +1043,7 @@
 
            initialize iniFtp-riga.
            string "put "         delimited size
-                  path-st        delimited low-value
+                  path-elab      delimited low-value
                   FileName2      delimited low-value
                   " "            delimited size
                   ftp-remote-dir delimited low-value
