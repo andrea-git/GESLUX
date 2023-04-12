@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vgiacenze.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 10 novembre 2022 16:37:44.
+       DATE-WRITTEN.        martedì 11 aprile 2023 17:59:09.
        REMARKS.
       *{TOTEM}END
 
@@ -6115,13 +6115,16 @@
                        set cli-tipo-F to true
                        move tof-cod-forn to cli-codice
                        read clienti no lock
-                       move rof-chiave         to toa-chiave
+                       move rof-chiave         to toa-chiave 
+                       move tof-data-ordine    to toa-data-ordine
                        move cli-ragsoc-1       to toa-forn
                        move cli-tel-1          to toa-tel
                        move rof-qta-ord        to toa-ord
+                                                                  
+                       compute toa-eva = rof-qta-ord - rof-qta-evasa    
+              
 
-      *****                 move rof-qta-evasa      to toa-eva
-                       compute toa-eva = rof-qta-ord - rof-qta-evasa
+                       move 0 to toa-data-arrivo sof-data-arr
 
                        move rof-chiave to sof-chiave
                        read sordforn no lock 
@@ -6130,7 +6133,7 @@
                             move 0 to sof-prog
                             read sordforn
                                  invalid 
-                                 move 0      to toa-data-arrivo
+      *****                           move 0      to toa-data-arrivo
                                  move spaces to toa-dati-salvati
                              not invalid 
                                  move sof-data-arr     to 
@@ -6143,8 +6146,14 @@
                             move sof-qta          to toa-qta-soll
                             move sof-dati-salvati to toa-dati-salvati
                             move sof-data-conf    to toa-data-ordine
-                       end-read
-      *                 move tof-data-ordine    to toa-data-ordine
+                       end-read                                   
+
+                       if toa-data-arrivo = 0
+                          move tof-data-consegna to toa-data-arrivo
+                       end-if
+                       if toa-data-arrivo not = sof-data-arr
+                          move 0 to toa-data-ordine 
+                       end-if
 
                        write toa-rec
                     end-if

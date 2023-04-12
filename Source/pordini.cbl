@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 31 ottobre 2022 17:00:55.
+       DATE-WRITTEN.        martedì 11 aprile 2023 17:54:59.
        REMARKS.
       *{TOTEM}END
 
@@ -10007,6 +10007,8 @@
                              move rof-qta-ord        to toa-ord
                              move rof-qta-evasa      to toa-eva
 
+                             move 0 to toa-data-arrivo sof-data-arr
+
                              move rof-chiave to sof-chiave
                              read sordforn no lock 
                                   invalid 
@@ -10014,8 +10016,7 @@
                                   move 0 to sof-prog
                                   read sordforn
                                        invalid 
-                                       move 0            to 
-           toa-data-arrivo
+      ******                                 move 0            to toa-data-arrivo
                                        move spaces       to 
            toa-dati-salvati
                                    not invalid 
@@ -10031,7 +10032,13 @@
                                   move sof-dati-salvati to 
            toa-dati-salvati
                              end-read
-                       
+                             if toa-data-arrivo = 0
+                                move tof-data-consegna to 
+           toa-data-arrivo
+                             end-if
+                             if toa-data-arrivo not = sof-data-arr
+                                move 0 to toa-data-ordine 
+                             end-if
                              write toa-rec
                           end-if
                        end-perform

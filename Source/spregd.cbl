@@ -81,20 +81,23 @@
        01  filler                pic 9.
          88 record-ok            value 1 false 0.
 
+       77  tot-fatt              pic s9(12)v99.
+
       * RIGHE PER LA STAMPA
        01  rec-edit.
          05 r-tipologia          pic x(30).
-         05 r-gdo-codice         PIC x(5).
-         05 r-cliente            PIC z(5).
-         05 r-gdo-intestazione   PIC x(50).
-         05 r-cli-ragsoc         PIC x(50).
-         05 r-imponibile         PIC ----.---.---.--9,99.
-         05 r-add-pb             PIC ----.---.---.--9,99.
-         05 r-tot-imp            PIC ----.---.---.--9,99.
-         05 r-cons               PIC ----.---.---.--9,99.
-         05 r-cou                PIC ----.---.---.--9,99.
-         05 r-tot-utf            PIC ----.---.---.--9,9999.
-         05 r-pz-batt            PIC ----.---.---.--9.
+         05 r-gdo-codice         pic x(5).
+         05 r-cliente            pic z(5).
+         05 r-gdo-intestazione   pic x(50).
+         05 r-cli-ragsoc         pic x(50).
+         05 r-imponibile         pic ----.---.---.--9,99.
+         05 r-add-pb             pic ----.---.---.--9,99.
+         05 r-tot-imp            pic ----.---.---.--9,99.
+         05 r-cons               pic ----.---.---.--9,99.
+         05 r-cou                pic ----.---.---.--9,99.
+         05 r-tot-fatt           pic ----.---.---.--9,99.
+         05 r-tot-utf            pic ----.---.---.--9,9999.
+         05 r-pz-batt            pic ----.---.---.--9.
          05 r-data-from          pic x(10).
          05 r-data-to            pic x(10).
 
@@ -586,33 +589,35 @@
                  if errori exit perform end-if
                  perform ACCETTA-SEPARATORE
                  initialize line-riga
-                 string "Tipologia"      delimited size
-                        separatore       delimited size
-                        "Gruppo"         delimited size
-                        separatore       delimited size
-                        "Supermercato"   delimited size
-                        separatore       delimited size
-                        "Codice"         delimited size
-                        separatore       delimited size
-                        "Cliente"        delimited size
-                        separatore       delimited size
-                        "Imponibile"     delimited size
-                        separatore       delimited size
-                        "Add.le Pb"      delimited size
-                        separatore       delimited size
-                        "Imp. Totale"    delimited size
-                        separatore       delimited size
-                        "I.C."           delimited size
-                        separatore       delimited size
-                        "C.O.U./COBAT"   delimited size
-                        separatore       delimited size
-                        "TOT. UTF"       delimited size
-                        separatore       delimited size
-                        "PZ. BATTERIE"   delimited size
-                        separatore       delimited size
-                        "Da data"        delimited size
-                        separatore       delimited size
-                        "A data"         delimited size
+                 string "Tipologia"          delimited size
+                        separatore           delimited size
+                        "Gruppo"             delimited size
+                        separatore           delimited size
+                        "Supermercato"       delimited size
+                        separatore           delimited size
+                        "Codice"             delimited size
+                        separatore           delimited size
+                        "Cliente"            delimited size
+                        separatore           delimited size
+                        "Imponibile"         delimited size
+                        separatore           delimited size
+                        "Add.le Pb"          delimited size
+                        separatore           delimited size
+                        "Imp. Totale"        delimited size
+                        separatore           delimited size
+                        "I.C."               delimited size
+                        separatore           delimited size
+                        "C.O.U./COBAT"       delimited size
+                        separatore           delimited size
+                        "Totale fatturato"   delimited size
+                        separatore           delimited size
+                        "TOT. UTF"           delimited size
+                        separatore           delimited size
+                        "PZ. BATTERIE"       delimited size
+                        separatore           delimited size
+                        "Da data"            delimited size
+                        separatore           delimited size
+                        "A data"             delimited size
                         into line-riga
                  end-string
                  write line-riga
@@ -641,9 +646,17 @@
               move spre-imponibile       to r-tot-imp
 
               move spre-cons             to r-cons
+
               move spre-cou              to r-cou
               move spre-utf              to r-tot-utf
               move spre-pz-batt          to r-pz-batt
+
+              compute tot-fatt = spre-imponibile +
+                                 spre-cons       + 
+                                 spre-cou
+
+              move tot-fatt to r-tot-fatt                    
+
               initialize line-riga
               string r-tipologia        delimited size
                      separatore         delimited size
@@ -664,6 +677,8 @@
                      r-cons             delimited size
                      separatore         delimited size
                      r-cou              delimited size
+                     separatore         delimited size
+                     r-tot-fatt         delimited size
                      separatore         delimited size
                      r-tot-utf          delimited size
                      separatore         delimited size

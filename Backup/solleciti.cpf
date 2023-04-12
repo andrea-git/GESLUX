@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E6BC02746-550-42410077
+PROGRAM_UNIQUE_CODE=TOTEM-7E74B155512-624-2128421926
 
 {{@DESCRIPTION:
 
@@ -10635,11 +10636,14 @@ BEGIN-TEXT
                           set cli-tipo-F to true
                           move tof-cod-forn to cli-codice
                           read clienti no lock
-                          move rof-chiave         to toa-chiave
+                          move rof-chiave         to toa-chiave     
+                          move tof-data-ordine    to toa-data-ordine
                           move cli-ragsoc-1       to toa-forn
                           move cli-tel-1          to toa-tel
                           move rof-qta-ord        to toa-ord
                           move rof-qta-evasa      to toa-eva
+                                                                       
+                          move 0 to toa-data-arrivo sof-data-arr
 
                           move rof-chiave to sof-chiave
                           read sordforn no lock 
@@ -10648,7 +10652,7 @@ BEGIN-TEXT
                                move 0 to sof-prog
                                read sordforn
                                     invalid 
-                                    move 0      to toa-data-arrivo
+      *****                              move 0      to toa-data-arrivo
                                     move space  to toa-dati-salvati
                                 not invalid 
                                     move sof-data-arr     to toa-data-arrivo
@@ -10658,8 +10662,13 @@ BEGIN-TEXT
                                move sof-data-arr     to toa-data-arrivo
                                move sof-qta          to toa-qta-soll     
                                move sof-dati-salvati to toa-dati-salvati
-                          end-read
-                          move tof-data-ordine    to toa-data-ordine
+                          end-read                                  
+                          if toa-data-arrivo = 0
+                             move tof-data-consegna to toa-data-arrivo
+                          end-if
+                          if toa-data-arrivo not = sof-data-arr
+                             move 0 to toa-data-ordine 
+                          end-if
 
                           write toa-rec
                        end-if

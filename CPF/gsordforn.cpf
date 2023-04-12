@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=form-solleciti
 BEFORE_PROGRAM=gnote-ordforn-Ev-Before-Program
 AFTER_PROGRAM=gnote-ordforn-Ev-After-Program
 AFTER_INIT=gsordforn-Ev-After-Init
-PROGRAM_UNIQUE_CODE=TOTEM-7E721517013-630-2980213435
+PROGRAM_UNIQUE_CODE=TOTEM-7E74C95216-67-3127025753
 
 {{@DESCRIPTION:
 
@@ -1518,7 +1518,11 @@ BEGIN-DATA
    ENTRYPOINT        = BeforeExit
 BEGIN-TEXT
            if mod = 1| and NoteCambiate
-              perform SALV-MOD
+              perform SALV-MOD   
+              if errori
+                 move 26 to key-status
+                 exit paragraph
+              end-if
            end-if
 END-TEXT
 END-DATA
@@ -1614,6 +1618,11 @@ BEGIN-TEXT
                    perform DATE-FORMAT
                    move como-data to ef-data-buf
                    display ef-data
+                else                        
+                   set errori to true
+                   display message "Data obbligatoria"
+                             title tit-err
+                              icon 2
                 end-if
            when 78-ID-ef-qta
                 if v-righe = 1
@@ -1670,7 +1679,7 @@ BEGIN-TEXT
 
               evaluate scelta
               when mb-yes
-                   perform SALVA
+                   perform SALVA 
               when mb-no
                    continue
               when other
@@ -1687,11 +1696,12 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = SALVA
 BEGIN-TEXT
-           if mod = ZERO 
+           if mod = 0
               exit paragraph 
            end-if.
 
-           set tutto-ok to true.
+           set tutto-ok to true.    
+
 
            set gsordforn-forza-testata to false.
            if gsordforn-sof-prog = 0

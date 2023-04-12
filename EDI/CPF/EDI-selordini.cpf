@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E721B94554-45-604915862
+PROGRAM_UNIQUE_CODE=TOTEM-7E74B101457-503-1030022646
 
 {{@DESCRIPTION:
 
@@ -18800,6 +18800,7 @@ BEGIN-TEXT
                 invalid move spaces to des-cap des-prov
            end-read.                 
 
+           move des-prog to old-des.
            move des-cap  to old-des-cap.
            move des-prov to old-des-prov.
            
@@ -19332,6 +19333,7 @@ BEGIN-TEXT
 
                  move des-prov to old-des-prov
                  move des-cap  to old-des-cap
+                 move des-prog to old-des
               end-if
 
 

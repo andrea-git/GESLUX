@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E721517028-316-296062823
+PROGRAM_UNIQUE_CODE=TOTEM-7E74C74327-208-210767338
 
 {{@DESCRIPTION:
 
@@ -11070,6 +11070,8 @@ BEGIN-TEXT
                              move rof-qta-ord        to toa-ord
                              move rof-qta-evasa      to toa-eva
 
+                             move 0 to toa-data-arrivo sof-data-arr
+
                              move rof-chiave to sof-chiave
                              read sordforn no lock 
                                   invalid 
@@ -11077,7 +11079,7 @@ BEGIN-TEXT
                                   move 0 to sof-prog
                                   read sordforn
                                        invalid 
-                                       move 0            to toa-data-arrivo
+      ******                                 move 0            to toa-data-arrivo
                                        move spaces       to toa-dati-salvati
                                    not invalid 
                                        move sof-data-arr     to toa-data-arrivo
@@ -11088,7 +11090,12 @@ BEGIN-TEXT
                                   move sof-qta          to toa-qta-soll
                                   move sof-dati-salvati to toa-dati-salvati
                              end-read
-                       
+                             if toa-data-arrivo = 0
+                                move tof-data-consegna to toa-data-arrivo
+                             end-if
+                             if toa-data-arrivo not = sof-data-arr
+                                move 0 to toa-data-ordine 
+                             end-if
                              write toa-rec
                           end-if
                        end-perform

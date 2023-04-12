@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gsordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 10 novembre 2022 16:29:47.
+       DATE-WRITTEN.        mercoledì 12 aprile 2023 09:56:42.
        REMARKS.
       *{TOTEM}END
 
@@ -963,7 +963,11 @@
       * for main screen
       * <TOTEM:EPT. FORM:form-solleciti, FORM:form-solleciti, BeforeExit>
            if mod = 1| and NoteCambiate
-              perform SALV-MOD
+              perform SALV-MOD   
+              if errori
+                 move 26 to key-status
+                 exit paragraph
+              end-if
            end-if
 
            .
@@ -1249,6 +1253,11 @@
                    perform DATE-FORMAT
                    move como-data to ef-data-buf
                    display ef-data
+                else                        
+                   set errori to true
+                   display message "Data obbligatoria"
+                             title tit-err
+                              icon 2
                 end-if
            when 78-ID-ef-qta
                 if v-righe = 1
@@ -1302,7 +1311,7 @@
 
               evaluate scelta
               when mb-yes
-                   perform SALVA
+                   perform SALVA 
               when mb-no
                    continue
               when other
@@ -1317,11 +1326,12 @@
 
        SALVA.
       * <TOTEM:PARA. SALVA>
-           if mod = ZERO 
+           if mod = 0
               exit paragraph 
            end-if.
 
-           set tutto-ok to true.
+           set tutto-ok to true.    
+
 
            set gsordforn-forza-testata to false.
            if gsordforn-sof-prog = 0

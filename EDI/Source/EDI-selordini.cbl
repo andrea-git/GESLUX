@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 febbraio 2023 12:18:08.
+       DATE-WRITTEN.        martedì 11 aprile 2023 12:18:54.
        REMARKS.
       *{TOTEM}END
 
@@ -19794,6 +19794,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
                 invalid move spaces to des-cap des-prov
            end-read.                 
 
+           move des-prog to old-des.
            move des-cap  to old-des-cap.
            move des-prov to old-des-prov.
            
@@ -20314,6 +20315,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
 
                  move des-prov to old-des-prov
                  move des-cap  to old-des-cap
+                 move des-prog to old-des
               end-if
 
 
