@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 14:51:08.
+       DATE-WRITTEN.        giovedì 13 aprile 2023 11:10:18.
        REMARKS.
       *{TOTEM}END
 
@@ -31,6 +31,7 @@
            COPY "tsetinvio.sl".
            COPY "lineseq.sl".
            COPY "lineseq-mail.sl".
+           COPY "lockname.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -39,6 +40,7 @@
            COPY "tsetinvio.fd".
            COPY "lineseq.fd".
            COPY "lineseq-mail.fd".
+           COPY "lockname.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -153,6 +155,8 @@
        77 path-lineseq-mail            PIC  X(256).
        77 STATUS-lineseq-mail          PIC  X(2).
            88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
+       77 STATUS-lockname  PIC  X(2).
+           88 Valid-STATUS-lockname VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -163,6 +167,7 @@
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
+       77 TMP-DataSet1-lockname-BUF     PIC X(2106).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -188,10 +193,16 @@
        77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
+       77 DataSet1-lockname-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lockname-LOCK  VALUE "Y".
+       77 DataSet1-lockname-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lockname-KEY-Asc  VALUE "A".
+          88 DataSet1-lockname-KEY-Desc VALUE "D".
 
        77 batnott-bat-k-des-SPLITBUF  PIC X(34).
        77 batnott-bat-k-abil-SPLITBUF  PIC X(35).
        77 batnott-bat-k-bloc-SPLITBUF  PIC X(35).
+       77 lockname-lckn-k-ute-SPLITBUF  PIC X(91).
 
       *{TOTEM}END
 
@@ -388,6 +399,8 @@
       *    PERFORM OPEN-lineseq
       *    lineseq-mail OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq-mail
+      *    lockname OPEN MODE IS FALSE
+      *    PERFORM OPEN-lockname
       *    After Open
            .
 
@@ -446,6 +459,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-lockname.
+      * <TOTEM:EPT. INIT:scheduler, FD:lockname, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O lockname
+           IF STATUS-lockname = "35"
+              OPEN OUTPUT lockname
+                IF Valid-STATUS-lockname
+                   CLOSE lockname
+                   OPEN I-O lockname
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-lockname
+              PERFORM  scr-oper-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:scheduler, FD:lockname, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-batnott
@@ -455,6 +487,8 @@
       *    PERFORM CLOSE-lineseq
       *    lineseq-mail CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq-mail
+      *    lockname CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lockname
       *    After Close
            .
 
@@ -476,6 +510,11 @@
 
        CLOSE-lineseq-mail.
       * <TOTEM:EPT. INIT:scheduler, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-lockname.
+      * <TOTEM:EPT. INIT:scheduler, FD:lockname, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -1021,11 +1060,178 @@
       * <TOTEM:END>
            .
 
+       lockname-lckn-k-ute-MERGE-SPLITBUF.
+           INITIALIZE lockname-lckn-k-ute-SPLITBUF
+           MOVE lckn-chiave(1:60) TO lockname-lckn-k-ute-SPLITBUF(1:60)
+           MOVE lckn-utente(1:30) TO lockname-lckn-k-ute-SPLITBUF(61:30)
+           .
+
+       DataSet1-lockname-INITSTART.
+           IF DataSet1-lockname-KEY-Asc
+              MOVE Low-Value TO lckn-chiave
+           ELSE
+              MOVE High-Value TO lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-INITEND.
+           IF DataSet1-lockname-KEY-Asc
+              MOVE High-Value TO lckn-chiave
+           ELSE
+              MOVE Low-Value TO lckn-chiave
+           END-IF
+           .
+
+      * lockname
+       DataSet1-lockname-START.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY >= lckn-chiave
+           ELSE
+              START lockname KEY <= lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-START-NOTGREATER.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY <= lckn-chiave
+           ELSE
+              START lockname KEY >= lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-START-GREATER.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY > lckn-chiave
+           ELSE
+              START lockname KEY < lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-START-LESS.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY < lckn-chiave
+           ELSE
+              START lockname KEY > lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lockname-LOCK
+              READ lockname WITH LOCK 
+              KEY lckn-chiave
+           ELSE
+              READ lockname WITH NO LOCK 
+              KEY lckn-chiave
+           END-IF
+           PERFORM lockname-lckn-k-ute-MERGE-SPLITBUF
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT 
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lockname-KEY-Asc
+              IF DataSet1-lockname-LOCK
+                 READ lockname NEXT WITH LOCK
+              ELSE
+                 READ lockname NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-lockname-LOCK
+                 READ lockname PREVIOUS WITH LOCK
+              ELSE
+                 READ lockname PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM lockname-lckn-k-ute-MERGE-SPLITBUF
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-lockname-KEY-Asc
+              IF DataSet1-lockname-LOCK
+                 READ lockname PREVIOUS WITH LOCK
+              ELSE
+                 READ lockname PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-lockname-LOCK
+                 READ lockname NEXT WITH LOCK
+              ELSE
+                 READ lockname NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM lockname-lckn-k-ute-MERGE-SPLITBUF
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeWrite>
+      * <TOTEM:END>
+           WRITE lckn-rec OF lockname.
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE lckn-rec OF lockname.
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeDelete>
+      * <TOTEM:END>
+           DELETE lockname.
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE bat-rec OF batnott
            INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE line-riga OF lineseq
            INITIALIZE line-riga-mail OF lineseq-mail
+           INITIALIZE lckn-rec OF lockname
            .
 
 
@@ -1075,6 +1281,14 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq-mail-INITREC.
            INITIALIZE line-riga-mail OF lineseq-mail
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lockname-INITREC.
+           INITIALIZE lckn-rec OF lockname
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1383,6 +1597,10 @@
            end-if.
 
            set errore-bloccante to false.
+
+           |Lo ripulisco per evitarne la proliferazione
+           open output lockname.
+           close       lockname.
 
            move 0 to tot-ok tot-ko tot-proc tot-ok-ko tot-exec tot-bloc
                      idx-log tot-warning.  

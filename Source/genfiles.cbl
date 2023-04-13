@@ -104,6 +104,7 @@
            copy "G2.sl".
            copy "tconvanno.sl".
            copy "lockfile.sl".
+           copy "lockname.sl".
            copy "logfile.sl".
            copy "tpiombo.sl".
            copy "vettel.sl".
@@ -276,7 +277,8 @@ LABLAB     copy "blister.sl".
            copy "statmese.fd".
            copy "G2.fd".
            copy "tconvanno.fd".
-           copy "lockfile.fd".
+           copy "lockfile.fd". 
+           copy "lockname.fd".
            copy "logfile.fd".
            copy "tpiombo.fd".
            copy "vettel.fd".
@@ -448,6 +450,7 @@ LABLAB     copy "blister.fd".
        77  status-G2         pic x(2).
        77  status-tconvanno  pic x(2).
        77  status-lockfile   pic x(2).
+       77  status-lockname   pic x(2).
        77  status-logfile    pic x(2).
        77  status-tpiombo    pic x(2).
        77  status-vettel     pic x(2).
@@ -1739,7 +1742,7 @@ LABLAB     copy "blister.fd".
                             icon 3
                 
            end-evaluate.
- 
+            
       ***---
        LOCKFILE-ERR SECTION.
            use after error procedure on lockfile.
@@ -1752,6 +1755,23 @@ LABLAB     copy "blister.fd".
                 
            when "98"
                 display message "[LOCKFILE] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                
+           end-evaluate.
+
+      ***---
+       LOCKNAME-ERR SECTION.
+           use after error procedure on lockname.
+           evaluate status-lockname
+           when "35" continue
+           when "39"
+                display message "File [LOCKNAME] Mismatch size!"
+                           title titolo
+                            icon 3
+                
+           when "98"
+                display message "[LOCKNAME] Indexed file corrupt!"
                            title titolo
                             icon 3
                 
@@ -3548,6 +3568,12 @@ LABLAB     copy "blister.fd".
               open output lockfile
            end-if.
            close lockfile. 
+
+           open input lockname.
+           if status-lockname = "35"
+              open output lockname
+           end-if.
+           close lockname. 
 
            open input logfile.
            if status-logfile = "35"

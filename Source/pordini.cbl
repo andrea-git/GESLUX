@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 11 aprile 2023 17:54:59.
+       DATE-WRITTEN.        giovedì 13 aprile 2023 11:03:47.
        REMARKS.
       *{TOTEM}END
 
@@ -66,6 +66,7 @@
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
                 .
+           COPY "lockname.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -109,6 +110,7 @@
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
                 .
+           COPY "lockname.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -613,6 +615,8 @@
        77 path-lineseq-mail            PIC  X(256).
        77 STATUS-lineseq-mail          PIC  X(2).
            88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
+       77 STATUS-lockname  PIC  X(2).
+           88 Valid-STATUS-lockname VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -671,6 +675,7 @@
        77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
+       77 TMP-DataSet1-lockname-BUF     PIC X(2106).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -856,6 +861,11 @@
        77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq1-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq1-KEY-Desc VALUE "D".
+       77 DataSet1-lockname-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lockname-LOCK  VALUE "Y".
+       77 DataSet1-lockname-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lockname-KEY-Asc  VALUE "A".
+          88 DataSet1-lockname-KEY-Desc VALUE "D".
 
        77 ordfor-k-ord-SPLITBUF  PIC X(55).
        77 ordfor2-k-ord-SPLITBUF  PIC X(55).
@@ -886,6 +896,7 @@
        77 distinteb-k-articolo-SPLITBUF  PIC X(12).
        77 distinteb-k-progmag-SPLITBUF  PIC X(21).
        77 catart-cat-art-princ-SPLITBUF  PIC X(13).
+       77 lockname-lckn-k-ute-SPLITBUF  PIC X(91).
 
        01  r-inizio              pic x(25).
 
@@ -2729,7 +2740,19 @@
            when "93"  
                 move mb-no to scelta
                 if LK-BL-PROG-ID not = "desktop"
-                   display message "File ORDFOR2 già in uso." 
+                   move "ordfor2"      to lckn-file
+                   call   "nomepgm" using lckn-pgm
+                   cancel "nomepgm"
+                   open input lockname
+                   read lockname no lock 
+                        invalid move "UTENTE" to lckn-utente
+                   end-read
+                   close lockname
+                   display message "File ORDFOR2 già in uso da: " 
+           lckn-utente
+                         x"0d0a"lckn-data(7:2) "/" lckn-data(5:2) "/" 
+           lckn-data(1:4) " - " lckn-ora(1:2) ":" lckn-ora(3:2) ":" 
+           lckn-ora(5:2)
                          x"0d0a""Ritentare la connessione?"
                           title titolo
                            icon 2
@@ -3137,6 +3160,8 @@
       *    PERFORM OPEN-lineseq
       *    lineseq1 OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq1
+      *    lockname OPEN MODE IS FALSE
+      *    PERFORM OPEN-lockname
       *    After Open
            .
 
@@ -3614,6 +3639,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-lockname.
+      * <TOTEM:EPT. INIT:pordini, FD:lockname, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O lockname
+           IF STATUS-lockname = "35"
+              OPEN OUTPUT lockname
+                IF Valid-STATUS-lockname
+                   CLOSE lockname
+                   OPEN I-O lockname
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-lockname
+              PERFORM  scr-data-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:pordini, FD:lockname, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
       *    ordfor CLOSE MODE IS FALSE
@@ -3664,6 +3708,8 @@
       *    PERFORM CLOSE-lineseq
       *    lineseq1 CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq1
+      *    lockname CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lockname
       *    After Close
            .
 
@@ -3868,6 +3914,11 @@
 
        CLOSE-lineseq1.
       * <TOTEM:EPT. INIT:pordini, FD:lineseq1, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-lockname.
+      * <TOTEM:EPT. INIT:pordini, FD:lockname, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -9325,6 +9376,172 @@
       * <TOTEM:END>
            .
 
+       lockname-lckn-k-ute-MERGE-SPLITBUF.
+           INITIALIZE lockname-lckn-k-ute-SPLITBUF
+           MOVE lckn-chiave(1:60) TO lockname-lckn-k-ute-SPLITBUF(1:60)
+           MOVE lckn-utente(1:30) TO lockname-lckn-k-ute-SPLITBUF(61:30)
+           .
+
+       DataSet1-lockname-INITSTART.
+           IF DataSet1-lockname-KEY-Asc
+              MOVE Low-Value TO lckn-chiave
+           ELSE
+              MOVE High-Value TO lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-INITEND.
+           IF DataSet1-lockname-KEY-Asc
+              MOVE High-Value TO lckn-chiave
+           ELSE
+              MOVE Low-Value TO lckn-chiave
+           END-IF
+           .
+
+      * lockname
+       DataSet1-lockname-START.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY >= lckn-chiave
+           ELSE
+              START lockname KEY <= lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-START-NOTGREATER.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY <= lckn-chiave
+           ELSE
+              START lockname KEY >= lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-START-GREATER.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY > lckn-chiave
+           ELSE
+              START lockname KEY < lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-START-LESS.
+           IF DataSet1-lockname-KEY-Asc
+              START lockname KEY < lckn-chiave
+           ELSE
+              START lockname KEY > lckn-chiave
+           END-IF
+           .
+
+       DataSet1-lockname-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lockname-LOCK
+              READ lockname WITH LOCK 
+              KEY lckn-chiave
+           ELSE
+              READ lockname WITH NO LOCK 
+              KEY lckn-chiave
+           END-IF
+           PERFORM lockname-lckn-k-ute-MERGE-SPLITBUF
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT 
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lockname-KEY-Asc
+              IF DataSet1-lockname-LOCK
+                 READ lockname NEXT WITH LOCK
+              ELSE
+                 READ lockname NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-lockname-LOCK
+                 READ lockname PREVIOUS WITH LOCK
+              ELSE
+                 READ lockname PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM lockname-lckn-k-ute-MERGE-SPLITBUF
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-lockname-KEY-Asc
+              IF DataSet1-lockname-LOCK
+                 READ lockname PREVIOUS WITH LOCK
+              ELSE
+                 READ lockname PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-lockname-LOCK
+                 READ lockname NEXT WITH LOCK
+              ELSE
+                 READ lockname NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM lockname-lckn-k-ute-MERGE-SPLITBUF
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeWrite>
+      * <TOTEM:END>
+           WRITE lckn-rec OF lockname.
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE lckn-rec OF lockname.
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lockname-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, BeforeDelete>
+      * <TOTEM:END>
+           DELETE lockname.
+           MOVE STATUS-lockname TO TOTEM-ERR-STAT
+           MOVE "lockname" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lockname, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE ord-rec OF ordfor
            INITIALIZE ord2-rec OF ordfor2
@@ -9362,6 +9579,7 @@
            INITIALIZE line-riga-mail OF lineseq-mail
            INITIALIZE line-riga OF lineseq
            INITIALIZE line-riga OF lineseq1
+           INITIALIZE lckn-rec OF lockname
            .
 
 
@@ -9787,6 +10005,14 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq1-INITREC.
            INITIALIZE line-riga OF lineseq1
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lockname-INITREC.
+           INITIALIZE lckn-rec OF lockname
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -14370,6 +14596,17 @@
               goback
            else            
               if LK-BL-PROG-ID not = "desktop"
+                                  
+                 move "ordfor2"      to lckn-file
+                 call   "nomepgm" using lckn-pgm
+                 cancel "nomepgm"
+                 open i-o lockname
+                 move user-codi to lckn-utente 
+                 accept lckn-data from century-date
+                 accept lckn-ora from time
+                 write lckn-rec invalid rewrite lckn-rec end-write
+                 close lockname
+
                  move "INIZIO SOMMA VENDUTI" to como-riga
                  perform SCRIVI-RIGA-LOG
                  open input ordfor qta-pordini tparamge
