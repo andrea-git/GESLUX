@@ -93,6 +93,7 @@
            copy "mail.def".
            copy "costo-medio.def".
            copy "imposte.def".
+           copy "link-glockname.def".
 
       * FILE STATUS
        77  path-tmplbx-progmag        pic x(256).
@@ -923,6 +924,12 @@
          
                     close      tmp-arrivi-prese
                     open i-o   tmp-arrivi-prese
+                                                  
+                    move "BATCH"   to link-glockname-utente
+                    move "ordfor2" to link-glockname-file
+                    move "L"       to link-glockname-op
+                    call   "glockname" using glockname-linkage
+                    cancel "glockname"
 
                     open input progmag articoli timballi ordfor ordfor2
                                timbalqta tmagaz tmarche timposte 
@@ -2203,7 +2210,13 @@
            end-if.
 
       ***---
-       EXIT-PGM.
+       EXIT-PGM. 
+           move "BATCH"   to link-glockname-utente.
+           move "ordfor2" to link-glockname-file.
+           move "C"       to link-glockname-op.
+           call   "glockname" using glockname-linkage.
+           cancel "glockname".
+
            goback.
 
       ***---

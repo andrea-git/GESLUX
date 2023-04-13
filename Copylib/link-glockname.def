@@ -1,0 +1,10 @@
+      *
+       01 glockname-linkage.
+           05 link-glockname-file          PIC  x(30).
+           05 link-glockname-utente        PIC  x(30).
+      *C = Cancellazione
+      *G = Gestione
+      *L = Lock
+      *
+           05 link-glockname-op            PIC  x.
+           05 FILLER           PIC  x(200).

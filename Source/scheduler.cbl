@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 13 aprile 2023 11:10:18.
+       DATE-WRITTEN.        giovedì 13 aprile 2023 17:05:08.
        REMARKS.
       *{TOTEM}END
 
@@ -1598,10 +1598,6 @@
 
            set errore-bloccante to false.
 
-           |Lo ripulisco per evitarne la proliferazione
-           open output lockname.
-           close       lockname.
-
            move 0 to tot-ok tot-ko tot-proc tot-ok-ko tot-exec tot-bloc
                      idx-log tot-warning.  
            initialize tab-log-invio.
@@ -1713,7 +1709,11 @@
       *****              exit perform
       *****           end-if
       *****        end-if
-           end-perform.             
+           end-perform.   
+
+           |Lo ripulisco per evitarne la proliferazione
+           open output lockname.
+           close       lockname.          
 
            write line-riga of lineseq from spaces.
            perform FORMAT-DATA-OGGI-ORA.

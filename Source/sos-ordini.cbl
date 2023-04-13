@@ -53,6 +53,7 @@
       * COPY
        copy "link-geslock.def".
        copy "trova-parametro.def".     
+
        01  r-inizio              pic x(25).
 
        77  status-mrordini                pic xx.
@@ -539,6 +540,7 @@
               open input articoli mrordini rpromo tpromo blister
                          param clienti tgrupgdo |ttipoavv user 
               open i-o ordfor2 |useravv
+
            end-if.
 
       ***---

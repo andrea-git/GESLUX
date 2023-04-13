@@ -87,6 +87,7 @@
            copy "imposte.def".
            copy "prz-finito-forn.def".
            copy "trova-parametro.def".
+           copy "link-glockname.def".
 
        78  titolo              value "Batch Ricalcolo giacenze ordfor2".
        78  user-codi           value "BATCH".
@@ -671,6 +672,13 @@
       ***---
        OPEN-ORDFOR2-LOCK.
            open exclusive i-o ordfor2.
+
+           move user-codi to link-glockname-utente.
+           move "ordfor2" to link-glockname-file.
+           move "L"       to link-glockname-op.
+           call   "glockname" using glockname-linkage.
+           cancel "glockname".
+
            if RecLocked
               set errori to true
               set nessun-errore to false
@@ -877,6 +885,12 @@
            else
               perform INVIO-MAIL
            end-if.
+
+           move user-codi to link-glockname-utente.
+           move "ordfor2" to link-glockname-file.
+           move "C"       to link-glockname-op.
+           call   "glockname" using glockname-linkage.
+           cancel "glockname".
 
            goback.
 
