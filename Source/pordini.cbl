@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 13 aprile 2023 17:04:01.
+       DATE-WRITTEN.        mercoledì 19 aprile 2023 16:43:54.
        REMARKS.
       *{TOTEM}END
 
@@ -657,7 +657,7 @@
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
-       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
+       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(121).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
@@ -10038,14 +10038,29 @@
                                   move sof-qta          to toa-qta-soll
                                   move sof-dati-salvati to 
            toa-dati-salvati
-                             end-read
+                             end-read                                   
+
+                             |Data arrivo: 
+                             |data solleciti o data consegna, solleciti vince
+                       
+                             |Data confermata:
+                             |0 se la data di arrivo è la data di consegna
+                             |altrimenti la data di creazione/modifica del sollecito
                              if toa-data-arrivo = 0
                                 move tof-data-consegna to 
            toa-data-arrivo
+                                move 0                 to 
+           toa-data-confermata
+                             else
+                                if sof-data-conf not = 0
+                                   move sof-data-conf to 
+           toa-data-confermata
+                                else
+                                   move sof-data-creazione to 
+           toa-data-confermata
+                                end-if
                              end-if
-                             if toa-data-arrivo not = sof-data-arr
-                                move 0 to toa-data-ordine 
-                             end-if
+
                              write toa-rec
                           end-if
                        end-perform

@@ -176,6 +176,7 @@
               accept  path-log from environment "SCHEDULER_PATH_LOG"
               set RichiamoSchedulato to true 
               move  0 to batch-status
+              stop run
            else
               accept  path-log from environment "PATH_ST"
               set RichiamoSchedulato to false

@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E74B155512-624-2128421926
+PROGRAM_UNIQUE_CODE=TOTEM-7E7413144412-37-3260117315
 
 {{@DESCRIPTION:
 
@@ -10663,11 +10662,22 @@ BEGIN-TEXT
                                move sof-qta          to toa-qta-soll     
                                move sof-dati-salvati to toa-dati-salvati
                           end-read                                  
+
+                          |Data arrivo: 
+                          |data solleciti o data consegna, solleciti vince
+                       
+                          |Data confermata:
+                          |0 se la data di arrivo è la data di consegna
+                          |altrimenti la data di creazione/modifica del sollecito
                           if toa-data-arrivo = 0
                              move tof-data-consegna to toa-data-arrivo
-                          end-if
-                          if toa-data-arrivo not = sof-data-arr
-                             move 0 to toa-data-ordine 
+                             move 0                 to toa-data-confermata
+                          else
+                             if sof-data-conf not = 0
+                                move sof-data-conf to toa-data-confermata
+                             else
+                                move sof-data-creazione to toa-data-confermata
+                             end-if
                           end-if
 
                           write toa-rec

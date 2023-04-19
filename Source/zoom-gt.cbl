@@ -10107,7 +10107,7 @@
       *    Definizione del campo 10                   
            add  1 to Idx.
            move 8                           to xzoom-field-length(idx).
-           move 104                         to xzoom-field-offset(idx).
+           move 112                         to xzoom-field-offset(idx).
            move "Confermata"                to xzoom-field-name(idx).
            set xzoom-field-unsigned(Idx)    to true.
            set xzoom-ft-display(Idx)        to true.
@@ -10115,7 +10115,7 @@
            move 0                           to xzoom-field-dec(Idx).
            move "AAAAMMGG-GG/MM/AAAA"       to xzoom-field-fmt(Idx).
            move 9                           to xzoom-field-column(Idx).
-           set xzoom-al-center(Idx)         to true.    
+           set xzoom-al-center(Idx)         to true.       
 
            move  idx                        to xzoom-fields.
 

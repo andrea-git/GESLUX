@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 11 aprile 2023 17:56:17.
+       DATE-WRITTEN.        mercoledì 19 aprile 2023 16:44:54.
        REMARKS.
       *{TOTEM}END
 
@@ -602,7 +602,7 @@
        77 TMP-DataSet1-tmp-sol1-BUF     PIC X(480).
        77 TMP-DataSet1-tmp-sol-BUF     PIC X(480).
        77 TMP-DataSet1-tmp-sol2-BUF     PIC X(480).
-       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
+       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(121).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
@@ -8625,11 +8625,25 @@
             
                                move sof-dati-salvati to toa-dati-salvati
                           end-read                                  
+
+                          |Data arrivo: 
+                          |data solleciti o data consegna, solleciti vince
+                       
+                          |Data confermata:
+                          |0 se la data di arrivo è la data di consegna
+                          |altrimenti la data di creazione/modifica del sollecito
                           if toa-data-arrivo = 0
                              move tof-data-consegna to toa-data-arrivo
-                          end-if
-                          if toa-data-arrivo not = sof-data-arr
-                             move 0 to toa-data-ordine 
+                             move 0                 to 
+           toa-data-confermata
+                          else
+                             if sof-data-conf not = 0
+                                move sof-data-conf to 
+           toa-data-confermata
+                             else
+                                move sof-data-creazione to 
+           toa-data-confermata
+                             end-if
                           end-if
 
                           write toa-rec

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vgiacenze.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 11 aprile 2023 17:59:09.
+       DATE-WRITTEN.        mercoledì 19 aprile 2023 15:17:59.
        REMARKS.
       *{TOTEM}END
 
@@ -338,7 +338,7 @@
        77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
        77 TMP-DataSet1-promoeva-BUF     PIC X(817).
        77 TMP-DataSet1-multigest-BUF     PIC X(3).
-       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(113).
+       77 TMP-DataSet1-tmp-ordf-art-BUF     PIC X(121).
        77 TMP-DataSet1-rordforn-BUF     PIC X(544).
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
@@ -6145,14 +6145,24 @@
                             move sof-data-arr     to toa-data-arrivo
                             move sof-qta          to toa-qta-soll
                             move sof-dati-salvati to toa-dati-salvati
-                            move sof-data-conf    to toa-data-ordine
                        end-read                                   
 
+                       |Data arrivo: 
+                       |data solleciti o data consegna, solleciti vince
+                       
+                       |Data confermata:
+                       |0 se la data di arrivo è la data di consegna
+                       |altrimenti la data di creazione/modifica del sollecito
                        if toa-data-arrivo = 0
                           move tof-data-consegna to toa-data-arrivo
-                       end-if
-                       if toa-data-arrivo not = sof-data-arr
-                          move 0 to toa-data-ordine 
+                          move 0                 to toa-data-confermata
+                       else
+                          if sof-data-conf not = 0
+                             move sof-data-conf to toa-data-confermata
+                          else
+                             move sof-data-creazione to 
+           toa-data-confermata
+                          end-if
                        end-if
 
                        write toa-rec

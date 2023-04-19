@@ -13,7 +13,7 @@
            copy "acucobol.def".                               
 
        78  dir-m                 value
-           "C:\Users\andre\Music\Heavy\".         
+           "C:\Users\andre\Music\Tanz!\GAIN\".
 
        77  nFiles                pic 9999 value 0.
        77  n                     pic 9999 value 0.
@@ -54,8 +54,8 @@
                  exit perform cycle
               end-if
               add 1 to nFiles
-              move "Heavy - "  to nome-file2
-              move nome-file to nome-file2(9:)
+              move "Gain - "  to nome-file2
+              move nome-file to nome-file2(8:)
               initialize cmd                                          
               inspect nome-file  replacing trailing spaces by low-value
               inspect nome-file2 replacing trailing spaces by low-value
