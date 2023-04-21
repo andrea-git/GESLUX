@@ -176,7 +176,6 @@
               accept  path-log from environment "SCHEDULER_PATH_LOG"
               set RichiamoSchedulato to true 
               move  0 to batch-status
-              stop run
            else
               accept  path-log from environment "PATH_ST"
               set RichiamoSchedulato to false
@@ -338,12 +337,12 @@
            accept como-data from century-date.
            inspect path-log replacing trailing spaces by low-value.
            initialize path-logfile.
-           string path-log         delimited low-value
-                  "LOG_AGG-STATO-MASTER_"   delimited size
-                  como-data        delimited size
-                  "_"              delimited size
-                  como-ora         delimited size
-                  ".log"           delimited size
+           string path-log            delimited low-value
+                  "AGG-STATO-MASTER_" delimited size
+                  como-data           delimited size
+                  "_"                 delimited size
+                  como-ora            delimited size
+                  ".log"              delimited size
                   into path-logfile
            end-string.
            open output logfile.
