@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 8 luglio 2020 09:43:58.
+       DATE-WRITTEN.        martedì 2 maggio 2023 17:14:54.
        REMARKS.
       *{TOTEM}END
 
@@ -224,8 +224,8 @@
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-tmp-k-ord-BUF     PIC X(20).
@@ -263,7 +263,7 @@
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
        77 clienti-cli-K4-SPLITBUF  PIC X(8).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 mtordini-mto-k-ord-cli-SPLITBUF  PIC X(55).
        77 mtordini-mto-k-data-SPLITBUF  PIC X(21).
@@ -977,7 +977,6 @@
            EXCEPTION-VALUE 1000,
            FLAT,
            ID IS 200,
-           TITLE "g",
            AFTER PROCEDURE pb-ok-AfterProcedure, 
            BEFORE PROCEDURE pb-ok-BeforeProcedure, 
            .
@@ -1638,9 +1637,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.

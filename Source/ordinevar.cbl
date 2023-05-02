@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 11:56:02.
+       DATE-WRITTEN.        martedì 2 maggio 2023 17:56:08.
        REMARKS.
       *{TOTEM}END
 
@@ -194,7 +194,7 @@
            88 CallDettaglio VALUE IS 1    WHEN SET TO FALSE  0. 
        77 numero-x         PIC  x(8).
        77 path-zoom-tor-master-T       PIC  x(256).
-       78 78-NumColMan VALUE IS 13. 
+       78 78-NumColMan VALUE IS 14. 
        01 rec-grid.
            05 col-num          PIC  z(5).
            05 col-art          PIC  zzzzz9.
@@ -207,6 +207,7 @@
            05 col-cou          PIC  z.zz9,99.
            05 col-add          PIC  z.zz9,99.
            05 col-imp          PIC  zzz.zzz.zz9,99.
+           05 col-peso         PIC  zz.zz9,999.
            05 col-iva          PIC  x(3).
            05 col-oma          PIC  x.
        01 old-rec-grid.
@@ -221,6 +222,7 @@
            05 old-col-cou      PIC  z.zz9,99.
            05 old-col-add      PIC  z.zz9,99.
            05 old-col-imp      PIC  zzz.zzz.zz9,99.
+           05 old-col-peso     PIC  zz.zz9,999.
            05 old-col-iva      PIC  x(3).
            05 old-col-oma      PIC  x.
        77 NumBitmapDocColl PIC  9
@@ -2637,12 +2639,12 @@
            CENTERED-HEADINGS,
            COLOR IS 516,
            DATA-COLUMNS (1, 6, 12, 62, 70, 78, 92, 106, 114, 122, 130, 
-           144, 147),
+           144, 154, 157),
            ALIGNMENT ("R", "R", "U", "R", "R", "R", "R", "R", "R", "R", 
-           "R", "C", "C"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           "R", "R", "C", "C"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("9(5)", "9(6)", "X", "9(8)", "X", "9(12)", "9(5)"
-           , "9(7)", "9(7)", "9(7)", "9(12)", "x(3)", "X"),
+           , "9(7)", "9(7)", "9(7)", "9(12)", "X", "x(3)", "X"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 0,
@@ -14606,9 +14608,12 @@
                 CELL-DATA = "Imp. merce",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 12, Y = 1,
-                CELL-DATA = "Cod. IVA",
+                CELL-DATA = "Peso",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 13, Y = 1,
+                CELL-DATA = "IVA",
+      * CELLS' SETTING
+              MODIFY Form1-Gd-1, X = 14, Y = 1,
                 CELL-DATA = "Omaggio",
            .
 
@@ -15121,7 +15126,7 @@
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
               MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 8, 16, 51, 58, 65, 
-           76, 87, 98, 109, 120, 131, 140)
+           76, 86, 96, 106, 117, 127, 135, 140)
            .
 
        Form1-PROC.
@@ -18690,6 +18695,7 @@ BLISTR           end-string
               move mro-omaggio       to hid-omaggio
               move prg-peso-utf      to hid-utf
               move prg-peso-non-utf  to hid-non-utf                 
+              move mro-prg-peso      to col-peso
                                               
               move col-cons to como-cons
               move col-cou  to como-cou
@@ -18711,7 +18717,8 @@ BLISTR           end-string
               modify form1-gd-1(store-riga, 9),  cell-data = col-cou
               modify form1-gd-1(store-riga, 10), cell-data = col-add
               modify form1-gd-1(store-riga, 11), cell-data = col-imp
-              modify form1-gd-1(store-riga, 12), cell-data = col-iva
+              modify form1-gd-1(store-riga, 12), cell-data = col-peso
+              modify form1-gd-1(store-riga, 13), cell-data = col-iva
 
               perform COLORE-STATO
 
@@ -18973,7 +18980,8 @@ BLISTR     move chk-blister-buf   to hid-blister.
            modify form1-gd-1(riga, 9),  cell-data = col-cou.
            modify form1-gd-1(riga, 10), cell-data = col-add.
            modify form1-gd-1(riga, 11), cell-data = col-imp.
-           modify form1-gd-1(riga, 12), cell-data = col-iva.
+           modify form1-gd-1(riga, 12), cell-data = col-peso.
+           modify form1-gd-1(riga, 13), cell-data = col-iva.
 
 LABLAB     |Ho cambiato il prezzo confermato in precedenza dall'ufficio comm.le
 LABLAB     if hid-prz-commle not = 0
@@ -19497,7 +19505,8 @@ LUBEXX        end-if
            inquire form1-gd-1(riga, 9),  cell-data in col-cou. 
            inquire form1-gd-1(riga, 10), cell-data in col-add.
            inquire form1-gd-1(riga, 11), cell-data in col-imp.
-           inquire form1-gd-1(riga, 12), cell-data in col-iva.
+           inquire form1-gd-1(riga, 12), cell-data in col-peso.
+           inquire form1-gd-1(riga, 13), cell-data in col-iva.
 
            inquire form1-gd-1(riga, 1), hidden-data gruppo-hidden.
 
@@ -20079,15 +20088,15 @@ PATCH            modify form1-gd-1(riga, 1), cell-data mro-riga
                  inquire form1-gd-1(riga, 10), cell-data in col-add
                  move col-add to mro-add-piombo
               
-                 inquire form1-gd-1(riga, 11), cell-data in col-imp
+                 inquire form1-gd-1(riga, 12), cell-data in col-imp
                  move col-imp to mro-imponib-merce
 
 LUBEXX           if ef-iva-buf = spaces
-                    inquire form1-gd-1(riga, 12), cell-data in col-iva
+                    inquire form1-gd-1(riga, 13), cell-data in col-iva
                     move col-iva to mro-cod-iva
 LUBEXX           else
 LUBEXX              if mro-prz-unitario = 0
-LUBEXX                 inquire form1-gd-1(riga, 12) cell-data in col-iva
+LUBEXX                 inquire form1-gd-1(riga, 13) cell-data in col-iva
 LUBEXX                 move col-iva to mro-cod-iva
 LUBEXX              else
 LUBEXX                 move ef-iva-buf to mro-cod-iva
