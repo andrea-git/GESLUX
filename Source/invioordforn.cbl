@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 12:38:59.
+       DATE-WRITTEN.        martedì 2 maggio 2023 16:54:07.
        REMARKS.
       *{TOTEM}END
 
@@ -5486,56 +5486,42 @@
            perform RIEMPI-CHIAVE.
            perform READ-RECORD-LOCK.
            if errori
-              read tordforn no lock
-                 invalid
-                    continue
-              end-read
+              read tordforn no lock invalid continue end-read
               move zero   to v-ok           
            end-if           
          
            move tof-cod-forn to cli-codice
                                 desf-codice.
            set  cli-tipo-F   to true.
-           read clienti 
-              invalid 
-                 continue 
-           end-read.
+           read clienti invalid continue end-read.
 
            move tof-destino  to desf-prog.
-           read destinif
-              invalid 
-                 continue 
-           end-read.
+           read destinif invalid continue end-read.
 
            accept como-data from century-date.
            perform DATE-TO-SCREEN.
            move como-data to data-stampa.
 
            accept como-ora from time.
-           string como-ora(1:2) delimited by size
-                  ":"           delimited by size
-                  como-ora(3:2) delimited by size
-                  into ora-stampa
+           string como-ora(1:2) delimited size
+                  ":"           delimited size
+                  como-ora(3:2) delimited size
+             into ora-stampa
            end-string.
                                        
            initialize tca-rec.
            move tof-causale to tca-codice.
            read tcaumag no lock 
-              invalid 
-                 continue 
+                invalid continue 
            end-read.
 
            move tof-chiave   to nof-chiave-ordine
            move low-value    to nof-num-nota
-           start nordforn key not < nof-chiave
-              invalid
-                 continue
-              not invalid
+           start nordforn key >= nof-chiave
+                 invalid continue
+             not invalid
                  perform until 1 = 2|varying cont from 1 by 1 
-                    read nordforn next
-                       at end
-                          exit perform
-                    end-read
+                    read nordforn next at end exit perform end-read
                     if tof-chiave not = nof-chiave-ordine
                        exit perform
                     end-if
@@ -5549,15 +5535,11 @@
            move low-value    to rof-riga.
            move tof-anno     to rof-anno.
            move tof-numero   to rof-numero.
-           start rordforn key not < rof-chiave 
-              invalid 
-                 continue 
-              not invalid
+           start rordforn key >= rof-chiave 
+                 invalid continue 
+             not invalid
                  perform until 1 = 2
-                    read rordforn next 
-                       at end 
-                          exit perform 
-                    end-read
+                    read rordforn next at end exit perform end-read
                     if tof-anno   not = rof-anno or 
                        tof-numero not = rof-numero
                        exit perform
@@ -5570,8 +5552,7 @@
               perform CARICA-ART-DA-CONF
            end-if
 
-           move zero   to e-mail
-                          e-fax
+           move 0 to e-mail e-fax.
            if tof-email not = space
               set t-mail        to true
               move 1            to e-mail
@@ -6526,25 +6507,18 @@
                    move mail          to tof-email
               end-evaluate
 
-              rewrite tof-rec 
-                 invalid 
-                    continue 
-              end-rewrite
+              rewrite tof-rec invalid continue end-rewrite
            end-if.
 
       ***---
        SCORRI-RIGHE.
            move tof-chiave   to rof-chiave-testa
            move low-value    to rof-riga
-           start rordforn key not < rof-chiave
-              invalid
-                 continue
-              not invalid
+           start rordforn key >= rof-chiave
+                 invalid continue
+             not invalid
                  perform until 1 = 2
-                    read rordforn next
-                       at end
-                          exit perform
-                    end-read
+                    read rordforn next at end exit perform end-read
                     if tof-chiave not = rof-chiave-testa
                        exit perform
                     end-if
