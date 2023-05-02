@@ -2850,13 +2850,13 @@
                                           6
                                    giving return-code
                 |Quantità                   
-                move 18,3              to winprint-col-start
+                move 18,6              to winprint-col-start
                 move wprtalign-right   to winprint-col-alignment
                 call "WIN$PRINTER"  using winprint-set-page-column,
                                           winprint-column
                                    giving return-code
                 |TAPPO
-                move 19,6              to winprint-col-start
+                move 19,9              to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column,
                                           winprint-column
                                    giving return-code

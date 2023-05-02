@@ -278,9 +278,9 @@ LUBEXX 78  MaxRowsPerPage                value    33.
       * RIGA DI STAMPA PER IL CORPO
        01  riga-corpo.
            05 r-cod-articolo  pic x(6).
-           05 filler          pic X(2)  value spaces.
+           05 filler          pic X(1)  value spaces.
            05 r-num-colli     pic Z(5).
-           05 filler          pic X(2)  value spaces.
+           05 filler          pic X(1)  value spaces.
            05 r-des-imballo   pic X(25).
            05 filler          pic X     value spaces.
            05 r-bloccato      pic x     value spaces.
@@ -288,11 +288,12 @@ LUBEXX 78  MaxRowsPerPage                value    33.
            05 r-ast           pic x.
            05 filler          pic X(1)  value spaces.
            05 r-art-codfrn    pic x(15).
-           05 filler          pic X(2)  value spaces.
+           05 filler          pic X(1)  value spaces.
       *     05 r-peso-utf      pic Z(3),Z(3).
       *     05 filler          pic X(2)  value spaces.
            05 r-udm           pic X(2).
-           05 filler          pic X(2)  value spaces.
+           05 filler          pic X(1)  value spaces.
+           05 r-peso          pic zz.zz9,999.
 
        01  riga-qta.
            05 r-qta           pic Z(5).                                 |6
@@ -1649,13 +1650,16 @@ BLISTR     else
 
       *     move ror-peso-utf        to r-peso-utf.
            move art-unita-di-misura to r-udm.
-
+           if art-peso-utf > 0 move art-peso-utf     to r-peso
+           else                move art-peso-non-utf to r-peso
+           end-if.                        
            move riga-corpo          to spl-riga-stampa. 
 LUBEXX     move CourierNew8         to spl-hfont.
            call "spooler"        using spooler-link.
 
 LUBEXX     move 52            to spl-tipo-colonna.
 LUBEXX     move CourierNew10B to spl-hfont.
+
 LUBEXX     move ror-qta       to r-qta.
 LUBEXX     move riga-qta      to spl-riga-stampa.
            subtract 0,05 from spl-riga.
