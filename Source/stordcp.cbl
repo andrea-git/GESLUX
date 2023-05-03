@@ -1650,9 +1650,7 @@ BLISTR     else
 
       *     move ror-peso-utf        to r-peso-utf.
            move art-unita-di-misura to r-udm.
-           if art-peso-utf > 0 move art-peso-utf     to r-peso
-           else                move art-peso-non-utf to r-peso
-           end-if.                        
+           move ror-prg-peso to r-peso.    
            move riga-corpo          to spl-riga-stampa. 
 LUBEXX     move CourierNew8         to spl-hfont.
            call "spooler"        using spooler-link.
