@@ -3698,9 +3698,14 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
                                    como-add    + 
                                    como-cou    + 
                                    como-cons
-              if tcl-fido-nuovo-si    
-                 inquire form1-gd-1(store-riga, 11), 
-                         cell-data in ror-cod-iva
+              if tcl-fido-nuovo-si               
+                 if pgm-name = "ordine"
+                    inquire form1-gd-1(store-riga, 11), 
+                            cell-data in ror-cod-iva
+                 else
+                    inquire form1-gd-1(store-riga, 13), 
+                            cell-data in ror-cod-iva
+                 end-if
                  move "IV"        to tbliv-codice1
                  move ror-cod-iva to tbliv-codice2
                  read tivaese 
@@ -3749,8 +3754,13 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            perform varying riga from 2 by 1
                      until riga > tot-righe
               set trovato to false
-              inquire form1-gd-1(riga, 12),
-                      cell-data in col-iva    
+              if pgm-name = "ordine"
+                 inquire form1-gd-1(riga, 11), 
+                         cell-data in ror-cod-iva
+              else
+                 inquire form1-gd-1(riga, 13),
+                         cell-data in col-iva
+              end-if
               perform varying idx from 1 by 1
                         until idx > 3
                  if col-iva = cod-iva(idx)

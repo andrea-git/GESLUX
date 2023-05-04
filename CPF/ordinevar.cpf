@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=10.130.88.224
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E75215018-991-243164466
+PROGRAM_UNIQUE_CODE=TOTEM-7E7549851-207-81069598
 
 {{@DESCRIPTION:
 
@@ -22474,6 +22475,7 @@ BEGIN-TEXT
            inquire ef-art, value in art-codice.
 
            if NewRow
+              move prg-peso to col-peso
               add 1 to tot-righe    giving riga
               move art-codice to old-art-codice
               modify form1-gd-1, insert-rows 1
@@ -23708,7 +23710,7 @@ PATCH            modify form1-gd-1(riga, 1), cell-data mro-riga
                  inquire form1-gd-1(riga, 10), cell-data in col-add
                  move col-add to mro-add-piombo
               
-                 inquire form1-gd-1(riga, 12), cell-data in col-imp
+                 inquire form1-gd-1(riga, 11), cell-data in col-imp
                  move col-imp to mro-imponib-merce
 
 LUBEXX           if ef-iva-buf = spaces

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordinevar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 2 maggio 2023 17:56:08.
+       DATE-WRITTEN.        giovedì 4 maggio 2023 11:43:11.
        REMARKS.
       *{TOTEM}END
 
@@ -18855,6 +18855,7 @@ OMAGGI                SavePrezzo * ( mro-qta - mro-qta-omaggi )
            inquire ef-art, value in art-codice.
 
            if NewRow
+              move prg-peso to col-peso
               add 1 to tot-righe    giving riga
               move art-codice to old-art-codice
               modify form1-gd-1, insert-rows 1
@@ -20088,7 +20089,7 @@ PATCH            modify form1-gd-1(riga, 1), cell-data mro-riga
                  inquire form1-gd-1(riga, 10), cell-data in col-add
                  move col-add to mro-add-piombo
               
-                 inquire form1-gd-1(riga, 12), cell-data in col-imp
+                 inquire form1-gd-1(riga, 11), cell-data in col-imp
                  move col-imp to mro-imponib-merce
 
 LUBEXX           if ef-iva-buf = spaces
