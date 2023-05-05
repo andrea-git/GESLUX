@@ -291,9 +291,9 @@ LUBEXX 78  MaxRowsPerPage                value    33.
            05 filler          pic X(1)  value spaces.
       *     05 r-peso-utf      pic Z(3),Z(3).
       *     05 filler          pic X(2)  value spaces.
-           05 r-udm           pic X(2).
-           05 filler          pic X(1)  value spaces.
            05 r-peso          pic zz.zz9,999.
+           05 filler          pic X(1)  value spaces.
+           05 r-udm           pic X(2).
 
        01  riga-qta.
            05 r-qta           pic Z(5).                                 |6
