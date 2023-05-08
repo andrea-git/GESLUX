@@ -1646,6 +1646,11 @@ LUBEXX             end-if
                    end-if
                 end-if
 
+                if tutto-ok and pgm-name = "ordine"
+                   move cli-contrassegno to chk-contrassegno-buf
+                   display chk-contrassegno
+                end-if
+
            |78-ID-ef-des è l'ID del control ef-des
            when 78-ID-ef-des
                 inquire ef-des, value in ef-des-buf

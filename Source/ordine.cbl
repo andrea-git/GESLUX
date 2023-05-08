@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ordine.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 marzo 2022 11:19:00.
+       DATE-WRITTEN.        lunedì 8 maggio 2023 16:00:17.
        REMARKS.
       *{TOTEM}END
 
@@ -807,6 +807,7 @@
        77 tpromo-tpr-k-data-ins-SPLITBUF  PIC X(29).
        77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini-lst-k-data-SPLITBUF  PIC X(29).
        77 tordforn-tof-k-causale-SPLITBUF  PIC X(17).
        77 tordforn-tof-k-stato-SPLITBUF  PIC X(14).
        77 tordforn-k-fornitore-SPLITBUF  PIC X(24).
@@ -2969,7 +2970,7 @@
            ENABLED mod-campi,
            EXCEPTION-VALUE 1012,
            FONT IS Small-Font,
-           ID IS 68,
+           ID IS 81,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            NO-TAB,
@@ -2985,7 +2986,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 81,
+           ID IS 82,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3002,7 +3003,7 @@
            SIZE 60,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 82,
+           ID IS 86,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-cau-BUF,
@@ -3018,7 +3019,7 @@
            LINE 1,00,
            LINES 45,31 ,
            COLOR IS 14,
-           ID IS 86,
+           ID IS 87,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3032,7 +3033,7 @@
            LINE 1,00,
            LINES 45,31 ,
            COLOR IS 14,
-           ID IS 87,
+           ID IS 88,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3046,7 +3047,7 @@
            LINE 1,00,
            SIZE 157,83 ,
            COLOR IS 14,
-           ID IS 88,
+           ID IS 89,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -3060,7 +3061,7 @@
            LINE 46,23,
            SIZE 157,83 ,
            COLOR IS 14,
-           ID IS 89,
+           ID IS 90,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 3,
@@ -11062,6 +11063,16 @@
            listini-lst-k-cod-art-cli-SPLITBUF(21:8)
            .
 
+       listini-lst-k-data-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-data-SPLITBUF
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-data-SPLITBUF(1:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-data-SPLITBUF(9:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-data-SPLITBUF(14:15)
+           .
+
        DataSet1-listini-INITSTART.
            IF DataSet1-listini-KEY-Asc
               MOVE Low-Value TO lst-chiave OF listini
@@ -11125,6 +11136,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -11154,6 +11166,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -11183,6 +11196,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -13724,7 +13738,7 @@
               move 0        to volantino-forzato
               move spaces   to lab-forzato-buf
               move 0        to v-gest-plus
-              display lab-gest ef-gest
+              display lab-gest ef-gest   
               accept versione-evasione from environment "VERSIONE_EVASIO
       -    "NE"
            end-if.

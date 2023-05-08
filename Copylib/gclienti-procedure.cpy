@@ -1884,6 +1884,8 @@ LUBEXX          end-if
                    ef-gg-e pb-copia
                    chk-invio-bolle-EDI
                    chk-destino-auto
+                   chk-escludi-fido
+                   chk-contrassegno
            display ef-id-edi ef-q-id-edi ef-codforn-edi ef-q-codforn-edi
                    ef-piva-c-edi ef-ragsoc-c-edi ef-ind-c-edi
                    ef-citta-c-edi ef-prov-c-edi ef-cap-c-edi

@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ordine-Ev-Before-Program
 AFTER_PROGRAM=ordine-Ev-After-Program
 BEFORE_OPEN=ordine-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E721517025-145-1539729339
+PROGRAM_UNIQUE_CODE=TOTEM-7E758135658-200-7534125
 
 {{@DESCRIPTION:
 
@@ -18094,7 +18094,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 68
+            ID                = 81
             Line              = 1,85
             Lines             = 1,50
             Lines Unit        = Default
@@ -18132,7 +18132,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 81
+      ID                = 82
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,00
@@ -18171,7 +18171,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 82
+      ID                = 86
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,00
@@ -18201,7 +18201,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 86
+      ID                = 87
       Kind              = Vertical
       Line              = 1.00
       Line Styles       = Solid
@@ -18230,7 +18230,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 87
+      ID                = 88
       Kind              = Vertical
       Line              = 1.00
       Line Styles       = Solid
@@ -18259,7 +18259,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 88
+      ID                = 89
       Kind              = Horizontal
       Line              = 1,00
       Line Styles       = Solid
@@ -18288,7 +18288,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 89
+      ID                = 90
       Kind              = Horizontal
       Line              = 46,23
       Line Styles       = Solid
@@ -19110,7 +19110,7 @@ BEGIN-TEXT
               move 0        to volantino-forzato
               move spaces   to lab-forzato-buf
               move 0        to v-gest-plus
-              display lab-gest ef-gest
+              display lab-gest ef-gest   
               accept versione-evasione from environment "VERSIONE_EVASIONE"
            end-if.
 END-TEXT
