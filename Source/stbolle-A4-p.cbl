@@ -414,6 +414,8 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
          03 st-note-1              pic x(19).
          03 filler                 pic x.
          03 st-note-data           pic x(10).
+         03 filler                 pic x(3).
+         03 filler                 pic x(14) value "EPAL A RENDERE".
 
        01  st-riga-piede-2.
          03 filler                 pic x(2). 
