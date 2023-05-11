@@ -1658,7 +1658,7 @@ LUBEXX*****                 start tordini key is >= k3 |KEY BOLLA
                           exit perform
                        end-if
                     end-if
-                 end-if         if tor-numero = 59649 stop "K" end-if
+                 end-if
                  if tor-ordine    
 
                     perform AGGIUNGI-GG-DATA-CONSEGNA

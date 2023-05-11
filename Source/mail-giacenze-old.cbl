@@ -1174,8 +1174,6 @@
                       move spaces to prg-cod-magazzino
                       set ExitPerform to true
                  end-read         
-                 if prg-cod-articolo = 5842
-                 stop "K" end-if
                  if prg-cod-magazzino = spaces |Sono sul padre
       *****              if impegnato > ( GiacenzaLBX + OrdinatoLBX )
       *****              if impegnato > GiacenzaLBX
@@ -1388,7 +1386,6 @@
                  move PalletGIC            to PalletGIC-ed
                  move PalletSHI            to PalletSHI-ed
                  move PalletGET            to PalletGET-ed
-                        if art-codice = 10116 stop "K" end-if
                  compute comodo = tmp-prg-giacenza  -
                                   tmp-prg-giac-MTN  -
                                   tmp-prg-giac-SLI  -

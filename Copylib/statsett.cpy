@@ -470,10 +470,6 @@ LUBEXX             tot-marg-1 - tot-marg-2.
            read ttipocli no lock invalid continue end-read.
            move tcl-descrizione to tit-tipologia.
 
-           
-           if tcl-descrizione = "Carburanti" and mar-codice = 1
-           stop "K" end-if
-
            initialize line-riga.
            move titolo-1 to line-riga.
            perform STAMPA-RIGA.
