@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 8 maggio 2023 15:56:12.
+       DATE-WRITTEN.        venerdì 12 maggio 2023 12:58:33.
        REMARKS.
       *{TOTEM}END
 
@@ -770,7 +770,7 @@
       *(( XFD NAME = old-cli-alfa-vuoto-1_8 ))             
                    15 old-cli-contrassegno PIC  x.
 
-                   15 FILLER           PIC  X(377).
+                   15 FILLER           PIC  X(376).
                    15 old-cli-fidejussione PIC  s9(8)v9(4).
                    15 old-cli-pfa          PIC  s9(8)v9(4).
                    15 old-cli-pfa-perce    PIC  9(3)v999.
@@ -1668,7 +1668,7 @@
        10
            cbo-tipo-art, 
            Combo-Box, 
-           COL 47,83, 
+           COL 47,84, 
            LINE 39,77,
            LINES 5,00 ,
            SIZE 16,00 ,
@@ -1708,7 +1708,7 @@
        10
            chk-destino-auto, 
            Check-Box, 
-           COL 110,33, 
+           COL 110,34, 
            LINE 39,77,
            LINES 1,31 ,
            SIZE 3,00 ,
@@ -3427,7 +3427,7 @@
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
-           ID IS 291,
+           ID IS 292,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6623,7 +6623,7 @@
            LINE 20,00,
            LINES 1,31 ,
            SIZE 8,00 ,
-           ID IS 292,
+           ID IS 295,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6637,7 +6637,7 @@
            COL 79,67, 
            LINE 19,16,
            LINES 6,08 ,
-           ID IS 295,
+           ID IS 296,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            WIDTH 1,
@@ -6651,7 +6651,7 @@
            LINE 20,00,
            LINES 1,31 ,
            SIZE 18,00 ,
-           ID IS 296,
+           ID IS 297,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6666,7 +6666,7 @@
            LINE 21,47,
            LINES 1,31 ,
            SIZE 18,00 ,
-           ID IS 297,
+           ID IS 298,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6681,7 +6681,7 @@
            LINE 20,00,
            LINES 1,31 ,
            SIZE 18,00 ,
-           ID IS 298,
+           ID IS 299,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6695,7 +6695,7 @@
            COL 1,00, 
            LINE 3,69,
            SIZE 158,00 ,
-           ID IS 299,
+           ID IS 300,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),

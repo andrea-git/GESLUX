@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E75814114-396-183977328
+PROGRAM_UNIQUE_CODE=TOTEM-7E75C10570-977-135579300
 
 {{@DESCRIPTION:
 
@@ -9148,7 +9148,7 @@ Begin Screen Form1
             After Procedure   = cbo-stato-AfterProcedure
          End
          Begin Combo-Box cbo-tipo-art
-            SCREEN-COL        = 47,83
+            SCREEN-COL        = 47,84
             SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -9247,7 +9247,7 @@ Begin Screen Form1
             After Procedure   = chk-superamento-AfterProcedure
          End
          Begin Data.Check-Box chk-destino-auto
-            SCREEN-COL        = 110,33
+            SCREEN-COL        = 110,34
             SCREEN-LINE       = 39,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -13292,7 +13292,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 291
+            ID                = 292
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 34,00
@@ -21437,7 +21437,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 292
+               ID                = 295
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21468,7 +21468,7 @@ Begin Screen Form1
                Destroy Type      = Automatic
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 295
+               ID                = 296
                Kind              = Vertical
                Line              = 1,54
                Line Styles       = Solid
@@ -21499,7 +21499,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 296
+               ID                = 297
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21532,7 +21532,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 297
+               ID                = 298
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,85
@@ -21565,7 +21565,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 298
+               ID                = 299
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21599,7 +21599,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 299
+      ID                = 300
       Kind              = Horizontal
       Line              = 3,69
       Line Styles       = Solid
@@ -25732,7 +25732,7 @@ BEGIN-TEXT
       *(( XFD NAME = old-cli-alfa-vuoto-1_8 ))             
                    15 old-cli-contrassegno PIC  x.
 
-                   15 FILLER           PIC  X(377).
+                   15 FILLER           PIC  X(376).
                    15 old-cli-fidejussione PIC  s9(8)v9(4).
                    15 old-cli-pfa          PIC  s9(8)v9(4).
                    15 old-cli-pfa-perce    PIC  9(3)v999.
