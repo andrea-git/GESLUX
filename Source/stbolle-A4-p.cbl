@@ -342,6 +342,8 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
        01  st-riga-vettore.                       
          03 st-vettore             pic x(3). 
          03 st-numord              pic z(6).
+         03 filler                 pic x(3).
+         03 filler                 pic x(14) value "EPAL A RENDERE".
 
        01  st-num-data.                           
          03 st-num-bolla           pic z(8).      
@@ -414,8 +416,6 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
          03 st-note-1              pic x(19).
          03 filler                 pic x.
          03 st-note-data           pic x(10).
-         03 filler                 pic x(3).
-         03 filler                 pic x(14) value "EPAL A RENDERE".
 
        01  st-riga-piede-2.
          03 filler                 pic x(2). 
@@ -2221,13 +2221,16 @@ LUBEXX*****        end-evaluate
            perform STAMPA-RIGA.
                   
            if st-vet = "X"
-              move "COPIA VETTORE"      to line-riga
+              move "COPIA VETTORE *** EPAL A RENDERE ***" 
+                to line-riga
            end-if.
            if st-mit = "X"
-              move "COPIA MITTENTE"     to line-riga
+              move "COPIA MITTENTE *** EPAL A RENDERE ***" 
+                to line-riga
            end-if.
            if st-dest = "X"
-              move "COPIA DESTINATARIO" to line-riga
+              move "COPIA DESTINATARIO *** EPAL A RENDERE ***" 
+                to line-riga
            end-if.
            perform STAMPA-RIGA.
 
