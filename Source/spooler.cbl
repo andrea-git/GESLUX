@@ -743,6 +743,8 @@
                                      | 8, 8,  30,  5,  5
                                           9, 17, 44, 49
                                    giving return-code 
+
+                
                                    
                 move 0,5             to    winprint-col-start
                 call "WIN$PRINTER"   using winprint-set-page-column, 
@@ -774,7 +776,7 @@
                                           57
                                    giving return-code 
                                    
-                move 12,4                to winprint-col-start
+                move 13,1                to winprint-col-start
                 call "WIN$PRINTER"   using winprint-set-page-column, 
                                            winprint-column
                                     giving return-code
@@ -924,51 +926,98 @@
                              |6, 50,  2, 10, 14,  8,  8, 14, 2
                                   7, 57, 59, 69, 83, 91, 99, 113
                                     giving return-code
-                                   
-                move 0,6               to winprint-col-start
-                call "WIN$PRINTER"  using winprint-set-page-column,
-                                          winprint-column
-                                   giving return-code
-                                   
-                move 2,0                to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column,
-                                           winprint-column
-                                    giving return-code
-                                   
-                move 8,2                to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column,
-                                           winprint-column
-                                    giving return-code
-                                  
-                move 8,8                to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column,
-                                           winprint-column
-                                    giving return-code
-                                  
-                move 10,3               to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column,
-                                           winprint-column
-                                    giving return-code
-                                  
-                move 13,6               to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column,
-                                           winprint-column
-                                    giving return-code
-                                  
-                move 15,3               to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column,
-                                           winprint-column
-                                    giving return-code
-                                  
-                move 16,9               to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column, 
-                                           winprint-column
-                                    giving return-code
-                                  
-                move 19,9               to winprint-col-start
-                call "WIN$PRINTER"   using winprint-set-page-column, 
-                                           winprint-column
-                                    giving return-code
+                                     
+                if calling-program  = "stfatt-p"   
+                   move 0,6               to winprint-col-start
+                   call "WIN$PRINTER"  using winprint-set-page-column,
+                                             winprint-column
+                                      giving return-code
+                                      
+                   move 2,0                to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                      
+                   move 8,2                to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 8,8                to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 10,3               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 13,6               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 15,3               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 16,9               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column, 
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 19,9               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column, 
+                                              winprint-column
+                                       giving return-code
+                else               
+                   move 0,2               to winprint-col-start
+                   call "WIN$PRINTER"  using winprint-set-page-column,
+                                             winprint-column
+                                      giving return-code
+                                      
+                   move 1,7                to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                      
+                   move 7,7                to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 8,1                to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 9,6                to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 12,7               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 14,5               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column,
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 16,0               to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column, 
+                                              winprint-column
+                                       giving return-code
+                                     
+                   move 19                 to winprint-col-start
+                   call "WIN$PRINTER"   using winprint-set-page-column, 
+                                              winprint-column
+                                       giving return-code
+                end-if
            when 7,5 |* T O T A L E   P I O M B O *...
                 call "WIN$PRINTER"  using winprint-set-data-columns,
                                           51
