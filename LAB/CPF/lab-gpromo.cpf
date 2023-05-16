@@ -2,7 +2,6 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=169.254.95.20
 
 
 [PROGRAM_CONTENT]
@@ -2610,75 +2609,74 @@ m_bFixed=1
 
 @}}
 [FDITEM247_WK]
-m_strName=STATUS-timballi
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=r-csv
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM247_WK
 
 @}}
 [FDITEM248_WK]
-m_strName=Valid-STATUS-timballi
-m_nItemLevel=88
+m_strName=r-art
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM248_WK
 
 @}}
 [FDITEM249_WK]
-m_strName=STATUS-timbalqta
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=r-prz-v
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM249_WK
 
 @}}
 [FDITEM250_WK]
-m_strName=Valid-STATUS-timbalqta
-m_nItemLevel=88
+m_strName=r-prz-a
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM250_WK
 
 @}}
 [FDITEM251_WK]
-m_strName=STATUS-blister
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=r-qta
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM251_WK
 
 @}}
 [FDITEM252_WK]
-m_strName=Valid-STATUS-blister
-m_nItemLevel=88
+m_strName=STATUS-timballi
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM252_WK
 
 @}}
 [FDITEM253_WK]
-m_strName=chk-mail-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
+m_strName=Valid-STATUS-timballi
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM253_WK
 
 @}}
 [FDITEM254_WK]
-m_strName=STATUS-tpiombo
+m_strName=STATUS-timbalqta
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2688,7 +2686,7 @@ m_bFixed=1
 
 @}}
 [FDITEM255_WK]
-m_strName=Valid-STATUS-tpiombo
+m_strName=Valid-STATUS-timbalqta
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2697,7 +2695,7 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM256_WK]
-m_strName=STATUS-tscorte
+m_strName=STATUS-blister
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -2707,7 +2705,7 @@ m_bFixed=1
 
 @}}
 [FDITEM257_WK]
-m_strName=Valid-STATUS-tscorte
+m_strName=Valid-STATUS-blister
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -2716,9 +2714,10 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM258_WK]
-m_strName=STATUS-tsetinvio
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=chk-mail-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2726,34 +2725,82 @@ m_bFixed=1
 
 @}}
 [FDITEM259_WK]
+m_strName=STATUS-tpiombo
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM259_WK
+
+@}}
+[FDITEM260_WK]
+m_strName=Valid-STATUS-tpiombo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM260_WK
+
+@}}
+[FDITEM261_WK]
+m_strName=STATUS-tscorte
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM261_WK
+
+@}}
+[FDITEM262_WK]
+m_strName=Valid-STATUS-tscorte
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM262_WK
+
+@}}
+[FDITEM263_WK]
+m_strName=STATUS-tsetinvio
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM263_WK
+
+@}}
+[FDITEM264_WK]
 m_strName=Valid-STATUS-tsetinvio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM259_WK
+{{@DataItem_m_strDescriptionFDITEM264_WK
 
 @}}
-[FDITEM260_WK]
+[FDITEM265_WK]
 m_strName=STATUS-tmarche
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM260_WK
+{{@DataItem_m_strDescriptionFDITEM265_WK
 
 @}}
-[FDITEM261_WK]
+[FDITEM266_WK]
 m_strName=Valid-STATUS-tmarche
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM261_WK
+{{@DataItem_m_strDescriptionFDITEM266_WK
 
 @}}
-[FDITEM262_WK]
+[FDITEM267_WK]
 m_strName=copia-base-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -2762,19 +2809,19 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM262_WK
+{{@DataItem_m_strDescriptionFDITEM267_WK
 
 @}}
-[FDITEM263_WK]
+[FDITEM268_WK]
 m_strName=mod-copia
 m_strDefaultValue=5000
 m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM263_WK
+{{@DataItem_m_strDescriptionFDITEM268_WK
 
 @}}
-[FDITEM264_WK]
+[FDITEM269_WK]
 m_strName=e-copia
 m_strRawPic=9
 m_strPic=9
@@ -2782,36 +2829,65 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM264_WK
+{{@DataItem_m_strDescriptionFDITEM269_WK
 
 @}}
-[FDITEM265_WK]
+[FDITEM270_WK]
 m_strName=path-lineseq-mail
 m_strRawPic=X(256)
 m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM265_WK
+{{@DataItem_m_strDescriptionFDITEM270_WK
 
 @}}
-[FDITEM266_WK]
+[FDITEM271_WK]
 m_strName=STATUS-lineseq-mail
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM266_WK
+{{@DataItem_m_strDescriptionFDITEM271_WK
 
 @}}
-[FDITEM267_WK]
+[FDITEM272_WK]
 m_strName=Valid-STATUS-lineseq-mail
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM267_WK
+{{@DataItem_m_strDescriptionFDITEM272_WK
+
+@}}
+[FDITEM273_WK]
+m_strName=path-fileseq
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM273_WK
+
+@}}
+[FDITEM274_WK]
+m_strName=STATUS-fileseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM274_WK
+
+@}}
+[FDITEM275_WK]
+m_strName=Valid-STATUS-fileseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM275_WK
 
 @}}
 
@@ -7455,6 +7531,48 @@ BEGIN-TEXT
               modify tool-modifica,  value = mod
               perform CANCELLA-COLORE                  
               perform VALORIZZA-NUOVO
+
+              accept path-fileseq from environment "PATH_AUTO_PROMO"
+                              
+              accept separatore from environment "SEPARATORE"
+                     on exception move ";" to separatore
+                 not on exception
+                     if separatore = space
+                        move ";" to separatore
+                     end-if
+              end-accept
+
+              open input fileseq
+              move 1 to riga
+              if status-fileseq = "00"
+                 read fileseq next |Salto l'ìntestazione
+                 perform until 1 = 2
+                    initialize rec-stampa
+                    read fileseq next at end exit perform end-read
+                    unstring rec-stampa delimited by separatore
+                        into r-art
+                             r-prz-v
+                             r-prz-a
+                             r-qta 
+                    move r-art to art-codice convert
+                    read articoli no lock 
+                         invalid move "*** NON TROVATO ***" to art-descrizione
+                    end-read
+                    move art-codice      to col-art
+                    move art-descrizione to col-des
+                    move r-prz-v         to col-ven convert
+                    move r-prz-a         to col-acq convert
+                    move r-qta           to col-qta convert
+                    add 1 to riga                          
+                    modify gd1 (riga, 1), cell-data col-art
+                    modify gd1 (riga, 2), cell-data col-des
+                    modify gd1 (riga, 3), cell-data col-ven
+                    modify gd1 (riga, 4), cell-data col-acq
+                    modify gd1 (riga, 5), cell-data col-qta
+                 end-perform
+                 close fileseq
+              end-if
+
               perform INIT-OLD-REC
               move tpr-chiave of tpromo to old-tpr-chiave
               set StatusIns to true
@@ -9664,8 +9782,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=112
-REL_SYM_INFO_L=18
+REL_SYM_SIZE=118
+REL_SYM_INFO_L=19
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1088003960
 REL_SYM_INFO_X1=2301
@@ -9695,13 +9813,15 @@ REL_SYM_INFO_Y12=1824344291
 REL_SYM_INFO_X13=2301
 REL_SYM_INFO_Y13=438341930
 REL_SYM_INFO_X14=2301
-REL_SYM_INFO_Y14=1697298815
+REL_SYM_INFO_Y14=2129731491
 REL_SYM_INFO_X15=2301
-REL_SYM_INFO_Y15=2129731491
+REL_SYM_INFO_Y15=1931756569
 REL_SYM_INFO_X16=2301
-REL_SYM_INFO_Y16=1931756569
+REL_SYM_INFO_Y16=2066776808
 REL_SYM_INFO_X17=2301
-REL_SYM_INFO_Y17=2066776808
+REL_SYM_INFO_Y17=1697298815
+REL_SYM_INFO_X18=2301
+REL_SYM_INFO_Y18=1106863287
 
 [DRAW_BASESYMBOL_2301_1088003960]
 OBJ_NAME=2301
@@ -10387,9 +10507,9 @@ BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
 LEFT=1748
-TOP=1082
+TOP=1085
 RIGHT=2148
-BOTTOM=1304
+BOTTOM=1307
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -10534,6 +10654,54 @@ LEFT=1216
 TOP=1058
 RIGHT=1616
 BOTTOM=1280
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1106863287]
+OBJ_NAME=2301
+OBJ_ID=1106863287
+KIND=1
+{{@LABEL_2301_1106863287
+fileseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=3446
+TOP=1082
+RIGHT=3846
+BOTTOM=1304
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -11126,6 +11294,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_2066776808
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1106863287]
+OBJ_NAME=0
+OBJ_ID=1106863287
+REL_M_OBJ_ID=0
+ENTITY=fileseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1106863287
 
 @}}
 DSN_INFO_PRIMARY=0

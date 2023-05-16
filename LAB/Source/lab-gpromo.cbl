@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-gpromo.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 maggio 2023 18:17:12.
+       DATE-WRITTEN.        martedì 16 maggio 2023 18:36:23.
        REMARKS.
       *{TOTEM}END
 
@@ -47,6 +47,8 @@
            COPY "tsetinvio.sl".
            COPY "tscorte.sl".
            COPY "tmarche.sl".
+           COPY "lineseq-mail.sl".
+           COPY "fileseq.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -71,6 +73,8 @@
            COPY "tsetinvio.fd".
            COPY "tscorte.fd".
            COPY "tmarche.fd".
+           COPY "lineseq-mail.fd".
+           COPY "fileseq.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -356,6 +360,11 @@
            05 col-prov         PIC  xx.
        77 MS-Sans-Serif9-Occidentale
                   USAGE IS HANDLE OF FONT.
+       01 r-csv.
+           05 r-art            PIC  x(50).
+           05 r-prz-v          PIC  x(100).
+           05 r-prz-a          PIC  x(50).
+           05 r-qta            PIC  x(50).
        77 STATUS-timballi  PIC  X(2).
            88 Valid-STATUS-timballi VALUE IS "00" THRU "09". 
        77 STATUS-timbalqta PIC  X(2).
@@ -381,6 +390,9 @@
        77 path-lineseq-mail            PIC  X(256).
        77 STATUS-lineseq-mail          PIC  X(2).
            88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
+       77 path-fileseq     PIC  X(500).
+       77 STATUS-fileseq   PIC  X(2).
+           88 Valid-STATUS-fileseq VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -439,6 +451,8 @@
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
+       77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
+       77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -529,6 +543,16 @@
        77 DataSet1-tmarche-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tmarche-KEY-Asc  VALUE "A".
           88 DataSet1-tmarche-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
+       77 DataSet1-fileseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-fileseq-LOCK  VALUE "Y".
+       77 DataSet1-fileseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-fileseq-KEY-Asc  VALUE "A".
+          88 DataSet1-fileseq-KEY-Desc VALUE "D".
 
        77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
@@ -2098,6 +2122,10 @@
       *    PERFORM OPEN-tsetinvio
            PERFORM OPEN-tscorte
            PERFORM OPEN-tmarche
+      *    lineseq-mail OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq-mail
+      *    fileseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-fileseq
       *    After Open
            .
 
@@ -2333,6 +2361,30 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq-mail.
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:lineseq-mail, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT lineseq-mail
+           IF NOT Valid-STATUS-lineseq-mail
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:lineseq-mail, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-fileseq.
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:fileseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT fileseq
+           IF NOT Valid-STATUS-fileseq
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:fileseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-destini
@@ -2354,6 +2406,10 @@
       *    PERFORM CLOSE-tsetinvio
            PERFORM CLOSE-tscorte
            PERFORM CLOSE-tmarche
+      *    lineseq-mail CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq-mail
+      *    fileseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-fileseq
       *    After Close
            .
 
@@ -2455,6 +2511,16 @@
       * <TOTEM:EPT. INIT:lab-gpromo, FD:tmarche, BeforeClose>
       * <TOTEM:END>
            CLOSE tmarche
+           .
+
+       CLOSE-lineseq-mail.
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-fileseq.
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:fileseq, BeforeClose>
+      * <TOTEM:END>
            .
 
        destini-K1-MERGE-SPLITBUF.
@@ -5412,6 +5478,163 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-mail-INITSTART.
+           .
+
+       DataSet1-lineseq-mail-INITEND.
+           .
+
+       DataSet1-lineseq-mail-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
+      * <TOTEM:END>
+           WRITE line-riga-mail OF lineseq-mail.
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-mail-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
+           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-INITSTART.
+           .
+
+       DataSet1-fileseq-INITEND.
+           .
+
+       DataSet1-fileseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-fileseq-LOCK
+              READ fileseq WITH LOCK 
+           ELSE
+              READ fileseq WITH NO LOCK 
+           END-IF
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT 
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-fileseq-KEY-Asc
+              IF DataSet1-fileseq-LOCK
+                 READ fileseq NEXT WITH LOCK
+              ELSE
+                 READ fileseq NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE des-rec OF destini
            INITIALIZE art-rec OF articoli
@@ -5430,6 +5653,8 @@
            INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE sco-rec OF tscorte
            INITIALIZE mar-rec OF tmarche
+           INITIALIZE line-riga-mail OF lineseq-mail
+           INITIALIZE rec-stampa OF fileseq
            .
 
 
@@ -5621,6 +5846,22 @@
       * FD's Initialize Paragraph
        DataSet1-tmarche-INITREC.
            INITIALIZE mar-rec OF tmarche
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-mail-INITREC.
+           INITIALIZE line-riga-mail OF lineseq-mail
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-fileseq-INITREC.
+           INITIALIZE rec-stampa OF fileseq
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -8042,10 +8283,50 @@
               modify tool-modifica,  value = mod
               perform CANCELLA-COLORE                  
               perform VALORIZZA-NUOVO
+
+              accept path-fileseq from environment "PATH_AUTO_PROMO"
+                              
+              accept separatore from environment "SEPARATORE"
+                     on exception move ";" to separatore
+                 not on exception
+                     if separatore = space
+                        move ";" to separatore
+                     end-if
+              end-accept
+
+              open input fileseq
+              move 1 to riga
+              if status-fileseq = "00"
+                 read fileseq next |Salto l'ìntestazione
+                 perform until 1 = 2
+                    initialize rec-stampa
+                    read fileseq next at end exit perform end-read
+                    unstring rec-stampa delimited by separatore
+                        into r-art
+                             r-prz-v
+                             r-prz-a
+                             r-qta 
+                    move r-art to art-codice convert
+                    read articoli no lock 
+                         invalid move "*** NON TROVATO ***" to 
+           art-descrizione
+                    end-read
+                    move art-codice      to col-art
+                    move art-descrizione to col-des
+                    move r-prz-v         to col-ven convert
+                    move r-prz-a         to col-acq convert
+                    move r-qta           to col-qta convert
+                    add 1 to riga                          
+                    modify gd1 (riga, 1), cell-data col-art
+                    modify gd1 (riga, 2), cell-data col-des
+                    modify gd1 (riga, 3), cell-data col-ven
+                    modify gd1 (riga, 4), cell-data col-acq
+                    modify gd1 (riga, 5), cell-data col-qta
+                 end-perform
+                 close fileseq
+              end-if
+
               perform INIT-OLD-REC
-
-
-
               move tpr-chiave of tpromo to old-tpr-chiave
               set StatusIns to true
               perform STATUS-BAR-MSG  
