@@ -342,7 +342,8 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
        01  st-riga-vettore.                       
          03 st-vettore             pic x(3). 
          03 st-numord              pic z(6).
-         03 filler                 pic x(18) value "* EPAL A RENDERE *".
+         03 filler                 pic x(26) 
+                                   value "***** EPAL A RENDERE *****".
 
        01  st-num-data.                           
          03 st-num-bolla           pic z(8).      

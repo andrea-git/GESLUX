@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-gpromo.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 16:08:52.
+       DATE-WRITTEN.        martedì 16 maggio 2023 18:17:12.
        REMARKS.
       *{TOTEM}END
 
@@ -47,7 +47,6 @@
            COPY "tsetinvio.sl".
            COPY "tscorte.sl".
            COPY "tmarche.sl".
-           COPY "lineseq-mail.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -72,7 +71,6 @@
            COPY "tsetinvio.fd".
            COPY "tscorte.fd".
            COPY "tmarche.fd".
-           COPY "lineseq-mail.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -441,7 +439,6 @@
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
-       77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -532,11 +529,6 @@
        77 DataSet1-tmarche-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tmarche-KEY-Asc  VALUE "A".
           88 DataSet1-tmarche-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq-mail-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq-mail-LOCK  VALUE "Y".
-       77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
 
        77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
@@ -2106,8 +2098,6 @@
       *    PERFORM OPEN-tsetinvio
            PERFORM OPEN-tscorte
            PERFORM OPEN-tmarche
-      *    lineseq-mail OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq-mail
       *    After Open
            .
 
@@ -2343,18 +2333,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-lineseq-mail.
-      * <TOTEM:EPT. INIT:lab-gpromo, FD:lineseq-mail, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  OUTPUT lineseq-mail
-           IF NOT Valid-STATUS-lineseq-mail
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:lab-gpromo, FD:lineseq-mail, AfterOpen>
-      * <TOTEM:END>
-           .
-
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-destini
@@ -2376,8 +2354,6 @@
       *    PERFORM CLOSE-tsetinvio
            PERFORM CLOSE-tscorte
            PERFORM CLOSE-tmarche
-      *    lineseq-mail CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq-mail
       *    After Close
            .
 
@@ -2479,11 +2455,6 @@
       * <TOTEM:EPT. INIT:lab-gpromo, FD:tmarche, BeforeClose>
       * <TOTEM:END>
            CLOSE tmarche
-           .
-
-       CLOSE-lineseq-mail.
-      * <TOTEM:EPT. INIT:lab-gpromo, FD:lineseq-mail, BeforeClose>
-      * <TOTEM:END>
            .
 
        destini-K1-MERGE-SPLITBUF.
@@ -5441,76 +5412,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-lineseq-mail-INITSTART.
-           .
-
-       DataSet1-lineseq-mail-INITEND.
-           .
-
-       DataSet1-lineseq-mail-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadRecord>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-mail-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadNext>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-mail-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-mail-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeWrite>
-      * <TOTEM:END>
-           WRITE line-riga-mail OF lineseq-mail.
-           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
-           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-mail-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
-           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-mail-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq-mail TO TOTEM-ERR-STAT
-           MOVE "lineseq-mail" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq-mail, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-INIT-RECORD.
            INITIALIZE des-rec OF destini
            INITIALIZE art-rec OF articoli
@@ -5529,7 +5430,6 @@
            INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE sco-rec OF tscorte
            INITIALIZE mar-rec OF tmarche
-           INITIALIZE line-riga-mail OF lineseq-mail
            .
 
 
@@ -5721,14 +5621,6 @@
       * FD's Initialize Paragraph
        DataSet1-tmarche-INITREC.
            INITIALIZE mar-rec OF tmarche
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-lineseq-mail-INITREC.
-           INITIALIZE line-riga-mail OF lineseq-mail
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -8151,6 +8043,9 @@
               perform CANCELLA-COLORE                  
               perform VALORIZZA-NUOVO
               perform INIT-OLD-REC
+
+
+
               move tpr-chiave of tpromo to old-tpr-chiave
               set StatusIns to true
               perform STATUS-BAR-MSG  
