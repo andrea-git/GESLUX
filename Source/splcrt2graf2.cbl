@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          splcrt2graf2.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 11 settembre 2021 12:35:18.
+       DATE-WRITTEN.        martedì 16 maggio 2023 10:24:18.
        REMARKS.
       *{TOTEM}END
 

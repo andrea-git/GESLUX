@@ -4866,7 +4866,7 @@
                                                        
            when 3
                 call "WIN$PRINTER"  using winprint-set-data-columns,
-                                          4, 10
+                                          4, 10, 28
                                    giving return-code
                                                            
                 move 10,7              to winprint-col-start
@@ -4875,6 +4875,11 @@
                                    giving return-code
                                                             
                 move 12,2             to winprint-col-start
+                call "WIN$PRINTER"  using winprint-set-page-column, 
+                                          winprint-column             
+                                   giving return-code
+                                                            
+                move 14,5             to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code 
