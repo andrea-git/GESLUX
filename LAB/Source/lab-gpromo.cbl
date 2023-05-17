@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-gpromo.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 maggio 2023 18:36:23.
+       DATE-WRITTEN.        mercoledì 17 maggio 2023 18:08:33.
        REMARKS.
       *{TOTEM}END
 
@@ -44,10 +44,10 @@
            COPY "lineseq.sl".
            COPY "blister.sl".
            COPY "clienti.sl".
-           COPY "tsetinvio.sl".
            COPY "tscorte.sl".
            COPY "tmarche.sl".
            COPY "lineseq-mail.sl".
+           COPY "tsetinvio.sl".
            COPY "fileseq.sl".
       *{TOTEM}END
        DATA                 DIVISION.
@@ -70,10 +70,10 @@
            COPY "lineseq.fd".
            COPY "blister.fd".
            COPY "clienti.fd".
-           COPY "tsetinvio.fd".
            COPY "tscorte.fd".
            COPY "tmarche.fd".
            COPY "lineseq-mail.fd".
+           COPY "tsetinvio.fd".
            COPY "fileseq.fd".
       *{TOTEM}END
 
@@ -83,6 +83,7 @@
                COPY "acucobol.def".
                COPY "fonts.def".
                COPY "crtvars.def".
+               COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
@@ -105,6 +106,8 @@
            COPY  "MAIL.DEF".
            COPY  "LINK-READUTENTE.DEF".
        77 como-user        PIC  x(20).
+       77 OPENSAVE-STATUS  PIC  s99
+                  VALUE IS 0.
        01 tab-righe-old.
            05 el-riga
                       OCCURS 1000 TIMES
@@ -448,10 +451,10 @@
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
+       77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -528,11 +531,6 @@
        77 DataSet1-clienti-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-clienti-KEY-Asc  VALUE "A".
           88 DataSet1-clienti-KEY-Desc VALUE "D".
-       77 DataSet1-tsetinvio-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tsetinvio-LOCK  VALUE "Y".
-       77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
-          88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
        77 DataSet1-tscorte-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-tscorte-LOCK  VALUE "Y".
        77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
@@ -548,6 +546,11 @@
        77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
+       77 DataSet1-tsetinvio-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tsetinvio-LOCK  VALUE "Y".
+       77 DataSet1-tsetinvio-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tsetinvio-KEY-Asc  VALUE "A".
+          88 DataSet1-tsetinvio-KEY-Desc VALUE "D".
        77 DataSet1-fileseq-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-fileseq-LOCK  VALUE "Y".
        77 DataSet1-fileseq-KEY-ORDER  PIC X VALUE "A".
@@ -934,6 +937,23 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "&Inserisci Extra %",
+           .
+
+      * PUSH BUTTON
+       05
+           pb-importa, 
+           Push-Button, 
+           COL 37,83, 
+           LINE 24,92,
+           LINES 2,00 ,
+           SIZE 16,00 ,
+           ENABLED mod,
+           EXCEPTION-VALUE 1004,
+           FONT IS Small-Font,
+           ID IS 31,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "I&mposta da CSV",
            .
 
       * BAR
@@ -2118,12 +2138,12 @@
       *    PERFORM OPEN-lineseq
            PERFORM OPEN-blister
            PERFORM OPEN-clienti
-      *    tsetinvio OPEN MODE IS FALSE
-      *    PERFORM OPEN-tsetinvio
            PERFORM OPEN-tscorte
            PERFORM OPEN-tmarche
       *    lineseq-mail OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq-mail
+      *    tsetinvio OPEN MODE IS FALSE
+      *    PERFORM OPEN-tsetinvio
       *    fileseq OPEN MODE IS FALSE
       *    PERFORM OPEN-fileseq
       *    After Open
@@ -2318,25 +2338,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-tsetinvio.
-      * <TOTEM:EPT. INIT:lab-gpromo, FD:tsetinvio, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  I-O tsetinvio
-           IF STATUS-tsetinvio = "35"
-              OPEN OUTPUT tsetinvio
-                IF Valid-STATUS-tsetinvio
-                   CLOSE tsetinvio
-                   OPEN I-O tsetinvio
-                END-IF
-           END-IF
-           IF NOT Valid-STATUS-tsetinvio
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:lab-gpromo, FD:tsetinvio, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-tscorte.
       * <TOTEM:EPT. INIT:lab-gpromo, FD:tscorte, BeforeOpen>
       * <TOTEM:END>
@@ -2373,6 +2374,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-tsetinvio.
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:tsetinvio, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O tsetinvio
+           IF STATUS-tsetinvio = "35"
+              OPEN OUTPUT tsetinvio
+                IF Valid-STATUS-tsetinvio
+                   CLOSE tsetinvio
+                   OPEN I-O tsetinvio
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-tsetinvio
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:tsetinvio, AfterOpen>
+      * <TOTEM:END>
+           .
+
        OPEN-fileseq.
       * <TOTEM:EPT. INIT:lab-gpromo, FD:fileseq, BeforeOpen>
       * <TOTEM:END>
@@ -2402,12 +2422,12 @@
       *    PERFORM CLOSE-lineseq
            PERFORM CLOSE-blister
            PERFORM CLOSE-clienti
-      *    tsetinvio CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-tsetinvio
            PERFORM CLOSE-tscorte
            PERFORM CLOSE-tmarche
       *    lineseq-mail CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq-mail
+      *    tsetinvio CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tsetinvio
       *    fileseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-fileseq
       *    After Close
@@ -2496,11 +2516,6 @@
            CLOSE clienti
            .
 
-       CLOSE-tsetinvio.
-      * <TOTEM:EPT. INIT:lab-gpromo, FD:tsetinvio, BeforeClose>
-      * <TOTEM:END>
-           .
-
        CLOSE-tscorte.
       * <TOTEM:EPT. INIT:lab-gpromo, FD:tscorte, BeforeClose>
       * <TOTEM:END>
@@ -2515,6 +2530,11 @@
 
        CLOSE-lineseq-mail.
       * <TOTEM:EPT. INIT:lab-gpromo, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-tsetinvio.
+      * <TOTEM:EPT. INIT:lab-gpromo, FD:tsetinvio, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -5013,163 +5033,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-tsetinvio-INITSTART.
-           IF DataSet1-tsetinvio-KEY-Asc
-              MOVE Low-Value TO tsi-chiave
-           ELSE
-              MOVE High-Value TO tsi-chiave
-           END-IF
-           .
-
-       DataSet1-tsetinvio-INITEND.
-           IF DataSet1-tsetinvio-KEY-Asc
-              MOVE High-Value TO tsi-chiave
-           ELSE
-              MOVE Low-Value TO tsi-chiave
-           END-IF
-           .
-
-      * tsetinvio
-       DataSet1-tsetinvio-START.
-           IF DataSet1-tsetinvio-KEY-Asc
-              START tsetinvio KEY >= tsi-chiave
-           ELSE
-              START tsetinvio KEY <= tsi-chiave
-           END-IF
-           .
-
-       DataSet1-tsetinvio-START-NOTGREATER.
-           IF DataSet1-tsetinvio-KEY-Asc
-              START tsetinvio KEY <= tsi-chiave
-           ELSE
-              START tsetinvio KEY >= tsi-chiave
-           END-IF
-           .
-
-       DataSet1-tsetinvio-START-GREATER.
-           IF DataSet1-tsetinvio-KEY-Asc
-              START tsetinvio KEY > tsi-chiave
-           ELSE
-              START tsetinvio KEY < tsi-chiave
-           END-IF
-           .
-
-       DataSet1-tsetinvio-START-LESS.
-           IF DataSet1-tsetinvio-KEY-Asc
-              START tsetinvio KEY < tsi-chiave
-           ELSE
-              START tsetinvio KEY > tsi-chiave
-           END-IF
-           .
-
-       DataSet1-tsetinvio-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tsetinvio-LOCK
-              READ tsetinvio WITH LOCK 
-              KEY tsi-chiave
-           ELSE
-              READ tsetinvio WITH NO LOCK 
-              KEY tsi-chiave
-           END-IF
-           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT 
-           MOVE "tsetinvio" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tsetinvio-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tsetinvio-KEY-Asc
-              IF DataSet1-tsetinvio-LOCK
-                 READ tsetinvio NEXT WITH LOCK
-              ELSE
-                 READ tsetinvio NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tsetinvio-LOCK
-                 READ tsetinvio PREVIOUS WITH LOCK
-              ELSE
-                 READ tsetinvio PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
-           MOVE "tsetinvio" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tsetinvio-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tsetinvio-KEY-Asc
-              IF DataSet1-tsetinvio-LOCK
-                 READ tsetinvio PREVIOUS WITH LOCK
-              ELSE
-                 READ tsetinvio PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tsetinvio-LOCK
-                 READ tsetinvio NEXT WITH LOCK
-              ELSE
-                 READ tsetinvio NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
-           MOVE "tsetinvio" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tsetinvio-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeWrite>
-      * <TOTEM:END>
-           WRITE tsi-rec OF tsetinvio.
-           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
-           MOVE "tsetinvio" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tsetinvio-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRewrite>
-      * <TOTEM:END>
-           REWRITE tsi-rec OF tsetinvio.
-           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
-           MOVE "tsetinvio" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tsetinvio-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeDelete>
-      * <TOTEM:END>
-           DELETE tsetinvio.
-           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
-           MOVE "tsetinvio" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-tscorte-INITSTART.
            IF DataSet1-tscorte-KEY-Asc
               MOVE Low-Value TO sco-chiave
@@ -5548,6 +5411,163 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tsetinvio-INITSTART.
+           IF DataSet1-tsetinvio-KEY-Asc
+              MOVE Low-Value TO tsi-chiave
+           ELSE
+              MOVE High-Value TO tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-INITEND.
+           IF DataSet1-tsetinvio-KEY-Asc
+              MOVE High-Value TO tsi-chiave
+           ELSE
+              MOVE Low-Value TO tsi-chiave
+           END-IF
+           .
+
+      * tsetinvio
+       DataSet1-tsetinvio-START.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY >= tsi-chiave
+           ELSE
+              START tsetinvio KEY <= tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-START-NOTGREATER.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY <= tsi-chiave
+           ELSE
+              START tsetinvio KEY >= tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-START-GREATER.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY > tsi-chiave
+           ELSE
+              START tsetinvio KEY < tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-START-LESS.
+           IF DataSet1-tsetinvio-KEY-Asc
+              START tsetinvio KEY < tsi-chiave
+           ELSE
+              START tsetinvio KEY > tsi-chiave
+           END-IF
+           .
+
+       DataSet1-tsetinvio-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tsetinvio-LOCK
+              READ tsetinvio WITH LOCK 
+              KEY tsi-chiave
+           ELSE
+              READ tsetinvio WITH NO LOCK 
+              KEY tsi-chiave
+           END-IF
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT 
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tsetinvio-KEY-Asc
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio NEXT WITH LOCK
+              ELSE
+                 READ tsetinvio NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio PREVIOUS WITH LOCK
+              ELSE
+                 READ tsetinvio PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tsetinvio-KEY-Asc
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio PREVIOUS WITH LOCK
+              ELSE
+                 READ tsetinvio PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tsetinvio-LOCK
+                 READ tsetinvio NEXT WITH LOCK
+              ELSE
+                 READ tsetinvio NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeWrite>
+      * <TOTEM:END>
+           WRITE tsi-rec OF tsetinvio.
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE tsi-rec OF tsetinvio.
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tsetinvio-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, BeforeDelete>
+      * <TOTEM:END>
+           DELETE tsetinvio.
+           MOVE STATUS-tsetinvio TO TOTEM-ERR-STAT
+           MOVE "tsetinvio" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tsetinvio, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-fileseq-INITSTART.
            .
 
@@ -5650,10 +5670,10 @@
            INITIALIZE line-riga OF lineseq
            INITIALIZE bli-rec OF blister
            INITIALIZE cli-rec OF clienti
-           INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE sco-rec OF tscorte
            INITIALIZE mar-rec OF tmarche
            INITIALIZE line-riga-mail OF lineseq-mail
+           INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE rec-stampa OF fileseq
            .
 
@@ -5828,14 +5848,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tsetinvio-INITREC.
-           INITIALIZE tsi-rec OF tsetinvio
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-tscorte-INITREC.
            INITIALIZE sco-rec OF tscorte
                REPLACING NUMERIC       DATA BY ZEROS
@@ -5854,6 +5866,14 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq-mail-INITREC.
            INITIALIZE line-riga-mail OF lineseq-mail
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tsetinvio-INITREC.
+           INITIALIZE tsi-rec OF tsetinvio
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -5948,6 +5968,14 @@
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           accept separatore from environment "SEPARATORE"
+                  on exception move ";" to separatore
+              not on exception
+                  if separatore = space
+                     move ";" to separatore
+                  end-if
+           end-accept.
+
            perform INIT.
            perform ABILITA-TOOLBAR.
            perform ABILITAZIONI.
@@ -6007,6 +6035,8 @@
                  PERFORM pb-blister-LinkTo
               WHEN Key-Status = 1003
                  PERFORM pb-extra-LinkTo
+              WHEN Key-Status = 1004
+                 PERFORM pb-importa-LinkTo
               WHEN Key-Status = 2001
                  PERFORM pb-nazio-LinkTo
               WHEN Key-Status = 2000
@@ -8282,49 +8312,7 @@
               move 1            to mod mod-k
               modify tool-modifica,  value = mod
               perform CANCELLA-COLORE                  
-              perform VALORIZZA-NUOVO
-
-              accept path-fileseq from environment "PATH_AUTO_PROMO"
-                              
-              accept separatore from environment "SEPARATORE"
-                     on exception move ";" to separatore
-                 not on exception
-                     if separatore = space
-                        move ";" to separatore
-                     end-if
-              end-accept
-
-              open input fileseq
-              move 1 to riga
-              if status-fileseq = "00"
-                 read fileseq next |Salto l'ìntestazione
-                 perform until 1 = 2
-                    initialize rec-stampa
-                    read fileseq next at end exit perform end-read
-                    unstring rec-stampa delimited by separatore
-                        into r-art
-                             r-prz-v
-                             r-prz-a
-                             r-qta 
-                    move r-art to art-codice convert
-                    read articoli no lock 
-                         invalid move "*** NON TROVATO ***" to 
-           art-descrizione
-                    end-read
-                    move art-codice      to col-art
-                    move art-descrizione to col-des
-                    move r-prz-v         to col-ven convert
-                    move r-prz-a         to col-acq convert
-                    move r-qta           to col-qta convert
-                    add 1 to riga                          
-                    modify gd1 (riga, 1), cell-data col-art
-                    modify gd1 (riga, 2), cell-data col-des
-                    modify gd1 (riga, 3), cell-data col-ven
-                    modify gd1 (riga, 4), cell-data col-acq
-                    modify gd1 (riga, 5), cell-data col-qta
-                 end-perform
-                 close fileseq
-              end-if
+              perform VALORIZZA-NUOVO 
 
               perform INIT-OLD-REC
               move tpr-chiave of tpromo to old-tpr-chiave
@@ -8789,7 +8777,7 @@
               else
                  move "LOCALE"    to lab-tipo-buf
               end-if
-              display lab-tipo-volantino
+              display lab-tipo-volantino  
 
            end-if.
 
@@ -10332,6 +10320,57 @@
                  display message "Creata promo n. " link-tpr-codice
                            title titolo
                             icon 2
+              end-if
+           end-if 
+           .
+      * <TOTEM:END>
+       pb-importa-LinkTo.
+      * <TOTEM:PARA. pb-importa-LinkTo>
+           initialize opensave-data.
+
+           accept opnsav-default-dir from environment "PATH_AUTO_PROMO"
+           inspect opnsav-default-dir replacing trailing spaces by 
+           low-value
+           initialize opnsav-filters
+           move "CSV files (*.csv)|*.csv" to opnsav-filters.
+           move 1 to opnsav-default-filter
+           move "Geslux -  Selezione righe aggiuntive" to opnsav-title
+           call "C$OPENSAVEBOX" using opensave-save-box, 
+                                      opensave-data,
+                               giving opensave-status
+      
+           if opensave-status = 1
+              move opnsav-filename to path-fileseq
+              open input fileseq
+              inquire gd1, last-row in store-riga
+              if status-fileseq = "00"
+                 read fileseq next |Salto l'ìntestazione
+                 perform until 1 = 2
+                    initialize rec-stampa
+                    read fileseq next at end exit perform end-read
+                    unstring rec-stampa delimited by separatore
+                        into r-art
+                             r-prz-v
+                             r-prz-a
+                             r-qta 
+                    move r-art to art-codice convert
+                    read articoli no lock 
+                         invalid move "*** NON TROVATO ***" to 
+           art-descrizione
+                    end-read
+                    move art-codice      to col-art
+                    move art-descrizione to col-des
+                    move r-prz-v         to col-ven convert
+                    move r-prz-a         to col-acq convert
+                    move r-qta           to col-qta convert
+                    add 1 to store-riga
+                    modify gd1(store-riga, 1), cell-data col-art
+                    modify gd1(store-riga, 2), cell-data col-des
+                    modify gd1(store-riga, 3), cell-data col-ven
+                    modify gd1(store-riga, 4), cell-data col-acq
+                    modify gd1(store-riga, 5), cell-data col-qta
+                 end-perform
+                 close fileseq
               end-if
            end-if 
            .
