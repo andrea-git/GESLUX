@@ -286,17 +286,17 @@
 
               move cli-ragsoc-1       to st-cli-ragsoc-1
               move st-riga-cli-rec-1  to spl-riga-stampa
-              move 1                  to spl-tipo-colonna
+              move 1,1                to spl-tipo-colonna
               perform SCRIVI
 
               move spaces             to spl-riga-stampa 
-              move 1                  to spl-tipo-colonna
+              move 1,1                to spl-tipo-colonna
               add spl-passo           to spl-riga
               perform SCRIVI
       
               move cli-indirizzo      to st-cli-indirizzo
               move st-riga-cli-rec-2  to spl-riga-stampa 
-              move 1                  to spl-tipo-colonna
+              move 1,1                to spl-tipo-colonna
               add spl-passo           to spl-riga
               perform SCRIVI
       
@@ -304,7 +304,7 @@
               move cli-localita       to st-cli-localita
               move cli-prov           to st-cli-prov
               move st-riga-cli-rec-3  to spl-riga-stampa 
-              move 2                  to spl-tipo-colonna
+              move 2,1                to spl-tipo-colonna
               add spl-passo           to spl-riga
               perform SCRIVI
 
@@ -312,17 +312,17 @@
 
               move cli-ragsoc-1       to st-rec-ragsoc-1
               move st-riga-cli-rec-1  to spl-riga-stampa
-              move 1                  to spl-tipo-colonna
+              move 1,1                to spl-tipo-colonna
               perform SCRIVI
 
               move spaces             to spl-riga-stampa
-              move 1                  to spl-tipo-colonna
+              move 1,1                to spl-tipo-colonna
               add spl-passo           to spl-riga
               perform SCRIVI
 
               move cli-indirizzo      to st-rec-indirizzo
               move st-riga-cli-rec-2  to spl-riga-stampa
-              move 1                  to spl-tipo-colonna
+              move 1,1                to spl-tipo-colonna
               add spl-passo           to spl-riga
               perform SCRIVI
 
@@ -330,7 +330,7 @@
               move cli-localita       to st-rec-localita
               move cli-prov           to st-rec-provincia
               move st-riga-cli-rec-3  to spl-riga-stampa
-              move 2                  to spl-tipo-colonna
+              move 2,1                to spl-tipo-colonna
               add spl-passo           to spl-riga
               perform SCRIVI
 
@@ -358,7 +358,7 @@
       *     move cli-abi               to st-cli-abi. 
       *     move cli-cab               to st-cli-cab.
            move st-riga-int-1         to spl-riga-stampa.
-           move 3                     to spl-tipo-colonna.
+           move 3,1                   to spl-tipo-colonna.
            add spl-passo              to spl-riga.
            perform SCRIVI.
 
