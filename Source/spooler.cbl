@@ -1105,19 +1105,19 @@
                                           51
                                     giving return-code
                                    
-                move 1,7                to winprint-col-start
+                move 2,0                to winprint-col-start
                 move wprtalign-left     to winprint-col-alignment
                 call "WIN$PRINTER"   using winprint-set-page-column,
                                            winprint-column
                                     giving return-code
                                    
-                move 7,7                to winprint-col-start
+                move 8,6                to winprint-col-start
                 move wprtalign-right    to winprint-col-alignment
                 call "WIN$PRINTER"   using winprint-set-page-column,
                                            winprint-column
                                     giving return-code
                                   
-                move 16,0               to winprint-col-start
+                move 16,85              to winprint-col-start
                 call "WIN$PRINTER"   using winprint-set-page-column, 
                                            winprint-column
                                     giving return-code  
@@ -4353,6 +4353,7 @@
                 call "WIN$PRINTER"  using winprint-set-page-column,
                                           winprint-column
                                    giving return-code
+
 
                 |"Q.ta"
                 move 16,7               to winprint-col-start
