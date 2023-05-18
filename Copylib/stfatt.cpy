@@ -773,7 +773,7 @@ OMAGGI SCRITTURA-RIGA.
            move CourierNew11   to spl-hfont.
            move 0,9            to spl-passo.
            move 23,6           to spl-riga.
-           move 8              to spl-tipo-colonna.
+           move 8,1            to spl-tipo-colonna.
 
            perform CALCOLA-IVA.
 
