@@ -729,9 +729,11 @@ OMAGGI        end-if
 
       ***---
        STAMPA-NOTE-TOTALI-GRAF.
-           if tor-contrassegno-si
-              accept contras-note-bolla 
-                     from environment "CONTRAS_NOTE_BOLLA"
+           if tor-contrassegno-si                         
+              accept contras-note-bolla-pre
+                     from environment "CONTRAS_NOTE_BOLLA_PRE"
+              accept contras-note-bolla-post
+                     from environment "CONTRAS_NOTE_BOLLA_POST"
 
               move tor-anno   to ror-anno of rordini
               move tor-numero to ror-num-ordine of rordini
@@ -829,13 +831,17 @@ OMAGGI        end-if
            move 55 to limite.
            move line-riga(1:21) to line-riga(limite:21).
                   
-           if tor-contrassegno-si     
-              inspect contras-note-bolla 
+           if tor-contrassegno-si                           
+              inspect contras-note-bolla-pre
+                      replacing trailing spaces by low-value
+              inspect contras-note-bolla-post 
                       replacing trailing spaces by low-value
               initialize ini-contras-bolla
-              string  contras-note-bolla delimited low-value
-                      " "                delimited size
-                      tot-bolla-x        delimited low-value
+              string  contras-note-bolla-pre  delimited low-value
+                      " "                     delimited size
+                      tot-bolla-x             delimited low-value
+                      " "                     delimited size
+                      contras-note-bolla-post delimited low-value
                  into ini-contras-bolla
               end-string
               move spaces to line-riga(1:limite - 1)

@@ -490,8 +490,9 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
        77  como-data               pic 9(8).
        77  como-lst-data           pic 9(8).
        77  como-ora                pic 9(8).
-       77  como-bolla              pic 9(8).
-       77  contras-note-bolla      pic x(100).
+       77  como-bolla              pic 9(8).  
+       77  contras-note-bolla-pre  pic x(100).
+       77  contras-note-bolla-post pic x(100).
        77  tot-bolla-x             pic x(20).
        77  tot-bolla-z             pic zzz.zzz.zzz.zzz,zz.
        77  tot-bolla-n             pic 9(15)v99.
@@ -986,9 +987,11 @@ LUBEXX***  scarrellamento fisso iniziale della carta
            perform EXIT-PGM.
 
       ***---
-       INIT.  
-           accept contras-note-bolla 
-                  from environment "CONTRAS_NOTE_BOLLA".
+       INIT.                            
+           accept contras-note-bolla-pre
+                  from environment "CONTRAS_NOTE_BOLLA_PRE".
+           accept contras-note-bolla-post
+                  from environment "CONTRAS_NOTE_BOLLA_POST".
            if stbolle-stampa
               move 99999999 to stbolle-prima-bolla
            end-if.
@@ -2851,13 +2854,17 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
               perform STAMPA-RIGA 
               move "@+3" to line-riga
               perform STAMPA-RIGA
-                            
-              inspect contras-note-bolla 
+                                                            
+              inspect contras-note-bolla-pre 
+                      replacing trailing spaces by low-value
+              inspect contras-note-bolla-post
                       replacing trailing spaces by low-value
               initialize line-riga
-              string  contras-note-bolla delimited low-value
-                      " "                delimited size
-                      tot-bolla-x        delimited low-value
+              string  contras-note-bolla-pre  delimited low-value
+                      " "                     delimited size
+                      tot-bolla-x             delimited low-value
+                      " "                     delimited size
+                      contras-note-bolla-post delimited low-value
                  into line-riga
               end-string
               perform STAMPA-RIGA
@@ -2910,13 +2917,17 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
               move "@<0049" to line-riga
               perform STAMPA-RIGA 
               move "@+3" to line-riga
-              perform STAMPA-RIGA
-              inspect contras-note-bolla 
+              perform STAMPA-RIGA                           
+              inspect contras-note-bolla-pre 
+                      replacing trailing spaces by low-value
+              inspect contras-note-bolla-post
                       replacing trailing spaces by low-value
               initialize line-riga
-              string  contras-note-bolla delimited low-value
-                      " "                delimited size
-                      tot-bolla-x        delimited low-value
+              string  contras-note-bolla-pre  delimited low-value
+                      " "                     delimited size
+                      tot-bolla-x             delimited low-value
+                      " "                     delimited size
+                      contras-note-bolla-post delimited low-value
                  into line-riga
               end-string
               perform STAMPA-RIGA

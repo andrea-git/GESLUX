@@ -172,8 +172,9 @@
        77  como-iva-2dec           pic 9(12)v99.
        01  filler                  pic 9 value 0.
          88 trovataIva                   value 1, false 0.
-
-       77  contras-note-bolla      pic x(100).
+                                              
+       77  contras-note-bolla-pre  pic x(100).
+       77  contras-note-bolla-post pic x(100).
        77  ini-contras-bolla       pic x(50).
        77  tot-bolla-x             pic x(20).
        77  tot-bolla-z             pic zzz.zzz.zzz.zzz,zz.
