@@ -175,7 +175,7 @@
                                               
        77  contras-note-bolla-pre  pic x(100).
        77  contras-note-bolla-post pic x(100).
-       77  ini-contras-bolla       pic x(50).
+       77  ini-contras-bolla       pic x(100).
        77  tot-bolla-x             pic x(20).
        77  tot-bolla-z             pic zzz.zzz.zzz.zzz,zz.
        77  tot-bolla-n             pic 9(15)v99.
