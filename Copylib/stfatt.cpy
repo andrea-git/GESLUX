@@ -566,7 +566,7 @@
       ***---
        STAMPA-BITMAP.
            set spl-bitmap to true.
-           move 2,5 to spl-colonna.
+           move 2,0 to spl-colonna.
            move 3 to spl-riga.
 
            evaluate true
@@ -578,7 +578,7 @@
            end-evaluate.         
                                           
            move 26,8 to spl-bitmap-height.
-           move 20,2 to spl-bitmap-width.
+           move 19,8 to spl-bitmap-width.
 
            call "spooler" using spooler-link.
                       
