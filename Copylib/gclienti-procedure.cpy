@@ -3522,6 +3522,8 @@ LUBEXX     if tutto-ok perform SALVA-RIGA end-if.
                        invalid rewrite not-rec of note 
                  end-write
               else
+                 unlock note1 all records 
+                 move des-prog to not-prog of note
                  delete note record invalid continue end-delete
               end-if
 
@@ -4867,6 +4869,7 @@ LUBEXX     delete lockfile record invalid continue end-delete.
               accept ecd-ora-modifica-OLD  from time
               move user-codi to ecd-utente-modifica-OLD
            end-if.
+
            write ecd-rec-OLD invalid rewrite ecd-rec-OLD end-write.      
       
       ***---

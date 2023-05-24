@@ -96,7 +96,8 @@
       ***** 77  path-tmp-ricalimp     pic x(256).
        77  status-log-progmag    pic xx.    
        77  path-log-progmag      pic x(256).
-       77  path-ra-log           pic x(256).
+       77  path-ra-log           pic x(256).  
+       77  cod-err               pic x(4).
 
        77  como-valore           pic s9(8).
        77  como-impegnato        pic s9(8).
@@ -183,8 +184,9 @@
            end-evaluate.  
 
       ***---
-       RA-SEMAFORO-ERR SECTION.
+       RA-SEMAFORO-ERR SECTION.   
            use after error procedure on ra-semaforo.
+           call "C$RERR" using cod-err.
            set RecLocked to false.
            set tutto-ok  to true.
            evaluate status-ra-semaforo
@@ -237,7 +239,10 @@
                     if status-ra-semaforo not = "00"
                        display message 
                                "ELABORAZIONE INTERROTTA."
-                        x"0d0a""CONTATTARE ASSISTENZA CON CODICE RA-2"
+                        x"0d0a""CONTATTARE ASSISTENZA CON CODICE RA-2:"
+                        x"0d0a"status-ra-semaforo
+                        x"0d0a"cod-err
+                        x"0d0a""LOG: "path-ra-log
                                  title tit-err
                        goback
                     end-if
@@ -795,6 +800,7 @@ LUBEXX        end-if
       *****     if mro-qta > mro-qta-e
       *****        compute como-valore = mro-qta - mro-qta-e
       *****     else
+
       *****        move 0       to como-valore
       *****     end-if.
       *****     move como-valore to como-impegnato.
