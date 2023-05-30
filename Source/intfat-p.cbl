@@ -767,10 +767,12 @@ LUBEXX              end-if
                     read clienti no lock
                          invalid set record-ok to false
                      not invalid
-                         move cli-tipo to tcl-codice
-                         read ttipocli no lock
-                              invalid set record-ok to false
-                         end-read
+                         if cli-tipo-C
+                            move cli-tipo to tcl-codice
+                            read ttipocli no lock
+                                 invalid set record-ok to false
+                            end-read
+                         end-if
                     end-read
                  end-if
 
