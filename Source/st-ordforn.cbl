@@ -3801,6 +3801,11 @@ quii       call "spooler"       using spooler-link.
                  end-if
               end-if
            end-perform.     
+                             
+           move aor-qta               to como-pic-z7.
+           move como-pic-z7           to r-stof-qta.
+           perform SCRIVI-RIGA-CSV.
+           move spaces to r-stof-qta.
 
            move r-stof-riga    to spl-riga-stampa.
 
