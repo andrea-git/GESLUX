@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 2 maggio 2023 16:54:07.
+       DATE-WRITTEN.        giovedì 1 giugno 2023 16:46:33.
        REMARKS.
       *{TOTEM}END
 
@@ -6887,7 +6887,7 @@
            move 0           to stof-tof-data-da.
            move 99999999    to stof-tof-data-a.
            if t-mail   
-              set stof-pdf     to true
+              set stof-pdf-csv to true
            else
               set stof-normale to true
            end-if

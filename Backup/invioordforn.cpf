@@ -8,7 +8,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E752145058-832-295823796
+PROGRAM_UNIQUE_CODE=TOTEM-7E76114420-278-3247220732
 
 {{@DESCRIPTION:
 
@@ -5010,7 +5010,7 @@ BEGIN-TEXT
            move 0           to stof-tof-data-da.
            move 99999999    to stof-tof-data-a.
            if t-mail   
-              set stof-pdf     to true
+              set stof-pdf-csv to true
            else
               set stof-normale to true
            end-if

@@ -30,6 +30,12 @@
            copy "tparamge.sl".
            copy "lineseq.sl".
 
+       SELECT fileCSV
+           ASSIGN       TO path-fileCSV
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-fileCSV.
+
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.
@@ -55,6 +61,9 @@
            copy "tgrupgdo.fd".
            copy "tparamge.fd".
            copy "lineseq.fd".
+
+       FD  fileCSV.
+       01 csv-riga        PIC  x(1000).
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -162,6 +171,7 @@
        77  como-pic-94v92 pic --.--9,99.
        77  como-pic-94v94 pic --.--9,9999.
 
+       77  separatore             pic x.
        77  DestFile               pic x(256).
        77  NomeFile               pic x(256).
        77  PathCreaPDF            pic x(256).
@@ -185,49 +195,54 @@
            05 como-cc             pic 99.
        77  como-ss-end            pic 9(8).
 
+       01  filler                 pic 9 value 0.
+         88 stampa-csv                  value 1, false 0.
+
        77  logo-handle            handle of bitmap.
 
        78  titolo             value "GESLUX - Stampa Ordine fornitore".
        78  MaxRighe           value 33.
        78  MaxRighe-articoli  value 40.
                                  
-       77  status-tordforn         pic xx.
-       77  status-rordforn         pic xx.
-       77  status-nordforn         pic xx.
-       77  status-articoli         pic xx.
-       77  status-art-ordforn      pic xx.
-       77  status-clienti          pic xx.
-       77  status-destinif         pic xx.
-       77  status-destini          pic xx.
-       77  status-timballi         pic xx.
-       77  status-timbalqta        pic xx.
-       77  status-progmag          pic xx.
-       77  status-rlistini         pic xx.
-       77  status-tcodpag          pic xx.
-       77  status-tivaese          pic xx.
-       77  status-tmagaz           pic xx.
-       77  status-tcaumag          pic xx.
-       77  status-impforn          pic xx.
-       77  status-user             pic xx.
-       77  status-tpromo           pic xx. 
-       77  status-tgrupgdo         pic xx. 
-       77  status-tparamge         pic xx. 
-       77  status-lineseq          pic xx.
-       77  wstampa                 pic x(256).
+       77  status-tordforn       pic xx.
+       77  status-rordforn       pic xx.
+       77  status-nordforn       pic xx.
+       77  status-articoli       pic xx.
+       77  status-art-ordforn    pic xx.
+       77  status-clienti        pic xx.
+       77  status-destinif       pic xx.
+       77  status-destini        pic xx.
+       77  status-timballi       pic xx.
+       77  status-timbalqta      pic xx.
+       77  status-progmag        pic xx.
+       77  status-rlistini       pic xx.
+       77  status-tcodpag        pic xx.
+       77  status-tivaese        pic xx.
+       77  status-tmagaz         pic xx.
+       77  status-tcaumag        pic xx.
+       77  status-impforn        pic xx.
+       77  status-user           pic xx.
+       77  status-tpromo         pic xx. 
+       77  status-tgrupgdo       pic xx. 
+       77  status-tparamge       pic xx. 
+       77  status-lineseq        pic xx.
+       77  status-fileCSV        pic xx.    
+       77  wstampa               pic x(256).
+       77  path-fileCSV          pic x(256).
 
 
-       77  Arial14BI     handle of font.
-       77  Arial13BI     handle of font.
-       77  Arial20BI     handle of font.
-       77  arial5B       handle of font.
-       77  arial7B       handle of font.
-       77  arial5        handle of font.
-       77  arial6        handle of font.
-       77  arial6b       handle of font.
-       77  arial4        handle of font.
-       77  font-note     handle of font.
-       77  font-noteB    handle of font.
-       77  courier12     handle of font.
+       77  Arial14BI             handle of font.
+       77  Arial13BI             handle of font.
+       77  Arial20BI             handle of font.
+       77  arial5B               handle of font.
+       77  arial7B               handle of font.
+       77  arial5                handle of font.
+       77  arial6                handle of font.
+       77  arial6b               handle of font.
+       77  arial4                handle of font.
+       77  font-note             handle of font.
+       77  font-noteB            handle of font.
+       77  courier12             handle of font.
 
        77  messaggio             pic x(150)  value spaces.
        77  wfont-status          pic s9(5)   value zero.
@@ -644,6 +659,10 @@
 
       ***---
        INIT.
+           if stof-pdf-csv
+              set stampa-csv to true
+              set stof-pdf   to true
+           end-if.
            accept ru-user from environment "USER_CODI".
            call   "readutente" using ru-linkage.
            cancel "readutente".
@@ -1207,9 +1226,13 @@
                  end-if
               end-if
            end-perform.
+                        
+           move rof-qta-ord  to como-pic-z7.
+           move como-pic-z7  to r-stof-qta.           
+           perform SCRIVI-RIGA-CSV.
+           move spaces to r-stof-qta.
 
            move r-stof-riga to spl-riga-stampa.
-
            set  spl-oggetto     to true.
            set  SPL-linea       to true.
            set  spl-brush-null  to true.
@@ -1240,8 +1263,9 @@
            move arial6b      to spl-hfont.
            move 1            to spl-tipo-colonna.
 
-           call "spooler" using spooler-link.
+           call "spooler" using spooler-link.   
 
+           
            if rof-manuale-si 
               move Arial20BI to spl-hfont
               move 28,6    to spl-colonna
@@ -1876,6 +1900,9 @@
            close tpromo.
            close tgrupgdo.
            close tparamge.
+           if stampa-csv
+              close fileCSV
+           end-if.
 
       ***---
        EXIT-PGM.
@@ -2255,6 +2282,53 @@ quii       call "spooler"       using spooler-link.
            move r-stof-riga-testa        to spl-riga-stampa
            call "spooler" using spooler-link.
 
+           initialize csv-riga.
+           string "COD LUBEX"            delimited size
+                  separatore             delimited size
+                  "DESCRIZIONE PRODOTTO" delimited size
+                  separatore             delimited size
+                  "CODICE FORNITORE"     delimited size
+                  separatore             delimited size
+                  "SALDO PEZZI"          delimited size
+                  separatore             delimited size
+                  "PZ X LT/KG"           delimited size
+                  separatore             delimited size
+                  "PESO NETTO"           delimited size
+                  separatore             delimited size
+                  "TOTALE KG (NETTI)"    delimited size
+                  separatore             delimited size
+                  "TOTALE KG (UTF)"      delimited size
+                  separatore             delimited size
+                  "LISTINO RISERVATO"    delimited size
+                  separatore             delimited size
+                  "SC.%"                 delimited size
+                  separatore             delimited size
+                  "SC.%"                 delimited size
+                  separatore             delimited size
+                  "SC.%"                 delimited size
+                  separatore             delimited size
+                  "SC.%"                 delimited size
+                  separatore             delimited size
+                  "SC.%"                 delimited size
+                  separatore             delimited size
+                  "NETTO"                delimited size
+                  separatore             delimited size
+                  "IMPOSTA AL PEZZO"     delimited size
+                  separatore             delimited size
+                  "CONTRIBUTO CONSORZIO" delimited size
+                  separatore             delimited size
+                  "ADD. PIOMBO"          delimited size
+                  separatore             delimited size
+                  "COSTI AGGIUNTIVI"     delimited size
+                  separatore             delimited size
+                  "TOTALE UNITARIO"      delimited size
+                  separatore             delimited size
+                  "IMPORTO TOTALE"       delimited size
+                  separatore             delimited size
+             into csv-riga
+           end-string.
+           write csv-riga.
+
 
       *    riga per intestazioni singole
            move 4,7          to spl-riga.
@@ -2614,7 +2688,7 @@ quii       call "spooler"       using spooler-link.
 
            inspect cli-ragsoc-1 replacing trailing space by low-value
            inspect cli-ragsoc-1 replacing all space by "_"
-
+                            
            string num-edit         delimited spaces
                   "_"              delimited size
                   tof-anno         delimited size  
@@ -2637,6 +2711,47 @@ quii       call "spooler"       using spooler-link.
       *****            ".pdf"          delimited size
                   into NomeFile
            end-string.
+
+           if stampa-csv             
+              accept separatore from environment "SEPARATORE"
+                     on exception move "," to separatore
+                 not on exception
+                     if separatore = space
+                        move "," to separatore
+                     end-if
+              end-accept
+
+              initialize path-fileCSV
+              accept  path-fileCSV from environment "PATH_ST"
+              inspect path-fileCSV 
+                      replacing trailing spaces by low-value
+              string path-fileCSV     delimited low-value
+                     num-edit         delimited spaces
+                     "_"              delimited size
+                     tof-anno         delimited size  
+                     "_"              delimited size
+                     cli-ragsoc-1     delimited low-value
+                     "_("             delimited size
+                     como-data(7:2)   delimited size
+                     "-"              delimited size
+                     como-data(5:2)   delimited size
+                     "-"              delimited size
+                     como-data(1:4)   delimited size
+                     "_"              delimited size
+                     como-ora(1:2)    delimited size
+                     "-"              delimited size      
+                     como-ora(3:2)    delimited size
+                     "-"              delimited size   
+                     como-ora(5:2)    delimited size
+                     ")"              delimited size
+                     ".csv"           delimited size
+                     into path-fileCSV 
+              end-string             
+              inspect path-fileCSV 
+                      replacing trailing low-value by spaces
+              open output fileCSV
+           end-if.
+                            
                   
       *     accept selprint-stampante
       *            from environment "STAMPANTE_DIRETTA_ORDINI_PDF".
@@ -2995,13 +3110,21 @@ quii       call "spooler"       using spooler-link.
            move 1            to spl-tipo-colonna
            add 0,1           to  spl-riga.
       *     subtract 0,3      from spl-riga.
+           
+           move "TOTALI"     to r-stof-des.
+           move "SUB TOTALE" to r-stof-prz-fin.
+           move tot-qta               to como-pic-z7
+           move como-pic-z7           to r-stof-qta
+           perform SCRIVI-RIGA-CSV.            
+           move spaces to r-stof-qta
+
            move r-stof-riga  to spl-riga-stampa
            call "spooler" using spooler-link.
 
            initialize r-stof-riga
            move tot-qta               to como-pic-z7
            move como-pic-z7           to r-stof-qta
-
+                                       
            move r-stof-riga to spl-riga-stampa
            move arial6b       to spl-hfont.
            move 1            to spl-tipo-colonna.
@@ -3069,13 +3192,16 @@ quii       call "spooler"       using spooler-link.
            move arial6       to spl-hfont.
            move 1            to spl-tipo-colonna
            add 0,1           to  spl-riga.
-      *     subtract 0,3      from spl-riga.
+      *     subtract 0,3      from spl-riga.  
+           move "IVA" to r-stof-prz-fin.
+           perform SCRIVI-RIGA-CSV.
+
            move r-stof-riga  to spl-riga-stampa
            call "spooler" using spooler-link.
 
            move zero         to spl-tipo-colonna
-           move "IVA"to spl-riga-stampa  
-           move 26,3           to spl-colonna
+           move "IVA"        to spl-riga-stampa  
+           move 26,3         to spl-colonna
            call "spooler" using spooler-link.
 
       *    TOTALE FATTURA
@@ -3115,7 +3241,9 @@ quii       call "spooler"       using spooler-link.
            move arial7B      to spl-hfont.
            move 1            to spl-tipo-colonna
            add 0,1           to  spl-riga.
-      *     subtract 0,3      from spl-riga.
+      *     subtract 0,3      from spl-riga.  
+           move "TOTALE FATTURA" to r-stof-prz-fin.
+           perform SCRIVI-RIGA-CSV.
            move r-stof-riga        to spl-riga-stampa
            call "spooler" using spooler-link.
 
@@ -3672,7 +3800,7 @@ quii       call "spooler"       using spooler-link.
                     exit perform
                  end-if
               end-if
-           end-perform.
+           end-perform.     
 
            move r-stof-riga    to spl-riga-stampa.
 
@@ -3969,6 +4097,81 @@ quii       call "spooler"       using spooler-link.
 
       *    posizionamento per partenza righe
            move 2,0 to spl-riga.
+
+      ***---
+       SCRIVI-RIGA-CSV.
+           initialize line-riga.
+           string r-stof-art            delimited size
+                  separatore            delimited size
+                  r-stof-des            delimited size
+                  separatore            delimited size      
+                  R-STOF-COD-FORN       delimited size
+                  separatore            delimited size
+                  r-stof-qta            delimited size
+                  separatore            delimited size
+                  r-stof-imb            delimited size
+                  separatore            delimited size
+                  r-stof-peso-netto     delimited size
+                  separatore            delimited size
+                  r-stof-peso-tot-netto delimited size
+                  separatore            delimited size
+                  r-stof-peso-tot-utf   delimited size
+                  separatore            delimited size
+                  r-stof-prz-list       delimited size
+      *****            separatore            delimited size
+      *****            r-stof-prz-list-e     delimited size
+                  separatore            delimited size
+                  r-stof-sconto-1       delimited size
+                  separatore            delimited size
+      *****            r-stof-perce-1        delimited size
+      *****            separatore            delimited size
+                  r-stof-sconto-2       delimited size
+                  separatore            delimited size
+      *****            r-stof-perce-2        delimited size
+      *****            separatore            delimited size
+                  r-stof-sconto-3       delimited size
+                  separatore            delimited size
+      *****            r-stof-perce-3        delimited size
+      *****            separatore            delimited size
+                  r-stof-sconto-4       delimited size
+                  separatore            delimited size
+      *****            r-stof-perce-4        delimited size
+      *****            separatore            delimited size
+                  r-stof-sconto-5       delimited size
+                  separatore            delimited size
+      *****            r-stof-perce-5        delimited size
+      *****            separatore            delimited size
+                  r-stof-prz-net        delimited size
+                  separatore            delimited size
+      *****            r-stof-prz-net-e      delimited size
+      *****            separatore            delimited size
+                  r-stof-imp-cons       delimited size
+                  separatore            delimited size
+      *****            r-stof-imp-cons-e     delimited size
+      *****            separatore            delimited size
+                  r-stof-imp-cou        delimited size
+                  separatore            delimited size
+      *****            r-stof-imp-cou-e      delimited size
+      *****            separatore            delimited size
+                  r-stof-add-pb         delimited size
+                  separatore            delimited size
+      *****            r-stof-add-pb-e       delimited size
+      *****            separatore            delimited size
+                  r-stof-costi-agg      delimited size
+                  separatore            delimited size
+      *****            r-stof-costi-aggi-e   delimited size
+      *****            separatore            delimited size
+                  r-stof-prz-fin        delimited size
+                  separatore            delimited size
+      *****            r-stof-prz-fin-e      delimited size
+      *****            separatore            delimited size
+                  r-stof-prz-tot-fin    delimited size
+                  separatore            delimited size
+      *****            r-stof-prz-tot-fin-e  delimited size
+      *****            separatore            delimited size
+             into csv-riga
+           end-string.
+           write csv-riga.
 
 
       ***---

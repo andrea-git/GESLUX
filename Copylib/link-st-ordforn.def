@@ -6,8 +6,9 @@
                10 stof-tof-anno-a     PIC  9(4).
                10 stof-tof-numero-a   PIC  9(8).
            05 stof-tipo-stampa         pic x.
-              88 stof-normale          value "N".
+              88 stof-normale          value "N". 
               88 stof-pdf              value "P".
+              88 stof-pdf-csv          value "C".
       *****        88 stof-pdf-tmp          value "T".
               88 stof-scegli-stampante value "S".
               88 stof-anteprima        value "A".
