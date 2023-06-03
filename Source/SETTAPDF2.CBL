@@ -185,7 +185,7 @@
            else
               set settaPDF-OK to false
               move StatusFile to wstampa
-              perform 20 times             
+              perform 1 times             
                  open input lineseq
                  if status-lineseq = "00"
                     read lineseq next

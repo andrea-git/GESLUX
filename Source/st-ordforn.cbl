@@ -171,6 +171,11 @@
        77  como-pic-94v92 pic --.--9,99.
        77  como-pic-94v94 pic --.--9,9999.
 
+       77  como-dati-ordine       pic x(30).
+       77  como-consegna          pic x(50).
+       77  como-info              pic x(50).
+       77  como-promo             pic x(50).
+       77  como-scarico           pic x(50).
        77  separatore             pic x.
        77  DestFile               pic x(256).
        77  NomeFile               pic x(256).
@@ -795,7 +800,7 @@
                           perform STAMPA-TESTA
                        else
                           perform SALTO-PAGINA
-                       end-if
+                       end-if       
                        
       *                 perform STAMPA-TESTA
                        move low-value  to rof-rec
@@ -1426,19 +1431,20 @@
 
            move 2,35          to spl-riga.
            move 12,7          to spl-colonna.
-           initialize spl-riga-stampa
+           initialize como-dati-ordine
            if tof-rivisto-si
               string tof-numero(4:5)        delimited by size
                      "-"                    delimited by size
                      tof-anno               delimited by size
                      "          *RIVISTO*"  delimited by size
-                     into spl-riga-stampa
+                into como-dati-ordine
            else
               string tof-numero(4:5)        delimited by size
                      "-"                    delimited by size
                      tof-anno               delimited by size
-                     into spl-riga-stampa
+                into como-dati-ordine
            end-if
+           move como-dati-ordine to spl-riga-stampa
            call "spooler" using spooler-link.
 
            add 0,3           to spl-riga.
@@ -1477,6 +1483,7 @@
                  inspect spl-riga-stampa 
                                 replacing trailing low-value by space
            end-if
+           move spl-riga-stampa to como-info
 
            call "spooler" using spooler-link.
 
@@ -1535,29 +1542,31 @@
                    tblpa-descrizione1 delimited by low-value
                    " "                delimited by size
                    tblpa-descrizione2 delimited by size
-                   into spl-riga-stampa
+              into spl-riga-stampa
            call "spooler" using spooler-link.
 
            add 0,3                    to spl-riga.
            if tof-urgente
-              move "URGENTE" to spl-riga-stampa
+              move "URGENTE" to como-consegna
            else
       *        move space     to spl-riga-stampa
-              initialize spl-riga-stampa
+              initialize como-consegna
               string "TASSATIVA PER IL "    delimited size
                      tof-data-consegna(7:2) delimited size
                      "/"                    delimited size
                      tof-data-consegna(5:2) delimited size
                      "/"                    delimited size
                      tof-data-consegna(1:4) delimited size
-                     into spl-riga-stampa
+                     into como-consegna
               end-string
            end-if
+           move como-consegna to spl-riga-stampa
            call "spooler" using spooler-link.
 
            add 0,3                    to spl-riga.
            accept spl-riga-stampa from environment "ORDINI_FORN_SCARICO"
            call "spooler" using spooler-link.
+           move spl-riga-stampa to como-scarico.
 
            move 18,9  to spl-riga
            move 9,9   to spl-colonna
@@ -1579,6 +1588,127 @@
 
       *    posizionamento per partenza righe
            move 5,1 to spl-riga-fine.
+
+           if stampa-csv                
+              initialize csv-riga
+              string "Spett.le"        delimited size
+                     separatore        delimited size
+                     desf-ragsoc-1     delimited size
+                     separatore        delimited size
+                     "Ordine n."       delimited size
+                     separatore        delimited size
+                     como-dati-ordine  delimited size
+                     separatore        delimited size
+                     "Franco"          delimited size
+                     separatore        delimited size
+                     "VEDI NOTE"       delimited size
+                     separatore        delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+              initialize csv-riga
+              string "Signor"             delimited size
+                     separatore           delimited size
+                     tof-referente        delimited size
+                     separatore           delimited size
+                     "Data ordine"        delimited size
+                     separatore           delimited size
+                     tof-data-ordine(7:2) delimited size
+                     "/"                  delimited size
+                     tof-data-ordine(5:2) delimited size
+                     "/"                  delimited size
+                     tof-data-ordine(1:4) delimited size
+                     separatore           delimited size
+                     "Pagamento"          delimited size       
+                     separatore           delimited size
+                      tblpa-descrizione1  delimited low-value
+                      " "                 delimited size
+                      tblpa-descrizione2  delimited size
+                     separatore           delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+              initialize csv-riga
+              string "Tel"                delimited size
+                     separatore           delimited size
+                     tof-tel-dir          delimited size
+                     separatore           delimited size
+                     "Info utente"        delimited size
+                     separatore           delimited size
+                     como-info            delimited size
+                     separatore           delimited size
+                     "Consegna"           delimited size       
+                     separatore           delimited size
+                     como-consegna        delimited by size
+                     separatore           delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+              initialize csv-riga
+              string "Mail"               delimited size
+                     separatore           delimited size
+                     tof-email            delimited size
+                     separatore           delimited size
+                     "Info promo"         delimited size
+                     separatore           delimited size
+                     como-promo           delimited size
+                     separatore           delimited size
+                     "Scarico"            delimited size       
+                     separatore           delimited size
+                     como-scarico         delimited size
+                     separatore           delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+              write csv-riga from spaces
+
+              initialize csv-riga
+              string "COD LUBEX"            delimited size
+                     separatore             delimited size
+                     "DESCRIZIONE PRODOTTO" delimited size
+                     separatore             delimited size
+                     "CODICE FORNITORE"     delimited size
+                     separatore             delimited size
+                     "SALDO PEZZI"          delimited size
+                     separatore             delimited size
+                     "PZ X LT/KG"           delimited size
+                     separatore             delimited size
+                     "PESO NETTO"           delimited size
+                     separatore             delimited size
+                     "TOTALE KG (NETTI)"    delimited size
+                     separatore             delimited size
+                     "TOTALE KG (UTF)"      delimited size
+                     separatore             delimited size
+                     "LISTINO RISERVATO"    delimited size
+                     separatore             delimited size
+                     "SC.%"                 delimited size
+                     separatore             delimited size
+                     "SC.%"                 delimited size
+                     separatore             delimited size
+                     "SC.%"                 delimited size
+                     separatore             delimited size
+                     "SC.%"                 delimited size
+                     separatore             delimited size
+                     "SC.%"                 delimited size
+                     separatore             delimited size
+                     "NETTO"                delimited size
+                     separatore             delimited size
+                     "IMPOSTA AL PEZZO"     delimited size
+                     separatore             delimited size
+                     "CONTRIBUTO CONSORZIO" delimited size
+                     separatore             delimited size
+                     "ADD. PIOMBO"          delimited size
+                     separatore             delimited size
+                     "COSTI AGGIUNTIVI"     delimited size
+                     separatore             delimited size
+                     "TOTALE UNITARIO"      delimited size
+                     separatore             delimited size
+                     "IMPORTO TOTALE"       delimited size
+                     separatore             delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
 
       ***---
        SALTO-PAGINA.
@@ -2281,55 +2411,7 @@ quii       call "spooler"       using spooler-link.
 
            move r-stof-riga-testa        to spl-riga-stampa
            call "spooler" using spooler-link.
-
-           initialize csv-riga.
-           string "COD LUBEX"            delimited size
-                  separatore             delimited size
-                  "DESCRIZIONE PRODOTTO" delimited size
-                  separatore             delimited size
-                  "CODICE FORNITORE"     delimited size
-                  separatore             delimited size
-                  "SALDO PEZZI"          delimited size
-                  separatore             delimited size
-                  "PZ X LT/KG"           delimited size
-                  separatore             delimited size
-                  "PESO NETTO"           delimited size
-                  separatore             delimited size
-                  "TOTALE KG (NETTI)"    delimited size
-                  separatore             delimited size
-                  "TOTALE KG (UTF)"      delimited size
-                  separatore             delimited size
-                  "LISTINO RISERVATO"    delimited size
-                  separatore             delimited size
-                  "SC.%"                 delimited size
-                  separatore             delimited size
-                  "SC.%"                 delimited size
-                  separatore             delimited size
-                  "SC.%"                 delimited size
-                  separatore             delimited size
-                  "SC.%"                 delimited size
-                  separatore             delimited size
-                  "SC.%"                 delimited size
-                  separatore             delimited size
-                  "NETTO"                delimited size
-                  separatore             delimited size
-                  "IMPOSTA AL PEZZO"     delimited size
-                  separatore             delimited size
-                  "CONTRIBUTO CONSORZIO" delimited size
-                  separatore             delimited size
-                  "ADD. PIOMBO"          delimited size
-                  separatore             delimited size
-                  "COSTI AGGIUNTIVI"     delimited size
-                  separatore             delimited size
-                  "TOTALE UNITARIO"      delimited size
-                  separatore             delimited size
-                  "IMPORTO TOTALE"       delimited size
-                  separatore             delimited size
-             into csv-riga
-           end-string.
-           write csv-riga.
-
-
+                              
       *    riga per intestazioni singole
            move 4,7          to spl-riga.
            initialize r-stof-riga-testa.
@@ -3116,6 +3198,8 @@ quii       call "spooler"       using spooler-link.
            move tot-qta               to como-pic-z7
            move como-pic-z7           to r-stof-qta
            perform SCRIVI-RIGA-CSV.            
+           move spaces to r-stof-des.
+           move spaces to r-stof-prz-fin.
            move spaces to r-stof-qta
 
            move r-stof-riga  to spl-riga-stampa
@@ -3194,7 +3278,8 @@ quii       call "spooler"       using spooler-link.
            add 0,1           to  spl-riga.
       *     subtract 0,3      from spl-riga.  
            move "IVA" to r-stof-prz-fin.
-           perform SCRIVI-RIGA-CSV.
+           perform SCRIVI-RIGA-CSV.           
+           move spaces to r-stof-prz-fin.
 
            move r-stof-riga  to spl-riga-stampa
            call "spooler" using spooler-link.
@@ -3243,7 +3328,8 @@ quii       call "spooler"       using spooler-link.
            add 0,1           to  spl-riga.
       *     subtract 0,3      from spl-riga.  
            move "TOTALE FATTURA" to r-stof-prz-fin.
-           perform SCRIVI-RIGA-CSV.
+           perform SCRIVI-RIGA-CSV.                
+           move spaces to r-stof-prz-fin.
            move r-stof-riga        to spl-riga-stampa
            call "spooler" using spooler-link.
 
@@ -3307,6 +3393,15 @@ quii       call "spooler"       using spooler-link.
            end-if.                                         
            call "spooler" using spooler-link
 
+           write csv-riga from spaces.
+           initialize csv-riga.
+           string "Note"          delimited size
+                  separatore      delimited size
+                  spl-riga-stampa delimited size
+             into csv-riga
+           end-string.
+           write csv-riga.
+
            add 0,3  to spl-riga.
            move spaces to spl-riga-stampa.
            accept spl-riga-stampa from environment "RIGA_NOTE_ORDF_2".
@@ -3315,7 +3410,13 @@ quii       call "spooler"       using spooler-link.
       -         "-697620, C/DEPOSITO SLI 0143-677767 - lo scarico non pr
       -         "enotato verrà respinto" to spl-riga-stampa
            end-if
-           call "spooler" using spooler-link
+           call "spooler" using spooler-link       
+           initialize csv-riga.
+           string separatore      delimited size
+                  spl-riga-stampa delimited size
+             into csv-riga
+           end-string.
+           write csv-riga.
 
            add 0,3  to spl-riga.                                      
            move spaces to spl-riga-stampa.
@@ -3324,19 +3425,21 @@ quii       call "spooler"       using spooler-link.
               move "I BANCALI RICEVUTI SU CUI E' POSTA LA MERCE VERRANNO
       -         " CONSIDERATI A PERDERE"             to spl-riga-stampa
            end-if.
-           call "spooler" using spooler-link
+           call "spooler" using spooler-link    
+           initialize csv-riga.
+           string separatore      delimited size
+                  spl-riga-stampa delimited size
+             into csv-riga
+           end-string.
+           write csv-riga.
       *
-           move tof-chiave   to nof-chiave-ordine
-           move low-value    to nof-num-nota
-           start nordforn key not < nof-chiave
-              invalid
-                 continue
-              not invalid
+           move tof-chiave to nof-chiave-ordine
+           move low-value  to nof-num-nota
+           start nordforn key >= nof-chiave
+                 invalid continue
+             not invalid
                  perform 6 times
-                    read nordforn next
-                       at end
-                          exit perform
-                    end-read
+                    read nordforn next at end exit perform end-read
                     if tof-chiave not = nof-chiave-ordine
                        exit perform
                     end-if
@@ -3346,9 +3449,10 @@ quii       call "spooler"       using spooler-link.
                  end-perform
            end-start.
 
-           if not franco
+      *****     if not franco
               perform DATI-CONSEGNA
-           end-if.
+      *****     end-if.
+           .
 
       **    firma del BUYER
       *     move Arial13BI          to spl-hfont.
@@ -3405,8 +3509,7 @@ quii       call "spooler"       using spooler-link.
            add 1,4                 to spl-colonna
            move "DATI DI CONSEGNA" to spl-riga-stampa
            call "spooler"       using spooler-link.
-           subtract  1,4         from spl-colonna
-
+           subtract  1,4         from spl-colonna       
 
            if tca-cod-magaz = "EXD"
               move tof-cliente     to z4
@@ -3986,7 +4089,8 @@ quii       call "spooler"       using spooler-link.
                   tpr-fine-volantino(5:2) delimited by size
                   "/"                     delimited by size
                   tpr-fine-volantino(1:4) delimited by size
-                  into spl-riga-stampa.
+             into spl-riga-stampa.
+           move spl-riga-stampa to como-promo.
 
       ***---
        STAMPA-LISTA-ARTICOLI.
@@ -4105,7 +4209,7 @@ quii       call "spooler"       using spooler-link.
 
       ***---
        SCRIVI-RIGA-CSV.
-           initialize line-riga.
+           initialize csv-riga.
            string r-stof-art            delimited size
                   separatore            delimited size
                   r-stof-des            delimited size
