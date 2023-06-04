@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 1 giugno 2023 16:46:33.
+       DATE-WRITTEN.        domenica 4 giugno 2023 22:22:51.
        REMARKS.
       *{TOTEM}END
 
@@ -108,6 +108,7 @@
                   USAGE IS HANDLE OF WINDOW.
        77 STATUS-clienti   PIC  X(2).
            88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
+       77 como-path-csv    PIC  x(300).
        77 Default-Font
                   USAGE IS HANDLE OF FONT DEFAULT-FONT.
        77 Form1-Handle
@@ -6140,6 +6141,8 @@
            if stof-path-pdf = spaces
               set errori to true
            else
+              move stof-path-pdf to como-path-csv
+              inspect como-path-csv replacing all ".pdf" by ".csv"
               perform INVIO-MAIL
            end-if.              
 
@@ -6569,7 +6572,14 @@
            perform PREPARA-INDIRIZZO.
            perform PREPARA-INDIRIZZO-CC.
            perform PREPARA-FROM.
-           move stof-path-pdf to LinkAttach.
+                                                                        
+           inspect stof-path-pdf replacing trailing spaces by low-value.
+           initialize LinkAttach.
+           string stof-path-pdf delimited low-value
+                  ";"           delimited size
+                  como-path-csv delimited size
+             into LinkAttach
+           end-string.
 
            perform CONTROLLA-FILE-INVIATO.
 
