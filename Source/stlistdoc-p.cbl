@@ -7,8 +7,9 @@
        FILE-CONTROL.
            copy "tordini.sl".
            copy "clienti.sl".
-           copy "tvettori.sl".
+           copy "tvettori.sl".   
            copy "lineseq.sl".
+           copy "ttipocli.sl".
 
        select sort-tordini assign to 
               status status-sort-tordini.
@@ -19,7 +20,8 @@
            copy "tordini.fd".
            copy "clienti.fd". 
            copy "tvettori.fd".
-           copy "lineseq.fd".
+           copy "lineseq.fd".   
+           copy "ttipocli.fd".
 
        SD sort-tordini.
        01  sort-rec.
@@ -37,7 +39,8 @@
        77  status-tordini        pic xx.
        77  status-lineseq        pic xx.
        77  status-clienti        pic xx.
-       77  status-tvettori       pic xx.
+       77  status-tvettori       pic xx. 
+       77  status-ttipocli       pic xx.
        77  status-sort-tordini   pic xx.
        77  wstampa               pic x(256).
        77  como-data             pic 9(8).
@@ -51,23 +54,29 @@
            88  errori            value "ER".
        78  titolo value "Lista Documenti".
 
+       77  separatore       pic x.
+
        01  st-titolo.
            05 filler        pic x(28).
            05 st-fisso      pic x(6) value "Lista ".
            05 st-titdoc     pic x(20).
 
        01  st-testa.
-           05 st-tp         pic x(4)  value "Caus".
-           05 filler        pic x(5).
+           05 st-tp         pic x(7)  value "Causale".
+           05 filler        pic x(5).             
            05 st-nr         pic x(3)  value "Nr.".
            05 filler        pic x.
-           05 st-vt         pic x(2)  value "Vt".
-           05 filler        pic x(4).
-           05 st-cli        pic x(3)  value "Cli".
+           05 st-dt         pic x(10) value "Data bozza".
            05 filler        pic x.
-           05 st-ds         pic x(2)  value "Ds".
-           05 filler        pic x(9).
+           05 st-vt         pic x(7)  value "Vettore".
+           05 filler        pic x(4).
+           05 st-cli        pic x(7)  value "Cliente".
+           05 filler        pic x.
+           05 st-ds         pic x(7)  value "Destino".
+           05 filler        pic x(9).               
            05 st-rag-soc    pic x(15) value "Ragione sociale".
+           05 filler        pic x(11).
+           05 st-tc         pic x(14) value "Tipol. cliente".
            05 filler        pic x(11).
            05 st-bolla      pic x(5)  value "Bolla".
            05 filler        pic x(4).
@@ -223,7 +232,15 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.                 
+           accept separatore from environment "SEPARATORE"
+                  on exception move "," to separatore
+              not on exception
+                  if separatore = space
+                     move "," to separatore
+                  end-if
+           end-accept.
+
            set tutto-ok to true.
            set TestataGiaFatta to false.
            accept  wstampa      from environment "PATH-ST".
@@ -231,20 +248,21 @@
            accept  como-ora          from time.
            inspect wstampa      replacing trailing 
                                      spaces by low-value.
-           string wstampa       delimited by low-value
-                  "listadoc"         delimited by size
-                  "_"                delimited by size
-                  como-data          delimited by size
-                  "_"                delimited by size
-                  como-ora           delimited by size
-                  ".txt"             delimited by size
-                  into wstampa
+           string wstampa       delimited low-value
+                  "listadoc"    delimited size
+                  "_"           delimited size
+                  como-data     delimited size
+                  "_"           delimited size
+                  como-ora      delimited size
+                  ".csv"        delimited size
+      *****            ".txt"        delimited size
+             into wstampa
            end-string.
 
       ***---
        OPEN-FILES.
            open output lineseq.
-           open input  tordini clienti tvettori.
+           open input  tordini clienti tvettori ttipocli.
       
       ***---
        ELABORAZIONE-NORMALE.
@@ -426,12 +444,50 @@ LUBEXX          start tordini key is >= k-agfatt |KEY FATTURA
        MOVE-DATI.            
            set trovato to true.
            if not TestataGiaFatta
-              set TestataGiaFatta to true
-              write line-riga from st-titolo after 1
-              write line-riga from space after 1
-              write line-riga from st-testa after 1
-              write line-riga from st-line-riga after 1
-              write line-riga from space after 1
+              set TestataGiaFatta to true  
+
+              initialize line-riga
+              string separatore delimited size
+                     separatore delimited size
+                     separatore delimited size
+                     separatore delimited size
+                     separatore delimited size
+                     st-fisso   delimited size
+                     st-titdoc  delimited size
+                into line-riga
+              end-string
+              write line-riga
+
+              initialize line-riga
+              string st-tp      delimited size
+                     separatore delimited size
+                     st-nr      delimited size
+                     separatore delimited size   
+                     st-dt      delimited size
+                     separatore delimited size   
+                     st-vt      delimited size
+                     separatore delimited size   
+                     st-cli     delimited size
+                     separatore delimited size   
+                     st-ds      delimited size
+                     separatore delimited size   
+                     st-rag-soc delimited size
+                     separatore delimited size   
+                     st-tc      delimited size
+                     separatore delimited size   
+                     st-bolla   delimited size
+                     separatore delimited size   
+                     st-del     delimited size
+                     separatore delimited size
+                into line-riga
+              end-string
+              write line-riga
+
+      *****        write line-riga from st-titolo after 1
+      *****        write line-riga from space after 1
+      *****        write line-riga from st-testa after 1
+      *****        write line-riga from st-line-riga after 1
+      *****        write line-riga from space after 1
 
               move 6   to num-righe
            end-if.
@@ -449,6 +505,11 @@ LUBEXX          start tordini key is >= k-agfatt |KEY FATTURA
            read clienti invalid move spaces       to st-ragsoc
                     not invalid move cli-ragsoc-1 to st-ragsoc
            end-read.
+
+           move cli-tipo to tcl-codice
+           read ttipocli no lock 
+                invalid move spaces to tcl-descrizione 
+           end-read.
                  
            move tor-num-bolla to st-num-bolla.
            if tor-data-bolla not = 0
@@ -459,19 +520,48 @@ LUBEXX          start tordini key is >= k-agfatt |KEY FATTURA
               move tor-data-bolla(7:2) to st-data(1:2)
            else
               move spaces to st-data
-           end-if.
+           end-if.  
 
-           if num-righe >= max-righe
-              write line-riga from spaces after page
-              write line-riga from x"09" after 1
-              move 0 to num-righe
-           end-if.
-           write line-riga from struttura-stampa after 1.
-           add 1 to num-righe.
+           initialize line-riga
+           string st-causale   delimited size
+                  separatore   delimited size
+                  st-ordine    delimited size
+                  separatore   delimited size   
+                  tor-data-ordine(7:2) delimited size
+                  "/"                  delimited size
+                  tor-data-ordine(5:2) delimited size
+                  "/"                  delimited size
+                  tor-data-ordine(1:4) delimited size
+                  separatore   delimited size
+                  st-vettore   delimited size
+                  separatore   delimited size
+                  st-codcli    delimited size
+                  separatore   delimited size
+                  st-destino   delimited size
+                  separatore   delimited size
+                  st-ragsoc    delimited size
+                  separatore   delimited size
+                  tcl-descrizione delimited size
+                  separatore   delimited size
+                  st-num-bolla delimited size
+                  separatore   delimited size
+                  st-data      delimited size
+                  separatore   delimited size
+             into line-riga
+           end-string.
+           write line-riga.
+
+      *****     if num-righe >= max-righe
+      *****        write line-riga from spaces after page
+      *****        write line-riga from x"09" after 1
+      *****        move 0 to num-righe
+      *****     end-if.
+      *****     write line-riga from struttura-stampa after 1.
+      *****     add 1 to num-righe.
 
       ***---
        CLOSE-FILES.
-           close tordini, lineseq, clienti, tvettori.
+           close tordini, lineseq, clienti, tvettori ttipocli.
 
       ***---
        EXIT-PGM.

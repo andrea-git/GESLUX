@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          stlistdoc.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:19:20.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 5 giugno 2023 17:36:40.
        REMARKS.
       *{TOTEM}END
 
@@ -41,9 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -58,10 +56,12 @@
       * Properties & User defined Working Stoarge
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
-           COPY  "SPLCRT2GRAF.LKS".
+           COPY  "COMMON-EXCEL.DEF".
        77 Default-Font
                   USAGE IS HANDLE OF FONT DEFAULT-FONT.
        77 doc-scelto       PIC  x(30).
+       77 titolo           PIC  x(30).
+       77 wstampa          PIC  x(256).
        01 link-path        PIC  x(256).
        77 tipodoc          PIC  xx.
            88 BollePrenotate VALUE IS "BO". 
@@ -533,6 +533,12 @@
            .
 
       * USER DEFINE PARAGRAPH
+       PARAGRAFO-COPY.
+      * <TOTEM:PARA. PARAGRAFO-COPY>
+           copy "common-excel.cpy" 
+           .
+      * <TOTEM:END>
+
       * EVENT PARAGRAPH
        cbo-doc-BeforeProcedure.
       * <TOTEM:PARA. cbo-doc-BeforeProcedure>
@@ -580,22 +586,24 @@
 
            call "C$FILEINFO" using link-path, file-info.
 
-           if file-size not =0 
-              set splcrt2graf-stampa     to true
-              set splcrt2graf-windows    to true
-
-              move link-path             to splcrt2graf-percorso-stampa
-              set splcrt2graf-verticale  to true
-              set splcrt2graf-forza-crt  to true
-              set splcrt2graf-12pt       to true
-      **        set antep to true
-      **        call   "SPOOLER-A" using operazione, link-path
-      **        cancel "SPOOLER-A"
-              call   "splcrt2graf"   using splcrt2graf-link
-              cancel "splcrt2graf"
+           if file-size not = 0
+              move link-path to wstampa
+              perform CALL-EXCEL
+      *****        set splcrt2graf-stampa     to true
+      *****        set splcrt2graf-windows    to true
+      *****
+      *****        move link-path             to splcrt2graf-percorso-stampa
+      *****        set splcrt2graf-verticale  to true
+      *****        set splcrt2graf-forza-crt  to true
+      *****        set splcrt2graf-12pt       to true
+      *******        set antep to true
+      *******        call   "SPOOLER-A" using operazione, link-path
+      *******        cancel "SPOOLER-A"
+      *****        call   "splcrt2graf"   using splcrt2graf-link
+      *****        cancel "splcrt2graf"
            end-if.
 
-           call "C$DELETE" using link-path 
+      *****     call "C$DELETE" using link-path 
            .
       * <TOTEM:END>
        PB-ESEGUI-BeforeProcedure.
