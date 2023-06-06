@@ -107,8 +107,8 @@
       *****      05 st-num-fatt   pic z(8).
       *****      05 st-num-pren   pic z(8).
 
-       78  max-righe         value 60.
-       77  num-righe         pic 99.
+      ***** 78  max-righe         value 60.
+      ***** 77  num-righe         pic 99.
 
        LINKAGE SECTION.
        77 TipoDoc                  pic  xx.
@@ -489,7 +489,7 @@ LUBEXX          start tordini key is >= k-agfatt |KEY FATTURA
       *****        write line-riga from st-line-riga after 1
       *****        write line-riga from space after 1
 
-              move 6   to num-righe
+      *****        move 6   to num-righe
            end-if.
            move tor-causale      to st-causale.
            move tor-numero       to st-ordine.

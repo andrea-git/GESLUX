@@ -3375,20 +3375,24 @@ quii       call "spooler"       using spooler-link.
                                                   to spl-riga-stampa
            end-if.                                         
            call "spooler" using spooler-link
-                                      
-           initialize csv-riga.
-           string separatore delimited size
-                  "Note"     delimited size
-             into csv-riga
-           end-string.
-           write csv-riga.
+                              
+           if stampa-csv 
+              initialize csv-riga
+              string separatore delimited size
+                     "Note"     delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
 
-           initialize csv-riga.
-           string separatore      delimited size
-                  spl-riga-stampa delimited size
-             into csv-riga
-           end-string.
-           write csv-riga.
+           if stampa-csv 
+              initialize csv-riga
+              string separatore      delimited size
+                     spl-riga-stampa delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
 
            add 0,3  to spl-riga.
            move spaces to spl-riga-stampa.
@@ -3399,12 +3403,15 @@ quii       call "spooler"       using spooler-link.
       -         "enotato verrà respinto" to spl-riga-stampa
            end-if
            call "spooler" using spooler-link       
-           initialize csv-riga.
-           string separatore      delimited size
-                  spl-riga-stampa delimited size
-             into csv-riga
-           end-string.
-           write csv-riga.
+
+           if stampa-csv 
+              initialize csv-riga
+              string separatore      delimited size
+                     spl-riga-stampa delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
 
            add 0,3  to spl-riga.                                      
            move spaces to spl-riga-stampa.
@@ -3414,12 +3421,15 @@ quii       call "spooler"       using spooler-link.
       -         " CONSIDERATI A PERDERE"             to spl-riga-stampa
            end-if.
            call "spooler" using spooler-link    
-           initialize csv-riga.
-           string separatore      delimited size
-                  spl-riga-stampa delimited size
-             into csv-riga
-           end-string.
-           write csv-riga.
+
+           if stampa-csv 
+              initialize csv-riga
+              string separatore      delimited size
+                     spl-riga-stampa delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
       *
            move tof-chiave to nof-chiave-ordine
            move low-value  to nof-num-nota
@@ -3434,12 +3444,16 @@ quii       call "spooler"       using spooler-link.
                     add 0,3  to spl-riga
                     move nof-nota  to spl-riga-stampa
                     call "spooler" using spooler-link
-                    initialize csv-riga
-                    string separatore      delimited size
-                           spl-riga-stampa delimited size
-                      into csv-riga
-                    end-string
-                    write csv-riga
+
+                    if stampa-csv 
+                       initialize csv-riga
+                       string separatore      delimited size
+                              spl-riga-stampa delimited size
+                         into csv-riga
+                       end-string
+                       write csv-riga
+                    end-if
+
                  end-perform
            end-start.
 
@@ -3504,15 +3518,16 @@ quii       call "spooler"       using spooler-link.
            move "DATI DI CONSEGNA" to spl-riga-stampa
            call "spooler"       using spooler-link.
            subtract  1,4         from spl-colonna       
-                                               
-           write csv-riga from spaces.
-                                 
-           initialize csv-riga
-           string separatore      delimited size
-                  spl-riga-stampa delimited size
-             into csv-riga
-           end-string
-           write csv-riga
+                         
+           if stampa-csv           
+              write csv-riga from spaces
+              initialize csv-riga
+              string separatore      delimited size
+                     spl-riga-stampa delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
 
            if tca-cod-magaz = "EXD"
               move tof-cliente     to z4
@@ -3538,12 +3553,15 @@ quii       call "spooler"       using spooler-link.
               call "spooler"   using spooler-link
               subtract 3,6 from spl-colonna
 
-              initialize csv-riga
-              string separatore      delimited size
-                     spl-riga-stampa delimited size
-                into csv-riga
-              end-string
-              write csv-riga
+              if stampa-csv 
+                 initialize csv-riga
+                 string separatore      delimited size
+                        spl-riga-stampa delimited size
+                   into csv-riga
+                 end-string
+                 write csv-riga
+              end-if
+
            end-if
 
 
@@ -3605,35 +3623,41 @@ quii       call "spooler"       using spooler-link.
            add 0,3             to spl-riga.
            move cons-ragsoc    to spl-riga-stampa.
            call "spooler"   using spooler-link.       
-                                                
-           initialize csv-riga
-           string separatore      delimited size
-                  spl-riga-stampa delimited size
-             into csv-riga
-           end-string
-           write csv-riga
+                              
+           if stampa-csv        
+              initialize csv-riga
+              string separatore      delimited size
+                     spl-riga-stampa delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
 
            add 0,3             to spl-riga.
            move cons-ind       to spl-riga-stampa.
            call "spooler"   using spooler-link.       
            
-           initialize csv-riga
-           string separatore      delimited size
-                  spl-riga-stampa delimited size
-             into csv-riga
-           end-string
-           write csv-riga
+           if stampa-csv 
+              initialize csv-riga
+              string separatore      delimited size
+                     spl-riga-stampa delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
 
            add 0,3             to spl-riga.
            move cons-localita  to spl-riga-stampa.
            call "spooler"   using spooler-link.       
            
-           initialize csv-riga
-           string separatore      delimited size
-                  spl-riga-stampa delimited size
-             into csv-riga
-           end-string
-           write csv-riga
+           if stampa-csv 
+              initialize csv-riga
+              string separatore      delimited size
+                     spl-riga-stampa delimited size
+                into csv-riga
+              end-string
+              write csv-riga
+           end-if.
            
            set cli-tipo-c    to true.
            if tca-cod-magaz = "EXD"
@@ -3668,13 +3692,15 @@ quii       call "spooler"       using spooler-link.
               add 1,2        to spl-colonna
               move "DATI DI FATTURAZIONE"   to spl-riga-stampa  
 
-              write csv-riga from spaces
-              initialize csv-riga
-              string separatore      delimited size
-                     spl-riga-stampa delimited size
-                into csv-riga
-              end-string
-              write csv-riga
+              if stampa-csv 
+                 write csv-riga from spaces
+                 initialize csv-riga
+                 string separatore      delimited size
+                        spl-riga-stampa delimited size
+                   into csv-riga
+                 end-string
+                 write csv-riga
+              end-if
 
               call "spooler" using spooler-link
               subtract  1,2        from spl-colonna
@@ -3683,45 +3709,53 @@ quii       call "spooler"       using spooler-link.
               move cons-ragsoc     to spl-riga-stampa
               call "spooler" using spooler-link
 
-              initialize csv-riga
-              string separatore      delimited size
-                     spl-riga-stampa delimited size
-                into csv-riga
-              end-string
-              write csv-riga
+              if stampa-csv 
+                 initialize csv-riga
+                 string separatore      delimited size
+                        spl-riga-stampa delimited size
+                   into csv-riga
+                 end-string
+                 write csv-riga
+              end-if
 
               add 0,3  to spl-riga
               move cons-ind        to spl-riga-stampa
               call "spooler" using spooler-link
 
-              initialize csv-riga
-              string separatore      delimited size
-                     spl-riga-stampa delimited size
-                into csv-riga
-              end-string
-              write csv-riga
+              if stampa-csv 
+                 initialize csv-riga
+                 string separatore      delimited size
+                        spl-riga-stampa delimited size
+                   into csv-riga
+                 end-string
+                 write csv-riga
+              end-if
 
               add 0,3  to spl-riga
               move cons-localita   to spl-riga-stampa
               call "spooler" using spooler-link
 
-              initialize csv-riga
-              string separatore      delimited size
-                     spl-riga-stampa delimited size
-                into csv-riga
-              end-string
-              write csv-riga
+              if stampa-csv 
+                 initialize csv-riga
+                 string separatore      delimited size
+                        spl-riga-stampa delimited size
+                   into csv-riga
+                 end-string
+                 write csv-riga
+              end-if
                                                
               add 0,3  to spl-riga
               move cons-piva       to spl-riga-stampa
               call "spooler" using spooler-link
 
-              initialize csv-riga
-              string separatore      delimited size
-                     spl-riga-stampa delimited size
-                into csv-riga
-              end-string
-              write csv-riga
+              if stampa-csv 
+                 initialize csv-riga
+                 string separatore      delimited size
+                        spl-riga-stampa delimited size
+                   into csv-riga
+                 end-string
+                 write csv-riga
+              end-if
 
            end-if.
 
@@ -4279,6 +4313,7 @@ quii       call "spooler"       using spooler-link.
 
       ***---
        SCRIVI-RIGA-CSV.
+           if not stampa-csv exit paragraph end-if.
            initialize csv-riga.
            string r-stof-art            delimited size
                   separatore            delimited size
