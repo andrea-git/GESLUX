@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gsordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 12 aprile 2023 09:56:42.
+       DATE-WRITTEN.        domenica 11 giugno 2023 23:37:42.
        REMARKS.
       *{TOTEM}END
 
@@ -94,6 +94,8 @@
        77 old-como-note    PIC  X(500).
        77 como-qta         PIC  9(8).
        77 old-como-qta     PIC  9(8).
+       77 v-qta            PIC  9
+                  VALUE IS 1.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -240,6 +242,7 @@
            RIGHT,
            MAX-TEXT 30,
            VALUE ef-qta-BUF,
+           VISIBLE v-qta,
            .
 
       * ENTRY FIELD
@@ -277,6 +280,7 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Quantità",
+           VISIBLE v-qta,
            .
 
       * LABEL
@@ -1502,9 +1506,10 @@
 
            move space  to como-articolo
            if gsordforn-sof-prog = zero
-              move zero   to v-righe
+              move zero   to v-righe v-qta
            else
               |move 1      to v-righe
+              move 1 to v-qta
               move gsordforn-articolo to art-codice
                                          cod-ed
               read articoli no lock

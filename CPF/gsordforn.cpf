@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=form-solleciti
 BEFORE_PROGRAM=gnote-ordforn-Ev-Before-Program
 AFTER_PROGRAM=gnote-ordforn-Ev-After-Program
 AFTER_INIT=gsordforn-Ev-After-Init
-PROGRAM_UNIQUE_CODE=TOTEM-7E741313154-134-207519532
+PROGRAM_UNIQUE_CODE=TOTEM-7E76B213521-11-1157520633
 
 {{@DESCRIPTION:
 
@@ -268,6 +268,17 @@ m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
+m_strName=v-qta
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_WK
 
 @}}
 
@@ -848,6 +859,7 @@ Begin Screen form-solleciti
       Use Tab           = FALSE
       Value Multiple    = FALSE
       Visible           = NONE
+      Visible Variable  = v-qta
       Width in Cells    = TRUE
       My Property       = "CONTROLLO="
       Before Procedure  = ef-qta-BeforeProcedure
@@ -948,6 +960,7 @@ Begin Screen form-solleciti
       Title             = "Quantità"
       Transparent       = TRUE
       Visible           = NONE
+      Visible Variable  = v-qta
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5
@@ -1873,9 +1886,10 @@ BEGIN-TEXT
 
            move space  to como-articolo
            if gsordforn-sof-prog = zero
-              move zero   to v-righe
+              move zero   to v-righe v-qta
            else
               |move 1      to v-righe
+              move 1 to v-qta
               move gsordforn-articolo to art-codice
                                          cod-ed
               read articoli no lock

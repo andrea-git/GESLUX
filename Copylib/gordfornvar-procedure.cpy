@@ -2875,6 +2875,8 @@ LUBEXX        perform VALORIZZA-OLD
               sof-qta      not = 0 
 
               if forza-testata-solleciti = 1  
+                 compute sof-qta = rof-qta-ord - rof-qta-evasa
+
                  move t-sof-data-arr  to sof-data-arr
                  accept sof-data-conf from century-date
               end-if
