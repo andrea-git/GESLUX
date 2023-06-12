@@ -1,7 +1,8 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.                      ricaldin-bat.
        AUTHOR.                          Andrea.
-       REMARKS. Ricalcolo dati dinamici da:
+       REMARKS. - COPIA PROGRESSIVI
+                Ricalcolo dati dinamici da:
                 - note credito non fatturate
                 - ordini non fatturati ma bolla emessa
                 - movimenti di magazzino successivi al consolidamento
@@ -17,6 +18,8 @@
                 da lanciare ogni notte come batch previo azzeramento
                 dei valori dinamici su progmag.
                 La data di consolidamento viene passata in linkage.
+
+                - SE IL PROGRAMMA NON VA A BUON FINE RIPRENDO I PROGRRESSIVI DA BACKUP
       ******************************************************************
 
        SPECIAL-NAMES. decimal-point is comma.
@@ -30,8 +33,21 @@
            copy "tordini.sl".
            copy "rordini.sl".
            copy "tnotacr.sl".
-           copy "rnotacr.sl".
+           copy "rnotacr.sl".  
            copy "progmag.sl".
+
+       SELECT progmagc
+           ASSIGN       TO  "progmagc"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE  IS DYNAMIC
+           FILE STATUS  IS STATUS-progmagc
+           RECORD KEY   IS prgc-chiave
+           ALTERNATE RECORD KEY IS key01 = prgc-cod-magazzino, 
+                                           prgc-cod-articolo, 
+                                           prgc-tipo-imballo,
+                                           prgc-peso
+           WITH DUPLICATES .
+
            copy "tparamge.sl".
            copy "tordforn.sl". 
            copy "rordforn.sl".
@@ -63,8 +79,12 @@
            copy "tnotacr.fd".
            copy "rnotacr.fd".
            copy "tordini.fd".
-           copy "rordini.fd".
-           copy "progmag.fd".
+           copy "rordini.fd".     
+           copy "progmag.fd".     
+           copy "progmag.fd"
+                replacing ==progmag== by ==progmagc==    
+                  leading "prg" by "prgc".
+
            copy "tparamge.fd".
            copy "tordforn.fd".
            copy "rordforn.fd".
@@ -102,6 +122,7 @@
        77  status-tmovmag        pic xx.
        77  status-rmovmag        pic xx.
        77  status-progmag        pic xx.
+       77  status-progmagc       pic xx.
        77  status-mtordini       pic xx.
        77  status-mrordini       pic xx.
        77  status-tordini        pic xx.
@@ -672,7 +693,7 @@
                 set nessun-errore to false
            when "93"
            when "99" set RecLocked to true
-           end-evaluate.
+           end-evaluate.   
 
       ***---
        PROGMAG-ERR SECTION.
@@ -705,6 +726,46 @@
                 perform SETTA-INIZIO-RIGA
                 string r-inizio                          delimited size
                        "[PROGMAG] indexed file corrupt!" delimited size
+                       into como-riga
+                end-string
+                perform RIGA-LOG
+                set errori to true
+                set nessun-errore to false
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate.
+
+      ***---
+       PROGMAGC-ERR SECTION.
+           use after error procedure on progmagc.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-progmagc
+           when "35"
+                initialize como-riga
+                perform SETTA-INIZIO-RIGA
+                string r-inizio                       delimited size
+                       "File [PROGMAGC] inesistente!" delimited size
+                       into como-riga
+                end-string
+                perform RIGA-LOG
+                set errori to true
+                set nessun-errore to false
+           when "39"
+                initialize como-riga
+                perform SETTA-INIZIO-RIGA
+                string r-inizio                         delimited size
+                       "File [PROGMAGC] mismatch size!" delimited size
+                       into como-riga
+                end-string
+                perform RIGA-LOG
+                set errori to true
+                set nessun-errore to false
+           when "98"
+                initialize como-riga
+                perform SETTA-INIZIO-RIGA
+                string r-inizio                           delimited size
+                       "[PROGMAGC] indexed file corrupt!" delimited size
                        into como-riga
                 end-string
                 perform RIGA-LOG
@@ -845,6 +906,9 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                        perform OPEN-MTORDINI-LOCK
                        if tutto-ok
                           perform OPEN-MRORDINI-LOCK
+                          if tutto-ok
+                             perform OPEN-OUTPUT-PROGMAGC
+                          end-if
                        end-if
                     end-if
                  end-if
@@ -932,11 +996,22 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            end-if.
 
       ***---
+       OPEN-OUTPUT-PROGMAGC.
+           open output progmagc.
+           if status-progmagc not = "00"
+              set errori to true
+           else
+              close    progmagc
+              open i-o progmagc
+           end-if.
+
+      ***---
        ELABORAZIONE.
            move spaces to tge-codice.
            read tparamge no lock invalid continue end-read.
            move tge-data-consolid-progmag to link-data.
 
+           perform BACKUP-PROGMAG.
            perform AZZERA-PROGMAG.
            perform ELABORA-ORDINI-MASTER.
            perform ELABORA-NOTE-CREDITO-NON-FATTURATI.
@@ -944,6 +1019,80 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            perform ELABORA-MOVIMENTI-DI-MAGAZZINO.
            perform ELABORA-ORDINATO-ORDF.
            perform ELABORA-ORDINATO-EVASIONI-F.
+           perform RESTORE-PROGMAG.
+
+      ***---
+       BACKUP-PROGMAG.          
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga.
+           string r-inizio                    delimited size
+                  "INIZIO BACKUP PROGRESSIVI" delimited size
+                  into como-riga
+           end-string.
+           perform RIGA-LOG.
+           move low-value to prg-rec.
+           start progmag key >= prg-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read progmag next at end exit perform end-read
+                    move prg-rec to prgc-rec
+                    write prgc-rec
+                 end-perform
+           end-start.
+
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga.
+           string r-inizio                  delimited size
+                  "FINE BACKUP PROGRESSIVI" delimited size
+                  into como-riga
+           end-string.
+           perform RIGA-LOG.
+
+      ***---
+       RESTORE-PROGMAG.
+           close       progmag.
+           open output progmag |allowing readers.
+           if RecLocked
+              set errori to true
+              set nessun-errore to false
+              perform SETTA-INIZIO-RIGA
+
+              initialize como-riga
+              string r-inizio                     delimited size
+                     "File [PROGMAG] già in uso!" delimited size
+                     into como-riga
+              end-string
+              perform RIGA-LOG
+              exit paragraph
+           end-if.
+
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga.
+           string r-inizio                     delimited size
+                  "INIZIO RESTORE PROGRESSIVI" delimited size
+                  into como-riga
+           end-string.
+           perform RIGA-LOG.
+           move low-value to prgc-rec.
+           start progmagc key >= prgc-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read progmagc next at end exit perform end-read
+                    move prgc-rec to prg-rec
+                    write prg-rec
+                 end-perform
+           end-start.
+
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga.
+           string r-inizio                   delimited size
+                  "FINE RESTORE PROGRESSIVI" delimited size
+                  into como-riga
+           end-string.
+           perform RIGA-LOG.
+
 
       ***---
        AZZERA-PROGMAG.

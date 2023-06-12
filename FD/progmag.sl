@@ -1,3 +1,5 @@
+      *N.B.
+      *IN CASO DI MODIFICHE RICOMPILARE RICALDIN-BAT per la parte di backup
        SELECT progmag
            ASSIGN       TO  "progmag"
            ORGANIZATION IS INDEXED
