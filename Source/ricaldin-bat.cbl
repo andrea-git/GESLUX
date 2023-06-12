@@ -183,9 +183,12 @@
        77  nargs                 pic 99  comp-1 value 0.
 
        01  como-rec              pic x(5000).
-
+             
        77  filler                pic 9.
            88  nessun-errore     value 1, false 0.
+
+       77  filler                pic 9 value 0.
+           88  ripristino        value 1, false 0.
 
        77  controllo             pic xx.
            88  tutto-ok          value "OK".
@@ -1013,13 +1016,40 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
 
            perform BACKUP-PROGMAG.
            perform AZZERA-PROGMAG.
+           if ripristino
+              perform RESTORE-PROGMAG
+              exit paragraph
+           end-if.
            perform ELABORA-ORDINI-MASTER.
-           perform ELABORA-NOTE-CREDITO-NON-FATTURATI.
+           if ripristino
+              perform RESTORE-PROGMAG
+              exit paragraph
+           end-if.
+           perform ELABORA-NOTE-CREDITO-NON-FATTURATI.          
+           if ripristino
+              perform RESTORE-PROGMAG
+              exit paragraph
+           end-if.
            perform ELABORA-INEVASI-E-BOLLA-EMESSA-NON-FATTURATI.
+           if ripristino
+              perform RESTORE-PROGMAG
+              exit paragraph
+           end-if.
            perform ELABORA-MOVIMENTI-DI-MAGAZZINO.
-           perform ELABORA-ORDINATO-ORDF.
+           if ripristino
+              perform RESTORE-PROGMAG
+              exit paragraph
+           end-if.
+           perform ELABORA-ORDINATO-ORDF.      
+           if ripristino
+              perform RESTORE-PROGMAG
+              exit paragraph
+           end-if.
            perform ELABORA-ORDINATO-EVASIONI-F.
-           perform RESTORE-PROGMAG.
+           if ripristino
+              perform RESTORE-PROGMAG
+              exit paragraph
+           end-if.
 
       ***---
        BACKUP-PROGMAG.          
@@ -1180,6 +1210,10 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                        exit perform
                     end-if
                     perform LOOP-RIGHE-MRORDINI
+                    if errori
+                       set ripristino to true
+                       exit perform
+                    end-if
       *****              set ricalcolo to true
       *****              perform AGGIORNA-STATO-MASTER
       *****              move como-rec to mto-rec
@@ -1215,8 +1249,11 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                     end-if        
                     if mro-chiuso
                        continue
-                    else
+                    else                                
                        perform AGGIORNA-IMPEGNATO-MASTER
+                       if errori
+                          exit perform
+                       end-if
                     end-if        
                  end-perform
            end-start.
@@ -1258,7 +1295,11 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                        perform LOOP-RIGHE-RNOTACR
                     end-if             
 
-                    if errori exit perform end-if
+                    if errori 
+                       set ripristino to true
+                       exit perform 
+                    end-if
+
                  end-perform
            end-start.
            perform SETTA-INIZIO-RIGA.       
@@ -1313,7 +1354,9 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                                 into como-riga
                          end-string
                          perform RIGA-LOG
-                         set nessun-errore to false
+                         set nessun-errore to false      
+                         set errori     to true
+                         exit perform
                     when -2
                          perform SETTA-INIZIO-RIGA
                          inspect link-msg-err-ritorno replacing trailing
@@ -1324,7 +1367,8 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                                 " --> IMPOSSIBILE "  delimited size
                                 "PROSEGUIRE!"        delimited size
                                 into como-riga
-                         end-string
+                         end-string                
+                         set errori     to true
                          perform RIGA-LOG
                          set nessun-errore to false
                          exit perform
@@ -1376,7 +1420,11 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                     ||||
 
                     perform LOOP-RIGHE-RORDINI
-                    if errori exit perform end-if
+                    if errori
+                       set ripristino to true
+                       exit perform 
+                    end-if
+
                  end-perform
            end-start.
            perform SETTA-INIZIO-RIGA.
@@ -1441,6 +1489,8 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                          end-string
                          perform RIGA-LOG
                          set nessun-errore to false
+                         set errori to true
+                         exit perform
                     when -2
                          perform SETTA-INIZIO-RIGA
                          inspect link-msg-err-ritorno replacing trailing
@@ -1454,6 +1504,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                          end-string
                          perform RIGA-LOG
                          set nessun-errore to false
+                         set errori to true
                          exit perform
                     end-evaluate   
                  end-perform
@@ -1490,6 +1541,10 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                        exit perform
                     end-if
                     perform LOOP-RIGHE-MAGAZZINO
+                    if errori
+                       set ripristino to true
+                       exit perform
+                    end-if
                  end-perform
            end-start.
            perform SETTA-INIZIO-RIGA.
@@ -1544,7 +1599,9 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                                 into como-riga
                          end-string
                          perform RIGA-LOG
-                         set nessun-errore to false
+                         set nessun-errore to false   
+                         set errori to true
+                         exit perform
                     when -2
                          perform SETTA-INIZIO-RIGA
                          inspect link-msg-err-ritorno replacing trailing
@@ -1557,7 +1614,8 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                                 into como-riga
                          end-string
                          perform RIGA-LOG
-                         set nessun-errore to false
+                         set nessun-errore to false 
+                         set errori to true
                          exit perform
                     end-evaluate   
                  end-perform
@@ -1630,7 +1688,11 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
       *****                    end-if
                        end-if
 
-                       perform LOOP-RIGHE-RORDFORN
+                       perform LOOP-RIGHE-RORDFORN 
+                       if errori
+                          set ripristino to true
+                          exit perform
+                       end-if
                        perform AGGIORNA-STATO-ORDF
                        move como-rec to tof-rec
                        start tordforn key > tof-k-stato
@@ -1771,6 +1833,10 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                        exit perform
                     end-if
                     perform LOOP-RIGHE-REVA
+                    if errori
+                       set ripristino to true
+                       exit perform
+                    end-if
                  end-perform
            end-start.
 
@@ -1866,6 +1932,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                 end-string
                 perform RIGA-LOG
                 set nessun-errore to false
+                set errori to true
            when -2
                 perform SETTA-INIZIO-RIGA
                 inspect link-msg-err-ritorno replacing trailing
@@ -1879,6 +1946,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                 end-string
                 perform RIGA-LOG
                 set nessun-errore to false
+                set errori to true
            end-evaluate.
 
       ***---
