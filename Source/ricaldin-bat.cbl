@@ -1081,7 +1081,9 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
 
       ***---
        RESTORE-PROGMAG.
-           close       progmag.
+           close       progmag.|potrebbe andare in errore per file 
+                               |già aperto a seconda di quanto vien eseguito
+           cancel "wprogmag".
            open output progmag |allowing readers.
            if RecLocked
               set errori to true
@@ -2032,7 +2034,8 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                    line 25,00
                  column 35,00
            end-if.
-                  
+                 
+           cancel "wprogmag". 
            goback.
 
       ***---

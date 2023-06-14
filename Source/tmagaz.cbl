@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tmagaz.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 dicembre 2020 13:21:59.
+       DATE-WRITTEN.        mercoledì 14 giugno 2023 16:26:36.
        REMARKS.
       *{TOTEM}END
 
@@ -140,6 +140,9 @@
            05 col-blocco-24000 PIC  x.
            05 col-carico-rot   PIC  xxxx.
            05 col-scarico-rot  PIC  xxxx.
+           05 col-scorta       PIC  X.
+               88 col-scorta-si VALUE IS "S". 
+               88 col-scorta-no VALUE IS "N", " ". 
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui-73x21-bmp PIC  S9(9)
@@ -225,7 +228,7 @@
                    15 old-mag-gen-auto PIC  x.
                        88 old-mag-gen-auto-si VALUE IS "S". 
                        88 old-mag-gen-auto-no VALUE IS "N", " ". 
-                   15 old-mag-alfa-vuoto-3         PIC  x(2).
+                   15 old-mag-scorta   PIC  x.
        77 FILLER           PIC  XX.
            88 trovato-uno VALUE IS "SI"    WHEN SET TO FALSE  "NO". 
            88 trovato-nessuno VALUE IS "NO". 
@@ -339,23 +342,23 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 1,33, 
-           LINE 1,69,
+           COL 2,00, 
+           LINE 1,62,
            LINES 29,00 ,
-           SIZE 253,17 ,
+           SIZE 261,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            DATA-COLUMNS (1, 4, 54, 55, 56, 57, 64, 65, 69, 73, 74, 75, 
-           76, 80, 84, 88, 92, 97, 99, 100, 101, 102, 106),
+           76, 80, 84, 88, 92, 97, 99, 100, 101, 102, 106, 110),
            ALIGNMENT ("L", "U", "C", "C", "C", "C", "C", "C", "C", "C", 
            "C", "C", "C", "C", "C", "C", "R", "R", "C", "C", "C", "U", 
-           "U"),
+           "U", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5, 5, 5, 5, 5, 5, 5),
+           5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("U(3)", "X(50)", "U(1)", "U(1)", "U(1)", "9(7)", 
            "U(1)", "U(4)", "U(4)", "U(1)", "U(1)", "U(1)", "U(4)", "U(4)
       -    "", "U(4)", "U(4)", "zzzz9", "X", "U(1)", "U(1)", "U(1)", "U(
-      -    "4)", "U(4)"),
+      -    "4)", "U(4)", "U(1)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -369,7 +372,7 @@
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 250,
+           VIRTUAL-WIDTH 258,
            VPADDING 30,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -379,7 +382,7 @@
        05
            gd-scorte, 
            Grid, 
-           COL 101,33, 
+           COL 106,00, 
            LINE 33,00,
            LINES 11,92 ,
            SIZE 53,17 ,
@@ -408,7 +411,7 @@
        05
            Form1-La-1, 
            Label, 
-           COL 101,33, 
+           COL 106,00, 
            LINE 31,31,
            LINES 1,31 ,
            SIZE 53,17 ,
@@ -1785,6 +1788,9 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 23, Y = 1,
                 CELL-DATA = "S ROT",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 24, Y = 1,
+                CELL-DATA = "Scorta",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1872,7 +1878,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 46,15,
-              SIZE 254,00,
+              SIZE 263,17,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1908,7 +1914,7 @@
       * DISPLAY-COLUMNS settings
               MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 9, 55, 65, 75, 85, 
            96, 106, 116, 126, 135, 143, 153, 163, 173, 181, 189, 197, 
-           201, 211, 221, 235, 243)
+           201, 211, 221, 235, 243, 251)
               MODIFY gd-scorte, DISPLAY-COLUMNS (1, 7)
            .
 
@@ -2949,7 +2955,7 @@
       * <TOTEM:PARA. COLORE-RIGA>
            if riga < 2 move 2 to riga end-if.
 
-           modify form1-gd-1, start-x = 1, x = 23,
+           modify form1-gd-1, start-x = 1, x = 24,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -3365,7 +3371,19 @@
                                   title tit-err
                                    icon 2
                    end-read
-                end-if
+                end-if      
+
+           when 24
+                inquire form1-gd-1(riga, 24) cell-data col-scorta
+                evaluate col-scorta
+                when "S"
+                when "N"   continue
+                when other set errori to true
+                           move 24    to colonna
+                           display message "Valori ammessi: S o N"
+                                    title tit-err
+                                     icon 2
+                end-evaluate
 
            end-evaluate.
 
@@ -3459,12 +3477,14 @@
                       move BitmapZoomEnabled to BitmapNumZoom
                       move 1 to e-cerca
                    end-if 
-           when 23 move "Verrà usata per gnerare movimento di scarico da
-      -    " bozza nota credito" to msg-help  
+           when 23 move "Verrà usata per generare movimento di scarico d
+      -    "a bozza nota credito" to msg-help  
                    if mod = 1
                       move BitmapZoomEnabled to BitmapNumZoom
                       move 1 to e-cerca
                    end-if 
+           when 24 move "Verrà usata per sommare le quantità del magazzi
+      -    "no in fase di sostituzione scorta 0/2" to msg-help  
            end-evaluate.
            modify Screen1-St-1-Handle, panel-index = 1,
                                        panel-text  = msg-help.
@@ -3506,6 +3526,7 @@
                           move mag-sostituzione     to col-sostituzione
                           move mag-blister          to col-blister
                           move mag-ritira-lbx       to col-ritira
+                          move mag-scorta           to col-scorta
                           move mag-cau-s            to col-cau-s
                           move mag-cau-c            to col-cau-c
                           move mag-cau-reso         to col-reso
@@ -3564,6 +3585,8 @@
            col-carico-rot   
                           modify form1-gd-1(riga, 23), cell-data 
            col-scarico-rot
+                          modify form1-gd-1(riga, 24), cell-data 
+           col-scorta
 
                           evaluate true
                           when si-principale
@@ -3875,6 +3898,7 @@
            inquire form1-gd-1(riga, 21), cell-data mag-blocco-24000.
            inquire form1-gd-1(riga, 22), cell-data mag-cau-carico-rot.  
            inquire form1-gd-1(riga, 23), cell-data mag-cau-scarico-rot.
+           inquire form1-gd-1(riga, 24), cell-data mag-scorta.
 
            if mag-principale = spaces
               set no-mag-principale to true

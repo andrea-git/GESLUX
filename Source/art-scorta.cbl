@@ -156,7 +156,7 @@
                              read tmagaz no lock
                                   invalid continue
                               not invalid
-                                  if mag-per-promo-si 
+                                  if mag-scorta-si 
                                      add prg-giacenza   to giacenza
                                      add prg-ordinato-6 to ordinato
                                   end-if
