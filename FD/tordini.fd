@@ -113,5 +113,7 @@
                    15 tor-contrassegno PIC  x.
                        88 tor-contrassegno-no VALUE IS "N" , " ". 
                        88 tor-contrassegno-si VALUE IS "S". 
-      *(( XFD NAME = tor-gdo_1_1_2_1 ))
-                   15 FILLER           PIC  X(1995).
+                   15 tor-epal         PIC  9(10).
+                   15 tor-bancali      PIC  9(10).
+      *(( XFD NAME = tor-gdo_1_1_2_1_2 ))
+                   15 FILLER           PIC  X(1975).
