@@ -1049,7 +1049,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            if ripristino
               perform RESTORE-PROGMAG
               exit paragraph
-           end-if.
+           end-if.                         
 
       ***---
        BACKUP-PROGMAG.          
@@ -1080,9 +1080,18 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            perform RIGA-LOG.
 
       ***---
-       RESTORE-PROGMAG.
-           close       progmag.|potrebbe andare in errore per file 
-                               |già aperto a seconda di quanto vien eseguito
+       RESTORE-PROGMAG.     
+           set nessun-errore to false.
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga.
+           string r-inizio                     delimited size
+                  "INIZIO RESTORE PROGRESSIVI" delimited size
+                  into como-riga
+           end-string.
+           perform RIGA-LOG.
+
+           close progmag.|potrebbe andare in errore per file già
+                         |aperto a seconda di quanto vien eseguito
            cancel "wprogmag".
            open output progmag |allowing readers.
            if RecLocked
@@ -1098,14 +1107,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
               perform RIGA-LOG
               exit paragraph
            end-if.
-
-           perform SETTA-INIZIO-RIGA.
-           initialize como-riga.
-           string r-inizio                     delimited size
-                  "INIZIO RESTORE PROGRESSIVI" delimited size
-                  into como-riga
-           end-string.
-           perform RIGA-LOG.
+                            
            move low-value to prgc-rec.
            start progmagc key >= prgc-chiave
                  invalid continue
@@ -2049,6 +2051,7 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
       ***---
        EXIT-PGM.
            perform SETTA-INIZIO-RIGA.
+           accept como-ora from time.
            move como-ora(1:2) to hh.
            move como-ora(3:2) to mm.
            move como-ora(5:2) to ss.
@@ -2059,12 +2062,14 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
            if tot-secondi < 60
               if RichiamoSchedulato             
                  move tot-secondi to ss
-                 initialize line-riga of lineseq
-                 string "ELABORAZIONE TERMINATA IN: ",
+           
+                 initialize como-riga
+                 string r-inizio                      delimited size
+                        "ELABORAZIONE TERMINATA IN: " delimited size
                         ss, " SECONDI"
-                        into line-riga of lineseq
+                   into como-riga
                  end-string
-                 write line-riga of lineseq
+                 perform RIGA-LOG          
               else
                  move tot-secondi to ss
                  display "ELABORAZIONE TERMINATA IN: ",
@@ -2073,13 +2078,14 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
               end-if
            else                 
               divide tot-secondi by 60 giving mm remainder ss
-              if RichiamoSchedulato
-                 initialize line-riga of lineseq
-                 string "ELABORAZIONE TERMINATA IN: ",
+              if RichiamoSchedulato        
+                 initialize como-riga
+                 string r-inizio                      delimited size
+                        "ELABORAZIONE TERMINATA IN: " delimited size
                          mm, " MINUTI E ", ss, " SECONDI"
-                         into line-riga of lineseq
+                   into como-riga
                  end-string
-                 write line-riga of lineseq
+                 perform RIGA-LOG                                   
               else
                  display "ELABORAZIONE TERMINATA IN: ",
                          mm, " MINUTI E ", ss, " SECONDI"

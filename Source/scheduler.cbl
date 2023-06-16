@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 13 aprile 2023 17:05:08.
+       DATE-WRITTEN.        giovedì 15 giugno 2023 11:40:36.
        REMARKS.
       *{TOTEM}END
 
@@ -1641,10 +1641,7 @@
                       move "ERR"      to col-esito
                       move "OVERFLOW" to col-fine
                       add 1 to tot-ko
-                  not on overflow   
-                      if col-programma = "ricaldin-bat"
-                         move 1 to batch-status
-                      end-if
+                  not on overflow
                       if bat-invio-log-sempre
                          add 1 to idx-log
                          move batch-log to el-log-invio(idx-log)
