@@ -1356,9 +1356,6 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                                 into como-riga
                          end-string
                          perform RIGA-LOG
-                         set nessun-errore to false      
-                         set errori     to true
-                         exit perform
                     when -2
                          perform SETTA-INIZIO-RIGA
                          inspect link-msg-err-ritorno replacing trailing
@@ -1748,12 +1745,33 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                     if prima-volta
                        set prima-volta to false
                        close progmag |wprogmag aprirà con lock il file!!!
-                    end-if
+                    end-if                             
                     call "wprogmag" using link-wprogmag
-                    if link-wprogmag-status = -1
-                       set errori to true
-                       exit perform
-                    end-if
+                    evaluate link-wprogmag-status
+                    when -1
+                         perform SETTA-INIZIO-RIGA
+                         initialize como-riga
+                         string r-inizio             delimited size
+                                link-msg-err-ritorno delimited size
+                                into como-riga
+                         end-string
+                         perform RIGA-LOG
+                    when -2
+                         perform SETTA-INIZIO-RIGA
+                         inspect link-msg-err-ritorno replacing trailing
+                                                     spaces by low-value
+                         initialize como-riga
+                         string r-inizio             delimited size
+                                link-msg-err-ritorno delimited low-value
+                                " --> IMPOSSIBILE "  delimited size
+                                "PROSEGUIRE!"        delimited size
+                                into como-riga
+                         end-string                
+                         set errori     to true
+                         perform RIGA-LOG
+                         set nessun-errore to false
+                         exit perform
+                    end-evaluate
 
                     move 0 to tof-pz-arrivati
                     set tof-inevaso to true
@@ -1802,10 +1820,36 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                           close progmag |wprogmag aprirà con lock il file!!!
                        end-if
                        call "wprogmag" using link-wprogmag
-                       if link-wprogmag-status = -1
-                          set errori to true
-                          exit perform
-                       end-if
+                       evaluate link-wprogmag-status
+                       when -1
+                            perform SETTA-INIZIO-RIGA
+                            initialize como-riga
+                            string r-inizio             delimited size
+                                   link-msg-err-ritorno delimited size
+                                   into como-riga
+                            end-string
+                            perform RIGA-LOG
+                       when -2
+                            perform SETTA-INIZIO-RIGA
+                            inspect link-msg-err-ritorno 
+                                    replacing trailing 
+                                    spaces by low-value
+                            initialize como-riga
+                            string r-inizio             
+                                   delimited size
+                                   link-msg-err-ritorno 
+                                   delimited low-value
+                                   " --> IMPOSSIBILE "  
+                                   delimited size
+                                   "PROSEGUIRE!"        
+                                   delimited size
+                                   into como-riga
+                            end-string                
+                            set errori     to true
+                            perform RIGA-LOG
+                            set nessun-errore to false
+                            exit perform
+                       end-evaluate
                        rewrite rof-rec invalid continue end-rewrite
                     end-if
                  end-perform
@@ -1869,30 +1913,60 @@ LUBEXX     |di elaborare intanto che ci lavorano, ma non importa
                     end-if
       
                     move reva-chiave-testa-ordf to tof-chiave
-                    read tordforn no lock invalid continue end-read
-                    |1. AGISCO SULLA GIACENZA (NORMALE E BLOCCATA)
-                    move "1000000000000010"  to link-array
-                    move reva-qta            to link-valore
-                    move tof-causale         to link-causale
-                    move reva-chiave-progmag to link-key
-                    set  link-update         to true
-                    set  link-open-with-lock to true
-                    set  link-update-um      to true
-                    set  link-update-peso    to false
-                    set  link-update-valore  to false
-                    set  link-chiamata-batch to true
-                    if prima-volta
-                       set prima-volta to false
-                       close progmag |wprogmag aprirà con lock il file!!!
-                    end-if
-                    call "wprogmag" using link-wprogmag
-                    if link-wprogmag-status = -1
-                       set errori to true
-                       exit perform
-                    end-if
+                    read tordforn no lock 
+                         invalid continue 
+                     not invalid
+                          |1. AGISCO SULLA GIACENZA (NORMALE E BLOCCATA)
+                         move "1000000000000010"  to link-array
+                         move reva-qta            to link-valore
+                         move tof-causale         to link-causale
+                         move reva-chiave-progmag to link-key
+                         set  link-update         to true
+                         set  link-open-with-lock to true
+                         set  link-update-um      to true
+                         set  link-update-peso    to false
+                         set  link-update-valore  to false
+                         set  link-chiamata-batch to true
+                         if prima-volta
+                            set prima-volta to false
+                            close progmag |wprogmag aprirà con lock il file!!!
+                         end-if
+                         call "wprogmag" using link-wprogmag
+                         evaluate link-wprogmag-status
+                         when -1
+                              perform SETTA-INIZIO-RIGA
+                              initialize como-riga
+                              string r-inizio             delimited size
+                                     link-msg-err-ritorno delimited size
+                                     into como-riga
+                              end-string
+                              perform RIGA-LOG
+                              set nessun-errore to false
+                              set errori to true
+                         when -2
+                              perform SETTA-INIZIO-RIGA
+                              inspect link-msg-err-ritorno 
+                                      replacing trailing spaces 
+                                      by low-value
+                              initialize como-riga
+                              string r-inizio             
+                                     delimited size
+                                     link-msg-err-ritorno 
+                                     delimited low-value
+                                     " --> IMPOSSIBILE "  
+                                     delimited size
+                                     "PROSEGUIRE!"        
+                                     delimited size
+                                     into como-riga
+                              end-string
+                              perform RIGA-LOG
+                              set nessun-errore to false
+                              set errori to true
+                         end-evaluate
+                    end-read    
                  end-perform
            end-start.
-
+                                                        
       ***----
        AGGIORNA-IMPEGNATO-MASTER.
            set  cli-tipo-C  to true.
