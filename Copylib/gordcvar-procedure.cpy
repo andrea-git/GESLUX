@@ -2380,6 +2380,21 @@ PATCH       bitmap-number = BitmapNumSave.
            set StoSalvando to false.
 
            if tutto-ok
+              inquire ef-epal, value in tor-epal
+              inquire ef-banc, value in tor-bancali
+
+              if tor-epal > tor-bancali
+                 display message 
+                 "Totale EPAL non dev'essere superiore a totale bancali"
+                           title titolo
+                            type 1
+                            icon 3
+                 set errori to true
+              end-if
+           end-if.
+
+
+           if tutto-ok
               if CambiatoMagazzino
                  perform CONTROLLA-RIGHE
               end-if

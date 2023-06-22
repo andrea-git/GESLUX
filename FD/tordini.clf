@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E76C94732-585-127025401
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E7610215940-712-3198014864
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1075,14 +1075,34 @@ m_strTrue="S"
 
 @}}
 [FDITEM111_]
-m_strName=FILLER
-m_strRawPic=X(1995)
-m_strPic=X(1995)
+m_strName=tor-epal
+m_strRawPic=9(10)
+m_strPic=9(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strName_Xfd=tor-gdo_1_1_2_1
 {{@DataItem_m_strDescriptionFDITEM111_
+
+@}}
+[FDITEM112_]
+m_strName=tor-bancali
+m_strRawPic=9(10)
+m_strPic=9(10)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM112_
+
+@}}
+[FDITEM113_]
+m_strName=FILLER
+m_strRawPic=X(1975)
+m_strPic=X(1975)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=tor-gdo_1_1_2_1_2
+{{@DataItem_m_strDescriptionFDITEM113_
 
 @}}
 [CStoAcucobolSL_]

@@ -6,7 +6,7 @@ QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E3914151654-633-974414460
+PROGRAM_UNIQUE_CODE=TOTEM-7E7610215940-964-484328003
 
 {{@DESCRIPTION:
 
@@ -1785,6 +1785,122 @@ Begin Screen Screen2
       Msg-Goto-Cell-Drag = Screen2-Gd-1-Ev-Msg-Goto-Cell-Drag
       Msg-Goto-Cell-Mouse = Screen2-Gd-1-Ev-Msg-Goto-Cell-Mouse
    End
+   Begin Data.Entry-Field ef-epal
+      SCREEN-COL        = 15,33
+      SCREEN-LINE       = 29,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-epal
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,33
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = z.zzz.zzz.zz9
+      Field Picture     = 9(10)
+      Field Variable    = tor-epal
+      File              = tordini
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 15
+      Justification     = Right
+      Line              = 29,23
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 10
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 4
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
+   Begin Data.Entry-Field ef-banc
+      SCREEN-COL        = 15,33
+      SCREEN-LINE       = 30,77
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-banc
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 15,33
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Field Edited (Style) = 1
+      Field Edited Format = z.zzz.zzz.zz9
+      Field Picture     = 9(10)
+      Field Variable    = tor-bancali
+      File              = tordini
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 16
+      Justification     = Right
+      Line              = 30,77
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 10
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 5
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Screen2-DaEf-1-BeforeProcedure
+      After Procedure   = Screen2-DaEf-1-AfterProcedure
+   End
    Begin Data.Label Screen2-DaLa-11
       SCREEN-COL        = 15,00
       SCREEN-LINE       = 10,00
@@ -1818,7 +1934,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 8,00
       Size Unit         = Default
-      Tab Order         = 4
+      Tab Order         = 6
       Title             = "tor-cod-cli"
       Transparent       = TRUE
       Visible           = NONE
@@ -1839,8 +1955,8 @@ Begin Screen Screen2
       Destroy Type      = Automatic
       Enable            = NONE
       Field Edited (Style) = 0
-      Field Edited Format = X(10)
-      Field Picture     = X(10)
+      Field Edited Format = X(50)
+      Field Picture     = X(50)
       Field Variable    = tor-num-ord-cli
       File              = tordini
       Font              = Small Font
@@ -1857,7 +1973,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 16,00
       Size Unit         = Default
-      Tab Order         = 5
+      Tab Order         = 7
       Title             = "tor-num-ord-cli"
       Transparent       = TRUE
       Visible           = NONE
@@ -1896,7 +2012,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 6
+      Tab Order         = 8
       Title             = "tor-data-ordine"
       Transparent       = TRUE
       Visible           = NONE
@@ -1935,7 +2051,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 12,00
       Size Unit         = Default
-      Tab Order         = 7
+      Tab Order         = 9
       Title             = "tor-numero"
       Transparent       = TRUE
       Visible           = NONE
@@ -1959,7 +2075,7 @@ Begin Screen Screen2
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 16
+      ID                = 17
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 10,00
@@ -1969,7 +2085,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 2,83
       Size Unit         = Default
-      Tab Order         = 8
+      Tab Order         = 10
       Title             = "N°"
       Transparent       = TRUE
       Visible           = NONE
@@ -1993,7 +2109,7 @@ Begin Screen Screen2
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 17
+      ID                = 18
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 10,00
@@ -2003,7 +2119,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 4,00
       Size Unit         = Default
-      Tab Order         = 9
+      Tab Order         = 11
       Title             = "DEL"
       Transparent       = TRUE
       Visible           = NONE
@@ -2024,7 +2140,7 @@ Begin Screen Screen2
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 18
+      ID                = 19
       Kind              = Horizontal
       Line              = 26,50
       Line Styles       = Solid
@@ -2035,7 +2151,7 @@ Begin Screen Screen2
       Size (Lines)      = 109,00
       Size (Lines) in Pixels = 654
       Size (Lines) Unit = Default
-      Tab Order         = 10
+      Tab Order         = 12
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -2055,7 +2171,7 @@ Begin Screen Screen2
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 19
+      ID                = 20
       Kind              = Horizontal
       Line              = 12,00
       Line Styles       = Solid
@@ -2066,7 +2182,7 @@ Begin Screen Screen2
       Size (Lines)      = 109,00
       Size (Lines) in Pixels = 654
       Size (Lines) Unit = Default
-      Tab Order         = 11
+      Tab Order         = 13
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -2089,7 +2205,7 @@ Begin Screen Screen2
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 20
+      ID                = 21
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 27,69
@@ -2099,7 +2215,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 7,00
       Size Unit         = Default
-      Tab Order         = 12
+      Tab Order         = 14
       Title             = "Tot. colli"
       Transparent       = TRUE
       Visible           = NONE
@@ -2138,7 +2254,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 47,00
       Size Unit         = Default
-      Tab Order         = 13
+      Tab Order         = 15
       Title             = "vet-descrizione"
       Transparent       = TRUE
       Visible           = NONE
@@ -2177,7 +2293,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 100,00
       Size Unit         = Default
-      Tab Order         = 14
+      Tab Order         = 16
       Title             = "vet-indirizzo"
       Transparent       = TRUE
       Visible           = NONE
@@ -2211,7 +2327,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 10,00
       Size Unit         = Default
-      Tab Order         = 15
+      Tab Order         = 17
       Title             = "99/99/9999"
       Title Picture     = 99/99/9999
       Title Variable    = data-stampa
@@ -2247,7 +2363,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 2,00
       Size Unit         = Default
-      Tab Order         = 16
+      Tab Order         = 18
       Title             = "-"
       Transparent       = TRUE
       Visible           = NONE
@@ -2281,7 +2397,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 17
+      Tab Order         = 19
       Title             = "99:99"
       Title Picture     = X(5)
       Title Variable    = ORA-STAMPA
@@ -2317,7 +2433,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 18
+      Tab Order         = 20
       Title             = "xx"
       Title Picture     = X(2)
       Title Variable    = vett-iniz
@@ -2352,7 +2468,7 @@ Begin Screen Screen2
       Low Color         = 0
       Size              = 54,00
       Size Unit         = Default
-      Tab Order         = 19
+      Tab Order         = 21
       Thickness         = Default
       Title             = "Cliente"
       Title Position    = 0:Unaligned
@@ -2581,7 +2697,7 @@ Begin Screen Screen2
       Low Color         = 0
       Size              = 45,67
       Size Unit         = Default
-      Tab Order         = 20
+      Tab Order         = 22
       Thickness         = Default
       Title             = "Note a pié bolla"
       Title Position    = 0:Unaligned
@@ -2810,7 +2926,7 @@ Begin Screen Screen2
       Low Color         = 0
       Size              = 54,00
       Size Unit         = Default
-      Tab Order         = 21
+      Tab Order         = 23
       Thickness         = Default
       Title             = "Destino"
       Title Position    = 0:Unaligned
@@ -2831,8 +2947,8 @@ Begin Screen Screen2
          Destroy Type      = Automatic
          Enable            = NONE
          Field Edited (Style) = 0
-         Field Edited Format = X(40)
-         Field Picture     = X(40)
+         Field Edited Format = x(100)
+         Field Picture     = x(100)
          Field Variable    = des-ragsoc-1
          File              = destini
          Font              = Small Font
@@ -2956,7 +3072,7 @@ Begin Screen Screen2
          Font Variable     = Small-Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 21
+         ID                = 26
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 4,69
@@ -2995,7 +3111,7 @@ Begin Screen Screen2
          Font Variable     = Small-Font
          Height in Cells   = TRUE
          Help ID           = 0
-         ID                = 26
+         ID                = 36
          Justification     = Unaligned
          Label Offset      = 20
          Line              = 4,69
@@ -3030,7 +3146,7 @@ Begin Screen Screen2
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 36
+      ID                = 37
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 8,00
@@ -3040,7 +3156,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 10,33
       Size Unit         = Default
-      Tab Order         = 22
+      Tab Order         = 24
       Title             = "Ordine num.:"
       Transparent       = TRUE
       Visible           = NONE
@@ -3064,7 +3180,7 @@ Begin Screen Screen2
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 37
+      ID                = 38
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 10,00
@@ -3074,7 +3190,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 12,33
       Size Unit         = Default
-      Tab Order         = 23
+      Tab Order         = 25
       Title             = "Codice Cliente:"
       Transparent       = TRUE
       Visible           = NONE
@@ -3106,7 +3222,7 @@ Begin Screen Screen2
       Size (Lines)      = 109,00
       Size (Lines) in Pixels = 654
       Size (Lines) Unit = Default
-      Tab Order         = 24
+      Tab Order         = 26
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -3134,7 +3250,7 @@ Begin Screen Screen2
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 38
+      ID                = 503
       Justification     = Left
       Label Offset      = 20
       Line              = 27,69
@@ -3144,7 +3260,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 25
+      Tab Order         = 27
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3182,7 +3298,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 26
+      Tab Order         = 28
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3220,7 +3336,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 27
+      Tab Order         = 29
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3258,7 +3374,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 14,00
       Size Unit         = Default
-      Tab Order         = 28
+      Tab Order         = 30
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3291,7 +3407,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 14,33
       Size Unit         = Default
-      Tab Order         = 29
+      Tab Order         = 31
       Title             = "Peso totale"
       Transparent       = TRUE
       Visible           = NONE
@@ -3325,7 +3441,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 14,33
       Size Unit         = Default
-      Tab Order         = 30
+      Tab Order         = 32
       Title             = "Peso non  UTF"
       Transparent       = TRUE
       Visible           = NONE
@@ -3359,7 +3475,7 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 14,33
       Size Unit         = Default
-      Tab Order         = 31
+      Tab Order         = 33
       Title             = "Peso UTF"
       Transparent       = TRUE
       Visible           = NONE
@@ -3398,7 +3514,75 @@ Begin Screen Screen2
       Occurs            = 0
       Size              = 40,00
       Size Unit         = Default
-      Tab Order         = 32
+      Tab Order         = 34
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-2aaa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 29,23
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-2aaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 46
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 29,23
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 35
+      Title             = "Tot EPAL"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen2-La-2aaaa
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 30,77
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen2-La-2aaaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 47
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 30,77
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 10,00
+      Size Unit         = Default
+      Tab Order         = 36
+      Title             = "Tot bancali"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3425,7 +3609,7 @@ BEGIN-DATA
    NODESTYLE         = 7
    PARAGRAPH         = DeletedCode
 BEGIN-TEXT
-
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>======================================================      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4079,15 +4263,26 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = PB-ESEGUIa-LinkTo
 BEGIN-TEXT
-           display message box "S'intende procedere alla prenotazione"
-                        x"0d0a""bolla dell'ordine selezionato?"
-                   title = titolo
-                   type mb-yes-no
-                   default mb-no
-                   giving scelta
+           inquire ef-epal, value in tor-epal.
+           inquire ef-banc, value in tor-bancali.
 
-           if scelta = mb-yes  
-         
+           if tor-epal > tor-bancali
+              display message "Totale EPAL non dev'essere superiore a totale bancali "
+                        title titolo
+                         type 1
+                         icon 3
+              exit paragraph
+           end-if.
+
+           display message "S'intende procedere alla prenotazione"
+                    x"0d0a""bolla dell'ordine selezionato?"
+                     title titolo
+                      type mb-yes-no
+                   default mb-no
+                    giving scelta
+
+           if scelta = mb-yes                      
+
               move tor-chiave to lprenf-evasione
               move user-codi  to lprenf-user-codi
               move spaces to lprenf-errore
@@ -4260,6 +4455,21 @@ BEGIN-DATA
    PARAGRAPH         = Form1-Pb-2-AfterProcedure
 BEGIN-TEXT
            modify pb-cancel, bitmap-number 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-DaEf-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen2-DaEf-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT
 END-DATA
 

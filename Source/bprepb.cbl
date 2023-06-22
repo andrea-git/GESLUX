@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bprepb.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 20 settembre 2019 17:46:05.
+       DATE-WRITTEN.        sabato 17 giugno 2023 00:09:30.
        REMARKS.
       *{TOTEM}END
 
@@ -185,10 +185,14 @@
           88 Screen2-FLAG-REFRESH  VALUE 1 FALSE 0. 
       * DATA CONTROL BUFFER
        01 Screen2-BUF.
+      * Data.Entry-Field
+              05 ef-epal-BUF PIC z.zzz.zzz.zz9.
+      * Data.Entry-Field
+              05 ef-banc-BUF PIC z.zzz.zzz.zz9.
       * Data.Label
               05 Screen2-DaLa-11-BUF PIC zzzz9.
       * Data.Label
-              05 Screen2-DaLa-12-BUF PIC X(10).
+              05 Screen2-DaLa-12-BUF PIC X(50).
       * Data.Label
               05 Screen2-DaLa-13-BUF PIC 99/99/9999.
       * Data.Label
@@ -218,7 +222,7 @@
       * Data.Label
               05 Screen2-DaLa-19-BUF PIC X(30).
       * Data.Label
-              05 Screen2-DaLa-6-BUF PIC X(40).
+              05 Screen2-DaLa-6-BUF PIC x(100).
       * Data.Label
               05 Screen2-DaLa-7-BUF PIC X(40).
       * Data.Label
@@ -239,14 +243,14 @@
               05 lab-cau-BUF PIC X(20).
 
        77 TMP-Screen2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Screen2-tordini-RESTOREBUF  PIC X(3898).
+       77 TMP-Screen2-tordini-RESTOREBUF  PIC X(3938).
        77 TMP-Screen2-KEYIS  PIC 9(3) VALUE 1.
-       77 Screen2-MULKEY-TMPBUF   PIC X(3898).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 Screen2-MULKEY-TMPBUF   PIC X(3938).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-zoom-tordini-BUF     PIC X(141).
@@ -324,16 +328,17 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 rordini-ror-k-promo-SPLITBUF  PIC X(16).
        77 rordini-ror-k-articolo-SPLITBUF  PIC X(24).
        77 rordini-ror-k-master-SPLITBUF  PIC X(35).
        77 rordini-ror-k-stbolle-SPLITBUF  PIC X(30).
+       77 rordini-ror-k-ord-art-SPLITBUF  PIC X(19).
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -557,6 +562,7 @@
       * FORM
        01 
            Screen2, 
+           AFTER PROCEDURE Screen2-AfterProcedure,
            .
 
       * PUSH BUTTON
@@ -637,6 +643,42 @@
            EVENT PROCEDURE Screen2-Gd-1-Event-Proc,
            .
 
+      * ENTRY FIELD
+       05
+           ef-epal, 
+           Entry-Field, 
+           COL 15,33, 
+           LINE 29,23,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 15,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 10,
+           VALUE ef-epal-BUF,
+           BEFORE PROCEDURE Screen2-DaEf-1-BeforeProcedure, 
+           .
+      * ENTRY FIELD
+       05
+           ef-banc, 
+           Entry-Field, 
+           COL 15,33, 
+           LINE 30,77,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 16,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 10,
+           VALUE ef-banc-BUF,
+           BEFORE PROCEDURE Screen2-DaEf-1-BeforeProcedure, 
+           .
       * DB_LABEL
        05
            Screen2-DaLa-11, 
@@ -713,7 +755,7 @@
            LINES 1,31 ,
            SIZE 2,83 ,
            FONT IS Small-Font,
-           ID IS 16,
+           ID IS 17,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -729,7 +771,7 @@
            LINES 1,31 ,
            SIZE 4,00 ,
            FONT IS Small-Font,
-           ID IS 17,
+           ID IS 18,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -743,7 +785,7 @@
            COL 1,00, 
            LINE 26,50,
            SIZE 109,00 ,
-           ID IS 18,
+           ID IS 19,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),
@@ -758,7 +800,7 @@
            COL 1,00, 
            LINE 12,00,
            SIZE 109,00 ,
-           ID IS 19,
+           ID IS 20,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),
@@ -775,7 +817,7 @@
            LINES 1,31 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
-           ID IS 20,
+           ID IS 21,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1141,7 +1183,7 @@
            LINES 1,31 ,
            SIZE 36,00 ,
            FONT IS Small-Font,
-           ID IS 21,
+           ID IS 26,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE Screen2-DaLa-9-BUF,
@@ -1157,7 +1199,7 @@
            LINES 1,31 ,
            SIZE 3,00 ,
            FONT IS Small-Font,
-           ID IS 26,
+           ID IS 36,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE Screen2-DaLa-10-BUF,
@@ -1173,7 +1215,7 @@
            LINES 1,31 ,
            SIZE 10,33 ,
            FONT IS Small-Font,
-           ID IS 36,
+           ID IS 37,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1189,7 +1231,7 @@
            LINES 1,31 ,
            SIZE 12,33 ,
            FONT IS Small-Font,
-           ID IS 37,
+           ID IS 38,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1220,7 +1262,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 38,
+           ID IS 503,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE Screen2-DaLa-22-BUF,
@@ -1341,6 +1383,38 @@
            WIDTH-IN-CELLS,
            TITLE lab-cau-BUF,
            TRANSPARENT,
+           .
+
+      * LABEL
+       05
+           Screen2-La-2aaa, 
+           Label, 
+           COL 2,00, 
+           LINE 29,23,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           FONT IS Small-Font,
+           ID IS 46,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tot EPAL",
+           .
+
+      * LABEL
+       05
+           Screen2-La-2aaaa, 
+           Label, 
+           COL 2,00, 
+           LINE 30,77,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           FONT IS Small-Font,
+           ID IS 47,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tot bancali",
            .
 
       *{TOTEM}END
@@ -2014,7 +2088,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -2313,9 +2387,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -2515,6 +2589,16 @@
            rordini-ror-k-stbolle-SPLITBUF(13:17)
            .
 
+       rordini-ror-k-ord-art-MERGE-SPLITBUF.
+           INITIALIZE rordini-ror-k-ord-art-SPLITBUF
+           MOVE ror-anno OF rordini(1:4) TO 
+           rordini-ror-k-ord-art-SPLITBUF(1:4)
+           MOVE ror-num-ordine OF rordini(1:8) TO 
+           rordini-ror-k-ord-art-SPLITBUF(5:8)
+           MOVE ror-cod-articolo OF rordini(1:6) TO 
+           rordini-ror-k-ord-art-SPLITBUF(13:6)
+           .
+
        DataSet1-rordini-INITSTART.
            IF DataSet1-rordini-KEY-Asc
               MOVE Low-Value TO ror-chiave of rordini
@@ -2580,6 +2664,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT 
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -2611,6 +2696,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -2642,6 +2728,7 @@
            PERFORM rordini-ror-k-articolo-MERGE-SPLITBUF
            PERFORM rordini-ror-k-master-MERGE-SPLITBUF
            PERFORM rordini-ror-k-stbolle-MERGE-SPLITBUF
+           PERFORM rordini-ror-k-ord-art-MERGE-SPLITBUF
            MOVE STATUS-rordini TO TOTEM-ERR-STAT
            MOVE "rordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -4679,12 +4766,66 @@ LUBEXX        end-evaluate
       * for Form's Validation
        Screen2-VALIDATION-ROUTINE.
            SET TOTEM-CHECK-OK TO TRUE
+      * ef-epal's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-epal-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 15 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-banc's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-banc-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 16 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+           .
+
+       ef-epal-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Screen2, Data.Entry-Field:ef-epal, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-epal-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Screen2, Data.Entry-Field:ef-epal, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-epal's Validation
+       ef-epal-VALIDATION.
+           PERFORM ef-epal-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-epal-AFTER-VALIDATION
+           .
+
+       ef-banc-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Screen2, Data.Entry-Field:ef-banc, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-banc-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Screen2, Data.Entry-Field:ef-banc, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-banc's Validation
+       ef-banc-VALIDATION.
+           PERFORM ef-banc-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-banc-AFTER-VALIDATION
            .
 
 
        Screen2-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Screen2, FORM:Screen2, BeforeBufToFld>
       * <TOTEM:END>
+      * DB_Entry-Field : ef-epal
+           MOVE ef-epal-BUF TO tor-epal
+      * DB_Entry-Field : ef-banc
+           MOVE ef-banc-BUF TO tor-bancali
       * <TOTEM:EPT. FORM:Screen2, FORM:Screen2, AfterBufToFld>
       * <TOTEM:END>
            .
@@ -4701,6 +4842,10 @@ LUBEXX        end-evaluate
 
            .
       * <TOTEM:END>
+      * DB_Entry-Field : ef-epal
+           MOVE tor-epal TO ef-epal-BUF
+      * DB_Entry-Field : ef-banc
+           MOVE tor-bancali TO ef-banc-BUF
       * DB_LABEL : Screen2-DaLa-11
               MOVE tor-cod-cli  TO Screen2-DaLa-11-BUF
       * DB_LABEL : Screen2-DaLa-12
@@ -4811,6 +4956,13 @@ LUBEXX        end-evaluate
            .
 
 
+
+       Screen2-AfterProcedure.
+           EVALUATE Control-Id
+           When 15 PERFORM Screen2-DaEf-1-AfterProcedure
+           When 16 PERFORM Screen2-DaEf-1-AfterProcedure
+           END-EVALUATE
+           .
 
        Screen1-Event-Proc.
            .
@@ -5105,15 +5257,27 @@ LABLAB              end-if
       * <TOTEM:END>
        PB-ESEGUIa-LinkTo.
       * <TOTEM:PARA. PB-ESEGUIa-LinkTo>
-           display message box "S'intende procedere alla prenotazione"
-                        x"0d0a""bolla dell'ordine selezionato?"
-                   title = titolo
-                   type mb-yes-no
-                   default mb-no
-                   giving scelta
+           inquire ef-epal, value in tor-epal.
+           inquire ef-banc, value in tor-bancali.
 
-           if scelta = mb-yes  
-         
+           if tor-epal > tor-bancali
+              display message "Totale EPAL non dev'essere superiore a to
+      -    "tale bancali "
+                        title titolo
+                         type 1
+                         icon 3
+              exit paragraph
+           end-if.
+
+           display message "S'intende procedere alla prenotazione"
+                    x"0d0a""bolla dell'ordine selezionato?"
+                     title titolo
+                      type mb-yes-no
+                   default mb-no
+                    giving scelta
+
+           if scelta = mb-yes                      
+
               move tor-chiave to lprenf-evasione
               move user-codi  to lprenf-user-codi
               move spaces to lprenf-errore
@@ -5269,6 +5433,30 @@ LABLAB          end-if
            modify pb-cancel, bitmap-number 1 
            .
       * <TOTEM:END>
+       Screen2-DaEf-1-BeforeProcedure.
+      * <TOTEM:PARA. Screen2-DaEf-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       Screen2-DaEf-1-AfterProcedure.
+      * <TOTEM:PARA. Screen2-DaEf-1-AfterProcedure>
+              INQUIRE ef-epal, VALUE IN tor-epal
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-epal-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-banc, VALUE IN tor-bancali
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-banc-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+
+           .
+      * <TOTEM:END>
+
 
       *{TOTEM}END
 

@@ -458,6 +458,8 @@
                    15 old-tor-contrassegno PIC  x.
                        88 old-tor-contrassegno-no VALUE IS "N" , " ". 
                        88 old-tor-contrassegno-si VALUE IS "S". 
+                   15 old-tor-epal PIC  9(10).
+                   15 old-tor-bancali PIC  9(10).
 
        01 rec-grid.
            05 col-num          PIC  z(5).

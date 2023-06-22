@@ -341,9 +341,8 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
 
        01  st-riga-vettore.                       
          03 st-vettore             pic x(3). 
-         03 st-numord              pic z(6).
-         03 filler                 pic x(26) 
-                                   value "***** EPAL A RENDERE *****".
+         03 st-numord              pic z(6).                          
+         03 st-epal                pic x(45).
 
        01  st-num-data.                           
          03 st-num-bolla           pic z(8).      
@@ -500,6 +499,9 @@ OMAGGI   03 st-qta-oma             pic zz.zzz.zzz.
          05 como-anno              pic 9(4).
          05 como-numero            pic 9(8).
 
+       77  st-tot-epal             pic x(10).
+       77  st-tot-banc             pic x(10).
+       
        01  sav-chiave.
          05 sav-anno               pic 9(4).
          05 sav-numero             pic 9(8).
@@ -2213,6 +2215,28 @@ LUBEXX*****        end-evaluate
                                  
            move "@#03" to line-riga.
            perform STAMPA-RIGA.
+
+           initialize st-epal. 
+           if tor-bancali > 0                     
+              move tor-epal    to st-tot-epal 
+              move tor-bancali to st-tot-banc 
+                                                                        
+              inspect st-tot-epal replacing leading x"30" by x"20"
+              call "C$JUSTIFY" using st-tot-epal, "L"
+              inspect st-tot-epal replacing trailing spaces by low-value
+      
+              inspect st-tot-banc replacing leading x"30" by x"20"
+              call "C$JUSTIFY" using st-tot-banc, "L"
+              inspect st-tot-banc replacing trailing spaces by low-value
+      
+              string st-tot-epal           delimited low-value
+                     " EPAL A RENDERE SU " delimited size
+                     st-tot-banc           delimited low-value
+                into st-epal
+              end-string
+           else
+              move "***** EPAL A RENDERE *****" to st-epal
+           end-if.
 
            move st-riga-vettore          to line-riga.
            perform STAMPA-RIGA. 

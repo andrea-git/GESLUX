@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 maggio 2022 16:03:51.
+       DATE-WRITTEN.        sabato 17 giugno 2023 00:22:02.
        REMARKS.
       *{TOTEM}END
 
@@ -505,6 +505,10 @@
               10 ef-note-bolla-1-BUF PIC X(500).
       * Data.Entry-Field
               10 ef-note-bolla-2-BUF PIC X(500).
+      * Data.Entry-Field
+              10 ef-epal-BUF PIC z.zzz.zzz.zz9.
+      * Data.Entry-Field
+              10 ef-banc-BUF PIC z.zzz.zzz.zz9.
       * Data.Radio-Button
               10 Form1-RADIO-1-BUF PIC 99 VALUE ZERO.
       * Data.Label
@@ -1701,6 +1705,44 @@
            BEFORE PROCEDURE ef-note-bolla-2-BeforeProcedure, 
            .
 
+      * ENTRY FIELD
+       10
+           ef-epal, 
+           Entry-Field, 
+           COL 96,17, 
+           LINE 36,61,
+           LINES 1,31 ,
+           SIZE 11,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           FONT IS Small-Font,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 10,
+           VALUE ef-epal-BUF,
+           .
+
+      * ENTRY FIELD
+       10
+           ef-banc, 
+           Entry-Field, 
+           COL 96,17, 
+           LINE 38,54,
+           LINES 1,31 ,
+           SIZE 11,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           FONT IS Small-Font,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 10,
+           VALUE ef-banc-BUF,
+           .
+
       * COMBO-BOX
        10
            cbo-stato, 
@@ -1728,8 +1770,8 @@
        10
            Form1-Fr-1, 
            Frame, 
-           COL 54,67, 
-           LINE 37,54,
+           COL 48,00, 
+           LINE 36,77,
            LINES 2,92 ,
            SIZE 34,00 ,
            ID IS 59,
@@ -1743,8 +1785,8 @@
        10
            rb-man, 
            Radio-Button, 
-           COL 65,67, 
-           LINE 38,85,
+           COL 59,00, 
+           LINE 38,08,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED e-man,
@@ -1762,8 +1804,8 @@
        10
            rb-gui, 
            Radio-Button, 
-           COL 81,67, 
-           LINE 38,85,
+           COL 75,00, 
+           LINE 38,08,
            LINES 1,15 ,
            SIZE 3,00 ,
            ENABLED e-gui,
@@ -1781,8 +1823,8 @@
        10
            Form1-La-16, 
            Label, 
-           COL 56,67, 
-           LINE 38,62,
+           COL 50,00, 
+           LINE 37,85,
            LINES 1,15 ,
            SIZE 8,17 ,
            FONT IS Small-Font,
@@ -1797,8 +1839,8 @@
        10
            Form1-La-17, 
            Label, 
-           COL 73,67, 
-           LINE 38,62,
+           COL 67,00, 
+           LINE 37,85,
            LINES 1,15 ,
            SIZE 7,00 ,
            FONT IS Small-Font,
@@ -2590,6 +2632,38 @@
            TRANSPARENT,
            TITLE "Contrassegno",
            VISIBLE 1,
+           .
+
+      * LABEL
+       10
+           Form1-La-5a, 
+           Label, 
+           COL 86,17, 
+           LINE 36,61,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           FONT IS Small-Font,
+           ID IS 101,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tot EPAL",
+           .
+
+      * LABEL
+       10
+           Form1-La-5aa, 
+           Label, 
+           COL 86,17, 
+           LINE 38,54,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           FONT IS Small-Font,
+           ID IS 102,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tot bancali",
            .
 
       * PAGE
@@ -3415,7 +3489,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 101,
+           ID IS 103,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3436,7 +3510,7 @@
            SQUARE,
            EXCEPTION-VALUE 1010,
            FLAT,
-           ID IS 102,
+           ID IS 104,
            SELF-ACT,
            TITLE "POD",
            VISIBLE v-pod,
@@ -3454,7 +3528,7 @@
            SIZE 65,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 103,
+           ID IS 105,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE lab-cau-BUF,
@@ -3708,7 +3782,7 @@
            FRAMED,
            SQUARE,
            EXCEPTION-VALUE 1012,
-           ID IS 104,
+           ID IS 126,
            SELF-ACT,
            TITLE "Invio sollecito",
            VISIBLE v-invio-sol,
@@ -3914,7 +3988,7 @@
            FRAMED,
            SQUARE,
            EXCEPTION-VALUE 1008
-           ID IS 126,
+           ID IS 127,
            SELF-ACT,
            TITLE "Modifica (F5)",
            VALUE abil-bolla,
@@ -3951,7 +4025,7 @@
            SIZE 49,00 ,
            COLOR IS 5,
            FONT IS Verdana12B-Occidentale,
-           ID IS 105,
+           ID IS 106,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -3970,7 +4044,7 @@
            SIZE 16,50 ,
            EXCEPTION-VALUE 777,
            FONT IS Small-Font,
-           ID IS 106,
+           ID IS 107,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -17287,6 +17361,26 @@ PATCH      end-evaluate.
                MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-epal's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-epal-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 24 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-banc's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-banc-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 1 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 25 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-data-bolla's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-data-bolla-VALIDATION
@@ -17749,6 +17843,40 @@ PATCH      end-evaluate.
            PERFORM ef-note-bolla-2-AFTER-VALIDATION
            .
 
+       ef-epal-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-epal, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-epal-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-epal, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-epal's Validation
+       ef-epal-VALIDATION.
+           PERFORM ef-epal-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-epal-AFTER-VALIDATION
+           .
+
+       ef-banc-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-banc, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-banc-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-banc, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-banc's Validation
+       ef-banc-VALIDATION.
+           PERFORM ef-banc-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-banc-AFTER-VALIDATION
+           .
+
        ef-data-bolla-BEFORE-VALIDATION.
       * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-data-bolla, BeforeValidation>
       * <TOTEM:END>
@@ -18003,6 +18131,10 @@ PATCH      end-evaluate.
            MOVE ef-note-bolla-1-BUF TO tor-note-bolla-1
       * DB_Entry-Field : ef-note-bolla-2
            MOVE ef-note-bolla-2-BUF TO tor-note-bolla-2
+      * DB_Entry-Field : ef-epal
+           MOVE ef-epal-BUF TO tor-epal
+      * DB_Entry-Field : ef-banc
+           MOVE ef-banc-BUF TO tor-bancali
       * DB_RADIOBOX : rb-man, rb-gui, 
            EVALUATE Form1-RADIO-1-BUF
            WHEN 1
@@ -18163,6 +18295,10 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            MOVE tor-note-bolla-1 TO ef-note-bolla-1-BUF
       * DB_Entry-Field : ef-note-bolla-2
            MOVE tor-note-bolla-2 TO ef-note-bolla-2-BUF
+      * DB_Entry-Field : ef-epal
+           MOVE tor-epal TO ef-epal-BUF
+      * DB_Entry-Field : ef-banc
+           MOVE tor-bancali TO ef-banc-BUF
       * DB_RADIOBOX : rb-man, rb-gui, 
            EVALUATE tor-mod-caricamento
            WHEN "M"
@@ -18521,6 +18657,20 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
               set NoSalvato to true
               |78-ID-ef-note-bolla-2 è l'ID del campo ef-note-bolla-2
               move 78-ID-ef-note-bolla-2 to store-id 
+           end-if
+
+           if tor-epal not = old-tor-epal
+              and SiSalvato
+              set NoSalvato to true
+              |24 è l'ID del campo ef-epal
+              move 24 to store-id
+           end-if
+
+           if tor-bancali not = old-tor-bancali
+              and SiSalvato
+              set NoSalvato to true
+              |25 è l'ID del campo ef-banc
+              move 25 to store-id
            end-if
 
            if tor-stato not = old-tor-stato
@@ -18903,6 +19053,10 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            TOTEM-HINT-TEXT
            WHEN 5019 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
+           WHEN 24 MOVE "Digitare la data dell'ordine" to 
+           TOTEM-HINT-TEXT
+           WHEN 25 MOVE "Digitare la data dell'ordine" to 
+           TOTEM-HINT-TEXT
            WHEN 5022 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
            WHEN 5023 MOVE "Modalità d'inserimento manuale" to 
            TOTEM-HINT-TEXT
@@ -18950,6 +19104,8 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            When 5017 PERFORM ef-note-2-BeforeProcedure
            When 5018 PERFORM ef-note-3-BeforeProcedure
            When 5019 PERFORM ef-note-4-BeforeProcedure
+           When 24 PERFORM ef-data-BeforeProcedure
+           When 25 PERFORM ef-data-BeforeProcedure
            When 5022 PERFORM cbo-stato-BeforeProcedure
            When 5023 PERFORM rb-man-BeforeProcedure
            When 5024 PERFORM rb-gui-BeforeProcedure
@@ -18994,6 +19150,8 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
            When 5019 PERFORM ef-note-4-AfterProcedure
            When 5020 PERFORM Form1-DaEf-1-AfterProcedure
            When 5021 PERFORM Form1-DaEf-1-AfterProcedure
+           When 24 PERFORM ef-data-AfterProcedure
+           When 25 PERFORM ef-data-AfterProcedure
            When 5023 PERFORM rb-man-AfterProcedure
            When 5024 PERFORM rb-gui-AfterProcedure
            When 5025 PERFORM ef-data-bolla-AfterProcedure
@@ -19342,6 +19500,18 @@ LUBEXX     move tor-data-bolla(1:4) to tor-anno-bolla.
               INQUIRE ef-data, VALUE IN tor-data-ordine
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-data-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-epal, VALUE IN tor-epal
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-epal-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-banc, VALUE IN tor-bancali
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-banc-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
