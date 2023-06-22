@@ -91,8 +91,10 @@
        77  counter2              pic 9(9).
        77  counter-edit          pic zzz.zzz.zz9.    
        77  s-codice              pic z(15).
-
+       77  codice-x              pic x(15).
+                                         
        77  idx                   pic 999.
+       77  idx-log               pic 999.
        77  prz-confronto-ed      pic zzz.zzz.zz9,9999.
        77  tot-righe             pic 9(10) value 0.
 
@@ -105,12 +107,17 @@
 
        77  como-ora              pic 9(8).
        77  como-data             pic 9(8).
-
+                    
        |Mi salvo subito i gruppi gdo con quel flag per non doverlo rivfare ogni volta
        01  tab-gdo               occurs 999.
            05 el-gdo             pic x(5).
 
-       77  como-riga             pic x(300).
+       01  tab-gdo-log.
+         03                      occurs 999.
+           05 el-gdo-log         pic x(5).
+           05 el-gdo-div         pic x(3).
+
+       77  como-riga             pic x(1000).
 
        77  filler        pic 9 value 0.
            88  nessun-errore   value 0.
@@ -723,6 +730,7 @@
 
       ***---
        INIT.
+           set environment "STRIP_TRAILING_SPACES" to "1".
            set nessun-errore to true.
 
            CALL "C$NARG" USING NARGS.
@@ -865,14 +873,6 @@
       ***---
        TROVA-LISTINO-F.
            set trovato to false.
-           perform SETTA-INIZIO-RIGA.
-           initialize como-riga.
-           string r-inizio                         delimited size
-                  "RICERCA LISTINI PER ARTICOLO: " delimited size
-                  art-codice                       delimited size
-                  into como-riga
-           end-string.
-           perform RIGA-LOG.
 
            move low-value  to rlis-chiave-ricerca.
            move art-codice to rlis-articolo.  
@@ -931,20 +931,27 @@
            end-start.
            perform SETTA-INIZIO-RIGA.
            initialize como-riga.
-           if trovato                                  
+           if trovato     
+              move s-codice to codice-x                  
+              inspect codice-x replacing leading x"30" by x"20"
+              call "C$JUSTIFY" using codice-x , "L"
+              inspect codice-x replacing trailing spaces by low-value
               move s-prz-confronto to prz-confronto-ed
-              string r-inizio            delimited size
-                     "TROVATO LISTINO: " delimited size
-                     s-codice            delimited size
-                     " CON PREZZO: "     delimited size
-                     prz-confronto-ed    delimited size
+              string r-inizio         delimited size
+                     "ART: "          delimited size
+                     art-codice       delimited size 
+                     " - TROVATO L: " delimited size
+                     codice-x         delimited low-value
+                     " PREZZO: "      delimited size
+                     prz-confronto-ed delimited size
                      into como-riga
               end-string
            else
-              string r-inizio                         delimited size
-                     "NESSUN LISTINO TROVATO "        delimited size
-                     art-codice                       delimited size
-                     into como-riga
+              string r-inizio                     delimited size 
+                     "ARTICOLO: "                 delimited size
+                     art-codice                   delimited size
+                     " - NESSUN LISTINO TROVATO " delimited size
+                into como-riga
               end-string
            end-if.
            perform RIGA-LOG.
@@ -964,17 +971,10 @@
            end-if. 
 
       ***---
-       CREA-LISTINI.   
-           perform SETTA-INIZIO-RIGA.
-           initialize como-riga.
-           string r-inizio                           delimited size
-                  "CREAZIONE LISTINI PER ARTICOLO: " delimited size
-                  art-codice                         delimited size
-                  into como-riga
-           end-string.
-           perform RIGA-LOG.
+       CREA-LISTINI.
+           move 0 to idx idx-log.
+           initialize tab-gdo-log.
 
-           move 0 to idx.
            perform varying idx from 1 by 1 
                      until idx > 999
               if el-gdo(idx) = spaces
@@ -1005,9 +1005,7 @@
                        exit perform
                     end-perform
               end-start                                  
-              if not trovato
-                 perform SETTA-INIZIO-RIGA
-                 initialize como-riga
+              if not trovato                
                  initialize lst-rec replacing numeric data by zeroes
                                          alphanumeric data by spaces
                  add 0,005 to s-prz-confronto giving lst-prezzo
@@ -1015,15 +1013,10 @@
                     compute lst-prezzo = lst-prezzo / 
                                          tge-divisore-lstgdo
                  end-if
-                 move lst-prezzo to prz-confronto-ed
-                 string r-inizio                          delimited size
-                        "**CREATO ARTICOLO A LISTINO PER:"delimited size 
-                        el-gdo(idx)                       delimited size
-                        " CON PREZZO: "                   delimited size
-                        prz-confronto-ed                  delimited size
-                   into como-riga
-                 end-string       
-                 perform RIGA-LOG
+
+                 add 1 to idx-log
+                 move el-gdo(idx) to el-gdo-log(idx-log)
+                 move " - "       to el-gdo-div(idx-log)
 
                  move el-gdo(idx)     to lst-gdo
                  move como-data       to lst-data
@@ -1034,7 +1027,23 @@
                  add 1 to tot-righe
                  write lst-rec    
               end-if    
-           end-perform.
+           end-perform.  
+                            
+           perform SETTA-INIZIO-RIGA.
+           initialize como-riga.
+           if idx-log > 0
+              move spaces to el-gdo-div(idx-log)
+              inspect tab-gdo-log replacing trailing spaces by low-value
+              move lst-prezzo to prz-confronto-ed
+              string r-inizio                           delimited size
+                     "**CREATO ARTICOLO A LISTINO PER:" delimited size 
+                     tab-gdo-log                   delimited low-value
+                     " CON PREZZO: "                    delimited size
+                     prz-confronto-ed                   delimited size
+                into como-riga
+              end-string
+              perform RIGA-LOG
+           end-if.
 
       ***---
        CONTATORE-VIDEO.
@@ -1078,6 +1087,8 @@
                    line 25,00
                  column 35,00
            end-if.
+               
+           set environment "STRIP_TRAILING_SPACES" to " ".
 
            goback.                  
 
