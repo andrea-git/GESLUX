@@ -2228,6 +2228,12 @@ LUBEXX*****        end-evaluate
               inspect st-tot-banc replacing leading x"30" by x"20"
               call "C$JUSTIFY" using st-tot-banc, "L"
               inspect st-tot-banc replacing trailing spaces by low-value
+
+              if tor-epal = 0 
+                 move "0" to st-tot-epal 
+                 inspect st-tot-epal 
+                         replacing trailing spaces by low-value
+              end-if
       
               string st-tot-epal           delimited low-value
                      " EPAL A RENDERE SU " delimited size

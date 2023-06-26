@@ -2223,38 +2223,42 @@ PATCH      end-if.
 
            move low-value  to rof-chiave.
            move tof-chiave to rof-chiave.
-           start rordforn key >= rof-chiave.
-           perform until 1 = 2
-              read rordforn next at end exit perform end-read
-              if rof-chiave-testa not = tof-chiave
-                 exit perform
-              end-if
-              initialize sof-rec replacing numeric data by zeroes
-                                      alphanumeric data by spaces
-              move rof-chiave      to sof-chiave
-              read sordforn no lock
-                   invalid
-                   move spaces          to sof-note    
-                   move t-sof-data-arr  to sof-data-arr
-                   move 0               to sof-qta            
-                   move t-dati-salvati  to sof-dati-salvati
-                   accept sof-data-creazione from century-date
-                   accept sof-ora-creazione  from time
-                   move rof-utente-creazione to sof-utente-creazione
-                   if gsordforn-data-conf
-                      accept sof-data-conf from century-date
-                   end-if
-                   write sof-rec end-write
-               not invalid
-                   if t-dati-salvati not = sof-dati-salvati
-                      move t-dati-salvati to sof-dati-salvati       
-                      if gsordforn-data-conf
-                         accept sof-data-conf from century-date
-                      end-if
-                      rewrite sof-rec
-                   end-if
-              end-read
-           end-perform.
+           start rordforn key >= rof-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rordforn next at end exit perform end-read
+                    if rof-chiave-testa not = tof-chiave
+                       exit perform
+                    end-if
+                    initialize sof-rec replacing numeric data by zeroes
+                                            alphanumeric data by spaces
+                    move rof-chiave      to sof-chiave
+                    read sordforn no lock
+                         invalid
+                         move spaces          to sof-note    
+                         move t-sof-data-arr  to sof-data-arr
+                         move 0               to sof-qta            
+                         move t-dati-salvati  to sof-dati-salvati
+                         accept sof-data-creazione from century-date
+                         accept sof-ora-creazione  from time
+                         move rof-utente-creazione 
+                           to sof-utente-creazione
+                         if gsordforn-data-conf
+                            accept sof-data-conf from century-date
+                         end-if
+                         write sof-rec end-write
+                     not invalid
+                         if t-dati-salvati not = sof-dati-salvati
+                            move t-dati-salvati to sof-dati-salvati       
+                            if gsordforn-data-conf
+                               accept sof-data-conf from century-date
+                            end-if
+                            rewrite sof-rec
+                         end-if
+                    end-read
+                 end-perform
+           end-start.
 
       ***---
        CHIAMA-PROGMAG.
