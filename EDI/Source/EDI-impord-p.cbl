@@ -1454,7 +1454,7 @@
 
            move ultimo-numero to emto-numero.
 
-           set emto-contrassegno-no to true.
+           move cli-contrassegno to emto-contrassegno.
 
            perform until 1 = 2
               add 1 to emto-numero ultimo-numero
