@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          invioordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        domenica 4 giugno 2023 22:22:51.
+       DATE-WRITTEN.        martedì 4 luglio 2023 14:46:10.
        REMARKS.
       *{TOTEM}END
 
@@ -7037,31 +7037,55 @@
            set tutto-ok to true.
            perform RIEMPI-CHIAVE.
            read tordforn no lock
-                invalid 
+                invalid  
                 set errori to true
                 display message "Ordine non caricato"
                           title tit-err
                            icon 2
-              not invalid
-                  evaluate true
-                  when tof-inviato
-                       |RICHIESTO DA WALTER (19/06/09)
-                       continue
-      *****                 set errori to true
-      *****                 display message "Ordine già inviato"
-      *****                           title tit-err   
-      *****                            icon 2
-                  when tof-in-lavorazione
-                       set errori to true
-                       display message "Ordine già in lavorazione"
-                                 title tit-err   
-                                  icon 2
-                  when tof-chiuso
-                       set errori to true
-                       display message "Ordine già chiuso"
-                                 title tit-err   
-                                  icon 2
-                  end-evaluate
+                                 
+            not invalid
+                evaluate true
+                when tof-inviato     
+                     if tof-data-invio   = 0 or 
+                        tof-ora-invio    = 0 or 
+                        tof-utente-invio = spaces
+                        display message "ORDINE GIA' INVIATO."
+                                 X"0d0a""SEI SICURO DI PROSEGUIRE?"
+                                  title tit-err
+                                   icon 2
+                                   type mb-yes-no
+                                 default mb-no
+                                 giving scelta
+                     else
+                        display message "ORDINE GIA' INVIATO!"
+                        X"0d0a"
+                        "IL: " tof-data-invio(7:2) "/" 
+           tof-data-invio(5:2) "/" tof-data-invio(1:4)
+                        " ALLE: " tof-ora-invio(1:2) ":" 
+           tof-ora-invio(3:2)
+                        " DA: " tof-utente-invio
+                        X"0d0a"
+                        "SEI SICURO DI PROSEGUIRE?"
+                                  title tit-err
+                                   icon 2
+                                   type mb-yes-no
+                                default mb-no
+                                 giving scelta
+                        if scelta = mb-no
+                           set errori to true                    
+                        end-if
+                     end-if
+                when tof-in-lavorazione
+                     set errori to true
+                     display message "Ordine già in lavorazione"
+                               title tit-err   
+                                icon 2
+                when tof-chiuso
+                     set errori to true
+                     display message "Ordine già chiuso"
+                               title tit-err   
+                                icon 2
+                end-evaluate
            end-read.
 
            perform CANCELLA-COLORE.

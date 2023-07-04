@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E764201926-859-3074222047
+PROGRAM_UNIQUE_CODE=TOTEM-7E774121813-260-817923163
 
 {{@DESCRIPTION:
 
@@ -5206,31 +5206,53 @@ BEGIN-TEXT
            set tutto-ok to true.
            perform RIEMPI-CHIAVE.
            read tordforn no lock
-                invalid 
+                invalid  
                 set errori to true
                 display message "Ordine non caricato"
                           title tit-err
                            icon 2
-              not invalid
-                  evaluate true
-                  when tof-inviato
-                       |RICHIESTO DA WALTER (19/06/09)
-                       continue
-      *****                 set errori to true
-      *****                 display message "Ordine già inviato"
-      *****                           title tit-err   
-      *****                            icon 2
-                  when tof-in-lavorazione
-                       set errori to true
-                       display message "Ordine già in lavorazione"
-                                 title tit-err   
-                                  icon 2
-                  when tof-chiuso
-                       set errori to true
-                       display message "Ordine già chiuso"
-                                 title tit-err   
-                                  icon 2
-                  end-evaluate
+                                 
+            not invalid
+                evaluate true
+                when tof-inviato     
+                     if tof-data-invio   = 0 or 
+                        tof-ora-invio    = 0 or 
+                        tof-utente-invio = spaces
+                        display message "ORDINE GIA' INVIATO."
+                                 X"0d0a""SEI SICURO DI PROSEGUIRE?"
+                                  title tit-err
+                                   icon 2
+                                   type mb-yes-no
+                                 default mb-no
+                                 giving scelta
+                     else
+                        display message "ORDINE GIA' INVIATO!"
+                        X"0d0a"
+                        "IL: " tof-data-invio(7:2) "/" tof-data-invio(5:2) "/" tof-data-invio(1:4)
+                        " ALLE: " tof-ora-invio(1:2) ":" tof-ora-invio(3:2)
+                        " DA: " tof-utente-invio
+                        X"0d0a"
+                        "SEI SICURO DI PROSEGUIRE?"
+                                  title tit-err
+                                   icon 2
+                                   type mb-yes-no
+                                default mb-no
+                                 giving scelta
+                        if scelta = mb-no
+                           set errori to true                    
+                        end-if
+                     end-if
+                when tof-in-lavorazione
+                     set errori to true
+                     display message "Ordine già in lavorazione"
+                               title tit-err   
+                                icon 2
+                when tof-chiuso
+                     set errori to true
+                     display message "Ordine già chiuso"
+                               title tit-err   
+                                icon 2
+                end-evaluate
            end-read.
 
            perform CANCELLA-COLORE.
