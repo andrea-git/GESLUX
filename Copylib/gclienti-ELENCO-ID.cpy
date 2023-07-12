@@ -28,6 +28,10 @@
            when 78-ID-ef-nazione
                 inquire ef-nazione, value in ef-nazione-buf
 
+           |78-ID-ef-sdi è l'ID del control ef-sdi
+           when 78-ID-ef-sdi
+                inquire ef-sdi, value in ef-sdi-buf
+
            |78-ID-ef-mail è l'ID del control ef-mail
            when 78-ID-ef-mail
                 inquire ef-mail, value in ef-mail-buf

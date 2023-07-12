@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E75C10570-977-135579300
+PROGRAM_UNIQUE_CODE=TOTEM-7E777131944-865-875710476
 
 {{@DESCRIPTION:
 
@@ -7683,12 +7683,12 @@ Begin Screen Form1
             Before Procedure  = ef-nazione-BeforeProcedure
             After Procedure   = ef-nazione-AfterProcedure
          End
-         Begin Data.Entry-Field ef-localitaa
+         Begin Data.Entry-Field ef-sdi
             SCREEN-COL        = 140,17
             SCREEN-LINE       = 13,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-localitaa
+            (Name)            = ef-sdi
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -7714,8 +7714,9 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            Hint              = Digitare la localit
-            ID                = 16
+            Hint              = Digitare il codice SDI (7 caratteri)
+            ID                = 0
+            ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 7,46
             Lines             = 1,31
@@ -7741,7 +7742,7 @@ Begin Screen Form1
             Value Multiple    = FALSE
             Visible           = NONE
             Width in Cells    = TRUE
-            My Property       = "CONTROLLO-OLD="
+            My Property       = "CONTROLLO-OLD=;CONTROLLO="
             Before Procedure  = ef-localitaa-BeforeProcedure
             After Procedure   = ef-localitaa-AfterProcedure
          End

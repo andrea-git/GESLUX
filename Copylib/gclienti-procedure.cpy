@@ -853,7 +853,37 @@ LUBEXX     if tcl-codice not = save-ttipocli-privato
                    display message box "Nazione NON valida"
                            title = tit-err
                            icon mb-warning-icon
-                end-if  
+                end-if   
+
+           when 78-ID-ef-SDI
+                move 0 to CountChar
+                inspect ef-sdi-buf 
+                        replacing trailing spaces by low-value
+                inspect ef-sdi-buf tallying CountChar 
+                        for characters before low-value
+                if CountChar = 7
+                   if ef-sdi-buf(1:1) = space or
+                      ef-sdi-buf(2:1) = space or
+                      ef-sdi-buf(3:1) = space or
+                      ef-sdi-buf(4:1) = space or
+                      ef-sdi-buf(5:1) = space or
+                      ef-sdi-buf(6:1) = space or
+                      ef-sdi-buf(7:1) = space     
+                      set errori to true   
+                      display message
+                              "Il codice SDI non può contenere spazi"
+                                title tit-err
+                                 icon mb-warning-icon
+                   end-if
+                else
+                   set errori to true   
+                   display message
+                           "Il codice SDI deve avere 7 caratteri"
+                             title tit-err
+                              icon mb-warning-icon
+                end-if
+                inspect ef-sdi-buf 
+                        replacing trailing low-value by spaces
 
            |78-ID-ef-mail è l'ID del campo ef-mail
            when 78-ID-ef-mail

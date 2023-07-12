@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 12 maggio 2023 12:58:33.
+       DATE-WRITTEN.        venerdì 7 luglio 2023 16:05:44.
        REMARKS.
       *{TOTEM}END
 
@@ -173,7 +173,7 @@
       * Data.Entry-Field
               10 ef-nazione-BUF PIC X(3).
       * Data.Entry-Field
-              10 ef-localitaa-BUF PIC X(10).
+              10 ef-sdi-BUF PIC X(10).
       * Data.Entry-Field
               10 ef-tel-1-BUF PIC X(15).
       * Data.Entry-Field
@@ -859,126 +859,127 @@
        78  78-ID-ef-localita VALUE 5006.
        78  78-ID-ef-prov VALUE 5007.
        78  78-ID-ef-nazione VALUE 5008.
-       78  78-ID-ef-tel-1 VALUE 5009.
-       78  78-ID-ef-tel-2 VALUE 5010.
-       78  78-ID-ef-fax VALUE 5011.
-       78  78-ID-ef-mail VALUE 5012.
-       78  78-ID-ef-url VALUE 5013.
-       78  78-ID-ef-tipo VALUE 5014.
-       78  78-ID-ef-gdo VALUE 5015.
-       78  78-ID-chk-utf VALUE 5016.
-       78  78-ID-ef-referente VALUE 5017.
-       78  78-ID-ef-vettore VALUE 5018.
-       78  78-ID-chk-inoltro VALUE 5019.
-       78  78-ID-ef-agente VALUE 5020.
-       78  78-ID-cbo-stato VALUE 5021.
-       78  78-ID-cbo-cau-blocco VALUE 5022.
-       78  78-ID-ef-agente2 VALUE 5023.
-       78  78-ID-chk-superamento VALUE 5024.
-       78  78-ID-chk-24000 VALUE 5025.
-       78  78-ID-ef-cod-ditta VALUE 5026.
-       78  78-ID-ef-PFA-perce VALUE 5027.
-       78  78-ID-ef-note VALUE 5028.
-       78  78-ID-ef-note-agg VALUE 5029.
-       78  78-ID-cbo-sost-art VALUE 5030.
-       78  78-ID-cbo-tipo-art VALUE 5031.
-       78  78-ID-chk-invio-bolle-EDI VALUE 5032.
-       78  78-ID-chk-destino-auto VALUE 5033.
-       78  78-ID-chk-escludi-fido VALUE 5034.
-       78  78-ID-chk-contrassegno VALUE 5035.
-       78  78-ID-rb-pers VALUE 5036.
-       78  78-ID-rb-soc VALUE 5037.
-       78  78-ID-ef-gg VALUE 5038.
-       78  78-ID-chk-fido VALUE 5039.
-       78  78-ID-ef-esi VALUE 5040.
-       78  78-ID-ef-codfis VALUE 5041.
-       78  78-ID-ef-piva VALUE 5042.
-       78  78-ID-ef-iva-ese VALUE 5043.
-       78  78-ID-ef-pag VALUE 5044.
-       78  78-ID-ef-cod-iva VALUE 5045.
-       78  78-ID-chk-spost-ago VALUE 5046.
-       78  78-ID-chk-spost-dic VALUE 5047.
-       78  78-ID-ef-fido VALUE 5048.
-       78  78-ID-ef-fido-data VALUE 5049.
-       78  78-ID-ef-fido-extra VALUE 5050.
-       78  78-ID-ef-fide VALUE 5051.
-       78  78-ID-ef-PFA VALUE 5052.
-       78  78-ID-ef-data-fido-extra VALUE 5053.
-       78  78-ID-ef-grade VALUE 5054.
-       78  78-ID-ef-abi VALUE 5055.
-       78  78-ID-ef-cab VALUE 5056.
-       78  78-ID-form1-gd-1 VALUE 5057.
-       78  78-ID-ef-ragsoc-1-d VALUE 5058.
-       78  78-ID-ef-ragsoc-2-d VALUE 5059.
-       78  78-ID-ef-indirizzo-d VALUE 5060.
-       78  78-ID-ef-cap-d VALUE 5061.
-       78  78-ID-ef-localita-d VALUE 5062.
-       78  78-ID-ef-prov-d VALUE 5063.
-       78  78-ID-ef-nazione-d VALUE 5064.
-       78  78-ID-chk-invio-d VALUE 5065.
-       78  78-ID-ef-telef-1-d VALUE 5066.
-       78  78-ID-ef-telef-2-d VALUE 5067.
-       78  78-ID-ef-fax-d VALUE 5068.
-       78  78-ID-ef-mail-d VALUE 5069.
-       78  78-ID-ef-referente-d VALUE 5070.
-       78  78-ID-ef-piva-d VALUE 5071.
-       78  78-ID-ef-vettore-d VALUE 5072.
-       78  78-ID-chk-deposito-utf VALUE 5073.
-       78  78-ID-chk-superamento-d VALUE 5074.
-       78  78-ID-cbo-stato-d VALUE 5075.
-       78  78-ID-cbo-tipo-art-d VALUE 5076.
-       78  78-ID-ef-cod-ditta-d VALUE 5077.
-       78  78-ID-ef-CIG-d VALUE 5078.
-       78  78-ID-ef-note-1 VALUE 5079.
-       78  78-ID-ef-note-data VALUE 5080.
-       78  78-ID-ef-note-2 VALUE 5081.
-       78  78-ID-ef-note-3 VALUE 5082.
-       78  78-ID-ef-note-4 VALUE 5083.
-       78  78-ID-ef-ragsoc-1-r VALUE 5084.
-       78  78-ID-ef-ragsoc-2-r VALUE 5085.
-       78  78-ID-ef-indirizzo-r VALUE 5086.
-       78  78-ID-ef-localita-r VALUE 5087.
-       78  78-ID-ef-cap-r VALUE 5088.
-       78  78-ID-ef-prov-r VALUE 5089.
-       78  78-ID-ef-nazione-r VALUE 5090.
-       78  78-ID-cbo-invio VALUE 5091.
-       78  78-ID-chk-dett-dest-sdi VALUE 5092.
-       78  78-ID-chk-escludi-int VALUE 5093.
-       78  78-ID-ef-dich-n VALUE 5094.
-       78  78-ID-ef-data-dich VALUE 5095.
-       78  78-ID-ef-data-reg VALUE 5096.
-       78  78-ID-ef-reg-n VALUE 5097.
-       78  78-ID-gd-destini-e VALUE 5098.
-       78  78-ID-chk-escludi-e VALUE 5099.
-       78  78-ID-chk-intera-e VALUE 5100.
-       78  78-ID-chk-accorpa-e VALUE 5101.
-       78  78-ID-chk-saldo-banco-e VALUE 5102.
-       78  78-ID-chk-saldo-promo-e VALUE 5103.
-       78  78-ID-ef-gg-e VALUE 5104.
-       78  78-ID-gd-evasioni VALUE 5105.
-       78  78-ID-gd-prg VALUE 5106.
-       78  78-ID-ef-id-edi VALUE 5107.
-       78  78-ID-ef-q-id-edi VALUE 5108.
-       78  78-ID-ef-codforn-edi VALUE 5109.
-       78  78-ID-ef-q-codforn-edi VALUE 5110.
-       78  78-ID-ef-piva-c-edi VALUE 5111.
-       78  78-ID-ef-ragsoc-c-edi VALUE 5112.
-       78  78-ID-ef-ind-c-edi VALUE 5113.
-       78  78-ID-ef-citta-c-edi VALUE 5114.
-       78  78-ID-ef-prov-c-edi VALUE 5115.
-       78  78-ID-ef-cap-c-edi VALUE 5116.
-       78  78-ID-ef-codcli-edi VALUE 5117.
-       78  78-ID-ef-q-codcli-edi VALUE 5118.
-       78  78-ID-ef-dest-edi VALUE 5119.
-       78  78-ID-ef-q-dest-edi VALUE 5120.
-       78  78-ID-ef-ragsoc-d-edi VALUE 5121.
-       78  78-ID-ef-ind-d-edi VALUE 5122.
-       78  78-ID-ef-citta-d-edi VALUE 5123.
-       78  78-ID-ef-prov-d-edi VALUE 5124.
-       78  78-ID-ef-cap-d-edi VALUE 5125.
-       78  78-ID-chk-imp-i VALUE 5126.
-       78  78-ID-chk-imp-a VALUE 5127.
-       78  78-ID-chk-exp-i VALUE 5128.
+       78  78-ID-ef-sdi VALUE 5009.
+       78  78-ID-ef-tel-1 VALUE 5010.
+       78  78-ID-ef-tel-2 VALUE 5011.
+       78  78-ID-ef-fax VALUE 5012.
+       78  78-ID-ef-mail VALUE 5013.
+       78  78-ID-ef-url VALUE 5014.
+       78  78-ID-ef-tipo VALUE 5015.
+       78  78-ID-ef-gdo VALUE 5016.
+       78  78-ID-chk-utf VALUE 5017.
+       78  78-ID-ef-referente VALUE 5018.
+       78  78-ID-ef-vettore VALUE 5019.
+       78  78-ID-chk-inoltro VALUE 5020.
+       78  78-ID-ef-agente VALUE 5021.
+       78  78-ID-cbo-stato VALUE 5022.
+       78  78-ID-cbo-cau-blocco VALUE 5023.
+       78  78-ID-ef-agente2 VALUE 5024.
+       78  78-ID-chk-superamento VALUE 5025.
+       78  78-ID-chk-24000 VALUE 5026.
+       78  78-ID-ef-cod-ditta VALUE 5027.
+       78  78-ID-ef-PFA-perce VALUE 5028.
+       78  78-ID-ef-note VALUE 5029.
+       78  78-ID-ef-note-agg VALUE 5030.
+       78  78-ID-cbo-sost-art VALUE 5031.
+       78  78-ID-cbo-tipo-art VALUE 5032.
+       78  78-ID-chk-invio-bolle-EDI VALUE 5033.
+       78  78-ID-chk-destino-auto VALUE 5034.
+       78  78-ID-chk-escludi-fido VALUE 5035.
+       78  78-ID-chk-contrassegno VALUE 5036.
+       78  78-ID-rb-pers VALUE 5037.
+       78  78-ID-rb-soc VALUE 5038.
+       78  78-ID-ef-gg VALUE 5039.
+       78  78-ID-chk-fido VALUE 5040.
+       78  78-ID-ef-esi VALUE 5041.
+       78  78-ID-ef-codfis VALUE 5042.
+       78  78-ID-ef-piva VALUE 5043.
+       78  78-ID-ef-iva-ese VALUE 5044.
+       78  78-ID-ef-pag VALUE 5045.
+       78  78-ID-ef-cod-iva VALUE 5046.
+       78  78-ID-chk-spost-ago VALUE 5047.
+       78  78-ID-chk-spost-dic VALUE 5048.
+       78  78-ID-ef-fido VALUE 5049.
+       78  78-ID-ef-fido-data VALUE 5050.
+       78  78-ID-ef-fido-extra VALUE 5051.
+       78  78-ID-ef-fide VALUE 5052.
+       78  78-ID-ef-PFA VALUE 5053.
+       78  78-ID-ef-data-fido-extra VALUE 5054.
+       78  78-ID-ef-grade VALUE 5055.
+       78  78-ID-ef-abi VALUE 5056.
+       78  78-ID-ef-cab VALUE 5057.
+       78  78-ID-form1-gd-1 VALUE 5058.
+       78  78-ID-ef-ragsoc-1-d VALUE 5059.
+       78  78-ID-ef-ragsoc-2-d VALUE 5060.
+       78  78-ID-ef-indirizzo-d VALUE 5061.
+       78  78-ID-ef-cap-d VALUE 5062.
+       78  78-ID-ef-localita-d VALUE 5063.
+       78  78-ID-ef-prov-d VALUE 5064.
+       78  78-ID-ef-nazione-d VALUE 5065.
+       78  78-ID-chk-invio-d VALUE 5066.
+       78  78-ID-ef-telef-1-d VALUE 5067.
+       78  78-ID-ef-telef-2-d VALUE 5068.
+       78  78-ID-ef-fax-d VALUE 5069.
+       78  78-ID-ef-mail-d VALUE 5070.
+       78  78-ID-ef-referente-d VALUE 5071.
+       78  78-ID-ef-piva-d VALUE 5072.
+       78  78-ID-ef-vettore-d VALUE 5073.
+       78  78-ID-chk-deposito-utf VALUE 5074.
+       78  78-ID-chk-superamento-d VALUE 5075.
+       78  78-ID-cbo-stato-d VALUE 5076.
+       78  78-ID-cbo-tipo-art-d VALUE 5077.
+       78  78-ID-ef-cod-ditta-d VALUE 5078.
+       78  78-ID-ef-CIG-d VALUE 5079.
+       78  78-ID-ef-note-1 VALUE 5080.
+       78  78-ID-ef-note-data VALUE 5081.
+       78  78-ID-ef-note-2 VALUE 5082.
+       78  78-ID-ef-note-3 VALUE 5083.
+       78  78-ID-ef-note-4 VALUE 5084.
+       78  78-ID-ef-ragsoc-1-r VALUE 5085.
+       78  78-ID-ef-ragsoc-2-r VALUE 5086.
+       78  78-ID-ef-indirizzo-r VALUE 5087.
+       78  78-ID-ef-localita-r VALUE 5088.
+       78  78-ID-ef-cap-r VALUE 5089.
+       78  78-ID-ef-prov-r VALUE 5090.
+       78  78-ID-ef-nazione-r VALUE 5091.
+       78  78-ID-cbo-invio VALUE 5092.
+       78  78-ID-chk-dett-dest-sdi VALUE 5093.
+       78  78-ID-chk-escludi-int VALUE 5094.
+       78  78-ID-ef-dich-n VALUE 5095.
+       78  78-ID-ef-data-dich VALUE 5096.
+       78  78-ID-ef-data-reg VALUE 5097.
+       78  78-ID-ef-reg-n VALUE 5098.
+       78  78-ID-gd-destini-e VALUE 5099.
+       78  78-ID-chk-escludi-e VALUE 5100.
+       78  78-ID-chk-intera-e VALUE 5101.
+       78  78-ID-chk-accorpa-e VALUE 5102.
+       78  78-ID-chk-saldo-banco-e VALUE 5103.
+       78  78-ID-chk-saldo-promo-e VALUE 5104.
+       78  78-ID-ef-gg-e VALUE 5105.
+       78  78-ID-gd-evasioni VALUE 5106.
+       78  78-ID-gd-prg VALUE 5107.
+       78  78-ID-ef-id-edi VALUE 5108.
+       78  78-ID-ef-q-id-edi VALUE 5109.
+       78  78-ID-ef-codforn-edi VALUE 5110.
+       78  78-ID-ef-q-codforn-edi VALUE 5111.
+       78  78-ID-ef-piva-c-edi VALUE 5112.
+       78  78-ID-ef-ragsoc-c-edi VALUE 5113.
+       78  78-ID-ef-ind-c-edi VALUE 5114.
+       78  78-ID-ef-citta-c-edi VALUE 5115.
+       78  78-ID-ef-prov-c-edi VALUE 5116.
+       78  78-ID-ef-cap-c-edi VALUE 5117.
+       78  78-ID-ef-codcli-edi VALUE 5118.
+       78  78-ID-ef-q-codcli-edi VALUE 5119.
+       78  78-ID-ef-dest-edi VALUE 5120.
+       78  78-ID-ef-q-dest-edi VALUE 5121.
+       78  78-ID-ef-ragsoc-d-edi VALUE 5122.
+       78  78-ID-ef-ind-d-edi VALUE 5123.
+       78  78-ID-ef-citta-d-edi VALUE 5124.
+       78  78-ID-ef-prov-d-edi VALUE 5125.
+       78  78-ID-ef-cap-d-edi VALUE 5126.
+       78  78-ID-chk-imp-i VALUE 5127.
+       78  78-ID-chk-imp-a VALUE 5128.
+       78  78-ID-chk-exp-i VALUE 5129.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1176,7 +1177,7 @@
 
       * ENTRY FIELD
        10
-           ef-localitaa, 
+           ef-sdi, 
            Entry-Field, 
            COL 140,17, 
            LINE 13,23,
@@ -1187,11 +1188,11 @@
            COLOR IS 513,
            ENABLED mod-campi,
            FONT IS Small-Font,
-           ID IS 16,
+           ID IS 78-ID-ef-sdi,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            MAX-TEXT 7,
-           VALUE ef-localitaa-BUF,
+           VALUE ef-sdi-BUF,
            .
 
       * ENTRY FIELD
@@ -15789,14 +15790,14 @@
                MOVE 5008 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-localitaa's Validation
+      * ef-sdi's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-localitaa-VALIDATION
+           PERFORM ef-sdi-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 16 TO CONTROL-ID
+               MOVE 5009 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tel-1's Validation
@@ -15806,7 +15807,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5009 TO CONTROL-ID
+               MOVE 5010 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tel-2's Validation
@@ -15816,7 +15817,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5010 TO CONTROL-ID
+               MOVE 5011 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fax's Validation
@@ -15826,7 +15827,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5011 TO CONTROL-ID
+               MOVE 5012 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail's Validation
@@ -15836,7 +15837,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5012 TO CONTROL-ID
+               MOVE 5013 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-maila's Validation
@@ -15856,7 +15857,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5013 TO CONTROL-ID
+               MOVE 5014 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-tipo's Validation
@@ -15866,7 +15867,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5014 TO CONTROL-ID
+               MOVE 5015 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gdo's Validation
@@ -15876,7 +15877,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5015 TO CONTROL-ID
+               MOVE 5016 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-referente's Validation
@@ -15886,7 +15887,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5017 TO CONTROL-ID
+               MOVE 5018 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vettore's Validation
@@ -15896,7 +15897,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5018 TO CONTROL-ID
+               MOVE 5019 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-agente's Validation
@@ -15906,7 +15907,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5020 TO CONTROL-ID
+               MOVE 5021 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-agente2's Validation
@@ -15916,7 +15917,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5023 TO CONTROL-ID
+               MOVE 5024 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-ditta's Validation
@@ -15926,7 +15927,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5026 TO CONTROL-ID
+               MOVE 5027 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-PFA-perce's Validation
@@ -15936,7 +15937,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5027 TO CONTROL-ID
+               MOVE 5028 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note's Validation
@@ -15946,7 +15947,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5028 TO CONTROL-ID
+               MOVE 5029 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-agg's Validation
@@ -15956,7 +15957,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5029 TO CONTROL-ID
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg's Validation
@@ -15966,7 +15967,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5038 TO CONTROL-ID
+               MOVE 5039 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-esi's Validation
@@ -15976,7 +15977,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5040 TO CONTROL-ID
+               MOVE 5041 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-codfis's Validation
@@ -15986,7 +15987,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5041 TO CONTROL-ID
+               MOVE 5042 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-piva's Validation
@@ -15996,7 +15997,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5042 TO CONTROL-ID
+               MOVE 5043 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-iva-ese's Validation
@@ -16006,7 +16007,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5043 TO CONTROL-ID
+               MOVE 5044 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-pag's Validation
@@ -16016,7 +16017,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5044 TO CONTROL-ID
+               MOVE 5045 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-iva's Validation
@@ -16026,7 +16027,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5045 TO CONTROL-ID
+               MOVE 5046 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fido's Validation
@@ -16036,7 +16037,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5048 TO CONTROL-ID
+               MOVE 5049 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fido-data's Validation
@@ -16046,7 +16047,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5049 TO CONTROL-ID
+               MOVE 5050 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fido-extra's Validation
@@ -16056,7 +16057,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5050 TO CONTROL-ID
+               MOVE 5051 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fide's Validation
@@ -16066,7 +16067,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5051 TO CONTROL-ID
+               MOVE 5052 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-PFA's Validation
@@ -16076,7 +16077,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5052 TO CONTROL-ID
+               MOVE 5053 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-fido-extra's Validation
@@ -16086,7 +16087,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5053 TO CONTROL-ID
+               MOVE 5054 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-grade's Validation
@@ -16096,7 +16097,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5054 TO CONTROL-ID
+               MOVE 5055 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-abi's Validation
@@ -16106,7 +16107,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5055 TO CONTROL-ID
+               MOVE 5056 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cab's Validation
@@ -16116,7 +16117,7 @@
                MOVE 1 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5056 TO CONTROL-ID
+               MOVE 5057 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-1-d's Validation
@@ -16126,7 +16127,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5058 TO CONTROL-ID
+               MOVE 5059 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-2-d's Validation
@@ -16136,7 +16137,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5059 TO CONTROL-ID
+               MOVE 5060 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-indirizzo-d's Validation
@@ -16146,7 +16147,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5060 TO CONTROL-ID
+               MOVE 5061 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cap-d's Validation
@@ -16156,7 +16157,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5061 TO CONTROL-ID
+               MOVE 5062 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-localita-d's Validation
@@ -16166,7 +16167,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5062 TO CONTROL-ID
+               MOVE 5063 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prov-d's Validation
@@ -16176,7 +16177,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5063 TO CONTROL-ID
+               MOVE 5064 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-nazione-d's Validation
@@ -16186,7 +16187,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5064 TO CONTROL-ID
+               MOVE 5065 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-telef-1-d's Validation
@@ -16196,7 +16197,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5066 TO CONTROL-ID
+               MOVE 5067 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-telef-2-d's Validation
@@ -16206,7 +16207,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5067 TO CONTROL-ID
+               MOVE 5068 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fax-d's Validation
@@ -16216,7 +16217,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5068 TO CONTROL-ID
+               MOVE 5069 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-mail-d's Validation
@@ -16226,7 +16227,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5069 TO CONTROL-ID
+               MOVE 5070 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-referente-d's Validation
@@ -16236,7 +16237,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5070 TO CONTROL-ID
+               MOVE 5071 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-piva-d's Validation
@@ -16246,7 +16247,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5071 TO CONTROL-ID
+               MOVE 5072 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-vettore-d's Validation
@@ -16256,7 +16257,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5072 TO CONTROL-ID
+               MOVE 5073 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cod-ditta-d's Validation
@@ -16266,7 +16267,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5077 TO CONTROL-ID
+               MOVE 5078 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-CIG-d's Validation
@@ -16276,7 +16277,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5078 TO CONTROL-ID
+               MOVE 5079 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -16286,7 +16287,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5079 TO CONTROL-ID
+               MOVE 5080 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-data's Validation
@@ -16296,7 +16297,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5080 TO CONTROL-ID
+               MOVE 5081 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -16306,7 +16307,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5081 TO CONTROL-ID
+               MOVE 5082 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -16316,7 +16317,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5082 TO CONTROL-ID
+               MOVE 5083 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -16326,7 +16327,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5083 TO CONTROL-ID
+               MOVE 5084 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-1-r's Validation
@@ -16336,7 +16337,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5084 TO CONTROL-ID
+               MOVE 5085 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-2-r's Validation
@@ -16346,7 +16347,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5085 TO CONTROL-ID
+               MOVE 5086 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-indirizzo-r's Validation
@@ -16356,7 +16357,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5086 TO CONTROL-ID
+               MOVE 5087 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-localita-r's Validation
@@ -16366,7 +16367,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5087 TO CONTROL-ID
+               MOVE 5088 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cap-r's Validation
@@ -16376,7 +16377,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5088 TO CONTROL-ID
+               MOVE 5089 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prov-r's Validation
@@ -16386,7 +16387,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5089 TO CONTROL-ID
+               MOVE 5090 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-nazione-r's Validation
@@ -16396,7 +16397,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5090 TO CONTROL-ID
+               MOVE 5091 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-dich-n's Validation
@@ -16406,7 +16407,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5094 TO CONTROL-ID
+               MOVE 5095 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-dich's Validation
@@ -16416,7 +16417,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5095 TO CONTROL-ID
+               MOVE 5096 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-data-reg's Validation
@@ -16426,7 +16427,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5096 TO CONTROL-ID
+               MOVE 5097 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-reg-n's Validation
@@ -16436,7 +16437,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5097 TO CONTROL-ID
+               MOVE 5098 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gg-e's Validation
@@ -16446,7 +16447,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5104 TO CONTROL-ID
+               MOVE 5105 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-id-edi's Validation
@@ -16456,7 +16457,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5107 TO CONTROL-ID
+               MOVE 5108 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-q-id-edi's Validation
@@ -16466,7 +16467,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5108 TO CONTROL-ID
+               MOVE 5109 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-codforn-edi's Validation
@@ -16476,7 +16477,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5109 TO CONTROL-ID
+               MOVE 5110 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-q-codforn-edi's Validation
@@ -16486,7 +16487,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5110 TO CONTROL-ID
+               MOVE 5111 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-piva-c-edi's Validation
@@ -16496,7 +16497,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5111 TO CONTROL-ID
+               MOVE 5112 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-c-edi's Validation
@@ -16506,7 +16507,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5112 TO CONTROL-ID
+               MOVE 5113 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ind-c-edi's Validation
@@ -16516,7 +16517,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5113 TO CONTROL-ID
+               MOVE 5114 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-citta-c-edi's Validation
@@ -16526,7 +16527,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5114 TO CONTROL-ID
+               MOVE 5115 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prov-c-edi's Validation
@@ -16536,7 +16537,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5115 TO CONTROL-ID
+               MOVE 5116 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cap-c-edi's Validation
@@ -16546,7 +16547,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5116 TO CONTROL-ID
+               MOVE 5117 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-codcli-edi's Validation
@@ -16556,7 +16557,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5117 TO CONTROL-ID
+               MOVE 5118 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-q-codcli-edi's Validation
@@ -16566,7 +16567,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5118 TO CONTROL-ID
+               MOVE 5119 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-dest-edi's Validation
@@ -16576,7 +16577,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5119 TO CONTROL-ID
+               MOVE 5120 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-q-dest-edi's Validation
@@ -16586,7 +16587,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5120 TO CONTROL-ID
+               MOVE 5121 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ragsoc-d-edi's Validation
@@ -16596,7 +16597,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5121 TO CONTROL-ID
+               MOVE 5122 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-ind-d-edi's Validation
@@ -16606,7 +16607,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5122 TO CONTROL-ID
+               MOVE 5123 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-citta-d-edi's Validation
@@ -16616,7 +16617,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5123 TO CONTROL-ID
+               MOVE 5124 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-prov-d-edi's Validation
@@ -16626,7 +16627,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5124 TO CONTROL-ID
+               MOVE 5125 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-cap-d-edi's Validation
@@ -16636,7 +16637,7 @@
                MOVE 6 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5125 TO CONTROL-ID
+               MOVE 5126 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -16777,21 +16778,21 @@
            PERFORM ef-nazione-AFTER-VALIDATION
            .
 
-       ef-localitaa-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-localitaa, BeforeValidation>
+       ef-sdi-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-sdi, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-localitaa-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-localitaa, AfterValidation>
+       ef-sdi-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-sdi, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-localitaa's Validation
-       ef-localitaa-VALIDATION.
-           PERFORM ef-localitaa-BEFORE-VALIDATION
+      * ef-sdi's Validation
+       ef-sdi-VALIDATION.
+           PERFORM ef-sdi-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-localitaa-AFTER-VALIDATION
+           PERFORM ef-sdi-AFTER-VALIDATION
            .
 
        ef-tel-1-BEFORE-VALIDATION.
@@ -18242,8 +18243,8 @@
            MOVE ef-prov-BUF TO cli-prov
       * DB_Entry-Field : ef-nazione
            MOVE ef-nazione-BUF TO cli-nazione
-      * DB_Entry-Field : ef-localitaa
-           MOVE ef-localitaa-BUF TO cli-codice-SDI
+      * DB_Entry-Field : ef-sdi
+           MOVE ef-sdi-BUF TO cli-codice-SDI
       * DB_Entry-Field : ef-tel-1
            MOVE ef-tel-1-BUF TO cli-tel-1
       * DB_Entry-Field : ef-tel-2
@@ -18591,8 +18592,8 @@
            MOVE cli-prov TO ef-prov-BUF
       * DB_Entry-Field : ef-nazione
            MOVE cli-nazione TO ef-nazione-BUF
-      * DB_Entry-Field : ef-localitaa
-           MOVE cli-codice-SDI TO ef-localitaa-BUF
+      * DB_Entry-Field : ef-sdi
+           MOVE cli-codice-SDI TO ef-sdi-BUF
       * DB_Entry-Field : ef-tel-1
            MOVE cli-tel-1 TO ef-tel-1-BUF
       * DB_Entry-Field : ef-tel-2
@@ -19012,8 +19013,8 @@
            if cli-codice-SDI not = old-cli-codice-SDI
               and SiSalvato
               set NoSalvato to true
-              |16 è l'ID del campo ef-localitaa
-              move 16 to store-id
+              |78-ID-ef-sdi è l'ID del campo ef-sdi
+              move 78-ID-ef-sdi to store-id 
            end-if
 
            if cli-tel-1 not = old-cli-tel-1
@@ -19828,6 +19829,9 @@
                 perform CONTROLLO
            |78-ID-ef-nazione è l'ID del campo ef-nazione
            when 78-ID-ef-nazione
+                perform CONTROLLO
+           |78-ID-ef-sdi è l'ID del campo ef-sdi
+           when 78-ID-ef-sdi
                 perform CONTROLLO
            |78-ID-ef-mail è l'ID del campo ef-mail
            when 78-ID-ef-mail
@@ -21031,169 +21035,170 @@
            WHEN 5006 MOVE "Digitare la localit" to TOTEM-HINT-TEXT
            WHEN 5007 MOVE "Digitare la provincia" to TOTEM-HINT-TEXT
            WHEN 5008 MOVE "Digitare la nazione" to TOTEM-HINT-TEXT
-           WHEN 16 MOVE "Digitare la localit" to TOTEM-HINT-TEXT
-           WHEN 5009 MOVE "Digitare il numero di telefono I" to 
+           WHEN 5009 MOVE "Digitare il codice SDI (7 caratteri)" to 
            TOTEM-HINT-TEXT
-           WHEN 5010 MOVE "Digitare il numero di telefono II" to 
+           WHEN 5010 MOVE "Digitare il numero di telefono I" to 
            TOTEM-HINT-TEXT
-           WHEN 5011 MOVE "Digitare il numero di fax" to TOTEM-HINT-TEXT
-           WHEN 5012 MOVE "Digitare l'indirizzo di posta elettronica" 
+           WHEN 5011 MOVE "Digitare il numero di telefono II" to 
+           TOTEM-HINT-TEXT
+           WHEN 5012 MOVE "Digitare il numero di fax" to TOTEM-HINT-TEXT
+           WHEN 5013 MOVE "Digitare l'indirizzo di posta elettronica" 
            to TOTEM-HINT-TEXT
            WHEN 15 MOVE "Digitare l'indirizzo di posta elettronica" to 
            TOTEM-HINT-TEXT
-           WHEN 5013 MOVE "Digitare l'URL" to TOTEM-HINT-TEXT
-           WHEN 5014 MOVE "Digitare il tipo d'imposta" to 
+           WHEN 5014 MOVE "Digitare l'URL" to TOTEM-HINT-TEXT
+           WHEN 5015 MOVE "Digitare il tipo d'imposta" to 
            TOTEM-HINT-TEXT
-           WHEN 5015 MOVE "Digitare il gruppo GDO" to TOTEM-HINT-TEXT
-           WHEN 5016 MOVE "UTF/Non UTF" to TOTEM-HINT-TEXT
-           WHEN 5017 MOVE "Digitare il referente" to TOTEM-HINT-TEXT
-           WHEN 5018 MOVE "Digitare il codice del vettore" to 
+           WHEN 5016 MOVE "Digitare il gruppo GDO" to TOTEM-HINT-TEXT
+           WHEN 5017 MOVE "UTF/Non UTF" to TOTEM-HINT-TEXT
+           WHEN 5018 MOVE "Digitare il referente" to TOTEM-HINT-TEXT
+           WHEN 5019 MOVE "Digitare il codice del vettore" to 
            TOTEM-HINT-TEXT
-           WHEN 5019 MOVE "Inoltro/Non inoltro" to TOTEM-HINT-TEXT
-           WHEN 5020 MOVE "Digitare il codice dell'agente provvigioni" 
+           WHEN 5020 MOVE "Inoltro/Non inoltro" to TOTEM-HINT-TEXT
+           WHEN 5021 MOVE "Digitare il codice dell'agente provvigioni" 
            to TOTEM-HINT-TEXT
-           WHEN 5021 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5022 MOVE "Selezionare la causale" to TOTEM-HINT-TEXT
-           WHEN 5023 MOVE "Digitare il codice dell'agente 2" to 
+           WHEN 5022 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5023 MOVE "Selezionare la causale" to TOTEM-HINT-TEXT
+           WHEN 5024 MOVE "Digitare il codice dell'agente 2" to 
            TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Attiva il meccanismo di controllo in fase di 
-      -    "caricamento degli ordini" to TOTEM-HINT-TEXT
            WHEN 5025 MOVE "Attiva il meccanismo di controllo in fase di 
       -    "caricamento degli ordini" to TOTEM-HINT-TEXT
-           WHEN 5026 MOVE "Digitare il codice ditta/regsitro" to 
+           WHEN 5026 MOVE "Attiva il meccanismo di controllo in fase di 
+      -    "caricamento degli ordini" to TOTEM-HINT-TEXT
+           WHEN 5027 MOVE "Digitare il codice ditta/regsitro" to 
            TOTEM-HINT-TEXT
-           WHEN 5027 MOVE "Digitare la % PFA" to TOTEM-HINT-TEXT
-           WHEN 5028 MOVE "Digitare le note" to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE "Digitare il path delle note aggiuntive" to 
+           WHEN 5028 MOVE "Digitare la % PFA" to TOTEM-HINT-TEXT
+           WHEN 5029 MOVE "Digitare le note" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Digitare il path delle note aggiuntive" to 
            TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Selezionare il tipo di sostituziona atuomatic
+           WHEN 5031 MOVE "Selezionare il tipo di sostituziona atuomatic
       -    "a dell'articolo" to TOTEM-HINT-TEXT
-           WHEN 5031 MOVE "Selezionare la tipologia del cliente" to 
+           WHEN 5032 MOVE "Selezionare la tipologia del cliente" to 
            TOTEM-HINT-TEXT
-           WHEN 5032 MOVE "Attiva l'invio delle bolle EDI per questo cli
+           WHEN 5033 MOVE "Attiva l'invio delle bolle EDI per questo cli
       -    "ente" to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE "Attiva l'aggiunta automatica del destino EDI 
+           WHEN 5034 MOVE "Attiva l'aggiunta automatica del destino EDI 
       -    "se non esiste in fase di import" to TOTEM-HINT-TEXT
-           WHEN 5034 MOVE "Esclude il cliente dai controlli sul fido (si
+           WHEN 5035 MOVE "Esclude il cliente dai controlli sul fido (si
       -    "a il blocco sullo stato cliente che il controllo in inserime
       -    "nto ordine/importazione)" to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE "Imposta il flag di constrassegno sugli ordini
+           WHEN 5036 MOVE "Imposta il flag di constrassegno sugli ordini
       -    " master" to TOTEM-HINT-TEXT
-           WHEN 5038 MOVE "Digitare i giorni di dilazione pagamento conc
+           WHEN 5039 MOVE "Digitare i giorni di dilazione pagamento conc
       -    "essi" to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE "Controlla la situazione finanaziaria al momen
+           WHEN 5040 MOVE "Controlla la situazione finanaziaria al momen
       -    "to del salvataggio dell'ordine" to TOTEM-HINT-TEXT
-           WHEN 5040 MOVE "Valori ammessi: D = differita - I = Immediata
+           WHEN 5041 MOVE "Valori ammessi: D = differita - I = Immediata
       -    " - S = Scissione di pagamenti" to TOTEM-HINT-TEXT
-           WHEN 5041 MOVE "Digitare il codice fiscale" to 
+           WHEN 5042 MOVE "Digitare il codice fiscale" to 
            TOTEM-HINT-TEXT
-           WHEN 5042 MOVE "Digitare la partita IVA" to TOTEM-HINT-TEXT
-           WHEN 5043 MOVE "Digitare il codice IVA" to TOTEM-HINT-TEXT
-           WHEN 5044 MOVE "Digitare il codice di pagamento" to 
+           WHEN 5043 MOVE "Digitare la partita IVA" to TOTEM-HINT-TEXT
+           WHEN 5044 MOVE "Digitare il codice IVA" to TOTEM-HINT-TEXT
+           WHEN 5045 MOVE "Digitare il codice di pagamento" to 
            TOTEM-HINT-TEXT
-           WHEN 5045 MOVE "Digitare il codice IVA" to TOTEM-HINT-TEXT
-           WHEN 5046 MOVE "Spostamento/Non spostamento delle ricevute ad
+           WHEN 5046 MOVE "Digitare il codice IVA" to TOTEM-HINT-TEXT
+           WHEN 5047 MOVE "Spostamento/Non spostamento delle ricevute ad
       -    " agosto" to TOTEM-HINT-TEXT
-           WHEN 5047 MOVE "Spostamento/Non spostamento delle ricevute a 
+           WHEN 5048 MOVE "Spostamento/Non spostamento delle ricevute a 
       -    "dicembre" to TOTEM-HINT-TEXT
-           WHEN 5048 MOVE "Digitare l'importo del fido" to 
+           WHEN 5049 MOVE "Digitare l'importo del fido" to 
            TOTEM-HINT-TEXT
-           WHEN 5049 MOVE "Digitare la data del fido" to TOTEM-HINT-TEXT
-           WHEN 5050 MOVE "Digitare il valore del fido extra" to 
+           WHEN 5050 MOVE "Digitare la data del fido" to TOTEM-HINT-TEXT
+           WHEN 5051 MOVE "Digitare il valore del fido extra" to 
            TOTEM-HINT-TEXT
-           WHEN 5051 MOVE "Digitare l'importo della fiddo EULER" to 
+           WHEN 5052 MOVE "Digitare l'importo della fiddo EULER" to 
            TOTEM-HINT-TEXT
-           WHEN 5052 MOVE "Digitare il valore in Euro del fido commercia
+           WHEN 5053 MOVE "Digitare il valore in Euro del fido commercia
       -    "le" to TOTEM-HINT-TEXT
-           WHEN 5053 MOVE "Una data superiore a quella odierna porta all
+           WHEN 5054 MOVE "Una data superiore a quella odierna porta all
       -    "'azzeramento del fido extra" to TOTEM-HINT-TEXT
-           WHEN 5055 MOVE "Digitare il codice CAB" to TOTEM-HINT-TEXT
-           WHEN 5056 MOVE "Digitare il codice ABI" to TOTEM-HINT-TEXT
-           WHEN 5058 MOVE "Digitare la Ragione Sociale I di destinazione
+           WHEN 5056 MOVE "Digitare il codice CAB" to TOTEM-HINT-TEXT
+           WHEN 5057 MOVE "Digitare il codice ABI" to TOTEM-HINT-TEXT
+           WHEN 5059 MOVE "Digitare la Ragione Sociale I di destinazione
       -    "" to TOTEM-HINT-TEXT
-           WHEN 5059 MOVE "Digitare la Ragione Sociale II di destinazion
+           WHEN 5060 MOVE "Digitare la Ragione Sociale II di destinazion
       -    "e" to TOTEM-HINT-TEXT
-           WHEN 5060 MOVE "Digitare l'indirizzo di destinazione" to 
+           WHEN 5061 MOVE "Digitare l'indirizzo di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5061 MOVE "Digitare il CAP di destinazione" to 
+           WHEN 5062 MOVE "Digitare il CAP di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5062 MOVE "Digitare la località di destinazione" to 
+           WHEN 5063 MOVE "Digitare la località di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5063 MOVE "Digitare la provincia di destinazione" to 
+           WHEN 5064 MOVE "Digitare la provincia di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5064 MOVE "Digitare la nazione di destinazione" to 
+           WHEN 5065 MOVE "Digitare la nazione di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5065 MOVE "Indica l'invio della fattura a questo detino"
+           WHEN 5066 MOVE "Indica l'invio della fattura a questo detino"
             to TOTEM-HINT-TEXT
-           WHEN 5066 MOVE "Digitare il numero di telefono I di destinazi
+           WHEN 5067 MOVE "Digitare il numero di telefono I di destinazi
       -    "one" to TOTEM-HINT-TEXT
-           WHEN 5067 MOVE "Digitare il numero di telefono II di destinaz
+           WHEN 5068 MOVE "Digitare il numero di telefono II di destinaz
       -    "ione" to TOTEM-HINT-TEXT
-           WHEN 5068 MOVE "Digitare il numero di fax di destinazione" 
+           WHEN 5069 MOVE "Digitare il numero di fax di destinazione" 
            to TOTEM-HINT-TEXT
-           WHEN 5069 MOVE "Digitare l'indirizzo e-mail di destinazione" 
+           WHEN 5070 MOVE "Digitare l'indirizzo e-mail di destinazione" 
            to TOTEM-HINT-TEXT
-           WHEN 5070 MOVE "Digitare il referente di destinazione" to 
+           WHEN 5071 MOVE "Digitare il referente di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5071 MOVE "Digitare la partita IVA" to TOTEM-HINT-TEXT
-           WHEN 5072 MOVE "Digitare il vettore di destinazione" to 
+           WHEN 5072 MOVE "Digitare la partita IVA" to TOTEM-HINT-TEXT
+           WHEN 5073 MOVE "Digitare il vettore di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5073 MOVE "Inoltro/Non inoltro" to TOTEM-HINT-TEXT
-           WHEN 5074 MOVE "Indica il superamento dei 500 Kg. UTF" to 
+           WHEN 5074 MOVE "Inoltro/Non inoltro" to TOTEM-HINT-TEXT
+           WHEN 5075 MOVE "Indica il superamento dei 500 Kg. UTF" to 
            TOTEM-HINT-TEXT
-           WHEN 5075 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
-           WHEN 5076 MOVE "Selezionare la tipologia" to TOTEM-HINT-TEXT
-           WHEN 5077 MOVE "Digitare il codice ditta/regsitro" to 
+           WHEN 5076 MOVE "Selezionare uno stato" to TOTEM-HINT-TEXT
+           WHEN 5077 MOVE "Selezionare la tipologia" to TOTEM-HINT-TEXT
+           WHEN 5078 MOVE "Digitare il codice ditta/regsitro" to 
            TOTEM-HINT-TEXT
-           WHEN 5078 MOVE "Digitare il referente di destinazione" to 
+           WHEN 5079 MOVE "Digitare il referente di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5079 MOVE "Digitare i dati di consegna" to 
+           WHEN 5080 MOVE "Digitare i dati di consegna" to 
            TOTEM-HINT-TEXT
-           WHEN 5080 MOVE "Digitare la data di Consegna" to 
-           TOTEM-HINT-TEXT
-           WHEN 5081 MOVE "Digitare le note di destinazione" to 
+           WHEN 5081 MOVE "Digitare la data di Consegna" to 
            TOTEM-HINT-TEXT
            WHEN 5082 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 5083 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5084 MOVE "Digitare la Ragione Sociale I per il recapito
+           WHEN 5084 MOVE "Digitare le note di destinazione" to 
+           TOTEM-HINT-TEXT
+           WHEN 5085 MOVE "Digitare la Ragione Sociale I per il recapito
       -    "" to TOTEM-HINT-TEXT
-           WHEN 5085 MOVE "Digitare la Ragione Sociale II per il recapit
+           WHEN 5086 MOVE "Digitare la Ragione Sociale II per il recapit
       -    "o" to TOTEM-HINT-TEXT
-           WHEN 5086 MOVE "Digitare l'indirizzo per il recapito" to 
+           WHEN 5087 MOVE "Digitare l'indirizzo per il recapito" to 
            TOTEM-HINT-TEXT
-           WHEN 5087 MOVE "Digitare la località per il recapito" to 
+           WHEN 5088 MOVE "Digitare la località per il recapito" to 
            TOTEM-HINT-TEXT
-           WHEN 5088 MOVE "Digitare il CAP per il recapito" to 
+           WHEN 5089 MOVE "Digitare il CAP per il recapito" to 
            TOTEM-HINT-TEXT
-           WHEN 5089 MOVE "Digitare la provincia per il recapito" to 
+           WHEN 5090 MOVE "Digitare la provincia per il recapito" to 
            TOTEM-HINT-TEXT
-           WHEN 5090 MOVE "Digitare la nazione per il recapito" to 
+           WHEN 5091 MOVE "Digitare la nazione per il recapito" to 
            TOTEM-HINT-TEXT
-           WHEN 5091 MOVE "Selezionare un tipo d'invio" to 
+           WHEN 5092 MOVE "Selezionare un tipo d'invio" to 
            TOTEM-HINT-TEXT
-           WHEN 5094 MOVE "Digitare il numero di dichiarazione esportato
+           WHEN 5095 MOVE "Digitare il numero di dichiarazione esportato
       -    "re" to TOTEM-HINT-TEXT
-           WHEN 5095 MOVE "Digitare la data di dichiarazione" to 
+           WHEN 5096 MOVE "Digitare la data di dichiarazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5096 MOVE "Digitare la data di registrazione" to 
+           WHEN 5097 MOVE "Digitare la data di registrazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5097 MOVE "Digitare il numero di registrazione" to 
+           WHEN 5098 MOVE "Digitare il numero di registrazione" to 
            TOTEM-HINT-TEXT
-           WHEN 5099 MOVE "Esclude il cliente dalla funzione EVADI TUTTO
-      -    " in evasione automatica" to TOTEM-HINT-TEXT
            WHEN 5100 MOVE "Esclude il cliente dalla funzione EVADI TUTTO
       -    " in evasione automatica" to TOTEM-HINT-TEXT
-           WHEN 5101 MOVE "Accorpamento MAster appartenenti allo stesso 
+           WHEN 5101 MOVE "Esclude il cliente dalla funzione EVADI TUTTO
+      -    " in evasione automatica" to TOTEM-HINT-TEXT
+           WHEN 5102 MOVE "Accorpamento MAster appartenenti allo stesso 
       -    "cliente" to TOTEM-HINT-TEXT
-           WHEN 5102 MOVE "Tenere/non tenere saldi BANCO" to 
+           WHEN 5103 MOVE "Tenere/non tenere saldi BANCO" to 
            TOTEM-HINT-TEXT
-           WHEN 5103 MOVE "Tenere/non tenere saldi PROMO" to 
+           WHEN 5104 MOVE "Tenere/non tenere saldi PROMO" to 
            TOTEM-HINT-TEXT
-           WHEN 5104 MOVE "Se valorizzato sostituisce il valore dei para
+           WHEN 5105 MOVE "Se valorizzato sostituisce il valore dei para
       -    "metri generali" to TOTEM-HINT-TEXT
-           WHEN 5127 MOVE "Se spuntato considera il campo in qta pezzi (
+           WHEN 5128 MOVE "Se spuntato considera il campo in qta pezzi (
       -    "17) SENZA moltiplicare pergli imballi (22)" to 
            TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
@@ -21207,98 +21212,98 @@
            When 5006 PERFORM ef-localita-BeforeProcedure
            When 5007 PERFORM ef-prov-BeforeProcedure
            When 5008 PERFORM ef-nazione-BeforeProcedure
-           When 16 PERFORM ef-localitaa-BeforeProcedure
-           When 5009 PERFORM ef-tel-1-BeforeProcedure
-           When 5010 PERFORM ef-tel-2-BeforeProcedure
-           When 5011 PERFORM ef-fax-BeforeProcedure
-           When 5012 PERFORM ef-mail-BeforeProcedure
+           When 5009 PERFORM ef-localitaa-BeforeProcedure
+           When 5010 PERFORM ef-tel-1-BeforeProcedure
+           When 5011 PERFORM ef-tel-2-BeforeProcedure
+           When 5012 PERFORM ef-fax-BeforeProcedure
+           When 5013 PERFORM ef-mail-BeforeProcedure
            When 15 PERFORM ef-mail-BeforeProcedure
-           When 5013 PERFORM ef-url-BeforeProcedure
-           When 5014 PERFORM ef-tipo-BeforeProcedure
-           When 5015 PERFORM ef-gdo-BeforeProcedure
-           When 5016 PERFORM chk-utf-BeforeProcedure
-           When 5017 PERFORM ef-referente-BeforeProcedure
-           When 5018 PERFORM ef-vettore-BeforeProcedure
-           When 5019 PERFORM chk-inoltro-BeforeProcedure
-           When 5020 PERFORM ef-agente-BeforeProcedure
-           When 5021 PERFORM cbo-stato-BeforeProcedure
+           When 5014 PERFORM ef-url-BeforeProcedure
+           When 5015 PERFORM ef-tipo-BeforeProcedure
+           When 5016 PERFORM ef-gdo-BeforeProcedure
+           When 5017 PERFORM chk-utf-BeforeProcedure
+           When 5018 PERFORM ef-referente-BeforeProcedure
+           When 5019 PERFORM ef-vettore-BeforeProcedure
+           When 5020 PERFORM chk-inoltro-BeforeProcedure
+           When 5021 PERFORM ef-agente-BeforeProcedure
            When 5022 PERFORM cbo-stato-BeforeProcedure
-           When 5023 PERFORM ef-agente-BeforeProcedure
-           When 5024 PERFORM chk-superamento-BeforeProcedure
+           When 5023 PERFORM cbo-stato-BeforeProcedure
+           When 5024 PERFORM ef-agente-BeforeProcedure
            When 5025 PERFORM chk-superamento-BeforeProcedure
-           When 5026 PERFORM ef-url-BeforeProcedure
-           When 5027 PERFORM ef-fido-data-BeforeProcedure
-           When 5028 PERFORM ef-note-BeforeProcedure
-           When 5029 PERFORM ef-note-agg-BeforeProcedure
-           When 5030 PERFORM cbo-stato-BeforeProcedure
+           When 5026 PERFORM chk-superamento-BeforeProcedure
+           When 5027 PERFORM ef-url-BeforeProcedure
+           When 5028 PERFORM ef-fido-data-BeforeProcedure
+           When 5029 PERFORM ef-note-BeforeProcedure
+           When 5030 PERFORM ef-note-agg-BeforeProcedure
            When 5031 PERFORM cbo-stato-BeforeProcedure
-           When 5032 PERFORM chk-superamento-BeforeProcedure
+           When 5032 PERFORM cbo-stato-BeforeProcedure
            When 5033 PERFORM chk-superamento-BeforeProcedure
            When 5034 PERFORM chk-superamento-BeforeProcedure
            When 5035 PERFORM chk-superamento-BeforeProcedure
-           When 5038 PERFORM ef-iva-BeforeProcedure
-           When 5039 PERFORM chk-spost-ago-BeforeProcedure
-           When 5040 PERFORM ef-iva-BeforeProcedure
-           When 5041 PERFORM ef-codfis-BeforeProcedure
-           When 5042 PERFORM ef-piva-BeforeProcedure
-           When 5043 PERFORM ef-iva-BeforeProcedure
-           When 5044 PERFORM ef-pag-BeforeProcedure
-           When 5045 PERFORM ef-iva-BeforeProcedure
-           When 5046 PERFORM chk-spost-ago-BeforeProcedure
-           When 5047 PERFORM chk-spost-dic-BeforeProcedure
-           When 5048 PERFORM ef-fido-BeforeProcedure
-           When 5049 PERFORM ef-fido-data-BeforeProcedure
-           When 5050 PERFORM ef-fido-extra-BeforeProcedure
-           When 5051 PERFORM ef-fido-BeforeProcedure
-           When 5052 PERFORM ef-fido-data-BeforeProcedure
-           When 5053 PERFORM ef-data-fido-extra-BeforeProcedure
-           When 5055 PERFORM ef-cab-BeforeProcedure
-           When 5056 PERFORM ef-abi-BeforeProcedure
-           When 5058 PERFORM ef-ragsoc-1-d-BeforeProcedure
-           When 5059 PERFORM ef-ragsoc-2-d-BeforeProcedure
-           When 5060 PERFORM ef-indirizzo-d-BeforeProcedure
-           When 5061 PERFORM ef-cap-d-BeforeProcedure
-           When 5062 PERFORM ef-localita-d-BeforeProcedure
-           When 5063 PERFORM ef-prov-d-BeforeProcedure
-           When 5064 PERFORM ef-nazione-d-BeforeProcedure
-           When 5065 PERFORM chk-superamento-d-BeforeProcedure
-           When 5066 PERFORM ef-telef-1-d-BeforeProcedure
-           When 5067 PERFORM ef-telef-2-d-BeforeProcedure
-           When 5068 PERFORM ef-fax-d-BeforeProcedure
-           When 5069 PERFORM ef-mail-d-BeforeProcedure
-           When 5070 PERFORM ef-referente-d-BeforeProcedure
+           When 5036 PERFORM chk-superamento-BeforeProcedure
+           When 5039 PERFORM ef-iva-BeforeProcedure
+           When 5040 PERFORM chk-spost-ago-BeforeProcedure
+           When 5041 PERFORM ef-iva-BeforeProcedure
+           When 5042 PERFORM ef-codfis-BeforeProcedure
+           When 5043 PERFORM ef-piva-BeforeProcedure
+           When 5044 PERFORM ef-iva-BeforeProcedure
+           When 5045 PERFORM ef-pag-BeforeProcedure
+           When 5046 PERFORM ef-iva-BeforeProcedure
+           When 5047 PERFORM chk-spost-ago-BeforeProcedure
+           When 5048 PERFORM chk-spost-dic-BeforeProcedure
+           When 5049 PERFORM ef-fido-BeforeProcedure
+           When 5050 PERFORM ef-fido-data-BeforeProcedure
+           When 5051 PERFORM ef-fido-extra-BeforeProcedure
+           When 5052 PERFORM ef-fido-BeforeProcedure
+           When 5053 PERFORM ef-fido-data-BeforeProcedure
+           When 5054 PERFORM ef-data-fido-extra-BeforeProcedure
+           When 5056 PERFORM ef-cab-BeforeProcedure
+           When 5057 PERFORM ef-abi-BeforeProcedure
+           When 5059 PERFORM ef-ragsoc-1-d-BeforeProcedure
+           When 5060 PERFORM ef-ragsoc-2-d-BeforeProcedure
+           When 5061 PERFORM ef-indirizzo-d-BeforeProcedure
+           When 5062 PERFORM ef-cap-d-BeforeProcedure
+           When 5063 PERFORM ef-localita-d-BeforeProcedure
+           When 5064 PERFORM ef-prov-d-BeforeProcedure
+           When 5065 PERFORM ef-nazione-d-BeforeProcedure
+           When 5066 PERFORM chk-superamento-d-BeforeProcedure
+           When 5067 PERFORM ef-telef-1-d-BeforeProcedure
+           When 5068 PERFORM ef-telef-2-d-BeforeProcedure
+           When 5069 PERFORM ef-fax-d-BeforeProcedure
+           When 5070 PERFORM ef-mail-d-BeforeProcedure
            When 5071 PERFORM ef-referente-d-BeforeProcedure
-           When 5072 PERFORM ef-vettore-d-BeforeProcedure
-           When 5073 PERFORM chk-deposito-utf-BeforeProcedure
-           When 5074 PERFORM chk-superamento-d-BeforeProcedure
-           When 5075 PERFORM cbo-stato-d-BeforeProcedure
+           When 5072 PERFORM ef-referente-d-BeforeProcedure
+           When 5073 PERFORM ef-vettore-d-BeforeProcedure
+           When 5074 PERFORM chk-deposito-utf-BeforeProcedure
+           When 5075 PERFORM chk-superamento-d-BeforeProcedure
            When 5076 PERFORM cbo-stato-d-BeforeProcedure
-           When 5077 PERFORM ef-url-BeforeProcedure
-           When 5078 PERFORM ef-referente-d-BeforeProcedure
-           When 5079 PERFORM ef-note-1-BeforeProcedure
-           When 5080 PERFORM Form1-DaEf-1-BeforeProcedure
-           When 5081 PERFORM ef-note-2-BeforeProcedure
-           When 5082 PERFORM ef-note-3-BeforeProcedure
-           When 5083 PERFORM ef-note-4-BeforeProcedure
-           When 5084 PERFORM ef-ragsoc-1-r-BeforeProcedure
-           When 5085 PERFORM ef-ragsoc-2-r-BeforeProcedure
-           When 5086 PERFORM ef-indirizzo-r-BeforeProcedure
-           When 5087 PERFORM ef-localita-r-BeforeProcedure
-           When 5088 PERFORM ef-cap-r-BeforeProcedure
-           When 5089 PERFORM ef-prov-r-BeforeProcedure
-           When 5090 PERFORM ef-nazione-r-BeforeProcedure
-           When 5091 PERFORM cbo-invio-BeforeProcedure
-           When 5094 PERFORM Form1-DaEf-1-BeforeProcedure
-           When 5095 PERFORM Form1-DaEf-2-BeforeProcedure
-           When 5096 PERFORM Form1-DaEf-3-BeforeProcedure
-           When 5097 PERFORM Form1-DaEf-4-BeforeProcedure
-           When 5099 PERFORM chk-escludi-e-BeforeProcedure
-           When 5100 PERFORM chk-intera-e-BeforeProcedure
-           When 5101 PERFORM chk-accorpa-e-BeforeProcedure
-           When 5102 PERFORM chk-saldo-banco-e-BeforeProcedure
-           When 5103 PERFORM chk-saldo-promo-e-BeforeProcedure
-           When 5104 PERFORM ef-gg-e-BeforeProcedure
-           When 5127 PERFORM Form1-DaCb-1-BeforeProcedure
+           When 5077 PERFORM cbo-stato-d-BeforeProcedure
+           When 5078 PERFORM ef-url-BeforeProcedure
+           When 5079 PERFORM ef-referente-d-BeforeProcedure
+           When 5080 PERFORM ef-note-1-BeforeProcedure
+           When 5081 PERFORM Form1-DaEf-1-BeforeProcedure
+           When 5082 PERFORM ef-note-2-BeforeProcedure
+           When 5083 PERFORM ef-note-3-BeforeProcedure
+           When 5084 PERFORM ef-note-4-BeforeProcedure
+           When 5085 PERFORM ef-ragsoc-1-r-BeforeProcedure
+           When 5086 PERFORM ef-ragsoc-2-r-BeforeProcedure
+           When 5087 PERFORM ef-indirizzo-r-BeforeProcedure
+           When 5088 PERFORM ef-localita-r-BeforeProcedure
+           When 5089 PERFORM ef-cap-r-BeforeProcedure
+           When 5090 PERFORM ef-prov-r-BeforeProcedure
+           When 5091 PERFORM ef-nazione-r-BeforeProcedure
+           When 5092 PERFORM cbo-invio-BeforeProcedure
+           When 5095 PERFORM Form1-DaEf-1-BeforeProcedure
+           When 5096 PERFORM Form1-DaEf-2-BeforeProcedure
+           When 5097 PERFORM Form1-DaEf-3-BeforeProcedure
+           When 5098 PERFORM Form1-DaEf-4-BeforeProcedure
+           When 5100 PERFORM chk-escludi-e-BeforeProcedure
+           When 5101 PERFORM chk-intera-e-BeforeProcedure
+           When 5102 PERFORM chk-accorpa-e-BeforeProcedure
+           When 5103 PERFORM chk-saldo-banco-e-BeforeProcedure
+           When 5104 PERFORM chk-saldo-promo-e-BeforeProcedure
+           When 5105 PERFORM ef-gg-e-BeforeProcedure
+           When 5128 PERFORM Form1-DaCb-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -21314,117 +21319,117 @@
            When 5006 PERFORM ef-localita-AfterProcedure
            When 5007 PERFORM ef-prov-AfterProcedure
            When 5008 PERFORM ef-nazione-AfterProcedure
-           When 16 PERFORM ef-localitaa-AfterProcedure
-           When 5009 PERFORM ef-tel-1-AfterProcedure
-           When 5010 PERFORM ef-tel-2-AfterProcedure
-           When 5011 PERFORM ef-fax-AfterProcedure
-           When 5012 PERFORM ef-mail-AfterProcedure
+           When 5009 PERFORM ef-localitaa-AfterProcedure
+           When 5010 PERFORM ef-tel-1-AfterProcedure
+           When 5011 PERFORM ef-tel-2-AfterProcedure
+           When 5012 PERFORM ef-fax-AfterProcedure
+           When 5013 PERFORM ef-mail-AfterProcedure
            When 15 PERFORM ef-mail-AfterProcedure
-           When 5013 PERFORM ef-url-AfterProcedure
-           When 5014 PERFORM ef-tipo-AfterProcedure
-           When 5015 PERFORM ef-gdo-AfterProcedure
-           When 5016 PERFORM chk-utf-AfterProcedure
-           When 5017 PERFORM ef-referente-AfterProcedure
-           When 5018 PERFORM ef-vettore-AfterProcedure
-           When 5019 PERFORM chk-inoltro-AfterProcedure
-           When 5020 PERFORM ef-agente-AfterProcedure
-           When 5023 PERFORM ef-agente-AfterProcedure
-           When 5024 PERFORM chk-superamento-AfterProcedure
+           When 5014 PERFORM ef-url-AfterProcedure
+           When 5015 PERFORM ef-tipo-AfterProcedure
+           When 5016 PERFORM ef-gdo-AfterProcedure
+           When 5017 PERFORM chk-utf-AfterProcedure
+           When 5018 PERFORM ef-referente-AfterProcedure
+           When 5019 PERFORM ef-vettore-AfterProcedure
+           When 5020 PERFORM chk-inoltro-AfterProcedure
+           When 5021 PERFORM ef-agente-AfterProcedure
+           When 5024 PERFORM ef-agente-AfterProcedure
            When 5025 PERFORM chk-superamento-AfterProcedure
-           When 5026 PERFORM ef-url-AfterProcedure
-           When 5027 PERFORM ef-fido-data-AfterProcedure
-           When 5028 PERFORM ef-note-AfterProcedure
-           When 5029 PERFORM ef-note-agg-AfterProcedure
-           When 5032 PERFORM chk-superamento-AfterProcedure
+           When 5026 PERFORM chk-superamento-AfterProcedure
+           When 5027 PERFORM ef-url-AfterProcedure
+           When 5028 PERFORM ef-fido-data-AfterProcedure
+           When 5029 PERFORM ef-note-AfterProcedure
+           When 5030 PERFORM ef-note-agg-AfterProcedure
            When 5033 PERFORM chk-superamento-AfterProcedure
            When 5034 PERFORM chk-superamento-AfterProcedure
            When 5035 PERFORM chk-superamento-AfterProcedure
-           When 5036 PERFORM Form1-DaRb-1-AfterProcedure
+           When 5036 PERFORM chk-superamento-AfterProcedure
            When 5037 PERFORM Form1-DaRb-1-AfterProcedure
-           When 5038 PERFORM ef-iva-AfterProcedure
-           When 5039 PERFORM chk-spost-ago-AfterProcedure
-           When 5040 PERFORM ef-iva-AfterProcedure
-           When 5041 PERFORM ef-codfis-AfterProcedure
-           When 5042 PERFORM ef-piva-AfterProcedure
-           When 5043 PERFORM ef-iva-AfterProcedure
-           When 5044 PERFORM ef-pag-AfterProcedure
-           When 5045 PERFORM ef-iva-AfterProcedure
-           When 5046 PERFORM chk-spost-ago-AfterProcedure
-           When 5047 PERFORM chk-spost-dic-AfterProcedure
-           When 5048 PERFORM ef-fido-AfterProcedure
-           When 5049 PERFORM ef-fido-data-AfterProcedure
-           When 5050 PERFORM ef-fido-extra-AfterProcedure
-           When 5051 PERFORM ef-fido-AfterProcedure
-           When 5052 PERFORM ef-fido-data-AfterProcedure
-           When 5053 PERFORM ef-data-fido-extra-AfterProcedure
+           When 5038 PERFORM Form1-DaRb-1-AfterProcedure
+           When 5039 PERFORM ef-iva-AfterProcedure
+           When 5040 PERFORM chk-spost-ago-AfterProcedure
+           When 5041 PERFORM ef-iva-AfterProcedure
+           When 5042 PERFORM ef-codfis-AfterProcedure
+           When 5043 PERFORM ef-piva-AfterProcedure
+           When 5044 PERFORM ef-iva-AfterProcedure
+           When 5045 PERFORM ef-pag-AfterProcedure
+           When 5046 PERFORM ef-iva-AfterProcedure
+           When 5047 PERFORM chk-spost-ago-AfterProcedure
+           When 5048 PERFORM chk-spost-dic-AfterProcedure
+           When 5049 PERFORM ef-fido-AfterProcedure
+           When 5050 PERFORM ef-fido-data-AfterProcedure
+           When 5051 PERFORM ef-fido-extra-AfterProcedure
+           When 5052 PERFORM ef-fido-AfterProcedure
+           When 5053 PERFORM ef-fido-data-AfterProcedure
            When 5054 PERFORM ef-data-fido-extra-AfterProcedure
-           When 5055 PERFORM ef-cab-AfterProcedure
-           When 5056 PERFORM ef-abi-AfterProcedure
-           When 5058 PERFORM ef-ragsoc-1-d-AfterProcedure
-           When 5059 PERFORM ef-ragsoc-2-d-AfterProcedure
-           When 5060 PERFORM ef-indirizzo-d-AfterProcedure
-           When 5061 PERFORM ef-cap-d-AfterProcedure
-           When 5062 PERFORM ef-localita-d-AfterProcedure
-           When 5063 PERFORM ef-prov-d-AfterProcedure
-           When 5064 PERFORM ef-nazione-d-AfterProcedure
-           When 5065 PERFORM chk-superamento-d-AfterProcedure
-           When 5066 PERFORM ef-telef-1-d-AfterProcedure
-           When 5067 PERFORM ef-telef-2-d-AfterProcedure
-           When 5068 PERFORM ef-fax-d-AfterProcedure
-           When 5069 PERFORM ef-mail-d-AfterProcedure
-           When 5070 PERFORM ef-referente-d-AfterProcedure
+           When 5055 PERFORM ef-data-fido-extra-AfterProcedure
+           When 5056 PERFORM ef-cab-AfterProcedure
+           When 5057 PERFORM ef-abi-AfterProcedure
+           When 5059 PERFORM ef-ragsoc-1-d-AfterProcedure
+           When 5060 PERFORM ef-ragsoc-2-d-AfterProcedure
+           When 5061 PERFORM ef-indirizzo-d-AfterProcedure
+           When 5062 PERFORM ef-cap-d-AfterProcedure
+           When 5063 PERFORM ef-localita-d-AfterProcedure
+           When 5064 PERFORM ef-prov-d-AfterProcedure
+           When 5065 PERFORM ef-nazione-d-AfterProcedure
+           When 5066 PERFORM chk-superamento-d-AfterProcedure
+           When 5067 PERFORM ef-telef-1-d-AfterProcedure
+           When 5068 PERFORM ef-telef-2-d-AfterProcedure
+           When 5069 PERFORM ef-fax-d-AfterProcedure
+           When 5070 PERFORM ef-mail-d-AfterProcedure
            When 5071 PERFORM ef-referente-d-AfterProcedure
-           When 5072 PERFORM ef-vettore-d-AfterProcedure
-           When 5073 PERFORM chk-deposito-utf-AfterProcedure
-           When 5074 PERFORM chk-superamento-d-AfterProcedure
-           When 5077 PERFORM ef-url-AfterProcedure
-           When 5078 PERFORM ef-referente-d-AfterProcedure
-           When 5079 PERFORM ef-note-1-AfterProcedure
-           When 5080 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5081 PERFORM ef-note-2-AfterProcedure
-           When 5082 PERFORM ef-note-3-AfterProcedure
-           When 5083 PERFORM ef-note-4-AfterProcedure
-           When 5084 PERFORM ef-ragsoc-1-r-AfterProcedure
-           When 5085 PERFORM ef-ragsoc-2-r-AfterProcedure
-           When 5086 PERFORM ef-indirizzo-r-AfterProcedure
-           When 5087 PERFORM ef-localita-r-AfterProcedure
-           When 5088 PERFORM ef-cap-r-AfterProcedure
-           When 5089 PERFORM ef-prov-r-AfterProcedure
-           When 5090 PERFORM ef-nazione-r-AfterProcedure
-           When 5092 PERFORM Form1-DaCb-1-AfterProcedure
+           When 5072 PERFORM ef-referente-d-AfterProcedure
+           When 5073 PERFORM ef-vettore-d-AfterProcedure
+           When 5074 PERFORM chk-deposito-utf-AfterProcedure
+           When 5075 PERFORM chk-superamento-d-AfterProcedure
+           When 5078 PERFORM ef-url-AfterProcedure
+           When 5079 PERFORM ef-referente-d-AfterProcedure
+           When 5080 PERFORM ef-note-1-AfterProcedure
+           When 5081 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5082 PERFORM ef-note-2-AfterProcedure
+           When 5083 PERFORM ef-note-3-AfterProcedure
+           When 5084 PERFORM ef-note-4-AfterProcedure
+           When 5085 PERFORM ef-ragsoc-1-r-AfterProcedure
+           When 5086 PERFORM ef-ragsoc-2-r-AfterProcedure
+           When 5087 PERFORM ef-indirizzo-r-AfterProcedure
+           When 5088 PERFORM ef-localita-r-AfterProcedure
+           When 5089 PERFORM ef-cap-r-AfterProcedure
+           When 5090 PERFORM ef-prov-r-AfterProcedure
+           When 5091 PERFORM ef-nazione-r-AfterProcedure
            When 5093 PERFORM Form1-DaCb-1-AfterProcedure
-           When 5094 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5095 PERFORM Form1-DaEf-2-AfterProcedure
-           When 5096 PERFORM Form1-DaEf-3-AfterProcedure
-           When 5097 PERFORM Form1-DaEf-4-AfterProcedure
-           When 5099 PERFORM chk-escludi-e-AfterProcedure
-           When 5100 PERFORM chk-intera-e-AfterProcedure
-           When 5101 PERFORM chk-accorpa-e-AfterProcedure
-           When 5102 PERFORM chk-saldo-banco-e-AfterProcedure
-           When 5103 PERFORM chk-saldo-promo-e-AfterProcedure
-           When 5104 PERFORM ef-gg-e-AfterProcedure
-           When 5107 PERFORM Form1-DaEf-1-AfterProcedure
-           When 5108 PERFORM Form1-DaEf-2-AfterProcedure
-           When 5109 PERFORM Form1-DaEf-3-AfterProcedure
-           When 5110 PERFORM Form1-DaEf-4-AfterProcedure
-           When 5111 PERFORM Form1-DaEf-5-AfterProcedure
-           When 5112 PERFORM Form1-DaEf-6-AfterProcedure
-           When 5113 PERFORM Form1-DaEf-7-AfterProcedure
-           When 5114 PERFORM Form1-DaEf-8-AfterProcedure
-           When 5115 PERFORM Form1-DaEf-9-AfterProcedure
-           When 5116 PERFORM Form1-DaEf-10-AfterProcedure
-           When 5117 PERFORM Form1-DaEf-11-AfterProcedure
-           When 5118 PERFORM Form1-DaEf-12-AfterProcedure
-           When 5119 PERFORM Form1-DaEf-3-AfterProcedure
-           When 5120 PERFORM Form1-DaEf-4-AfterProcedure
-           When 5121 PERFORM Form1-DaEf-6-AfterProcedure
-           When 5122 PERFORM Form1-DaEf-7-AfterProcedure
-           When 5123 PERFORM Form1-DaEf-8-AfterProcedure
-           When 5124 PERFORM Form1-DaEf-9-AfterProcedure
-           When 5125 PERFORM Form1-DaEf-10-AfterProcedure
-           When 5126 PERFORM Form1-DaCb-1-AfterProcedure
+           When 5094 PERFORM Form1-DaCb-1-AfterProcedure
+           When 5095 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5096 PERFORM Form1-DaEf-2-AfterProcedure
+           When 5097 PERFORM Form1-DaEf-3-AfterProcedure
+           When 5098 PERFORM Form1-DaEf-4-AfterProcedure
+           When 5100 PERFORM chk-escludi-e-AfterProcedure
+           When 5101 PERFORM chk-intera-e-AfterProcedure
+           When 5102 PERFORM chk-accorpa-e-AfterProcedure
+           When 5103 PERFORM chk-saldo-banco-e-AfterProcedure
+           When 5104 PERFORM chk-saldo-promo-e-AfterProcedure
+           When 5105 PERFORM ef-gg-e-AfterProcedure
+           When 5108 PERFORM Form1-DaEf-1-AfterProcedure
+           When 5109 PERFORM Form1-DaEf-2-AfterProcedure
+           When 5110 PERFORM Form1-DaEf-3-AfterProcedure
+           When 5111 PERFORM Form1-DaEf-4-AfterProcedure
+           When 5112 PERFORM Form1-DaEf-5-AfterProcedure
+           When 5113 PERFORM Form1-DaEf-6-AfterProcedure
+           When 5114 PERFORM Form1-DaEf-7-AfterProcedure
+           When 5115 PERFORM Form1-DaEf-8-AfterProcedure
+           When 5116 PERFORM Form1-DaEf-9-AfterProcedure
+           When 5117 PERFORM Form1-DaEf-10-AfterProcedure
+           When 5118 PERFORM Form1-DaEf-11-AfterProcedure
+           When 5119 PERFORM Form1-DaEf-12-AfterProcedure
+           When 5120 PERFORM Form1-DaEf-3-AfterProcedure
+           When 5121 PERFORM Form1-DaEf-4-AfterProcedure
+           When 5122 PERFORM Form1-DaEf-6-AfterProcedure
+           When 5123 PERFORM Form1-DaEf-7-AfterProcedure
+           When 5124 PERFORM Form1-DaEf-8-AfterProcedure
+           When 5125 PERFORM Form1-DaEf-9-AfterProcedure
+           When 5126 PERFORM Form1-DaEf-10-AfterProcedure
            When 5127 PERFORM Form1-DaCb-1-AfterProcedure
            When 5128 PERFORM Form1-DaCb-1-AfterProcedure
+           When 5129 PERFORM Form1-DaCb-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -21478,7 +21483,7 @@
        cbo-stato-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Ntf-Selchange ALSO 5021 ALSO
+           WHEN Ntf-Selchange ALSO 5022 ALSO
                     Form1-Handle
               PERFORM cbo-stato-Ev-Ntf-Selchange
            END-EVALUATE
@@ -21487,22 +21492,22 @@
        Form1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5057 ALSO
+           WHEN Msg-Begin-Drag ALSO 5058 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5057 ALSO
+           WHEN Msg-Begin-Entry ALSO 5058 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5057 ALSO
+           WHEN Msg-End-Drag ALSO 5058 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5057 ALSO
+           WHEN Msg-Goto-Cell ALSO 5058 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5057 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5058 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5057 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5058 ALSO
                     Form1-Handle 
               PERFORM form1-gd-1-Ev-Msg-Goto-Cell-Mouse
            WHEN Msg-Begin-Drag ALSO 279 ALSO
@@ -21529,43 +21534,43 @@
        Form1-Gd-2-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5098 ALSO
+           WHEN Msg-Begin-Drag ALSO 5099 ALSO
                     Form1-Handle 
               PERFORM gd-destini-e-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5098 ALSO
+           WHEN Msg-Begin-Entry ALSO 5099 ALSO
                     Form1-Handle 
               PERFORM gd-destini-e-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5098 ALSO
+           WHEN Msg-End-Drag ALSO 5099 ALSO
                     Form1-Handle 
               PERFORM gd-destini-e-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5098 ALSO
+           WHEN Msg-Goto-Cell ALSO 5099 ALSO
                     Form1-Handle 
               PERFORM gd-destini-e-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5098 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5099 ALSO
                     Form1-Handle 
               PERFORM gd-destini-e-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5098 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5099 ALSO
                     Form1-Handle 
               PERFORM gd-destini-e-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5105 ALSO
+           WHEN Msg-Begin-Drag ALSO 5106 ALSO
                     Form1-Handle 
               PERFORM gd-evasioni-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5105 ALSO
+           WHEN Msg-Begin-Entry ALSO 5106 ALSO
                     Form1-Handle 
               PERFORM gd-evasioni-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5105 ALSO
+           WHEN Msg-End-Drag ALSO 5106 ALSO
                     Form1-Handle 
               PERFORM gd-evasioni-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5105 ALSO
+           WHEN Msg-Finish-Entry ALSO 5106 ALSO
                     Form1-Handle 
               PERFORM gd-evasioni-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5105 ALSO
+           WHEN Msg-Goto-Cell ALSO 5106 ALSO
                     Form1-Handle 
               PERFORM gd-evasioni-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5105 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5106 ALSO
                     Form1-Handle 
               PERFORM gd-evasioni-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5105 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5106 ALSO
                     Form1-Handle 
               PERFORM gd-evasioni-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -21574,22 +21579,22 @@
        gd-prg-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5106 ALSO
+           WHEN Msg-Begin-Drag ALSO 5107 ALSO
                     Form1-Handle 
               PERFORM gd-prg-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5106 ALSO
+           WHEN Msg-Begin-Entry ALSO 5107 ALSO
                     Form1-Handle 
               PERFORM gd-prg-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5106 ALSO
+           WHEN Msg-End-Drag ALSO 5107 ALSO
                     Form1-Handle 
               PERFORM gd-prg-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5106 ALSO
+           WHEN Msg-Goto-Cell ALSO 5107 ALSO
                     Form1-Handle 
               PERFORM gd-prg-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5106 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5107 ALSO
                     Form1-Handle 
               PERFORM gd-prg-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5106 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5107 ALSO
                     Form1-Handle 
               PERFORM gd-prg-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -24258,9 +24263,9 @@
       * <TOTEM:END>
        ef-localitaa-AfterProcedure.
       * <TOTEM:PARA. ef-localitaa-AfterProcedure>
-              INQUIRE ef-localitaa, VALUE IN cli-codice-SDI
+              INQUIRE ef-sdi, VALUE IN cli-codice-SDI
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-localitaa-VALIDATION
+              PERFORM ef-sdi-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
