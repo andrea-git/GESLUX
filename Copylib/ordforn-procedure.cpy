@@ -1634,23 +1634,7 @@ LUBEXX             end-if
                    |Solo in fase di creazione
                    if pgm-name = "gordfornvar"
                       if como-data = 0
-                         move data-oggi to como-data  
-                         call   "utydata" using dom-lun,
-                                                1,
-                                                como-data,
-                                                giorno
-                         cancel "utydata"
-                         compute como-data =
-                                 function integer-of-date(como-data)
-                         evaluate giorno
-                         when 1     add 7 to como-data
-                         when 2     add 6 to como-data
-                         when other add 5 to como-data
-                         end-evaluate    
-                         compute como-data =
-                                 function date-of-integer(como-data)
-                         perform DATE-TO-SCREEN
-                         move como-data to ef-data-cons-buf
+                         perform DATA-CONS-F
                       else
                          perform DATE-FORMAT
                          move como-data to ef-data-cons-buf
@@ -1658,24 +1642,13 @@ LUBEXX             end-if
                    else
                       if tof-inserito       or
                          tof-in-lavorazione or
-                         tof-inviato
-                         move data-oggi to como-data
-                         call   "utydata" using dom-lun,
-                                                1,
-                                                como-data,
-                                                giorno
-                         cancel "utydata"
-                         compute como-data =
-                                 function integer-of-date(como-data)
-                         evaluate giorno
-                         when 1     add 7 to como-data
-                         when 2     add 6 to como-data
-                         when other add 5 to como-data
-                         end-evaluate    
-                         compute como-data =
-                                 function date-of-integer(como-data)
-                         perform DATE-TO-SCREEN
-                         move como-data to ef-data-cons-buf
+                         tof-inviato 
+                         if como-data = 0
+                            perform DATA-CONS-F
+                         else
+                            perform DATE-FORMAT
+                            move como-data to ef-data-cons-buf
+                         end-if
                       end-if
                    end-if
                 else
@@ -2720,6 +2693,35 @@ LUBEXX*****                 set CambiatoTrattamento to true
 
       *****        end-if.
       *     end-if.
+
+      ***---
+       DATA-CONS-F.
+      *****     move data-oggi to como-data  
+      *****     call   "utydata" using dom-lun,
+      *****                            1,
+      *****                            como-data,
+      *****                            giorno
+      *****     cancel "utydata"
+      *****     compute como-data =
+      *****             function integer-of-date(como-data)
+      *****     evaluate giorno
+      *****     when 1     add 7 to como-data
+      *****     when 2     add 6 to como-data
+      *****     when other add 5 to como-data
+      *****     end-evaluate    
+      *****     compute como-data =
+      *****             function date-of-integer(como-data)
+      *****     perform DATE-TO-SCREEN
+      *****     move como-data to ef-data-cons-buf.
+
+           move data-oggi to como-data  
+           compute como-data =
+                   function integer-of-date(como-data)
+           add desf-gg-consegna to como-data.
+           compute como-data =
+                   function date-of-integer(como-data)
+           perform DATE-TO-SCREEN
+           move como-data to ef-data-cons-buf.
 
       ****---
       * SECCA-TMP-ASSORCLI.
