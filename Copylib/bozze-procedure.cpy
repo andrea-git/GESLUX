@@ -2435,19 +2435,19 @@ LUBEXX           end-if
                 inquire form1-gd-2(event-data-2, event-data-1), 
                         cell-data in col-quantita
                 move col-quantita to como-numero
-                if como-numero > hid-qta-nc
-                   move hid-qta-nc  to col-quantita
-                   move como-numero to col-qta
-                   display message
-                  "La quantità degli articoli addebitati non può essere"
-           X"0d0a""maggiore di quella degli articoli accreditati"
-           X"0D0A""Quantità accreditata: " col-quantita
-           X"0D0A""Quantità addebitata: "  col-qta
-                                title tit-err
-                                 icon 2
-                   set errori to true
-                   set event-action to event-action-fail
-                end-if
+      *****          if como-numero > hid-qta-nc
+      *****             move hid-qta-nc  to col-quantita
+      *****             move como-numero to col-qta
+      *****             display message
+      *****            "La quantità degli articoli addebitati non può essere"
+      *****     X"0d0a""maggiore di quella degli articoli accreditati"
+      *****     X"0D0A""Quantità accreditata: " col-quantita
+      *****     X"0D0A""Quantità addebitata: "  col-qta
+      *****                          title tit-err
+      *****                           icon 2
+      *****             set errori to true
+      *****             set event-action to event-action-fail
+      *****          end-if
                 if como-numero not = hid-old-qta
                    set RigaCambiata to true
                 end-if
@@ -2555,19 +2555,19 @@ LUBEXX           end-if
                 inquire form1-gd-3(event-data-2, event-data-1), 
                         cell-data in col-quantita
                 move col-quantita to como-numero
-                if como-numero > hid-qta-nc
-                   move hid-qta-nc  to col-quantita
-                   move como-numero to col-qta
-                   display message
-                  "La quantità degli articoli addebitati non può essere"
-           X"0d0a""maggiore di quella degli articoli accreditati"
-           X"0D0A""Quantità accreditata: " col-quantita
-           X"0D0A""Quantità addebitata: "  col-qta
-                                title tit-err
-                                 icon 2
-                   set errori to true
-                   set event-action to event-action-fail
-                end-if
+      *****          if como-numero > hid-qta-nc
+      *****             move hid-qta-nc  to col-quantita
+      *****             move como-numero to col-qta
+      *****             display message
+      *****            "La quantità degli articoli addebitati non può essere"
+      *****     X"0d0a""maggiore di quella degli articoli accreditati"
+      *****     X"0D0A""Quantità accreditata: " col-quantita
+      *****     X"0D0A""Quantità addebitata: "  col-qta
+      *****                          title tit-err
+      *****                           icon 2
+      *****             set errori to true
+      *****             set event-action to event-action-fail
+      *****          end-if
                 if como-numero not = hid-old-qta
                    set RigaCambiata to true
                 end-if
@@ -3116,22 +3116,22 @@ LUBEXX           move col-iva        to col-cod-iva
               move col-quantita to como-numero
               inquire form1-gd-2(riga, 1),
                      hidden-data = HiddenValori
-              if como-numero > hid-qta-nc
-                 move hid-qta-nc  to col-quantita
-                 move como-numero to col-qta
-                 subtract 1 from riga
-                 move riga to riga-edit
-                 display message
-                  "La quantità degli articoli addebitati non può essere"
-           X"0d0a""maggiore di quella degli articoli accreditati."
-           x"0d0a""Riga ", riga-edit
-           X"0d0a""Quantità accreditata: " col-quantita
-           X"0d0a""Quantità addebitata: "  col-qta
-                           title tit-err
-                            icon 2
-                 set errori to true
-                 exit perform
-              end-if
+      *****        if como-numero > hid-qta-nc
+      *****           move hid-qta-nc  to col-quantita
+      *****           move como-numero to col-qta
+      *****           subtract 1 from riga
+      *****           move riga to riga-edit
+      *****           display message
+      *****            "La quantità degli articoli addebitati non può essere"
+      *****     X"0d0a""maggiore di quella degli articoli accreditati."
+      *****     x"0d0a""Riga ", riga-edit
+      *****     X"0d0a""Quantità accreditata: " col-quantita
+      *****     X"0d0a""Quantità addebitata: "  col-qta
+      *****                     title tit-err
+      *****                      icon 2
+      *****           set errori to true
+      *****           exit perform
+      *****        end-if
            end-perform.
 
       ***---
