@@ -2005,19 +2005,19 @@ LUBEXX                end-if
                    display lab-vet
                 end-if
                 if ef-vet-buf not = SaveVet 
-                   move 21 to Passwd-password
-                   call   "passwd" using Passwd-linkage
-                   cancel "passwd"
-                   if not Passwd-StatusOk
-                      move SaveVet to ef-vet-buf
-                      display ef-vet
-                      move ef-vet-buf to vet-codice
-                      read tvettori 
-                           invalid continue
-                       not invalid move vet-descrizione to lab-vet-buf
-                                   display lab-vet
-                      end-read
-                   else
+      *****             move 21 to Passwd-password
+      *****             call   "passwd" using Passwd-linkage
+      *****             cancel "passwd"
+      *****             if not Passwd-StatusOk
+      *****                move SaveVet to ef-vet-buf
+      *****                display ef-vet
+      *****                move ef-vet-buf to vet-codice
+      *****                read tvettori 
+      *****                     invalid continue
+      *****                 not invalid move vet-descrizione to lab-vet-buf
+      *****                             display lab-vet
+      *****                end-read
+      *****             else
                       move ef-vet-buf to vet-codice
                       read tvettori
                            invalid continue
@@ -2059,7 +2059,7 @@ LUBEXX                end-if
                               display lab-vet
                          end-read
                       end-if
-                   end-if
+      *****             end-if
                 end-if
 
            |78-ID-ef-forn è l'ID del control ef-forn
