@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 11 aprile 2023 12:18:54.
+       DATE-WRITTEN.        lunedì 7 agosto 2023 22:40:02.
        REMARKS.
       *{TOTEM}END
 
@@ -183,6 +183,7 @@
        77 data-evadi-dal-old           PIC  9(8)
                   VALUE IS 0.
        77 mult PIC  9v99.
+       77 como-perce       PIC  9(3)v99.
        77 promo-forzata    PIC  9(15).
        77 tot-righe-edi    PIC  9(10).
        77 old-des          PIC  9(5).
@@ -196,6 +197,7 @@
        77 fido-usato       PIC  s9(13)v99.
        77 como-prz         PIC  9(13)v99.
        77 como-prezzo      PIC  9(13)v99.
+       77 como-prz-sconto  PIC  9(13)v999.
        77 como-prezzo2     PIC  9(13)v99.
        77 TotPrzBlister    PIC  9(13)v99.
        77 num-promo        PIC  9(3).
@@ -4338,6 +4340,23 @@
            TRANSPARENT,
            TITLE lab-forzato-buf,
            VISIBLE v-blister,
+           .
+
+      * PUSH BUTTON
+       05
+           pb-sconto, 
+           Push-Button, 
+           COL 132,43, 
+           LINE 32,67,
+           LINES 1,80 ,
+           SIZE 14,00 ,
+           ENABLED MOD,
+           EXCEPTION-VALUE 1005,
+           ID IS 32,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "&Sconto %",
+           VISIBLE v-forza,
            .
 
       * TOOLBAR
@@ -15325,6 +15344,8 @@
                  PERFORM pb-cambia-LinkTo
               WHEN Key-Status = 1004
                  PERFORM pb-forza-LinkTo
+              WHEN Key-Status = 1005
+                 PERFORM pb-sconto-LinkTo
               WHEN Key-Status = 2
                  PERFORM NUOVO-LinkTo
               WHEN Key-Status = 4
@@ -22963,6 +22984,38 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                     delete file tmp-promo-prz
                  end-if
            end-start  
+           .
+      * <TOTEM:END>
+       pb-sconto-LinkTo.
+      * <TOTEM:PARA. pb-sconto-LinkTo>
+           if mto-chiuso exit paragraph end-if. 
+           inquire form1-gd-1, last-row in tot-righe.
+           if tot-righe = 1 exit paragraph end-if.
+
+           call   "confperce" using como-perce.
+           cancel "confperce".
+           if como-perce not = 0
+              move riga to store-riga
+              perform varying riga from 2 by 1 
+                        until riga > tot-righe  
+                 inquire form1-gd-1(riga, 2),  cell-data in col-art
+                 move col-art to art-codice
+                 inquire form1-gd-1(riga, 10), cell-data in col-prz
+                 move col-prz to como-prz
+                 if como-prz > 0   
+                    compute como-prz-sconto =
+                            como-prz * 
+                            (( 100 - como-perce ) / 100)
+                    add 0,005 to como-prz-sconto giving como-prz
+                    move como-prz to col-prz
+                    modify form1-gd-1(riga, 10), cell-data col-prz
+                 end-if
+              end-perform
+              set RigaCambiata to true
+              perform DATE-TO-SCREEN
+              move como-data to ef-evadi-dal-buf
+              display ef-evadi-dal
+           end-if 
            .
       * <TOTEM:END>
 
