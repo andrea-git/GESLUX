@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 7 agosto 2023 22:40:02.
+       DATE-WRITTEN.        lunedì 7 agosto 2023 23:20:17.
        REMARKS.
       *{TOTEM}END
 
@@ -531,19 +531,21 @@
        78 78-col-art VALUE IS 2. 
        78 78-col-des VALUE IS 3. 
        78 78-col-imb VALUE IS 4. 
-       78 78-col-qta-EDI VALUE IS 5. 
-       78 78-col-qta-GESLUX VALUE IS 6. 
-       78 78-col-qta VALUE IS 7. 
-       78 78-col-prz-EDI VALUE IS 8. 
-       78 78-col-prz-GESLUX VALUE IS 9. 
-       78 78-col-prz VALUE IS 10. 
-       78 78-col-evadi-dal VALUE IS 11. 
-       78 78-col-stato-r VALUE IS 12. 
+       78 78-col-peso VALUE IS 5. 
+       78 78-col-qta-EDI VALUE IS 6. 
+       78 78-col-qta-GESLUX VALUE IS 7. 
+       78 78-col-qta VALUE IS 8. 
+       78 78-col-prz-EDI VALUE IS 9. 
+       78 78-col-prz-GESLUX VALUE IS 10. 
+       78 78-col-prz VALUE IS 11. 
+       78 78-col-evadi-dal VALUE IS 12. 
+       78 78-col-stato-r VALUE IS 13. 
        01 rec-grid.
            05 col-num          PIC  z(5).
            05 col-art          PIC  zzzzz9.
            05 col-des          PIC  x(50).
            05 col-imb          PIC  x(3).
+           05 col-peso         PIC  zz.zz9,999.
            05 col-qta-EDI      PIC  z(7)9.
            05 col-qta-GESLUX   PIC  z(7)9.
            05 col-qta          PIC  z(7)9.
@@ -3314,29 +3316,30 @@
            COL 1,71, 
            LINE 34,93,
            LINES 17,73 ,
-           SIZE 144,71 ,
+           SIZE 154,71 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
-           DATA-COLUMNS (1, 6, 12, 62, 65, 73, 81, 89, 103, 117, 131, 
-           141),
+           DATA-COLUMNS (1, 6, 12, 62, 65, 75, 83, 91, 99, 113, 127, 
+           141, 151),
            ALIGNMENT ("R", "R", "U", "U", "R", "R", "R", "R", "R", "R", 
-           "C", "C"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
-           DATA-TYPES ("9(5)", "9(6)", "X", "x(3)", "9(8)", "9(8)", "9(8
-      -    ")", "9(12)", "9(12)", "9(12)", "X", "U(2)"),
+           "R", "C", "C"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           DATA-TYPES ("9(5)", "9(6)", "X", "x(3)", "X", "9(8)", "9(8)"
+           , "9(8)", "9(12)", "9(12)", "9(12)", "X", "U(2)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
            DIVIDER-COLOR 1,
            HEADING-COLOR 257,
            HEADING-DIVIDER-COLOR 1,
+           HSCROLL,
            ID IS 78-ID-Form1-Gd-1,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            ROW-HEADINGS,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 142,
+           VIRTUAL-WIDTH 152,
            VPADDING 40,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -3346,7 +3349,7 @@
        05
            pb-aggiungi, 
            Push-Button, 
-           COL 146,71, 
+           COL 156,71, 
            LINE 34,60,
            LINES 40,00 ,
            SIZE 40,00 ,
@@ -3368,7 +3371,7 @@
        05
            pb-elimina, 
            Push-Button, 
-           COL 146,71, 
+           COL 156,71, 
            LINE 37,60,
            LINES 40,00 ,
            SIZE 40,00 ,
@@ -3782,7 +3785,7 @@
            Bar,
            COL 1,00, 
            LINE 32,20,
-           SIZE 153,43 ,
+           SIZE 163,00 ,
            ID IS 162,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -3872,7 +3875,7 @@
            Bar,
            COL 1,00, 
            LINE 3,20,
-           SIZE 153,43 ,
+           SIZE 163,00 ,
            ID IS 168,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -3897,7 +3900,7 @@
        05
            pb-cambia, 
            Push-Button, 
-           COL 146,71, 
+           COL 156,71, 
            LINE 40,60,
            LINES 3,13 ,
            SIZE 6,86 ,
@@ -3924,7 +3927,7 @@
            Bar,
            COL 1,00, 
            LINE 7,27,
-           SIZE 153,43 ,
+           SIZE 163,00 ,
            ID IS 7,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -3937,7 +3940,7 @@
            Bar,
            COL 1,00, 
            LINE 13,80,
-           SIZE 153,43 ,
+           SIZE 163,00 ,
            ID IS 8,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -4142,7 +4145,7 @@
            Bar,
            COL 1,00, 
            LINE 18,87,
-           SIZE 153,43 ,
+           SIZE 163,00 ,
            ID IS 21,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -4346,7 +4349,7 @@
        05
            pb-sconto, 
            Push-Button, 
-           COL 132,43, 
+           COL 142,43, 
            LINE 32,67,
            LINES 1,80 ,
            SIZE 14,00 ,
@@ -13717,30 +13720,33 @@
                 CELL-DATA = "Imb",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 5, Y = 1,
-                CELL-DATA = "Qta E",
+                CELL-DATA = "Peso",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 6, Y = 1,
-                CELL-DATA = "Qta G",
+                CELL-DATA = "Qta E",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 7, Y = 1,
-                CELL-DATA = "Qta OK",
+                CELL-DATA = "Qta G",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 8, Y = 1,
-                CELL-DATA = "Prz E",
+                CELL-DATA = "Qta OK",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 9, Y = 1,
-                CELL-DATA = "Prz G",
+                CELL-DATA = "Prz E",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 10, Y = 1,
-                CELL-DATA = "Prz OK",
+                CELL-DATA = "Prz G",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 11, Y = 1,
-                CELL-DATA = "Evadi dal",
+                CELL-DATA = "Prz OK",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 12, Y = 1,
+                CELL-DATA = "Evadi dal",
+      * CELLS' SETTING
+              MODIFY Form1-Gd-1, X = 13, Y = 1,
                 CELL-DATA = "STATO",
       * COLUMNS' SETTING
-              MODIFY Form1-Gd-1, X = 12  
+              MODIFY Form1-Gd-1, X = 13  
                 COLUMN-COLOR = 481,
                 COLUMN-FONT = Arial10B-Occidentale,
            .
@@ -15187,7 +15193,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 52,27,
-              SIZE 153,43,
+              SIZE 163,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -15217,8 +15223,8 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-handle
       * DISPLAY-COLUMNS settings
-              MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 5, 13, 58, 64, 72, 
-           80, 88, 100, 112, 124, 135)
+              MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 5, 13, 58, 64, 74, 
+           82, 90, 98, 110, 122, 134, 145)
            .
 
        Form1-PROC.
@@ -15255,12 +15261,15 @@
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterEndAccept>
            if ChiamaZoomProgressivo                     
               inquire form1-gd-1, cursor-y in riga 
-                 inquire form1-gd-1(riga, 78-col-imb),
-                         cell-data in col-imb
+              inquire form1-gd-1(riga, 78-col-imb),
+                             cell-data in col-imb
+              inquire form1-gd-1(riga, 78-col-peso),
+                             cell-data in col-peso
               set ChiamaZoomProgressivo to false
               move art-codice           to prg-cod-articolo
               move tca-cod-magaz        to prg-cod-magazzino
               move col-imb              to prg-tipo-imballo
+              move col-peso              to prg-peso
               move "prg-artico-sons-a"  to como-file
               call "zoom-gt"  using como-file, prg-rec
                              giving stato-zoom
@@ -15289,11 +15298,14 @@
                     end-if
 
                     move prg-chiave to HiddenKey
+                    move prg-peso   to col-peso
                     set hid-emro-progressivo-valido to true
                     modify form1-gd-1(riga, 1), 
-                           hidden-data gruppo-hidden
+                           hidden-data gruppo-hidden  
                     modify form1-gd-1(riga, 78-col-imb), 
                            cell-data prg-tipo-imballo
+                    modify form1-gd-1(riga, 78-col-peso), 
+                           cell-data col-peso
                     set hid-emro-progressivo-valido to true
                     perform STATO-RIGA
                  end-if
@@ -17324,10 +17336,11 @@
                 initialize art-rec
                 move emro-02D15-LIN-DESART to art-descrizione
            end-read
-           move art-descrizione        to col-des
-           move emro-prg-tipo-imballo  to col-imb
-           move emro-qta-EDI           to col-qta-EDI
-           move emro-qta-GESLUX        to col-qta-GESLUX
+           move art-descrizione       to col-des
+           move emro-prg-tipo-imballo to col-imb
+           move emro-prg-peso         to col-peso
+           move emro-qta-EDI          to col-qta-EDI
+           move emro-qta-GESLUX       to col-qta-GESLUX
 
            if emro-qta = 0
               move emro-qta-GESLUX to emro-qta
@@ -17393,9 +17406,11 @@
            modify form1-gd-1(riga,  78-col-art), 
                   cell-data col-art 
            modify form1-gd-1(riga,  78-col-des), 
-                  cell-data col-des 
+                  cell-data col-des             
            modify form1-gd-1(riga,  78-col-imb), 
                   cell-data col-imb
+           modify form1-gd-1(riga,  78-col-peso), 
+                  cell-data col-peso
            modify form1-gd-1(riga,  78-col-qta-EDI),    
                   cell-data col-qta-EDI
            modify form1-gd-1(riga,  78-col-qta-GESLUX), 
@@ -17448,8 +17463,10 @@
            inquire form1-gd-1, last-row in tot-righe.
            perform varying riga from 2 by 1 
                      until riga > tot-righe                      
-              inquire form1-gd-1(riga, 7),  cell-data in como-qta
-              inquire form1-gd-1(riga, 10), cell-data in como-prz
+              inquire form1-gd-1(riga, 78-col-qta),  cell-data in 
+           como-qta
+              inquire form1-gd-1(riga, 78-col-prz), cell-data in 
+           como-prz
               compute tot-doc = tot-doc + como-qta * como-prz
            end-perform.
            if emto-cod-ese-iva = spaces 
@@ -21909,6 +21926,7 @@ LUBEXX                      read clienti no lock invalid continue
            when 78-col-art
            when 78-col-des
            when 78-col-imb
+           when 78-col-peso
                 if hid-emro-si-blister
                    set event-action to event-action-fail     
                    move col-art to emro-cod-articolo
@@ -22797,6 +22815,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       
               inquire ef-evadi-dal, value in col-evadi-dal
       
+              move prg-peso      to col-peso
               move prg-chiave    to HiddenKey              
               move imq-qta-imb   to hid-emro-qta-imballi
               move prg-chiave    to HiddenKeyL HiddenKey        
@@ -22815,7 +22834,9 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               modify form1-gd-1(event-data-2, 78-col-des), 
                      cell-data art-descrizione
               modify form1-gd-1(event-data-2, 78-col-imb), 
-                     cell-data prg-tipo-imballo  
+                     cell-data prg-tipo-imballo
+              modify form1-gd-1(event-data-2, 78-col-peso), 
+                     cell-data col-peso  
               modify form1-gd-1(event-data-2, 78-col-qta-EDI), 
                      cell-data col-qta-EDI
               modify form1-gd-1(event-data-2, 78-col-qta-GESLUX), 
@@ -22971,12 +22992,13 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                        inquire Form1-Gd-1, last-row in tot-righe
                        perform varying riga from 2 by 1 
                                  until riga > tot-righe               
-                          inquire form1-gd-1(riga, 2), cell-data in 
-           rpr-articolo
+                          inquire form1-gd-1(riga, 78-col-art), 
+           cell-data in rpr-articolo
                           read rpromo no lock invalid exit perform 
            cycle end-read
                           move rpr-prz-ven to col-prz 
-                          modify form1-gd-1(riga, 9), cell-data col-prz
+                          modify form1-gd-1(riga, 78-col-prz-GESLUX), 
+           cell-data col-prz
                           move riga to event-data-2
                           perform IMPOSTA-PREZZO
                        end-perform
@@ -22998,9 +23020,11 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               move riga to store-riga
               perform varying riga from 2 by 1 
                         until riga > tot-righe  
-                 inquire form1-gd-1(riga, 2),  cell-data in col-art
+                 inquire form1-gd-1(riga, 78-col-art),  cell-data in 
+           col-art
                  move col-art to art-codice
-                 inquire form1-gd-1(riga, 10), cell-data in col-prz
+                 inquire form1-gd-1(riga, 78-col-prz), cell-data in 
+           col-prz
                  move col-prz to como-prz
                  if como-prz > 0   
                     compute como-prz-sconto =
@@ -23008,7 +23032,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                             (( 100 - como-perce ) / 100)
                     add 0,005 to como-prz-sconto giving como-prz
                     move como-prz to col-prz
-                    modify form1-gd-1(riga, 10), cell-data col-prz
+                    modify form1-gd-1(riga, 78-col-prz), cell-data 
+           col-prz
                  end-if
               end-perform
               set RigaCambiata to true
