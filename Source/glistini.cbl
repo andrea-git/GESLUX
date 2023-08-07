@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          glistini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 marzo 2021 10:44:58.
+       DATE-WRITTEN.        lunedì 7 agosto 2023 23:23:52.
        REMARKS.
       *{TOTEM}END
 
@@ -7592,18 +7592,18 @@
                 if como-lead-time = 0
                    move 20 to col-lead-time
                    modify gd1(riga, 78-col-lead-time), 
-                                               cell-data col-lead-time
+                          cell-data col-lead-time
                 else
                    move como-lead-time to rlis-lead-time
-                   divide rlis-lead-time by 20 giving como-lt
-                   multiply como-lt      by 20 giving como-lt
-                   if como-lt not = rlis-lead-time
-                      set errori to true
-                     display message "Inserire un valore multiplo di 20"
-                                title tit-err
-                                 icon 2
-                      move 78-col-lead-time to colonna
-                   end-if
+      *****             divide rlis-lead-time by 20 giving como-lt
+      *****             multiply como-lt      by 20 giving como-lt
+      *****             if como-lt not = rlis-lead-time
+      *****                set errori to true
+      *****               display message "Inserire un valore multiplo di 20"
+      *****                          title tit-err
+      *****                           icon 2
+      *****                move 78-col-lead-time to colonna
+      *****             end-if
                 end-if 
       *     when 78-col-lead-time
 

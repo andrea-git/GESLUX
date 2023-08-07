@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E72151702-543-299324880
+PROGRAM_UNIQUE_CODE=TOTEM-7E787212246-940-101657289
 
 {{@DESCRIPTION:
 
@@ -6127,18 +6128,18 @@ BEGIN-TEXT
                 if como-lead-time = 0
                    move 20 to col-lead-time
                    modify gd1(riga, 78-col-lead-time), 
-                                               cell-data col-lead-time
+                          cell-data col-lead-time
                 else
                    move como-lead-time to rlis-lead-time
-                   divide rlis-lead-time by 20 giving como-lt
-                   multiply como-lt      by 20 giving como-lt
-                   if como-lt not = rlis-lead-time
-                      set errori to true
-                     display message "Inserire un valore multiplo di 20"
-                                title tit-err
-                                 icon 2
-                      move 78-col-lead-time to colonna
-                   end-if
+      *****             divide rlis-lead-time by 20 giving como-lt
+      *****             multiply como-lt      by 20 giving como-lt
+      *****             if como-lt not = rlis-lead-time
+      *****                set errori to true
+      *****               display message "Inserire un valore multiplo di 20"
+      *****                          title tit-err
+      *****                           icon 2
+      *****                move 78-col-lead-time to colonna
+      *****             end-if
                 end-if 
       *     when 78-col-lead-time
 
