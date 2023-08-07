@@ -1,0 +1,21 @@
+      *(( XFD FILE = tmp-estfidic ))
+       FD  tmp-estfidic.
+       01 tefc-rec.
+           05 tefc-chiave.
+               10 tefc-cliente     PIC  9(5).
+           05 tefc-dati.
+               10 tefc-ragsoc      PIC  x(100).
+      *(( XFD NAME = tefc-cliente_1 ))
+               10 tefc-tipo        PIC  xx.
+      *(( XFD NAME = tefc-cliente_1_1 ))
+               10 tefc-tcl-descrizione         PIC  x(100).
+      *(( XFD NAME = tefc-cliente_1_2 ))
+               10 tefc-piva        PIC  x(11).
+      *(( XFD NAME = tefc-cliente_1_2_3 ))
+               10 tefc-esposizione PIC  s9(13)v99.
+      *(( XFD NAME = tefc-cliente_1_2_1 ))
+               10 tefc-fido        PIC  s9(13)v99.
+      *(( XFD NAME = tefc-cliente_1_2_2 ))
+               10 tefc-residuo     PIC  s9(13)v99.
+      *(( XFD NAME = tefc-cliente_1_2_2 ))
+               10 tefc-fuori-residuo           PIC  x(20).

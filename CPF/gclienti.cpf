@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7713165842-39-215554179
+PROGRAM_UNIQUE_CODE=TOTEM-7E787224945-856-1874411620
 
 {{@DESCRIPTION:
 
@@ -6806,9 +6806,9 @@ m_bFixed=1
 
 @}}
 [FDITEM488_WK]
-m_strName=STATUS-grade
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=csv-esposizione
+m_strRawPic=----.---.---.--9,99
+m_strPic=----.---.---.--9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -6816,18 +6816,19 @@ m_bFixed=1
 
 @}}
 [FDITEM489_WK]
-m_strName=Valid-STATUS-grade
-m_nItemLevel=88
+m_strName=csv-fido
+m_strRawPic=----.---.---.--9,99
+m_strPic=----.---.---.--9,99
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM489_WK
 
 @}}
 [FDITEM490_WK]
-m_strName=STATUS-sitfin
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=csv-residuo
+m_strRawPic=----.---.---.--9,99
+m_strPic=----.---.---.--9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -6835,15 +6836,44 @@ m_bFixed=1
 
 @}}
 [FDITEM491_WK]
+m_strName=STATUS-grade
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM491_WK
+
+@}}
+[FDITEM492_WK]
+m_strName=Valid-STATUS-grade
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM492_WK
+
+@}}
+[FDITEM493_WK]
+m_strName=STATUS-sitfin
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM493_WK
+
+@}}
+[FDITEM494_WK]
 m_strName=Valid-STATUS-sitfin
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM491_WK
+{{@DataItem_m_strDescriptionFDITEM494_WK
 
 @}}
-[FDITEM492_WK]
+[FDITEM495_WK]
 m_strName=RICERCA-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -6852,45 +6882,45 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM492_WK
+{{@DataItem_m_strDescriptionFDITEM495_WK
 
 @}}
-[FDITEM493_WK]
+[FDITEM496_WK]
 m_strName=Form1-Tb-1-Handleaa
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM493_WK
+{{@DataItem_m_strDescriptionFDITEM496_WK
 
 @}}
-[FDITEM494_WK]
+[FDITEM497_WK]
 m_strName=ef-ricerca-piva-buf
 m_strRawPic=X(11)
 m_strPic=X(11)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM494_WK
+{{@DataItem_m_strDescriptionFDITEM497_WK
 
 @}}
-[FDITEM495_WK]
+[FDITEM498_WK]
 m_strName=STATUS-anacap
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM495_WK
+{{@DataItem_m_strDescriptionFDITEM498_WK
 
 @}}
-[FDITEM496_WK]
+[FDITEM499_WK]
 m_strName=Valid-STATUS-anacap
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM496_WK
+{{@DataItem_m_strDescriptionFDITEM499_WK
 
 @}}
 
