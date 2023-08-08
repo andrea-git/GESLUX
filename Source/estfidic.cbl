@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          estfidic.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 8 agosto 2023 00:52:11.
+       DATE-WRITTEN.        martedì 8 agosto 2023 18:24:42.
        REMARKS.
       *{TOTEM}END
 
@@ -429,7 +429,7 @@
            Screen3-La-1a, 
            Label, 
            COL 20,30, 
-           LINE 3,44,
+           LINE 3,42,
            LINES 1,17 ,
            SIZE 7,00 ,
            ID IS 100,
@@ -445,7 +445,7 @@
            Bitmap-freccia-fino, 
            Bitmap, 
            COL 28,30, 
-           LINE 3,28,
+           LINE 3,27,
            LINES 24,00 ,
            SIZE 28,00 ,
            TRANSPARENT-COLOR TR-COLOR,
@@ -459,7 +459,7 @@
            Bitmap-freccia-da, 
            Bitmap, 
            COL 16,30, 
-           LINE 3,28,
+           LINE 3,27,
            LINES 24,00 ,
            SIZE 28,00 ,
            TRANSPARENT-COLOR TR-COLOR,
@@ -2952,12 +2952,12 @@
 
                     if cli-agente  not = age-codice and
                        age-codice > 0
-                       exit perform  
+                       exit perform cycle 
                     end-if
 
                     if cli-tipo  not = tcl-codice and
                        tcl-codice not = spaces
-                       exit perform  
+                       exit perform cycle 
                     end-if
 
                     set trovato to true

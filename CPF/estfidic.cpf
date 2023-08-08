@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E787213230-321-1694229250
+PROGRAM_UNIQUE_CODE=TOTEM-7E788162421-88-323807081
 
 {{@DESCRIPTION:
 
@@ -2450,7 +2450,7 @@ Begin Screen Form1
       End
       Begin Label Screen3-La-1a
          SCREEN-COL        = 20,30
-         SCREEN-LINE       = 3,44
+         SCREEN-LINE       = 3,42
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Screen3-La-1a
@@ -2483,7 +2483,7 @@ Begin Screen Form1
       End
       Begin Bitmap Bitmap-freccia-fino
          SCREEN-COL        = 28,30
-         SCREEN-LINE       = 3,28
+         SCREEN-LINE       = 3,27
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Bitmap-freccia-fino
@@ -2516,7 +2516,7 @@ Begin Screen Form1
       End
       Begin Bitmap Bitmap-freccia-da
          SCREEN-COL        = 16,30
-         SCREEN-LINE       = 3,28
+         SCREEN-LINE       = 3,27
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Bitmap-freccia-da
@@ -3428,12 +3428,12 @@ BEGIN-TEXT
 
                     if cli-agente  not = age-codice and
                        age-codice > 0
-                       exit perform  
+                       exit perform cycle 
                     end-if
 
                     if cli-tipo  not = tcl-codice and
                        tcl-codice not = spaces
-                       exit perform  
+                       exit perform cycle 
                     end-if
 
                     set trovato to true
