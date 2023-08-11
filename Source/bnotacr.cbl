@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bnotacr.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 15 dicembre 2020 10:22:52.
+       DATE-WRITTEN.        venerdì 11 agosto 2023 22:21:32.
        REMARKS.
       *{TOTEM}END
 
@@ -167,9 +167,9 @@
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
@@ -351,7 +351,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -4625,7 +4625,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.

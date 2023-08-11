@@ -2943,6 +2943,10 @@ LUBEXX           end-if
                  move col-cou    to col-coubat
                  move col-add-pb to col-add
 
+                 move col-qta to como-qta
+                 compute como-prz = como-qta * hid-peso * 6,2
+                 move como-prz to col-prezzo
+
 LUBEXX           move col-iva        to col-cod-iva
                  
                  modify form1-gd-2(store-riga, 1), cell-data col-riga
@@ -2957,6 +2961,10 @@ LUBEXX           move col-iva        to col-cod-iva
                  modify form1-gd-2(store-riga, 8), cell-data col-coubat 
                  modify form1-gd-2(store-riga, 9), cell-data col-add
                  modify form1-gd-2(store-riga, 10),cell-data col-cod-iva
+
+                 move store-riga to event-data-2
+
+                 perform CALCOLA-IMPOSTE-ADDEBITO
 
                  move col-quantita  to hid-qta-nc
                  move col-prezzo    to hid-old-prz
