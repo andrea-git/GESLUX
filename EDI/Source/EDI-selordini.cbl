@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 7 agosto 2023 23:20:17.
+       DATE-WRITTEN.        lunedì 14 agosto 2023 18:12:13.
        REMARKS.
       *{TOTEM}END
 
@@ -4355,11 +4355,11 @@
            SIZE 14,00 ,
            ENABLED MOD,
            EXCEPTION-VALUE 1005,
-           ID IS 32,
+           ID IS 91,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "&Sconto %",
-           VISIBLE v-forza,
+           VISIBLE 1,
            .
 
       * TOOLBAR

@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.95.20
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7891407-435-677510912
+PROGRAM_UNIQUE_CODE=TOTEM-7E78E161149-352-1779629349
 
 {{@DESCRIPTION:
 
@@ -14265,7 +14266,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 32
+      ID                = 91
       Line              = 32,67
       Lines             = 1,80
       Lines Unit        = Default
@@ -14279,8 +14280,7 @@ Begin Screen Form1
       Tab Order         = 89
       Termination Value = 0
       Title             = "&Sconto %"
-      Visible           = FALSE
-      Visible Variable  = v-forza
+      Visible           = TRUE
       Width in Cells    = TRUE
       Link To           = pb-sconto-LinkTo
    End
