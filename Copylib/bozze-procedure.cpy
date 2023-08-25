@@ -2944,7 +2944,7 @@ LUBEXX           end-if
                  move col-add-pb to col-add
 
                  move col-qta to como-qta
-                 compute como-prz = como-qta * hid-peso * 6,2
+                 compute como-prz = hid-peso * 6,2
                  move como-prz to col-prezzo
 
 LUBEXX           move col-iva        to col-cod-iva
