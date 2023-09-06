@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 17 giugno 2023 00:22:02.
+       DATE-WRITTEN.        mercoledì 6 settembre 2023 09:39:56.
        REMARKS.
       *{TOTEM}END
 
@@ -2907,12 +2907,12 @@
            CENTERED-HEADINGS,
            COLOR IS 516,
            DATA-COLUMNS (1, 6, 12, 62, 70, 84, 89, 97, 105, 113, 127, 
-           130),
+           137, 140),
            ALIGNMENT ("R", "R", "U", "R", "R", "R", "R", "R", "R", "R", 
-           "C", "C"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           "R", "C", "C"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            DATA-TYPES ("9(5)", "9(6)", "X", "9(8)", "9(12)", "9(5)", "9(
-      -    "7)", "9(7)", "9(7)", "9(12)", "x(3)", "X"),
+      -    "7)", "9(7)", "9(7)", "9(12)", "X", "x(3)", "X"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 0,
@@ -15747,9 +15747,12 @@
                 CELL-DATA = "Imp. merce",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 11, Y = 1,
-                CELL-DATA = "Cod. IVA",
+                CELL-DATA = "Peso",
       * CELLS' SETTING
               MODIFY Form1-Gd-1, X = 12, Y = 1,
+                CELL-DATA = "IVA",
+      * CELLS' SETTING
+              MODIFY Form1-Gd-1, X = 13, Y = 1,
                 CELL-DATA = "Omaggio",
            .
 
@@ -16293,8 +16296,8 @@
               HANDLE IS Form1-St-1-Handle
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 8, 16, 51, 60, 75, 
-           84, 95, 106, 117, 129, 138)
+              MODIFY Form1-Gd-1, DISPLAY-COLUMNS (1, 8, 16, 51, 58, 70, 
+           79, 90, 101, 112, 124, 132, 138)
            .
 
        Form1-PROC.

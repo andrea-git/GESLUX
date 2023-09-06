@@ -414,7 +414,7 @@ PATCH      end-start.
       ***---
        COLORE.
            modify form1-gd-1, start-y = riga, y = riga,
-                              start-x = 2,    x = 78-NumColMan,
+                              start-x = 2,    x = (78-NumColMan + 1),
                               region-color = 144.
 
       ***---
@@ -1008,6 +1008,12 @@ BLISTR           end-string
               move prg-peso-utf      to hid-utf
               move prg-peso-non-utf  to hid-non-utf
 
+              if prg-peso-utf > 0
+                 move prg-peso-utf to col-peso
+              else
+                 move prg-peso-non-utf to col-peso
+              end-if
+
               modify form1-gd-1(store-riga, 1),  cell-data = col-num
               modify form1-gd-1(store-riga, 2),  cell-data = col-art
               modify form1-gd-1(store-riga, 3),  cell-data = col-des
@@ -1016,9 +1022,10 @@ BLISTR           end-string
               modify form1-gd-1(store-riga, 6),  cell-data = col-sconto
               modify form1-gd-1(store-riga, 7),  cell-data = col-cons
               modify form1-gd-1(store-riga, 8),  cell-data = col-cou
-              modify form1-gd-1(store-riga, 9),  cell-data = col-add
-              modify form1-gd-1(store-riga, 10), cell-data = col-imp
-              modify form1-gd-1(store-riga, 11), cell-data = col-iva 
+              modify form1-gd-1(store-riga, 9),  cell-data = col-add 
+              modify form1-gd-1(store-riga, 10), cell-data = col-imp 
+              modify form1-gd-1(store-riga, 11), cell-data = col-peso 
+              modify form1-gd-1(store-riga, 12), cell-data = col-iva 
 
               if OrdineAnno not = 0 or OrdineNumero not = 0
                  if LinkOrdine = ror-chiave-ordine-testa
@@ -1027,12 +1034,12 @@ BLISTR           end-string
               end-if
 
               if ror-si-omaggio
-                 modify form1-gd-1(store-riga, 78-NumColMan),  
+                 modify form1-gd-1(store-riga, 13 ),  
                         bitmap = conferma-bmp
                         bitmap-number = 1
                         bitmap-width  = 19
               else
-                 modify form1-gd-1(store-riga, 78-NumColMan),
+                 modify form1-gd-1(store-riga, 13),
                         bitmap = conferma-bmp
                         bitmap-number = 2
                         bitmap-width  = 19
@@ -1349,6 +1356,8 @@ BLISTR     if hid-blister not = old-hid-blister
            move ef-qta-oma-buf    to hid-qta-omaggi.
 BLISTR     move chk-blister-buf   to hid-blister.
 
+           move prg-peso to col-peso.
+
            modify form1-gd-1(riga, 1),  cell-data = col-num.
            modify form1-gd-1(riga, 2),  cell-data = col-art.
            modify form1-gd-1(riga, 3),  cell-data = col-des.
@@ -1358,8 +1367,9 @@ BLISTR     move chk-blister-buf   to hid-blister.
            modify form1-gd-1(riga, 7),  cell-data = col-cons.
            modify form1-gd-1(riga, 8),  cell-data = col-cou.
            modify form1-gd-1(riga, 9),  cell-data = col-add.
-           modify form1-gd-1(riga, 10), cell-data = col-imp.
-           modify form1-gd-1(riga, 11), cell-data = col-iva.
+           modify form1-gd-1(riga, 10), cell-data = col-imp.  
+           modify form1-gd-1(riga, 11), cell-data = col-peso.
+           modify form1-gd-1(riga, 12), cell-data = col-iva.
 
 LABLAB     |Ho cambiato il prezzo confermato in precedenza dall'ufficio comm.le
 LABLAB     if hid-prz-commle not = 0
@@ -1460,18 +1470,18 @@ LABLAB*****     modify form1-gd-1(riga, 78-NumColMan + 24), hidden-data =
            move col-uni to SavePrezzo.
            if SavePrezzo = 0
 LUBEXX        if tca-si-speciale
-LUBEXX           modify form1-gd-1(riga, 78-NumColMan),
+LUBEXX           modify form1-gd-1(riga, 13),
 LUBEXX           bitmap        = conferma-bmp
 LUBEXX           bitmap-number = 2
 LUBEXX           bitmap-width  = 19
 LUBEXX        else
-LUBEXX           modify form1-gd-1(riga, 78-NumColMan),
+LUBEXX           modify form1-gd-1(riga, 13),
 LUBEXX           bitmap        = conferma-bmp
 LUBEXX           bitmap-number = 1
 LUBEXX           bitmap-width  = 19
 LUBEXX        end-if
            else
-              modify form1-gd-1(riga, 78-NumColMan),
+              modify form1-gd-1(riga, 13),
               bitmap        = conferma-bmp
               bitmap-number = 2
               bitmap-width  = 19
@@ -2235,7 +2245,8 @@ LUBEXX        end-if
            inquire form1-gd-1(riga, 8),  cell-data in col-cou. 
            inquire form1-gd-1(riga, 9),  cell-data in col-add.
            inquire form1-gd-1(riga, 10), cell-data in col-imp.
-           inquire form1-gd-1(riga, 11), cell-data in col-iva.
+           inquire form1-gd-1(riga, 11), cell-data in col-peso.
+           inquire form1-gd-1(riga, 12), cell-data in col-iva.
 
            inquire form1-gd-1(riga, 1), hidden-data gruppo-hidden.
            inquire form1-gd-1(riga, 2), hidden-data ror-chiave-ordine.
@@ -2861,11 +2872,11 @@ PATCH            modify form1-gd-1(riga, 1), cell-data ror-num-riga
                  move col-imp to ror-imponib-merce
 
 LUBEXX           if ef-iva-buf = spaces
-                    inquire form1-gd-1(riga, 11), cell-data in col-iva
+                    inquire form1-gd-1(riga, 12), cell-data in col-iva
                     move col-iva to ror-cod-iva
 LUBEXX           else
 LUBEXX              if ror-prz-unitario = 0
-LUBEXX                 inquire form1-gd-1(riga, 11) cell-data in col-iva
+LUBEXX                 inquire form1-gd-1(riga, 12) cell-data in col-iva
 LUBEXX                 move col-iva to ror-cod-iva
 LUBEXX              else
 LUBEXX                 move ef-iva-buf to ror-cod-iva

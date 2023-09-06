@@ -3105,6 +3105,7 @@ LUBEXX*****                 set CambiatoTrattamento to true
                           panel-index  3,
                           panel-text  "MODIFICA"
               when StatusVisua
+
                    modify form1-st-1-handle, 
                           panel-index  3,
                           panel-text  "VISUALIZZAZIONE"
@@ -3994,8 +3995,13 @@ LUBEXX*****     end-if.
            perform varying riga from 2 by 1
                      until riga > tot-righe
               set trovato to false
-              inquire form1-gd-1(riga, 11),
-                      cell-data in col-iva    
+              if pgm-name = "gordcvar"           
+                 inquire form1-gd-1(riga, 12),
+                         cell-data in col-iva    
+              else
+                 inquire form1-gd-1(riga, 11),
+                         cell-data in col-iva    
+              end-if
               perform varying idx from 1 by 1
                         until idx > 3
                  if col-iva = cod-iva(idx)
