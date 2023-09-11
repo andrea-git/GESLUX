@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-gpromo.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 17 maggio 2023 18:08:33.
+       DATE-WRITTEN.        lunedì 11 settembre 2023 18:25:12.
        REMARKS.
       *{TOTEM}END
 
@@ -248,6 +248,7 @@
        77 STATUS-locali    PIC  X(2).
            88 Valid-STATUS-locali VALUE IS "00" THRU "09". 
        77 lab-gdo-buf      PIC  X(50).
+       77 HiddenPrg        PIC  9(5).
        77 HiddenSel        PIC  9.
            88 YesSel VALUE IS 1. 
            88 NoSel VALUE IS 0. 
@@ -334,10 +335,13 @@
        77 ef-des-buf       PIC  X(50).
        77 ef-sconto-buf    PIC  99v99.
        77 wstampa          PIC  X(256).
+       77 como-value       PIC  x(35).
        77 rename-status    PIC  9(9)
                   USAGE IS COMP-4.
        77 SettimanaUscita  PIC  zz9.
        77 num-articoli     PIC  9(6).
+       77 counter          PIC  99.
+       77 find PIC  99.
        77 STATUS-lineseq   PIC  X(2).
            88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
        77 status-usr-tel   PIC  X(2).
@@ -351,6 +355,23 @@
            88 Valid-STATUS-listini VALUE IS "00" THRU "09". 
        77 STATUS-timposte  PIC  X(2).
            88 Valid-STATUS-timposte VALUE IS "00" THRU "09". 
+       01 tab-grid-destini.
+           05 el-grid-destini
+                      OCCURS 9999 TIMES.
+               10 el-grid-destini-hidden.
+                   15 el-grid-destini-hidden-cliente           PIC  
+           9(5).
+                   15 el-grid-destini-hidden-destino           PIC  
+           9(5).
+                   15 el-grid-destini-hidden-sel   PIC  9.
+                   15 el-grid-destini-hidden-prg   PIC  9(4).
+               10 el-grid-destini-data.
+                   15 el-grid-destini-col-ragsoc   PIC  X(40).
+                   15 el-grid-destini-col-destino  PIC  X(40).
+                   15 el-grid-destini-col-loca     PIC  X(40).
+                   15 el-grid-destini-col-ind      PIC  X(40).
+                   15 el-grid-destini-col-cap      PIC  9(5).
+                   15 el-grid-destini-col-prov     PIC  xx.
        01 HiddenDati.
            05 hid-cliente      PIC  9(5).
            05 hid-destino      PIC  9(5).
@@ -396,6 +417,12 @@
        77 path-fileseq     PIC  X(500).
        77 STATUS-fileseq   PIC  X(2).
            88 Valid-STATUS-fileseq VALUE IS "00" THRU "09". 
+       77 scr-stampa-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 78-ID-ef-st-tipo PIC  9(6)
+                  VALUE IS 0.
+       77 ef-ricerca-piva-buf          PIC  X(11).
+       77 ef-ricerca-loca-buf          PIC  X(35).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -437,6 +464,8 @@
        77 Form1-MULKEY-TMPBUF   PIC X(263).
        77 STATUS-Screen1-FLAG-REFRESH PIC  9.
           88 Screen1-FLAG-REFRESH  VALUE 1 FALSE 0. 
+       77 STATUS-scr-ricerca-FLAG-REFRESH PIC  9.
+          88 scr-ricerca-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-rpromo-BUF     PIC X(209).
@@ -1821,6 +1850,162 @@
            VPADDING 30,
            VSCROLL,
            EVENT PROCEDURE Screen1a-Gd-1-Event-Proc,
+           .
+
+      * FORM
+       01 
+           scr-ricerca, 
+           BEFORE PROCEDURE scr-ricerca-BeforeProcedure,
+           AFTER PROCEDURE  scr-ricerca-AFTER-SCREEN
+           .
+
+      * ENTRY FIELD
+       05
+           ef-ricerca-loca, 
+           Entry-Field, 
+           COL 12,50, 
+           LINE 2,11,
+           LINES 1,33 ,
+           SIZE 35,00 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 78-ID-ef-st-tipo,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 35,
+           VALUE ef-ricerca-loca-buf,
+           AFTER PROCEDURE ef-ricerca-loca-AfterProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-ricerca-ok, 
+           Push-Button, 
+           COL 32,50, 
+           LINE 6,22,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-OK-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1000,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 100,
+           AFTER PROCEDURE pb-ricerca-ok-AfterProcedure, 
+           BEFORE PROCEDURE pb-ricerca-ok-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-ricerca-cancel, 
+           Push-Button, 
+           COL 40,40, 
+           LINE 6,22,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-CANCEL-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 27,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 200,
+           ESCAPE-BUTTON,
+           AFTER PROCEDURE pb-ricerca-cancel-AfterProcedure, 
+           BEFORE PROCEDURE pb-ricerca-cancel-BeforeProcedure, 
+           .
+
+      * BAR
+       05
+           Screen4-Br-1aaaa, 
+           Bar,
+           COL 1,00, 
+           LINE 6,11,
+           SIZE 47,70 ,
+           ID IS 12,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8, 8),
+           SHADING (-1, 1),
+           WIDTH 2,
+           .
+
+      * LABEL
+       05
+           lab1a, 
+           Label, 
+           COL 2,10, 
+           LINE 1,83,
+           LINES 1,33 ,
+           SIZE 10,00 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Località",
+           .
+
+      * LABEL
+       05
+           Screen1-Custom1-1b, 
+           Label, 
+           COL 2,70, 
+           LINE 6,83,
+           LINES 0,44 ,
+           SIZE 5,70 ,
+           FONT IS Default-Font,
+           ID IS 1,
+           TRANSPARENT,
+           TITLE "CUSTOM CONTROL",
+           VISIBLE v-custom,
+           .
+
+      * LABEL
+       05
+           lab1aa, 
+           Label, 
+           COL 12,50, 
+           LINE 3,50,
+           LINES 1,22 ,
+           SIZE 35,00 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE 'Con * finale si intende "contiene"',
+           .
+
+      * LABEL
+       05
+           lab1ab, 
+           Label, 
+           COL 2,10, 
+           LINE 2,94,
+           LINES 1,33 ,
+           SIZE 10,00 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "(Inizia per)",
+           .
+
+      * LABEL
+       05
+           lab1aaa, 
+           Label, 
+           COL 12,50, 
+           LINE 4,61,
+           LINES 1,22 ,
+           SIZE 35,00 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Spazio = TUTTE",
            .
 
       *{TOTEM}END
@@ -7142,6 +7327,214 @@
            when other continue
            end-evaluate.
 
+       scr-ricerca-Open-Routine.
+           PERFORM scr-ricerca-Scrn
+           PERFORM scr-ricerca-Proc
+           .
+
+       scr-ricerca-Scrn.
+           PERFORM scr-ricerca-Create-Win
+           PERFORM scr-ricerca-Init-Value
+           PERFORM scr-ricerca-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           PERFORM scr-ricerca-DISPLAY
+           .
+
+       scr-ricerca-Create-Win.
+           Display Floating GRAPHICAL WINDOW
+              LINES 7,33,
+              SIZE 47,70,
+              HEIGHT-IN-CELLS,
+              WIDTH-IN-CELLS,
+              COLOR 65793,
+              CONTROL FONT Verdana12-Occidentale,
+              LINK TO THREAD,
+              NO SCROLL,
+              TITLE-BAR,
+              TITLE titolo,
+              WITH SYSTEM MENU,
+              USER-GRAY,
+              USER-WHITE,
+              No WRAP,
+              EVENT PROCEDURE scr-stampa-Event-Proc,
+              HANDLE IS scr-stampa-Handle,
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+      * Status-bar
+           DISPLAY scr-ricerca UPON scr-stampa-Handle
+      * DISPLAY-COLUMNS settings
+           .
+
+       scr-ricerca-PROC.
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, BeforeAccept>
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT scr-ricerca
+                 ON EXCEPTION
+                    PERFORM scr-ricerca-Evaluate-Func
+                 MOVE 3 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY scr-stampa-Handle
+           INITIALIZE Key-Status
+           .
+
+       scr-ricerca-Evaluate-Func.
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM scr-ricerca-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM scr-ricerca-Exit
+                 END-IF
+              WHEN Key-Status = 1000
+                 PERFORM pb-ricerca-ok-LinkTo
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       scr-ricerca-CLEAR.
+           PERFORM scr-ricerca-INIT-VALUE
+           PERFORM scr-ricerca-DISPLAY
+           .
+
+       scr-ricerca-DISPLAY.
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY scr-ricerca UPON scr-stampa-Handle
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       scr-ricerca-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       scr-ricerca-Init-Data.
+           MOVE 3 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+           .
+
+       scr-ricerca-Init-Value.
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, SetDefault>
+      * <TOTEM:END>
+           PERFORM scr-ricerca-FLD-TO-BUF
+           .
+
+
+       scr-ricerca-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       scr-ricerca-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       scr-ricerca-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       scr-ricerca-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-ricerca, FORM:scr-ricerca, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       scr-ricerca-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform scr-ricerca-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       scr-ricerca-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM scr-ricerca-SHOW-MSG-ROUTINE
+           .
+
+       scr-ricerca-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM scr-ricerca-DISPLAY-MESSAGE
+           .
+
+       scr-ricerca-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       scr-ricerca-Save-Status.
+           .             
+
+       scr-ricerca-Restore-Status.
+           .
+
+
+      * Paragrafo per la struttura del codice in BEFORE sulla screen scr-ricerca
+      ***---
+       scr-ricerca-BEFORE-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione settaggio keyboard "." ---> ","
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen scr-ricerca
+      ***---
+       scr-ricerca-AFTER-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
 
 
        Form1-BeforeProcedure.
@@ -7208,6 +7601,17 @@
            perform Screen1-BEFORE-SCREEN
            .
 
+       scr-ricerca-BeforeProcedure.
+           EVALUATE Control-Id
+           WHEN 78-ID-ef-st-tipo MOVE "." to TOTEM-HINT-TEXT
+           WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
+           END-EVALUATE
+           EVALUATE Control-Id
+           When 78-ID-ef-st-tipo PERFORM ef-ricerca-loca-BeforeProcedure
+           END-EVALUATE
+           perform scr-ricerca-BEFORE-SCREEN
+           .
+
        Screen1-Event-Proc.
            .
 
@@ -7232,6 +7636,9 @@
            WHEN Msg-Goto-Cell-Mouse ALSO 5003 ALSO
                     form1-Handle 
               PERFORM gd-dest-Ev-Msg-Goto-Cell-Mouse
+           WHEN Msg-Heading-Dblclick ALSO 5003 ALSO
+                    form1-Handle 
+              PERFORM gd-dest-Ev-Msg-Heading-Dblclick
            WHEN Msg-Begin-Drag ALSO 5011 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Begin-Drag
@@ -7278,6 +7685,9 @@
                     Screen1-Handle 
               PERFORM gd-art-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
+           .
+
+       scr-stampa-Event-Proc.
            .
 
       * USER DEFINE PARAGRAPH
@@ -8451,7 +8861,9 @@
        RESETTA-GRID-DESTINI.
       * <TOTEM:PARA. RESETTA-GRID-DESTINI>
            modify gd-dest, reset-grid = 1.
-           perform GD-DEST-CONTENT 
+           perform GD-DEST-CONTENT.  
+           initialize tab-grid-destini replacing numeric data by zeroes 
+                                            alphanumeric data by spaces 
            .
       * <TOTEM:END>
 
@@ -8521,9 +8933,13 @@
            set trovato to false.
            modify gd-dest, mass-update = 1.
            perform RESETTA-GRID-DESTINI.
-
+           initialize tab-grid-destini replacing numeric data by zeroes 
+                                            alphanumeric data by spaces.
+                                                                        
+              
            set nazionale to true.
            move 1 to riga.
+           move 0 to HiddenPrg.
            move low-value to cli-rec.
            start clienti key >= cli-k1
                  invalid continue
@@ -8588,11 +9004,28 @@
                                         set NoSel to true
                                         move 513 to colore
                                      end-if
-                                end-read
+                                end-read      
+                                add 1 to HiddenPrg
+                                modify gd-dest(riga, 3), 
+                                       hidden-data = HiddenPrg
                                 modify gd-dest(riga, 2), 
                                        hidden-data = HiddenSel
                                 modify gd-dest(riga), 
                                        row-color = colore
+
+                                subtract 1 from riga giving idx
+                                move HiddenSel   to 
+           el-grid-destini-hidden-sel(idx)
+                                move hid-cliente to 
+           el-grid-destini-hidden-cliente(idx)
+                                move hid-destino to 
+           el-grid-destini-hidden-destino(idx)
+                                move HiddenPrg   to  
+           el-grid-destini-hidden-prg(idx)
+
+                                move rec-grid-dest to 
+           el-grid-destini-data(idx)
+
                              end-perform
                        end-start
                     end-if
@@ -8606,13 +9039,16 @@
       * <TOTEM:PARA. RIEMPI-GRID-FROM-LOCALI>
            modify gd-dest, mass-update = 1.
            perform RESETTA-GRID-DESTINI.
+           initialize tab-grid-destini replacing numeric data by zeroes 
+                                            alphanumeric data by spaces.
 
            move low-value              to loc-rec.
            move tpr-codice   of tpromo to loc-codice.
            start locali key >= loc-chiave
                  invalid continue
              not invalid
-                 move 1 to riga
+                 move 1 to riga 
+                 move 0 to HiddenPrg
                  perform until 1 = 2
                     read locali next at end exit perform end-read
                     if loc-codice   not = tpr-codice   of tpromo
@@ -8665,8 +9101,20 @@
 
                     set YesSel to true
                     move 176 to colore
+                    add 1 to HiddenPrg
                     modify gd-dest(riga, 2), hidden-data = HiddenSel
-                    modify gd-dest(riga),    row-color   = colore
+                    modify gd-dest(riga, 3), hidden-data = HiddenPrg
+                    modify gd-dest(riga),    row-color   = colore  
+
+                    subtract 1 from riga giving idx
+                    move HiddenSel   to el-grid-destini-hidden-sel(idx)
+                    move hid-cliente to 
+           el-grid-destini-hidden-cliente(idx)
+                    move hid-destino to 
+           el-grid-destini-hidden-destino(idx) 
+                    move HiddenPrg   to  el-grid-destini-hidden-prg(idx)
+ 
+                    move rec-grid-dest to el-grid-destini-data(idx)
 
                  end-perform
            end-start.
@@ -9051,18 +9499,26 @@
            else
               set YesSel to true
               move 176 to colore
-
-              set local to true
-
+              set local to true 
            end-if.
 
-           modify gd-dest, row-color = colore.
-           modify gd-dest(event-data-2, 2), hidden-data HiddenSel.
+           modify  gd-dest, row-color = colore.                    
+           modify  gd-dest(event-data-2, 2), hidden-data HiddenSel.
+           inquire gd-dest(event-data-2, 3), hidden-data HiddenPrg.
+
+           perform varying idx from 1 by 1 
+                     until idx > 9999
+              if el-grid-destini-hidden-prg(idx) = HiddenPrg
+                 exit perform
+              end-if
+           end-perform.
+
+           move HiddenSel   to el-grid-destini-hidden-sel(idx)
 
            if not VariazioneDestini
               set VariazioneDestini to true
               move event-data-2     to RigaVarDestino
-           end-if 
+           end-if                     
            .
       * <TOTEM:END>
 
@@ -9481,10 +9937,12 @@
        TOOL-MODIFICA-BeforeProcedure.
       * <TOTEM:PARA. TOOL-MODIFICA-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        TOOL-MODIFICA-AfterProcedure.
       * <TOTEM:PARA. TOOL-MODIFICA-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
@@ -9590,7 +10048,8 @@
       * <TOTEM:PARA. Screen1-DaEf-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            move ZERO to StatusHelp.
-           perform STATUS-HELP 
+           perform STATUS-HELP.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Screen1-DaEf-1-AfterProcedure.
@@ -9602,6 +10061,7 @@
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -9609,35 +10069,42 @@
        ef-gdo-BeforeProcedure.
       * <TOTEM:PARA. ef-gdo-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-ini-dpo-BeforeProcedure.
       * <TOTEM:PARA. ef-ini-dpo-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-fine-dpo-BeforeProcedure.
       * <TOTEM:PARA. ef-fine-dpo-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-nome-BeforeProcedure.
       * <TOTEM:PARA. ef-nome-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-ini-vol-BeforeProcedure.
       * <TOTEM:PARA. ef-ini-vol-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-fine-vol-BeforeProcedure.
       * <TOTEM:PARA. ef-fine-vol-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-sett-BeforeProcedure.
       * <TOTEM:PARA. ef-sett-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
@@ -9649,6 +10116,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -9663,6 +10131,7 @@
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -9675,6 +10144,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -9695,6 +10165,7 @@
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -9707,6 +10178,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -9721,6 +10193,7 @@
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -9733,6 +10206,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -9917,23 +10391,27 @@
        ef-des-BeforeProcedure.
       * <TOTEM:PARA. ef-des-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-sconto-BeforeProcedure.
       * <TOTEM:PARA. ef-sconto-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-des-AfterProcedure.
       * <TOTEM:PARA. ef-des-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           perform CONTROLLO-S 
+           perform CONTROLLO-S.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        ef-sconto-AfterProcedure.
       * <TOTEM:PARA. ef-sconto-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           perform CONTROLLO-S 
+           perform CONTROLLO-S.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        pb-ok-s-LinkTo.
@@ -10285,10 +10763,12 @@
        Screen1-Cb-1-BeforeProcedure.
       * <TOTEM:PARA. Screen1-Cb-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Screen1-Cb-1-AfterProcedure.
       * <TOTEM:PARA. Screen1-Cb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
@@ -10373,6 +10853,125 @@
                  close fileseq
               end-if
            end-if 
+           .
+      * <TOTEM:END>
+       gd-dest-Ev-Msg-Heading-Dblclick.
+      * <TOTEM:PARA. gd-dest-Ev-Msg-Heading-Dblclick>
+           if event-data-1 = 3 
+              perform SCR-RICERCA-OPEN-ROUTINE 
+           end-if
+           .
+      * <TOTEM:END>
+       pb-ricerca-ok-BeforeProcedure.
+      * <TOTEM:PARA. pb-ricerca-ok-BeforeProcedure>
+           modify pb-ricerca-ok, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-ricerca-ok-AfterProcedure.
+      * <TOTEM:PARA. pb-ricerca-ok-AfterProcedure>
+           modify pb-ricerca-ok, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-ricerca-ok-LinkTo.
+      * <TOTEM:PARA. pb-ricerca-ok-LinkTo>
+           inquire ef-ricerca-loca, value in ef-ricerca-loca-buf. 
+                                             
+           modify gd-dest, mass-update = 1.
+           modify gd-dest, reset-grid = 1.
+                                                                        
+                 
+           inspect ef-ricerca-loca-buf replacing trailing spaces by 
+           low-value.
+           move 0 to counter.
+           inspect ef-ricerca-loca-buf tallying counter for characters 
+           before low-value.
+           inspect ef-ricerca-loca-buf replacing trailing low-value by 
+           spaces.
+           move 1 to riga.        
+                                    
+           move space to como-entry         
+           if ef-ricerca-loca-buf(counter:1) = "*"
+              move "*" to como-entry
+              subtract 1 from counter
+           end-if.
+           move ef-ricerca-loca-buf(1:counter) to como-value.
+
+           perform GD-DEST-CONTENT.
+           perform varying idx from 1 by 1 
+                     until idx > 9999
+              if el-grid-destini-hidden-cliente(idx) = 0
+                 exit perform
+              end-if
+
+              if ef-ricerca-loca-buf not = spaces 
+                 if como-entry = "*"
+                    move 0 to find
+                    inspect el-grid-destini-col-loca(idx)
+                            tallying find for all como-value(1:counter)
+                    if find = 0
+                       exit perform cycle
+                    end-if
+                 else
+                    if el-grid-destini-col-loca(idx)(1:counter) not =
+                       como-value
+                       exit perform cycle
+                    end-if
+                 end-if
+              end-if
+                          
+              add 1 to riga                                          
+              move el-grid-destini-hidden-sel(idx)     to HiddenSel  
+              move el-grid-destini-hidden-prg(idx)     to HiddenPrg
+              move el-grid-destini-hidden-cliente(idx) to hid-cliente
+              move el-grid-destini-hidden-destino(idx) to hid-destino
+ 
+              move el-grid-destini-data(idx) to rec-grid-dest
+                                  
+              if YesSel           
+                 move 176 to colore
+              else                
+                 move 513 to colore
+              end-if
+
+              modify gd-dest, 
+                     record-to-add = rec-grid-dest
+
+              modify gd-dest(riga), 
+                     row-color = colore  
+
+              modify gd-dest, row-color = colore  
+              modify gd-dest(riga, 1), 
+                     hidden-data = HiddenDati  
+              modify gd-dest(riga, 2), 
+                     hidden-data = HiddenSel
+              modify gd-dest(riga, 3), 
+                     hidden-data = HiddenPrg
+
+           end-perform.
+           modify gd-dest, mass-update = 0.
+           move 27 to key-status   
+           .
+      * <TOTEM:END>
+       pb-ricerca-cancel-BeforeProcedure.
+      * <TOTEM:PARA. pb-ricerca-cancel-BeforeProcedure>
+           modify pb-ricerca-cancel, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-ricerca-cancel-AfterProcedure.
+      * <TOTEM:PARA. pb-ricerca-cancel-AfterProcedure>
+           modify pb-ricerca-cancel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       ef-ricerca-loca-BeforeProcedure.
+      * <TOTEM:PARA. ef-ricerca-loca-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       ef-ricerca-loca-AfterProcedure.
+      * <TOTEM:PARA. ef-ricerca-loca-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 
