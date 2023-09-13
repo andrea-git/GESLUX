@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          st-delta.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:19:15.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 13 settembre 2023 15:08:09.
        REMARKS.
       *{TOTEM}END
 
@@ -28,11 +28,21 @@
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
            COPY "tparamge.sl".
+           COPY "lineseq.sl".
+           COPY "lineseq.sl"
+                REPLACING ==lineseq== BY ==lineseq1==,
+                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
+                .
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
            COPY "tparamge.fd".
+           COPY "lineseq.fd".
+           COPY "lineseq.fd"
+                REPLACING ==lineseq== BY ==lineseq1==,
+                          ==STATUS-lineseq== BY ==STATUS-lineseq1==
+                .
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -43,9 +53,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -76,10 +84,17 @@
        77 bottone-ok-bmp   PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 como-anno        PIC  9(4).
+       77 como-mese        PIC  99.
+       77 data-rical       PIC  9(8).
+       77 var1 PIC  9999.
+       01 fine-mese.
+           05 anno PIC  9999.
+           05 mese PIC  99.
+           05 giorno           PIC  99.
        77 bottone-cancel-bmp           PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
-       77 mese PIC  99.
        77 Verdana12-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 form2-Handle
@@ -94,6 +109,11 @@
            88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
        77 Default-Font
                   USAGE IS HANDLE OF FONT DEFAULT-FONT.
+       77 wstampa          PIC  X(256).
+       77 STATUS-lineseq   PIC  X(2).
+           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
+       77 STATUS-lineseq1  PIC  X(2).
+           88 VALID-STATUS-lineseq1 VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -103,6 +123,8 @@
        77 STATUS-Form2-FLAG-REFRESH PIC  9.
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -113,6 +135,16 @@
        77 DataSet1-tparamge-KEY1-ORDER  PIC X VALUE "A".
           88 DataSet1-tparamge-KEY1-Asc  VALUE "A".
           88 DataSet1-tparamge-KEY1-Desc VALUE "D".
+       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq1-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq1-LOCK  VALUE "Y".
+       77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq1-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq1-KEY-Desc VALUE "D".
 
 
            copy "splcrt2graf.lks".
@@ -474,6 +506,10 @@
        OPEN-FILE-RTN.
       *    Before Open
            PERFORM OPEN-tparamge
+      *    lineseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq
+      *    lineseq1 OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq1
       *    After Open
            .
 
@@ -489,9 +525,37 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq.
+      * <TOTEM:EPT. INIT:st-delta, FD:lineseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq
+           IF NOT Valid-STATUS-lineseq
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:st-delta, FD:lineseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-lineseq1.
+      * <TOTEM:EPT. INIT:st-delta, FD:lineseq1, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT lineseq1
+           IF NOT VALID-STATUS-lineseq1
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:st-delta, FD:lineseq1, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tparamge
+      *    lineseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq
+      *    lineseq1 CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq1
       *    After Close
            .
 
@@ -499,6 +563,16 @@
       * <TOTEM:EPT. INIT:st-delta, FD:tparamge, BeforeClose>
       * <TOTEM:END>
            CLOSE tparamge
+           .
+
+       CLOSE-lineseq.
+      * <TOTEM:EPT. INIT:st-delta, FD:lineseq, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-lineseq1.
+      * <TOTEM:EPT. INIT:st-delta, FD:lineseq1, BeforeClose>
+      * <TOTEM:END>
            .
 
        DataSet1-tparamge-INITSTART.
@@ -700,14 +774,206 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-INITSTART.
+           .
+
+       DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-lineseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-LOCK
+              READ lineseq WITH LOCK 
+           ELSE
+              READ lineseq WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT 
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq-KEY-Asc
+              IF DataSet1-lineseq-LOCK
+                 READ lineseq NEXT WITH LOCK
+              ELSE
+                 READ lineseq NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-INITSTART.
+           .
+
+       DataSet1-lineseq1-INITEND.
+           .
+
+       DataSet1-lineseq1-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lineseq1-LOCK
+              READ lineseq1 WITH LOCK 
+           ELSE
+              READ lineseq1 WITH NO LOCK 
+           END-IF
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT 
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lineseq1-KEY-Asc
+              IF DataSet1-lineseq1-LOCK
+                 READ lineseq1 NEXT WITH LOCK
+              ELSE
+                 READ lineseq1 NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq1-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq1 TO TOTEM-ERR-STAT
+           MOVE "lineseq1" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq1, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tge-rec OF tparamge
+           INITIALIZE line-riga OF lineseq
+           INITIALIZE line-riga OF lineseq1
            .
 
 
       * FD's Initialize Paragraph
        DataSet1-tparamge-INITREC.
            INITIALIZE tge-rec OF tparamge
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-INITREC.
+           INITIALIZE line-riga OF lineseq
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq1-INITREC.
+           INITIALIZE line-riga OF lineseq1
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -746,6 +1012,7 @@
               TITLE titolo,
               WITH SYSTEM MENU,
               USER-GRAY,
+           VISIBLE 0,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen1-Event-Proc,
@@ -765,18 +1032,22 @@
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
-           move spaces to tge-chiave.
-           read tparamge no lock invalid continue end-read.
-           if tge-data-consolid-progmag(5:2) = 12
-              move 0 to tge-data-consolid-progmag(5:2)
-           end-if.
-           move tge-data-consolid-progmag(5:2) to mese.
-           if mese = 12 move 1 to mese
-           else         add  1 to mese
-           end-if.  
-           display ef-mese.
+      *****     move spaces to tge-chiave.
+      *****     read tparamge no lock invalid continue end-read.
+      *****     if tge-data-consolid-progmag(5:2) = 12
+      *****        move 0 to tge-data-consolid-progmag(5:2)
+      *****     end-if.
+      *****     move tge-data-consolid-progmag(5:2) to como-mese.
+      *****     if como-mese = 12 move 1 to como-mese
+      *****     else              add  1 to como-mese
+      *****     end-if.  
+      *****     display ef-mese.
+      *****
+      *****     move mese to mese-delta.   
+           
+           perform FORM2-OPEN-ROUTINE.
 
-           move mese to mese-delta.
+           move 27 to key-status.
 
            .
       * <TOTEM:END>
@@ -959,43 +1230,7 @@
 
        Form2-PROC.
       * <TOTEM:EPT. FORM:Form2, FORM:Form2, BeforeAccept>
-           initialize PathFile.
-
-           if mese = mese-delta
-              move spaces to PathFile
-              accept como-data   from century-date
-              accept  PathFile   from environment "PATH-ST"
-              inspect PathFile   replacing trailing spaces by low-value
-              string  PathFile   delimited by low-value
-                      "st-delta" delimited by size
-                       "_"       delimited by size
-                      como-data  delimited by size
-                      ".txt"     delimited by size
-                      into PathFile
-              end-string
-      *****        call   "st-delta-p" using PathFile, mese
-      *****        cancel "st-delta-p"
-      
-              modify form2-handle, visible = 0
-      
-              initialize file-info
-          
-              call "C$FILEINFO" using PathFile, file-info
-      
-              if file-size not = 0
-                 set  splcrt2graf-stampa        to true
-                 set  splcrt2graf-windows       to true
-                 move PathFile
-                   to splcrt2graf-percorso-stampa
-                 set  splcrt2graf-verticale     to true
-                 set  splcrt2graf-forza-crt     to true
-                 set  splcrt2graf-10pt           to true
-                 call   "splcrt2graf" using splcrt2graf-link 
-                 cancel "splcrt2graf"
-              end-if
-           end-if.
-
-           move 27 to key-status.
+           perform CALL-ST-DELTA-P.
 
            .
       * <TOTEM:END>
@@ -1150,6 +1385,128 @@
            .
 
       * USER DEFINE PARAGRAPH
+       CALL-ST-DELTA-P.
+      * <TOTEM:PARA. CALL-ST-DELTA-P>
+           initialize PathFile.
+           
+           move spaces to tge-chiave.
+           read tparamge no lock invalid continue end-read.
+
+      *****     if como-mese = mese-delta    
+              accept como-data  from century-date
+           
+              move tge-data-consolid-progmag to fine-mese
+              if mese of fine-mese = 12
+                 move 1 to mese of fine-mese
+                 add  1 to anno of fine-mese
+              else
+                 add 1 to mese  of fine-mese
+              end-if
+           
+              evaluate mese of fine-mese
+              when  1  move 31 to giorno of fine-mese
+              when  2
+                    divide   anno of fine-mese  by 4 giving var1
+                    multiply var1               by 4 giving var1
+                    if var1 = anno of fine-mese
+                       move 29  to giorno of fine-mese
+                    else
+                       move 28  to giorno of fine-mese
+                    end-if
+              when  3  move 31 to giorno of fine-mese
+              when  4  move 30 to giorno of fine-mese
+              when  5  move 31 to giorno of fine-mese
+              when  6  move 30 to giorno of fine-mese
+              when  7  move 31 to giorno of fine-mese
+              when  8  move 31 to giorno of fine-mese
+              when  9  move 30 to giorno of fine-mese
+              when 10  move 31 to giorno of fine-mese
+              when 11  move 30 to giorno of fine-mese
+              when 12  move 31 to giorno of fine-mese
+              end-evaluate
+           
+              if como-data > fine-mese
+                 move fine-mese to data-rical
+              else
+                 compute data-rical = function 
+           INTEGER-OF-DATE(como-data)
+                 subtract 1 from data-rical
+                 compute data-rical = function 
+           DATE-OF-INTEGER(data-rical)
+              end-if
+              move data-rical(5:2) to mese  
+
+              move tge-data-consolid-progmag(5:2) to como-mese
+              move tge-data-consolid-progmag(1:4) to como-anno
+              if como-mese = 12              
+                 add 1 to como-anno
+              end-if
+
+              move spaces to PathFile
+              accept  PathFile   from environment "PATH-STAT"
+              inspect PathFile   replacing trailing spaces by low-value
+              string  PathFile   delimited low-value
+                      "st-delta" delimited size          
+                      "-"        delimited size
+                      como-anno  delimited size
+                       "_"       delimited size
+                      mese       delimited size
+                      ".txt"     delimited size
+                 into PathFile
+              end-string
+      *****        call   "st-delta-p" using PathFile, mese
+      *****        cancel "st-delta-p"
+      
+              modify form2-handle, visible = 0
+      
+              initialize file-info
+          
+              call "C$FILEINFO" using PathFile, file-info
+      
+              if file-size not = 0
+
+                 move PathFile to wstampa
+                 open input lineseq   
+
+                 move spaces to wstampa
+                 accept  wstampa   from environment "PATH-ST"
+                 inspect wstampa   replacing trailing spaces by 
+           low-value
+                 string  wstampa   delimited low-value
+                         "st-delta" delimited size          
+                         "-"        delimited size
+                         como-anno  delimited size
+                          "_"       delimited size
+                         mese       delimited size
+                         ".txt"     delimited size
+                    into wstampa
+                 end-string
+                 open output lineseq1 
+
+                 perform until 1 = 2
+                    read lineseq next at end exit perform end-read
+                    move line-riga of lineseq to line-riga of lineseq1
+                    write line-riga of lineseq1
+                 end-perform
+
+                 close lineseq lineseq1
+                      
+                 set  splcrt2graf-stampa        to true
+                 set  splcrt2graf-windows       to true
+                 move wstampa
+                   to splcrt2graf-percorso-stampa
+                 set  splcrt2graf-verticale     to true
+                 set  splcrt2graf-forza-crt     to true
+                 set  splcrt2graf-10pt           to true
+                 call   "splcrt2graf" using splcrt2graf-link 
+                 cancel "splcrt2graf"
+              end-if
+      *****     end-if.
+
+           move 27 to key-status 
+           .
+      * <TOTEM:END>
+
        CONTINUA.
       * <TOTEM:PARA. CONTINUA>
       *****     modify form-doc-handle, visible = 0.

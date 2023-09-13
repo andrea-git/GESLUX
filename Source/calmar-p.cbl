@@ -480,7 +480,7 @@
            end-if.
            move data-rical(5:2) to link-mese.
 
-           move low-value                         to tmo-rec.
+           move low-value to tmo-rec.
            add 1 to tge-data-consolid-progmag giving tmo-data-movim.
            initialize como-riga.
            string "SCANSIONE MOVIMENTI DAL " delimited size

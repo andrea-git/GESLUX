@@ -68,6 +68,7 @@
        01  r-inizio              pic x(25).
        77  nargs                   pic 99 comp-1 value 0.
        77  como-anno               pic 9(4).
+       77  como-mese               pic 99.
 
       * FILE STATUS AND VARIABLES
        77  status-tmp-tendenza        pic xx.
@@ -537,12 +538,10 @@
            inspect wstampa    replacing trailing spaces by low-value.
 
            if RichiamoSchedulato
-              move tge-data-consolid-progmag(5:2) to como-anno
-              if como-anno = 12
-                 move tge-data-consolid-progmag(1:4) to como-anno
+              move tge-data-consolid-progmag(5:2) to como-mese
+              move tge-data-consolid-progmag(1:4) to como-anno
+              if como-mese = 12              
                  add 1 to como-anno
-              else
-                 move tge-data-consolid-progmag(1:4) to como-anno
               end-if
               string  wstampa    delimited by low-value
                       "st-delta" delimited by size
