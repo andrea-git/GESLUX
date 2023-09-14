@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 14 agosto 2023 18:12:13.
+       DATE-WRITTEN.        giovedì 14 settembre 2023 21:13:53.
        REMARKS.
       *{TOTEM}END
 
@@ -16818,18 +16818,36 @@
               set PrintXX to true
               perform ACCESSOXX
 
-              perform varying idx from 1 by 1 
-                        until idx > idx-ordini
-                 move chiave-ordine(idx) to mto-chiave
-                 read mtordini no lock
-                      invalid continue
-                  not invalid
-                      call   "st-ordine-m" using mto-chiave, 
-                                                 link-path,
-                                                 "I"
-                      cancel "st-ordine-m"
-                 end-read
-              end-perform
+              if RichiamoBatch               
+                 close log-macrobatch
+                 perform varying idx from 1 by 1 
+                           until idx > idx-ordini
+                    move chiave-ordine(idx) to mto-chiave
+                    read mtordini no lock
+                         invalid continue
+                     not invalid             
+                         call   "st-ordine-m" using mto-chiave, 
+                                                    link-path,
+                                                    "B"
+                                                    path-log-macrobatch
+                         cancel "st-ordine-m"
+                    end-read
+                 end-perform                 
+                 open extend log-macrobatch
+              else
+                 perform varying idx from 1 by 1 
+                           until idx > idx-ordini
+                    move chiave-ordine(idx) to mto-chiave
+                    read mtordini no lock
+                         invalid continue
+                     not invalid
+                         call   "st-ordine-m" using mto-chiave, 
+                                                    link-path,
+                                                    "I"
+                         cancel "st-ordine-m"
+                    end-read
+                 end-perform
+              end-if
 
               perform DESTROYXX
               modify form2-handle, visible false

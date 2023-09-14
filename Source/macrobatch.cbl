@@ -427,14 +427,14 @@
                                  mb-id
            cancel "evacli".
 
-      ***---
-       CALL-SHI-EXP.
-           perform PREPARA-CALL.
-           call   "shi-exp" using LK-BLOCKPGM, 
-                                  USER-CODI, 
-                                  LIVELLO-ABIL,
-                                  mb-id
-           cancel "shi-exp".
+      ****---
+      * CALL-SHI-EXP.
+      *     perform PREPARA-CALL.
+      *     call   "shi-exp" using LK-BLOCKPGM, 
+      *                            USER-CODI, 
+      *                            LIVELLO-ABIL,
+      *                            mb-id
+      *     cancel "shi-exp".
 
       ***---
       * CALL-RICALDIN.

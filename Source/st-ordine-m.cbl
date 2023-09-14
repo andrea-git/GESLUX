@@ -29,6 +29,7 @@
            copy "tlistini.sl".
            copy "param.sl".
            copy "agenti.sl".
+           copy "log-macrobatch.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -54,7 +55,8 @@
            copy "destinif.fd".
            copy "tlistini.fd".
            copy "param.fd".
-           copy "agenti.fd".
+           copy "agenti.fd".        
+           copy "log-macrobatch.fd".
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -96,6 +98,8 @@
        77  status-tlistini       pic xx.
        77  status-param          pic xx.
        77  status-agenti         pic xx.
+       77  status-log-macrobatch pic xx.
+       77  path-log-macrobatch   pic x(256).
 
        77  path-check-rordini    pic x(256).
        77  path-check-rordini2   pic x(256).
@@ -114,6 +118,8 @@
            02  FILE-TIME    PIC 9(8) COMP-X.
 
        77  old-SIZE         PIC X(8) COMP-X.
+
+       77  r-output              pic x(25).
 
        77  como-iva              pic 9(9)v999.
        77  como-iva-2dec         pic 9(9)v99.
@@ -199,6 +205,9 @@
        77  controllo             pic xx.
            88  tutto-ok          value "OK".
            88  errori            value "ER".
+
+       01  filler                pic 9 value 0.
+           88 RichiamoBatch            value 1, false 0.
 
       * RIGHE PER LA STAMPA
        01  divisorio   pic x(90) value all "=".
@@ -338,7 +347,7 @@
        01  r-colli-tot.
          05 filler     pic x(15) value "*** Tot. colli:".
          05 r-colli-t  pic ----9.
-
+                                                        
        01  r-peso-t-utf.
          05 filler         pic x(14) value "*** PESO ---> ".
          05 filler         pic x(45).
@@ -377,7 +386,9 @@
            88 modifica          value "M".
            88 tradizionale      value "T".
            88 prezzo-master     value "P".
-           88 elenco            value "E".
+           88 elenco            value "E".     
+           88 batch             value "B". |MACROBATCH
+       77  link-path-log        pic x(256).
        
       ******************************************************************
        PROCEDURE DIVISION using link-chiave, link-path, tipo-ope.
@@ -591,6 +602,11 @@
                    into path-check-rordini2
            end-string.
 
+           if tipo-ope = "B"
+              move "I" to tipo-ope
+              set RichiamoBatch to true
+           end-if.
+
       ***---
        OPEN-FILES.              
            open input mtordini mrordini clienti destini articoli progmag 
@@ -603,7 +619,24 @@
               open output check-rordini2
               close check-rordini2
               open i-o check-rordini2
-           end-if.         
+           end-if.                
+
+           if RichiamoBatch
+              move link-path-log to path-log-macrobatch
+              open extend log-macrobatch
+
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                           delimited size
+                     "|=> ELABORAZIONE ST-ORDINE-M. ANNO: " 
+                     link-anno                          delimited size
+                     " - "                              delimited size
+                     link-numero                        delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
       
       ***---
        ELABORAZIONE.
@@ -932,7 +965,18 @@
       *    già scelto la stampante
               continue
            end-if
-           if selprint-stampante not = space
+           if selprint-stampante not = space 
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output             delimited size
+                        "APERTURA SPOOLER: " delimited size
+                        selprint-stampante   delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
               move selprint-num-copie to SPL-NUM-COPIE
               move selprint-stampante to SPL-NOME-STAMPANTE
 
@@ -965,6 +1009,17 @@
 
       ***---
        CHIUDI-STAMPA.
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output           delimited size
+                     "CHIUSURA SPOOLER" delimited size
+                into lm-riga
+              end-string
+              write lm-riga       
+           end-if.
+
            set spl-chiusura to true.
            cancel "spooler".
 
@@ -1836,13 +1891,45 @@
                    CourierNew12B.
 
            if stampa-bozza-EDI
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                 delimited size
+                        "RICHIAMO EDI-stbozze-p" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga         
+              end-if
               move mto-anno   to EDI-stb-da-anno EDI-stb-a-anno
               move mto-numero to EDI-stb-da-num  EDI-stb-a-num
               move 0          to EDI-stb-da-data
               move 99999999   to EDI-stb-a-data
               move selprint-stampante   to EDI-stb-stampante
               call   "EDI-stbozze-p" using edi-stb-limiti
-              cancel "EDI-stbozze-p"
+              cancel "EDI-stbozze-p"             
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output               delimited size
+                        "USCITA EDI-stbozze-p" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga         
+              end-if
+           end-if.
+
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "<=| USCITA PROGRAMMA" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+              close log-macrobatch
            end-if.
 
            goback.

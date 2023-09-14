@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E78E161149-352-1779629349
+PROGRAM_UNIQUE_CODE=TOTEM-7E79E18597-169-232617629
 
 {{@DESCRIPTION:
 
@@ -16312,18 +16312,36 @@ BEGIN-TEXT
               set PrintXX to true
               perform ACCESSOXX
 
-              perform varying idx from 1 by 1 
-                        until idx > idx-ordini
-                 move chiave-ordine(idx) to mto-chiave
-                 read mtordini no lock
-                      invalid continue
-                  not invalid
-                      call   "st-ordine-m" using mto-chiave, 
-                                                 link-path,
-                                                 "I"
-                      cancel "st-ordine-m"
-                 end-read
-              end-perform
+              if RichiamoBatch               
+                 close log-macrobatch
+                 perform varying idx from 1 by 1 
+                           until idx > idx-ordini
+                    move chiave-ordine(idx) to mto-chiave
+                    read mtordini no lock
+                         invalid continue
+                     not invalid             
+                         call   "st-ordine-m" using mto-chiave, 
+                                                    link-path,
+                                                    "B"
+                                                    path-log-macrobatch
+                         cancel "st-ordine-m"
+                    end-read
+                 end-perform                 
+                 open extend log-macrobatch
+              else
+                 perform varying idx from 1 by 1 
+                           until idx > idx-ordini
+                    move chiave-ordine(idx) to mto-chiave
+                    read mtordini no lock
+                         invalid continue
+                     not invalid
+                         call   "st-ordine-m" using mto-chiave, 
+                                                    link-path,
+                                                    "I"
+                         cancel "st-ordine-m"
+                    end-read
+                 end-perform
+              end-if
 
               perform DESTROYXX
               modify form2-handle, visible false
