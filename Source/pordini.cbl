@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 19 aprile 2023 16:43:54.
+       DATE-WRITTEN.        venerdì 15 settembre 2023 15:52:29.
        REMARKS.
       *{TOTEM}END
 
@@ -13185,6 +13185,7 @@
        QTA-PROMO.
       * <TOTEM:PARA. QTA-PROMO>
            close ordfor2. 
+           |DEBUG (commentare il blocco if
            if articolo-fisso = 0 or 
              (articolo-fisso > 0 and no-qta-fisso = "S" )
               if LK-BL-PROG-ID = "desktop"
@@ -14249,6 +14250,9 @@
               |con cui ho fatto la associazione
               move low-value to cpf-rec 
 
+      *****        |DEBUG
+      *****        move 9814 to cpf-articolo
+
               if articolo-fisso not = 0
                  move articolo-fisso to cpf-articolo
               end-if
@@ -14264,6 +14268,11 @@
                              exit perform
                           end-if
                        end-if
+
+      *****                 |DEBUG
+      *****                 if cpf-articolo not = 9814 
+      *****                    exit perform
+      *****                 end-if
 
                        add 1 to counter
                        add 1 to counter2
@@ -14291,6 +14300,9 @@
                                         line 04
 
            move low-value  to ord2-rec.
+      *****     |DEBUG
+      *****     move "LBX" to ord2-mag
+      *****     move 9814 to ord2-articolo.
            start ordfor2 key is >= ord2-chiave
                  invalid set errori to true
            end-start.
@@ -14300,6 +14312,9 @@
               perform until 1 = 2
 
                  read ordfor2 next at end exit perform end-read
+
+      *****          |DEBUG
+      *****           if ord2-articolo not = 9814 exit perform end-if
 
                  if articolo-fisso not = 0
                     if articolo-fisso not = ord2-articolo

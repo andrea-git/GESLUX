@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7413123854-428-38665752
+PROGRAM_UNIQUE_CODE=TOTEM-7E79F135148-377-2211332506
 
 {{@DESCRIPTION:
 
@@ -12478,6 +12478,7 @@ BEGIN-DATA
    PARAGRAPH         = QTA-PROMO
 BEGIN-TEXT
            close ordfor2. 
+           |DEBUG (commentare il blocco if
            if articolo-fisso = 0 or 
              (articolo-fisso > 0 and no-qta-fisso = "S" )
               if LK-BL-PROG-ID = "desktop"
@@ -13546,6 +13547,9 @@ BEGIN-TEXT
               |con cui ho fatto la associazione
               move low-value to cpf-rec 
 
+      *****        |DEBUG
+      *****        move 9814 to cpf-articolo
+
               if articolo-fisso not = 0
                  move articolo-fisso to cpf-articolo
               end-if
@@ -13561,6 +13565,11 @@ BEGIN-TEXT
                              exit perform
                           end-if
                        end-if
+
+      *****                 |DEBUG
+      *****                 if cpf-articolo not = 9814 
+      *****                    exit perform
+      *****                 end-if
 
                        add 1 to counter
                        add 1 to counter2
@@ -13588,6 +13597,9 @@ BEGIN-TEXT
                                         line 04
 
            move low-value  to ord2-rec.
+      *****     |DEBUG
+      *****     move "LBX" to ord2-mag
+      *****     move 9814 to ord2-articolo.
            start ordfor2 key is >= ord2-chiave
                  invalid set errori to true
            end-start.
@@ -13597,6 +13609,9 @@ BEGIN-TEXT
               perform until 1 = 2
 
                  read ordfor2 next at end exit perform end-read
+
+      *****          |DEBUG
+      *****           if ord2-articolo not = 9814 exit perform end-if
 
                  if articolo-fisso not = 0
                     if articolo-fisso not = ord2-articolo
