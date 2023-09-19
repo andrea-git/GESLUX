@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E79F135148-377-2211332506
+PROGRAM_UNIQUE_CODE=TOTEM-7E7913121637-379-1458225196
 
 {{@DESCRIPTION:
 
@@ -13544,8 +13544,8 @@ BEGIN-TEXT
               |con cui ho fatto la associazione
               move low-value to cpf-rec 
 
-      *****        |DEBUG
-      *****        move 9814 to cpf-articolo
+              |DEBUG
+      *****        move 37395 to cpf-articolo
 
               if articolo-fisso not = 0
                  move articolo-fisso to cpf-articolo
@@ -13563,8 +13563,8 @@ BEGIN-TEXT
                           end-if
                        end-if
 
-      *****                 |DEBUG
-      *****                 if cpf-articolo not = 9814 
+                       |DEBUG
+      *****                 if cpf-articolo not = 37395 
       *****                    exit perform
       *****                 end-if
 
@@ -13594,9 +13594,9 @@ BEGIN-TEXT
                                         line 04
 
            move low-value  to ord2-rec.
-      *****     |DEBUG
+           |DEBUG
       *****     move "LBX" to ord2-mag
-      *****     move 9814 to ord2-articolo.
+      *****     move 37395 to ord2-articolo.
            start ordfor2 key is >= ord2-chiave
                  invalid set errori to true
            end-start.
@@ -13607,8 +13607,8 @@ BEGIN-TEXT
 
                  read ordfor2 next at end exit perform end-read
 
-      *****          |DEBUG
-      *****           if ord2-articolo not = 9814 exit perform end-if
+                |DEBUG
+      *****           if ord2-articolo not = 37395 exit perform end-if
 
                  if articolo-fisso not = 0
                     if articolo-fisso not = ord2-articolo

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 15 settembre 2023 15:52:29.
+       DATE-WRITTEN.        martedì 19 settembre 2023 17:44:57.
        REMARKS.
       *{TOTEM}END
 
@@ -14250,8 +14250,8 @@
               |con cui ho fatto la associazione
               move low-value to cpf-rec 
 
-      *****        |DEBUG
-      *****        move 9814 to cpf-articolo
+              |DEBUG
+      *****        move 37395 to cpf-articolo
 
               if articolo-fisso not = 0
                  move articolo-fisso to cpf-articolo
@@ -14269,8 +14269,8 @@
                           end-if
                        end-if
 
-      *****                 |DEBUG
-      *****                 if cpf-articolo not = 9814 
+                       |DEBUG
+      *****                 if cpf-articolo not = 37395 
       *****                    exit perform
       *****                 end-if
 
@@ -14300,9 +14300,9 @@
                                         line 04
 
            move low-value  to ord2-rec.
-      *****     |DEBUG
+           |DEBUG
       *****     move "LBX" to ord2-mag
-      *****     move 9814 to ord2-articolo.
+      *****     move 37395 to ord2-articolo.
            start ordfor2 key is >= ord2-chiave
                  invalid set errori to true
            end-start.
@@ -14313,8 +14313,8 @@
 
                  read ordfor2 next at end exit perform end-read
 
-      *****          |DEBUG
-      *****           if ord2-articolo not = 9814 exit perform end-if
+                |DEBUG
+      *****           if ord2-articolo not = 37395 exit perform end-if
 
                  if articolo-fisso not = 0
                     if articolo-fisso not = ord2-articolo
