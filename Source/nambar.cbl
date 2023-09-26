@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          nambar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 25 novembre 2022 12:55:24.
+       DATE-WRITTEN.        martedì 26 settembre 2023 13:42:03.
        REMARKS.
       *{TOTEM}END
 
@@ -79,6 +79,7 @@
        01 FILLER           PIC  9.
            88 FromEvasione VALUE IS 1    WHEN SET TO FALSE  0. 
        77 numero-edit      PIC  zz.zzz.zz9.
+       77 batch-notturno   PIC  x.
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
        77 Timmons16-Occidentale
@@ -239,6 +240,8 @@
        77 tmovmag-key01-SPLITBUF  PIC X(17).
        77 tmovmag-k2-SPLITBUF  PIC X(20).
        77 tmovmag-k-data-SPLITBUF  PIC X(17).
+       77 tmovmag-tmo-k-bolla-SPLITBUF  PIC X(18).
+       77 tmovmag-tmo-k-fattura-SPLITBUF  PIC X(14).
        77 tnotacr-k-causale-SPLITBUF  PIC X(17).
        77 tnotacr-k1-SPLITBUF  PIC X(23).
        77 tnotacr-k2-SPLITBUF  PIC X(21).
@@ -1620,6 +1623,23 @@ LUBEXX                   x"0d0a"tipo-status
            MOVE tmo-numero(1:8) TO tmovmag-k-data-SPLITBUF(9:8)
            .
 
+       tmovmag-tmo-k-bolla-MERGE-SPLITBUF.
+           INITIALIZE tmovmag-tmo-k-bolla-SPLITBUF
+           MOVE tmo-tipo(1:1) TO tmovmag-tmo-k-bolla-SPLITBUF(1:1)
+           MOVE tmo-data-doc(1:8) TO tmovmag-tmo-k-bolla-SPLITBUF(2:8)
+           MOVE tmo-numdoc-clifor(1:8) TO 
+           tmovmag-tmo-k-bolla-SPLITBUF(10:8)
+           .
+
+       tmovmag-tmo-k-fattura-MERGE-SPLITBUF.
+           INITIALIZE tmovmag-tmo-k-fattura-SPLITBUF
+           MOVE tmo-tipo(1:1) TO tmovmag-tmo-k-fattura-SPLITBUF(1:1)
+           MOVE tmo-anno-fattura(1:4) TO 
+           tmovmag-tmo-k-fattura-SPLITBUF(2:4)
+           MOVE tmo-num-fattura(1:8) TO 
+           tmovmag-tmo-k-fattura-SPLITBUF(6:8)
+           .
+
        DataSet1-tmovmag-INITSTART.
            IF DataSet1-tmovmag-KEY-Asc
               MOVE Low-Value TO tmo-chiave
@@ -1684,6 +1704,8 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM tmovmag-key01-MERGE-SPLITBUF
            PERFORM tmovmag-k2-MERGE-SPLITBUF
            PERFORM tmovmag-k-data-MERGE-SPLITBUF
+           PERFORM tmovmag-tmo-k-bolla-MERGE-SPLITBUF
+           PERFORM tmovmag-tmo-k-fattura-MERGE-SPLITBUF
            MOVE STATUS-tmovmag TO TOTEM-ERR-STAT 
            MOVE "tmovmag" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1714,6 +1736,8 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM tmovmag-key01-MERGE-SPLITBUF
            PERFORM tmovmag-k2-MERGE-SPLITBUF
            PERFORM tmovmag-k-data-MERGE-SPLITBUF
+           PERFORM tmovmag-tmo-k-bolla-MERGE-SPLITBUF
+           PERFORM tmovmag-tmo-k-fattura-MERGE-SPLITBUF
            MOVE STATUS-tmovmag TO TOTEM-ERR-STAT
            MOVE "tmovmag" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1744,6 +1768,8 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM tmovmag-key01-MERGE-SPLITBUF
            PERFORM tmovmag-k2-MERGE-SPLITBUF
            PERFORM tmovmag-k-data-MERGE-SPLITBUF
+           PERFORM tmovmag-tmo-k-bolla-MERGE-SPLITBUF
+           PERFORM tmovmag-tmo-k-fattura-MERGE-SPLITBUF
            MOVE STATUS-tmovmag TO TOTEM-ERR-STAT
            MOVE "tmovmag" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -3751,6 +3777,14 @@ PATCH         open input tcontat
            perform until 1 = 2
               open i-o tcontat allowing readers
               if not RecLocked
+                 if status-tcontat not = "00"
+                    accept batch-notturno from environment "BATCH_NOTTUR
+      -    "NO" 
+                    if batch-notturno not = "S"
+                       move -1 to link-status-nambar
+                       goback
+                    end-if
+                 end-if
                  exit perform
               end-if
               initialize geslock-linkage
