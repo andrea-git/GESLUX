@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 19 settembre 2023 17:44:57.
+       DATE-WRITTEN.        mercoledì 4 ottobre 2023 09:16:08.
        REMARKS.
       *{TOTEM}END
 
@@ -146,7 +146,9 @@
            COPY  "MAIL.DEF".
            COPY  "TROVA-PARAMETRO.DEF".
            COPY  "LINK-GLOCKNAME.DEF".
+           COPY  "LINK-READUTENTE.DEF".
        77 como-giorno      PIC  9.
+       77 como-stampante   PIC  x(200).
        77 como-idx         PIC  99.
        77 como-n1          PIC  s9(15)v99.
        77 como-n2          PIC  s9(15)v99.
@@ -11529,7 +11531,11 @@
                        end-perform
                  end-start
                  close tordforn
-                 open input tordforn  
+                 open input tordforn 
+
+                 accept ru-user from environment "USER_CODI"
+                 call   "readutente" using ru-linkage
+                 cancel "readutente"
                                 
                  move tge-anno to stof-tof-anno stof-tof-anno-a
                  if primo-numero-A not = 0
@@ -11541,7 +11547,26 @@
                        set stof-si-stampa-art-no-listforn  to true
                        move path-fileseq to stof-path-art-no-listforn
                     end-if
-      *    Luciano
+      *    Luciano            
+                    evaluate true
+                    when ru-SO-XP
+                         accept como-stampante from environment
+                                "STAMPANTE_ALTRO_XP"
+                    when ru-SO-VISTA
+                         accept como-stampante from environment
+                                "STAMPANTE_ALTRO_V"
+                    when ru-SO-7
+                         accept como-stampante from environment
+                                "STAMPANTE_ALTRO_7"
+                    end-evaluate      
+
+                    initialize como-riga
+                    string "STAMPE UFFICIO ALTRO SU STAMPANTE: " 
+                           como-stampante
+                      into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     call   "st-ordforn" using st-ordforn-linkage
                     cancel "st-ordforn"
                  end-if
@@ -11554,7 +11579,26 @@
                        set stof-si-stampa-art-no-listforn  to true
                        move path-fileseq to stof-path-art-no-listforn
                     end-if
-      *    Luciano
+      *    Luciano                    
+                    evaluate true
+                    when ru-SO-XP
+                         accept como-stampante from environment
+                                "STAMPANTE_LUCA_XP"
+                    when ru-SO-VISTA
+                         accept como-stampante from environment
+                                "STAMPANTE_LUCA_V"
+                    when ru-SO-7
+                         accept como-stampante from environment
+                                "STAMPANTE_LUCA_7"
+                    end-evaluate   
+
+                    initialize como-riga
+                    string "STAMPE UFFICIO LUCA SU STAMPANTE: " 
+                           como-stampante
+                      into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     call   "st-ordforn" using st-ordforn-linkage
                     cancel "st-ordforn"
                  end-if
@@ -11567,7 +11611,26 @@
                        set stof-si-stampa-art-no-listforn  to true
                        move path-fileseq to stof-path-art-no-listforn
                     end-if
-      *    Luciano
+      *    Luciano                
+                    evaluate true
+                    when ru-SO-XP
+                         accept como-stampante from environment
+                                "STAMPANTE_MASSIMO_XP"
+                    when ru-SO-VISTA
+                         accept como-stampante from environment
+                                "STAMPANTE_MASSIMO_V"
+                    when ru-SO-7
+                         accept como-stampante from environment
+                                "STAMPANTE_MASSIMO_7"
+                    end-evaluate 
+
+                    initialize como-riga
+                    string "STAMPE UFFICIO MASSIMO SU STAMPANTE: " 
+                           como-stampante
+                      into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     call   "st-ordforn" using st-ordforn-linkage
                     cancel "st-ordforn"
                  end-if      
