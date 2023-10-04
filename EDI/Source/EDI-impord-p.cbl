@@ -167,6 +167,7 @@
          88 save-ecd-import-importi-si value 1.
          88 save-ecd-import-importi-no value 0.
           
+       77  prz-minimo-kg         pic 9(13)v999.
        77  start-secondi         pic 9(18).
        77  end-secondi           pic 9(18).
        77  tot-secondi           pic 9(18).
@@ -1964,6 +1965,17 @@
       *****        if emro-articolo-valido
       *****           perform PREZZO-COMPONENTE-BLISTER
       *****        end-if
+           end-if. 
+
+           if emro-prz-GESLUX not = emro-prz-EDI
+              set emro-prezzo-non-valido to true
+              set emro-bloccato to true
+
+              set emto-bloccato to true
+              set emto-prz-ko   to true
+              rewrite emto-rec
+           else
+              move emro-prz-GESLUX to emro-prz
            end-if.
 
            if emro-prz-GESLUX not = emro-prz-EDI
@@ -1975,6 +1987,16 @@
               rewrite emto-rec
            else
               move emro-prz-GESLUX to emro-prz
+           end-if.
+
+           compute prz-minimo-kg = emro-prg-peso * 0,5.
+           if prz-minimo-kg > emro-prz-EDI      
+              set emro-prezzo-non-valido to true
+              set emro-bloccato to true
+
+              set emto-bloccato to true
+              set emto-prz-ko   to true
+              rewrite emto-rec
            end-if.
 
            perform DATI-COMUNI.
