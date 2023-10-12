@@ -264,7 +264,6 @@ LUBEXX 78  MaxRowsPerPage                value    33.
        01  riga-del.
            05 r-cod-cli       pic Z(5).
            05 filler          pic X(5)  value spaces.
-           05 filler          pic X(2)  value "N.".
            05 r-num-ord-cli   pic X(12).
            05 filler          pic X(2)  value spaces.
            05 filler          pic X(4)  value "DEL".
@@ -294,6 +293,8 @@ LUBEXX 78  MaxRowsPerPage                value    33.
            05 r-peso          pic zz.zz9,999.
            05 filler          pic X(1)  value spaces.
            05 r-udm           pic X(2).
+           05 filler          pic x(8).
+           05 r-xx            pic x(2).
 
        01  riga-qta.
            05 r-qta           pic Z(5).                                 |6
@@ -1462,7 +1463,7 @@ LUBEXX             ")"             delimited size
            call "spooler"         using spooler-link.
            add 1 to spl-riga.
 
-           move tor-cod-cli          to r-cod-cli.
+           move tor-cod-cli          to r-cod-cli. 
            move tor-data-ordine(7:2) to r-gg.
            move tor-data-ordine(5:2) to r-mm.
            move tor-data-ordine(3:2) to r-aa.
@@ -1585,7 +1586,12 @@ LUBEXX           move CourierNew16B to spl-hfont
               perform STAMPA-INTESTAZIONE
            end-if.
 
-           perform RELAZIONE-RORDINI-ARTICOLI.
+           perform RELAZIONE-RORDINI-ARTICOLI.  
+           if art-scorta = 2
+              move "**" to r-xx
+           else
+              move space to r-xx
+           end-if.
 
            add  0,4                 to spl-riga.
 
