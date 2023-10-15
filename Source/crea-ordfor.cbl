@@ -883,7 +883,7 @@
                          move save-destino   to el-dest(idx-forn)
                       end-if
                       exit perform 
-                 end-read
+                 end-read                               
                  if articolo-fisso not = 0
                     if cpf-articolo not = articolo-fisso
                        exit perform cycle
@@ -950,6 +950,7 @@
               move 0 to save-articolo
               perform until 1 = 2
                  read coperfab next at end exit perform end-read
+                 if cpf-articolo = 27858 stop "L" end-if
                  if articolo-fisso not = 0
                     if articolo-fisso not = cpf-articolo
                        exit perform cycle 
@@ -1076,7 +1077,7 @@
                                    add prg-impegnato to impegnato
                                 end-if
                              end-perform
-                       end-start
+                       end-start                                                          
                        compute qta-utile-LBX = impegnato -
                                                giacenza  +
                                                ord2-media-vend
@@ -1203,7 +1204,7 @@
               move spaces to save-causale
               perform until 1 = 2
                  read coperfab-mag next at end exit perform end-read  
-                 
+                                        
                  if articolo-fisso not = 0
                     if articolo-fisso not = cpfm-articolo
                        exit perform cycle 
@@ -2068,20 +2069,20 @@
            |quello che ho ordinato e quello che serve, considerando 
            |sempre le quantità a bancali.    
            
-           if articolo-fisso > 0    
-              if no-qta-fisso not = "S"
-                 move mese1-fisso to cpfm-qta-m(1)
-                 move mese2-fisso to cpfm-qta-m(2)
-                 move mese3-fisso to cpfm-qta-m(3)
-                 move mese4-fisso to cpfm-qta-m(4)
-                 move mese5-fisso to cpfm-qta-m(5)
-                 move mese6-fisso to cpfm-qta-m(6)
-                 if qta-epal-fisso > 0
-                    move qta-epal-fisso to art-qta-epal
-                 end-if
-              end-if
-           end-if.
-
+      *     if articolo-fisso > 0    
+      *        if no-qta-fisso not = "S"
+      *           move mese1-fisso to cpfm-qta-m(1)
+      *           move mese2-fisso to cpfm-qta-m(2)
+      *           move mese3-fisso to cpfm-qta-m(3)
+      *           move mese4-fisso to cpfm-qta-m(4)
+      *           move mese5-fisso to cpfm-qta-m(5)
+      *           move mese6-fisso to cpfm-qta-m(6)
+      *           if qta-epal-fisso > 0
+      *              move qta-epal-fisso to art-qta-epal
+      *           end-if
+      *        end-if
+      *     end-if.
+      *
            move 0 to tot-qta-m primo-mese.
            perform varying idx from 1 by 1 
                      until idx > sco-m-rif

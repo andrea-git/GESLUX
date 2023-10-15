@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 19 aprile 2023 16:43:54.
+       DATE-WRITTEN.        domenica 15 ottobre 2023 23:24:52.
        REMARKS.
       *{TOTEM}END
 
@@ -12478,6 +12478,7 @@
                                          ") > 0"       
                                     into como-riga
                                   end-string
+                                  perform SCRIVI-RIGA-LOG
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else
@@ -12493,6 +12494,7 @@
                                          ") <= 0"      
                                     into como-riga
                                   end-string
+                                  perform SCRIVI-RIGA-LOG
                                end-if
                             else
                                move 0 to como-ordinato

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7413123854-428-38665752
+PROGRAM_UNIQUE_CODE=TOTEM-7E7AF205913-332-82871013
 
 {{@DESCRIPTION:
 
@@ -11807,6 +11807,7 @@ BEGIN-TEXT
                                          ") > 0"       
                                     into como-riga
                                   end-string
+                                  perform SCRIVI-RIGA-LOG
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else
@@ -11822,6 +11823,7 @@ BEGIN-TEXT
                                          ") <= 0"      
                                     into como-riga
                                   end-string
+                                  perform SCRIVI-RIGA-LOG
                                end-if
                             else
                                move 0 to como-ordinato
