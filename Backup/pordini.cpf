@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-data
 BEFORE_PROGRAM=ordini-Ev-Before-Program
 AFTER_PROGRAM=ordini-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A47246-465-3276526544
+PROGRAM_UNIQUE_CODE=TOTEM-7E7AF21405-484-2722211687
 
 {{@DESCRIPTION:
 
@@ -12011,7 +12010,8 @@ BEGIN-TEXT
                                          como-xx-1 delimited low-value
                                          ") > 0"       
                                     into como-riga
-                                  end-string
+                                  end-string      
+                                  perform SCRIVI-RIGA-LOG
                                   if forza-conferma
                                      set ord2-listino-no to true
                                   else
@@ -12026,7 +12026,8 @@ BEGIN-TEXT
                                          como-xx-1 delimited low-value
                                          ") <= 0"      
                                     into como-riga
-                                  end-string
+                                  end-string             
+                                  perform SCRIVI-RIGA-LOG
                                end-if
                             else
                                move 0 to como-ordinato
