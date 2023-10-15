@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 14 settembre 2023 21:13:53.
+       DATE-WRITTEN.        martedì 26 settembre 2023 13:36:59.
        REMARKS.
       *{TOTEM}END
 
@@ -163,6 +163,8 @@
                   VALUE IS 0.
            88 TrovataScortaForzata VALUE IS 1    WHEN SET TO FALSE  0. 
        78 78-edi-impord VALUE IS "EDI-impord". 
+       01 FILLER           PIC  9.
+           88 errore-bloccante VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FILLER           PIC  x.
            88 si-prg-listino VALUE IS "S". 
            88 no-prg-listino VALUE IS "N". 
@@ -1256,7 +1258,8 @@
        77 DataSet1-tmp-progmag-zoom-SPLIT-BUF1   PIC X(64).
 
 
-       77  filtro-stato   pic x(10). 
+       77  filtro-stato   pic x(10).     
+       77  cod-err        pic x(4).
 
        77  tipo-ricerca   pic 9.
            88 per-numero  value 1.
@@ -4905,7 +4908,7 @@
                 set errori to true
            end-evaluate.
 
-
+      ***---
        LOCKFILE-ERR SECTION.
            use after error procedure on lockfile.
            evaluate status-lockfile
@@ -4913,6 +4916,11 @@
            when "00"
            when other continue
            end-evaluate.
+                                                 
+      ***---
+       TCONTAT-ERR SECTION.
+           use after error procedure on tcontat.
+           CALL "C$RERR" USING COD-ERR.
 
       * <TOTEM:END>
        INPUT-ERROR SECTION.
@@ -17475,6 +17483,404 @@
            .
       * <TOTEM:END>
 
+       ATTIVA-ORDINI.
+      * <TOTEM:PARA. ATTIVA-ORDINI>
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "INIZIO ATTIVA-ORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
+           initialize tab-ordini.
+           move 0 to idx-ordini primo-numero ultimo-numero.
+                         
+           move low-value to emto-rec.              
+           inquire gd-ordini, last-row in tot-righe-edi.
+
+           set errore-bloccante to false.
+           move spaces to cod-err.
+           close tcontat.
+           open input tcontat.
+           if status-tcontat not = "00"
+              move 0 to tot-righe-edi      
+              if RichiamoBatch 
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output   delimited size
+                        "ERRORE: " delimited size
+                        cod-err    delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              else
+                 display message "ERRORE " cod-err " su tcontat"
+                          x"0d0a""ELABORAZIONE INTERROTTA, CONTATTARE AS
+      -    "SISTENZA"
+                           title tit-err
+                            icon 2
+              end-if      
+              set errore-bloccante to true
+              exit paragraph
+           end-if.
+
+           perform varying riga-edi from 2 by 1 
+                     until riga-edi > tot-righe-edi
+              inquire gd-ordini(riga-edi, 2), cell-data in emto-anno
+              inquire gd-ordini(riga-edi, 3), cell-data in emto-numero
+
+              if not RichiamoBatch
+                 perform COUNTER-VIDEO
+              end-if
+
+              read EDI-mtordini no lock
+                   invalid        
+                   subtract 1 from riga-edi
+                   display message "ERR: RIGA(", riga-edi, "): ORDINE NO
+      -    "T FOUND"
+                             title tit-err
+                              icon 3
+                   add 1 to riga-edi
+                   exit perform
+               not invalid
+                   set tutto-ok to true
+                   if emto-bloccato or emto-caricato 
+                      exit perform cycle
+                   end-if
+
+                   set record-ok to false
+                   set cli-tipo-C to true
+                   move emto-cod-cli to cli-codice
+                   read clienti no lock
+                        invalid
+                        subtract 1 from riga-edi
+                        display message "ERR: RIGA(", riga-edi, "): CLIE
+      -    "NTE NOT FOUND"
+                                  title tit-err
+                                   icon 3
+                        add 1 to riga-edi
+                    not invalid
+                        perform varying idx from 1 by 1 
+                                  until idx > 100
+                           if el-tipo(idx) = spaces
+                              exit perform
+                           end-if
+                           if el-tipo(idx) = cli-tipo
+                              set record-ok to true
+                              exit perform
+                           end-if
+                        end-perform
+                   end-read
+             
+                   if record-ok
+                      |PATCH
+                      if emto-ordine-anno   not = 0 or
+                         emto-ordine-numero not = 0
+                         set errori to true
+                      end-if
+                      |||
+                      
+                      if tutto-ok          
+                         if RichiamoBatch 
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output           delimited size
+                                   "VALORIZZA NUMERO" delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
+                         initialize mto-rec 
+                                    replacing numeric data by zeroes
+                                         alphanumeric data by spaces
+                         perform VALORIZZA-NUMERO     
+                      end-if
+                      
+                      if tutto-ok
+                         
+                         set no-promo to true
+                         move 0 to save-tpr-codice
+                      
+                         move link-anno             to mto-anno
+                         move emto-causale          to mto-causale
+                         move "C"                   to mto-tipo-CF
+                         move emto-cod-cli          to mto-cod-cli 
+                      
+                         set  cli-tipo-C  to true
+                         move mto-cod-cli to cli-codice
+                         read clienti  no lock
+                         move cli-tipo to tcl-codice
+                         read ttipocli no lock 
+
+                         perform INVERTI-TIPOLOGIA
+                      
+                         move emto-anno to con-anno
+                         read tcontat no lock
+                      
+                         evaluate tcl-serie-bolle
+                         when 1 move con-ult-stampa-bolle-gdo to 
+           imp-data
+                         when 2 move con-ult-stampa-bolle-mv  to 
+           imp-data
+                         when 3 move con-ult-stampa-bolle-at  to 
+           imp-data
+                         end-evaluate
+                      
+                         start timposte key <= imp-chiave
+                               invalid continue
+                           not invalid
+                               read timposte previous
+                         end-start
+                      
+                         if cli-iva not = spaces
+                            move cli-iva to iva-std
+                         else
+                            if cli-iva-ese not = spaces
+                               move cli-iva-ese to iva-std
+                            else
+                               move tge-cod-iva-std to iva-std
+                            end-if
+                         end-if
+                      
+                         move cli-gdo               to mto-gdo
+                         move emto-prg-destino      to mto-prg-destino 
+                         move emto-gdo              to mto-gdo         
+                         move emto-num-ord-cli      to mto-num-ord-cli 
+                         move emto-data-ordine      to mto-data-ordine 
+                         move emto-data-passaggio-ordine
+                           to mto-data-passaggio-ordine
+                         move emto-cod-agente       to mto-cod-agente   
+              
+                         move emto-cod-pagamento    to 
+           mto-cod-pagamento   
+                         move emto-cod-ese-iva      to mto-cod-ese-iva  
+              
+                         move emto-vettore          to mto-vettore      
+              
+                         move emto-note1            to mto-note1        
+              
+                         move emto-data-note1       to mto-data-note1   
+              
+                         move emto-note2            to mto-note2        
+              
+                         move emto-note3            to mto-note3        
+              
+                         move emto-note4            to mto-note4        
+              
+                         move emto-note             to mto-note         
+              
+                         move emto-pz-tot           to mto-pz-tot       
+              
+                         move emto-ritira-in-lubex  to 
+           mto-ritira-in-lubex 
+                      
+LABLAB                   if si-promo set mto-si-promo to true
+LABLAB                   else        set mto-no-promo to true
+LABLAB                   end-if
+                      
+                         move emto-prenotazione-qta to 
+           mto-prenotazione-qta
+                         move emto-saldi-banco      to mto-saldi-banco  
+              
+                         move emto-saldi-promo      to mto-saldi-promo  
+            
+                         move tot-qta               to mto-pz-tot
+                      
+                         accept mto-data-creazione from century-date
+                         accept mto-ora-creazione  from time
+                         move user-codi to mto-utente-creazione  
+                      
+                         set mto-registrato to true
+                         set mto-attivo to true  
+
+                         move emto-ev-immediata to mto-immediato
+                         move emto-contrassegno to mto-contrassegno
+                      
+                         move emto-chiave to mto-ordine-EDI      
+
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output        delimited size
+                                   "WRITE MTO-REC" delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
+                         write mto-rec                           
+
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output        delimited size
+                                   "WRITE MTO-REC" delimited size
+                                   "STATUS: "      delimited size
+                                   status-mtordini delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+                      
+                         add 1 to idx-ordini
+                         move mto-chiave to chiave-ordine(idx-ordini)  
+                      
+                         move mto-cod-cli     to como-prm-cliente
+                         move mto-prg-destino to como-prm-destino
+                      
+                         perform SCRIVI-RIGHE-ORDINE 
+                         
+                         move mto-chiave to sost-art-chiave
+                         move user-codi  to sost-art-user
+                         |Deve fare solo gli AUTO
+                         set sost-art-batch to true
+                         call   "sost-art" using sost-art-linkage
+                         cancel "sost-art"
+
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output        delimited size
+                                   "DOPO SOST-ART" delimited size
+                                   mto-numero      delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
+                         if tcl-fido-nuovo-no
+LUBEXX                      close    clienti
+LUBEXX                      open i-o clienti
+LUBEXX                      read clienti no lock invalid continue 
+           end-read
+LUBEXX                      subtract emto-Sum from cli-fido-extra
+LUBEXX                      rewrite cli-rec invalid continue end-rewrite
+LUBEXX                      close      clienti
+LUBEXX                      open input clienti
+LUBEXX                      read clienti no lock invalid continue 
+           end-read
+                         end-if
+                      
+                         if save-tpr-codice not = 0
+                            perform RIGHE-PROMO-FITTIZIE
+                         end-if  
+                         unlock mtordini all records 
+                      
+                         move mto-chiave   to emto-ordine
+                         set emto-caricato to true    
+                      
+                         accept emto-data-ultima-modifica from 
+           century-date
+                         accept emto-ora-ultima-modifica  from time
+                         move user-codi to emto-utente-ultima-modifica
+                         
+                         if TrovataScortaForzata      
+                            set emto-saldi-banco-si to true
+                            set emto-saldi-promo-si to true
+
+                            set mto-saldi-banco-si  to true
+                            set mto-saldi-promo-si  to true
+
+                            rewrite mto-rec
+                         end-if
+
+                         rewrite emto-rec
+                         unlock EDI-mtordini all records 
+                      
+                      else
+                         exit perform
+                      end-if
+                   end-if
+
+              end-read
+           end-perform.      
+                             
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output               delimited size
+                     "FINE ATTIVA-ORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
+
+      ***---
+       VALORIZZA-NUMERO.           
+           move spaces to tge-codice
+           read tparamge no lock
+
+           move tge-anno     to link-anno.
+
+           set  link-ordine  to true.
+           set  link-crea    to true.
+
+           call   "nambar" using link-nambar.
+           cancel "nambar".
+           
+           if primo-numero = 0
+              move link-numero to primo-numero
+           end-if.
+           move link-numero    to ultimo-numero.
+           
+           if link-status-nambar = -1 
+              set errori       to true                
+              if RichiamoBatch 
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output    delimited size
+                        "ERRORE!! " delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              else
+                 display message "ELABORAZIONE TERMINATA"
+                           title tit-err
+                            icon 2   
+                 set errore-bloccante to false
+              end-if
+           else                       
+              move link-numero to mto-numero          
+              if RichiamoBatch 
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output              delimited size
+                        "VALORIZZATO NUMERO " delimited size
+                        mto-numero            delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+           end-if.                                    
+  
+      ***---
+       COUNTER-VIDEO.
+           add 1 to counter.
+           add 1 to counter2.
+           if counter2 = 10
+              move counter to counter-edit
+              display counter-edit
+                 upon form3-handle at column 16
+                                        line 01
+              move 0 to counter2
+           end-if            
+           .
+      * <TOTEM:END>
+
        CALCOLA-TOTALE.
       * <TOTEM:PARA. CALCOLA-TOTALE>
            move 0 to tot-doc.
@@ -19925,6 +20331,22 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            .
       * <TOTEM:END>
 
+       INVERTI-TIPOLOGIA.
+      * <TOTEM:PARA. INVERTI-TIPOLOGIA>
+           if emto-inversione-imposte-si
+              |Funziona solo per tradizionali
+              if ttipocli-standard
+                 set ttipocli-gdo to true
+                 exit paragraph
+              end-if
+              if ttipocli-gdo
+                 set emto-inversione-imposte-no to true
+                 exit paragraph
+              end-if
+           end-if 
+           .
+      * <TOTEM:END>
+
        LETTURE-CLIENTE.
       * <TOTEM:PARA. LETTURE-CLIENTE>
            move cli-tipo to tcl-codice.
@@ -20659,372 +21081,6 @@ LABLAB        if tcl-si-recupero and
            .
       * <TOTEM:END>
 
-       ATTIVA-ORDINI.
-      * <TOTEM:PARA. ATTIVA-ORDINI>
-           if RichiamoBatch 
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output               delimited size
-                     "INIZIO ATTIVA-ORDINI" delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-           end-if.
-
-           initialize tab-ordini.
-           move 0 to idx-ordini primo-numero ultimo-numero.
-                         
-           move low-value to emto-rec.              
-           inquire gd-ordini, last-row in tot-righe-edi.
-
-           perform varying riga-edi from 2 by 1 
-                     until riga-edi > tot-righe-edi
-              inquire gd-ordini(riga-edi, 2), cell-data in emto-anno
-              inquire gd-ordini(riga-edi, 3), cell-data in emto-numero
-
-              if not RichiamoBatch
-                 perform COUNTER-VIDEO
-              end-if
-
-              read EDI-mtordini no lock
-                   invalid        
-                   subtract 1 from riga-edi
-                   display message "ERR: RIGA(", riga-edi, "): ORDINE NO
-      -    "T FOUND"
-                             title tit-err
-                              icon 3
-                   add 1 to riga-edi
-                   exit perform
-               not invalid
-                   set tutto-ok to true
-                   if emto-bloccato or emto-caricato 
-                      exit perform cycle
-                   end-if
-
-                   set record-ok to false
-                   set cli-tipo-C to true
-                   move emto-cod-cli to cli-codice
-                   read clienti no lock
-                        invalid
-                        subtract 1 from riga-edi
-                        display message "ERR: RIGA(", riga-edi, "): CLIE
-      -    "NTE NOT FOUND"
-                                  title tit-err
-                                   icon 3
-                        add 1 to riga-edi
-                    not invalid
-                        perform varying idx from 1 by 1 
-                                  until idx > 100
-                           if el-tipo(idx) = spaces
-                              exit perform
-                           end-if
-                           if el-tipo(idx) = cli-tipo
-                              set record-ok to true
-                              exit perform
-                           end-if
-                        end-perform
-                   end-read
-             
-                   if record-ok
-                      |PATCH
-                      if emto-ordine-anno   not = 0 or
-                         emto-ordine-numero not = 0
-                         set errori to true
-                      end-if
-                      |||
-                      
-                      if tutto-ok          
-                         if RichiamoBatch 
-                            call   "set-ini-log" using r-output
-                            cancel "set-ini-log"
-                            initialize lm-riga
-                            string r-output           delimited size
-                                   "VALORIZZA NUMERO" delimited size
-                              into lm-riga
-                            end-string
-                            write lm-riga
-                         end-if
-
-                         initialize mto-rec 
-                                    replacing numeric data by zeroes
-                                         alphanumeric data by spaces
-                         perform VALORIZZA-NUMERO     
-                      end-if
-                      
-                      if tutto-ok
-                         
-                         set no-promo to true
-                         move 0 to save-tpr-codice
-                      
-                         move link-anno             to mto-anno
-                         move emto-causale          to mto-causale
-                         move "C"                   to mto-tipo-CF
-                         move emto-cod-cli          to mto-cod-cli 
-                      
-                         set  cli-tipo-C  to true
-                         move mto-cod-cli to cli-codice
-                         read clienti  no lock
-                         move cli-tipo to tcl-codice
-                         read ttipocli no lock 
-
-                         perform INVERTI-TIPOLOGIA
-                      
-                         move emto-anno to con-anno
-                         read tcontat no lock
-                      
-                         evaluate tcl-serie-bolle
-                         when 1 move con-ult-stampa-bolle-gdo to 
-           imp-data
-                         when 2 move con-ult-stampa-bolle-mv  to 
-           imp-data
-                         when 3 move con-ult-stampa-bolle-at  to 
-           imp-data
-                         end-evaluate
-                      
-                         start timposte key <= imp-chiave
-                               invalid continue
-                           not invalid
-                               read timposte previous
-                         end-start
-                      
-                         if cli-iva not = spaces
-                            move cli-iva to iva-std
-                         else
-                            if cli-iva-ese not = spaces
-                               move cli-iva-ese to iva-std
-                            else
-                               move tge-cod-iva-std to iva-std
-                            end-if
-                         end-if
-                      
-                         move cli-gdo               to mto-gdo
-                         move emto-prg-destino      to mto-prg-destino 
-                         move emto-gdo              to mto-gdo         
-                         move emto-num-ord-cli      to mto-num-ord-cli 
-                         move emto-data-ordine      to mto-data-ordine 
-                         move emto-data-passaggio-ordine
-                           to mto-data-passaggio-ordine
-                         move emto-cod-agente       to mto-cod-agente   
-              
-                         move emto-cod-pagamento    to 
-           mto-cod-pagamento   
-                         move emto-cod-ese-iva      to mto-cod-ese-iva  
-              
-                         move emto-vettore          to mto-vettore      
-              
-                         move emto-note1            to mto-note1        
-              
-                         move emto-data-note1       to mto-data-note1   
-              
-                         move emto-note2            to mto-note2        
-              
-                         move emto-note3            to mto-note3        
-              
-                         move emto-note4            to mto-note4        
-              
-                         move emto-note             to mto-note         
-              
-                         move emto-pz-tot           to mto-pz-tot       
-              
-                         move emto-ritira-in-lubex  to 
-           mto-ritira-in-lubex 
-                      
-LABLAB                   if si-promo set mto-si-promo to true
-LABLAB                   else        set mto-no-promo to true
-LABLAB                   end-if
-                      
-                         move emto-prenotazione-qta to 
-           mto-prenotazione-qta
-                         move emto-saldi-banco      to mto-saldi-banco  
-              
-                         move emto-saldi-promo      to mto-saldi-promo  
-            
-                         move tot-qta               to mto-pz-tot
-                      
-                         accept mto-data-creazione from century-date
-                         accept mto-ora-creazione  from time
-                         move user-codi to mto-utente-creazione  
-                      
-                         set mto-registrato to true
-                         set mto-attivo to true  
-
-                         move emto-ev-immediata to mto-immediato
-                         move emto-contrassegno to mto-contrassegno
-                      
-                         move emto-chiave to mto-ordine-EDI      
-
-                         if RichiamoBatch
-                            call   "set-ini-log" using r-output
-                            cancel "set-ini-log"
-                            initialize lm-riga
-                            string r-output        delimited size
-                                   "WRITE MTO-REC" delimited size
-                              into lm-riga
-                            end-string
-                            write lm-riga
-                         end-if
-
-                         write mto-rec                           
-
-                         if RichiamoBatch
-                            call   "set-ini-log" using r-output
-                            cancel "set-ini-log"
-                            initialize lm-riga
-                            string r-output        delimited size
-                                   "WRITE MTO-REC" delimited size
-                                   "STATUS: "      delimited size
-                                   status-mtordini delimited size
-                              into lm-riga
-                            end-string
-                            write lm-riga
-                         end-if
-                      
-                         add 1 to idx-ordini
-                         move mto-chiave to chiave-ordine(idx-ordini)  
-                      
-                         move mto-cod-cli     to como-prm-cliente
-                         move mto-prg-destino to como-prm-destino
-                      
-                         perform SCRIVI-RIGHE-ORDINE 
-                         
-                         move mto-chiave to sost-art-chiave
-                         move user-codi  to sost-art-user
-                         |Deve fare solo gli AUTO
-                         set sost-art-batch to true
-                         call   "sost-art" using sost-art-linkage
-                         cancel "sost-art"
-
-                         if RichiamoBatch
-                            call   "set-ini-log" using r-output
-                            cancel "set-ini-log"
-                            initialize lm-riga
-                            string r-output        delimited size
-                                   "DOPO SOST-ART" delimited size
-                                   mto-numero      delimited size
-                              into lm-riga
-                            end-string
-                            write lm-riga
-                         end-if
-
-                         if tcl-fido-nuovo-no
-LUBEXX                      close    clienti
-LUBEXX                      open i-o clienti
-LUBEXX                      read clienti no lock invalid continue 
-           end-read
-LUBEXX                      subtract emto-Sum from cli-fido-extra
-LUBEXX                      rewrite cli-rec invalid continue end-rewrite
-LUBEXX                      close      clienti
-LUBEXX                      open input clienti
-LUBEXX                      read clienti no lock invalid continue 
-           end-read
-                         end-if
-                      
-                         if save-tpr-codice not = 0
-                            perform RIGHE-PROMO-FITTIZIE
-                         end-if  
-                         unlock mtordini all records 
-                      
-                         move mto-chiave   to emto-ordine
-                         set emto-caricato to true    
-                      
-                         accept emto-data-ultima-modifica from 
-           century-date
-                         accept emto-ora-ultima-modifica  from time
-                         move user-codi to emto-utente-ultima-modifica
-                         
-                         if TrovataScortaForzata      
-                            set emto-saldi-banco-si to true
-                            set emto-saldi-promo-si to true
-
-                            set mto-saldi-banco-si  to true
-                            set mto-saldi-promo-si  to true
-
-                            rewrite mto-rec
-                         end-if
-
-                         rewrite emto-rec
-                         unlock EDI-mtordini all records 
-                      
-                      else
-                         exit perform
-                      end-if
-                   end-if
-
-              end-read
-           end-perform.
-
-           if RichiamoBatch 
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output               delimited size
-                     "FINE ATTIVA-ORDINI" delimited size
-                into lm-riga
-              end-string
-              write lm-riga
-           end-if.
-
-
-      ***---
-       VALORIZZA-NUMERO.           
-           move spaces to tge-codice
-           read tparamge no lock
-
-           move tge-anno     to link-anno.
-
-           set  link-ordine  to true.
-           set  link-crea    to true.
-
-           call   "nambar" using link-nambar.
-           cancel "nambar".
-           
-           if primo-numero = 0
-              move link-numero to primo-numero
-           end-if.
-           move link-numero    to ultimo-numero.
-           
-           if link-status-nambar = -1 
-              set errori       to true                
-              if RichiamoBatch 
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output    delimited size
-                        "ERRORE!! " delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-              end-if
-           else                       
-              move link-numero to mto-numero          
-              if RichiamoBatch 
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
-                 initialize lm-riga
-                 string r-output              delimited size
-                        "VALORIZZATO NUMERO " delimited size
-                        mto-numero            delimited size
-                   into lm-riga
-                 end-string
-                 write lm-riga
-              end-if
-           end-if.                                    
-  
-      ***---
-       COUNTER-VIDEO.
-           add 1 to counter.
-           add 1 to counter2.
-           if counter2 = 10
-              move counter to counter-edit
-              display counter-edit
-                 upon form3-handle at column 16
-                                        line 01
-              move 0 to counter2
-           end-if            
-           .
-      * <TOTEM:END>
-
        VERIFICA-ESEGUIBILITA.
       * <TOTEM:PARA. VERIFICA-ESEGUIBILITA>
            if RichiamoBatch 
@@ -21088,22 +21144,6 @@ LUBEXX                      read clienti no lock invalid continue
               open i-o lockfile
               move 78-EDI-impord to lck-nome-pgm
               delete lockfile invalid continue end-delete
-           end-if 
-           .
-      * <TOTEM:END>
-
-       INVERTI-TIPOLOGIA.
-      * <TOTEM:PARA. INVERTI-TIPOLOGIA>
-           if emto-inversione-imposte-si
-              |Funziona solo per tradizionali
-              if ttipocli-standard
-                 set ttipocli-gdo to true
-                 exit paragraph
-              end-if
-              if ttipocli-gdo
-                 set emto-inversione-imposte-no to true
-                 exit paragraph
-              end-if
            end-if 
            .
       * <TOTEM:END>
@@ -21409,6 +21449,9 @@ LUBEXX                      read clienti no lock invalid continue
               else
                  perform SCARICA-COMBO-STATO-ORDINE
                  perform FORM2-OPEN-ROUTINE 
+                 if errore-bloccante
+                    move 27 to key-status
+                 end-if
               end-if                      
               if not RichiamoBatch      
                  modify form1-Handle, visible 1

@@ -67,7 +67,7 @@
               move art-codice to save-art-codice
               perform until 1 = 2
                  move art-collegato to art-codice
-                 if art-collegato = art-codice
+                 if art-collegato = save-art-codice
                     exit perform
                  end-if
                  read articoli no lock
@@ -271,12 +271,21 @@
            open i-o   ordfor2 allowing readers.
            open input ordfor.        
            move low-value to ord-rec.
+
+      *****     |DEBUG
+      *****     move "LBX" to ord2-mag
+      *****     move 9814 to ord2-articolo
+                                     
            start ordfor key >= ord-chiave
                  invalid set errori to true
            end-start.
            perform until 1 = 2 or errori
 
               read ordfor next at end exit perform end-read  
+
+      *****        |DEBUG
+      *****        if ord-articolo not = 9814 exit perform end-if
+
               initialize ord2-rec replacing numeric data by zeroes
                                        alphanumeric data by spaces
               move ord-mag                       to ord2-mag

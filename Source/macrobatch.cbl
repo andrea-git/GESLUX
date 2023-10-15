@@ -288,8 +288,8 @@
       *        end-string
       *     end-if.                
 
-           accept como-data from time.
-           accept como-ora  from century-date.
+           accept como-data from century-date
+           accept como-ora  from time.
            inspect LinkBody replacing trailing spaces by low-value.
            string  LinkBody             delimited low-value                        
                    x"0d0a"              delimited size
