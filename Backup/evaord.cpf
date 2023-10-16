@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E5A1473949-349-2253816600
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A10151213-490-275157149
 
 {{@DESCRIPTION:
 
@@ -3731,12 +3731,13 @@ BEGIN-TEXT
                  if mro-qta > mro-qta-e
                     set trovato to true
                     move mro-cod-articolo to art-codice
-                    perform TROVA-LISTINO
-                    if si-prg-listino
-                       continue
-                    else
-                       perform VALORIZZA-MAGGIOR-GIACENZA
-                    end-if
+                    |16/10/2023: Utilizzare sempre il progressivo dell'ordine
+      *****              perform TROVA-LISTINO
+      *****              if si-prg-listino
+      *****                 continue
+      *****              else
+      *****                 perform VALORIZZA-MAGGIOR-GIACENZA
+      *****              end-if
                     move mro-prg-cod-articolo  to col-r-articolo art-codice
                     move mro-prg-cod-magazzino to col-r-mag
                     move mro-prg-tipo-imballo  to col-r-imb imq-codice

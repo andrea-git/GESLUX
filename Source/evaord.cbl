@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evaord.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 ottobre 2021 09:40:32.
+       DATE-WRITTEN.        lunedì 16 ottobre 2023 17:12:33.
        REMARKS.
       *{TOTEM}END
 
@@ -499,6 +499,7 @@
        77 blister-k-des-SPLITBUF  PIC X(51).
        77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini-lst-k-data-SPLITBUF  PIC X(29).
 
        01  FILLER           PIC  x.
            88 si-prg-listino VALUE IS "S". 
@@ -5507,6 +5508,16 @@
            listini-lst-k-cod-art-cli-SPLITBUF(21:8)
            .
 
+       listini-lst-k-data-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-data-SPLITBUF
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-data-SPLITBUF(1:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-data-SPLITBUF(9:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-data-SPLITBUF(14:15)
+           .
+
        DataSet1-listini-INITSTART.
            IF DataSet1-listini-KEY-Asc
               MOVE Low-Value TO lst-chiave OF listini
@@ -5570,6 +5581,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -5599,6 +5611,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -5628,6 +5641,7 @@
            END-IF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -6054,12 +6068,13 @@
                  if mro-qta > mro-qta-e
                     set trovato to true
                     move mro-cod-articolo to art-codice
-                    perform TROVA-LISTINO
-                    if si-prg-listino
-                       continue
-                    else
-                       perform VALORIZZA-MAGGIOR-GIACENZA
-                    end-if
+                    |16/10/2023: Utilizzare sempre il progressivo dell'ordine
+      *****              perform TROVA-LISTINO
+      *****              if si-prg-listino
+      *****                 continue
+      *****              else
+      *****                 perform VALORIZZA-MAGGIOR-GIACENZA
+      *****              end-if
                     move mro-prg-cod-articolo  to col-r-articolo 
            art-codice
                     move mro-prg-cod-magazzino to col-r-mag
