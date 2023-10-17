@@ -950,7 +950,6 @@
               move 0 to save-articolo
               perform until 1 = 2
                  read coperfab next at end exit perform end-read
-                 if cpf-articolo = 27858 stop "L" end-if
                  if articolo-fisso not = 0
                     if articolo-fisso not = cpf-articolo
                        exit perform cycle 
