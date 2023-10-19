@@ -172,8 +172,7 @@
                          invalid exit perform cycle
                      not invalid
                          compute como-impegnato =
-                                 prg-impegnato - 
-                                 prg-imp-gdo - 
+                                 prg-imp-gdo +
                                  prg-imp-trad
                          if como-impegnato <= 0
                             exit perform cycle
@@ -203,10 +202,20 @@
                                   end-if
                                   set cli-tipo-c to true
                                   move mto-cod-cli to cli-codice
-                                  read clienti no lock
+                                  read clienti no lock 
+                                       invalid 
+                                       move "NON TROVATO" 
+                                         to cli-ragsoc-1
+                                  end-read
                                   move cli-codice to des-codice
                                   move mto-prg-destino to des-prog
                                   read destini no lock
+                                       invalid
+                                       move "NON TROVATO" 
+                                         to des-ragsoc-1
+                                       move "NON TROVATO" 
+                                         to des-localita
+                                  end-read
                                   perform SCRIVI-CSV
                              end-read
                           end-perform
