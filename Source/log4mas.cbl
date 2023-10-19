@@ -1,0 +1,301 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID.                      log4mas.
+       AUTHOR.                          Andrea.
+      ******************************************************************
+
+       SPECIAL-NAMES. decimal-point is comma.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           copy "articoli.sl". 
+           copy "progmag.sl". 
+           copy "mtordini.sl".
+           copy "mrordini.sl".
+           copy "clienti.sl".
+           copy "destini.sl".
+           copy "lineseq.sl".
+
+      *****************************************************************
+       DATA DIVISION.
+       FILE SECTION.
+           copy "articoli.fd". 
+           copy "progmag.fd". 
+           copy "mtordini.fd".
+           copy "mrordini.fd".
+           copy "clienti.fd".
+           copy "destini.fd".
+           copy "lineseq.fd".
+
+       WORKING-STORAGE SECTION.
+           copy "comune.def".
+           copy "link-geslock.def".
+
+       78  titolo value "Log articoli scorta 4 - master".
+
+       77  status-articoli         pic x(2).
+       77  status-progmag          pic x(2).
+       77  status-mtordini         pic x(2).
+       77  status-mrordini         pic x(2).
+       77  status-clienti          pic x(2).
+       77  status-destini          pic x(2).
+       77  status-lineseq          pic x(2).
+       77  wstampa                 pic x(256).
+
+       77  separatore              pic x.
+       77  como-articolo           pic 9(6).
+                                            
+       77  como-data               pic 9(8).
+       77  como-qta                pic z(8).
+       77  como-impegnato          pic s9(9).
+
+       01  filler                  pic 9.
+         88 record-ok              value 1, false 0.
+
+       01  filler                  pic 9.
+         88 prima-volta            value 1, false 0.
+
+       LINKAGE SECTION.
+
+      ******************************************************************
+       PROCEDURE DIVISION.
+
+       DECLARATIVES.
+      ***---
+       LINESEQ-ERR SECTION.
+           use after error procedure on lineseq.
+           set tutto-ok  to true.
+           evaluate status-lineseq
+           when "35"
+                set errori to true
+                display message "File not found!"
+                          title titolo
+                           icon 3
+           when "39"
+                set errori to true
+                display message "File mismatch size!"
+                          title titolo
+                           icon 3
+           when "98"
+                set errori to true
+                display message "Indexed file corrupt!"
+                          title titolo
+                           icon 3
+           when "93"
+                initialize geslock-messaggio
+                string   "File già in uso!"
+                  x"0d0a""Impossibile procedere!" delimited size
+                      into geslock-messaggio
+                end-string
+                move 1 to geslock-v-riprova
+                move 0 to geslock-v-ignora
+                move 1 to geslock-v-termina
+                move   "File TXT"   to geslock-nome-file
+                call   "geslock" using geslock-linkage
+                cancel "geslock"
+                evaluate true
+                when riprova
+                     open output lineseq
+                when termina
+                     set errori to true
+                     display message "Operazione interrotta!"
+                               title titolo
+                                icon 2
+                end-evaluate
+           end-evaluate.
+
+       END DECLARATIVES.
+
+      ***---
+       MAIN-PRG.
+           perform INIT.
+           perform OPEN-FILES.
+           if tutto-ok
+              perform ELABORAZIONE
+              perform CLOSE-FILES
+           end-if.
+           perform EXIT-PGM.
+
+      ***---
+       INIT.
+           set RecLocked   to false.
+           set tutto-ok    to true.
+           set trovato     to false.
+
+           accept separatore from environment "SEPARATORE".
+                                          
+           initialize wstampa.
+           accept wstampa from environment "LOG4MAS_PATH".
+           if wstampa = spaces
+              display message 
+                      "Valorizzare la variabile d'ambiente LOG4MAS_PATH"
+               x"0d0a""Elaborazione interrotta"
+                        title titolo
+                         icon 2
+              goback
+           end-if.
+                                          
+           accept como-data from century-date.
+
+           inspect wstampa replacing trailing spaces by low-value.
+           string  wstampa    delimited low-value
+                   "log4mas-path_" delimited size
+                   como-data       delimited size
+                   ".csv"          delimited size
+              into wstampa
+           end-string.
+
+      ***---
+       OPEN-FILES.
+           perform OPEN-OUTPUT-LINESEQ.
+           if tutto-ok
+              open input articoli progmag mtordini mrordini
+                         clienti  destini
+           end-if.
+
+      ***---
+       OPEN-OUTPUT-LINESEQ.
+           open output lineseq.
+      
+      ***---
+       ELABORAZIONE.          
+           move low-value to art-rec.
+           start articoli key >= art-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read articoli next at end exit perform end-read
+                    if art-scorta not = 4 exit perform cycle end-if
+                    initialize prg-chiave 
+                               replacing numeric data by zeroes
+                                    alphanumeric data by spaces
+                    move art-codice to prg-cod-articolo
+                    read progmag no lock
+                         invalid exit perform cycle
+                     not invalid
+                         compute como-impegnato =
+                                 prg-impegnato - 
+                                 prg-imp-gdo - 
+                                 prg-imp-trad
+                         if como-impegnato <= 0
+                            exit perform cycle
+                         end-if
+                    end-read
+                    move low-value to mro-rec
+                    move art-codice to mro-cod-articolo
+                    start mrordini key >= mro-k-articolo
+                          invalid continue 
+                      not invalid
+                          perform until 1 = 2
+                             read mrordini next 
+                               at end exit perform 
+                             end-read
+                             if mro-cod-articolo not = art-codice
+                                exit perform
+                             end-if
+                             move mro-chiave-testa to mto-chiave
+                             read mtordini
+                                  invalid continue
+                              not invalid
+                                  if mto-chiuso 
+                                     exit perform cycle 
+                                  end-if
+                                  if mro-qta <= mro-qta-e
+                                     exit perform cycle
+                                  end-if
+                                  set cli-tipo-c to true
+                                  move mto-cod-cli to cli-codice
+                                  read clienti no lock
+                                  move cli-codice to des-codice
+                                  move mto-prg-destino to des-prog
+                                  read destini no lock
+                                  perform SCRIVI-CSV
+                             end-read
+                          end-perform
+                    end-start
+                 end-perform
+           end-start.
+
+      ***---
+       SCRIVI-CSV.
+           if como-articolo = 0
+              initialize line-riga
+              string "Articolo"    delimited size
+                     separatore    delimited size
+                     "Descrizione" delimited size
+                     separatore    delimited size
+                     "Anno"        delimited size
+                     separatore    delimited size
+                     "Numero"      delimited size
+                     separatore    delimited size
+                     "Cliente"     delimited size
+                     separatore    delimited size
+                     "Destino"     delimited size
+                     separatore    delimited size
+                     "Località"    delimited size
+                     separatore    delimited size
+                     "Ord.Cli."    delimited size
+                     separatore    delimited size
+                     "Data"        delimited size
+                     separatore    delimited size
+                     "Pezzi"       delimited size
+                     separatore    delimited size
+                into line-riga
+              end-string
+              write line-riga
+           end-if.
+           if como-articolo not = art-codice
+              initialize line-riga
+              move art-codice to como-articolo    
+              move como-impegnato to como-qta
+              string art-codice      delimited size
+                     separatore      delimited size
+                     art-descrizione delimited size
+                     separatore      delimited size
+                     separatore      delimited size
+                     separatore      delimited size
+                     separatore      delimited size
+                     separatore      delimited size
+                     separatore      delimited size
+                     separatore      delimited size
+                     separatore      delimited size
+                     como-qta        delimited size
+                into line-riga
+              end-string
+              write line-riga
+           end-if.                          
+           initialize line-riga.
+           compute como-qta = mro-qta - mro-qta-e.
+           string separatore   delimited size
+                  separatore   delimited size
+                  mto-anno     delimited size
+                  separatore   delimited size
+                  mto-numero   delimited size
+                  separatore   delimited size
+                  cli-ragsoc-1 delimited size
+                  separatore   delimited size
+                  des-ragsoc-1 delimited size
+                  separatore   delimited size
+                  des-localita delimited size
+                  separatore   delimited size
+                  mto-num-ord-cli 
+                  separatore   delimited size
+                  mto-data-ordine(7:2)       
+                  "/"
+                  mto-data-ordine(5:2)       
+                  "/"
+                  mto-data-ordine(1:4)
+                  separatore   delimited size
+                  como-qta
+                  separatore   delimited size
+                  into line-riga
+           end-string.
+           write line-riga.
+
+
+      ***---
+       CLOSE-FILES.
+           close lineseq articoli progmag mtordini mrordini
+                 clienti destini.
+
+      ***---
+       EXIT-PGM.
+           goback.
