@@ -12,7 +12,13 @@
            copy "mrordini.sl".
            copy "clienti.sl".
            copy "destini.sl".
-           copy "lineseq.sl".
+           copy "lineseq.sl".    
+           
+       SELECT csvFile
+           ASSIGN       TO path-csvFile
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-csvFile.
 
       *****************************************************************
        DATA DIVISION.
@@ -24,6 +30,9 @@
            copy "clienti.fd".
            copy "destini.fd".
            copy "lineseq.fd".
+
+       FD  csvFile.
+       01 line-csvFile        PIC  x(1000).
 
        WORKING-STORAGE SECTION.
            copy "comune.def".
@@ -37,6 +46,8 @@
        77  status-mrordini         pic x(2).
        77  status-clienti          pic x(2).
        77  status-destini          pic x(2).
+       77  status-csvFile          pic x(2).
+       77  path-csvFile            pic x(256).
        77  status-lineseq          pic x(2).
        77  wstampa                 pic x(256).
 
@@ -44,19 +55,21 @@
        77  como-articolo           pic 9(6).
                                             
        77  como-data               pic 9(8).
+       77  como-ora                pic 9(8).
        77  como-qta                pic z(8).
        77  como-impegnato          pic s9(9).
+       77  como-riga               pic x(100). 
 
-       01  filler                  pic 9.
-         88 record-ok              value 1, false 0.
+       77  nargs    pic 99 comp-1.      
+       01  r-inizio                pic x(25).
 
-       01  filler                  pic 9.
-         88 prima-volta            value 1, false 0.
+       01  filler           pic 9.
+           88 RichiamoSchedulato    value 1, false 0.
 
        LINKAGE SECTION.
+           copy "link-batch.def".
 
-      ******************************************************************
-       PROCEDURE DIVISION.
+       PROCEDURE DIVISION USING batch-linkage.
 
        DECLARATIVES.
       ***---
@@ -115,16 +128,41 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.          
+           set tutto-ok to true.                            
+           CALL "C$NARG" USING NARGS.
+           initialize wstampa.
+           if nargs not = 0
+              set RichiamoSchedulato to true
+              accept  wstampa from environment "SCHEDULER_PATH_LOG"
+           else
+              set RichiamoSchedulato to false
+              accept  wstampa from environment "PATH_ST"
+           end-if.
+                                
+           accept como-data from century-date.
+           accept como-ora  from time.
+           inspect wstampa replacing trailing spaces by low-value.
+           string  wstampa      delimited low-value
+                   "LOG4MAS_"   delimited size
+                   como-data    delimited size
+                   "_"          delimited size
+                   como-ora     delimited size
+                   ".log"       delimited size
+              into wstampa
+           end-string.                 
+     
+           if RichiamoSchedulato          
+              move wstampa to batch-log
+           end-if.
+           
            set RecLocked   to false.
-           set tutto-ok    to true.
-           set trovato     to false.
 
            accept separatore from environment "SEPARATORE".
                                           
-           initialize wstampa.
-           accept wstampa from environment "LOG4MAS_PATH".
-           if wstampa = spaces
+           initialize path-csvFile.
+           accept path-csvFile from environment "LOG4MAS_PATH".
+           if path-csvFile = spaces
               display message 
                       "Valorizzare la variabile d'ambiente LOG4MAS_PATH"
                x"0d0a""Elaborazione interrotta"
@@ -133,30 +171,27 @@
               goback
            end-if.
                                           
-           accept como-data from century-date.
-
-           inspect wstampa replacing trailing spaces by low-value.
-           string  wstampa    delimited low-value
+           inspect path-csvFile replacing trailing spaces by low-value.
+           string  path-csvFile    delimited low-value
                    "log4mas-path_" delimited size
                    como-data       delimited size
                    ".csv"          delimited size
-              into wstampa
+              into path-csvFile
            end-string.
 
       ***---
-       OPEN-FILES.
-           perform OPEN-OUTPUT-LINESEQ.
+       OPEN-FILES.                           
+           open output lineseq csvFile.
            if tutto-ok
               open input articoli progmag mtordini mrordini
                          clienti  destini
-           end-if.
-
-      ***---
-       OPEN-OUTPUT-LINESEQ.
-           open output lineseq.
+           end-if.                        
       
       ***---
-       ELABORAZIONE.          
+       ELABORAZIONE.     
+           move "INIZIO ELABORAZIONE" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
            move low-value to art-rec.
            start articoli key >= art-chiave
                  invalid continue
@@ -164,6 +199,14 @@
                  perform until 1 = 2
                     read articoli next at end exit perform end-read
                     if art-scorta not = 4 exit perform cycle end-if
+
+                    initialize como-riga
+                    string "TROVATO ARTICOLO A SCORTA 4: "
+                           art-codice
+                      into como-riga
+                    end-string 
+                    perform SCRIVI-RIGA-LOG
+
                     initialize prg-chiave 
                                replacing numeric data by zeroes
                                     alphanumeric data by spaces
@@ -171,15 +214,27 @@
                     read progmag no lock
                          invalid exit perform cycle
                      not invalid
+
+                         initialize como-riga
+                         string "IMPEGNATO GDO: "
+                                prg-imp-gdo
+                                " - IMPEGNATO TRAD: "
+                                prg-imp-trad
+                           into como-riga
+                         end-string 
+                         perform SCRIVI-RIGA-LOG
+
                          compute como-impegnato =
                                  prg-imp-gdo +
                                  prg-imp-trad
                          if como-impegnato <= 0
                             exit perform cycle
                          end-if
-                    end-read
+                    end-read   
+
                     move low-value to mro-rec
                     move art-codice to mro-cod-articolo
+                    move 2021       to mro-anno
                     start mrordini key >= mro-k-articolo
                           invalid continue 
                       not invalid
@@ -193,7 +248,23 @@
                              move mro-chiave-testa to mto-chiave
                              read mtordini
                                   invalid continue
-                              not invalid
+                              not invalid  
+
+                                  initialize como-riga
+                                  string "MASTER: "
+                                         mto-anno
+                                         " - "
+                                         mto-numero
+                                         " - STATO: "
+                                         mto-stato-ordine
+                                         " - QTA: "
+                                         mro-qta
+                                         " - QTA EVASA: "
+                                         mro-qta-e
+                                    into como-riga
+                                  end-string 
+                                  perform SCRIVI-RIGA-LOG
+
                                   if mto-chiuso 
                                      exit perform cycle 
                                   end-if
@@ -221,12 +292,14 @@
                           end-perform
                     end-start
                  end-perform
-           end-start.
+           end-start.   
+           move "FINE ELABORAZIONE" to como-riga.
+           perform SCRIVI-RIGA-LOG.
 
       ***---
        SCRIVI-CSV.
            if como-articolo = 0
-              initialize line-riga
+              initialize line-csvFile
               string "Articolo"    delimited size
                      separatore    delimited size
                      "Descrizione" delimited size
@@ -247,12 +320,12 @@
                      separatore    delimited size
                      "Pezzi"       delimited size
                      separatore    delimited size
-                into line-riga
+                into line-csvFile
               end-string
-              write line-riga
+              write line-csvFile
            end-if.
            if como-articolo not = art-codice
-              initialize line-riga
+              initialize line-csvFile
               move art-codice to como-articolo    
               move como-impegnato to como-qta
               string art-codice      delimited size
@@ -267,11 +340,11 @@
                      separatore      delimited size
                      separatore      delimited size
                      como-qta        delimited size
-                into line-riga
+                into line-csvFile
               end-string
-              write line-riga
+              write line-csvFile
            end-if.                          
-           initialize line-riga.
+           initialize line-csvFile.
            compute como-qta = mro-qta - mro-qta-e.
            string separatore   delimited size
                   separatore   delimited size
@@ -295,16 +368,30 @@
                   separatore   delimited size
                   como-qta
                   separatore   delimited size
-                  into line-riga
+             into line-csvFile
            end-string.
-           write line-riga.
+           write line-csvFile.
 
 
       ***---
        CLOSE-FILES.
            close lineseq articoli progmag mtordini mrordini
-                 clienti destini.
+                 clienti destini csvFile.
+
+      ***---
+       SCRIVI-RIGA-LOG.
+           initialize line-riga.
+           perform SETTA-INIZIO-RIGA.
+           string r-inizio  delimited size
+                  como-riga delimited size
+             into line-riga
+           end-string.   
+           write line-riga.
 
       ***---
        EXIT-PGM.
            goback.
+
+      ***---
+       PARAGRAFO-COPY.
+           copy "setta-inizio-riga.cpy".
