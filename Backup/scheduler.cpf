@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-oper
 BEFORE_PROGRAM=scheduler-Ev-Before-Program
 AFTER_PROGRAM=scheduler-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E76F93939-540-2389031223
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A1475155-556-2823524263
 
 {{@DESCRIPTION:
 
@@ -1283,6 +1283,8 @@ BEGIN-TEXT
               call "C$SYSTEM" using "E:\GESLUX\acu-stop.bat"
               call "C$SLEEP" using 5
            end-if.
+           
+           set environment "STRIP_TRAILING_SPACES" to "1".
 
            set errore-bloccante to false.
 

@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.95.20
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-oper
 BEFORE_PROGRAM=scheduler-Ev-Before-Program
 AFTER_PROGRAM=scheduler-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A13151753-795-2245310305
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A14142227-290-7189198
 
 {{@DESCRIPTION:
 
@@ -1286,6 +1287,8 @@ BEGIN-TEXT
               call "C$SYSTEM" using "E:\GESLUX\acu-stop.bat"
               call "C$SLEEP" using 5
            end-if.
+           
+           set environment "STRIP_TRAILING_SPACES" to "1".
 
            set errore-bloccante to false.
 

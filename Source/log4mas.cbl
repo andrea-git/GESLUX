@@ -128,7 +128,7 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.          
+       INIT.                                               
            set tutto-ok to true.                            
            CALL "C$NARG" USING NARGS.
            initialize wstampa.
@@ -163,12 +163,7 @@
            initialize path-csvFile.
            accept path-csvFile from environment "LOG4MAS_PATH".
            if path-csvFile = spaces
-              display message 
-                      "Valorizzare la variabile d'ambiente LOG4MAS_PATH"
-               x"0d0a""Elaborazione interrotta"
-                        title titolo
-                         icon 2
-              goback
+              goback 
            end-if.
                                           
            inspect path-csvFile replacing trailing spaces by low-value.

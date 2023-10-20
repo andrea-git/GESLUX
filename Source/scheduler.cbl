@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          scheduler.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 15 giugno 2023 11:40:36.
+       DATE-WRITTEN.        venerdì 20 ottobre 2023 09:52:13.
        REMARKS.
       *{TOTEM}END
 
@@ -1595,6 +1595,8 @@
               call "C$SYSTEM" using "E:\GESLUX\acu-stop.bat"
               call "C$SLEEP" using 5
            end-if.
+           
+           set environment "STRIP_TRAILING_SPACES" to "1".
 
            set errore-bloccante to false.
 
