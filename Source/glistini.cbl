@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          glistini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 7 agosto 2023 23:23:52.
+       DATE-WRITTEN.        martedì 24 ottobre 2023 10:38:14.
        REMARKS.
       *{TOTEM}END
 

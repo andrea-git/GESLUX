@@ -3629,11 +3629,11 @@ LUBEXX        end-if
                        move art-peso-non-utf of articoli
                                              to prg-peso-non-utf
                        perform CALCOLA-PRZ-FINITO
-                       add 0,0005             to prz-confronto
-                       add 0,005              to prz-confronto
-
-                       add 0,0005             to prz-reale
-                       add 0,005              to prz-reale
+      *****                 add 0,0005             to prz-confronto
+      *****                 add 0,005              to prz-confronto
+      *****
+      *****                 add 0,0005             to prz-reale
+      *****                 add 0,005              to prz-reale
            
                        move prz-reale         to sart-prz-fint
                        move prz-confronto     to sart-prz-conf 

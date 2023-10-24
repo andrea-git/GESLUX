@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A13151754-927-3033232667
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A1881321-390-1007224393
 
 {{@DESCRIPTION:
 
@@ -584,7 +584,7 @@ Begin Screen Form1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = frame-limiti
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -606,7 +606,7 @@ Begin Screen Form1
       Size              = 65,00
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title             = "Ricerca Listini"
       Title Position    = 2:Top center
       Visible           = NONE

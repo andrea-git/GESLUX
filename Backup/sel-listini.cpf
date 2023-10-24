@@ -5,7 +5,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
-PROGRAM_UNIQUE_CODE=TOTEM-7D9A17111257-703-1543215082
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A1881321-390-1007224393
 
 {{@DESCRIPTION:
 
@@ -570,7 +570,7 @@ Begin Screen Form1
    Unit              = Cells
    User Gray         = TRUE
    User White        = TRUE
-   Visible           = NONE
+   Visible           = FALSE
    Width in Cells    = TRUE
    Window Type       = Floating
    Wrap              = FALSE
@@ -581,7 +581,7 @@ Begin Screen Form1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = frame-limiti
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -603,7 +603,7 @@ Begin Screen Form1
       Size              = 65,00
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title             = "Ricerca Listini"
       Title Position    = 2:Top center
       Visible           = NONE
@@ -1569,8 +1569,10 @@ BEGIN-TEXT
        01                       pic 9.
            88 sovrapposizione   value 1 false zero.
 
+       01                       pic 9.
+           88 listino-auto      value 1 false zero.
 
-
+       77  cont                 pic 9(3).      
 
 END-TEXT
 END-DATA
@@ -1590,6 +1592,7 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
+           set listino-auto  to false
            if link-fornitore not = zero
               move link-fornitore  to ef-forn-buf
                                       cli-codice
@@ -1599,30 +1602,36 @@ BEGIN-TEXT
               read clienti no lock
                  invalid
                     move "Fornitore non valido"  to cli-ragsoc-1
-                end-read
-                move cli-ragsoc-1 to lab-forn-buf
-                display lab-forn
+              end-read
+              move cli-ragsoc-1 to lab-forn-buf
+              display lab-forn
+              perform CONTROLLA-LISTINO-AUTO
            end-if
 
+           if listino-auto
+              set scelto-promo   to true
+              perform Form1-Exit
+           else
+              move "<<HELP>> 0 = TUTTI GLI ARTICOLI" to lab-art-buf
+              display lab-art
 
-           move "<<HELP>> 0 = TUTTI GLI ARTICOLI" to lab-art-buf.
-           display lab-art.
+              move "<<HELP>> 0 = TUTTI I DESTINI" to lab-dest-buf
+              display lab-dest
 
-           move "<<HELP>> 0 = TUTTI I DESTINI" to lab-dest-buf.
-           display lab-dest.
+              accept start-data from century-date
+              move start-data(7:2) to como-data(1:2)
+              move start-data(5:2) to como-data(3:2)
+              move start-data(1:4) to como-data(5:4)
+              move como-data to ef-ini-buf
+              display ef-ini
 
-           accept start-data from century-date
-           move start-data(7:2) to como-data(1:2)
-           move start-data(5:2) to como-data(3:2)
-           move start-data(1:4) to como-data(5:4)
-           move como-data to ef-ini-buf
-           display ef-ini
+              move 99999999  to como-data
+              move como-data to ef-fine-buf
+              display ef-fine
 
-           move 99999999  to como-data.
-           move como-data to ef-fine-buf.
-           display ef-fine.
-
-           perform CARICA-GRID.
+              perform CARICA-GRID
+              modify form1-Handle, VISIBLE 1
+           end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1676,7 +1685,8 @@ BEGIN-TEXT
 
            move save-forn    to tlis-fornitore
            move save-dest    to tlis-destino
-           move start-data   to tlis-ini-val
+      *     move start-data   to tlis-ini-val
+           move low-value    to tlis-ini-val
            move low-value    to tlis-fine-val
            start tlistini key >= tlis-chiave-ricerca
               invalid 
@@ -1966,6 +1976,91 @@ BEGIN-TEXT
            modify gd1, start-y = event-data-2, y = event-data-2,
                        start-x = 1,            x = 4,
                        region-color = 481.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = CONTROLLA-LISTINO-AUTO
+BEGIN-TEXT
+           set listino-auto  to true
+      *    per prima cosa controllo che abbia un solo destino
+           move zero         to cont
+           move cli-codice   to desf-codice
+           move low-value    to desf-prog
+
+           start destinif key not < desf-chiave
+              invalid
+                 set listino-auto  to false
+              not invalid
+                 perform until 1 = 2
+                    read destinif next no lock
+                       at end
+                          exit perform
+                    end-read
+                    if cli-codice not = desf-codice
+                       exit perform
+                    end-if
+                    add 1 to cont
+                    if cont = 2
+                       exit perform
+                    end-if
+                 end-perform
+           end-start.
+           
+           if cont not = 1
+              set listino-auto  to false
+           end-if
+
+      *    controllo di avere un solo listino
+           if listino-auto
+              move zero         to cont
+              move cli-codice   to tlis-fornitore
+              move low-value    to tlis-destino
+                                   tlis-ini-val
+                                   tlis-fine-val
+              start tlistini key >= tlis-chiave-ricerca
+                 invalid 
+                    continue
+                 not invalid
+                    perform until 1 = 2
+                       read tlistini next 
+                          at end 
+                             exit perform 
+                       end-read
+                       if cli-codice not = tlis-fornitore
+                          exit perform 
+                       end-if
+                       add 1 to cont
+                       evaluate cont 
+                       when 1
+                            move tlis-codice   to link-codice
+                       when 2
+                            exit perform
+                       end-evaluate
+                    end-perform
+              end-start
+              if cont not = 1
+                 set listino-auto  to false
+                 initialize link-codice
+              end-if
+           end-if.
+
+      *    controllo che l'unico listino sia giusto come data
+           if listino-auto
+              set rec-ok  to true
+              move link-codice  to tlis-codice
+              read tlistini no lock
+                 invalid
+                    continue
+              end-read
+              accept start-data from century-date
+              move 99999999     to como-data-to
+              perform CONTROLLO-DATE
+              if not rec-ok
+                 set listino-auto  to false
+              end-if
+           end-if.
+
 END-TEXT
 END-DATA
 BEGIN-DATA
