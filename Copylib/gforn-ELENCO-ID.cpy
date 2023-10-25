@@ -110,3 +110,7 @@
            evaluate control-id
            end-evaluate.
 
+      * Paragrafo per la struttura dei controlli sulla screen scr-stampa
+           evaluate control-id
+           end-evaluate.
+

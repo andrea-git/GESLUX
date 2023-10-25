@@ -8,8 +8,8 @@
             10 stampa-destino-da           pic 9(5).
             10 stampa-destino-a            pic 9(5).
          05 stampa-filtri.
-            10 stampa-tipo-cli            pic x(2).
-            10 stampa-cod-gdo             pic x(5).
+            10 stampa-tipo-cli            pic x(2). |O provincia (se fornitore)
+            10 stampa-cod-gdo             pic x(5). |O nazione (se fornitore)
             10 stampa-agente              pic 9(5).
          05 stampa-tipo                   pic 9.
             88 StampaExcel                value 1, false 0.

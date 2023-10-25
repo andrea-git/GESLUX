@@ -6,9 +6,18 @@
            COPY  "COMBO-STATO.DEF".
            COPY  "COMBO-INVIO.DEF".
            COPY  "COMBO-UFFICIO-D.DEF".
-           COPY  "LINK-GNOTE-DESTF.DEF".
-           COPY  "link-passwd.def".
+           COPY  "LINK-GNOTE-DESTF.DEF".   
+           COPY  "LINK-STAMPA.DEF".
+           COPY  "link-passwd.def". 
+           COPY  "SPLCRT2GRAF.LKS".
        78 TITOLO VALUE IS "Geslux - Gestione Fornitori". 
+       01 file-info.
+           05 file-size        PIC  X(8)
+                      USAGE IS COMP-X.
+           05 file-date        PIC  9(8)
+                      USAGE IS COMP-X.
+           05 file-time        PIC  9(8)
+                      USAGE IS COMP-X.
        77 STATUS-pagbloc   PIC  X(2).
            88 Valid-STATUS-pagbloc VALUE IS "00" THRU "09". 
        77 STATUS-clienti   PIC  X(2).
@@ -127,9 +136,9 @@
        77 E-MODIFICA       PIC  9
                   VALUE IS 1.
        77 E-ANTEPRIMA      PIC  9
-                  VALUE IS 0.
+                  VALUE IS 1.
        77 E-STAMPA         PIC  9
-                  VALUE IS 0.
+                  VALUE IS 1.
        77 E-CERCA          PIC  9
                   VALUE IS 0.
        77 Form1-St-1-Handle

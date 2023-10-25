@@ -311,6 +311,69 @@
                            into lab-pag-d-buf
                    end-string
                    display ef-pag-d lab-pag-d
+                end-if                  
+
+           when 78-ID-ef-st-naz
+                move "tnazioni"  to como-file         
+                inquire ef-st-naz, value in naz-codice
+                call "zoom-gt"   using como-file, naz-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move naz-codice      to ef-st-naz-buf
+                   move naz-descrizione to lab-st-naz-buf
+                   display ef-st-naz lab-st-naz
+                end-if
+                                    
+           when 78-ID-ef-cod-da
+                set cli-tipo-F to true
+                move   "clienti-all"  to como-file
+                call   "zoom-gt"   using como-file, cli-rec
+                                  giving stato-zoom
+                cancel "zoom-gt"
+      
+                if stato-zoom = 0
+                   move cli-codice to ef-cod-da-buf
+                   display ef-cod-da
+                end-if
+
+           when 78-ID-ef-cod-a
+                set cli-tipo-F to true
+                move   "clienti-all"  to como-file
+                call   "zoom-gt"   using como-file, cli-rec
+                                  giving stato-zoom
+                cancel "zoom-gt"
+      
+                if stato-zoom = 0
+                   move cli-codice to ef-cod-a-buf
+                   display ef-cod-a
+                end-if
+
+           when 78-ID-ef-st-naz
+                move "tnazioni"  to como-file         
+                inquire ef-st-naz, value in naz-codice
+                call "zoom-gt"   using como-file, naz-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move naz-codice      to ef-st-naz-buf
+                   move naz-descrizione to lab-st-naz-buf
+                   display ef-st-naz lab-st-naz
+                end-if
+
+           when 78-ID-ef-st-prov
+                move "tprov"     to como-file         
+                inquire ef-st-prov,    value in prv-codice
+                call "zoom-gt"   using como-file, prv-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move prv-codice      to ef-st-prov-buf
+                   move prv-descrizione to lab-st-prov-buf
+                   display ef-st-prov lab-st-prov
                 end-if
 
            end-evaluate. 
@@ -3381,4 +3444,143 @@ LUBEXX     if control-id = 78-ID-rb-pers or
                  write desf-rec invalid continue end-write
            end-read.
 
+      ***---
+       SCR-STAMPA-BOTTON-SI-PRESSED.
+           inquire chk-st-cli,  value in e-st-cli.
+           inquire chk-st-des,  value in e-st-des.
+           inquire chk-st-note, value in e-st-note.
 
+           perform varying control-id from 78-ID-ef-cod-da by 1
+                     until control-id > 78-ID-ef-des-a
+              perform CHECK-INTERVALLO
+              if errori exit perform end-if
+           end-perform.
+
+           if tutto-ok
+              if e-st-cli  = 0 and 
+                 e-st-des  = 0 and
+                 e-st-note = 0
+                 display message "Selezionare un tipo di stampa"
+                           title tit-err
+                            icon 2
+              else
+                 if e-st-cli  = 1 perform STAMPA-FORNITORI end-if
+                 if e-st-des  = 1 perform STAMPA-DESTINI-F end-if
+                 if e-st-note = 1 perform STAMPA-NOTE-F    end-if
+
+                 perform CANCELLA-COLORE
+                 move 100 to control-id
+                 move   4 to accept-control
+                 modify pb-sib, bitmap-number = 2
+              end-if
+           end-if.
+
+      ***---
+       CHECK-INTERVALLO.
+           set tutto-ok to true.
+
+           evaluate control-id
+           when 78-ID-ef-cod-da
+                inquire ef-cod-da, value in ef-cod-da-buf
+                if ef-cod-da-buf not = 0
+                   move ef-cod-da-buf to cli-codice
+                   set cli-tipo-C to true
+                   read clienti no lock 
+                        invalid 
+                        set errori to true
+                        display message "Cliente NON valido"
+                                  title tit-err
+                                   icon 2
+                   end-read
+                end-if
+
+           when 78-ID-ef-cod-a
+                inquire ef-cod-da, value in ef-cod-da-buf
+                inquire ef-cod-a,  value in ef-cod-a-buf
+                evaluate ef-cod-a-buf
+                when 0
+                     move 99999 to ef-cod-a-buf
+                     display ef-cod-a
+                when 99999
+                     continue
+                when other
+                     move ef-cod-a-buf to cli-codice
+                     set cli-tipo-C to true
+                     read clienti no lock 
+                          invalid
+                          set errori to true
+                          display message "Cliente NON valido"
+                                    title tit-err
+                                     icon 2
+                      not invalid
+                          if ef-cod-a-buf < ef-cod-da-buf
+                             display message "Intervallo Cliente errato"
+                                       title tit-err
+                                        icon 2
+                             set errori to true
+                             move 78-ID-ef-cod-da to control-id
+                          end-if
+                     end-read
+                end-evaluate   
+   
+           when 78-ID-ef-st-naz
+                inquire ef-st-naz, value in naz-codice
+                if naz-codice = spaces
+                   move "Tutte le nazioni" to lab-st-naz-buf
+                else
+                   read tnazioni no lock
+                        invalid
+                        display message "Nazione NON valida"
+                                  title tit-err
+                                   icon 2
+                        set errori to true
+                        move spaces to naz-descrizione
+                   end-read
+                   move naz-descrizione to lab-st-naz-buf
+                end-if     
+                display lab-st-naz
+   
+           when 78-ID-ef-st-prov
+                inquire ef-st-prov, value in prv-codice
+                if prv-codice = spaces
+                   move "Tutte le provincie" to lab-st-prov-buf
+                else
+                   read tprov no lock
+                        invalid
+                        display message "Provincia NON valida"
+                                  title tit-err
+                                   icon 2
+                        set errori to true
+                        move spaces to prv-descrizione
+                   end-read
+                   move prv-descrizione to lab-st-prov-buf
+                end-if
+                display lab-st-prov
+   
+           when 78-ID-ef-des-a
+                if e-st-des = 1
+                   inquire ef-des-da, value in ef-des-da-buf
+                   inquire ef-des-a,  value in ef-des-a-buf
+                   evaluate ef-des-a-buf
+                   when 0
+                        move 99999 to ef-des-a-buf
+                        display ef-des-a
+                   when 99999
+                        continue
+                   when other
+                        if ef-des-a-buf < ef-des-da-buf
+                           display message "Intervallo Destini errato"
+                                     title tit-err
+                                      icon 2
+                           set errori to true
+                           move 78-ID-ef-des-da to control-id
+                        end-if
+                   end-evaluate
+                end-if      
+
+           end-evaluate.
+
+           if errori
+              perform CANCELLA-COLORE
+              move 4 to accept-control
+           end-if.

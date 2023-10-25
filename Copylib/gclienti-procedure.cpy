@@ -707,15 +707,15 @@ LUBEXX     if tcl-codice not = save-ttipocli-privato
                    when 99999
                         continue
                    when other
-                        if ef-cod-a-buf < ef-cod-da-buf
-                           display message "Intervallo Cliente errato"
+                        if ef-des-a-buf < ef-des-da-buf
+                           display message "Intervallo Destini errato"
                                      title tit-err
                                       icon 2
                            set errori to true
-                           move 78-ID-ef-cod-da to control-id
+                           move 78-ID-ef-des-da to control-id
                         end-if
                    end-evaluate
-                end-if
+                end-if      
 
            end-evaluate.
 
@@ -4867,6 +4867,7 @@ LUBEXX     delete lockfile record invalid continue end-delete.
            inquire gd-destini-e(riga-d , 1), 
                    cell-data in ecd-destino-OLD.
            perform SCREEN-TO-EVA.
+
 
       ***---
        SCREEN-TO-EVA.

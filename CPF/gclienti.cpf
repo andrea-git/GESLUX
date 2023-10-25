@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E79D12010-452-13918897
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A19161359-962-8409484
 
 {{@DESCRIPTION:
 
@@ -22903,8 +22903,6 @@ Begin Screen scr-stampa
       Value Variable    = e-st-cli
       Visible           = NONE
       Width in Cells    = FALSE
-      Before Procedure  = scr-stampa-Cb-1-BeforeProcedure
-      After Procedure   = scr-stampa-Cb-1-AfterProcedure
       Link To           = chk-st-cli-LinkTo
    End
    Begin Entry-Field ef-st-tipo
@@ -22928,6 +22926,7 @@ Begin Screen scr-stampa
       Cursor Row        = 0
       Destroy Type      = Automatic
       Enable            = NONE
+      Enable Variable   = e-st-cli
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
@@ -22984,7 +22983,8 @@ Begin Screen scr-stampa
       Cursor Col        = 0
       Cursor Row        = 0
       Destroy Type      = Automatic
-      Enable            = TRUE
+      Enable            = NONE
+      Enable Variable   = e-st-cli
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
@@ -23042,6 +23042,7 @@ Begin Screen scr-stampa
       Cursor Row        = 0
       Destroy Type      = Automatic
       Enable            = NONE
+      Enable Variable   = e-st-cli
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
@@ -23122,8 +23123,6 @@ Begin Screen scr-stampa
       Value Variable    = e-st-des
       Visible           = NONE
       Width in Cells    = FALSE
-      Before Procedure  = scr-stampa-Cb-1-BeforeProcedure
-      After Procedure   = scr-stampa-Cb-1-AfterProcedure
       Link To           = chk-st-des-LinkTo
    End
    Begin Entry-Field ef-des-da
@@ -23242,6 +23241,55 @@ Begin Screen scr-stampa
       Before Procedure  = ef-des-a-BeforeProcedure
       After Procedure   = ef-des-a-AfterProcedure
    End
+   Begin Check-Box chk-excel-2
+      SCREEN-COL        = 31,50
+      SCREEN-LINE       = 15,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-excel-2
+      Bitmap            = "..\RESOURCE\EXCEL.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = EXCEL-BMP
+      Bitmap Number     = 3
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 31,50
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-st-des
+      Exception Value   = 0
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 568
+      Left Text         = FALSE
+      Line              = 15,22
+      Lines             = 0,72
+      Lines in Pixels   = 28
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,60
+      Size in Pixels    = 28
+      Size Unit         = Default
+      Tab Order         = 11
+      Termination Value = 0
+      Title             = "Generazione di file E&xcel"
+      Value             = 0:FALSE
+      Value Variable    = stampa-tipo-des
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = chk-excel-2-BeforeProcedure
+      After Procedure   = chk-excel-2-AfterProcedure
+   End
    Begin Check-Box chk-st-note
       SCREEN-COL        = 2,10
       SCREEN-LINE       = 18,39
@@ -23280,15 +23328,62 @@ Begin Screen scr-stampa
       Size              = 0,80
       Size in Pixels    = 20
       Size Unit         = Default
-      Tab Order         = 11
+      Tab Order         = 12
       Termination Value = 0
       Value             = 0:FALSE
       Value Variable    = e-st-note
       Visible           = NONE
       Width in Cells    = FALSE
-      Before Procedure  = scr-stampa-Cb-1-BeforeProcedure
-      After Procedure   = scr-stampa-Cb-1-AfterProcedure
       Link To           = chk-st-note-LinkTo
+   End
+   Begin Check-Box chk-excel-3
+      SCREEN-COL        = 31,50
+      SCREEN-LINE       = 18,22
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = chk-excel-3
+      Bitmap            = "..\RESOURCE\EXCEL.BMP"
+      Bitmap Frame      = FALSE
+      Bitmap Handle     = EXCEL-BMP
+      Bitmap Number     = 3
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 31,50
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = FALSE
+      Enable Variable   = e-st-note
+      Exception Value   = 0
+      Flat              = TRUE
+      Font              = Default Font
+      Height in Cells   = FALSE
+      Help ID           = 0
+      ID                = 23
+      Left Text         = FALSE
+      Line              = 18,22
+      Lines             = 0,72
+      Lines in Pixels   = 28
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,60
+      Size in Pixels    = 28
+      Size Unit         = Default
+      Tab Order         = 13
+      Termination Value = 0
+      Title             = "Generazione di file E&xcel"
+      Value             = 0:FALSE
+      Value Variable    = stampa-tipo-note
+      Visible           = NONE
+      Width in Cells    = FALSE
+      Before Procedure  = chk-excel-3-BeforeProcedure
+      After Procedure   = chk-excel-3-AfterProcedure
    End
    Begin Push-Button pb-sib
       SCREEN-COL        = 19,50
@@ -23328,7 +23423,7 @@ Begin Screen scr-stampa
       Size in Pixels    = 73
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 12
+      Tab Order         = 14
       Termination Value = 0
       Visible           = NONE
       Width in Cells    = FALSE
@@ -23374,7 +23469,7 @@ Begin Screen scr-stampa
       Size in Pixels    = 73
       Size Unit         = Default
       Style             = Escape Button
-      Tab Order         = 13
+      Tab Order         = 15
       Termination Value = 0
       Visible           = NONE
       Width in Cells    = FALSE
@@ -23407,7 +23502,7 @@ Begin Screen scr-stampa
       Size (Lines)      = 34,50
       Size (Lines) in Pixels = 345
       Size (Lines) Unit = Default
-      Tab Order         = 14
+      Tab Order         = 16
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -23439,7 +23534,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 7,00
       Size Unit         = Default
-      Tab Order         = 15
+      Tab Order         = 17
       Title             = "Codice"
       Transparent       = TRUE
       Visible           = NONE
@@ -23474,7 +23569,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 1,00
       Size Unit         = Default
-      Tab Order         = 16
+      Tab Order         = 18
       Title             = "BlockPgm"
       Transparent       = TRUE
       Visible           = NONE
@@ -23513,7 +23608,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 2,30
       Size Unit         = Default
-      Tab Order         = 17
+      Tab Order         = 19
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -23547,7 +23642,7 @@ Begin Screen scr-stampa
       Size              = 2,80
       Size in Pixels    = 28
       Size Unit         = Default
-      Tab Order         = 18
+      Tab Order         = 20
       Transparent Color = 0
       Transparent Color Variable = tr-color
       Visible           = NONE
@@ -23581,7 +23676,7 @@ Begin Screen scr-stampa
       Size              = 2,80
       Size in Pixels    = 28
       Size Unit         = Default
-      Tab Order         = 19
+      Tab Order         = 21
       Transparent Color = 0
       Transparent Color Variable = tr-color
       Visible           = NONE
@@ -23615,7 +23710,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 8,00
       Size Unit         = Default
-      Tab Order         = 20
+      Tab Order         = 22
       Title             = "Tipologia"
       Transparent       = TRUE
       Visible           = NONE
@@ -23648,7 +23743,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 8,00
       Size Unit         = Default
-      Tab Order         = 21
+      Tab Order         = 23
       Title             = "Agente"
       Transparent       = TRUE
       Visible           = NONE
@@ -23681,7 +23776,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 8,00
       Size Unit         = Default
-      Tab Order         = 22
+      Tab Order         = 24
       Title             = "Cod. GDO"
       Transparent       = TRUE
       Visible           = NONE
@@ -23714,7 +23809,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 19,00
       Size Unit         = Default
-      Tab Order         = 23
+      Tab Order         = 25
       Title             = "Blank = TUTTI"
       Title Picture     = X(50)
       Title Variable    = lab-st-tipo-buf
@@ -23749,7 +23844,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 15,00
       Size Unit         = Default
-      Tab Order         = 24
+      Tab Order         = 26
       Title             = "Blank =TUTTI"
       Title Picture     = X(50)
       Title Variable    = lab-st-gdo-buf
@@ -23784,7 +23879,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 25
+      Tab Order         = 27
       Title             = "0 = TUTTI"
       Title Picture     = X(50)
       Title Variable    = lab-st-age-buf
@@ -23819,7 +23914,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 26
+      Tab Order         = 28
       Title             = "Filtri di stampa Cliente"
       Transparent       = FALSE
       Visible           = NONE
@@ -23851,7 +23946,7 @@ Begin Screen scr-stampa
       Size (Lines)      = 7,00
       Size (Lines) in Pixels = 70
       Size (Lines) Unit = Default
-      Tab Order         = 27
+      Tab Order         = 29
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -23883,7 +23978,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 20,00
       Size Unit         = Default
-      Tab Order         = 28
+      Tab Order         = 30
       Title             = "Filtri di stampa Destini"
       Transparent       = FALSE
       Visible           = NONE
@@ -23915,7 +24010,7 @@ Begin Screen scr-stampa
       Size (Lines)      = 2,80
       Size (Lines) in Pixels = 28
       Size (Lines) Unit = Default
-      Tab Order         = 29
+      Tab Order         = 31
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -23946,59 +24041,10 @@ Begin Screen scr-stampa
       Size (Lines)      = 7,00
       Size (Lines) in Pixels = 70
       Size (Lines) Unit = Default
-      Tab Order         = 30
+      Tab Order         = 32
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
-   End
-   Begin Check-Box chk-excel-2
-      SCREEN-COL        = 31,50
-      SCREEN-LINE       = 15,22
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = chk-excel-2
-      Bitmap            = "..\RESOURCE\EXCEL.BMP"
-      Bitmap Frame      = FALSE
-      Bitmap Handle     = EXCEL-BMP
-      Bitmap Number     = 3
-      Bitmap Square     = TRUE
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 0
-      Column            = 31,50
-      Copy Resource     = TRUE
-      Csize             = 0
-      Csize Unit        = Default
-      Destroy Type      = Automatic
-      Enable            = FALSE
-      Enable Variable   = e-st-des
-      Exception Value   = 0
-      Flat              = TRUE
-      Font              = Default Font
-      Height in Cells   = FALSE
-      Help ID           = 0
-      ID                = 568
-      Left Text         = FALSE
-      Line              = 15,22
-      Lines             = 0,72
-      Lines in Pixels   = 28
-      Lines Unit        = Default
-      No Tab            = FALSE
-      Notify            = FALSE
-      Occurs            = 0
-      Self Act          = FALSE
-      Size              = 1,60
-      Size in Pixels    = 28
-      Size Unit         = Default
-      Tab Order         = 31
-      Termination Value = 0
-      Title             = "Generazione di file E&xcel"
-      Value             = 0:FALSE
-      Value Variable    = stampa-tipo-des
-      Visible           = NONE
-      Width in Cells    = FALSE
-      Before Procedure  = scr-stampa-Cb-1-BeforeProcedure
-      After Procedure   = scr-stampa-Cb-1-AfterProcedure
    End
    Begin Label lab4
       SCREEN-COL        = 13,00
@@ -24027,7 +24073,7 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 7,00
       Size Unit         = Default
-      Tab Order         = 32
+      Tab Order         = 33
       Title             = "Codice"
       Transparent       = TRUE
       Visible           = NONE
@@ -24060,7 +24106,7 @@ Begin Screen scr-stampa
       Size              = 2,80
       Size in Pixels    = 28
       Size Unit         = Default
-      Tab Order         = 33
+      Tab Order         = 34
       Transparent Color = 0
       Transparent Color Variable = tr-color
       Visible           = NONE
@@ -24094,7 +24140,7 @@ Begin Screen scr-stampa
       Size              = 2,80
       Size in Pixels    = 28
       Size Unit         = Default
-      Tab Order         = 34
+      Tab Order         = 35
       Transparent Color = 0
       Transparent Color Variable = tr-color
       Visible           = NONE
@@ -24127,7 +24173,7 @@ Begin Screen scr-stampa
       Size (Lines)      = 2,80
       Size (Lines) in Pixels = 28
       Size (Lines) Unit = Default
-      Tab Order         = 35
+      Tab Order         = 36
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -24159,60 +24205,11 @@ Begin Screen scr-stampa
       Occurs            = 0
       Size              = 26,20
       Size Unit         = Default
-      Tab Order         = 36
+      Tab Order         = 37
       Title             = "Stampa Schede Note Consegna"
       Transparent       = FALSE
       Visible           = NONE
       Width in Cells    = TRUE
-   End
-   Begin Check-Box chk-excel-3
-      SCREEN-COL        = 31,50
-      SCREEN-LINE       = 18,22
-      LOCK-CONTROL      = TRUE
-      LEVEL             = 5
-      (Name)            = chk-excel-3
-      Bitmap            = "..\RESOURCE\EXCEL.BMP"
-      Bitmap Frame      = FALSE
-      Bitmap Handle     = EXCEL-BMP
-      Bitmap Number     = 3
-      Bitmap Square     = TRUE
-      Clines            = 0
-      Clines Unit       = Default
-      Color             = 0
-      Column            = 31,50
-      Copy Resource     = TRUE
-      Csize             = 0
-      Csize Unit        = Default
-      Destroy Type      = Automatic
-      Enable            = FALSE
-      Enable Variable   = e-st-note
-      Exception Value   = 0
-      Flat              = TRUE
-      Font              = Default Font
-      Height in Cells   = FALSE
-      Help ID           = 0
-      ID                = 23
-      Left Text         = FALSE
-      Line              = 18,22
-      Lines             = 0,72
-      Lines in Pixels   = 28
-      Lines Unit        = Default
-      No Tab            = FALSE
-      Notify            = FALSE
-      Occurs            = 0
-      Self Act          = FALSE
-      Size              = 1,60
-      Size in Pixels    = 28
-      Size Unit         = Default
-      Tab Order         = 37
-      Termination Value = 0
-      Title             = "Generazione di file E&xcel"
-      Value             = 0:FALSE
-      Value Variable    = stampa-tipo-note
-      Visible           = NONE
-      Width in Cells    = FALSE
-      Before Procedure  = scr-stampa-Cb-1-BeforeProcedure
-      After Procedure   = scr-stampa-Cb-1-AfterProcedure
    End
    Begin Toolbar Form1-Tb-1a
       SCREEN-LINE       = 1,00
@@ -28185,20 +28182,20 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = scr-stampa-Cb-1-BeforeProcedure
 BEGIN-TEXT
-           modify chk-excel, bitmap-number = 2.
       *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
       *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           modify chk-excel, bitmap-number = 2.
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = scr-stampa-Cb-1-AfterProcedure
 BEGIN-TEXT
-           modify chk-excel, bitmap-number = 1.
       *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
       *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
-      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>  
+           modify chk-excel, bitmap-number = 1.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -28381,7 +28378,7 @@ BEGIN-DATA
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
       *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
-      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>  
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -28399,7 +28396,8 @@ BEGIN-DATA
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
       *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
-      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>  
+           perform CHECK-INTERVALLO.    
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -29290,6 +29288,46 @@ BEGIN-TEXT
            end-if.
 
            move 27 to key-status.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-excel-2-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           modify chk-excel-2, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-excel-3-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           modify chk-excel-3, bitmap-number = 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-excel-2-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           modify chk-excel-2, bitmap-number = 1.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = chk-excel-3-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           modify chk-excel-3, bitmap-number = 1.
 END-TEXT
 END-DATA
 

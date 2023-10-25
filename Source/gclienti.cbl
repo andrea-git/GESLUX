@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 7 luglio 2023 16:05:44.
+       DATE-WRITTEN.        mercoledì 25 ottobre 2023 18:42:32.
        REMARKS.
       *{TOTEM}END
 
@@ -131,6 +131,9 @@
                   VALUE IS 0.
        77 scr-note-bolla-Handle
                   USAGE IS HANDLE OF WINDOW.
+       77 csv-esposizione  PIC  ----.---.---.--9,99.
+       77 csv-fido         PIC  ----.---.---.--9,99.
+       77 csv-residuo      PIC  ----.---.---.--9,99.
        77 STATUS-grade     PIC  X(2).
            88 Valid-STATUS-grade VALUE IS "00" THRU "09". 
        77 STATUS-sitfin    PIC  X(2).
@@ -7211,8 +7214,6 @@
            FLAT,
            ID IS 20,
            VALUE e-st-cli,
-           AFTER PROCEDURE scr-stampa-Cb-1-AfterProcedure,
-           BEFORE PROCEDURE scr-stampa-Cb-1-BeforeProcedure, 
            .
       * ENTRY FIELD
        05
@@ -7224,6 +7225,7 @@
            SIZE 4,00 ,
            BOXED,
            COLOR IS 513,
+           ENABLED e-st-cli,
            ID IS 78-ID-ef-st-tipo,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -7242,7 +7244,7 @@
            BOXED,
            UPPER,
            COLOR IS 513,
-           ENABLED 1,
+           ENABLED e-st-cli,
            ID IS 78-ID-ef-st-gdo,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -7261,6 +7263,7 @@
            BOXED,
            UPPER,
            COLOR IS 513,
+           ENABLED e-st-cli,
            ID IS 78-ID-ef-st-age,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -7285,8 +7288,6 @@
            FLAT,
            ID IS 8,
            VALUE e-st-des,
-           AFTER PROCEDURE scr-stampa-Cb-1-AfterProcedure,
-           BEFORE PROCEDURE scr-stampa-Cb-1-BeforeProcedure, 
            .
       * ENTRY FIELD
        05
@@ -7332,6 +7333,26 @@
 
       * CHECK BOX
        05
+           chk-excel-2, 
+           Check-Box, 
+           COL 31,50, 
+           LINE 15,22,
+           LINES 28,00 ,
+           SIZE 28,00 ,
+           BITMAP-HANDLE EXCEL-BMP,
+           BITMAP-NUMBER 3,
+           UNFRAMED,
+           SQUARE,
+           ENABLED e-st-des,
+           FLAT,
+           ID IS 568,
+           TITLE "Generazione di file E&xcel",
+           VALUE stampa-tipo-des,
+           AFTER PROCEDURE chk-excel-2-AfterProcedure,
+           BEFORE PROCEDURE chk-excel-2-BeforeProcedure, 
+           .
+      * CHECK BOX
+       05
            chk-st-note, 
            Check-Box, 
            COL 2,10, 
@@ -7346,8 +7367,26 @@
            FLAT,
            ID IS 22,
            VALUE e-st-note,
-           AFTER PROCEDURE scr-stampa-Cb-1-AfterProcedure,
-           BEFORE PROCEDURE scr-stampa-Cb-1-BeforeProcedure, 
+           .
+      * CHECK BOX
+       05
+           chk-excel-3, 
+           Check-Box, 
+           COL 31,50, 
+           LINE 18,22,
+           LINES 28,00 ,
+           SIZE 28,00 ,
+           BITMAP-HANDLE EXCEL-BMP,
+           BITMAP-NUMBER 3,
+           UNFRAMED,
+           SQUARE,
+           ENABLED e-st-note,
+           FLAT,
+           ID IS 23,
+           TITLE "Generazione di file E&xcel",
+           VALUE stampa-tipo-note,
+           AFTER PROCEDURE chk-excel-3-AfterProcedure,
+           BEFORE PROCEDURE chk-excel-3-BeforeProcedure, 
            .
       * PUSH BUTTON
        05
@@ -7652,26 +7691,6 @@
            WIDTH 2,
            .
 
-      * CHECK BOX
-       05
-           chk-excel-2, 
-           Check-Box, 
-           COL 31,50, 
-           LINE 15,22,
-           LINES 28,00 ,
-           SIZE 28,00 ,
-           BITMAP-HANDLE EXCEL-BMP,
-           BITMAP-NUMBER 3,
-           UNFRAMED,
-           SQUARE,
-           ENABLED e-st-des,
-           FLAT,
-           ID IS 568,
-           TITLE "Generazione di file E&xcel",
-           VALUE stampa-tipo-des,
-           AFTER PROCEDURE scr-stampa-Cb-1-AfterProcedure,
-           BEFORE PROCEDURE scr-stampa-Cb-1-BeforeProcedure, 
-           .
       * LABEL
        05
            lab4, 
@@ -7750,26 +7769,6 @@
            TITLE "Stampa Schede Note Consegna",
            .
 
-      * CHECK BOX
-       05
-           chk-excel-3, 
-           Check-Box, 
-           COL 31,50, 
-           LINE 18,22,
-           LINES 28,00 ,
-           SIZE 28,00 ,
-           BITMAP-HANDLE EXCEL-BMP,
-           BITMAP-NUMBER 3,
-           UNFRAMED,
-           SQUARE,
-           ENABLED e-st-note,
-           FLAT,
-           ID IS 23,
-           TITLE "Generazione di file E&xcel",
-           VALUE stampa-tipo-note,
-           AFTER PROCEDURE scr-stampa-Cb-1-AfterProcedure,
-           BEFORE PROCEDURE scr-stampa-Cb-1-BeforeProcedure, 
-           .
       * TOOLBAR
        01
            Form1-Tb-1a,
@@ -23375,18 +23374,18 @@
       * <TOTEM:END>
        scr-stampa-Cb-1-BeforeProcedure.
       * <TOTEM:PARA. scr-stampa-Cb-1-BeforeProcedure>
-           modify chk-excel, bitmap-number = 2.
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           modify chk-excel, bitmap-number = 2 
            .
       * <TOTEM:END>
        scr-stampa-Cb-1-AfterProcedure.
       * <TOTEM:PARA. scr-stampa-Cb-1-AfterProcedure>
-           modify chk-excel, bitmap-number = 1.
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           modify chk-excel, bitmap-number = 1 
            .
       * <TOTEM:END>
        pb-sib-BeforeProcedure.
@@ -23552,6 +23551,7 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CHECK-INTERVALLO     
            .
       * <TOTEM:END>
        chk-deposito-utf-BeforeProcedure.
@@ -24353,6 +24353,38 @@
            end-if.
 
            move 27 to key-status 
+           .
+      * <TOTEM:END>
+       chk-excel-2-BeforeProcedure.
+      * <TOTEM:PARA. chk-excel-2-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           modify chk-excel-2, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       chk-excel-3-BeforeProcedure.
+      * <TOTEM:PARA. chk-excel-3-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           modify chk-excel-3, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       chk-excel-2-AfterProcedure.
+      * <TOTEM:PARA. chk-excel-2-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           modify chk-excel-2, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       chk-excel-3-AfterProcedure.
+      * <TOTEM:PARA. chk-excel-3-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           modify chk-excel-3, bitmap-number = 1 
            .
       * <TOTEM:END>
 

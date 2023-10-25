@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 9 giugno 2023 15:50:50.
+       DATE-WRITTEN.        mercoledì 25 ottobre 2023 19:08:42.
        REMARKS.
       *{TOTEM}END
 
@@ -115,6 +115,43 @@
        78 78-ID-ef-st-tipo VALUE IS 10003. 
        77 STATUS-tgrupgdo  PIC  X(2).
            88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
+       77 ef-cod-da-buf    PIC  9(5).
+       77 ef-cod-a-buf     PIC  9(5).
+       77 EXCEL-BMP        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 SPUNTA2-BMP      PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 e-st-cli         PIC  9
+                  VALUE IS 1.
+       77 ef-st-tipo-buf   PIC  X(2).
+       77 ef-des-da-buf    PIC  9(5).
+       77 ef-des-a-buf     PIC  9(5).
+       77 e-st-note        PIC  9
+                  VALUE IS 0.
+       77 BLUE-DA-28X24-BMP            PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 BLUE-FINO-28X24-BMP          PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 stampa-tipo-des  PIC  9
+                  VALUE IS 0.
+       77 stampa-tipo-note PIC  9
+                  VALUE IS 0.
+       77 Form1-Tb-1-Handleaa
+                  USAGE IS HANDLE OF WINDOW.
+       77 E-ST-CERCA       PIC  9
+                  VALUE IS 1.
+       77 ef-st-naz-buf    PIC  X(3).
+       77 ef-st-prov-buf   PIC  X(2).
+       77 e-st-des         PIC  9
+                  VALUE IS 0.
+       77 lab-st-prov-buf  PIC  X(50)
+                  VALUE IS "Blank =TUTTI".
+       77 lab-st-naz-buf   PIC  X(50)
+                  VALUE IS "Blank = TUTTI".
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -283,6 +320,8 @@
           88 form-note-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-ricerca-FLAG-REFRESH PIC  9.
           88 scr-ricerca-FLAG-REFRESH  VALUE 1 FALSE 0. 
+       77 STATUS-scr-stampa-FLAG-REFRESH PIC  9.
+          88 scr-stampa-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
        77 TMP-DataSet1-tregioni-BUF     PIC X(190).
@@ -474,6 +513,12 @@
        78  78-ID-ef-note-2 VALUE 5056.
        78  78-ID-ef-note-3 VALUE 5057.
        78  78-ID-ef-note-4 VALUE 5058.
+       78  78-ID-ef-cod-da VALUE 5001.
+       78  78-ID-ef-cod-a VALUE 5002.
+       78  78-ID-ef-st-naz VALUE 5003.
+       78  78-ID-ef-st-prov VALUE 5004.
+       78  78-ID-ef-des-da VALUE 5005.
+       78  78-ID-ef-des-a VALUE 5006.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -3439,7 +3484,7 @@
            LINES 23,00 ,
            SIZE 24,00 ,
            BITMAP-HANDLE toolbar-bmp,
-           BITMAP-NUMBER 17,
+           BITMAP-NUMBER 6,
            FRAMED,
            SQUARE,
            ENABLED E-ANTEPRIMA,
@@ -3481,7 +3526,7 @@
            LINES 23,00 ,
            SIZE 24,00 ,
            BITMAP-HANDLE toolbar-bmp,
-           BITMAP-NUMBER 18,
+           BITMAP-NUMBER 7,
            FRAMED,
            SQUARE,
            ENABLED E-STAMPA,
@@ -3866,6 +3911,642 @@
            VISIBLE v-custom,
            .
 
+      * FORM
+       01 
+           scr-stampa, 
+           BEFORE PROCEDURE scr-stampa-BeforeProcedure,
+           AFTER PROCEDURE  scr-stampa-AFTER-SCREEN
+           .
+
+      * ENTRY FIELD
+       05
+           ef-cod-da, 
+           Entry-Field, 
+           COL 2,50, 
+           LINE 2,00,
+           LINES 1,33 ,
+           SIZE 6,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ID IS 78-ID-ef-cod-da,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 5,
+           VALUE ef-cod-da-buf,
+           AFTER PROCEDURE ef-cod-da-AfterProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-cod-a, 
+           Entry-Field, 
+           COL 25,00, 
+           LINE 2,00,
+           LINES 1,31 ,
+           SIZE 6,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ID IS 78-ID-ef-cod-a,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 5,
+           VALUE ef-cod-a-buf,
+           AFTER PROCEDURE ef-cod-a-AfterProcedure, 
+           .
+
+      * CHECK BOX
+       05
+           chk-excel, 
+           Check-Box, 
+           COL 31,50, 
+           LINE 1,67,
+           LINES 28,00 ,
+           SIZE 28,00 ,
+           BITMAP-HANDLE EXCEL-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           FLAT,
+           ID IS 2,
+           TITLE "Generazione di file E&xcel",
+           VALUE stampa-tipo,
+           AFTER PROCEDURE scr-stampa-Cb-1-AfterProcedure,
+           BEFORE PROCEDURE scr-stampa-Cb-1-BeforeProcedure, 
+           .
+      * CHECK BOX
+       05
+           chk-st-cli, 
+           Check-Box, 
+           COL 2,10, 
+           LINE 4,00,
+           LINES 20,00 ,
+           SIZE 20,00 ,
+           BITMAP-HANDLE SPUNTA2-BMP,
+           BITMAP-NUMBER 2,
+           FRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1001
+           FLAT,
+           ID IS 20,
+           VALUE e-st-cli,
+           AFTER PROCEDURE chk-st-cli-AfterProcedure,
+           BEFORE PROCEDURE chk-st-cli-BeforeProcedure, 
+           .
+      * ENTRY FIELD
+       05
+           ef-st-naz, 
+           Entry-Field, 
+           COL 11,00, 
+           LINE 6,00,
+           LINES 1,33 ,
+           SIZE 4,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED e-st-cli,
+           ID IS 78-ID-ef-st-naz,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE ef-st-naz-buf,
+           AFTER PROCEDURE ef-st-naz-AfterProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-st-prov, 
+           Entry-Field, 
+           COL 11,00, 
+           LINE 8,50,
+           LINES 1,33 ,
+           SIZE 4,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED e-st-cli,
+           ID IS 78-ID-ef-st-prov,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE ef-st-prov-buf,
+           AFTER PROCEDURE ef-st-prov-AfterProcedure, 
+           .
+
+      * CHECK BOX
+       05
+           chk-st-des, 
+           Check-Box, 
+           COL 2,10, 
+           LINE 11,44,
+           LINES 20,00 ,
+           SIZE 20,00 ,
+           BITMAP-HANDLE SPUNTA2-BMP,
+           BITMAP-NUMBER 1,
+           FRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1002
+           FLAT,
+           ID IS 8,
+           VALUE e-st-des,
+           AFTER PROCEDURE chk-st-des-AfterProcedure,
+           BEFORE PROCEDURE chk-st-des-BeforeProcedure, 
+           .
+      * ENTRY FIELD
+       05
+           ef-des-da, 
+           Entry-Field, 
+           COL 2,50, 
+           LINE 13,33,
+           LINES 1,33 ,
+           SIZE 6,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED e-st-des,
+           ID IS 78-ID-ef-des-da,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 5,
+           VALUE ef-des-da-buf,
+           AFTER PROCEDURE ef-des-da-AfterProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
+           ef-des-a, 
+           Entry-Field, 
+           COL 25,00, 
+           LINE 13,33,
+           LINES 1,31 ,
+           SIZE 6,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED e-st-des,
+           ID IS 78-ID-ef-des-a,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 5,
+           VALUE ef-des-a-buf,
+           AFTER PROCEDURE ef-des-a-AfterProcedure, 
+           .
+
+      * CHECK BOX
+       05
+           chk-excel-2, 
+           Check-Box, 
+           COL 31,50, 
+           LINE 13,00,
+           LINES 28,00 ,
+           SIZE 28,00 ,
+           BITMAP-HANDLE EXCEL-BMP,
+           BITMAP-NUMBER 3,
+           UNFRAMED,
+           SQUARE,
+           ENABLED e-st-des,
+           FLAT,
+           ID IS 568,
+           TITLE "Generazione di file E&xcel",
+           VALUE stampa-tipo-des,
+           AFTER PROCEDURE chk-excel-2-AfterProcedure,
+           BEFORE PROCEDURE chk-excel-2-BeforeProcedure, 
+           .
+      * CHECK BOX
+       05
+           chk-st-note, 
+           Check-Box, 
+           COL 2,10, 
+           LINE 16,17,
+           LINES 20,00 ,
+           SIZE 20,00 ,
+           BITMAP-HANDLE SPUNTA2-BMP,
+           BITMAP-NUMBER 1,
+           FRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1003
+           FLAT,
+           ID IS 22,
+           VALUE e-st-note,
+           AFTER PROCEDURE chk-st-note-AfterProcedure,
+           BEFORE PROCEDURE chk-st-note-BeforeProcedure, 
+           .
+      * CHECK BOX
+       05
+           chk-excel-3, 
+           Check-Box, 
+           COL 31,50, 
+           LINE 16,00,
+           LINES 28,00 ,
+           SIZE 28,00 ,
+           BITMAP-HANDLE EXCEL-BMP,
+           BITMAP-NUMBER 3,
+           UNFRAMED,
+           SQUARE,
+           ENABLED e-st-note,
+           FLAT,
+           ID IS 23,
+           TITLE "Generazione di file E&xcel",
+           VALUE stampa-tipo-note,
+           AFTER PROCEDURE chk-excel-3-AfterProcedure,
+           BEFORE PROCEDURE chk-excel-3-BeforeProcedure, 
+           .
+      * PUSH BUTTON
+       05
+           pb-sib, 
+           Push-Button, 
+           COL 19,50, 
+           LINE 18,44,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-OK-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1000,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 100,
+           AFTER PROCEDURE pb-sib-AfterProcedure, 
+           BEFORE PROCEDURE pb-sib-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-noa, 
+           Push-Button, 
+           COL 27,40, 
+           LINE 18,44,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE BOTTONE-CANCEL-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 27,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 200,
+           ESCAPE-BUTTON,
+           AFTER PROCEDURE pb-noa-AfterProcedure, 
+           BEFORE PROCEDURE pb-noa-BeforeProcedure, 
+           .
+
+      * BAR
+       05
+           Screen4-Br-1aaa, 
+           Bar,
+           COL 1,00, 
+           LINE 18,33,
+           SIZE 34,50 ,
+           ID IS 12,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8, 8),
+           SHADING (-1, 1),
+           WIDTH 2,
+           .
+
+      * LABEL
+       05
+           scr-elab-La-1, 
+           Label, 
+           COL 13,00, 
+           LINE 2,00,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           ID IS 1,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "Codice",
+           .
+
+      * LABEL
+       05
+           scr-stampa-blockpgm-1, 
+           Label, 
+           COL 3,20, 
+           LINE 19,39,
+           LINES 0,50 ,
+           SIZE 1,00 ,
+           ID IS 5,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "BlockPgm",
+           VISIBLE v-custom,
+           .
+
+      * LABEL
+       05
+           scr-stampa-Custom1-2, 
+           Label, 
+           COL 7,60, 
+           LINE 19,22,
+           LINES 0,50 ,
+           SIZE 2,30 ,
+           FONT IS Default-Font,
+           ID IS 9,
+           TRANSPARENT,
+           TITLE "CUSTOM CONTROL",
+           VISIBLE v-custom,
+           .
+
+      * BITMAP
+       05
+           Bitmap-freccia-daa, 
+           Bitmap, 
+           COL 9,00, 
+           LINE 2,00,
+           LINES 24,00 ,
+           SIZE 28,00 ,
+           TRANSPARENT-COLOR tr-color,
+           BITMAP-HANDLE BLUE-DA-28X24-BMP,
+           BITMAP-NUMBER 1,
+           ID IS 10,
+           Transparent-color TR-COLOR
+           .
+
+      * BITMAP
+       05
+           Bitmap-freccia-finoa, 
+           Bitmap, 
+           COL 21,50, 
+           LINE 2,00,
+           LINES 24,00 ,
+           SIZE 28,00 ,
+           TRANSPARENT-COLOR tr-color,
+           BITMAP-HANDLE BLUE-FINO-28X24-BMP,
+           BITMAP-NUMBER 1,
+           ID IS 13,
+           Transparent-color TR-COLOR
+           .
+
+      * LABEL
+       05
+           lab1, 
+           Label, 
+           COL 2,00, 
+           LINE 6,00,
+           LINES 1,22 ,
+           SIZE 8,00 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Nazione",
+           .
+
+      * LABEL
+       05
+           lab2, 
+           Label, 
+           COL 2,00, 
+           LINE 8,50,
+           LINES 1,22 ,
+           SIZE 8,00 ,
+           ID IS 16,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Provincia",
+           .
+
+      * LABEL
+       05
+           lab-st-naz, 
+           Label, 
+           COL 16,00, 
+           LINE 6,00,
+           LINES 2,00 ,
+           SIZE 19,00 ,
+           COLOR IS 5,
+           ID IS 17,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-st-naz-buf,
+           .
+
+      * LABEL
+       05
+           lab-st-prov, 
+           Label, 
+           COL 16,00, 
+           LINE 8,50,
+           LINES 2,00 ,
+           SIZE 19,00 ,
+           COLOR IS 5,
+           ID IS 18,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-st-prov-buf,
+           .
+
+      * LABEL
+       05
+           Form1-La-1abbbaab, 
+           Label, 
+           COL 8,20, 
+           LINE 3,94,
+           LINES 1,11 ,
+           SIZE 22,00 ,
+           COLOR IS 80,
+           ID IS 561,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TITLE "Filtri di stampa Fornitore",
+           .
+
+      * BAR
+       05
+           Screen4-Br-1aaaaa, 
+           Bar,
+           COL 30,50, 
+           LINE 4,67,
+           SIZE 5,00 ,
+           ID IS 563,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8, 8),
+           SHADING (-1, 1),
+           WIDTH 2,
+           .
+
+      * LABEL
+       05
+           Form1-La-1abbbaabaa, 
+           Label, 
+           COL 8,20, 
+           LINE 11,33,
+           LINES 1,11 ,
+           SIZE 20,00 ,
+           COLOR IS 80,
+           ID IS 564,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TITLE "Filtri di stampa Destini",
+           .
+
+      * BAR
+       05
+           Screen4-Br-1aaaab, 
+           Bar,
+           COL 4,70, 
+           LINE 12,06,
+           SIZE 2,80 ,
+           ID IS 562,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8, 8),
+           SHADING (-1, 1),
+           WIDTH 2,
+           .
+
+      * BAR
+       05
+           Screen4-Br-1aaaaaa, 
+           Bar,
+           COL 28,50, 
+           LINE 12,06,
+           SIZE 7,00 ,
+           ID IS 565,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8, 8),
+           SHADING (-1, 1),
+           WIDTH 2,
+           .
+
+      * LABEL
+       05
+           lab4, 
+           Label, 
+           COL 13,00, 
+           LINE 13,33,
+           LINES 1,33 ,
+           SIZE 7,00 ,
+           ID IS 569,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "Codice",
+           .
+
+      * BITMAP
+       05
+           Bitmap-freccia-daaa, 
+           Bitmap, 
+           COL 9,00, 
+           LINE 13,33,
+           LINES 24,00 ,
+           SIZE 28,00 ,
+           TRANSPARENT-COLOR tr-color,
+           BITMAP-HANDLE BLUE-DA-28X24-BMP,
+           BITMAP-NUMBER 1,
+           ID IS 570,
+           Transparent-color TR-COLOR
+           .
+
+      * BITMAP
+       05
+           Bitmap-freccia-finoaa, 
+           Bitmap, 
+           COL 21,50, 
+           LINE 13,33,
+           LINES 24,00 ,
+           SIZE 28,00 ,
+           TRANSPARENT-COLOR tr-color,
+           BITMAP-HANDLE BLUE-FINO-28X24-BMP,
+           BITMAP-NUMBER 1,
+           ID IS 571,
+           Transparent-color TR-COLOR
+           .
+
+      * BAR
+       05
+           Screen4-Br-1aaaaba, 
+           Bar,
+           COL 4,70, 
+           LINE 4,67,
+           SIZE 2,80 ,
+           ID IS 11,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (8, 8),
+           SHADING (-1, 1),
+           WIDTH 2,
+           .
+
+      * LABEL
+       05
+           lab5, 
+           Label, 
+           COL 5,20, 
+           LINE 16,22,
+           LINES 1,11 ,
+           SIZE 26,20 ,
+           ID IS 21,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TITLE "Stampa Schede Note Consegna",
+           .
+
+      * TOOLBAR
+       01
+           Form1-Tb-1aa,
+           .    
+
+      * PUSH BUTTON
+       05
+           TOOL-ESCIaa, 
+           Push-Button, 
+           COL 1,00, 
+           LINE 1,08,
+           LINES 23,00 ,
+           SIZE 24,00 ,
+           BITMAP-HANDLE toolbar-bmp,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           ENABLED E-ESCI,
+           EXCEPTION-VALUE 27,
+           FLAT,
+           ID IS 24,
+           SELF-ACT,
+           ESCAPE-BUTTON,
+           TITLE "&Esci",
+           .
+
+      * PUSH BUTTON
+       05
+           tool-st-cerca, 
+           Push-Button, 
+           COL 6,00, 
+           LINE 1,08,
+           LINES 23,00 ,
+           SIZE 24,00 ,
+           BITMAP-HANDLE TOOLBAR-BMP,
+           BITMAP-NUMBER 8,
+           UNFRAMED,
+           SQUARE,
+           ENABLED E-ST-CERCA,
+           EXCEPTION-VALUE 1004,
+           FLAT,
+           ID IS 25,
+           SELF-ACT,
+           TITLE "Cerca (F8)",
+           .
+
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
@@ -4183,6 +4864,10 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-OK-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-CANCEL-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, EXCEL-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, SPUNTA2-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, BLUE-DA-28X24-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, BLUE-FINO-28X24-BMP
       *    After-Program
            PERFORM anagr01-Ev-After-Program
            EXIT PROGRAM TOTEM-PgmStatus
@@ -4263,6 +4948,22 @@
            COPY RESOURCE "BOTTONE-CANCEL.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-CANCEL.BMP", 
                    GIVING BOTTONE-CANCEL-BMP.
+      * chk-excel
+           COPY RESOURCE "EXCEL.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "EXCEL.BMP", 
+                   GIVING EXCEL-BMP.
+      * chk-st-cli
+           COPY RESOURCE "SPUNTA2.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "SPUNTA2.BMP", 
+                   GIVING SPUNTA2-BMP.
+      * Bitmap-freccia-daa
+           COPY RESOURCE "BLUE-DA-28X24.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "BLUE-DA-28X24.BMP", 
+                   GIVING BLUE-DA-28X24-BMP.
+      * Bitmap-freccia-finoa
+           COPY RESOURCE "BLUE-FINO-28X24.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "BLUE-FINO-28X24.BMP", 
+                   GIVING BLUE-FINO-28X24-BMP.
            .
 
        INIT-RES.
@@ -8233,6 +8934,11 @@
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
 
            .
       * <TOTEM:END>
@@ -10934,6 +11640,11 @@
            DISPLAY form-note UPON form-note-Handle
       * <TOTEM:EPT. FORM:form-note, FORM:form-note, AfterDisplay>
       *<<** Customized_Default, SP-G, CST-BLOCKPGM, Disable **>>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
 
            .
       * <TOTEM:END>
@@ -11149,6 +11860,11 @@
            MOVE FORM1-HANDLE       TO LK-HND-WIN.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
            CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
 
            .
       * <TOTEM:END>
@@ -11246,6 +11962,234 @@
       * Paragrafo per la struttura del codice in AFTER sulla screen scr-ricerca
       ***---
        scr-ricerca-AFTER-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER CONTROLLO della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+       scr-stampa-Open-Routine.
+           PERFORM scr-stampa-Scrn
+           PERFORM scr-stampa-Proc
+           .
+
+       scr-stampa-Scrn.
+           PERFORM scr-stampa-Create-Win
+           PERFORM scr-stampa-Init-Value
+           PERFORM scr-stampa-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           DISPLAY Form1-Tb-1aa
+           PERFORM scr-stampa-DISPLAY
+           .
+
+       scr-stampa-Create-Win.
+           Display Floating GRAPHICAL WINDOW
+              LINES 19,50,
+              SIZE 34,50,
+              HEIGHT-IN-CELLS,
+              WIDTH-IN-CELLS,
+              COLOR 65793,
+              CONTROL FONT Verdana12-Occidentale,
+              LINK TO THREAD,
+              NO SCROLL,
+              TITLE-BAR,
+              TITLE titolo,
+              WITH SYSTEM MENU,
+              USER-GRAY,
+              USER-WHITE,
+              No WRAP,
+              EVENT PROCEDURE scr-stampa-Event-Proc,
+              HANDLE IS scr-stampa-Handle,
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+           DISPLAY TOOL-BAR 
+              LINES 2,67,   
+              HANDLE IN Form1-Tb-1-Handleaa
+           DISPLAY Form1-Tb-1aa UPON Form1-Tb-1-Handleaa
+
+      * Status-bar
+           DISPLAY scr-stampa UPON scr-stampa-Handle
+      * DISPLAY-COLUMNS settings
+           .
+
+       scr-stampa-PROC.
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, BeforeAccept>
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT scr-stampa
+                 ON EXCEPTION
+                    PERFORM scr-stampa-Evaluate-Func
+                 MOVE 4 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY scr-stampa-Handle
+           INITIALIZE Key-Status
+           .
+
+       scr-stampa-Evaluate-Func.
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM scr-stampa-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM scr-stampa-Exit
+                 END-IF
+              WHEN Key-Status = 1001
+                 PERFORM chk-st-cli-LinkTo
+              WHEN Key-Status = 1002
+                 PERFORM chk-st-des-LinkTo
+              WHEN Key-Status = 1003
+                 PERFORM chk-st-note-LinkTo
+              WHEN Key-Status = 1000
+                 PERFORM pb-sib-LinkTo
+              WHEN Key-Status = 1004
+                 PERFORM tool-st-cerca-LinkTo
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       scr-stampa-CLEAR.
+           PERFORM scr-stampa-INIT-VALUE
+           PERFORM scr-stampa-DISPLAY
+           .
+
+       scr-stampa-DISPLAY.
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY Form1-Tb-1aa
+           DISPLAY scr-stampa UPON scr-stampa-Handle
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       scr-stampa-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       scr-stampa-Init-Data.
+           MOVE 4 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+           .
+
+       scr-stampa-Init-Value.
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, SetDefault>
+      * <TOTEM:END>
+           PERFORM scr-stampa-FLD-TO-BUF
+           .
+
+
+       scr-stampa-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       scr-stampa-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       scr-stampa-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       scr-stampa-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:scr-stampa, FORM:scr-stampa, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       scr-stampa-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform scr-stampa-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       scr-stampa-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM scr-stampa-SHOW-MSG-ROUTINE
+           .
+
+       scr-stampa-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM scr-stampa-DISPLAY-MESSAGE
+           .
+
+       scr-stampa-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       scr-stampa-Save-Status.
+           .             
+
+       scr-stampa-Restore-Status.
+           .
+
+
+      * Paragrafo per la struttura del codice in BEFORE sulla screen scr-stampa
+      ***---
+       scr-stampa-BEFORE-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione settaggio keyboard "." ---> ","
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen scr-stampa
+      ***---
+       scr-stampa-AFTER-SCREEN.
            evaluate control-id
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
@@ -11526,6 +12470,27 @@
            perform scr-ricerca-BEFORE-SCREEN
            .
 
+       scr-stampa-BeforeProcedure.
+           EVALUATE Control-Id
+           WHEN 5001 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5002 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5003 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5004 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5005 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5006 MOVE "." to TOTEM-HINT-TEXT
+           WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
+           END-EVALUATE
+           EVALUATE Control-Id
+           When 5001 PERFORM ef-cod-da-BeforeProcedure
+           When 5002 PERFORM ef-cod-a-BeforeProcedure
+           When 5003 PERFORM ef-st-naz-BeforeProcedure
+           When 5004 PERFORM ef-st-prov-BeforeProcedure
+           When 5005 PERFORM ef-des-da-BeforeProcedure
+           When 5006 PERFORM ef-des-a-BeforeProcedure
+           END-EVALUATE
+           perform scr-stampa-BEFORE-SCREEN
+           .
+
        Form1-Event-Proc.
            .
 
@@ -11597,7 +12562,8 @@
            copy "color-custom.cpy".
            Copy "utydata.cpy".
            Copy "apri-note.cpy".
-           copy "status.cpy" 
+           copy "status.cpy".    
+           copy "stampa-procedure-f.cpy" 
            .
       * <TOTEM:END>
 
@@ -11610,7 +12576,10 @@
 
            CALL "w$bitmap" USING WBITMAP-DESTROY, elemento-bmp.
            delete file tmp-nforn.
-           delete file tmp-nforn-dest 
+           delete file tmp-nforn-dest.
+           SET LK-BL-CANCELLAZIONE TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM 
            .
       * <TOTEM:END>
        anagr01-Ev-Before-Program.
@@ -11668,6 +12637,7 @@
            MOVE 0                TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
                      font-evidenzia-griglia, WFONT-DATA
+           move LK-BL-PROG-ID    TO COMO-PROG-ID 
            .
       * <TOTEM:END>
        NUOVO-LinkTo.
@@ -11701,10 +12671,11 @@
       * <TOTEM:END>
        ANTEPRIMA-LinkTo.
       * <TOTEM:PARA. ANTEPRIMA-LinkTo>
-           INQUIRE TOOL-ANTEPRIMA, ENABLED IN E-ANTEPRIMA.
-           IF E-ANTEPRIMA = 1
-                PERFORM ANTEPRIMA
-           END-IF 
+           inquire tool-anteprima, enabled in e-anteprima.
+           if e-anteprima = 1
+              set anteprima to true
+              perform SCR-STAMPA-OPEN-ROUTINE
+           end-if 
            .
       * <TOTEM:END>
        TOOL-MODIFICA-LinkTo.
@@ -11718,10 +12689,11 @@
       * <TOTEM:END>
        STAMPA-LinkTo.
       * <TOTEM:PARA. STAMPA-LinkTo>
-           INQUIRE TOOL-STAMPA, ENABLED IN E-STAMPA
-           IF E-STAMPA = 1
-                PERFORM STAMPA
-           END-IF 
+           inquire tool-stampa, enabled in e-stampa.
+           if e-stampa = 1
+              set stampa to true
+              perform SCR-STAMPA-OPEN-ROUTINE
+           end-if 
            .
       * <TOTEM:END>
        TOOL-PRIMO.
@@ -11764,10 +12736,12 @@
       * <TOTEM:PARA. TOOL-MODIFICA-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        TOOL-MODIFICA-AfterProcedure.
       * <TOTEM:PARA. TOOL-MODIFICA-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
@@ -11789,16 +12763,19 @@
       * <TOTEM:PARA. TOOL-ORD-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        TOOL-ORD-AfterProcedure.
       * <TOTEM:PARA. TOOL-ORD-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        ef-codice-BeforeProcedure.
       * <TOTEM:PARA. ef-codice-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
 
@@ -11813,6 +12790,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -11858,10 +12836,12 @@
       * <TOTEM:PARA. ef-ragsoc-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-ragsoc-2-BeforeProcedure.
       * <TOTEM:PARA. ef-ragsoc-2-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11870,10 +12850,12 @@
       * <TOTEM:PARA. ef-indirizzo-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cap-BeforeProcedure.
       * <TOTEM:PARA. ef-cap-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11882,10 +12864,12 @@
       * <TOTEM:PARA. ef-localita-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-prov-BeforeProcedure.
       * <TOTEM:PARA. ef-prov-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11894,10 +12878,12 @@
       * <TOTEM:PARA. ef-nazione-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-tel-1-BeforeProcedure.
       * <TOTEM:PARA. ef-tel-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11906,10 +12892,12 @@
       * <TOTEM:PARA. ef-tel-2-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-fax-BeforeProcedure.
       * <TOTEM:PARA. ef-fax-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11918,10 +12906,12 @@
       * <TOTEM:PARA. ef-mail-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-url-BeforeProcedure.
       * <TOTEM:PARA. ef-url-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11930,10 +12920,12 @@
       * <TOTEM:PARA. ef-referente-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-vettore-BeforeProcedure.
       * <TOTEM:PARA. ef-vettore-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11942,10 +12934,12 @@
       * <TOTEM:PARA. ef-note-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-agg-BeforeProcedure.
       * <TOTEM:PARA. ef-note-agg-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11954,10 +12948,12 @@
       * <TOTEM:PARA. ef-codfis-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-piva-BeforeProcedure.
       * <TOTEM:PARA. ef-piva-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11966,10 +12962,12 @@
       * <TOTEM:PARA. ef-iva-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-pag-BeforeProcedure.
       * <TOTEM:PARA. ef-pag-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11978,10 +12976,12 @@
       * <TOTEM:PARA. ef-cab-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-abi-BeforeProcedure.
       * <TOTEM:PARA. ef-abi-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -11995,10 +12995,12 @@
               move 1   to riga-nuova
            end-if.
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-ragsoc-2-d-BeforeProcedure.
       * <TOTEM:PARA. ef-ragsoc-2-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12007,10 +13009,12 @@
       * <TOTEM:PARA. ef-indirizzo-d-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-cap-d-BeforeProcedure.
       * <TOTEM:PARA. ef-cap-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12019,10 +13023,12 @@
       * <TOTEM:PARA. ef-localita-d-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-prov-d-BeforeProcedure.
       * <TOTEM:PARA. ef-prov-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12031,10 +13037,12 @@
       * <TOTEM:PARA. ef-nazione-d-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-telef-1-d-BeforeProcedure.
       * <TOTEM:PARA. ef-telef-1-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12043,10 +13051,12 @@
       * <TOTEM:PARA. ef-telef-2-d-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-fax-d-BeforeProcedure.
       * <TOTEM:PARA. ef-fax-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12055,10 +13065,12 @@
       * <TOTEM:PARA. ef-mail-d-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-referente-d-BeforeProcedure.
       * <TOTEM:PARA. ef-referente-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12067,10 +13079,12 @@
       * <TOTEM:PARA. ef-vettore-d-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-1-BeforeProcedure.
       * <TOTEM:PARA. ef-note-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12079,16 +13093,19 @@
       * <TOTEM:PARA. ef-note-2-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-3-BeforeProcedure.
       * <TOTEM:PARA. ef-note-3-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-note-4-BeforeProcedure.
       * <TOTEM:PARA. ef-note-4-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12101,6 +13118,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12117,6 +13135,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12129,6 +13148,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12145,6 +13165,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12157,6 +13178,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12173,6 +13195,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12185,6 +13208,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12201,6 +13225,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12213,6 +13238,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12229,6 +13255,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12241,6 +13268,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12257,6 +13285,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12269,6 +13298,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12291,6 +13321,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12303,6 +13334,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12325,6 +13357,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12337,6 +13370,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12353,6 +13387,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12365,6 +13400,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12381,6 +13417,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12393,6 +13430,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12409,6 +13447,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12421,6 +13460,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12437,6 +13477,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12449,6 +13490,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12465,6 +13507,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12477,6 +13520,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12493,6 +13537,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12505,6 +13550,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12521,6 +13567,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12533,6 +13580,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12549,6 +13597,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12561,6 +13610,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12577,6 +13627,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12589,6 +13640,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12605,6 +13657,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12617,6 +13670,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12633,6 +13687,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12647,6 +13702,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12655,10 +13711,12 @@
       * <TOTEM:PARA. cbo-stato-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        cbo-stato-AfterProcedure.
       * <TOTEM:PARA. cbo-stato-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
@@ -12667,10 +13725,12 @@
       * <TOTEM:PARA. chk-utf-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        chk-utf-AfterProcedure.
       * <TOTEM:PARA. chk-utf-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
@@ -12684,6 +13744,7 @@
       * <TOTEM:PARA. Form1-DaEf-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Form1-DaEf-1-AfterProcedure.
@@ -12695,6 +13756,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
@@ -12719,10 +13781,12 @@
       * <TOTEM:PARA. cbo-stato-d-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        cbo-stato-d-AfterProcedure.
       * <TOTEM:PARA. cbo-stato-d-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
@@ -12776,10 +13840,12 @@
       * <TOTEM:PARA. Form1-DaRb-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Form1-DaRb-1-AfterProcedure.
       * <TOTEM:PARA. Form1-DaRb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
@@ -12788,10 +13854,12 @@
       * <TOTEM:PARA. ef-ref-ord-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-tel-ord-BeforeProcedure.
       * <TOTEM:PARA. ef-tel-ord-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12800,10 +13868,12 @@
       * <TOTEM:PARA. ef-mail-ord-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-perce-premi-BeforeProcedure.
       * <TOTEM:PARA. ef-perce-premi-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -12818,6 +13888,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12830,6 +13901,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -12852,6 +13924,7 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
@@ -12865,6 +13938,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -13034,10 +14108,12 @@
       * <TOTEM:PARA. Form1-DaCb-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Form1-DaCb-1-AfterProcedure.
       * <TOTEM:PARA. Form1-DaCb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
@@ -13046,16 +14122,19 @@
       * <TOTEM:PARA. Form1-Cm-1-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        Form1-Cm-1-AfterProcedure.
       * <TOTEM:PARA. Form1-Cm-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
        ef-pag-d-BeforeProcedure.
       * <TOTEM:PARA. ef-pag-d-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -13070,12 +14149,14 @@
               END-IF
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
            .
       * <TOTEM:END>
 
        ef-localitaa-BeforeProcedure.
       * <TOTEM:PARA. ef-localitaa-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
@@ -13088,6 +14169,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
 
@@ -13122,10 +14204,12 @@
       * <TOTEM:PARA. ef-ricerca-piva-BeforeProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
        ef-ricerca-piva-AfterProcedure.
       * <TOTEM:PARA. ef-ricerca-piva-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
@@ -13169,6 +14253,285 @@
        pb-ricerca-cancel-AfterProcedure.
       * <TOTEM:PARA. pb-ricerca-cancel-AfterProcedure>
            modify pb-ricerca-cancel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       ef-cod-da-BeforeProcedure.
+      * <TOTEM:PARA. ef-cod-da-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       ef-cod-da-AfterProcedure.
+      * <TOTEM:PARA. ef-cod-da-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CHECK-INTERVALLO.
+           move 0 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       ef-cod-a-BeforeProcedure.
+      * <TOTEM:PARA. ef-cod-a-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       ef-cod-a-AfterProcedure.
+      * <TOTEM:PARA. ef-cod-a-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CHECK-INTERVALLO.
+           move 0 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       scr-stampa-Cb-1-BeforeProcedure.
+      * <TOTEM:PARA. scr-stampa-Cb-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           modify chk-excel, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       scr-stampa-Cb-1-AfterProcedure.
+      * <TOTEM:PARA. scr-stampa-Cb-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           modify chk-excel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       chk-st-cli-LinkTo.
+      * <TOTEM:PARA. chk-st-cli-LinkTo>
+           if e-st-cli = 1
+              modify chk-st-cli, bitmap-number = 2
+           else
+              modify chk-st-cli, bitmap-number = 1
+              move spaces to ef-st-naz-buf
+              move spaces to ef-st-prov-buf
+              move "Blank = TUTTE" to lab-st-naz-buf
+              move "Blank = TUTTE" to lab-st-prov-buf
+           end-if.
+
+           display ef-st-naz ef-st-prov 
+                   lab-st-naz lab-st-prov 
+           .
+      * <TOTEM:END>
+       chk-st-des-LinkTo.
+      * <TOTEM:PARA. chk-st-des-LinkTo>
+           if e-st-des = 1
+              modify chk-st-des,  bitmap-number = 2
+              modify chk-excel-2, bitmap-number = 1
+           else
+              modify chk-st-des,  bitmap-number = 1 
+              modify chk-excel-2, bitmap-number = 3
+              move 0              to stampa-tipo-des
+              move 0              to ef-des-da-buf
+              move 99999          to ef-des-a-buf
+           end-if.
+
+           display ef-des-da ef-des-a.
+           modify chk-excel-2, 
+                  value = stampa-tipo-des, 
+                enabled = e-st-des 
+           .
+      * <TOTEM:END>
+       ef-des-da-BeforeProcedure.
+      * <TOTEM:PARA. ef-des-da-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       ef-des-da-AfterProcedure.
+      * <TOTEM:PARA. ef-des-da-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       ef-des-a-BeforeProcedure.
+      * <TOTEM:PARA. ef-des-a-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       ef-des-a-AfterProcedure.
+      * <TOTEM:PARA. ef-des-a-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CHECK-INTERVALLO 
+           .
+      * <TOTEM:END>
+       chk-st-note-LinkTo.
+      * <TOTEM:PARA. chk-st-note-LinkTo>
+           if e-st-note = 1
+              modify chk-st-note, bitmap-number = 2
+              modify chk-excel-3, bitmap-number = 1
+           else
+              modify chk-st-note, bitmap-number = 1
+              modify chk-excel-3, bitmap-number = 3
+              move 0              to stampa-tipo-note
+           end-if.
+
+           modify chk-excel-3,
+                  value = stampa-tipo-note,
+                enabled = e-st-note 
+           .
+      * <TOTEM:END>
+       pb-sib-BeforeProcedure.
+      * <TOTEM:PARA. pb-sib-BeforeProcedure>
+           modify pb-sib, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-sib-AfterProcedure.
+      * <TOTEM:PARA. pb-sib-AfterProcedure>
+           modify pb-sib, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-sib-LinkTo.
+      * <TOTEM:PARA. pb-sib-LinkTo>
+           perform SCR-STAMPA-BOTTON-SI-PRESSED 
+           .
+      * <TOTEM:END>
+       pb-noa-BeforeProcedure.
+      * <TOTEM:PARA. pb-noa-BeforeProcedure>
+           modify pb-noa, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-noa-AfterProcedure.
+      * <TOTEM:PARA. pb-noa-AfterProcedure>
+           modify pb-noa, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       ef-st-naz-BeforeProcedure.
+      * <TOTEM:PARA. ef-st-naz-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       ef-st-prov-BeforeProcedure.
+      * <TOTEM:PARA. ef-st-prov-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           move 1 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       ef-st-naz-AfterProcedure.
+      * <TOTEM:PARA. ef-st-naz-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CHECK-INTERVALLO.
+           move 0 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       ef-st-prov-AfterProcedure.
+      * <TOTEM:PARA. ef-st-prov-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           perform CHECK-INTERVALLO.
+           move 0 to e-st-cerca.
+           modify tool-st-cerca, enabled = e-st-cerca 
+           .
+      * <TOTEM:END>
+       chk-excel-2-BeforeProcedure.
+      * <TOTEM:PARA. chk-excel-2-BeforeProcedure>
+           modify chk-excel-2, bitmap-number = 2.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-excel-2-AfterProcedure.
+      * <TOTEM:PARA. chk-excel-2-AfterProcedure>
+           modify chk-excel-2, bitmap-number = 1.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-excel-3-BeforeProcedure.
+      * <TOTEM:PARA. chk-excel-3-BeforeProcedure>
+           modify chk-excel-3, bitmap-number = 2.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-excel-3-AfterProcedure.
+      * <TOTEM:PARA. chk-excel-3-AfterProcedure>
+           modify chk-excel-3, bitmap-number = 1.
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       tool-st-cerca-LinkTo.
+      * <TOTEM:PARA. tool-st-cerca-LinkTo>
+           inquire tool-st-cerca, enabled in e-cerca
+           if e-cerca = 1
+              perform CERCA
+           end-if 
+           .
+      * <TOTEM:END>
+       chk-st-cli-BeforeProcedure.
+      * <TOTEM:PARA. chk-st-cli-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-st-des-BeforeProcedure.
+      * <TOTEM:PARA. chk-st-des-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-st-note-BeforeProcedure.
+      * <TOTEM:PARA. chk-st-note-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-st-cli-AfterProcedure.
+      * <TOTEM:PARA. chk-st-cli-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-st-des-AfterProcedure.
+      * <TOTEM:PARA. chk-st-des-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-st-note-AfterProcedure.
+      * <TOTEM:PARA. chk-st-note-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 
