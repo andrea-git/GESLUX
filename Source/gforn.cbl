@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 25 ottobre 2023 19:08:42.
+       DATE-WRITTEN.        giovedì 26 ottobre 2023 12:05:12.
        REMARKS.
       *{TOTEM}END
 
@@ -12563,7 +12563,8 @@
            Copy "utydata.cpy".
            Copy "apri-note.cpy".
            copy "status.cpy".    
-           copy "stampa-procedure-f.cpy" 
+           copy "stampa-procedure-f.cpy".  
+           copy "calcola-colore-trasparente.cpy" 
            .
       * <TOTEM:END>
 
@@ -12585,6 +12586,7 @@
        anagr01-Ev-Before-Program.
       * <TOTEM:PARA. anagr01-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
+           perform CALCOLA-COLORE-TRASPARENTE.
 
            accept path-tmp-nforn   from environment "PATH_ST"
 

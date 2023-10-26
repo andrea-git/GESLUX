@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A1917054-632-6024173
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A1A10419-757-2055115010
 
 {{@DESCRIPTION:
 
@@ -18198,7 +18198,8 @@ BEGIN-TEXT
            Copy "utydata.cpy".
            Copy "apri-note.cpy".
            copy "status.cpy".    
-           copy "stampa-procedure-f.cpy".
+           copy "stampa-procedure-f.cpy".  
+           copy "calcola-colore-trasparente.cpy".
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -18217,7 +18218,8 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = anagr01-Ev-Before-Program
 BEGIN-TEXT
-      *<<** Customized_Default, SP-G, CST-BLOCKPGM **>>
+      *<<** Customized_Default, SP-G, CST-BLOCKPGM **>>  
+           perform CALCOLA-COLORE-TRASPARENTE.
 
            accept path-tmp-nforn   from environment "PATH_ST"
 
