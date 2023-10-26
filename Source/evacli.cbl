@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 21 dicembre 2022 12:06:44.
+       DATE-WRITTEN.        giovedì 26 ottobre 2023 10:54:22.
        REMARKS.
       *{TOTEM}END
 
@@ -13375,8 +13375,17 @@
               modify scr-elab-tprev-handle, visible video-on
               move user-codi             to link-tprev-user
            else
-              move "MACROBATCH" to link-tprev-user
-           end-if.            
+              move "MACROBATCH" to link-tprev-user       
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga       
+              string r-output            delimited size
+                     "RICHIAMO TPREV"    delimited size
+               into lm-riga
+              end-string
+              write lm-riga 
+           end-if.          
+
            move scr-elab-tprev-handle to link-tprev-handle.
            call   "tprev-p"  using tprev-linkage.
            cancel "tprev-p".
@@ -14090,6 +14099,17 @@
                  modify pb-genera,       visible false
                  modify lab-attendere,   visible true 
               end-if                                
+              
+              if richiamoBatch        
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga       
+                 string r-output                  delimited size
+                        "AGGIORNA-STATO-MASTER"   delimited size
+                  into lm-riga
+                 end-string
+                 write lm-riga 
+              end-if
 
               set no-mail to true
               set ordine-evaso to true
@@ -14117,6 +14137,21 @@
                     move selprint-stampante to stordc-stampante
                  end-if
 
+                 if richiamoBatch        
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga       
+                    string r-output                delimited size
+                           "STAMPA EVASIONI - "    delimited size
+                           "TIPOLOGIA CLIENTE: "   delimited size
+                           el-tipocli(idx-tipocli) delimited size
+                           " - STAMPANTE: "        delimited size
+                           selprint-stampante      delimited size
+                     into lm-riga
+                    end-string
+                    write lm-riga 
+                 end-if
+
                  move el-tipocli(idx-tipocli) to stordc-tipocli
                  set stordc-evasioni to true
                  call   "stordcp" using stordcp-limiti
@@ -14133,9 +14168,21 @@
                  modify lab-attendere,   visible false
               end-if
 
-              perform DELETE-LOCKFILE
+              perform DELETE-LOCKFILE  
               perform SCR-ELAB-TPREV-OPEN-ROUTINE
-                                              
+                                                      
+              
+              if richiamoBatch        
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga       
+                 string r-output                  delimited size
+                        "AGGIORNA-STATO-MASTER"   delimited size
+                  into lm-riga
+                 end-string
+                 write lm-riga 
+              end-if
+                     
               set no-mail to true
               set ordine-evaso to true
               perform varying idx-m from 1 by 1 
