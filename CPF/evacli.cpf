@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A1A8420-909-1548213963
+PROGRAM_UNIQUE_CODE=TOTEM-7E7A1A10857-354-561411693
 
 {{@DESCRIPTION:
 
@@ -10887,13 +10887,18 @@ BEGIN-TEXT
                  if richiamoBatch        
                     call   "set-ini-log" using r-output
                     cancel "set-ini-log"
+                 
+                    move el-tipocli(idx-tipocli) to tcl-codice
+                    read ttipocli no lock
+                    move tcl-stampante to selprint-stampante
+
                     initialize lm-riga       
                     string r-output                delimited size
                            "STAMPA EVASIONI - "    delimited size
                            "TIPOLOGIA CLIENTE: "   delimited size
                            el-tipocli(idx-tipocli) delimited size
                            " - STAMPANTE: "        delimited size
-                           selprint-stampante      delimited size
+                           tcl-stampante           delimited size
                      into lm-riga
                     end-string
                     write lm-riga 

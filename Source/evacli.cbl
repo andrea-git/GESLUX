@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 26 ottobre 2023 10:54:22.
+       DATE-WRITTEN.        giovedì 26 ottobre 2023 12:32:00.
        REMARKS.
       *{TOTEM}END
 
@@ -14140,13 +14140,18 @@
                  if richiamoBatch        
                     call   "set-ini-log" using r-output
                     cancel "set-ini-log"
+                 
+                    move el-tipocli(idx-tipocli) to tcl-codice
+                    read ttipocli no lock
+                    move tcl-stampante to selprint-stampante
+
                     initialize lm-riga       
                     string r-output                delimited size
                            "STAMPA EVASIONI - "    delimited size
                            "TIPOLOGIA CLIENTE: "   delimited size
                            el-tipocli(idx-tipocli) delimited size
                            " - STAMPANTE: "        delimited size
-                           selprint-stampante      delimited size
+                           tcl-stampante           delimited size
                      into lm-riga
                     end-string
                     write lm-riga 
