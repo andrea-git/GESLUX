@@ -37,6 +37,7 @@
            copy "tsetinvio.sl".
            copy "usr-tel.sl".
            COPY "lineseq-mail.sl".
+           copy "agenti.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -48,6 +49,7 @@
            copy "tsetinvio.fd".
            copy "usr-tel.fd".
            COPY "lineseq-mail.fd".
+           copy "agenti.fd".
 
        WORKING-STORAGE SECTION.
            copy "mail.def".
@@ -67,6 +69,7 @@
        77  status-tsetinvio    pic xx.  
        77  status-usr-tel      pic xx.
        77  status-clienti      pic xx.
+       77  status-agenti       pic xx.
                                         
        77  status-lineseq-mail pic xx.
        77  path-lineseq-mail   pic x(256).
@@ -177,7 +180,7 @@
 
       ***---
        OPEN-FILES.
-           open input tordini tvettori usr-tel clienti.
+           open input tordini tvettori usr-tel clienti agenti.
            open i-o   stato-invio.
 
       ***---
@@ -375,6 +378,35 @@
                          replacing trailing low-value by spaces
                  move como-cc to LinkAddressCC(CountChar + 1:)
               end-if
+              move spaces to como-cc
+              set cli-tipo-C to true
+              move tor-cod-cli to cli-codice
+              read clienti no lock
+                   invalid continue
+               not invalid
+                   if cli-agente > 0
+                      move cli-agente to age-codice
+                      read agenti no lock 
+                           invalid continue
+                       not invalid move age-email  to como-cc
+                      end-read
+                   end-if
+              end-read
+                   
+              if como-cc not = spaces
+                 inspect LinkAddressCC 
+                         replacing trailing spaces by low-value
+                 move 0 to CountChar
+                 inspect LinkAddressCC tallying CountChar 
+                         for characters before low-value
+                 inspect LinkAddressCC 
+                         replacing trailing spaces by low-value
+                 add 1 to CountChar
+                 move ";" to LinkAddressCC(CountChar:1)
+                 inspect LinkAddressCC 
+                         replacing trailing low-value by spaces
+                 move como-cc to LinkAddressCC(CountChar + 1:)
+              end-if
 
               move vet-mail-solleciti to LinkAddress
               move stbolle-path       to LinkAttach
@@ -401,7 +433,7 @@
 
       ***---
        CLOSE-FILES.
-           close tordini stato-invio tvettori usr-tel clienti.
+           close tordini stato-invio tvettori usr-tel clienti agenti.
 
       ***---
        EXIT-PGM.
