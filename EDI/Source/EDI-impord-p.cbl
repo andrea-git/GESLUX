@@ -61,6 +61,7 @@
        copy "lockfile.sl".   
        copy "log-macrobatch.sl".
        copy "tregioni.sl".
+       copy "tscorte.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -102,6 +103,7 @@
        copy "log-macrobatch.fd".
        copy "tregioni.fd".        
        copy "anacap.fd".
+       copy "tscorte.fd".
 
        WORKING-STORAGE SECTION.
       *    COPY
@@ -111,7 +113,9 @@
            copy "link-chk-ord-cli.def".
            copy "tratta-numerico.def".
            copy "recupero-prezzi-tradizionale.def".
-           copy "log-macrobatch.def".
+           copy "log-macrobatch.def". 
+           copy "costo-medio.def".
+           copy "imposte.def".
 
       *    COSTANTI
        78  titolo                value "Importazione ordini EDI". 
@@ -151,6 +155,7 @@
        77  status-log-macrobatch pic xx.
        77  status-tregioni       pic xx.
        77  status-anacap         pic xx.
+       77  status-tscorte        pic xx.
                                             
        77  path-logfile          pic x(256).
        77  path-log-macrobatch   pic x(256).
@@ -780,7 +785,7 @@
                  open input clienti tparamge note param articoli progmag 
                             timballi timbalqta ttipocli  tpromo rpromo 
                             listini rmovmag locali blister cli-prg tprov
-                            tregioni anacap
+                            tregioni anacap tscorte
               end-if
            end-if.
 
@@ -1989,6 +1994,24 @@
               move emro-prz-GESLUX to emro-prz
            end-if.
 
+           move art-scorta to sco-codice.
+           read tscorte no lock invalid continue end-read.
+           if sco-blocco-EDI-si
+              initialize prg-chiave replacing numeric data by zeroes
+                                         alphanumeric data by spaces
+              move emro-cod-articolo to prg-cod-articolo 
+              read progmag no lock invalid continue end-read
+              perform CALCOLA-COSTO-MP-COMPLETO
+              if emro-prz-EDI < costo-mp        
+                 set emro-prezzo-non-valido to true
+                 set emro-bloccato to true
+
+                 set emto-bloccato to true
+                 set emto-prz-ko   to true
+                 rewrite emto-rec
+              end-if
+           end-if.
+
            compute prz-minimo-kg = emro-prg-peso * 0,5.
            if prz-minimo-kg > emro-prz-EDI      
               set emro-prezzo-non-valido to true
@@ -2623,7 +2646,7 @@
            close EDI-clides clienti destini tparamge EDI-mtordini note
                  param EDI-mrordini articoli progmag timballi timbalqta
                  rpromo tpromo listini ttipocli rmovmag tprov locali 
-                 blister cli-prg lockfile tregioni anacap.
+                 blister cli-prg lockfile tregioni anacap tscorte.
 
       ***---
        EXIT-PGM.
@@ -3795,3 +3818,7 @@ BLISTR              end-if
            copy "trova-parametro.cpy".
            copy "tratta-numerico.cpy".
            copy "setta-inizio-riga.cpy".
+           copy "costo-medio.cpy".
+
+      ***---
+       RECUPERO-ANAGRAFICA.

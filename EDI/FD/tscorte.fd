@@ -148,7 +148,10 @@
                    15 sco-moq          PIC  9.
                        88 sco-moq-si VALUE IS 1. 
                        88 sco-moq-no VALUE IS 0. 
-                   15 sco-num-vuoto-3  PIC  9(17).
+                   15 sco-blocco-EDI   PIC  9.
+                       88 sco-blocco-EDI-si VALUE IS 1. 
+                       88 sco-blocco-EDI-no VALUE IS 0. 
+                   15 sco-num-vuoto-3  PIC  9(16).
                    15 sco-alfa-vuoto-1 PIC  X(20).
                    15 sco-alfa-vuoto-2 PIC  X(20).
                    15 sco-alfa-vuoto-3 PIC  X(20).
