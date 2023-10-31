@@ -2012,11 +2012,11 @@
               end-if
            end-if.
 
-           compute prz-minimo-kg = emro-prg-peso * 0,5.
+           compute prz-minimo-kg = emro-prg-peso * 0,5
            if prz-minimo-kg > emro-prz-EDI      
               set emro-prezzo-non-valido to true
               set emro-bloccato to true
-
+           
               set emto-bloccato to true
               set emto-prz-ko   to true
               rewrite emto-rec
