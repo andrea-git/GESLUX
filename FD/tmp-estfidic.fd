@@ -19,3 +19,11 @@
                10 tefc-residuo     PIC  s9(13)v99.
       *(( XFD NAME = tefc-cliente_1_2_2 ))
                10 tefc-fuori-residuo           PIC  x(20).
+      *(( XFD NAME = tefc-cliente_1_2_2 ))
+               10 tefc-fido-cerved PIC  s9(13)v99.
+      *(( XFD NAME = tefc-cliente_1_2_2 ))
+               10 tefc-fido-ass    PIC  s9(13)v99.
+      *(( XFD NAME = tefc-cliente_1_2_2 ))
+               10 tefc-fido-commle PIC  s9(13)v99.
+      *(( XFD NAME = tefc-cliente_1_2_2 ))
+               10 tefc-grade       PIC  99.

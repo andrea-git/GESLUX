@@ -115,7 +115,6 @@
            copy "recupero-prezzi-tradizionale.def".
            copy "log-macrobatch.def". 
            copy "costo-medio.def".
-           copy "imposte.def".
 
       *    COSTANTI
        78  titolo                value "Importazione ordini EDI". 

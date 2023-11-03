@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          estfidic.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 8 agosto 2023 18:24:42.
+       DATE-WRITTEN.        venerdì 3 novembre 2023 10:29:53.
        REMARKS.
       *{TOTEM}END
 
@@ -92,6 +92,9 @@
        77 Sum  PIC  s9(13)v99
                   VALUE IS 0.
        77 csv-esposizione  PIC  ----.---.---.--9,99.
+       77 csv-fido-commle  PIC  ----.---.---.--9,99.
+       77 csv-fido-ass     PIC  ----.---.---.--9,99.
+       77 csv-fido-cerved  PIC  ----.---.---.--9,99.
        77 csv-fido         PIC  ----.---.---.--9,99.
        77 csv-residuo      PIC  ----.---.---.--9,99.
        77 tot-fido         PIC  9(12)v99
@@ -258,7 +261,7 @@
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
-       77 TMP-DataSet1-tmp-estfidic-BUF     PIC X(283).
+       77 TMP-DataSet1-tmp-estfidic-BUF     PIC X(330).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
@@ -3008,6 +3011,14 @@
                      separatore            delimited size
                      "Fuori fido/residuo"  delimited size
                      separatore            delimited size
+                     "Fido Cerved"         delimited size
+                     separatore            delimited size
+                     "Fido assicurato"     delimited size
+                     separatore            delimited size
+                     "Fido commerciale"    delimited size
+                     separatore            delimited size
+                     "Grade"               delimited size
+                     separatore            delimited size
                 into line-riga
               end-string
               write line-riga
@@ -3057,7 +3068,12 @@
 
                     move tefc-esposizione to csv-esposizione
                     move tefc-fido        to csv-fido
-                    move tefc-residuo     to csv-residuo
+                    move tefc-residuo     to csv-residuo   
+           
+                    move tefc-fido-cerved to csv-fido-cerved
+                    move tefc-fido-ass    to csv-fido-ass   
+                    move tefc-fido-commle to csv-fido-commle
+           
                     initialize line-riga
                     string tefc-cliente         delimited size
                            separatore           delimited size
@@ -3076,7 +3092,15 @@
                            csv-residuo          delimited size
                            separatore           delimited size
                            tefc-fuori-residuo   delimited size
-                           separatore           delimited size
+                           separatore           delimited size 
+                           csv-fido-cerved      delimited size 
+                           separatore           delimited size 
+                           csv-fido-ass         delimited size 
+                           separatore           delimited size 
+                           csv-fido-commle      delimited size 
+                           separatore           delimited size 
+                           tefc-grade           delimited size
+                           separatore           delimited size 
                       into line-riga
                     end-string
                     write line-riga
@@ -3161,7 +3185,12 @@
            else
               compute tot-fido = cli-fido + cli-pfa + cli-fidejussione| + cli-fido-extra
            end-if.
-           move tot-fido to tefc-fido.
+           move tot-fido  to tefc-fido.
+           move cli-grade to tefc-grade.
+
+           move cli-fido         to tefc-fido-cerved.
+           move cli-fidejussione to tefc-fido-ass.
+           move cli-pfa          to tefc-fido-commle.
 
            if tefc-esposizione > tot-fido           
               move "FUORI FIDO" to tefc-fuori-residuo
