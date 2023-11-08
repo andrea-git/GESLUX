@@ -61,7 +61,10 @@
        copy "lockfile.sl".   
        copy "log-macrobatch.sl".
        copy "tregioni.sl".
-       copy "tscorte.sl".
+       copy "tscorte.sl".        
+       copy "timposte.sl".
+       copy "tmarche.sl".
+       copy "tpiombo.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -103,7 +106,10 @@
        copy "log-macrobatch.fd".
        copy "tregioni.fd".        
        copy "anacap.fd".
-       copy "tscorte.fd".
+       copy "tscorte.fd". 
+       copy "timposte.fd".
+       copy "tmarche.fd".
+       copy "tpiombo.fd".
 
        WORKING-STORAGE SECTION.
       *    COPY
@@ -115,6 +121,7 @@
            copy "recupero-prezzi-tradizionale.def".
            copy "log-macrobatch.def". 
            copy "costo-medio.def".
+           copy "imposte.def".
 
       *    COSTANTI
        78  titolo                value "Importazione ordini EDI". 
@@ -155,6 +162,9 @@
        77  status-tregioni       pic xx.
        77  status-anacap         pic xx.
        77  status-tscorte        pic xx.
+       77  status-timposte       pic xx.  
+       77  status-tmarche        pic xx.
+       77  status-tpiombo        pic xx.
                                             
        77  path-logfile          pic x(256).
        77  path-log-macrobatch   pic x(256).
@@ -784,7 +794,8 @@
                  open input clienti tparamge note param articoli progmag 
                             timballi timbalqta ttipocli  tpromo rpromo 
                             listini rmovmag locali blister cli-prg tprov
-                            tregioni anacap tscorte
+                            tregioni anacap tscorte timposte tmarche
+                            tpiombo
               end-if
            end-if.
 
@@ -1992,6 +2003,17 @@
            else
               move emro-prz-GESLUX to emro-prz
            end-if.
+                      
+           if ttipocli-gdo set TrattamentoGDO to true
+           else            set TrattamentoGDO to false
+           end-if.  
+
+           accept imp-data from century-date.
+           start timposte key <= imp-chiave
+                 invalid continue
+             not invalid
+                 read timposte previous
+           end-start.
 
            move art-scorta to sco-codice.
            read tscorte no lock invalid continue end-read.
@@ -2001,6 +2023,35 @@
               move emro-cod-articolo to prg-cod-articolo 
               read progmag no lock invalid continue end-read
               perform CALCOLA-COSTO-MP-COMPLETO
+
+              if ttipocli-gdo and emto-inversione-imposte-no
+                                            
+                 move 0 to imposta-cou     imposta-cobat
+                           imposta-consumo add-piombo
+                 perform CALCOLA-IMPOSTE
+                 if tcl-si-piombo
+                    move art-marca-prodotto to tpb-marca
+                    move emro-prz-EDI       to como-prz-unitario
+                    move art-marca-prodotto to tpb-marca
+                    move emto-data-ordine   to como-data-ordine tpb-data
+                    move emto-cod-cli       to como-prm-cliente
+                    move emto-prg-destino   to como-prm-destino
+                    perform ADDIZIONALE-PIOMBO
+                 end-if
+                 if costo-mp > ( imposta-cou     + 
+                                 imposta-cobat   + 
+                                 imposta-consumo + 
+                                 add-piombo )
+                    compute costo-mp = costo-mp        - 
+                                       imposta-cou     -
+                                       imposta-cobat   -
+                                       imposta-consumo -
+                                       add-piombo
+                 else
+                    move 0 to costo-mp
+                 end-if
+              end-if
+
               if emro-prz-EDI < costo-mp        
                  set emro-prezzo-non-valido to true
                  set emro-bloccato to true
@@ -2645,7 +2696,8 @@
            close EDI-clides clienti destini tparamge EDI-mtordini note
                  param EDI-mrordini articoli progmag timballi timbalqta
                  rpromo tpromo listini ttipocli rmovmag tprov locali 
-                 blister cli-prg lockfile tregioni anacap tscorte.
+                 blister cli-prg lockfile tregioni anacap tscorte
+                 timposte tmarche tpiombo.
 
       ***---
        EXIT-PGM.
@@ -3818,6 +3870,8 @@ BLISTR              end-if
            copy "tratta-numerico.cpy".
            copy "setta-inizio-riga.cpy".
            copy "costo-medio.cpy".
+           copy "imposte.cpy".
+           copy "addizionale-piombo.cpy".
 
       ***---
        RECUPERO-ANAGRAFICA.
