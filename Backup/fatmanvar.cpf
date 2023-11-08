@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59782628-700-57586240
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B8174935-713-1735610795
 
 {{@DESCRIPTION:
 
@@ -10884,6 +10884,7 @@ LUBEXX                 set tor-invio-manuale to true
 LUBEXX              end-if
          
                     move LinkChiave to tor-chiave
+                    set tor-contrassegno-no to true
                     rewrite tor-rec invalid continue end-rewrite
 PATCH               perform SCRIVI-FILE-BACKUP
 

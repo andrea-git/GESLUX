@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E59782551-106-1404722252
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B817498-738-131122818
 
 {{@DESCRIPTION:
 
@@ -10343,6 +10343,7 @@ BEGIN-TEXT
 LUBEXX                 if not EsisteIVA
 LUBEXX                    set tor-invio-manuale to true
 LUBEXX                 end-if
+                       set tor-contrassegno-no to true
                                                                       
                        write tor-rec invalid rewrite tor-rec end-write
                        unlock tordini all records

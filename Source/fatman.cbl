@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          fatman.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 10:26:22.
+       DATE-WRITTEN.        mercoledì 8 novembre 2023 18:49:31.
        REMARKS.
       *{TOTEM}END
 
@@ -9515,6 +9515,7 @@ LUBEXX        end-if
 LUBEXX                 if not EsisteIVA
 LUBEXX                    set tor-invio-manuale to true
 LUBEXX                 end-if
+                       set tor-contrassegno-no to true
                                                                       
                        write tor-rec invalid rewrite tor-rec end-write
                        unlock tordini all records

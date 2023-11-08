@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          fatmanvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 10:27:27.
+       DATE-WRITTEN.        mercoledì 8 novembre 2023 18:49:57.
        REMARKS.
       *{TOTEM}END
 
@@ -9751,6 +9751,7 @@ LUBEXX                 set tor-invio-manuale to true
 LUBEXX              end-if
          
                     move LinkChiave to tor-chiave
+                    set tor-contrassegno-no to true
                     rewrite tor-rec invalid continue end-rewrite
 PATCH               perform SCRIVI-FILE-BACKUP
 
