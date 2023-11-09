@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-pesi.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 17:57:09.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 9 novembre 2023 11:24:30.
        REMARKS.
       *{TOTEM}END
 
@@ -43,9 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -118,6 +116,7 @@
           88 DataSet1-tgrupgdo-KEY1-Asc  VALUE "A".
           88 DataSet1-tgrupgdo-KEY1-Desc VALUE "D".
 
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
 
       *{TOTEM}END
 
@@ -148,11 +147,9 @@
            LINE 1,50,
            LINES 5,00 ,
            SIZE 44,60 ,
-           RAISED,
            ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            TITLE "Selezione limiti",
            TITLE-POSITION 2,
            .
@@ -480,6 +477,14 @@
            CLOSE tgrupgdo
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
        DataSet1-tgrupgdo-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -580,6 +585,7 @@
                  KEY gdo-chiave OF tgrupgdo
               END-IF
            END-EVALUATE
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -610,6 +616,7 @@
                  END-IF
               END-IF
            END-EVALUATE
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -640,6 +647,7 @@
                  END-IF
               END-IF
            END-EVALUATE
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE

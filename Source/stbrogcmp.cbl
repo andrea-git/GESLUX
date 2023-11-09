@@ -1909,7 +1909,7 @@ LUBEXX          end-if
            move low-value to lst-rec.
            move cli-gdo   to lst-gdo.
            move mro-cod-articolo to lst-articolo.
-           start listini key >= lst-k-articolo
+           start listini key >= lst-k-gdo-articolo
                  invalid continue
              not invalid
                  perform until 1 = 2

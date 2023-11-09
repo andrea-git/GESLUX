@@ -10,7 +10,7 @@
               move tor-data-bolla to como-lst-data
            end-if.
            move high-value to lst-data.
-           start listini key <= lst-k-articolo
+           start listini key <= lst-k-gdo-articolo
                  invalid continue
              not invalid
                  perform until 1 = 2

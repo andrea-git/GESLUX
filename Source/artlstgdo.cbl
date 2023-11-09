@@ -985,7 +985,7 @@
               move art-codice  to lst-articolo
               move como-data   to lst-data
               set trovato to false
-              start listini key <= lst-k-articolo   
+              start listini key <= lst-k-gdo-articolo   
                     invalid continue
                 not invalid
                     perform until 1 = 2

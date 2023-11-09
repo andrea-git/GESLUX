@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A13151824-818-2131213629
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B9135211-667-14359171
 
 {{@DESCRIPTION:
 
@@ -1490,7 +1491,7 @@ LUBEXX     if ef-art-cli-buf = spaces
               move ef-gdo-buf      to lst-gdo
               move ef-art-buf to lst-articolo
               move high-value to lst-data
-              start listini key not > lst-k-articolo
+              start listini key not > lst-k-gdo-articolo
                  invalid 
                     continue
                  not invalid

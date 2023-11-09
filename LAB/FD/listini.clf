@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E7B8174433-126-1515114203
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E7B9142023-486-2641230128
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -294,7 +295,7 @@ m_bUnique=1
 [SLKEYATOM0_]
 m_strName=lst-chiave OF listini
 [SLINDEX0_]
-m_strName=lst-k-articolo
+m_strName=lst-k-gdo-articolo
 m_bUnique=1
 {{@Key_m_strDescriptionSLINDEX0_
 
@@ -306,7 +307,7 @@ m_strName=lst-articolo OF listini
 [SLKEYATOM2_SLINDEX0_]
 m_strName=lst-data OF listini
 [SLINDEX1_]
-m_strName=lst-k-cod-art-cli
+m_strName=lst-k-gdo-cod-art-cli
 {{@Key_m_strDescriptionSLINDEX1_
 
 @}}

@@ -389,7 +389,7 @@ LUBEXX           if r-cod-art-cli = spaces
                     move r-gdo      to lst-gdo
                     move r-articolo to lst-articolo
                     move high-value to lst-data
-                    start listini key <= lst-k-articolo
+                    start listini key <= lst-k-gdo-articolo
                           invalid continue
                       not invalid
                           perform until 1 = 2
@@ -465,7 +465,7 @@ LUBEXX           if r-cod-art-cli = spaces
                        move r-cod-art-cli    to el-r-cod-art-cli(idx-i)
                        move lst-prezzo       to el-r-prz(idx-i)
 
-                       start listini key < lst-k-articolo
+                       start listini key < lst-k-gdo-articolo
                              invalid continue
                          not invalid
                              read listini previous

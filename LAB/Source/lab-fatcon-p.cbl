@@ -642,7 +642,7 @@
                  move cli-gdo         to lst-gdo
                  move tmc-art-codice  to lst-articolo
                  move tor-data-ordine to lst-data
-                 start listini key <= lst-k-articolo
+                 start listini key <= lst-k-gdo-articolo
                        invalid continue
                    not invalid
                        read listini next end-read

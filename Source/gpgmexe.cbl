@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 12 giugno 2023 11:48:03.
+       DATE-WRITTEN.        giovedì 9 novembre 2023 15:16:35.
        REMARKS.
       *{TOTEM}END
 
@@ -31,11 +31,11 @@
            COPY "USER.sl".
            COPY "pass.sl".
            COPY "fileseq.sl".
-           COPY "lineseq.sl".
            COPY "PROG.sl".
            COPY "tmp-cpu.sl".
            COPY "tsetinvio.sl".
            COPY "lineseq-mail.sl".
+           COPY "lineseq.sl".
            COPY "lineseq.sl"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
@@ -48,11 +48,11 @@
            COPY "USER.fd".
            COPY "pass.fd".
            COPY "fileseq.fd".
-           COPY "lineseq.fd".
            COPY "PROG.fd".
            COPY "tmp-cpu.fd".
            COPY "tsetinvio.fd".
            COPY "lineseq-mail.fd".
+           COPY "lineseq.fd".
            COPY "lineseq.fd"
                 REPLACING ==lineseq== BY ==lineseq1==,
                           ==STATUS-lineseq== BY ==STATUS-lineseq1==
@@ -183,11 +183,11 @@
        77 TMP-DataSet1-USER-BUF     PIC X(1015).
        77 TMP-DataSet1-pass-BUF     PIC X(1000).
        77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
-       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-PROG-BUF     PIC X(676).
        77 TMP-DataSet1-tmp-cpu-BUF     PIC X(33).
        77 TMP-DataSet1-tsetinvio-BUF     PIC X(1023).
        77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-lineseq1-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
@@ -214,11 +214,6 @@
        77 DataSet1-fileseq-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-fileseq-KEY-Asc  VALUE "A".
           88 DataSet1-fileseq-KEY-Desc VALUE "D".
-       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-lineseq-LOCK  VALUE "Y".
-       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
-          88 DataSet1-lineseq-KEY-Desc VALUE "D".
        77 DataSet1-PROG-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-PROG-LOCK  VALUE "Y".
        77 DataSet1-PROG-KEY-ORDER  PIC X VALUE "A".
@@ -239,6 +234,11 @@
        77 DataSet1-lineseq-mail-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-mail-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-KEY-Desc VALUE "D".
        77 DataSet1-lineseq1-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-lineseq1-LOCK  VALUE "Y".
        77 DataSet1-lineseq1-KEY-ORDER  PIC X VALUE "A".
@@ -1078,8 +1078,6 @@
       *    PERFORM OPEN-pass
       *    fileseq OPEN MODE IS FALSE
       *    PERFORM OPEN-fileseq
-      *    lineseq OPEN MODE IS FALSE
-      *    PERFORM OPEN-lineseq
       *    PROG OPEN MODE IS FALSE
       *    PERFORM OPEN-PROG
       *    tmp-cpu OPEN MODE IS FALSE
@@ -1088,6 +1086,8 @@
       *    PERFORM OPEN-tsetinvio
       *    lineseq-mail OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq-mail
+      *    lineseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq
       *    lineseq1 OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq1
       *    After Open
@@ -1145,18 +1145,6 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:gpgmexe, FD:fileseq, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-lineseq.
-      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  EXTEND lineseq
-           IF NOT Valid-STATUS-lineseq
-              PERFORM  form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -1222,6 +1210,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq.
+      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  EXTEND lineseq
+           IF NOT Valid-STATUS-lineseq
+              PERFORM  form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
        OPEN-lineseq1.
       * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq1, BeforeOpen>
       * <TOTEM:END>
@@ -1243,8 +1243,6 @@
       *    PERFORM CLOSE-pass
       *    fileseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-fileseq
-      *    lineseq CLOSE MODE IS FALSE
-      *    PERFORM CLOSE-lineseq
       *    PROG CLOSE MODE IS FALSE
       *    PERFORM CLOSE-PROG
       *    tmp-cpu CLOSE MODE IS FALSE
@@ -1253,6 +1251,8 @@
       *    PERFORM CLOSE-tsetinvio
       *    lineseq-mail CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq-mail
+      *    lineseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq
       *    lineseq1 CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq1
       *    After Close
@@ -1279,11 +1279,6 @@
       * <TOTEM:END>
            .
 
-       CLOSE-lineseq.
-      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq, BeforeClose>
-      * <TOTEM:END>
-           .
-
        CLOSE-PROG.
       * <TOTEM:EPT. INIT:gpgmexe, FD:PROG, BeforeClose>
       * <TOTEM:END>
@@ -1301,6 +1296,11 @@
 
        CLOSE-lineseq-mail.
       * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq-mail, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-lineseq.
+      * <TOTEM:EPT. INIT:gpgmexe, FD:lineseq, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -1819,76 +1819,6 @@
            MOVE "fileseq" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-INITSTART.
-           .
-
-       DataSet1-lineseq-INITEND.
-           .
-
-       DataSet1-lineseq-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
-      * <TOTEM:END>
-           WRITE line-riga OF lineseq.
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-lineseq-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
-           MOVE "lineseq" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -2430,6 +2360,76 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-INITSTART.
+           .
+
+       DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-lineseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
+      * <TOTEM:END>
+           WRITE line-riga OF lineseq.
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-lineseq1-INITSTART.
            .
 
@@ -2505,11 +2505,11 @@
            INITIALIZE user-rec OF USER
            INITIALIZE pass-rec OF pass
            INITIALIZE rec-stampa OF fileseq
-           INITIALIZE line-riga OF lineseq
            INITIALIZE PROG-R OF PROG
            INITIALIZE cpu-rec OF tmp-cpu
            INITIALIZE tsi-rec OF tsetinvio
            INITIALIZE line-riga-mail OF lineseq-mail
+           INITIALIZE line-riga OF lineseq
            INITIALIZE line-riga OF lineseq1
            .
 
@@ -2572,14 +2572,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-lineseq-INITREC.
-           INITIALIZE line-riga OF lineseq
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-PROG-INITREC.
            INITIALIZE PROG-R OF PROG
                REPLACING NUMERIC       DATA BY ZEROS
@@ -2606,6 +2598,14 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq-mail-INITREC.
            INITIALIZE line-riga-mail OF lineseq-mail
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-INITREC.
+           INITIALIZE line-riga OF lineseq
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3974,7 +3974,7 @@
            end-perform.
 
            perform until 1 = 2
-              move spaces to line-riga
+              move spaces to line-riga of lineseq
               read lineseq next 
                  at end 
                     exit perform 
@@ -3988,7 +3988,7 @@
        PREPARA-RECORD.
            initialize rec-pid.
 
-           unstring line-riga delimited by ","
+           unstring line-riga of lineseq delimited by ","
                into rp-nome-exe
                     rp-pid.
 

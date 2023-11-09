@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E791A105645-878-3186717808
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B9131024-751-206531799
 
 {{@DESCRIPTION:
 
@@ -17863,7 +17863,7 @@ BEGIN-TEXT
                  move cli-gdo          to lst-gdo
                  move emto-data-ordine to lst-data
                  move art-codice       to lst-articolo
-                 start listini key <= lst-k-articolo
+                 start listini key <= lst-k-gdo-articolo
                        invalid continue
                    not invalid
                        read listini previous

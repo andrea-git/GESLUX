@@ -294,7 +294,7 @@
            move extra-gdo     to lst-gdo.
            move art-codice    to lst-articolo.
            move extra-ini-dpo to lst-data.
-           start listini key <= lst-k-articolo
+           start listini key <= lst-k-gdo-articolo
                  invalid continue
              not invalid
                  read listini previous

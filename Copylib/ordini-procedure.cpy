@@ -3106,6 +3106,7 @@ LUBEXX*****                 set CambiatoTrattamento to true
                           panel-text  "MODIFICA"
               when StatusVisua
 
+
                    modify form1-st-1-handle, 
                           panel-index  3,
                           panel-text  "VISUALIZZAZIONE"
@@ -4394,7 +4395,7 @@ LABLAB***---
                  move cli-gdo          to lst-gdo
                  move tor-data-ordine  to lst-data
                  move art-codice       to lst-articolo
-                 start listini key <= lst-k-articolo
+                 start listini key <= lst-k-gdo-articolo
                        invalid continue
                    not invalid
                        read listini previous
@@ -4472,7 +4473,7 @@ LABLAB***---
               move cli-gdo          to lst-gdo
               move tor-data-ordine  to lst-data
               move art-codice       to lst-articolo
-              start listini key <= lst-k-articolo
+              start listini key <= lst-k-gdo-articolo
                     invalid continue
                 not invalid
                     read listini previous
@@ -4648,6 +4649,7 @@ LABLAB***---
                     if tpr-fine-dpo < tor-data-ordine and
                        tpr-ini-dpo  < tor-data-ordine
                        move tpr-codice to rpr-codice
+
                        move art-codice to rpr-articolo
                        read rpromo no lock 
                             invalid continue
@@ -5265,7 +5267,7 @@ LUBEXX     display lab-gest ef-gest.
            move cli-gdo          to lst-gdo
            move mto-data-ordine  to lst-data
            move art-codice       to lst-articolo
-           start listini key <= lst-k-articolo
+           start listini key <= lst-k-gdo-articolo
               invalid 
                  continue
               not invalid

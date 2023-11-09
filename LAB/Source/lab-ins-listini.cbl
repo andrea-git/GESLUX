@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-ins-listini.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 17:57:07.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 9 novembre 2023 15:00:39.
        REMARKS.
       *{TOTEM}END
 
@@ -49,9 +49,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -106,7 +104,7 @@
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-listini-BUF     PIC X(207).
-       77 TMP-DataSet1-blister-BUF     PIC X(1817).
+       77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
       * VARIABLES FOR RECORD LENGTH.
@@ -135,10 +133,14 @@
           88 DataSet1-articoli-KEY-Asc  VALUE "A".
           88 DataSet1-articoli-KEY-Desc VALUE "D".
 
-       77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
+       77 listini-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
+       77 listini-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini-lst-k-data-SPLITBUF  PIC X(29).
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
+       77 articoli-art-k-frn-SPLITBUF  PIC X(16).
 
       *{TOTEM}END
 
@@ -699,21 +701,43 @@
            CLOSE articoli
            .
 
-       listini-lst-k-articolo-MERGE-SPLITBUF.
-           INITIALIZE listini-lst-k-articolo-SPLITBUF
-           MOVE lst-gdo(1:5) TO listini-lst-k-articolo-SPLITBUF(1:5)
-           MOVE lst-articolo(1:6) TO 
-           listini-lst-k-articolo-SPLITBUF(6:6)
-           MOVE lst-data(1:8) TO listini-lst-k-articolo-SPLITBUF(12:8)
+       listini-lst-k-gdo-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-gdo-articolo-SPLITBUF
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-gdo-articolo-SPLITBUF(1:5)
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini-lst-k-gdo-articolo-SPLITBUF(6:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-gdo-articolo-SPLITBUF(12:8)
+           .
+
+       listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-gdo-cod-art-cli-SPLITBUF
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(1:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(6:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(21:8)
+           .
+
+       listini-lst-k-data-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-data-SPLITBUF
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-data-SPLITBUF(1:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-data-SPLITBUF(9:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-data-SPLITBUF(14:15)
            .
 
        DataSet1-listini-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
               IF DataSet1-listini-KEY1-Asc
-                 MOVE Low-Value TO lst-chiave
+                 MOVE Low-Value TO lst-chiave OF listini
               ELSE
-                 MOVE High-Value TO lst-chiave
+                 MOVE High-Value TO lst-chiave OF listini
               END-IF
            END-EVALUATE
            .
@@ -722,9 +746,9 @@
            EVALUATE DataSet1-KEYIS
            WHEN 1
               IF DataSet1-listini-KEY1-Asc
-                 MOVE High-Value TO lst-chiave
+                 MOVE High-Value TO lst-chiave OF listini
               ELSE
-                 MOVE Low-Value TO lst-chiave
+                 MOVE Low-Value TO lst-chiave OF listini
               END-IF
            END-EVALUATE
            .
@@ -752,9 +776,9 @@
            EVALUATE DataSet1-KEYIS
            WHEN 1
               IF DataSet1-listini-KEY1-Asc
-                 START listini KEY >= lst-chiave
+                 START listini KEY >= lst-chiave OF listini
               ELSE
-                 START listini KEY <= lst-chiave
+                 START listini KEY <= lst-chiave OF listini
               END-IF
            END-EVALUATE
            .
@@ -763,9 +787,9 @@
            EVALUATE DataSet1-KEYIS
            WHEN 1
               IF DataSet1-listini-KEY1-Asc
-                 START listini KEY <= lst-chiave
+                 START listini KEY <= lst-chiave OF listini
               ELSE
-                 START listini KEY >= lst-chiave
+                 START listini KEY >= lst-chiave OF listini
               END-IF
            END-EVALUATE
            .
@@ -774,9 +798,9 @@
            EVALUATE DataSet1-KEYIS
            WHEN 1
               IF DataSet1-listini-KEY1-Asc
-                 START listini KEY > lst-chiave
+                 START listini KEY > lst-chiave OF listini
               ELSE
-                 START listini KEY < lst-chiave
+                 START listini KEY < lst-chiave OF listini
               END-IF
            END-EVALUATE
            .
@@ -785,9 +809,9 @@
            EVALUATE DataSet1-KEYIS
            WHEN 1
               IF DataSet1-listini-KEY1-Asc
-                 START listini KEY < lst-chiave
+                 START listini KEY < lst-chiave OF listini
               ELSE
-                 START listini KEY > lst-chiave
+                 START listini KEY > lst-chiave OF listini
               END-IF
            END-EVALUATE
            .
@@ -801,13 +825,15 @@
            WHEN 1
               IF DataSet1-listini-LOCK
                  READ listini WITH LOCK 
-                 KEY lst-chiave
+                 KEY lst-chiave OF listini
               ELSE
                  READ listini WITH NO LOCK 
-                 KEY lst-chiave
+                 KEY lst-chiave OF listini
               END-IF
            END-EVALUATE
-           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -838,7 +864,9 @@
                  END-IF
               END-IF
            END-EVALUATE
-           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -869,7 +897,9 @@
                  END-IF
               END-IF
            END-EVALUATE
-           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -1083,6 +1113,14 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
        DataSet1-tgrupgdo-INITSTART.
            IF DataSet1-tgrupgdo-KEY-Asc
               MOVE Low-Value TO gdo-chiave OF tgrupgdo
@@ -1144,6 +1182,7 @@
               READ tgrupgdo WITH NO LOCK 
               KEY gdo-chiave OF tgrupgdo
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1171,6 +1210,7 @@
                  READ tgrupgdo PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1198,6 +1238,7 @@
                  READ tgrupgdo NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
            MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
            MOVE "tgrupgdo" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -1241,6 +1282,12 @@
            INITIALIZE articoli-art-k1-SPLITBUF
            MOVE art-descrizione OF articoli(1:50) TO 
            articoli-art-k1-SPLITBUF(1:50)
+           .
+
+       articoli-art-k-frn-MERGE-SPLITBUF.
+           INITIALIZE articoli-art-k-frn-SPLITBUF
+           MOVE art-cod-art-frn OF articoli(1:15) TO 
+           articoli-art-k-frn-SPLITBUF(1:15)
            .
 
        DataSet1-articoli-INITSTART.
@@ -1305,6 +1352,7 @@
               KEY art-chiave OF articoli
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT 
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1333,6 +1381,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1361,6 +1410,7 @@
               END-IF
            END-IF
            PERFORM articoli-art-k1-MERGE-SPLITBUF
+           PERFORM articoli-art-k-frn-MERGE-SPLITBUF
            MOVE STATUS-articoli TO TOTEM-ERR-STAT
            MOVE "articoli" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -1752,7 +1802,7 @@ LUBEXX     if ef-art-cli-buf = spaces
               move ef-gdo-buf      to lst-gdo
               move ef-art-buf to lst-articolo
               move high-value to lst-data
-              start listini key not > lst-k-articolo
+              start listini key not > lst-k-gdo-articolo
                  invalid 
                     continue
                  not invalid

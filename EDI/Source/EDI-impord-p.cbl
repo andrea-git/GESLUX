@@ -911,6 +911,7 @@
                           delete file lineseq        
                           |OPEN L2
                           open input  lineseq
+
                           if status-lineseq = "35"
                              move "CANCELLAZIONE RIUSCITA" to como-riga
                              perform SCRIVI-RIGA-LOG
@@ -1749,7 +1750,7 @@
               move high-value to lst-chiave
               move cli-gdo    to lst-gdo
               move emro-02D14-LIN-CODDISTU to lst-cod-art-cli
-              start listini key <= lst-k-cod-art-cli
+              start listini key <= lst-k-gdo-cod-art-cli
                     invalid continue
                 not invalid
                     read listini previous
@@ -2024,7 +2025,7 @@
               read progmag no lock invalid continue end-read
               perform CALCOLA-COSTO-MP-COMPLETO
 
-              if ttipocli-gdo and emto-inversione-imposte-no
+              if not ( ttipocli-gdo and emto-inversione-imposte-no )
                                             
                  move 0 to imposta-cou     imposta-cobat
                            imposta-consumo add-piombo
@@ -3373,7 +3374,7 @@ LABLAB***---
                  move cli-gdo          to lst-gdo
                  move emto-data-ordine to lst-data
                  move art-codice       to lst-articolo
-                 start listini key <= lst-k-articolo
+                 start listini key <= lst-k-gdo-articolo
                        invalid continue
                    not invalid
                        read listini previous
@@ -3575,7 +3576,7 @@ LABLAB***---
            move cli-gdo          to lst-gdo.
            move emto-data-ordine to lst-data.
            move art-codice       to lst-articolo.
-           start listini key <= lst-k-articolo
+           start listini key <= lst-k-gdo-articolo
                  invalid continue
              not invalid
                  read listini previous

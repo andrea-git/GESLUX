@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A13151825-314-3028619666
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B910343-574-10024282
 
 {{@DESCRIPTION:
 
@@ -4885,7 +4886,7 @@ Begin Screen form3
       Size              = 40,00
       Size Unit         = Default
       Tab Order         = 1
-      Title             = "Caricamento listino in corso..."
+      Title             = "Caricamento listini in corso..."
       Title Picture     = X(35)
       Title Variable    = tit
       Transparent       = TRUE
@@ -6568,7 +6569,7 @@ BEGIN-TEXT
            else
               if save-cod-art-cli not = spaces
                  move save-cod-art-cli to lst-cod-art-cli of listini
-                 start listini key <= lst-k-cod-art-cli of listini
+                 start listini key <= lst-k-gdo-cod-art-cli of listini
                        invalid continue
                    not invalid
                        read listini previous no lock end-read
@@ -6580,7 +6581,7 @@ BEGIN-TEXT
                  end-start
               else
                  move save-articolo to lst-articolo of listini
-                 start listini key <= lst-k-articolo of listini
+                 start listini key <= lst-k-gdo-articolo of listini
                        invalid continue
                    not invalid
                        read listini previous no lock end-read
@@ -6877,7 +6878,7 @@ BEGIN-TEXT
                         end-if
 
                         move art-codice to lst-articolo of listini1
-                        start listini1 key <= lst-k-articolo of listini1
+                        start listini1 key <= lst-k-gdo-articolo of listini1
                               invalid continue
                           not invalid
                               read listini1 previous no lock
@@ -7091,7 +7092,7 @@ BEGIN-TEXT
                    move ef-gdo-buf to lst-gdo      of listini
                    move art-codice to lst-articolo of listini
                    move 99999999   to lst-data     of listini
-                   start listini key <= lst-k-articolo
+                   start listini key <= lst-k-gdo-articolo
                          invalid continue
                      not invalid
                          perform until 1 = 2
@@ -7781,7 +7782,7 @@ BEGIN-TEXT
               move art-codice    to lst-articolo of listini1
               
            
-              start listini1 key < lst-k-articolo of listini1
+              start listini1 key < lst-k-gdo-articolo of listini1
                     invalid continue
                 not invalid
                     read listini1 previous 

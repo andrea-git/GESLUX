@@ -395,7 +395,7 @@
            move cli-gdo          to lst-gdo.
            move emto-data-ordine to lst-data.
            move art-codice       to lst-articolo.
-           start listini key <= lst-k-articolo
+           start listini key <= lst-k-gdo-articolo
                  invalid continue
              not invalid
                  read listini previous

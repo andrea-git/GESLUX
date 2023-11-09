@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A13151824-156-2999913278
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B9135634-982-116987890
 
 {{@DESCRIPTION:
 
@@ -6688,7 +6689,7 @@ Begin Screen scr-ricerca
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 14
+      ID                = 2
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 3,50
@@ -6721,7 +6722,7 @@ Begin Screen scr-ricerca
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 14
+      ID                = 3
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,94
@@ -6754,7 +6755,7 @@ Begin Screen scr-ricerca
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 14
+      ID                = 4
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 4,61
@@ -8934,7 +8935,7 @@ BEGIN-TEXT
               move rpr-articolo      to lst-articolo
               move tpr-gdo of tpromo to lst-gdo
               move low-value         to lst-data
-              start listini key >= lst-k-articolo
+              start listini key >= lst-k-gdo-articolo
                     invalid perform ACCODA-RIGA-SU-LISTINO
                 not invalid
                     read listini next
@@ -10165,7 +10166,7 @@ BEGIN-TEXT
            move ef-gdo-buf    to lst-gdo.
            move art-codice    to lst-articolo.
            move como-data     to lst-data.
-           start listini key <= lst-k-articolo
+           start listini key <= lst-k-gdo-articolo
                  invalid continue
              not invalid
                  read listini previous

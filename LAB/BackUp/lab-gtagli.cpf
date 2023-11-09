@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=gdestinazioni-Ev-Before-Program
 AFTER_PROGRAM=gdestinazioni-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4918102451-202-273795755
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B9135211-441-1563420963
 
 {{@DESCRIPTION:
 
@@ -5572,7 +5572,7 @@ BEGIN-TEXT
            move como-data  to lst-data.
            move gdo-codice to lst-gdo.
            move art-codice to lst-articolo.
-           start listini key is <= lst-k-articolo
+           start listini key is <= lst-k-gdo-articolo
                  invalid continue
              not invalid
                  read listini previous no lock

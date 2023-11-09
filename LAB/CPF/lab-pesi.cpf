@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A13151825-514-517913269
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B9135211-784-2189827539
 
 {{@DESCRIPTION:
 
@@ -498,7 +499,7 @@ Begin Screen Form1
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = frame-limiti
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -520,7 +521,7 @@ Begin Screen Form1
       Size              = 44,60
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title             = "Selezione limiti"
       Title Position    = 2:Top center
       Visible           = NONE

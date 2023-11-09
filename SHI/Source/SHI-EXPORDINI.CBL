@@ -1374,7 +1374,7 @@
               move cli-gdo              to lst-gdo
               move ror-prg-cod-articolo to lst-articolo
               move tor-data-ordine      to lst-data
-              start listini key <= lst-k-articolo
+              start listini key <= lst-k-gdo-articolo
                     invalid continue
                 not invalid
                     read listini previous
