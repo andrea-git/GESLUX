@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini-art.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 novembre 2023 15:01:58.
+       DATE-WRITTEN.        giovedì 9 novembre 2023 15:44:22.
        REMARKS.
       *{TOTEM}END
 
@@ -108,6 +108,13 @@
        77 data-richiesta   PIC  9(8).
        77 data-richiesta-dal           PIC  9(8).
        77 data-richiesta-al            PIC  9(8).
+       01 chiave-lettura   PIC  9.
+           88 k-gdo VALUE IS 0. 
+           88 k-gdo-art VALUE IS 1. 
+           88 k-gdo-codart VALUE IS 2. 
+           88 k-data VALUE IS 3. 
+           88 k-art VALUE IS 4. 
+           88 k-codart VALUE IS 5. 
        77 save-gdo         PIC  x(5).
        77 save-art         PIC  9(6)
                   VALUE IS 0.
@@ -5276,12 +5283,29 @@
 
            set trovato to false.
                             
-      *     evaluate true true true
-      *     when save-articolo = 0 save-cod-art-cli = spaces save-gdo = spaces
-      *          set kdata to true
-      *     when save-articolo not = 0 save-cod-art-cli = spaces save-gdo = spaces
-      *          set kart to true
-      *     end-evaluate.
+           evaluate true true true
+           when save-articolo = 0 save-cod-art-cli not = spaces 
+           save-gdo = spaces
+                set k-codart to true     
+           when save-articolo = 0 save-cod-art-cli not = spaces 
+           save-gdo not = spaces
+                set k-gdo-codart to true
+
+           when save-articolo not = 0 save-cod-art-cli = spaces 
+           save-gdo = spaces
+                set k-art to true      
+           when save-articolo not = 0 save-cod-art-cli = spaces 
+           save-gdo not = spaces
+                set k-gdo-art to true      
+
+           when save-articolo = 0 save-cod-art-cli = spaces save-gdo = 
+           spaces
+                set k-data to true     
+           when save-articolo = 0 save-cod-art-cli = spaces save-gdo 
+           not = spaces
+                set k-gdo to true
+
+           end-evaluate.
 
            if save-articolo = 0 and save-cod-art-cli = spaces
               move high-value   to lst-articolo of listini
