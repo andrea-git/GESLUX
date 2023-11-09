@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B910343-574-10024282
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B9214027-639-240155195
 
 {{@DESCRIPTION:
 
@@ -5843,7 +5843,7 @@ BEGIN-TEXT
                 perform CHIAMATA-STAMPA
 
            when excel
-                move "Estrazione escel in corso..."    to tit
+                move "Estrazione excel in corso..."    to tit
                 display lab
                 perform ESTRAZIONE-EXCEL
 
@@ -6656,7 +6656,7 @@ BEGIN-TEXT
               perform VALORIZZA-RIGA-TMP
 
               perform until 1 = 2
-                 read listini previous no lock at end exit perform end-read
+                 read listini previous no lock at end exit perform end-read  
                  if lst-gdo of listini not = gdo-codice
                  |or lst-data not = como-data
                     exit perform

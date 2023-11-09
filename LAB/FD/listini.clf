@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E7B9142023-486-2641230128
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E7B9232623-187-2228118410
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -327,3 +327,25 @@ m_strName=lst-data OF listini
 m_strName=lst-gdo OF listini
 [SLKEYATOM2_SLINDEX2_]
 m_strName=lst-cod-art-cli OF listini
+[SLINDEX3_]
+m_strName=lst-k-articolo
+{{@Key_m_strDescriptionSLINDEX3_
+
+@}}
+[SLKEYATOM0_SLINDEX3_]
+m_strName=lst-articolo OF listini
+[SLKEYATOM1_SLINDEX3_]
+m_strName=lst-data OF listini
+[SLKEYATOM2_SLINDEX3_]
+m_strName=lst-gdo OF listini
+[SLINDEX4_]
+m_strName=lst-k-cod-art-cli
+{{@Key_m_strDescriptionSLINDEX4_
+
+@}}
+[SLKEYATOM0_SLINDEX4_]
+m_strName=lst-cod-art-cli OF listini
+[SLKEYATOM1_SLINDEX4_]
+m_strName=lst-data OF listini
+[SLKEYATOM2_SLINDEX4_]
+m_strName=lst-gdo OF listini

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 novembre 2023 15:01:23.
+       DATE-WRITTEN.        venerdì 10 novembre 2023 00:07:53.
        REMARKS.
       *{TOTEM}END
 
@@ -460,9 +460,13 @@
        77 listini-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini-lst-k-data-SPLITBUF  PIC X(29).
+       77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
+       77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini1-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
        77 listini1-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini1-lst-k-data-SPLITBUF  PIC X(29).
+       77 listini1-lst-k-articolo-SPLITBUF  PIC X(20).
+       77 listini1-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
 
            copy "common-excel.def".
        77  como-peso      pic zz.zz9,999.
@@ -4447,6 +4451,26 @@
            listini-lst-k-data-SPLITBUF(14:15)
            .
 
+       listini-lst-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-articolo-SPLITBUF
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini-lst-k-articolo-SPLITBUF(1:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-articolo-SPLITBUF(7:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-articolo-SPLITBUF(15:5)
+           .
+
+       listini-lst-k-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-cod-art-cli-SPLITBUF
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(1:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(16:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(24:5)
+           .
+
        DataSet1-listini-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -4550,6 +4574,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4583,6 +4609,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4616,6 +4644,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -4688,6 +4718,26 @@
            listini1-lst-k-data-SPLITBUF(14:15)
            .
 
+       listini1-lst-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini1-lst-k-articolo-SPLITBUF
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini1-lst-k-articolo-SPLITBUF(1:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini1-lst-k-articolo-SPLITBUF(7:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini1-lst-k-articolo-SPLITBUF(15:5)
+           .
+
+       listini1-lst-k-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini1-lst-k-cod-art-cli-SPLITBUF
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini1-lst-k-cod-art-cli-SPLITBUF(1:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini1-lst-k-cod-art-cli-SPLITBUF(16:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini1-lst-k-cod-art-cli-SPLITBUF(24:5)
+           .
+
        DataSet1-listini1-INITSTART.
            IF DataSet1-listini1-KEY-Asc
               MOVE Low-Value TO lst-chiave OF listini1
@@ -4752,6 +4802,8 @@
            PERFORM listini1-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini1-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT 
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -4782,6 +4834,8 @@
            PERFORM listini1-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini1-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -4812,6 +4866,8 @@
            PERFORM listini1-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini1-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -5824,7 +5880,7 @@
                 perform CHIAMATA-STAMPA
 
            when excel
-                move "Estrazione escel in corso..."    to tit
+                move "Estrazione excel in corso..."    to tit
                 display lab
                 perform ESTRAZIONE-EXCEL
 
@@ -6891,7 +6947,7 @@
 
               perform until 1 = 2
                  read listini previous no lock at end exit perform 
-           end-read
+           end-read  
                  if lst-gdo of listini not = gdo-codice
                  |or lst-data not = como-data
                     exit perform

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini-art.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 novembre 2023 15:44:22.
+       DATE-WRITTEN.        venerdì 10 novembre 2023 00:20:25.
        REMARKS.
       *{TOTEM}END
 
@@ -107,6 +107,8 @@
                   USAGE IS HANDLE OF WINDOW.
        77 data-richiesta   PIC  9(8).
        77 data-richiesta-dal           PIC  9(8).
+       01 FILLER           PIC  9.
+           88 record-ok VALUE IS 1    WHEN SET TO FALSE  0. 
        77 data-richiesta-al            PIC  9(8).
        01 chiave-lettura   PIC  9.
            88 k-gdo VALUE IS 0. 
@@ -116,8 +118,6 @@
            88 k-art VALUE IS 4. 
            88 k-codart VALUE IS 5. 
        77 save-gdo         PIC  x(5).
-       77 save-art         PIC  9(6)
-                  VALUE IS 0.
        77 save-fa          PIC  9
                   VALUE IS 0.
        77 save-sp          PIC  9
@@ -303,6 +303,8 @@
                   VALUE IS 0.
        77 chk-escludi-sp-buf           PIC  9
                   VALUE IS 0.
+       77 save-tipo-data   PIC  9
+                  VALUE IS 1.
        77 tipo-data        PIC  9
                   VALUE IS 1.
        77 ef-data-dal-buf  PIC  99/99/9999.
@@ -473,9 +475,13 @@
        77 listini-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini-lst-k-data-SPLITBUF  PIC X(29).
+       77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
+       77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini1-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
        77 listini1-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini1-lst-k-data-SPLITBUF  PIC X(29).
+       77 listini1-lst-k-articolo-SPLITBUF  PIC X(20).
+       77 listini1-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
 
            copy "common-excel.def".
        77  como-peso      pic zz.zz9,999.
@@ -720,8 +726,8 @@
            ef-data-al, 
            Entry-Field, 
            COL 85,75, 
-           LINE 11,78,
-           LINES 1,33 ,
+           LINE 11,75,
+           LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
            COLOR IS 513,
@@ -933,13 +939,29 @@
            VISIBLE v-storico,
            .
 
+      * PUSH BUTTON
+       05
+           pb-carica, 
+           Push-Button, 
+           COL 111,13, 
+           LINE 11,19,
+           LINES 1,88 ,
+           SIZE 13,63 ,
+           EXCEPTION-VALUE 1004,
+           FONT IS Small-Font,
+           ID IS 17,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Carica &listini",
+           .
+
       * GRID
        05
            gd-listini, 
            Grid, 
            COL 2,38, 
            LINE 15,56,
-           LINES 33,00 ,
+           LINES 42,56 ,
            SIZE 179,63 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
@@ -955,7 +977,6 @@
            DIVIDER-COLOR 1,
            HEADING-COLOR 257,
            HEADING-DIVIDER-COLOR 1,
-           HSCROLL,
            ID IS 18,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -3562,6 +3583,26 @@
            listini-lst-k-data-SPLITBUF(14:15)
            .
 
+       listini-lst-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-articolo-SPLITBUF
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini-lst-k-articolo-SPLITBUF(1:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-articolo-SPLITBUF(7:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-articolo-SPLITBUF(15:5)
+           .
+
+       listini-lst-k-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-cod-art-cli-SPLITBUF
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(1:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(16:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(24:5)
+           .
+
        DataSet1-listini-INITSTART.
            EVALUATE DataSet1-KEYIS
            WHEN 1
@@ -3665,6 +3706,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -3698,6 +3741,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -3731,6 +3776,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -3803,6 +3850,26 @@
            listini1-lst-k-data-SPLITBUF(14:15)
            .
 
+       listini1-lst-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini1-lst-k-articolo-SPLITBUF
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini1-lst-k-articolo-SPLITBUF(1:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini1-lst-k-articolo-SPLITBUF(7:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini1-lst-k-articolo-SPLITBUF(15:5)
+           .
+
+       listini1-lst-k-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini1-lst-k-cod-art-cli-SPLITBUF
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini1-lst-k-cod-art-cli-SPLITBUF(1:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini1-lst-k-cod-art-cli-SPLITBUF(16:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini1-lst-k-cod-art-cli-SPLITBUF(24:5)
+           .
+
        DataSet1-listini1-INITSTART.
            IF DataSet1-listini1-KEY-Asc
               MOVE Low-Value TO lst-chiave OF listini1
@@ -3867,6 +3934,8 @@
            PERFORM listini1-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini1-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT 
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -3897,6 +3966,8 @@
            PERFORM listini1-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini1-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -3927,6 +3998,8 @@
            PERFORM listini1-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini1-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini1-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini1-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini1 TO TOTEM-ERR-STAT
            MOVE "listini1" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -4416,7 +4489,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 48,19,
+              LINES 58,44,
               SIZE 182,38,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -4520,6 +4593,8 @@
                  PERFORM rb-data-LinkTo
               WHEN Key-Status = 1003
                  PERFORM rb-dal-LinkTo
+              WHEN Key-Status = 1004
+                 PERFORM pb-carica-LinkTo
               WHEN Key-Status = 8
                  PERFORM TOOL-CERCA-LinkTo
            END-EVALUATE
@@ -4673,13 +4748,15 @@
       * <TOTEM:EPT. FORM:form3, FORM:form3, BeforeAccept>
       *     evaluate true
       *     when carica
-                move "Caricamento listini in corso..." to tit
+                move "Ricerca listini in corso..." to tit
                 display lab   
 
                 perform RIEMPI-TMP
-
-                if trovato
-
+                                           
+                if trovato   
+                   move "Caricamento listini in corso..." to tit
+                   display lab              
+                   
                    modify gd-listini, mass-update = 1
           
                    move 0 to idx
@@ -4689,7 +4766,6 @@
                    perform SPOSTAMENTO
                    modify  gd-listini, cursor-y    = event-data-2
                    modify  gd-listini, mass-update = 0
-                   close  tmp-listini
                 end-if
 
       *     when chiamata
@@ -5178,9 +5254,6 @@
 
        RIEMPI-GRID.
       * <TOTEM:PARA. RIEMPI-GRID>
-           close      tmp-listini.
-           open input tmp-listini.
-
            move 0 to idx.
 
            move low-value to tlst-rec.
@@ -5269,20 +5342,7 @@
            read tgrupgdo no lock invalid continue end-read.
            move gdo-tipocli to tcl-codice.
            read ttipocli no lock invalid initialize tcl-rec end-read.
-
-           move ef-gdo-buf  to lst-gdo of listini.
-
-           if tipo-data = 1
-              move data-richiesta     to lst-data of listini
-           else
-              move data-richiesta-al  to lst-data of listini
-           end-if.
-
-           move ef-art-buf         to save-articolo.
-           move ef-cod-art-cli-buf to save-cod-art-cli.
-
-           set trovato to false.
-                            
+                              
            evaluate true true true
            when save-articolo = 0 save-cod-art-cli not = spaces 
            save-gdo = spaces
@@ -5306,99 +5366,53 @@
                 set k-gdo to true
 
            end-evaluate.
+                                                    
+           set trovato to true.
+           move low-value to lst-rec of listini.  
 
-           if save-articolo = 0 and save-cod-art-cli = spaces
-              move high-value   to lst-articolo of listini
-              start listini key <= lst-chiave of listini
-                    invalid continue
-                not invalid
-                    read listini previous no lock end-read
-                    if lst-gdo of listini   = ef-gdo-buf or
-                       ef-gdo-buf not = spaces
-                       set trovato to true
-                    end-if
-              end-start
+           if tipo-data = 1
+              move data-richiesta     to lst-data of listini
            else
-              if save-cod-art-cli not = spaces
-                 move save-cod-art-cli to lst-cod-art-cli of listini
-                 start listini key <= lst-k-gdo-cod-art-cli of listini
-                       invalid continue
-                   not invalid
-                       read listini previous no lock end-read
-                       if ( lst-gdo of listini = ef-gdo-buf or
-                            ef-gdo-buf not = spaces ) and
-                          lst-cod-art-cli of listini = save-cod-art-cli
-                          set trovato to true
-                       end-if
-                 end-start
-              else
-                 move save-articolo to lst-articolo of listini
-                 start listini key <= lst-k-gdo-articolo of listini
-                       invalid continue
-                   not invalid
-                       read listini previous no lock end-read
-                       if ( lst-gdo of listini = ef-gdo-buf or
-                            ef-gdo-buf not = spaces )  and
-                          lst-articolo of listini = save-articolo
-                          set trovato to true
-                       end-if
-                 end-start
-              end-if
+              move data-richiesta-al  to lst-data of listini
            end-if.
 
-           if trovato and tipo-data = 2
-              set trovato to false
-              if lst-data of listini >= data-richiesta-dal and
-                 lst-data of listini <= data-richiesta-al 
-                 set trovato to true
-              end-if
-           end-if.
+           evaluate true
+           when k-codart
+                move save-cod-art-cli to lst-cod-art-cli of listini
+                start listini key <= lst-k-cod-art-cli of listini
+                      invalid set trovato to false
+                end-start
+           when k-gdo-codart                                       
+                move save-gdo         to lst-gdo         of listini
+                move save-cod-art-cli to lst-cod-art-cli of listini
+                start listini key <= lst-k-gdo-cod-art-cli of listini
+                      invalid set trovato to false
+                end-start
+           when k-art                                              
+                move save-articolo to lst-articolo of listini
+                start listini key <= lst-k-articolo of listini
+                      invalid set trovato to false
+                end-start
+           when k-gdo-art                                          
+                move save-gdo      to lst-gdo      of listini
+                move save-articolo to lst-articolo of listini
+                start listini key <= lst-k-gdo-articolo of listini
+                      invalid set trovato to false
+                end-start
+           when k-data                                             
+                start listini key <= lst-k-data of listini
+                      invalid set trovato to false
+                end-start
+           when k-gdo                                              
+                move save-gdo to lst-gdo of listini
+                start listini key <= lst-chiave of listini
+                      invalid set trovato to false
+                end-start
+           end-evaluate.
 
-           if trovato
-
-              move 0 to idx
-              if lst-data-modifica of listini = 0
-                 move lst-data-creazione of listini 
-                   to lst-data-modifica  of listini
-              end-if
-              move lst-data-modifica of listini to como-data
-              initialize lab-agg-buf
-              string "Ultimo aggiornamento: " delimited size
-                     como-data(7:2)           delimited size
-                     "/"                      delimited size
-                     como-data(5:2)           delimited size
-                     "/"                      delimited size
-                     como-data(1:4)           delimited size            
-                    
-                into lab-agg-buf
-              end-string
-
-      *****        move gdo-data-vigore to como-data
-      *****        perform DATE-TO-SCREEN
-      *****        move como-data to lab-data-vigore-buf
-
-              if path-tmp-listini = spaces
-
-                 accept como-data from century-date
-                 accept como-ora  from time
-                 initialize path-tmp-listini
-                 accept  path-tmp-listini from environment "PATH_ST"
-                 inspect path-tmp-listini replacing trailing 
-                                          spaces by low-value
-                 string path-tmp-listini delimited low-value
-                        "TMP-LISTINI"    delimited size
-                        "_"              delimited size
-                        como-data        delimited size
-                        "_"              delimited size
-                        como-ora         delimited size
-                        ".tmp"           delimited size
-                        into path-tmp-listini
-                 end-string      
-              else
-                 delete file tmp-listini
-              end-if
-
-              open output tmp-listini
+           if trovato                 
+              close       tmp-listini
+              open output tmp-listini 
               close       tmp-listini
               open i-o    tmp-listini
 
@@ -5407,24 +5421,48 @@
               move 0 to imp-data
               read timposte no lock invalid continue end-read
 
-              perform VALORIZZA-RIGA-TMP
-
               perform until 1 = 2
                  read listini previous no lock at end exit perform 
            end-read
-                 if save-gdo not = 0
-                    if lst-gdo of listini not = save-gdo
-                    |or lst-data not = como-data
-                       exit perform
-                    end-if          
-                 end-if
-                 if save-articolo not = 0
-                    if save-articolo not = lst-articolo of listini
+                                                                  
+                 evaluate true 
+                 when k-codart
+                      if save-cod-art-cli not = lst-cod-art-cli of 
+           listini
+                         exit perform
+                      end-if
+                 when k-gdo-codart                                      
+            
+                      if save-gdo         not = lst-gdo         of 
+           listini or
+                         save-cod-art-cli not = lst-cod-art-cli of 
+           listini
+                         exit perform
+                      end-if  
+                 when k-art                                             
+            
+                      if save-articolo not = lst-articolo of listini
+                         exit perform
+                      end-if
+                 when k-gdo-art                                         
+            
+                      if save-gdo      not = lst-gdo      of listini or
+                         save-articolo not = lst-articolo of listini
+                         exit perform
+                      end-if
+                 when k-data       
+                      continue
+                 when k-gdo         
+                      if save-gdo not = lst-gdo of listini 
+                         exit perform
+                       end-if          
+                 end-evaluate                      
+                 if tipo-data = 1
+                    if data-richiesta < lst-data of listini
                        exit perform
                     end-if
-                 end-if
-                 if save-cod-art-cli not = spaces
-                    if save-cod-art-cli not = lst-cod-art-cli of listini
+                 else            
+                    if data-richiesta-dal < lst-data of listini
                        exit perform
                     end-if
                  end-if
@@ -5439,10 +5477,8 @@
                     end-if
                     perform VALORIZZA-RIGA-TMP
                  end-if 
-              end-perform
-           end-if.                 
-                     
-           if trovato
+              end-perform     
+                               
               set trovato to false
               move low-value to tlst-chiave
               start tmp-listini key >= tlst-chiave 
@@ -5474,7 +5510,8 @@
                       exit perform
                  end-evaluate
               end-perform
-           end-if 
+
+           end-if                    
            .
       * <TOTEM:END>
 
@@ -5581,7 +5618,8 @@
       *    Luciano
            move lst-prg-chiave of listini to tlst-prg-chiave.
       *    Luciano               
-           move 0 to tlst-prog
+           move 0 to tlst-prog  
+
            if tipo-data = 1
               write tlst-rec invalid continue end-write
            else                  
@@ -5591,7 +5629,7 @@
                    not invalid exit perform
                  end-write
               end-perform
-           end-if.
+           end-if
            add 1 to idx.
 
       ***---
@@ -5809,20 +5847,26 @@
 
        CARICA-LISTINI.
       * <TOTEM:PARA. CARICA-LISTINI>
+           if ef-gdo-buf = spaces and art-codice = 0 and 
+           ef-cod-art-cli-buf = spaces
+              exit paragraph
+           end-if.                             
+
            if ef-gdo-buf         = save-gdo         and
-              art-codice         = save-art         and
+              art-codice         = save-articolo    and
               chk-escludi-buf    = save-fa          and
               chk-escludi-sp-buf = save-sp          and
               chk-storico-buf    = save-storico     and
               ef-cod-art-cli-buf = save-cod-art-cli and
               data-richiesta     = save-data        and
               data-richiesta-dal = save-dal         and
-              data-richiesta-al  = save-al
+              data-richiesta-al  = save-al          and
+              tipo-data          = save-tipo-data
               exit paragraph
            end-if.
 
            move ef-gdo-buf         to save-gdo.
-           move art-codice         to save-art.
+           move art-codice         to save-articolo.
            move chk-escludi-buf    to save-fa. 
            move chk-escludi-sp-buf to save-sp. 
            move chk-storico-buf    to save-storico.
@@ -5830,6 +5874,10 @@
            move data-richiesta     to save-data.
            move data-richiesta-dal to save-dal.         
            move data-richiesta-al  to save-al.
+           move tipo-data          to save-tipo-data.
+                                      
+           modify gd-listini, reset-grid = 1.
+           perform GD-LISTINI-CONTENT.
 
            perform FORM3-OPEN-ROUTINE 
               
@@ -5840,7 +5888,26 @@
       * EVENT PARAGRAPH
        ginqui-Ev-Before-Program.
       * <TOTEM:PARA. ginqui-Ev-Before-Program>
-           move LK-BL-PROG-ID    TO COMO-PROG-ID 
+           move LK-BL-PROG-ID    TO COMO-PROG-ID.
+           accept como-data from century-date
+           accept como-ora  from time
+           initialize path-tmp-listini
+           accept  path-tmp-listini from environment "PATH_ST"
+           inspect path-tmp-listini replacing trailing 
+                                    spaces by low-value
+           string path-tmp-listini delimited low-value
+                  "TMP-LISTINI"    delimited size
+                  "_"              delimited size
+                  como-data        delimited size
+                  "_"              delimited size
+                  como-ora         delimited size
+                  ".tmp"           delimited size
+             into path-tmp-listini
+           end-string.
+
+           open output tmp-listini.
+           close       tmp-listini.
+           open i-o    tmp-listini 
            .
       * <TOTEM:END>
        ginqui-Ev-After-Program.
@@ -5848,6 +5915,7 @@
            SET LK-BL-CANCELLAZIONE TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
            CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           close       tmp-listini.
            delete file tmp-listini 
            .
       * <TOTEM:END>
@@ -5869,10 +5937,7 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            move 0 to e-cerca.
            modify tool-cerca, enabled e-cerca.
-           perform CONTROLLO.
-           if tutto-ok 
-              perform CARICA-LISTINI
-           end-if 
+           perform CONTROLLO      
            .
       * <TOTEM:END>
        Screen4-Ef-1-BeforeProcedure.
@@ -5883,10 +5948,7 @@
        Screen4-Ef-1-AfterProcedure.
       * <TOTEM:PARA. Screen4-Ef-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           perform CONTROLLO.   
-           if tutto-ok
-              perform CARICA-LISTINI
-           end-if 
+           perform CONTROLLO   
            .
       * <TOTEM:END>
        Screen4-Ef-2-BeforeProcedure.
@@ -5901,10 +5963,7 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            move 0 to e-cerca.
            modify tool-cerca, enabled e-cerca.
-           perform CONTROLLO.
-           if tutto-ok
-              perform CARICA-LISTINI
-           end-if 
+           perform CONTROLLO  
            .
       * <TOTEM:END>
        ef-cod-art-cli-BeforeProcedure.
@@ -5915,10 +5974,7 @@
        ef-cod-art-cli-AfterProcedure.
       * <TOTEM:PARA. ef-cod-art-cli-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           perform CONTROLLO.   
-           if tutto-ok
-              perform CARICA-LISTINI
-           end-if 
+           perform CONTROLLO  
            .
       * <TOTEM:END>
        Screen4-Cb-1-BeforeProcedure.
@@ -5929,9 +5985,6 @@
        Screen4-Cb-1-AfterProcedure.
       * <TOTEM:PARA. Screen4-Cb-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
-           if tutto-ok
-              perform CARICA-LISTINI
-           end-if 
            .
       * <TOTEM:END>
        Screen4-Rb-1-BeforeProcedure.
@@ -5990,6 +6043,23 @@
        gd-listini-Ev-Msg-Goto-Cell-Mouse.
       * <TOTEM:PARA. gd-listini-Ev-Msg-Goto-Cell-Mouse>
            perform SPOSTAMENTO 
+           .
+      * <TOTEM:END>
+       pb-carica-LinkTo.
+      * <TOTEM:PARA. pb-carica-LinkTo>
+           perform varying control-id from 78-id-ef-gdo by 1 
+                     until control-id > 78-ID-ef-data-al
+              perform CONTROLLO
+              if errori 
+                 exit perform
+              end-if
+           end-perform.
+
+           if errori                      
+              move 4 to accept-control
+           else
+              perform CARICA-LISTINI
+           end-if 
            .
       * <TOTEM:END>
 

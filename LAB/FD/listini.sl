@@ -11,4 +11,10 @@
            WITH DUPLICATES 
            ALTERNATE RECORD KEY IS lst-k-data = lst-data OF listini, 
            lst-gdo OF listini, lst-cod-art-cli OF listini
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS lst-k-articolo = lst-articolo OF 
+           listini, lst-data OF listini, lst-gdo OF listini
+           WITH DUPLICATES 
+           ALTERNATE RECORD KEY IS lst-k-cod-art-cli = lst-cod-art-cli 
+           OF listini, lst-data OF listini, lst-gdo OF listini
            WITH DUPLICATES .
