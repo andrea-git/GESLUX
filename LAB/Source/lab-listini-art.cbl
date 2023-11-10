@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini-art.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 10 novembre 2023 00:20:25.
+       DATE-WRITTEN.        venerdì 10 novembre 2023 10:48:48.
        REMARKS.
       *{TOTEM}END
 
@@ -106,10 +106,8 @@
        77 form1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 data-richiesta   PIC  9(8).
-       77 data-richiesta-dal           PIC  9(8).
        01 FILLER           PIC  9.
            88 record-ok VALUE IS 1    WHEN SET TO FALSE  0. 
-       77 data-richiesta-al            PIC  9(8).
        01 chiave-lettura   PIC  9.
            88 k-gdo VALUE IS 0. 
            88 k-gdo-art VALUE IS 1. 
@@ -125,10 +123,6 @@
        77 save-storico     PIC  9
                   VALUE IS 0.
        77 save-data        PIC  9(8)
-                  VALUE IS 0.
-       77 save-dal         PIC  9(8)
-                  VALUE IS 0.
-       77 save-al          PIC  9(8)
                   VALUE IS 0.
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 0.
@@ -221,6 +215,7 @@
        77 save-cod-art-cli PIC  x(15).
        01 rec-grid.
            05 col-num          PIC  z(7).
+           05 col-gdo          PIC  x(5).
            05 col-art          PIC  z(6).
            05 col-data         PIC  x(8).
            05 col-cod-art      PIC  X(15).
@@ -303,10 +298,6 @@
                   VALUE IS 0.
        77 chk-escludi-sp-buf           PIC  9
                   VALUE IS 0.
-       77 save-tipo-data   PIC  9
-                  VALUE IS 1.
-       77 tipo-data        PIC  9
-                  VALUE IS 1.
        77 ef-data-dal-buf  PIC  99/99/9999.
        77 ef-data-al-buf   PIC  99/99/9999.
        77 e-data           PIC  9
@@ -358,7 +349,7 @@
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tmp-listini-BUF     PIC X(243).
+       77 TMP-DataSet1-tmp-listini-BUF     PIC X(248).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
@@ -468,6 +459,7 @@
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
        77 tmp-listini-tmp-k-articolo-SPLITBUF  PIC X(7).
+       77 tmp-listini-tmp-k-art-gdo-SPLITBUF  PIC X(12).
        77 progmag-key01-SPLITBUF  PIC X(21).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -494,11 +486,7 @@
        78  78-ID-ef-cod-art-cli VALUE 5003.
        78  78-ID-chk-escludi VALUE 5004.
        78  78-ID-chk-escludi-sp VALUE 5005.
-       78  78-ID-rb-data VALUE 5006.
-       78  78-ID-rb-dal VALUE 5007.
-       78  78-ID-ef-data VALUE 5008.
-       78  78-ID-ef-data-dal VALUE 5009.
-       78  78-ID-ef-data-al VALUE 5010.
+       78  78-ID-ef-data VALUE 5006.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -519,9 +507,9 @@
        05
            frame-limiti, 
            Frame, 
-           COL 56,75, 
+           COL 60,63, 
            LINE 1,50,
-           LINES 12,38 ,
+           LINES 10,63 ,
            SIZE 70,88 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -534,7 +522,7 @@
        05
            ef-gdo, 
            Entry-Field, 
-           COL 68,75, 
+           COL 72,63, 
            LINE 3,50,
            LINES 1,33 ,
            SIZE 7,00 ,
@@ -554,7 +542,7 @@
        05
            ef-art, 
            Entry-Field, 
-           COL 68,75, 
+           COL 72,63, 
            LINE 5,72,
            LINES 1,33 ,
            SIZE 7,00 ,
@@ -573,7 +561,7 @@
        05
            ef-cod-art-cli, 
            Entry-Field, 
-           COL 68,75, 
+           COL 72,63, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 18,00 ,
@@ -591,7 +579,7 @@
        05
            chk-escludi, 
            Check-Box, 
-           COL 89,15, 
+           COL 93,03, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 2,00 ,
@@ -608,7 +596,7 @@
        05
            chk-escludi-sp, 
            Check-Box, 
-           COL 102,15, 
+           COL 106,03, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 2,00 ,
@@ -625,7 +613,7 @@
        05
            chk-storico, 
            Check-Box, 
-           COL 116,15, 
+           COL 120,03, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 2,00 ,
@@ -639,53 +627,11 @@
            AFTER PROCEDURE Screen4-Cb-1-AfterProcedure,
            BEFORE PROCEDURE Screen4-Cb-1-BeforeProcedure, 
            .
-      * RADIO BUTTON
-       05
-           rb-data, 
-           Radio-Button, 
-           COL 58,15, 
-           LINE 9,83,
-           LINES 1,33 ,
-           SIZE 2,00 ,
-           EXCEPTION-VALUE 1002
-           FLAT,
-           FONT IS Small-Font,
-           GROUP 1,
-           GROUP-VALUE 1,
-           ID IS 78-ID-rb-data,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TITLE "Radio Button",
-           VALUE tipo-data,
-           AFTER PROCEDURE Screen4-Rb-1-AfterProcedure, 
-           BEFORE PROCEDURE Screen4-Rb-1-BeforeProcedure, 
-           .
-      * RADIO BUTTON
-       05
-           rb-dal, 
-           Radio-Button, 
-           COL 58,15, 
-           LINE 11,78,
-           LINES 1,33 ,
-           SIZE 2,00 ,
-           EXCEPTION-VALUE 1003
-           FLAT,
-           FONT IS Small-Font,
-           GROUP 1,
-           GROUP-VALUE 2,
-           ID IS 78-ID-rb-dal,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TITLE "Radio Button",
-           VALUE tipo-data,
-           AFTER PROCEDURE Screen4-Rb-1-AfterProcedure, 
-           BEFORE PROCEDURE Screen4-Rb-1-BeforeProcedure, 
-           .
       * ENTRY FIELD
        05
            ef-data, 
            Entry-Field, 
-           COL 68,75, 
+           COL 72,63, 
            LINE 9,83,
            LINES 1,33 ,
            SIZE 11,00 ,
@@ -701,51 +647,27 @@
            BEFORE PROCEDURE Screen4-Ef-1-BeforeProcedure, 
            .
 
-      * ENTRY FIELD
+      * PUSH BUTTON
        05
-           ef-data-dal, 
-           Entry-Field, 
-           COL 68,75, 
-           LINE 11,78,
-           LINES 1,33 ,
-           SIZE 11,00 ,
-           BOXED,
-           COLOR IS 513,
-           ENABLED e-periodo,
-           ID IS 78-ID-ef-data-dal,                
+           pb-carica, 
+           Push-Button, 
+           COL 115,01, 
+           LINE 9,31,
+           LINES 1,88 ,
+           SIZE 13,63 ,
+           EXCEPTION-VALUE 1004,
+           FONT IS Small-Font,
+           ID IS 17,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           CENTER,
-           VALUE ef-data-dal-buf,
-           AFTER PROCEDURE Screen4-Ef-1-AfterProcedure, 
-           BEFORE PROCEDURE Screen4-Ef-1-BeforeProcedure, 
-           .
-
-      * ENTRY FIELD
-       05
-           ef-data-al, 
-           Entry-Field, 
-           COL 85,75, 
-           LINE 11,75,
-           LINES 1,31 ,
-           SIZE 11,00 ,
-           BOXED,
-           COLOR IS 513,
-           ENABLED e-periodo,
-           ID IS 78-ID-ef-data-al,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           CENTER,
-           VALUE ef-data-al-buf,
-           AFTER PROCEDURE Screen4-Ef-1-AfterProcedure, 
-           BEFORE PROCEDURE Screen4-Ef-1-BeforeProcedure, 
+           TITLE "Carica &listini",
            .
 
       * LABEL
        05
            Screen4-blockpgm-1, 
            Label, 
-           COL 75,25, 
+           COL 79,13, 
            LINE 2,50,
            LINES 0,44 ,
            SIZE 1,60 ,
@@ -761,7 +683,7 @@
        05
            Screen4-Custom1-2, 
            Label, 
-           COL 59,25, 
+           COL 63,13, 
            LINE 2,39,
            LINES 0,50 ,
            SIZE 2,20 ,
@@ -775,7 +697,7 @@
        05
            Screen3-La-1aa, 
            Label, 
-           COL 57,75, 
+           COL 61,63, 
            LINE 3,50,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -790,7 +712,7 @@
        05
            lab-gdo, 
            Label, 
-           COL 76,75, 
+           COL 80,63, 
            LINE 3,50,
            LINES 1,33 ,
            SIZE 50,00 ,
@@ -806,7 +728,7 @@
        05
            Screen4-La-1, 
            Label, 
-           COL 60,85, 
+           COL 62,25, 
            LINE 9,83,
            LINES 1,33 ,
            SIZE 6,00 ,
@@ -821,7 +743,7 @@
        05
            Screen4-La-2, 
            Label, 
-           COL 57,75, 
+           COL 61,63, 
            LINE 5,72,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -836,7 +758,7 @@
        05
            lab-art, 
            Label, 
-           COL 76,75, 
+           COL 80,63, 
            LINE 5,72,
            LINES 1,33 ,
            SIZE 50,00 ,
@@ -852,7 +774,7 @@
        05
            Screen4-La-2a, 
            Label, 
-           COL 57,75, 
+           COL 61,63, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -867,7 +789,7 @@
        05
            Screen4-La-2aa, 
            Label, 
-           COL 91,75, 
+           COL 95,63, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -882,7 +804,7 @@
        05
            Screen4-La-2aaa, 
            Label, 
-           COL 104,75, 
+           COL 108,63, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 10,50 ,
@@ -895,39 +817,9 @@
 
       * LABEL
        05
-           Screen4-La-1a, 
-           Label, 
-           COL 60,85, 
-           LINE 11,72,
-           LINES 1,33 ,
-           SIZE 6,00 ,
-           ID IS 207,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Dal",
-           .
-
-      * LABEL
-       05
-           Screen4-La-1aa, 
-           Label, 
-           COL 81,85, 
-           LINE 11,72,
-           LINES 1,33 ,
-           SIZE 2,00 ,
-           ID IS 208,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "al",
-           .
-
-      * LABEL
-       05
            lab-storico, 
            Label, 
-           COL 118,75, 
+           COL 122,63, 
            LINE 7,78,
            LINES 1,33 ,
            SIZE 7,00 ,
@@ -939,50 +831,35 @@
            VISIBLE v-storico,
            .
 
-      * PUSH BUTTON
-       05
-           pb-carica, 
-           Push-Button, 
-           COL 111,13, 
-           LINE 11,19,
-           LINES 1,88 ,
-           SIZE 13,63 ,
-           EXCEPTION-VALUE 1004,
-           FONT IS Small-Font,
-           ID IS 17,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TITLE "Carica &listini",
-           .
-
       * GRID
        05
            gd-listini, 
            Grid, 
            COL 2,38, 
-           LINE 15,56,
-           LINES 42,56 ,
-           SIZE 179,63 ,
+           LINE 12,94,
+           LINES 42,63 ,
+           SIZE 187,38 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            CENTERED-HEADINGS,
-           DATA-COLUMNS (1, 8, 14, 22, 37, 87, 90, 103, 113, 123, 133, 
-           143, 153, 183),
-           ALIGNMENT ("R", "R", "C", "C", "U", "C", "R", "R", "R", "R", 
-           "R", "R", "C", "R"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           DATA-COLUMNS (1, 8, 13, 19, 27, 42, 92, 95, 108, 118, 128, 
+           138, 148, 158, 188),
+           ALIGNMENT ("R", "U", "R", "C", "C", "U", "C", "R", "R", "R", 
+           "R", "R", "R", "C", "R"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 0,
            DIVIDER-COLOR 1,
            HEADING-COLOR 257,
            HEADING-DIVIDER-COLOR 1,
+           HSCROLL,
            ID IS 18,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            ROW-HEADINGS,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 177,
+           VIRTUAL-WIDTH 185,
            VPADDING 20,
            VSCROLL,
            EVENT PROCEDURE form2-Gd-1-Event-Proc,
@@ -2621,6 +2498,13 @@
            INITIALIZE tmp-listini-tmp-k-articolo-SPLITBUF
            MOVE tlst-articolo(1:6) TO 
            tmp-listini-tmp-k-articolo-SPLITBUF(1:6)
+           .
+
+       tmp-listini-tmp-k-art-gdo-MERGE-SPLITBUF.
+           INITIALIZE tmp-listini-tmp-k-art-gdo-SPLITBUF
+           MOVE tlst-gdo(1:5) TO tmp-listini-tmp-k-art-gdo-SPLITBUF(1:5)
+           MOVE tlst-articolo(1:6) TO 
+           tmp-listini-tmp-k-art-gdo-SPLITBUF(6:6)
            .
 
        DataSet1-tmp-listini-INITSTART.
@@ -4290,52 +4174,55 @@
                 CELL-DATA = "N.",
       * CELLS' SETTING
               MODIFY gd-listini, X = 2, Y = 1,
-                CELL-DATA = "Articolo",
+                CELL-DATA = "GDO",
       * CELLS' SETTING
               MODIFY gd-listini, X = 3, Y = 1,
-                CELL-DATA = "Valido dal",
+                CELL-DATA = "Articolo",
       * CELLS' SETTING
               MODIFY gd-listini, X = 4, Y = 1,
-                CELL-DATA = "Art Cod Cli",
+                CELL-DATA = "Valido dal",
       * CELLS' SETTING
               MODIFY gd-listini, X = 5, Y = 1,
-                CELL-DATA = "Descrizione",
+                CELL-DATA = "Art Cod Cli",
       * CELLS' SETTING
               MODIFY gd-listini, X = 6, Y = 1,
-                CELL-DATA = "Imb",
+                CELL-DATA = "Descrizione",
       * CELLS' SETTING
               MODIFY gd-listini, X = 7, Y = 1,
-                CELL-DATA = "EAN",
+                CELL-DATA = "Imb",
       * CELLS' SETTING
               MODIFY gd-listini, X = 8, Y = 1,
-                CELL-DATA = "Prod.",
+                CELL-DATA = "EAN",
       * CELLS' SETTING
               MODIFY gd-listini, X = 9, Y = 1,
-                CELL-DATA = "Cons.",
+                CELL-DATA = "Prod.",
       * CELLS' SETTING
               MODIFY gd-listini, X = 10, Y = 1,
-                CELL-DATA = "Cou/Cob",
+                CELL-DATA = "Cons.",
       * CELLS' SETTING
               MODIFY gd-listini, X = 11, Y = 1,
-                CELL-DATA = "Add. Pb",
+                CELL-DATA = "Cou/Cob",
       * CELLS' SETTING
               MODIFY gd-listini, X = 12, Y = 1,
-                CELL-DATA = "Prezzo",
+                CELL-DATA = "Add. Pb",
       * CELLS' SETTING
               MODIFY gd-listini, X = 13, Y = 1,
-                CELL-DATA = "Prezzo Promo",
+                CELL-DATA = "Prezzo",
       * CELLS' SETTING
               MODIFY gd-listini, X = 14, Y = 1,
+                CELL-DATA = "Prezzo Promo",
+      * CELLS' SETTING
+              MODIFY gd-listini, X = 15, Y = 1,
                 CELL-DATA = "Faro",
       * COLUMNS' SETTING
-              MODIFY gd-listini, X = 12  
+              MODIFY gd-listini, X = 13  
                 COLUMN-FONT = Default-Font,
       * COLUMNS' SETTING
-              MODIFY gd-listini, X = 13  
+              MODIFY gd-listini, X = 14  
                 COLUMN-COLOR = 143,
                 COLUMN-FONT = Verdana10B-Occidentale,
       * COLUMNS' SETTING
-              MODIFY gd-listini, X = 14  
+              MODIFY gd-listini, X = 15  
                 COLUMN-COLOR = 485,
                 COLUMN-FONT = Verdana10-Occidentale,
            .
@@ -4489,8 +4376,8 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 58,44,
-              SIZE 182,38,
+              LINES 55,25,
+              SIZE 190,25,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -4520,8 +4407,8 @@
       * Status-bar
            DISPLAY Form1 UPON form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY gd-listini, DISPLAY-COLUMNS (1, 6, 14, 24, 39, 74, 
-           80, 95, 107, 115, 123, 131, 139, 169)
+              MODIFY gd-listini, DISPLAY-COLUMNS (1, 6, 14, 22, 32, 47, 
+           82, 88, 103, 115, 123, 131, 139, 147, 177)
            .
 
        Form1-PROC.
@@ -4534,18 +4421,6 @@
            perform DATE-TO-SCREEN.
            move como-data to ef-data-buf.
            display ef-data.
-
-           accept como-data from century-date.
-           move "0101" to como-data(5:4).
-           perform DATE-TO-SCREEN.
-           move como-data to ef-data-dal-buf.
-           display ef-data-dal.
-
-           accept como-data from century-date.
-           move "1231" to como-data(5:4).
-           perform DATE-TO-SCREEN.
-           move como-data to ef-data-al-buf.
-           display ef-data-al.
                                                         
            move 1 to chk-escludi-buf chk-escludi-sp-buf.
            display chk-escludi chk-escludi-sp.
@@ -4589,10 +4464,6 @@
                  IF Event-Type = Cmd-Close
                     PERFORM Form1-Exit
                  END-IF
-              WHEN Key-Status = 1002
-                 PERFORM rb-data-LinkTo
-              WHEN Key-Status = 1003
-                 PERFORM rb-dal-LinkTo
               WHEN Key-Status = 1004
                  PERFORM pb-carica-LinkTo
               WHEN Key-Status = 8
@@ -4753,7 +4624,11 @@
 
                 perform RIEMPI-TMP
                                            
-                if trovato   
+                if not trovato   
+                   display message "Nessun listino trovato"
+                             title tit-err
+                              icon 2
+                else
                    move "Caricamento listini in corso..." to tit
                    display lab              
                    
@@ -4964,6 +4839,44 @@
            .
 
       * USER DEFINE PARAGRAPH
+       CARICA-LISTINI.
+      * <TOTEM:PARA. CARICA-LISTINI>
+           if ef-gdo-buf = spaces and art-codice = 0 and 
+           ef-cod-art-cli-buf = spaces
+              display message "Indicare Gruppo GDO o Articolo o Cod.art.
+      -    "cli."
+                        title tit-err
+                         icon 2
+              exit paragraph
+           end-if.                             
+
+           if ef-gdo-buf         = save-gdo         and
+              art-codice         = save-articolo    and
+              chk-escludi-buf    = save-fa          and
+              chk-escludi-sp-buf = save-sp          and
+              chk-storico-buf    = save-storico     and
+              ef-cod-art-cli-buf = save-cod-art-cli and
+              data-richiesta     = save-data        
+              exit paragraph
+           end-if.
+
+           move ef-gdo-buf         to save-gdo.
+           move art-codice         to save-articolo.
+           move chk-escludi-buf    to save-fa. 
+           move chk-escludi-sp-buf to save-sp. 
+           move chk-storico-buf    to save-storico.
+           move ef-cod-art-cli-buf to save-cod-art-cli.
+           move data-richiesta     to save-data.    
+                                      
+           modify gd-listini, reset-grid = 1.
+           perform GD-LISTINI-CONTENT.
+
+           perform FORM3-OPEN-ROUTINE 
+              
+
+           .
+      * <TOTEM:END>
+
        CERCA.
       * <TOTEM:PARA. CERCA>
            evaluate control-id
@@ -5026,45 +4939,14 @@
                 perform DATE-FORMAT
                 move como-data to ef-data-buf
                 display ef-data
-                perform DATE-TO-FILE
-                move como-data to data-richiesta 
-           
-           when 78-ID-ef-data-dal
-                inquire ef-data-dal, value in ef-data-dal-buf
-                move ef-data-dal-buf to como-data
-                if como-data not = 0
-                   perform DATE-FORMAT
-                end-if
-                move como-data to ef-data-dal-buf
-                display ef-data-dal
-                perform DATE-TO-FILE
-                move como-data to data-richiesta-dal
-           
-           when 78-ID-ef-data-al
-                inquire ef-data-al, value in ef-data-al-buf
-                move ef-data-al-buf to como-data
-                if como-data not = 0 and not = 99999999
-                   perform DATE-FORMAT
-                else
-                   move 99999999 to como-data
-                end-if
-                move como-data to ef-data-al-buf
-                display ef-data-al
-                perform DATE-TO-FILE
-                move como-data to data-richiesta-al
-
-                
-                inquire ef-data-dal, value in ef-data-dal-buf
-                move ef-data-dal-buf to como-data
-                perform DATE-TO-FILE
-                move como-data to data-richiesta-dal
-
-                if data-richiesta-dal > data-richiesta-al    
+                perform DATE-TO-FILE     
+                if como-data < 20210101
                    set errori to true
-                   display message "Periodo non valido"
+                   display message "Data MINIMA 01/01/2021"
                              title tit-err
                               icon 2
                 end-if
+                move como-data to data-richiesta 
 
            when 78-ID-ef-art
                 inquire ef-art, value in art-codice
@@ -5096,9 +4978,9 @@
                 display lab-art
 
            when 78-ID-ef-cod-art-cli
-                inquire ef-art, value in save-articolo
-                inquire ef-cod-art-cli, value in save-cod-art-cli
-                if save-articolo not = 0 and save-cod-art-cli not = 
+                inquire ef-art, value in art-codice
+                inquire ef-cod-art-cli, value in ef-cod-art-cli-buf
+                if art-codice not = 0 and ef-cod-art-cli-buf not = 
            spaces
                    move 0 to ef-art-buf
                    display ef-art    
@@ -5305,23 +5187,25 @@
               end-if
               move tlst-cod-art-cli     to col-cod-art
               move tlst-promo           to col-promo
+              move tlst-gdo             to col-gdo
                                                        
               add 1 to idx giving riga        
 
               modify gd-listini(riga, 1),  cell-data col-num
-              modify gd-listini(riga, 2),  cell-data col-art
-              modify gd-listini(riga, 3),  cell-data col-data
-              modify gd-listini(riga, 4),  cell-data col-cod-art
-              modify gd-listini(riga, 5),  cell-data col-des    
-              modify gd-listini(riga, 6),  cell-data col-imb    
-              modify gd-listini(riga, 7),  cell-data col-ean
-              modify gd-listini(riga, 8),  cell-data col-prod 
-              modify gd-listini(riga, 9),  cell-data col-cons
-              modify gd-listini(riga, 10), cell-data col-cou
-              modify gd-listini(riga, 11), cell-data col-add
-              modify gd-listini(riga, 12), cell-data col-prz
-              modify gd-listini(riga, 13), cell-data col-promo
-              modify gd-listini(riga, 14), cell-data col-faro
+              modify gd-listini(riga, 2),  cell-data col-gdo
+              modify gd-listini(riga, 3),  cell-data col-art
+              modify gd-listini(riga, 4),  cell-data col-data
+              modify gd-listini(riga, 5),  cell-data col-cod-art
+              modify gd-listini(riga, 6),  cell-data col-des    
+              modify gd-listini(riga, 7),  cell-data col-imb    
+              modify gd-listini(riga, 8),  cell-data col-ean
+              modify gd-listini(riga, 9),  cell-data col-prod 
+              modify gd-listini(riga, 10), cell-data col-cons
+              modify gd-listini(riga, 11), cell-data col-cou
+              modify gd-listini(riga, 12), cell-data col-add
+              modify gd-listini(riga, 13), cell-data col-prz
+              modify gd-listini(riga, 14), cell-data col-promo
+              modify gd-listini(riga, 15), cell-data col-faro
 
               modify gd-listini(riga, 1), hidden-data 
            tlst-chiave-listino
@@ -5368,14 +5252,10 @@
            end-evaluate.
                                                     
            set trovato to true.
-           move low-value to lst-rec of listini.  
+           move high-value to lst-rec of listini.  
 
-           if tipo-data = 1
-              move data-richiesta     to lst-data of listini
-           else
-              move data-richiesta-al  to lst-data of listini
-           end-if.
-
+           move data-richiesta     to lst-data of listini.
+           
            evaluate true
            when k-codart
                 move save-cod-art-cli to lst-cod-art-cli of listini
@@ -5457,59 +5337,52 @@
                          exit perform
                        end-if          
                  end-evaluate                      
-                 if tipo-data = 1
-                    if data-richiesta < lst-data of listini
-                       exit perform
-                    end-if
-                 else            
-                    if data-richiesta-dal < lst-data of listini
-                       exit perform
-                    end-if
+                 if data-richiesta < lst-data of listini
+                    exit perform
+                 end-if           
+                 if lst-data of listini < 20210101
+                    exit perform
                  end-if
-                 if tipo-data = 1
-                    move lst-articolo of listini to tlst-articolo
-                    read tmp-listini no lock key tmp-k-articolo
-                         invalid perform VALORIZZA-RIGA-TMP
-                    end-read
-                 else
-                    if lst-data of listini < data-richiesta-dal
-                       exit perform
-                    end-if
-                    perform VALORIZZA-RIGA-TMP
-                 end-if 
+                 move lst-articolo of listini to tlst-articolo
+                 move lst-gdo      of listini to tlst-gdo
+                 read tmp-listini no lock key tmp-k-art-gdo
+                      invalid perform VALORIZZA-RIGA-TMP
+                 end-read
+                 
               end-perform     
                                
               set trovato to false
               move low-value to tlst-chiave
               start tmp-listini key >= tlst-chiave 
                     invalid continue
-              end-start
-              perform until 1 = 2
-                 read tmp-listini next 
-                    at end 
-                       exit perform 
-                 end-read    
-                 initialize rec-grid
-                 evaluate tlst-prezzo
-                 when 0            
-                      if chk-escludi-sp-buf = 1
-                         exit perform cycle
-                      else
-                         set trovato to true
-                         exit perform
-                      end-if
-                 when 999999,99    
-                      if chk-escludi-buf = 1
-                         exit perform cycle
-                      else
-                         set trovato to true
-                         exit perform
-                      end-if
-                 when other     
-                      set trovato to true
-                      exit perform
-                 end-evaluate
-              end-perform
+                not invalid
+                    perform until 1 = 2
+                       read tmp-listini next 
+                          at end 
+                             exit perform 
+                       end-read    
+                       initialize rec-grid
+                       evaluate tlst-prezzo
+                       when 0            
+                            if chk-escludi-sp-buf = 1
+                               exit perform cycle
+                            else
+                               set trovato to true
+                               exit perform
+                            end-if
+                       when 999999,99    
+                            if chk-escludi-buf = 1
+                               exit perform cycle
+                            else
+                               set trovato to true
+                               exit perform
+                            end-if
+                       when other     
+                            set trovato to true
+                            exit perform
+                       end-evaluate
+                    end-perform
+              end-start    
 
            end-if                    
            .
@@ -5592,7 +5465,7 @@
            end-if.
            modify gd-listini, y = event-data-2,
                         start-y = event-data-2,
-                              x = 12,
+                              x = 13,
                         start-x = 2,
                    region-color = 80.
 
@@ -5607,10 +5480,11 @@
 
            perform RECUPERA-PROMO.
 
-           move lst-cod-art-cli  of listini     to tlst-cod-art-cli.
-           move lst-prezzo       of listini     to tlst-prezzo.
-           move lst-data         of listini     to tlst-data-vigore.
-           move gdo-data-vigore      to data-vigore.
+           move lst-cod-art-cli  of listini to tlst-cod-art-cli.
+           move lst-prezzo       of listini to tlst-prezzo.
+           move lst-data         of listini to tlst-data-vigore.
+           move lst-gdo          of listini to tlst-gdo.
+      *     move gdo-data-vigore      to data-vigore.
            if lst-data-modifica  of listini = 0
               move lst-data-creazione  of listini to tlst-data-modifica
            end-if.
@@ -5620,16 +5494,7 @@
       *    Luciano               
            move 0 to tlst-prog  
 
-           if tipo-data = 1
-              write tlst-rec invalid continue end-write
-           else                  
-              perform until 1 = 2
-                 write tlst-rec 
-                       invalid add 1 to tlst-prog
-                   not invalid exit perform
-                 end-write
-              end-perform
-           end-if
+           write tlst-rec invalid continue end-write.
            add 1 to idx.
 
       ***---
@@ -5661,13 +5526,7 @@
                         read articoli no lock invalid continue end-read
 
                         move ef-gdo-buf     to lst-gdo of listini1
-                        if tipo-data = 1
-                           move data-richiesta    
-                             to lst-data of listini1
-                        else
-                           move data-richiesta-al 
-                             to lst-data of listini1
-                        end-if
+                        move data-richiesta to lst-data of listini1
 
                         move art-codice to lst-articolo of listini1
                         start listini1 key <= lst-k-gdo-articolo of 
@@ -5680,33 +5539,16 @@
             
                                  if lst-prg-cod-articolo of listini1 
            not = 0
-                                    if tipo-data = 1
-                                       move lst-prg-chiave of listini1 
-                                         to prg-chiave
-                                       read progmag no lock
-                                            invalid continue
-                                        not invalid
-                                            move prg-peso-utf     
-                                              to art-peso-utf
-                                            move prg-peso-non-utf 
-                                              to art-peso-non-utf
-                                       end-read
-                                    else
-                                       if lst-data of listini1 >= 
-           data-richiesta-dal
-                                          move lst-prg-chiave of 
-           listini1 
-                                            to prg-chiave
-                                          read progmag no lock
-                                               invalid continue
-                                           not invalid
-                                               move prg-peso-utf     
-                                                 to art-peso-utf
-                                               move prg-peso-non-utf 
-                                                 to art-peso-non-utf
-                                          end-read
-                                       end-if
-                                    end-if
+                                    move lst-prg-chiave of listini1 
+                                      to prg-chiave
+                                    read progmag no lock
+                                         invalid continue
+                                     not invalid
+                                         move prg-peso-utf     
+                                           to art-peso-utf
+                                         move prg-peso-non-utf 
+                                           to art-peso-non-utf
+                                    end-read
                                  end-if
                               end-if
                         end-start
@@ -5845,46 +5687,6 @@
            .
       * <TOTEM:END>
 
-       CARICA-LISTINI.
-      * <TOTEM:PARA. CARICA-LISTINI>
-           if ef-gdo-buf = spaces and art-codice = 0 and 
-           ef-cod-art-cli-buf = spaces
-              exit paragraph
-           end-if.                             
-
-           if ef-gdo-buf         = save-gdo         and
-              art-codice         = save-articolo    and
-              chk-escludi-buf    = save-fa          and
-              chk-escludi-sp-buf = save-sp          and
-              chk-storico-buf    = save-storico     and
-              ef-cod-art-cli-buf = save-cod-art-cli and
-              data-richiesta     = save-data        and
-              data-richiesta-dal = save-dal         and
-              data-richiesta-al  = save-al          and
-              tipo-data          = save-tipo-data
-              exit paragraph
-           end-if.
-
-           move ef-gdo-buf         to save-gdo.
-           move art-codice         to save-articolo.
-           move chk-escludi-buf    to save-fa. 
-           move chk-escludi-sp-buf to save-sp. 
-           move chk-storico-buf    to save-storico.
-           move ef-cod-art-cli-buf to save-cod-art-cli.
-           move data-richiesta     to save-data.
-           move data-richiesta-dal to save-dal.         
-           move data-richiesta-al  to save-al.
-           move tipo-data          to save-tipo-data.
-                                      
-           modify gd-listini, reset-grid = 1.
-           perform GD-LISTINI-CONTENT.
-
-           perform FORM3-OPEN-ROUTINE 
-              
-
-           .
-      * <TOTEM:END>
-
       * EVENT PARAGRAPH
        ginqui-Ev-Before-Program.
       * <TOTEM:PARA. ginqui-Ev-Before-Program>
@@ -5987,30 +5789,6 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
-       Screen4-Rb-1-BeforeProcedure.
-      * <TOTEM:PARA. Screen4-Rb-1-BeforeProcedure>
-           modify control-handle, color = colore-nu
-           .
-      * <TOTEM:END>
-       Screen4-Rb-1-AfterProcedure.
-      * <TOTEM:PARA. Screen4-Rb-1-AfterProcedure>
-           modify control-handle, color = colore-or
-           .
-      * <TOTEM:END>
-       rb-data-LinkTo.
-      * <TOTEM:PARA. rb-data-LinkTo>
-           move 1 to e-data.
-           move 0 to e-periodo.
-           display ef-data-dal ef-data-al ef-data 
-           .
-      * <TOTEM:END>
-       rb-dal-LinkTo.
-      * <TOTEM:PARA. rb-dal-LinkTo>
-           move 0 to e-data.
-           move 1 to e-periodo.
-           display ef-data-dal ef-data-al ef-data 
-           .
-      * <TOTEM:END>
        gd-listini-Ev-Msg-Begin-Drag.
       * <TOTEM:PARA. gd-listini-Ev-Msg-Begin-Drag>
            perform SPOSTAMENTO 
@@ -6048,7 +5826,7 @@
        pb-carica-LinkTo.
       * <TOTEM:PARA. pb-carica-LinkTo>
            perform varying control-id from 78-id-ef-gdo by 1 
-                     until control-id > 78-ID-ef-data-al
+                     until control-id > 78-ID-ef-data
               perform CONTROLLO
               if errori 
                  exit perform

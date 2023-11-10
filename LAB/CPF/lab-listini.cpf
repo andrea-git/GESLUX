@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B9214027-639-240155195
+PROGRAM_UNIQUE_CODE=TOTEM-7E7BA82240-175-93423168
 
 {{@DESCRIPTION:
 
@@ -6107,6 +6107,12 @@ BEGIN-TEXT
                 move como-data to ef-data-buf
                 display ef-data
                 perform DATE-TO-FILE
+                if como-data < 20210101
+                   set errori to true
+                   display message "Data MINIMA 01/01/2021"
+                             title tit-err
+                              icon 2
+                end-if
                 move como-data to data-richiesta 
            
            when 78-ID-ef-data-dal
@@ -6599,7 +6605,11 @@ BEGIN-TEXT
                  lst-data of listini <= data-richiesta-al 
                  set trovato to true
               end-if
-           end-if.
+           end-if. 
+  
+           if lst-data of listini < 20210101
+              set trovato to false
+           end-if
 
            if trovato
 
@@ -6670,6 +6680,9 @@ BEGIN-TEXT
                     if save-cod-art-cli not = lst-cod-art-cli of listini
                        exit perform
                     end-if
+                 end-if  
+                 if lst-data of listini < 20210101
+                    exit perform
                  end-if
                  if tipo-data = 1
                     move lst-articolo of listini to tlst-articolo
@@ -7620,40 +7633,6 @@ END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
-   PARAGRAPH         = Screen4-Rb-1-BeforeProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
-      *<<** Customized_Default, SP-G, Screen4-Custom1-2a **>>
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = Screen4-Rb-1-AfterProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
-      *<<** Customized_Default, SP-G, Screen4-Custom1-2a **>>
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = rb-data-LinkTo
-BEGIN-TEXT
-           move 1 to e-data.
-           move 0 to e-periodo.
-           display ef-data-dal ef-data-al ef-data.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = rb-dal-LinkTo
-BEGIN-TEXT
-           move 0 to e-data.
-           move 1 to e-periodo.
-           display ef-data-dal ef-data-al ef-data.
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
    PARAGRAPH         = pb-inserisci-BeforeProcedure
 BEGIN-TEXT
            modify pb-inserisci, bitmap-number = 2.
@@ -7853,6 +7832,36 @@ BEGIN-TEXT
            if ricarica 
               move 27 to key-status
            end-if.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Rb-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2a **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Screen4-Rb-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen4-Custom1-2a **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-dal-LinkTo
+BEGIN-TEXT
+
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-data-LinkTo
+BEGIN-TEXT
+
 END-TEXT
 END-DATA
 

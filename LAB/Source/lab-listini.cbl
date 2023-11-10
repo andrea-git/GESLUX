@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 10 novembre 2023 00:07:53.
+       DATE-WRITTEN.        venerdì 10 novembre 2023 10:36:04.
        REMARKS.
       *{TOTEM}END
 
@@ -343,7 +343,7 @@
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
        77 TMP-DataSet1-blister-BUF     PIC X(2967).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tmp-listini-BUF     PIC X(243).
+       77 TMP-DataSet1-tmp-listini-BUF     PIC X(248).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
@@ -453,6 +453,7 @@
        77 blister-k-magaz-SPLITBUF  PIC X(10).
        77 blister-k-des-SPLITBUF  PIC X(51).
        77 tmp-listini-tmp-k-articolo-SPLITBUF  PIC X(7).
+       77 tmp-listini-tmp-k-art-gdo-SPLITBUF  PIC X(12).
        77 progmag-key01-SPLITBUF  PIC X(21).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -3491,6 +3492,13 @@
            tmp-listini-tmp-k-articolo-SPLITBUF(1:6)
            .
 
+       tmp-listini-tmp-k-art-gdo-MERGE-SPLITBUF.
+           INITIALIZE tmp-listini-tmp-k-art-gdo-SPLITBUF
+           MOVE tlst-gdo(1:5) TO tmp-listini-tmp-k-art-gdo-SPLITBUF(1:5)
+           MOVE tlst-articolo(1:6) TO 
+           tmp-listini-tmp-k-art-gdo-SPLITBUF(6:6)
+           .
+
        DataSet1-tmp-listini-INITSTART.
            IF DataSet1-tmp-listini-KEY-Asc
               MOVE Low-Value TO tlst-chiave
@@ -6400,6 +6408,12 @@
                 move como-data to ef-data-buf
                 display ef-data
                 perform DATE-TO-FILE
+                if como-data < 20210101
+                   set errori to true
+                   display message "Data MINIMA 01/01/2021"
+                             title tit-err
+                              icon 2
+                end-if
                 move como-data to data-richiesta 
            
            when 78-ID-ef-data-dal
@@ -6888,7 +6902,11 @@
                  lst-data of listini <= data-richiesta-al 
                  set trovato to true
               end-if
-           end-if.
+           end-if. 
+  
+           if lst-data of listini < 20210101
+              set trovato to false
+           end-if
 
            if trovato
 
@@ -6961,6 +6979,9 @@
                     if save-cod-art-cli not = lst-cod-art-cli of listini
                        exit perform
                     end-if
+                 end-if  
+                 if lst-data of listini < 20210101
+                    exit perform
                  end-if
                  if tipo-data = 1
                     move lst-articolo of listini to tlst-articolo
@@ -7848,32 +7869,6 @@
            end-if 
            .
       * <TOTEM:END>
-       Screen4-Rb-1-BeforeProcedure.
-      * <TOTEM:PARA. Screen4-Rb-1-BeforeProcedure>
-           modify control-handle, color = colore-nu
-           modify control-handle, color = colore-nu
-           .
-      * <TOTEM:END>
-       Screen4-Rb-1-AfterProcedure.
-      * <TOTEM:PARA. Screen4-Rb-1-AfterProcedure>
-           modify control-handle, color = colore-or
-           modify control-handle, color = colore-or
-           .
-      * <TOTEM:END>
-       rb-data-LinkTo.
-      * <TOTEM:PARA. rb-data-LinkTo>
-           move 1 to e-data.
-           move 0 to e-periodo.
-           display ef-data-dal ef-data-al ef-data 
-           .
-      * <TOTEM:END>
-       rb-dal-LinkTo.
-      * <TOTEM:PARA. rb-dal-LinkTo>
-           move 0 to e-data.
-           move 1 to e-periodo.
-           display ef-data-dal ef-data-al ef-data 
-           .
-      * <TOTEM:END>
        pb-inserisci-BeforeProcedure.
       * <TOTEM:PARA. pb-inserisci-BeforeProcedure>
            modify pb-inserisci, bitmap-number = 2 
@@ -8042,6 +8037,26 @@
            if ricarica 
               move 27 to key-status
            end-if 
+           .
+      * <TOTEM:END>
+       Screen4-Rb-1-BeforeProcedure.
+      * <TOTEM:PARA. Screen4-Rb-1-BeforeProcedure>
+           modify control-handle, color = colore-nu
+           modify control-handle, color = colore-nu
+           .
+      * <TOTEM:END>
+       Screen4-Rb-1-AfterProcedure.
+      * <TOTEM:PARA. Screen4-Rb-1-AfterProcedure>
+           modify control-handle, color = colore-or
+           modify control-handle, color = colore-or
+           .
+      * <TOTEM:END>
+       rb-dal-LinkTo.
+      * <TOTEM:PARA. rb-dal-LinkTo>
+           .
+      * <TOTEM:END>
+       rb-data-LinkTo.
+      * <TOTEM:PARA. rb-data-LinkTo>
            .
       * <TOTEM:END>
 
