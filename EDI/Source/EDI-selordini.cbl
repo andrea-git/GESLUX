@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 novembre 2023 14:41:22.
+       DATE-WRITTEN.        venerdì 17 novembre 2023 16:10:30.
        REMARKS.
       *{TOTEM}END
 
@@ -1240,6 +1240,8 @@
        77 listini-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini-lst-k-data-SPLITBUF  PIC X(29).
+       77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
+       77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
        77 locali-loc-chiave-gdo-fine-SPLITBUF  PIC X(32).
        77 locali-loc-chiave-fine-SPLITBUF  PIC X(32).
        77 locali-loc-chiave-ini-SPLITBUF  PIC X(32).
@@ -10828,6 +10830,26 @@
            listini-lst-k-data-SPLITBUF(14:15)
            .
 
+       listini-lst-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-articolo-SPLITBUF
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini-lst-k-articolo-SPLITBUF(1:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-articolo-SPLITBUF(7:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-articolo-SPLITBUF(15:5)
+           .
+
+       listini-lst-k-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-cod-art-cli-SPLITBUF
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(1:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(16:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(24:5)
+           .
+
        DataSet1-listini-INITSTART.
            IF DataSet1-listini-KEY-Asc
               MOVE Low-Value TO lst-chiave OF listini
@@ -10892,6 +10914,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -10922,6 +10946,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -10952,6 +10978,8 @@
            PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
            PERFORM listini-lst-k-data-MERGE-SPLITBUF
+           PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -19788,9 +19816,11 @@ LUBEXX                           effetti-rischio  + ordini-in-essere
                             cli-pfa
                  else  
                     if tge-blocco-fido < cli-fido
-                       compute fido-usato = tge-blocco-fido + cli-pfa
+                       compute fido-usato = tge-blocco-fido + cli-pfa +
+                                            cli-fido-extra
                     else
-                       compute fido-usato = fido-tmp + cli-pfa
+                       compute fido-usato = fido-tmp + cli-pfa +
+                                            cli-fido-extra
                     end-if
                  end-if
                  if scoperto > fido-usato

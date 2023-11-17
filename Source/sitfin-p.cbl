@@ -247,18 +247,20 @@
                  if tge-blocco-fido < cli-fido
                     compute sf-lince = sf-lince        + 
                                        tge-blocco-fido + 
-                                       cli-pfa
+                                       cli-pfa         +
+                                       cli-fido-extra
                  else
                     compute sf-lince = sf-lince +
                                        fido-tmp + 
-                                       cli-pfa
+                                       cli-pfa  +
+                                       cli-fido-extra 
                  end-if
               end-if 
            else
               compute sf-lince = sf-lince + 
                                  cli-fido + 
                                  cli-pfa  + 
-                                 cli-fidejussione| + cli-fido-extra
+                                 cli-fidejussione
            end-if.
 
       *     compute sf-lince = sf-lince         +

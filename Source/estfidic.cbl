@@ -3177,9 +3177,11 @@
                          cli-pfa
               else                        
                  if tge-blocco-fido < cli-fido
-                    compute tot-fido = tge-blocco-fido + cli-pfa
+                    compute tot-fido = tge-blocco-fido + cli-pfa +
+                                       cli-fido-extra
                  else
-                    compute tot-fido = fido-tmp + cli-pfa
+                    compute tot-fido = fido-tmp + cli-pfa +
+                                       cli-fido-extra
                  end-if
               end-if 
            else

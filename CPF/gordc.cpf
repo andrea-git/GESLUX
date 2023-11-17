@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=gordc-Ev-Before-Program
 AFTER_PROGRAM=gordc-Ev-After-Program
 BEFORE_OPEN=gordc-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B9214143-31-239044983
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B11145752-424-1616413966
 
 {{@DESCRIPTION:
 
@@ -22419,20 +22419,6 @@ BEGIN-TEXT
       *     move 0 to riga-nuova.
       *     set DestinoCambiato to false 
 
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = chk-urgente-BeforeProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 3
-   PARAGRAPH         = chk-urgente-AfterProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
