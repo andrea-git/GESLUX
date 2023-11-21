@@ -21,7 +21,13 @@
 
            I punti 2 e 3 devono inviare via mail un riepilogo del risultato 
            e mantenere le stampe che attualmente vengono generate con 
-           la medesima logica.
+           la medesima logica.          
+
+           21/11/2023
+           Se chiamato da macrobatch2, esegue solamente:
+           - CHIUSURA SERVIZIO
+           - CALL-EVACLI      
+           - APERTURA SERVIZIO
        special-names. decimal-point is comma.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
@@ -57,6 +63,8 @@
        77  como-data               pic 9(8).
        77  como-ora                pic 9(8).  
 
+       77  ws-narg                 pic 9(3) comp-1 value 0.
+
        copy "log-macrobatch.def".      
        copy "mail.def".
        copy "common-linkage.def".
@@ -73,7 +81,9 @@
            continue.
        END DECLARATIVES.
 
-       MAIN.                      
+       MAIN.            
+           call "C$NARG" using ws-narg.
+     
            accept  path-log-macrobatch 
                    from environment "PATH_MACROBATCH_LOG".
            inspect path-log-macrobatch replacing 
@@ -136,8 +146,35 @@
               move "MACROBATCH" to lck-utente-creazione
               write lck-rec invalid rewrite lck-rec end-write
               read lockfile lock
+              if ws-narg = 1
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output             delimited size
+                        "CHIUSURA SERVIZIO " delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+                 call "C$SYSTEM" using "E:\GESLUX\acu-stop.bat"
+
+                 call "C$SLEEP" using 5
+              end-if
               perform ESEGUI-PROGRAMMI
-           end-if. 
+           end-if.              
+
+           if ws-narg = 1                
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output             delimited size
+                     "APERTURA SERVIZIO " delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+              call "C$SYSTEM" using "E:\GESLUX\acu-start.bat"
+
+              call "C$SLEEP" using 5
+           end-if.
                                        
            call   "set-ini-log" using r-output.
            cancel "set-ini-log".
@@ -146,7 +183,7 @@
                   "FINE PROCEDURA " delimited size
              into lm-riga
            end-string.
-           write lm-riga.       
+           write lm-riga.  
 
            close  log-macrobatch.
            close  macrobatch.
@@ -159,20 +196,21 @@
 
       ***---
        ESEGUI-PROGRAMMI.   
-           close       log-macrobatch.
-
-           perform CALL-EDI-IMPORD.    
-
-           read macrobatch no lock.
-
-           if mb-edi-impord-stato-ok
-              perform CALL-EDI-SELORDINI
-           end-if.                       
-                                    
-           read macrobatch no lock.
-           if mb-edi-selordini-stato-ok
-              perform CALL-EVACLI
-           end-if.
+           close log-macrobatch.
+           if ws-narg = 0
+              perform CALL-EDI-IMPORD
+              read macrobatch no lock
+              if mb-edi-impord-stato-ok
+                 perform CALL-EDI-SELORDINI
+              end-if                   
+              read macrobatch no lock
+              if mb-edi-selordini-stato-ok
+                 perform CALL-EVACLI
+              end-if
+           else                                  
+              perform CALL-EVACLI                                                 
+           end-if
+                 
                                     
       *****     read macrobatch no lock.
       *****     if mb-evacli-stato-ok
@@ -203,27 +241,29 @@
            read macrobatch no lock.
                                             
            initialize LinkBody.
-           if mb-edi-selordini-tot-ordini = 0
-              string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
-                     x"0d0a"   
-                     "NESSUN ORDINE EDI GENERATO" x"0d0a"
-                     delimited size
-                into LinkBody
-              end-string
-           else                              
-              string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
-                     x"0d0a"   
-                     "GENERAZIONE ORDINI EDI" x"0d0a"
-                     x"0d0a"
-                     "DAL NUMERO: "    mb-edi-selordini-primo-numero
-                      " - AL NUMERO: " mb-edi-selordini-ultimo-numero 
-                     x"0d0a"
-                     "TOTALE ORDINI EDI: " mb-edi-selordini-tot-ordini
-                     x"0d0a"
-                into LinkBody
-              end-string
+           if ws-narg = 0
+              if mb-edi-selordini-tot-ordini = 0
+                 string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
+                        x"0d0a"   
+                        "NESSUN ORDINE EDI GENERATO" x"0d0a"
+                        delimited size
+                   into LinkBody
+                 end-string
+              else                              
+                 string "RIEPILOGO FUNZIONAMENTO: " x"0d0a"
+                        x"0d0a"   
+                        "GENERAZIONE ORDINI EDI" x"0d0a"
+                        x"0d0a"
+                        "DAL NUMERO: "    mb-edi-selordini-primo-numero
+                         " - AL NUMERO: " mb-edi-selordini-ultimo-numero 
+                        x"0d0a"
+                        "TOTALE ORDINI EDI: "mb-edi-selordini-tot-ordini
+                        x"0d0a"
+                   into LinkBody
+                 end-string
+              end-if
+              inspect LinkBody replacing trailing spaces by low-value
            end-if.
-           inspect LinkBody replacing trailing spaces by low-value.
            if mb-evacli-tot-mag = 0
               string LinkBody delimited low-value
                      x"0d0a""GENERAZIONE EVASIONI AUTOMATICHE" x"0d0a"

@@ -1,0 +1,8 @@
+       FD  lock-div.
+       01 ld-rec.
+           03 ld-chiave.
+               05 ld-user          PIC  x(20).
+               05 ld-tipocli       PIC  xx.
+           03 ld-dati.
+               05 ld-ora           PIC  9(8).
+               05 ld-data          PIC  9(8).
