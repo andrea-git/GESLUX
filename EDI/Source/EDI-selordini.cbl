@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 21 novembre 2023 13:13:04.
+       DATE-WRITTEN.        martedì 21 novembre 2023 19:34:25.
        REMARKS.
       *{TOTEM}END
 
@@ -20675,6 +20675,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            
       *  SE L'UTENTE E' ABILITATO PUO' MODIFICARE UN RECORD
            if mod = 1
+              set RecLocked to false
               read EDI-mtordini lock
               if RecLocked
                  set errori to true
@@ -21381,6 +21382,10 @@ LABLAB        if tcl-si-recupero and
 
        VERIFICA-ESEGUIBILITA.
       * <TOTEM:PARA. VERIFICA-ESEGUIBILITA>
+           set RecLocked to false.
+           set tutto-ok  to true.
+           exit paragraph.
+
            if RichiamoBatch 
               call   "set-ini-log" using r-output
               cancel "set-ini-log"

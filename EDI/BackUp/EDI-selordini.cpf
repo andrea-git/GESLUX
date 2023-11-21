@@ -19559,6 +19559,7 @@ BEGIN-TEXT
            
       *  SE L'UTENTE E' ABILITATO PUO' MODIFICARE UN RECORD
            if mod = 1
+              set RecLocked to false
               read EDI-mtordini lock
               if RecLocked
                  set errori to true
