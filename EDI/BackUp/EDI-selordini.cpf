@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B15102813-773-580220532
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B1518735-716-802628531
 
 {{@DESCRIPTION:
 
@@ -20277,6 +20277,10 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = VERIFICA-ESEGUIBILITA
 BEGIN-TEXT
+           set RecLocked to false.
+           set tutto-ok  to true.
+           exit paragraph.
+
            if RichiamoBatch 
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
