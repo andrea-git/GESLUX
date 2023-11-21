@@ -176,6 +176,8 @@ LABLAB     copy "blister.sl".
            copy "hleb.sl".
            copy "anacap.sl".          
 
+           copy "lock-div.sl".
+
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.     
@@ -347,7 +349,8 @@ LABLAB     copy "blister.fd".
            copy "battsost.fd".
            copy "macrobatch.fd".  
            copy "hleb.fd".              
-           copy "anacap.fd".     
+           copy "anacap.fd".  
+           copy "lock-div.fd".   
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -520,6 +523,7 @@ LABLAB     copy "blister.fd".
        77  status-macrobatch    pic x(2).
        77  status-hleb          pic x(2).
        77  status-anacap        pic x(2).
+       77  status-lock-div      pic x(2).
 
            copy "EDI-status.def".
 
@@ -1991,6 +1995,7 @@ LABLAB     copy "blister.fd".
                            title titolo
                             icon 3
                 
+
            when "98"
                 display message "[NOTE-CONT] Indexed file corrupt!"
                            title titolo
@@ -2783,6 +2788,23 @@ LABLAB     copy "blister.fd".
                 
            when "98"
                 display message "[ANACAP] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                
+           end-evaluate.
+
+      ***---
+       LOCK-DIV-ERR SECTION.
+           use after error procedure on lock-div.
+           evaluate status-lock-div
+           when "35" continue
+           when "39"
+                display message "File [LOCK-DIV] Mismatch size!"
+                           title titolo
+                            icon 3
+                
+           when "98"
+                display message "[LOCK-DIV] Indexed file corrupt!"
                            title titolo
                             icon 3
                 
@@ -3978,6 +4000,12 @@ LABLAB     copy "blister.fd".
               open output anacap
            end-if.
            close anacap.
+
+           open input lock-div.
+           if status-lock-div = "35"
+              open output lock-div
+           end-if.
+           close lock-div.
 
            copy "EDI-procedure.cpy".
 

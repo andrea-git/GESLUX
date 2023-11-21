@@ -4,4 +4,5 @@
            ORGANIZATION IS INDEXED
            ACCESS MODE  IS DYNAMIC
            FILE STATUS  IS STATUS-lock-div
-           RECORD KEY   IS ld-chiave.
+           RECORD KEY   IS ld-chiave
+           ALTERNATE RECORD KEY IS ld-tipocli.

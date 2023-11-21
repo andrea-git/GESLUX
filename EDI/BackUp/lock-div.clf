@@ -1,11 +1,8 @@
 ; CaseMaker Totem Layout Structure File, Version 6.1
 ; WARNING: DO NOT MODIFY THIS FILE!
 
-[MONITOR_FILE]
-
-
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E7B1411403-360-306463452
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E7B15102739-820-2698722749
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -99,3 +96,11 @@ m_bUnique=1
 @}}
 [SLKEYATOM0_]
 m_strName=ld-chiave
+[SLINDEX0_]
+m_strName=ld-tipocli
+m_bUnique=1
+{{@Key_m_strDescriptionSLINDEX0_
+
+@}}
+[SLKEYATOM0_SLINDEX0_]
+m_strName=ld-tipocli

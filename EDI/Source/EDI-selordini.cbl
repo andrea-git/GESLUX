@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 17 novembre 2023 16:10:30.
+       DATE-WRITTEN.        martedì 21 novembre 2023 13:13:04.
        REMARKS.
       *{TOTEM}END
 
@@ -72,6 +72,7 @@
            COPY "tprov.sl".
            COPY "EDI-clides.sl".
            COPY "anacap.sl".
+           COPY "lock-div.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -121,6 +122,7 @@
            COPY "tprov.fd".
            COPY "EDI-clides.fd".
            COPY "anacap.fd".
+           COPY "lock-div.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -765,6 +767,7 @@
        01 gd-tipocli-rec.
            05 col-tcl-codice   PIC  X(2).
            05 col-tcl-descrizione          PIC  X(50).
+           05 col-user         PIC  X(50).
            05 hid-col-sel      PIC  9.
        77 ef-note-edi-buf  PIC  X(3000).
        77 Arial9-Occidentale
@@ -807,6 +810,11 @@
        77 v-blister        PIC  9
                   VALUE IS 1.
        77 v-forza          PIC  9
+                  VALUE IS 0.
+       77 STATUS-lock-div  PIC  X(2).
+           88 Valid-STATUS-lock-div VALUE IS "00" THRU "09". 
+       77 refresh-bmp      PIC  S9(9)
+                  USAGE IS COMP-4
                   VALUE IS 0.
 
       ***********************************************************
@@ -966,6 +974,7 @@
        77 TMP-DataSet1-tprov-BUF     PIC X(192).
        77 TMP-DataSet1-EDI-clides-BUF     PIC X(840).
        77 TMP-DataSet1-anacap-BUF     PIC X(1209).
+       77 TMP-DataSet1-lock-div-BUF     PIC X(38).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1196,6 +1205,11 @@
        77 DataSet1-anacap-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-anacap-KEY-Asc  VALUE "A".
           88 DataSet1-anacap-KEY-Desc VALUE "D".
+       77 DataSet1-lock-div-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lock-div-LOCK  VALUE "Y".
+       77 DataSet1-lock-div-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lock-div-KEY-Asc  VALUE "A".
+          88 DataSet1-lock-div-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -2725,10 +2739,10 @@
            COL 46,20, 
            LINE 1,72,
            LINES 19,00 ,
-           SIZE 41,90 ,
+           SIZE 56,90 ,
            BOXED,
-           DATA-COLUMNS (1, 3),
-           SEPARATION (5, 5),
+           DATA-COLUMNS (1, 3, 53),
+           SEPARATION (5, 5, 5),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -2740,7 +2754,7 @@
            WIDTH-IN-CELLS,
            RECORD-DATA gd-tipocli-rec,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 40,
+           VIRTUAL-WIDTH 55,
            VPADDING 10,
            VSCROLL,
            EVENT PROCEDURE Screen4-Gd-1-Event-Proc,
@@ -2797,6 +2811,27 @@
            TITLE "g",
            AFTER PROCEDURE pb-desel-AfterProcedure, 
            BEFORE PROCEDURE pb-desel-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-agg-accessi, 
+           Push-Button, 
+           COL 99,20, 
+           LINE 21,06,
+           LINES 2,06 ,
+           SIZE 3,80 ,
+           BITMAP-HANDLE REFRESH-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1005,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 26,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Push Button",
            .
 
       * TOOLBAR
@@ -4976,6 +5011,7 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, bottone-cancel-bmp
            CALL "w$bitmap" USING WBITMAP-DESTROY, SEL-TUTTO-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, DESEL-TUTTO-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, REFRESH-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, toolbar-bmp
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, AGGIUNGI-BMP
@@ -5139,6 +5175,10 @@
            COPY RESOURCE "DESEL-TUTTO.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "DESEL-TUTTO.BMP", 
                    GIVING DESEL-TUTTO-BMP.
+      * pb-agg-accessi
+           COPY RESOURCE "REFRESH.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "REFRESH.BMP", 
+                   GIVING REFRESH-BMP.
       * TOOL-ESCI
            COPY RESOURCE "toolbar.bmp".
            CALL "w$bitmap" USING WBITMAP-LOAD "toolbar.bmp", 
@@ -5219,6 +5259,7 @@
            PERFORM OPEN-tprov
            PERFORM OPEN-EDI-clides
            PERFORM OPEN-anacap
+           PERFORM OPEN-lock-div
       *    After Open
            .
 
@@ -5825,6 +5866,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-lock-div.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:lock-div, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O lock-div
+           IF STATUS-lock-div = "35"
+              OPEN OUTPUT lock-div
+                IF Valid-STATUS-lock-div
+                   CLOSE lock-div
+                   OPEN I-O lock-div
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-lock-div
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:lock-div, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-clienti
@@ -5877,6 +5937,7 @@
            PERFORM CLOSE-tprov
            PERFORM CLOSE-EDI-clides
            PERFORM CLOSE-anacap
+           PERFORM CLOSE-lock-div
       *    After Close
            .
 
@@ -6143,6 +6204,12 @@
       * <TOTEM:EPT. INIT:EDI-selordini, FD:anacap, BeforeClose>
       * <TOTEM:END>
            CLOSE anacap
+           .
+
+       CLOSE-lock-div.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:lock-div, BeforeClose>
+      * <TOTEM:END>
+           CLOSE lock-div
            .
 
        clienti-cli-K1-MERGE-SPLITBUF.
@@ -13646,6 +13713,163 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lock-div-INITSTART.
+           IF DataSet1-lock-div-KEY-Asc
+              MOVE Low-Value TO ld-chiave
+           ELSE
+              MOVE High-Value TO ld-chiave
+           END-IF
+           .
+
+       DataSet1-lock-div-INITEND.
+           IF DataSet1-lock-div-KEY-Asc
+              MOVE High-Value TO ld-chiave
+           ELSE
+              MOVE Low-Value TO ld-chiave
+           END-IF
+           .
+
+      * lock-div
+       DataSet1-lock-div-START.
+           IF DataSet1-lock-div-KEY-Asc
+              START lock-div KEY >= ld-chiave
+           ELSE
+              START lock-div KEY <= ld-chiave
+           END-IF
+           .
+
+       DataSet1-lock-div-START-NOTGREATER.
+           IF DataSet1-lock-div-KEY-Asc
+              START lock-div KEY <= ld-chiave
+           ELSE
+              START lock-div KEY >= ld-chiave
+           END-IF
+           .
+
+       DataSet1-lock-div-START-GREATER.
+           IF DataSet1-lock-div-KEY-Asc
+              START lock-div KEY > ld-chiave
+           ELSE
+              START lock-div KEY < ld-chiave
+           END-IF
+           .
+
+       DataSet1-lock-div-START-LESS.
+           IF DataSet1-lock-div-KEY-Asc
+              START lock-div KEY < ld-chiave
+           ELSE
+              START lock-div KEY > ld-chiave
+           END-IF
+           .
+
+       DataSet1-lock-div-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-lock-div-LOCK
+              READ lock-div WITH LOCK 
+              KEY ld-chiave
+           ELSE
+              READ lock-div WITH NO LOCK 
+              KEY ld-chiave
+           END-IF
+           MOVE STATUS-lock-div TO TOTEM-ERR-STAT 
+           MOVE "lock-div" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lock-div-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-lock-div-KEY-Asc
+              IF DataSet1-lock-div-LOCK
+                 READ lock-div NEXT WITH LOCK
+              ELSE
+                 READ lock-div NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-lock-div-LOCK
+                 READ lock-div PREVIOUS WITH LOCK
+              ELSE
+                 READ lock-div PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lock-div TO TOTEM-ERR-STAT
+           MOVE "lock-div" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lock-div-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-lock-div-KEY-Asc
+              IF DataSet1-lock-div-LOCK
+                 READ lock-div PREVIOUS WITH LOCK
+              ELSE
+                 READ lock-div PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-lock-div-LOCK
+                 READ lock-div NEXT WITH LOCK
+              ELSE
+                 READ lock-div NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-lock-div TO TOTEM-ERR-STAT
+           MOVE "lock-div" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lock-div-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeWrite>
+      * <TOTEM:END>
+           WRITE ld-rec OF lock-div.
+           MOVE STATUS-lock-div TO TOTEM-ERR-STAT
+           MOVE "lock-div" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lock-div-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE ld-rec OF lock-div.
+           MOVE STATUS-lock-div TO TOTEM-ERR-STAT
+           MOVE "lock-div" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lock-div-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeDelete>
+      * <TOTEM:END>
+           DELETE lock-div.
+           MOVE STATUS-lock-div TO TOTEM-ERR-STAT
+           MOVE "lock-div" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lock-div, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
@@ -13692,6 +13916,7 @@
            INITIALIZE prv-rec OF tprov
            INITIALIZE ecd-rec OF EDI-clides
            INITIALIZE anc-rec OF anacap
+           INITIALIZE ld-rec OF lock-div
            .
 
 
@@ -13741,6 +13966,9 @@
       * CELLS' SETTING
               MODIFY gd-tipocli, X = 2, Y = 1,
                 CELL-DATA = "Descrizione",
+      * CELLS' SETTING
+              MODIFY gd-tipocli, X = 3, Y = 1,
+                CELL-DATA = "Utente in uso",
            .
 
       * GRID
@@ -14142,6 +14370,14 @@
       * FD's Initialize Paragraph
        DataSet1-anacap-INITREC.
            INITIALIZE anc-rec OF anacap
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-lock-div-INITREC.
+           INITIALIZE ld-rec OF lock-div
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -14768,7 +15004,7 @@
        Form-ini-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 22,33,
-              SIZE 88,30,
+              SIZE 103,20,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
               COLOR 65793,
@@ -14799,7 +15035,7 @@
       * Status-bar
            DISPLAY Form-ini UPON form-ini-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY gd-tipocli, DISPLAY-COLUMNS (1, 8)
+              MODIFY gd-tipocli, DISPLAY-COLUMNS (1, 8, 31)
            .
 
        Form-ini-PROC.
@@ -14873,15 +15109,24 @@
                        read ttipocli next at end exit perform end-read
                        move tcl-codice      to col-tcl-codice
                        move tcl-descrizione to col-tcl-descrizione
-                       move 1 to hid-col-sel
+                       move tcl-codice      to ld-tipocli
                        add 1 to riga
                        modify gd-tipocli(riga, 1), cell-data 
            col-tcl-codice
                        modify gd-tipocli(riga, 2), cell-data 
            col-tcl-descrizione
+                       read lock-div key ld-tipocli
+                            invalid 
+                            move 1 to hid-col-sel
+                            modify gd-tipocli(riga), row-color = 480
+                            initialize col-user
+                        not invalid                      
+                            perform COL-USER
+                            move 0 to hid-col-sel
+                       end-read
+                       modify gd-tipocli(riga, 3), cell-data col-user
                        modify gd-tipocli(riga, 1), hidden-data 
            hid-col-sel
-                       modify gd-tipocli(riga), row-color = 480
                     end-perform
               end-start
            end-if.
@@ -14925,6 +15170,8 @@
                  PERFORM pb-sel-LinkTo
               WHEN Key-Status = 1004
                  PERFORM pb-desel-LinkTo
+              WHEN Key-Status = 1005
+                 PERFORM pb-agg-accessi-LinkTo
               WHEN Key-Status = 8
                  PERFORM TOOL-CERCAa-LinkTo
            END-EVALUATE
@@ -19121,6 +19368,27 @@ LABLAB          end-if
            .
       * <TOTEM:END>
 
+       COL-USER.
+      * <TOTEM:PARA. COL-USER>
+           initialize col-user.
+           inspect ld-user replacing trailing spaces by low-value
+           string  ld-user       delimited low-value
+                   " ("          delimited size
+                   ld-data (7:2) delimited size
+                   "/"           delimited size
+                   ld-data (5:2) delimited size
+                   "/"           delimited size
+                   ld-data (1:4) delimited size
+                   " - "         delimited size
+                   ld-ora(1:2)   delimited size
+                   ":"           delimited size
+                   ld-ora(3:2)   delimited size
+                   ")"           delimited size
+              into col-user
+           end-string 
+           .
+      * <TOTEM:END>
+
        CONTROLLO.
       * <TOTEM:PARA. CONTROLLO>
            if mod   = 0 
@@ -21456,6 +21724,57 @@ LABLAB        if tcl-si-recupero and
            set controllo-finale to false.
 
            if tutto-ok
+              set errori to true
+              inquire gd-tipocli, last-row in tot-righe
+              perform varying riga from 2 by 1 
+                        until riga > tot-righe
+                 inquire gd-tipocli(riga, 1), 
+                         hidden-data in hid-col-sel
+                 if hid-col-sel = 1         
+                    set tutto-ok to true
+                    exit perform
+                 end-if
+              end-perform
+              if errori
+                 display message "Selezionare almeno una divisione"
+                           title tit-err
+                            icon 2
+              end-if
+           end-if. 
+
+           if tutto-ok
+              inquire gd-tipocli, last-row in tot-righe
+              perform varying riga from 2 by 1 
+                        until riga > tot-righe
+                 inquire gd-tipocli(riga, 1), 
+                         hidden-data in hid-col-sel
+                 if hid-col-sel = 1              
+                    inquire gd-tipocli(riga, 1), 
+                            cell-data in ld-tipocli
+                    read lock-div no lock key ld-tipocli
+                         invalid continue
+                     not invalid 
+                         move 0 to hid-col-sel
+                         perform COL-USER
+                         modify gd-tipocli(riga, 3), cell-data col-user
+                         set errori to true        
+                         modify gd-tipocli(riga, 1), 
+                                hidden-data hid-col-sel
+                         
+                         modify gd-tipocli(riga), row-color 513
+                    end-read
+                 end-if
+              end-perform
+              if errori
+                 display message "Ci sono altri utenti che utilizzano le
+      -    " divisioni selezionate."
+                          x"0d0a""Verifiacre la griglia"
+                           title tit-err
+                            icon 2
+              end-if
+           end-if.
+
+           if tutto-ok
               move 0 to idx
               initialize tab-tipologie replacing numeric data by zeroes
                                             alphanumeric data by spaces
@@ -21464,10 +21783,17 @@ LABLAB        if tcl-si-recupero and
                         until riga > tot-righe
                  inquire gd-tipocli(riga, 1), 
                          hidden-data in hid-col-sel
-                 if hid-col-sel = 1
+                 if hid-col-sel = 1      
                     add 1 to idx
+                                                 
                     inquire gd-tipocli(riga, 1), 
                             cell-data in el-tipo(idx)
+
+                    move el-tipo(idx) to ld-tipocli
+                    move user-codi    to ld-user       
+                    accept ld-data from century-date
+                    accept ld-ora  from time
+                    write ld-rec
                  end-if
               end-perform
 
@@ -21478,7 +21804,23 @@ LABLAB        if tcl-si-recupero and
                  perform CHIAMA-MANUTENZIONE
               else
                  perform SCARICA-COMBO-STATO-ORDINE
-                 perform FORM2-OPEN-ROUTINE 
+                 perform FORM2-OPEN-ROUTINE
+
+                 move user-codi to ld-user
+                 move low-value to ld-tipocli
+                 start lock-div key >= ld-chiave
+                       invalid continue
+                   not invalid
+                       perform until 1 = 2
+                          read lock-div next at end exit perform 
+           end-read
+                          if ld-user not = user-codi
+                             exit perform
+                          end-if
+                          delete lock-div record
+                       end-perform
+                 end-start
+
                  if errore-bloccante
                     move 27 to key-status
                  end-if
@@ -22817,17 +23159,21 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
            evaluate como-x
            when X"00"|doppio click
            when X"0D"|invio
-           when x"20"|space
-                inquire gd-tipocli, CURSOR-Y = riga
-                inquire gd-tipocli(riga, 1), hidden-data in hid-col-sel
-                if hid-col-sel = 1
-                   move 0 to hid-col-sel
-                   modify gd-tipocli(riga), row-color = 513
-                else
-                   move 1 to hid-col-sel
-                   modify gd-tipocli(riga), row-color = 480
+           when x"20"|space                                            
+                inquire gd-tipocli(riga, 3), cell-data in col-user
+                if col-user = spaces
+                   inquire gd-tipocli, CURSOR-Y = riga
+                   inquire gd-tipocli(riga, 1), hidden-data in 
+           hid-col-sel
+                   if hid-col-sel = 1
+                      move 0 to hid-col-sel
+                      modify gd-tipocli(riga), row-color = 513
+                   else
+                      move 1 to hid-col-sel
+                      modify gd-tipocli(riga), row-color = 480
+                   end-if
+                   modify gd-tipocli(riga, 1), hidden-data hid-col-sel
                 end-if
-                modify gd-tipocli(riga, 1), hidden-data hid-col-sel
            end-evaluate 
            .
       * <TOTEM:END>
@@ -22836,9 +23182,18 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
            inquire gd-tipocli, last-row in tot-righe.
            perform varying riga from 2 by 1 
                      until riga > tot-righe
-              move 1 to hid-col-sel
-              modify gd-tipocli(riga, 1), hidden-data hid-col-sel
-              modify gd-tipocli(riga), row-color = 480
+              inquire gd-tipocli(riga, 1), cell-data ld-tipocli
+              read lock-div no lock key ld-tipocli
+                   invalid
+                   initialize col-user
+                   move 1 to hid-col-sel
+                   modify gd-tipocli(riga, 1), hidden-data hid-col-sel
+                   modify gd-tipocli(riga), row-color = 480
+               not invalid 
+                   perform COL-USER 
+                   modify gd-tipocli(riga), row-color = 513
+              end-read              
+              modify gd-tipocli(riga, 3), cell-data col-user
            end-perform 
            .
       * <TOTEM:END>
@@ -23132,6 +23487,25 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               move como-data to ef-evadi-dal-buf
               display ef-evadi-dal
            end-if 
+           .
+      * <TOTEM:END>
+       pb-agg-accessi-LinkTo.
+      * <TOTEM:PARA. pb-agg-accessi-LinkTo>
+           inquire gd-tipocli, last-row in tot-righe
+           perform varying riga from 2 by 1 
+                     until riga > tot-righe   
+              inquire gd-tipocli(riga, 1), 
+                      cell-data in ld-tipocli
+              read lock-div no lock key ld-tipocli 
+                   invalid initialize col-user
+               not invalid 
+                   perform COL-USER
+                   move 0 to hid-col-sel
+                   modify gd-tipocli(riga, 1), hidden-data hid-col-sel
+                   modify gd-tipocli(riga), row-color 513
+              end-read             
+              modify gd-tipocli(riga, 3), cell-data col-user
+           end-perform 
            .
       * <TOTEM:END>
 
