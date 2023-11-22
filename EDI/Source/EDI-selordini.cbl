@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 21 novembre 2023 19:34:25.
+       DATE-WRITTEN.        mercoledì 22 novembre 2023 18:02:07.
        REMARKS.
       *{TOTEM}END
 
@@ -816,6 +816,14 @@
        77 refresh-bmp      PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 form-attesa-handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 form-gen-handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 lab-attesa-buf   PIC  x(100).
+       77 unlock-bmp       PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -929,6 +937,8 @@
           88 form-gen-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-fine-FLAG-REFRESH PIC  9.
           88 scr-fine-FLAG-REFRESH  VALUE 1 FALSE 0. 
+       77 STATUS-form-attesa-FLAG-REFRESH PIC  9.
+          88 form-attesa-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(8412).
@@ -2831,7 +2841,28 @@
            ID IS 26,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "Push Button",
+           TITLE "Aggiorna elenco utenti in divisioni clienti",
+           .
+
+      * PUSH BUTTON
+       05
+           pb-canc, 
+           Push-Button, 
+           COL 95,10, 
+           LINE 21,00,
+           LINES 2,06 ,
+           SIZE 3,80 ,
+           BITMAP-HANDLE UNLOCK-BMP,
+           BITMAP-NUMBER 1,
+           FRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1006,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 27,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "Sblocca le divisioni in uso",
            .
 
       * TOOLBAR
@@ -4792,6 +4823,49 @@
            WIDTH 1,
            .
 
+      * FORM
+       01 
+           form-attesa, 
+           AFTER PROCEDURE  form-attesa-AFTER-SCREEN
+           BEFORE PROCEDURE  form-attesa-BEFORE-SCREEN
+           .
+
+      * LABEL
+       05
+           labdsff, 
+           Label, 
+           COL 17,86, 
+           LINE 1,77,
+           LINES 2,00 ,
+           SIZE 38,00 ,
+           COLOR IS 5,
+           FONT IS Verdana12BI-Occidentale,
+           ID IS 2,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE "In attesa di generare...",
+           .
+
+      * LABEL
+       05
+           lab-attesa, 
+           Label, 
+           COL 7,00, 
+           LINE 4,08,
+           LINES 1,38 ,
+           SIZE 60,00 ,
+           COLOR IS 5,
+           FONT IS Verdana12BI-Occidentale,
+           ID IS 3,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TRANSPARENT,
+           TITLE lab-attesa-buf,
+           .
+
       *{TOTEM}END
 
       *{TOTEM}LINKPARA
@@ -5012,6 +5086,7 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, SEL-TUTTO-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, DESEL-TUTTO-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, REFRESH-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, UNLOCK-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, toolbar-bmp
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, AGGIUNGI-BMP
@@ -5179,6 +5254,10 @@
            COPY RESOURCE "REFRESH.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "REFRESH.BMP", 
                    GIVING REFRESH-BMP.
+      * pb-canc
+           COPY RESOURCE "UNLOCK.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "UNLOCK.BMP", 
+                   GIVING UNLOCK-BMP.
       * TOOL-ESCI
            COPY RESOURCE "toolbar.bmp".
            CALL "w$bitmap" USING WBITMAP-LOAD "toolbar.bmp", 
@@ -15120,7 +15199,7 @@
                             move 1 to hid-col-sel
                             modify gd-tipocli(riga), row-color = 480
                             initialize col-user
-                        not invalid                      
+                        not invalid
                             perform COL-USER
                             move 0 to hid-col-sel
                        end-read
@@ -15172,6 +15251,8 @@
                  PERFORM pb-desel-LinkTo
               WHEN Key-Status = 1005
                  PERFORM pb-agg-accessi-LinkTo
+              WHEN Key-Status = 1006
+                 PERFORM pb-canc-LinkTo
               WHEN Key-Status = 8
                  PERFORM TOOL-CERCAa-LinkTo
            END-EVALUATE
@@ -17004,14 +17085,14 @@
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE form3-Event-Proc,
-              HANDLE IS form3-Handle,
+              HANDLE IS form-gen-handle,
       * <TOTEM:EPT. FORM:form-gen, FORM:form-gen, AfterCreateWin>
       * <TOTEM:END>
 
 
       * Tool Bar    
       * Status-bar
-           DISPLAY form-gen UPON form3-Handle
+           DISPLAY form-gen UPON form-gen-handle
       * DISPLAY-COLUMNS settings
            .
 
@@ -17044,7 +17125,7 @@
            END-PERFORM
       * <TOTEM:EPT. FORM:form-gen, FORM:form-gen, BeforeDestroyWindow>
       * <TOTEM:END>
-           DESTROY form3-Handle
+           DESTROY form-gen-handle
            INITIALIZE Key-Status
            .
 
@@ -17071,7 +17152,7 @@
        form-gen-DISPLAY.
       * <TOTEM:EPT. FORM:form-gen, FORM:form-gen, BeforeDisplay>
       * <TOTEM:END>
-           DISPLAY form-gen UPON form3-Handle
+           DISPLAY form-gen UPON form-gen-handle
       * <TOTEM:EPT. FORM:form-gen, FORM:form-gen, AfterDisplay>
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
@@ -17464,6 +17545,207 @@
       * Paragrafo per la struttura del codice in AFTER sulla screen scr-fine
       ***---
        scr-fine-AFTER-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella AFTER della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione risettaggio keyboard "." ---> "."
+
+      * Generazione stringa perform CONTROLLO
+
+       form-attesa-Open-Routine.
+           PERFORM form-attesa-Scrn
+           PERFORM form-attesa-Proc
+           .
+
+       form-attesa-Scrn.
+           PERFORM form-attesa-Create-Win
+           PERFORM form-attesa-Init-Value
+           PERFORM form-attesa-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           PERFORM form-attesa-DISPLAY
+           .
+
+       form-attesa-Create-Win.
+           Display Floating GRAPHICAL WINDOW
+              LINES 5,00,
+              SIZE 72,00,
+              HEIGHT-IN-CELLS,
+              WIDTH-IN-CELLS,
+              COLOR 65793,
+              LINK TO THREAD,
+              MODELESS,
+              NO SCROLL,
+              USER-GRAY,
+           VISIBLE video-on,
+              USER-WHITE,
+              No WRAP,
+              EVENT PROCEDURE form3-Event-Proc,
+              HANDLE IS form-attesa-handle,
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+      * Status-bar
+           DISPLAY form-attesa UPON form-attesa-handle
+      * DISPLAY-COLUMNS settings
+           .
+
+       form-attesa-PROC.
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, BeforeAccept>
+           perform VERIFICA-ESEGUIBILITA.
+           move 27 to key-status.
+
+           .
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT OMITTED LINE 1 COL 1
+                 ON EXCEPTION
+                    PERFORM form-attesa-Evaluate-Func
+                 MOVE 7 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY form-attesa-handle
+           INITIALIZE Key-Status
+           .
+
+       form-attesa-Evaluate-Func.
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM form-attesa-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM form-attesa-Exit
+                 END-IF
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       form-attesa-CLEAR.
+           PERFORM form-attesa-INIT-VALUE
+           PERFORM form-attesa-DISPLAY
+           .
+
+       form-attesa-DISPLAY.
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY form-attesa UPON form-attesa-handle
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       form-attesa-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       form-attesa-Init-Data.
+           MOVE 7 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+           .
+
+       form-attesa-Init-Value.
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, SetDefault>
+      * <TOTEM:END>
+           PERFORM form-attesa-FLD-TO-BUF
+           .
+
+
+       form-attesa-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       form-attesa-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       form-attesa-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       form-attesa-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:form-attesa, FORM:form-attesa, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       form-attesa-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform form-attesa-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       form-attesa-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM form-attesa-SHOW-MSG-ROUTINE
+           .
+
+       form-attesa-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM form-attesa-DISPLAY-MESSAGE
+           .
+
+       form-attesa-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       form-attesa-Save-Status.
+           .             
+
+       form-attesa-Restore-Status.
+           .
+
+
+      * Paragrafo per la struttura del codice in BEFORE sulla screen form-attesa
+      ***---
+       form-attesa-BEFORE-SCREEN.
+           evaluate control-id
+           |99999 è un valore fittizio, che non sarà MAI usato,
+           |ma mi serve per non riscontrare errori di compilazione
+           |in caso non avessi generato nulla nella BEFORE della screen
+           when 99999 continue
+           when other continue
+           end-evaluate.
+
+      * Generazione settaggio keyboard "." ---> ","
+
+      * Paragrafo per la struttura del codice in AFTER sulla screen form-attesa
+      ***---
+       form-attesa-AFTER-SCREEN.
            evaluate control-id
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
@@ -21382,10 +21664,6 @@ LABLAB        if tcl-si-recupero and
 
        VERIFICA-ESEGUIBILITA.
       * <TOTEM:PARA. VERIFICA-ESEGUIBILITA>
-           set RecLocked to false.
-           set tutto-ok  to true.
-           exit paragraph.
-
            if RichiamoBatch 
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
@@ -21397,9 +21675,24 @@ LABLAB        if tcl-si-recupero and
               write lm-riga
            end-if.
 
-           set RecLocked to false.
-           set tutto-ok  to true.
-           perform DELETE-LOCKFILE.
+           perform until 1 = 2
+              set RecLocked to false
+              set tutto-ok  to true
+              perform DELETE-LOCKFILE
+              if not RecLocked
+                 exit perform
+              else
+                 move 78-EDI-impord to lck-nome-pgm
+                 read lockfile no lock
+                 initialize lab-attesa-buf
+                 string "IN USO DA: "
+                        lck-utente-creazione 
+                   into lab-attesa-buf
+                 end-string
+                 display lab-attesa
+              end-if
+           end-perform.
+
            if RecLocked
               move 78-EDI-impord to lck-nome-pgm
               read lockfile  no lock invalid continue end-read
@@ -22524,8 +22817,9 @@ LABLAB        if tcl-si-recupero and
                        giving scelta
            end-if.
 
-           if scelta = mb-yes
-              perform VERIFICA-ESEGUIBILITA
+           if scelta = mb-yes  
+              move spaces to lab-attesa-buf 
+              perform FORM-ATTESA-OPEN-ROUTINE
               if tutto-ok            
                  if RichiamoBatch 
                     call   "set-ini-log" using r-output
@@ -22733,7 +23027,7 @@ LABLAB        if tcl-si-recupero and
       * <TOTEM:END>
        pb-aggiorna-LinkTo.
       * <TOTEM:PARA. pb-aggiorna-LinkTo>
-           perform VERIFICA-ESEGUIBILITA.
+      *****     perform VERIFICA-ESEGUIBILITA.
            if tutto-ok
               if RichiamoBatch 
                  call   "set-ini-log" using r-output
@@ -23511,6 +23805,22 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               end-read             
               modify gd-tipocli(riga, 3), cell-data col-user
            end-perform 
+           .
+      * <TOTEM:END>
+       pb-canc-LinkTo.
+      * <TOTEM:PARA. pb-canc-LinkTo>
+           move 23 to Passwd-password.
+
+           call   "passwd" using passwd-linkage.
+           cancel "passwd".
+
+           if passwd-statusOk
+              close       lock-div
+              open output lock-div
+              close       lock-div
+              open i-o    lock-div
+              perform PB-AGG-ACCESSI-LINKTO
+           end-if 
            .
       * <TOTEM:END>
 

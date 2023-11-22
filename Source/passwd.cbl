@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          passwd.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 24 gennaio 2017 13:15:22.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 22 novembre 2023 17:59:04.
        REMARKS.
       *{TOTEM}END
 
@@ -43,7 +43,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -612,6 +612,7 @@
               |16. modifica stato articoli
               |17. modifica tipologia clienti
               |18. azzeramento ordini fornitori
+              |19. pulizia divisioni EDI in uso
               perform Passwd-password times
                  read pass next at end continue end-read
               end-perform
