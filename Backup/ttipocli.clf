@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E61E133055-365-1128225392
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E7B1610133-857-1939525539
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -684,9 +684,9 @@ m_bFixed=1
 
 @}}
 [FDITEM71_]
-m_strName=FILLER
-m_strRawPic=9(10)
-m_strPic=9(10)
+m_strName=tcl-imp-fido-extra
+m_strRawPic=x
+m_strPic=X
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -694,34 +694,62 @@ m_bFixed=1
 
 @}}
 [FDITEM72_]
+m_strName=tcl-imp-fido-extra-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="S"
+{{@DataItem_m_strDescriptionFDITEM72_
+
+@}}
+[FDITEM73_]
+m_strName=tcl-imp-fido-extra-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="N"
+{{@DataItem_m_strDescriptionFDITEM73_
+
+@}}
+[FDITEM74_]
+m_strName=FILLER
+m_strRawPic=9(9)
+m_strPic=9(9)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM74_
+
+@}}
+[FDITEM75_]
 m_strName=tcl-no-blocco-prob-pag
 m_strRawPic=X(1)
 m_strPic=X(1)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM72_
+{{@DataItem_m_strDescriptionFDITEM75_
 
 @}}
-[FDITEM73_]
+[FDITEM76_]
 m_strName=tcl-no-blocco-prob-pag-si
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM73_
+{{@DataItem_m_strDescriptionFDITEM76_
 
 @}}
-[FDITEM74_]
+[FDITEM77_]
 m_strName=tcl-no-blocco-prob-pag-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N", " "
-{{@DataItem_m_strDescriptionFDITEM74_
+{{@DataItem_m_strDescriptionFDITEM77_
 
 @}}
-[FDITEM75_]
+[FDITEM78_]
 m_strName=tcl-banca
 m_strRawPic=X(100)
 m_strPic=X(100)
@@ -729,10 +757,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tcl-filler_1_1_1_1
-{{@DataItem_m_strDescriptionFDITEM75_
+{{@DataItem_m_strDescriptionFDITEM78_
 
 @}}
-[FDITEM76_]
+[FDITEM79_]
 m_strName=FILLER
 m_strRawPic=X(110)
 m_strPic=X(110)
@@ -740,7 +768,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=tcl-filler_1_1_1_1
-{{@DataItem_m_strDescriptionFDITEM76_
+{{@DataItem_m_strDescriptionFDITEM79_
 
 @}}
 [CStoAcucobolSL_]

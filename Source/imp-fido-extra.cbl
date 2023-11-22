@@ -8,6 +8,7 @@
        FILE-CONTROL.
            copy "clienti.sl". 
            copy "lineseq.sl".
+           copy "ttipocli.sl".
            
        SELECT csvFile
            ASSIGN       TO path-csvFile
@@ -20,6 +21,7 @@
        FILE SECTION.
            copy "clienti.fd". 
            copy "lineseq.fd". 
+           copy "ttipocli.fd".
            
        FD  csvFile.
        01 line-csvFile        PIC  x(1000).
@@ -30,6 +32,7 @@
        78  titolo value "Importazione fido extra".
 
        77  status-clienti          pic x(2).
+       77  status-ttipocli         pic x(2).
        77  path-csvFile            pic x(256).
        77  STATUS-csvFile          pic x(2).
        77  wstampa                 pic x(256).
@@ -116,6 +119,7 @@
 
       ***---
        OPEN-FILES.     
+           open input ttipocli.
            open output lineseq.
                    
            open input  csvFile.
@@ -180,33 +184,59 @@
                      into como-riga
                    end-string
                    perform SCRIVI-RIGA-LOG
-               not invalid           
-                   move 0      to idx2 fido-int
-                   move spaces to fido-int-x
-                   perform varying idx from 1 by 1 
-                             until idx > 18
-                      if r-fido-extra(idx:1) = "," 
-                         exit perform cycle 
-                      end-if
-                      if r-fido-extra(idx:1) = " " 
-                         exit perform 
-                      end-if
-                      add 1 to idx2
-                      move r-fido-extra(idx:1) to fido-int-x(idx2:1)
-                   end-perform
-                   call "C$JUSTIFY" using fido-int-x, "R"
-                   inspect fido-int-x replacing leading x"20" by x"30"
-                   move fido-int-x to fido-int
-                   compute cli-fido-extra = fido-int / 100
-                   rewrite cli-rec 
-
-                   initialize como-riga
-                   string "Riga: " n-riga " - cliente: " 
-                          cli-codice " aggiornato fido extra: " 
-                          r-fido-extra
-                     into como-riga
-                   end-string
-                   perform SCRIVI-RIGA-LOG
+               not invalid   
+                   move cli-tipo to tcl-codice
+                   read ttipocli no lock
+                        invalid           
+                        initialize como-riga
+                        string "Riga: " n-riga " - tipologia: " 
+                               tcl-codice " NON TROVATA - cliente: "
+                               cli-codice
+                          into como-riga
+                        end-string
+                        perform SCRIVI-RIGA-LOG
+                    not invalid
+                        if tcl-imp-fido-extra-si
+                           move 0      to idx2 fido-int
+                           move spaces to fido-int-x
+                           perform varying idx from 1 by 1 
+                                     until idx > 18
+                              if r-fido-extra(idx:1) = "," 
+                                 exit perform cycle 
+                              end-if
+                              if r-fido-extra(idx:1) = " " 
+                                 exit perform 
+                              end-if
+                              add 1 to idx2
+                              move r-fido-extra(idx:1) 
+                                to fido-int-x(idx2:1)
+                           end-perform
+                           call "C$JUSTIFY" using fido-int-x, "R"
+                           inspect fido-int-x 
+                                   replacing leading x"20" by x"30"
+                           move fido-int-x to fido-int
+                           compute cli-fido-extra = fido-int / 100
+                           rewrite cli-rec 
+                        
+                           initialize como-riga
+                           string "Riga: " n-riga " - cliente: " 
+                                  cli-codice " aggiornato fido extra: " 
+                                  r-fido-extra
+                             into como-riga
+                           end-string
+                           perform SCRIVI-RIGA-LOG
+                        else                      
+                           initialize como-riga
+                           string "Riga: " n-riga " - tipologia: " 
+                                  tcl-codice "-" tcl-descrizione 
+                                  " NON IMPORTA FIDO - "
+                                  "cliente: "
+                                  cli-codice
+                             into como-riga
+                           end-string
+                           perform SCRIVI-RIGA-LOG
+                        end-if
+                   end-read
               end-read
            end-perform.
        
@@ -218,7 +248,7 @@
 
       ***---
        CLOSE-FILES.
-           close lineseq clienti csvFile.
+           close lineseq clienti csvFile ttipocli.
 
       ***---
        SCRIVI-RIGA-LOG.

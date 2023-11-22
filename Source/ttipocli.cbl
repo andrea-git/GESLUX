@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          ttipocli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 14 gennaio 2022 14:37:36.
+       DATE-WRITTEN.        mercoledì 22 novembre 2023 11:07:23.
        REMARKS.
       *{TOTEM}END
 
@@ -112,6 +112,7 @@
            05 col-st-brogm     PIC  x.
            05 col-fido-nuovo   PIC  x.
            05 col-edi-auto     PIC  x.
+           05 col-imp-fido-extra           PIC  x.
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui-73x21-bmp PIC  S9(9)
@@ -130,68 +131,6 @@
            88 ricarica VALUE IS "SI"    WHEN SET TO FALSE  "NO". 
        77 STATUS-ttipocli  PIC  X(2).
            88 Valid-STATUS-ttipocli VALUE IS "00" THRU "09". 
-       01 OLD-tcl-rec.
-           05 OLD-tcl-chiave.
-               10 OLD-tcl-codice   PIC  X(2).
-           05 OLD-tcl-dati.
-               10 OLD-tcl-descrizione          PIC  X(30).
-               10 OLD-tcl-agente   PIC  x.
-                   88 OLD-tcl-agente-si VALUE IS "S". 
-                   88 OLD-tcl-agente-no VALUE IS "N". 
-                   88 OLD-tcl-agente-opz VALUE IS "O". 
-               10 OLD-tcl-gdo      PIC  x.
-                   88 OLD-tcl-gdo-si VALUE IS "S". 
-                   88 OLD-tcl-gdo-no VALUE IS "N". 
-                   88 OLD-tcl-gdo-opz VALUE IS "O". 
-               10 OLD-tcl-tipologia-tratt-imposte          PIC  x.
-                   88 OLD-ttipocli-standard VALUE IS "S". 
-                   88 OLD-ttipocli-gdo VALUE IS "G". 
-                   88 OLD-ttipocli-estero-EX VALUE IS "E". 
-               10 OLD-tcl-gestione-fido        PIC  x.
-                   88 OLD-tcl-si-gestione-fido VALUE IS "S". 
-                   88 OLD-tcl-no-gestione-fido VALUE IS "N". 
-               10 OLD-tcl-dati-comuni.
-                   15 OLD-tcl-data-creazione       PIC  9(8).
-                   15 OLD-tcl-ora-creazione        PIC  9(8).
-                   15 OLD-tcl-utente-creazione     PIC  X(10).
-                   15 OLD-tcl-data-ultima-modifica PIC  9(8).
-                   15 OLD-tcl-ora-ultima-modifica  PIC  9(8).
-                   15 OLD-tcl-utente-ultima-modifica           PIC  
-           X(10).
-               10 OLD-tcl-vuoti.
-                   15 OLD-tcl-recupero-listino     PIC  x.
-                       88 OLD-tcl-si-recupero VALUE IS "S". 
-                       88 OLD-tcl-no-recupero VALUE IS "N". 
-                   15 OLD-tcl-gest-plus            PIC  x.
-                       88 OLD-tcl-si-gest-plus VALUE IS "S". 
-                       88 OLD-tcl-no-gest-plus VALUE IS "N". 
-                   15 OLD-tcl-piombo   PIC  x.
-                       88 OLD-tcl-si-piombo VALUE IS "S". 
-                       88 OLD-tcl-no-piombo VALUE IS "N". 
-                   15 OLD-tcl-serire-bolle         PIC  9.
-                   15 OLD-tcl-num-vuoto-1          PIC  9(11).
-                   15 OLD-tcl-num-vuoto-2          PIC  9(15).
-                   15 OLD-tcl-num-vuoto-3          PIC  9(15).
-                   15 OLD-tcl-impegnato            PIC  x.
-                       88 OLD-tcl-imp-GDO VALUE IS "G". 
-                       88 OLD-tcl-imp-trad VALUE IS "T". 
-                   15 OLD-tcl-manuale  PIC  x.
-                       88 OLD-tcl-manuale-si VALUE IS "S". 
-                       88 OLD-tcl-manuale-no VALUE IS "N". 
-                   15 OLD-tcl-bloc-auto            PIC  x(1).
-                       88 OLD-tcl-bloc-auto-si VALUE IS "S". 
-                       88 OLD-tcl-bloc-auto-no VALUE IS "N". 
-                   15 OLD-tcl-brogliaccio          PIC  X(1).
-                       88 OLD-tcl-brogliaccio-GDO VALUE IS "G". 
-                       88 OLD-tcl-brogliaccio-NORMALE VALUE IS "N". 
-                   15 OLD-tcl-evasione PIC  X(1).
-                       88 OLD-tcl-evasione-GDO VALUE IS "G". 
-                       88 OLD-tcl-evasione-NORMALE VALUE IS "N". 
-                       88 OLD-tcl-evasione-ESTERO VALUE IS "E". 
-                   15 OLD-tcl-stampa-brogm         PIC  x.
-                       88 OLD-tcl-stampa-brogm-si VALUE IS "S". 
-                       88 OLD-tcl-stampa-brogm-no VALUE IS "N" " ". 
-                   15 OLD-tcl-mail-comm            PIC  x(200).
        78 tipo-std-casa-madre VALUE IS "S". 
        78 tipo-gdo-scorporo VALUE IS "G". 
        78 tipo-estero-no-imp VALUE IS "E". 
@@ -235,8 +174,88 @@
 
 
            copy "winprint.def".                  
-       77 OPENSAVE-STATUS  PIC  S9(2)
-                  VALUE IS 0.
+       77 OPENSAVE-STATUS  PIC  S9(2) VALUE IS 0.      
+
+       01 old-tcl-rec.
+           05 old-tcl-chiave.
+               10 old-tcl-codice       PIC  X(2).
+           05 old-tcl-dati.
+               10 old-tcl-descrizione  PIC  X(30).
+               10 old-tcl-agente       PIC  x.
+                   88 old-tcl-agente-si VALUE IS "S". 
+                   88 old-tcl-agente-no VALUE IS "N". 
+                   88 old-tcl-agente-opz VALUE IS "O". 
+               10 old-tcl-gdo          PIC  x.
+                   88 old-tcl-gdo-si VALUE IS "S". 
+                   88 old-tcl-gdo-no VALUE IS "N". 
+                   88 old-tcl-gdo-opz VALUE IS "O". 
+               10 old-tcl-tipologia-tratt-imposte  PIC  x.
+                   88 ttipocli-standard VALUE IS "S". 
+                   88 ttipocli-gdo VALUE IS "G". 
+                   88 ttipocli-estero-ex VALUE IS "E". 
+               10 old-tcl-gestione-fido            PIC  x.
+                   88 old-tcl-si-gestione-fido VALUE IS "S". 
+                   88 old-tcl-no-gestione-fido VALUE IS "N". 
+               10 old-tcl-dati-comuni.
+                   15 old-tcl-data-creazione           PIC  9(8).
+                   15 old-tcl-ora-creazione            PIC  9(8).
+                   15 old-tcl-utente-creazione         PIC  X(10).
+                   15 old-tcl-data-ultima-modifica     PIC  9(8).
+                   15 old-tcl-ora-ultima-modifica      PIC  9(8).
+                   15 old-tcl-utente-ultima-modifica   PIC  X(10).
+               10 old-tcl-vuoti.
+                   15 old-tcl-recupero-listino         PIC  x.
+                       88 old-tcl-si-recupero VALUE IS "S". 
+                       88 old-tcl-no-recupero VALUE IS "N". 
+                   15 old-tcl-gest-plus    PIC  x.
+                       88 old-tcl-si-gest-plus VALUE IS "S". 
+                       88 old-tcl-no-gest-plus VALUE IS "N". 
+                   15 old-tcl-piombo       PIC  x.
+                       88 old-tcl-si-piombo VALUE IS "S". 
+                       88 old-tcl-no-piombo VALUE IS "N". 
+                   15 old-tcl-serie-bolle  PIC  9.
+                   15 old-tcl-num-vuoto-1  PIC  9(11).
+                   15 old-tcl-num-vuoto-2  PIC  9(15).
+                   15 old-tcl-num-vuoto-3  PIC  9(15).
+                   15 old-tcl-impegnato    PIC  x.
+                       88 old-tcl-imp-GDO VALUE IS "G". 
+                       88 old-tcl-imp-trad VALUE IS "T". 
+                   15 old-tcl-manuale      PIC  x.
+                       88 old-tcl-manuale-si VALUE IS "S". 
+                       88 old-tcl-manuale-no VALUE IS "N". 
+                   15 old-tcl-bloc-auto    PIC  x(1).
+                       88 old-tcl-bloc-auto-si VALUE IS "S". 
+                       88 old-tcl-bloc-auto-no VALUE IS "N". 
+                   15 old-tcl-brogliaccio  PIC  X(1).
+                       88 old-tcl-brogliaccio-GDO VALUE IS "G". 
+                       88 old-tcl-brogliaccio-NORMALE VALUE IS "N". 
+                   15 old-tcl-evasione     PIC  X(1).
+                       88 old-tcl-evasione-GDO VALUE IS "G". 
+                       88 old-tcl-evasione-TRAD VALUE IS "T". 
+                       88 old-tcl-evasione-ESTERO VALUE IS "E". 
+                   15 old-tcl-stampante    PIC  X(50).
+                   15 old-tcl-stampa-brogm PIC  x.
+                       88 old-tcl-stampa-brogm-si VALUE IS "S". 
+                       88 old-tcl-stampa-brogm-no VALUE IS "N" " ". 
+                   15 old-tcl-mail-comm    PIC  X(200).
+                   15 old-tcl-path-sfondo-bolle        PIC  X(150).
+                   15 old-tcl-fido-nuovo   PIC  x.
+                       88 old-tcl-fido-nuovo-si VALUE IS "S". 
+                       88 old-tcl-fido-nuovo-no VALUE IS "N" " ". 
+                   15 old-tcl-edi-auto     PIC  x.
+                       88 old-tcl-edi-auto-si VALUE IS "S". 
+                       88 old-tcl-edi-auto-no VALUE IS "N" " ". 
+                   15 old-tcl-stampante-m  PIC  X(100).
+                   15 old-tcl-iban         PIC  X(27).
+                   15 old-tcl-imp-fido-extra           PIC  x.
+                       88 old-tcl-imp-fido-extra-si VALUE IS "S". 
+                       88 old-tcl-imp-fido-extra-no VALUE IS "N". 
+                   15 FILLER           PIC  9(9).
+                   15 old-tcl-no-blocco-prob-pag       PIC  X(1).
+                       88 old-tcl-no-blocco-prob-pag-si VALUE IS "S". 
+                       88 old-tcl-no-blocco-prob-pag-no VALUE IS "N", " 
+      -    "". 
+                   15 old-tcl-banca        PIC  X(100).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -286,18 +305,18 @@
            COL 2,17, 
            LINE 1,62,
            LINES 37,08 ,
-           SIZE 188,17 ,
+           SIZE 198,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            DATA-COLUMNS (1, 3, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 
-           43, 44, 45, 46, 47, 48),
+           43, 44, 45, 46, 47, 48, 49),
            ALIGNMENT ("L", "L", "C", "C", "C", "C", "C", "C", "C", "C", 
-           "C", "C", "C", "C", "C", "C", "C", "C"),
+           "C", "C", "C", "C", "C", "C", "C", "C", "C"),
            SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
-           5, 5),
+           5, 5, 5),
            DATA-TYPES ("X(2)", "X(30)", "X(1)", "U(1)", "U(1)", "U(1)", 
            "U(1)", "U(1)", "U(1)", "9(1)", "U(1)", "U(1)", "U(1)", "U(1)
-      -    "", "U(1)", "U(1)", "U(1)", "U(1)"),
+      -    "", "U(1)", "U(1)", "U(1)", "U(1)", "U(1)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
@@ -305,14 +324,13 @@
            FONT IS Small-Font,
            HEADING-COLOR 257,
            HEADING-DIVIDER-COLOR 1,
-           HSCROLL,
            ID IS 1,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 185,
+           VIRTUAL-WIDTH 195,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -1409,6 +1427,9 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 18, Y = 1,
                 CELL-DATA = "EDI auto",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 19, Y = 1,
+                CELL-DATA = "Fido extra",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1468,7 +1489,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 53,08,
-              SIZE 190,83,
+              SIZE 200,67,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1499,7 +1520,8 @@
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
               MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 8, 43, 50, 55, 63, 
-           73, 82, 92, 100, 110, 120, 129, 139, 149, 158, 166, 176)
+           73, 82, 92, 100, 110, 120, 129, 139, 149, 158, 166, 176, 
+           186)
            .
 
        Form1-PROC.
@@ -2362,7 +2384,7 @@
               move 2 to riga 
            end-if.
 
-           modify form1-gd-1, start-x = 1, x     = 18,
+           modify form1-gd-1, start-x = 1, x     = 19,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -2651,6 +2673,17 @@
                              title tit-err
                               icon 2
                 end-if 
+           when 19
+                if tcl-imp-fido-extra = "S" or
+                   tcl-imp-fido-extra = "N"
+                   continue
+                else
+                   set errori to true
+                   move 19 to colonna
+                   display message "Ammessi valori S o N"
+                             title tit-err
+                              icon 2
+                end-if 
            end-evaluate.
 
            if errori
@@ -2765,6 +2798,8 @@
            col-fido-nuovo
                           move tcl-edi-auto                to 
            col-edi-auto
+                          move tcl-imp-fido-extra          to 
+           col-imp-fido-extra
                           modify form1-gd-1, record-to-add = rec-grid
                           if riga = 2                              
                              move tcl-stampante       to 
@@ -2932,7 +2967,7 @@
 
 
            perform varying colonna from 1 by 1 
-                     until colonna > 18
+                     until colonna > 19
               perform CONTROLLO
 
               if errori 
@@ -3095,7 +3130,8 @@
            inquire form1-gd-1(riga, 15), cell-data tcl-evasione.     
            inquire form1-gd-1(riga, 16), cell-data tcl-stampa-brogm.    
            inquire form1-gd-1(riga, 17), cell-data tcl-fido-nuovo.
-           inquire form1-gd-1(riga, 18), cell-data tcl-edi-auto 
+           inquire form1-gd-1(riga, 18), cell-data tcl-edi-auto.
+           inquire form1-gd-1(riga, 19), cell-data tcl-imp-fido-extra
            .
       * <TOTEM:END>
 
