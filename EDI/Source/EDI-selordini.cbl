@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 22 novembre 2023 18:02:07.
+       DATE-WRITTEN.        giovedì 23 novembre 2023 15:17:01.
        REMARKS.
       *{TOTEM}END
 
@@ -181,6 +181,7 @@
            COPY  "LINK-WPROGMAG.DEF".
            COPY  "LINK-SOST-ART.DEF".
            COPY  "LOG-MACROBATCH.DEF".
+           COPY  "LINK-GESLOCK.DEF".
        77 toolbar-bmp      PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -5027,6 +5028,16 @@
            when "00"
            when other continue
            end-evaluate.
+
+      ***---
+       LOCK-DIV-ERR SECTION.
+           use after error procedure on lock-div.
+           evaluate status-lock-div
+           when "99" 
+           when "93" set RecLocked to true
+           when "00"
+           when other continue
+           end-evaluate.
                                                  
       ***---
        TCONTAT-ERR SECTION.
@@ -5338,7 +5349,8 @@
            PERFORM OPEN-tprov
            PERFORM OPEN-EDI-clides
            PERFORM OPEN-anacap
-           PERFORM OPEN-lock-div
+      *    lock-div OPEN MODE IS FALSE
+      *    PERFORM OPEN-lock-div
       *    After Open
            .
 
@@ -5948,14 +5960,7 @@
        OPEN-lock-div.
       * <TOTEM:EPT. INIT:EDI-selordini, FD:lock-div, BeforeOpen>
       * <TOTEM:END>
-           OPEN  I-O lock-div
-           IF STATUS-lock-div = "35"
-              OPEN OUTPUT lock-div
-                IF Valid-STATUS-lock-div
-                   CLOSE lock-div
-                   OPEN I-O lock-div
-                END-IF
-           END-IF
+           OPEN  INPUT lock-div
            IF NOT Valid-STATUS-lock-div
               PERFORM  Form-ini-EXTENDED-FILE-STATUS
               GO TO EXIT-STOP-ROUTINE
@@ -6016,7 +6021,8 @@
            PERFORM CLOSE-tprov
            PERFORM CLOSE-EDI-clides
            PERFORM CLOSE-anacap
-           PERFORM CLOSE-lock-div
+      *    lock-div CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lock-div
       *    After Close
            .
 
@@ -6288,7 +6294,6 @@
        CLOSE-lock-div.
       * <TOTEM:EPT. INIT:EDI-selordini, FD:lock-div, BeforeClose>
       * <TOTEM:END>
-           CLOSE lock-div
            .
 
        clienti-cli-K1-MERGE-SPLITBUF.
@@ -13919,7 +13924,6 @@
        DataSet1-lock-div-Rec-Write.
       * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeWrite>
       * <TOTEM:END>
-           WRITE ld-rec OF lock-div.
            MOVE STATUS-lock-div TO TOTEM-ERR-STAT
            MOVE "lock-div" TO TOTEM-ERR-FILE
            MOVE "WRITE" TO TOTEM-ERR-MODE
@@ -13930,7 +13934,6 @@
        DataSet1-lock-div-Rec-Rewrite.
       * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeRewrite>
       * <TOTEM:END>
-           REWRITE ld-rec OF lock-div.
            MOVE STATUS-lock-div TO TOTEM-ERR-STAT
            MOVE "lock-div" TO TOTEM-ERR-FILE
            MOVE "REWRITE" TO TOTEM-ERR-MODE
@@ -13941,7 +13944,6 @@
        DataSet1-lock-div-Rec-Delete.
       * <TOTEM:EPT. FD:DataSet1, FD:lock-div, BeforeDelete>
       * <TOTEM:END>
-           DELETE lock-div.
            MOVE STATUS-lock-div TO TOTEM-ERR-STAT
            MOVE "lock-div" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
@@ -15184,6 +15186,7 @@
                     invalid continue
                 not invalid
                     move 1 to riga
+                    open input lock-div
                     perform until 1 = 2
                        read ttipocli next at end exit perform end-read
                        move tcl-codice      to col-tcl-codice
@@ -15207,6 +15210,7 @@
                        modify gd-tipocli(riga, 1), hidden-data 
            hid-col-sel
                     end-perform
+                    close lock-div
               end-start
            end-if.
 
@@ -22042,6 +22046,7 @@ LABLAB        if tcl-si-recupero and
 
            if tutto-ok
               inquire gd-tipocli, last-row in tot-righe
+              open input lock-div
               perform varying riga from 2 by 1 
                         until riga > tot-righe
                  inquire gd-tipocli(riga, 1), 
@@ -22063,6 +22068,7 @@ LABLAB        if tcl-si-recupero and
                     end-read
                  end-if
               end-perform
+              close lock-div
               if errori
                  display message "Ci sono altri utenti che utilizzano le
       -    " divisioni selezionate."
@@ -22077,6 +22083,8 @@ LABLAB        if tcl-si-recupero and
               initialize tab-tipologie replacing numeric data by zeroes
                                             alphanumeric data by spaces
               inquire gd-tipocli, last-row in tot-righe
+
+              open i-o lock-div
               perform varying riga from 2 by 1 
                         until riga > tot-righe
                  inquire gd-tipocli(riga, 1), 
@@ -22094,6 +22102,7 @@ LABLAB        if tcl-si-recupero and
                     write ld-rec
                  end-if
               end-perform
+              close      lock-div   
 
               modify form1-Handle, visible 0
               if tipo-elab = 1
@@ -22103,6 +22112,8 @@ LABLAB        if tcl-si-recupero and
               else
                  perform SCARICA-COMBO-STATO-ORDINE
                  perform FORM2-OPEN-ROUTINE
+                                    
+                 open i-o lock-div
 
                  move user-codi to ld-user
                  move low-value to ld-tipocli
@@ -22118,6 +22129,8 @@ LABLAB        if tcl-si-recupero and
                           delete lock-div record
                        end-perform
                  end-start
+
+                 close      lock-div
 
                  if errore-bloccante
                     move 27 to key-status
@@ -23478,6 +23491,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       * <TOTEM:END>
        pb-sel-LinkTo.
       * <TOTEM:PARA. pb-sel-LinkTo>
+           open input lock-div.
            inquire gd-tipocli, last-row in tot-righe.
            perform varying riga from 2 by 1 
                      until riga > tot-righe
@@ -23493,7 +23507,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                    modify gd-tipocli(riga), row-color = 513
               end-read              
               modify gd-tipocli(riga, 3), cell-data col-user
-           end-perform 
+           end-perform.
+           close lock-div 
            .
       * <TOTEM:END>
        pb-desel-LinkTo.
@@ -23790,6 +23805,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       * <TOTEM:END>
        pb-agg-accessi-LinkTo.
       * <TOTEM:PARA. pb-agg-accessi-LinkTo>
+           open input lock-div.
            inquire gd-tipocli, last-row in tot-righe
            perform varying riga from 2 by 1 
                      until riga > tot-righe   
@@ -23804,7 +23820,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                    modify gd-tipocli(riga), row-color 513
               end-read             
               modify gd-tipocli(riga, 3), cell-data col-user
-           end-perform 
+           end-perform.
+           close lock-div 
            .
       * <TOTEM:END>
        pb-canc-LinkTo.
@@ -23814,12 +23831,30 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
            call   "passwd" using passwd-linkage.
            cancel "passwd".
 
-           if passwd-statusOk
-              close       lock-div
-              open output lock-div
-              close       lock-div
-              open i-o    lock-div
-              perform PB-AGG-ACCESSI-LINKTO
+           if passwd-statusOk      
+              initialize geslock-linkage 
+                         replacing numeric data by zeroes
+                              alphanumeric data by spaces
+              move 1 to geslock-v-riprova
+              move 1 to geslock-v-termina
+              move "lock-div" to geslock-nome-file
+              move "File di gestione divisioni/utenti per EDI in uso"
+                to geslock-messaggio
+
+              perform until 1 = 2
+                 set RecLocked to false
+                 open output lock-div
+                 if not RecLocked
+                    close lock-div
+                    perform PB-AGG-ACCESSI-LINKTO
+                    exit perform
+                 end-if
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+                 if termina
+                    exit perform
+                 end-if
+              end-perform  
            end-if 
            .
       * <TOTEM:END>
