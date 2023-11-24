@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          passwd.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 22 novembre 2023 17:59:04.
+       DATE-WRITTEN.        venerdì 24 novembre 2023 18:40:57.
        REMARKS.
       *{TOTEM}END
 
@@ -611,8 +611,13 @@
               |15. modifica scorta su articoli
               |16. modifica stato articoli
               |17. modifica tipologia clienti
-              |18. azzeramento ordini fornitori
-              |19. pulizia divisioni EDI in uso
+              |18. azzeramento ordini fornitori    
+              |19. modifica mag standard anagrafica articoli        
+              |20. modifica esenzione iva clienti                   
+              |21. Cambio vettore                                   
+              |22. cancellazione ordini fornitori dal al            
+              |23. cancellazione divisioni EDI in uso               
+              |24. chiamata sblocco sessioni da menu
               perform Passwd-password times
                  read pass next at end continue end-read
               end-perform

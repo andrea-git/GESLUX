@@ -75,7 +75,10 @@
                        88 tcl-edi-auto-no VALUE IS "N" " ". 
                    15 tcl-stampante-m  PIC  X(100).
                    15 tcl-iban         PIC  X(27).
-                   15 FILLER           PIC  9(10).
+                   15 tcl-imp-fido-extra           PIC  x.
+                       88 tcl-imp-fido-extra-si VALUE IS "S". 
+                       88 tcl-imp-fido-extra-no VALUE IS "N". 
+                   15 FILLER           PIC  9(9).
                    15 tcl-no-blocco-prob-pag       PIC  X(1).
                        88 tcl-no-blocco-prob-pag-si VALUE IS "S". 
                        88 tcl-no-blocco-prob-pag-no VALUE IS "N", " ". 

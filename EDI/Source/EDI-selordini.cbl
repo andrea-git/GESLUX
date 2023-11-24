@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 23 novembre 2023 15:17:01.
+       DATE-WRITTEN.        venerdì 24 novembre 2023 19:00:09.
        REMARKS.
       *{TOTEM}END
 
@@ -21689,8 +21689,8 @@ LABLAB        if tcl-si-recupero and
                  move 78-EDI-impord to lck-nome-pgm
                  read lockfile no lock
                  initialize lab-attesa-buf
-                 string "IN USO DA: "
-                        lck-utente-creazione 
+                 string "IN USO DA: "        delimited size
+                        lck-utente-creazione delimited size
                    into lab-attesa-buf
                  end-string
                  display lab-attesa

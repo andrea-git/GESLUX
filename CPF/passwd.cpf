@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=ScreenPass
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B1617037-347-1281120192
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B18174855-585-2178015952
 
 {{@DESCRIPTION:
 
@@ -776,6 +776,7 @@ BEGIN-TEXT
               |21. Cambio vettore                                   
               |22. cancellazione ordini fornitori dal al            
               |23. cancellazione divisioni EDI in uso               
+              |24. chiamata sblocco sessioni da menu
               perform Passwd-password times
                  read pass next at end continue end-read
               end-perform

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gpgmexe.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 novembre 2023 15:16:35.
+       DATE-WRITTEN.        venerdì 24 novembre 2023 18:34:49.
        REMARKS.
       *{TOTEM}END
 

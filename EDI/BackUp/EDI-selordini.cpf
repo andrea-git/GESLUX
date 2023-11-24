@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B17135323-175-1651628890
+PROGRAM_UNIQUE_CODE=TOTEM-7E7B18175349-885-214725988
 
 {{@DESCRIPTION:
 
@@ -20840,8 +20839,8 @@ BEGIN-TEXT
                  move 78-EDI-impord to lck-nome-pgm
                  read lockfile no lock
                  initialize lab-attesa-buf
-                 string "IN USO DA: "
-                        lck-utente-creazione 
+                 string "IN USO DA: "        delimited size
+                        lck-utente-creazione delimited size
                    into lab-attesa-buf
                  end-string
                  display lab-attesa
