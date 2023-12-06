@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7A1A10857-354-561411693
+PROGRAM_UNIQUE_CODE=TOTEM-7E7C6102735-654-3114230996
 
 {{@DESCRIPTION:
 
@@ -11179,8 +11179,30 @@ BEGIN-TEXT
               move cli-tipo to tor-tipocli
                               
               if tte-ritira-no
-                 if mag-vettore not = 0
+                 if mag-vettore not = 0                 
                     move mag-vettore to tor-vettore
+
+                    if prm-forza1-si
+                       if prm-minore-kg1 not = 0 and tte-peso <
+                          prm-minore-kg1
+                          move prm-vet-minore-kg1 to tor-vettore
+                       end-if
+                    end-if
+                                                        
+                    if prm-forza2-si
+                       if prm-minore-kg2 not = 0 and tte-peso <
+                          prm-minore-kg2
+                          move prm-vet-minore-kg2 to tor-vettore
+                       end-if
+                    end-if
+
+                    if prm-forza3-si
+                       if prm-maggiore-kg not = 0 and tte-peso >
+                          prm-maggiore-kg
+                          move prm-vet-maggiore-kg to tor-vettore
+                       end-if
+                    end-if
+                                                        
                  else
                     move tte-vettore to tor-vettore
                  end-if

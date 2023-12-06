@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 26 ottobre 2023 12:32:00.
+       DATE-WRITTEN.        mercoledì 6 dicembre 2023 11:33:41.
        REMARKS.
       *{TOTEM}END
 
@@ -14436,8 +14436,30 @@
               move cli-tipo to tor-tipocli
                               
               if tte-ritira-no
-                 if mag-vettore not = 0
+                 if mag-vettore not = 0                 
                     move mag-vettore to tor-vettore
+
+                    if prm-forza1-si
+                       if prm-minore-kg1 not = 0 and tte-peso <
+                          prm-minore-kg1
+                          move prm-vet-minore-kg1 to tor-vettore
+                       end-if
+                    end-if
+                                                        
+                    if prm-forza2-si
+                       if prm-minore-kg2 not = 0 and tte-peso <
+                          prm-minore-kg2
+                          move prm-vet-minore-kg2 to tor-vettore
+                       end-if
+                    end-if
+
+                    if prm-forza3-si
+                       if prm-maggiore-kg not = 0 and tte-peso >
+                          prm-maggiore-kg
+                          move prm-vet-maggiore-kg to tor-vettore
+                       end-if
+                    end-if
+                                                        
                  else
                     move tte-vettore to tor-vettore
                  end-if
