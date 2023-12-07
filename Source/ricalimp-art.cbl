@@ -90,7 +90,8 @@
        77  status-destini        pic xx.
        77  status-ttipocli       pic xx.
        77  status-tcaumag        pic xx.     
-       77  status-ra-semaforo    pic xx.
+       77  status-ra-semaforo    pic xx.     
+       77  save-status           pic xx.
        77  status-ra-log         pic xx.
       ***** 77  status-tmp-ricalimp   pic xx.
       ***** 77  path-tmp-ricalimp     pic x(256).
@@ -98,6 +99,7 @@
        77  path-log-progmag      pic x(256).
        77  path-ra-log           pic x(256).  
        77  cod-err               pic x(4).
+       77  save-cod-err          pic x(4).
 
        77  como-valore           pic s9(8).
        77  como-impegnato        pic s9(8).
@@ -229,6 +231,8 @@
               set RecLocked to false
               open i-o ra-semaforo allowing readers
               if status-ra-semaforo not = "00"
+                 move status-ra-semaforo to save-status
+                 move cod-err            to save-cod-err
                  |Se va in errore di open ma non per il lock
                  |provo a ricreare il file...
                  if not RecLocked           
@@ -240,9 +244,10 @@
                        display message 
                                "ELABORAZIONE INTERROTTA."
                         x"0d0a""CONTATTARE ASSISTENZA CON CODICE RA-2:"
+                        x"0d0a"save-status
+                        x"0d0a"save-cod-err
                         x"0d0a"status-ra-semaforo
                         x"0d0a"cod-err
-                        x"0d0a""LOG: "path-ra-log
                                  title tit-err
                        goback
                     end-if
