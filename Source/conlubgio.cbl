@@ -229,33 +229,31 @@
            perform EXIT-PGM.
 
       ***---
-       INIT.
+       INIT.                    
+           initialize wstampa.  
+           accept como-data from century-date.
+           accept como-ora  from time.
            CALL "C$NARG" USING NARGS.
            if nargs not = 0
               set RichiamoSchedulato to true
-           else
-              set RichiamoSchedulato to false
-           end-if.
-           if RichiamoSchedulato
-              initialize wstampa
-              accept como-data from century-date
-              accept como-ora  from time
               accept  wstampa from environment "SCHEDULER_PATH_LOG"
-              inspect wstampa replacing trailing spaces by low-value
-              string  wstampa       delimited low-value
-                      "CONLUBGIO_"  delimited size
-                      como-data     delimited size
-                      "_"           delimited size
-                      como-ora      delimited size
-                      ".log"        delimited size
-                      into wstampa
-              end-string
-              set RichiamoSchedulato to true
+           else
+              set RichiamoSchedulato to false                       
+              accept  wstampa from environment "PATH_ST"
+           end-if.              
+           inspect wstampa replacing trailing spaces by low-value
+           string  wstampa       delimited low-value
+                   "CONLUBGIO_"  delimited size
+                   como-data     delimited size
+                   "_"           delimited size
+                   como-ora      delimited size
+                   ".log"        delimited size
+                   into wstampa
+           end-string.
+           if RichiamoSchedulato
               move wstampa to batch-log
-              open output file-log
-      *****     else
-      *****        display "Conferme LBX giornaliere in corso..."
            end-if.
+           open output file-log
 
            set tutto-ok    to true.
            accept como-ora from time.
@@ -930,12 +928,8 @@ LUBEXX             move "Prezzo incoerente!!!"
 
       ***---
        RIGA-LOG.
-           if RichiamoSchedulato
-              initialize log-riga
-              write log-riga from como-riga
-           else
-              display como-riga upon syserr
-           end-if.       
+           initialize log-riga.
+           write log-riga from como-riga.
 
       ***---
        PARAGRAFO-COPY.

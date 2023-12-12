@@ -826,8 +826,24 @@
                             inspect link-cli-codice 
                                     replacing leading x"20" by x"30"
                             call   "calfido"  using calfido-linkage
-                            cancel "calfido"
-                            if saldo-scaduto > 0                   
+                            cancel "calfido"  
+                            initialize como-riga
+                            string "CLIENTE: "         
+                                   cli-codice          
+                                   " - SCADUTO: "      
+                                   saldo-scaduto(1:13) 
+                                   ","                 
+                                   saldo-scaduto(14:2) 
+                                   " CLI-FIDO-EXTRA: " 
+                                   saldo-scaduto(1:8) 
+                                   ","                 
+                                   saldo-scaduto(9:2) 
+                              into como-riga
+                            end-string            
+                            perform SETTA-RIGA-LOG
+ 
+      *****                      if saldo-scaduto > 0                   
+                            if saldo-scaduto > cli-fido-extra
                                if cli-blocco-amm and 
                                   blocco-amm-fido = "S"
                                   initialize como-riga

@@ -176,6 +176,10 @@
          05 r71                     pic x.
          05 r-fido                  pic 9(10).
          05 r-fido-x                pic x(10).
+         05 r73                     pic x.
+         05 r74                     pic x.
+         05 r75                     pic x.
+         05 r-reportType            pic x(50).
 
        01  filler                pic 9 value 0.
            88 RichiamoSchedulato       value 1, false 0.
@@ -643,16 +647,23 @@
                        r70
                        r71
                        r-fido-x
-              end-unstring 
+                       r73
+                       r74
+                       r75
+                       r-reportType
+              end-unstring
               move r-fido-x to r-fido convert
              |Posson capitare dei codici con lettere che vanno scartati
-              if r-cod-cli (2:1) = "A"       
+              if r-cod-cli (2:1) = "A" or 
+                 r-reportType not = "RptAnagNERISK"
                  initialize como-riga
-                 string "RIGA: "      delimited size
-                        riga-csv      delimited size
-                        " - CLIENTE " delimited size
-                        r-cod-cli     delimited size
-                        " SCARTATO"   delimited size
+                 string "RIGA: "        delimited size
+                        riga-csv        delimited size
+                        " - CLIENTE "   delimited size
+                        r-cod-cli       delimited size
+                        " SCARTATO. "   delimited size
+                        "Report Type: " delimited size
+                        r-reportType    delimited size
                    into como-riga
                  end-string
                  perform SCRIVI-RIGA-LOG
