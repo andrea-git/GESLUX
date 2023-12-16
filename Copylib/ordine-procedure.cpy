@@ -919,8 +919,16 @@ LUBEXX     end-if.
 
       ***---
        SOMMA-DINAMICI.         
+           |Esporre i dati del padre
+           initialize prg-chiave replacing numeric data by zeroes
+                                      alphanumeric data by spaces.
            move art-codice  to prg-cod-articolo.
-           move art-codice  to prg-cod-articolo.
+           read progmag no lock.                      
+           move prg-giacenza   to hid-giacenza
+           move prg-impegnato  to hid-impegnato
+           move prg-ordinato-1 to hid-ordinato
+           exit paragraph.                  
+
       *****     move storemagazzino to prg-cod-magazzino.
            if art-mag-std = "CAS"
               move "LBX"       to como-magazzino

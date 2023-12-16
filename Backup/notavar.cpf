@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E431F14149-780-1665222177
+PROGRAM_UNIQUE_CODE=TOTEM-7E7C100751-621-1778128821
 
 {{@DESCRIPTION:
 
@@ -10181,13 +10181,13 @@ BEGIN-TEXT
            when 78-ID-ef-iva
            when 78-ID-ef-iva-NCNC
                 inquire ef-iva-ese, value in ef-iva-ese-buf
-                if ef-iva-ese-buf not = spaces
-                   modify ef-iva,      read-only
-                   modify ef-iva-NCNC, read-only
-                else
-                   modify ef-iva,      not read-only
-                   modify ef-iva-NCNC, not read-only
-                end-if
+      *****          if ef-iva-ese-buf not = spaces
+      *****             modify ef-iva,      read-only
+      *****             modify ef-iva-NCNC, read-only
+      *****          else
+      *****             modify ef-iva,      not read-only
+      *****             modify ef-iva-NCNC, not read-only
+      *****          end-if
       
            end-evaluate.
 END-TEXT

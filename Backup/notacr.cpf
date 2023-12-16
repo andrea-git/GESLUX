@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E431F141219-768-261556594
+PROGRAM_UNIQUE_CODE=TOTEM-7E7CF235435-219-423719067
 
 {{@DESCRIPTION:
 
@@ -11541,11 +11541,11 @@ BEGIN-TEXT
                    move 4            to accept-control
                 end-if
                 inquire ef-iva-ese, value in ef-iva-ese-buf
-                if ef-iva-ese-buf not = spaces
-                   modify ef-iva, read-only
-                else
-                   modify ef-iva, not read-only
-                end-if
+      *****          if ef-iva-ese-buf not = spaces
+      *****             modify ef-iva, read-only
+      *****          else
+      *****             modify ef-iva, not read-only
+      *****          end-if
 
            when 78-ID-ef-qta-NCPZ
            when 78-ID-ef-prz-NCPZ
@@ -11563,19 +11563,19 @@ BEGIN-TEXT
                 end-if
 
                 inquire ef-iva-ese, value in ef-iva-ese-buf
-                if ef-iva-ese-buf not = spaces
-                   modify ef-iva-NCPZ, read-only
-                else
-                   modify ef-iva-NCPZ, not read-only
-                end-if  
+      *****          if ef-iva-ese-buf not = spaces
+      *****             modify ef-iva-NCPZ, read-only
+      *****          else
+      *****             modify ef-iva-NCPZ, not read-only
+      *****          end-if  
 
            when 78-ID-ef-iva-NCNC
                 inquire ef-iva-ese, value in ef-iva-ese-buf
-                if ef-iva-ese-buf not = spaces
-                   modify ef-iva-NCNC, read-only
-                else
-                   modify ef-iva-NCNC, not read-only
-                end-if
+      *****          if ef-iva-ese-buf not = spaces
+      *****             modify ef-iva-NCNC, read-only
+      *****          else
+      *****             modify ef-iva-NCNC, not read-only
+      *****          end-if
 
            end-evaluate.
 END-TEXT
@@ -14349,11 +14349,11 @@ LUBEXX                move col-qta  to  col-quantita
                       end-if
                  end-evaluate
 
-LUBEXX           if ef-iva-ese-buf = spaces
+LUBEXX*****           if ef-iva-ese-buf = spaces
 LUBEXX              move col-iva        to col-cod-iva
-LUBEXX           else
-LUBEXX              move ef-iva-ese-buf to col-cod-iva
-LUBEXX           end-if                     
+LUBEXX*****           else
+LUBEXX*****              move ef-iva-ese-buf to col-cod-iva
+LUBEXX*****           end-if                     
 
                  modify form1-gd-1(store-riga + 1, 1),
                         cell-data col-riga

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          notavar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 31 marzo 2020 16:14:28.
+       DATE-WRITTEN.        sabato 16 dicembre 2023 01:08:11.
        REMARKS.
       *{TOTEM}END
 
@@ -510,10 +510,10 @@
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-rnotacr-BUF     PIC X(545).
-       77 TMP-DataSet1-destini-BUF     PIC X(3386).
+       77 TMP-DataSet1-destini-BUF     PIC X(3676).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
+       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
@@ -632,7 +632,7 @@
        77 tnotacr-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tnotacr-k-andamento-clides-SPLITBUF  PIC X(20).
        77 rnotacr-rno-k-articolo-SPLITBUF  PIC X(24).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 tivaese-key01-SPLITBUF  PIC X(53).
        77 tcodpag-TBL-CODICE-01-SPLITBUF  PIC X(53).
@@ -4341,9 +4341,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -8275,13 +8275,13 @@
            when 78-ID-ef-iva
            when 78-ID-ef-iva-NCNC
                 inquire ef-iva-ese, value in ef-iva-ese-buf
-                if ef-iva-ese-buf not = spaces
-                   modify ef-iva,      read-only
-                   modify ef-iva-NCNC, read-only
-                else
-                   modify ef-iva,      not read-only
-                   modify ef-iva-NCNC, not read-only
-                end-if
+      *****          if ef-iva-ese-buf not = spaces
+      *****             modify ef-iva,      read-only
+      *****             modify ef-iva-NCNC, read-only
+      *****          else
+      *****             modify ef-iva,      not read-only
+      *****             modify ef-iva-NCNC, not read-only
+      *****          end-if
       
            end-evaluate 
            .
