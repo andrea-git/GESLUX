@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini-art.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 10 novembre 2023 10:48:48.
+       DATE-WRITTEN.        lunedì 18 dicembre 2023 12:11:17.
        REMARKS.
       *{TOTEM}END
 
@@ -124,6 +124,7 @@
                   VALUE IS 0.
        77 save-data        PIC  9(8)
                   VALUE IS 0.
+       77 save-tipo        PIC  xx.
        77 AUTO-ID          PIC  9(6)
                   VALUE IS 0.
        77 tot-consumo      PIC  9(9)v99.
@@ -178,7 +179,9 @@
        77 ef-gdo-buf       PIC  x(5).
        77 STATUS-tgrupgdo  PIC  X(2).
            88 Valid-STATUS-tgrupgdo VALUE IS "00" THRU "09". 
-       77 lab-gdo-buf      PIC  X(50).
+       77 lab-gdo-buf      PIC  X(50)
+                  VALUE IS "<< HELP >> blank = TUTTE LE TIPOLOGIE CLIENT
+      -    "I".
        77 lab-art-buf      PIC  x(40).
        77 ef-art-buf       PIC  z(6).
        77 STATUS-articoli  PIC  X(2).
@@ -335,6 +338,10 @@
                   VALUE IS 0.
        77 v-storico        PIC  9
                   VALUE IS 0.
+       77 ef-tipo-buf      PIC  xx.
+       77 lab-tipo-buf     PIC  X(50)
+                  VALUE IS "<< HELP >> blank = TUTTE LE TIPOLOGIE CLIENT
+      -    "I".
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -481,12 +488,13 @@
 
       *{TOTEM}ID-LOGICI
       ***** Elenco ID Logici *****
-       78  78-ID-ef-gdo VALUE 5001.
-       78  78-ID-ef-art VALUE 5002.
-       78  78-ID-ef-cod-art-cli VALUE 5003.
-       78  78-ID-chk-escludi VALUE 5004.
-       78  78-ID-chk-escludi-sp VALUE 5005.
-       78  78-ID-ef-data VALUE 5006.
+       78  78-ID-ef-tipo VALUE 5001.
+       78  78-ID-ef-gdo VALUE 5002.
+       78  78-ID-ef-art VALUE 5003.
+       78  78-ID-ef-cod-art-cli VALUE 5004.
+       78  78-ID-chk-escludi VALUE 5005.
+       78  78-ID-chk-escludi-sp VALUE 5006.
+       78  78-ID-ef-data VALUE 5007.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -509,7 +517,7 @@
            Frame, 
            COL 60,63, 
            LINE 1,50,
-           LINES 10,63 ,
+           LINES 9,75 ,
            SIZE 70,88 ,
            ID IS 9,
            HEIGHT-IN-CELLS,
@@ -520,11 +528,31 @@
 
       * ENTRY FIELD
        05
+           ef-tipo, 
+           Entry-Field, 
+           COL 72,63, 
+           LINE 3,00,
+           LINES 1,31 ,
+           SIZE 7,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ID IS 78-ID-ef-tipo,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           MAX-TEXT 2,
+           VALUE ef-tipo-buf,
+           AFTER PROCEDURE ef-gdo-AfterProcedure, 
+           .
+
+      * ENTRY FIELD
+       05
            ef-gdo, 
            Entry-Field, 
            COL 72,63, 
-           LINE 3,50,
-           LINES 1,33 ,
+           LINE 4,50,
+           LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
            UPPER,
@@ -543,7 +571,7 @@
            ef-art, 
            Entry-Field, 
            COL 72,63, 
-           LINE 5,72,
+           LINE 6,00,
            LINES 1,33 ,
            SIZE 7,00 ,
            BOXED,
@@ -562,7 +590,7 @@
            ef-cod-art-cli, 
            Entry-Field, 
            COL 72,63, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 18,00 ,
            BOXED,
@@ -580,7 +608,7 @@
            chk-escludi, 
            Check-Box, 
            COL 93,03, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 2,00 ,
            FLAT,
@@ -597,7 +625,7 @@
            chk-escludi-sp, 
            Check-Box, 
            COL 106,03, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 2,00 ,
            FLAT,
@@ -614,7 +642,7 @@
            chk-storico, 
            Check-Box, 
            COL 120,03, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 2,00 ,
            FLAT,
@@ -632,7 +660,7 @@
            ef-data, 
            Entry-Field, 
            COL 72,63, 
-           LINE 9,83,
+           LINE 9,00,
            LINES 1,33 ,
            SIZE 11,00 ,
            BOXED,
@@ -652,7 +680,7 @@
            pb-carica, 
            Push-Button, 
            COL 115,01, 
-           LINE 9,31,
+           LINE 8,69,
            LINES 1,88 ,
            SIZE 13,63 ,
            EXCEPTION-VALUE 1004,
@@ -698,7 +726,7 @@
            Screen3-La-1aa, 
            Label, 
            COL 61,63, 
-           LINE 3,50,
+           LINE 4,50,
            LINES 1,33 ,
            SIZE 10,50 ,
            ID IS 4,
@@ -713,8 +741,8 @@
            lab-gdo, 
            Label, 
            COL 80,63, 
-           LINE 3,50,
-           LINES 1,33 ,
+           LINE 4,50,
+           LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
            ID IS 5,
@@ -728,8 +756,8 @@
        05
            Screen4-La-1, 
            Label, 
-           COL 62,25, 
-           LINE 9,83,
+           COL 62,26, 
+           LINE 9,00,
            LINES 1,33 ,
            SIZE 6,00 ,
            ID IS 11,
@@ -744,7 +772,7 @@
            Screen4-La-2, 
            Label, 
            COL 61,63, 
-           LINE 5,72,
+           LINE 6,00,
            LINES 1,33 ,
            SIZE 10,50 ,
            ID IS 15,
@@ -759,7 +787,7 @@
            lab-art, 
            Label, 
            COL 80,63, 
-           LINE 5,72,
+           LINE 6,00,
            LINES 1,33 ,
            SIZE 50,00 ,
            COLOR IS 5,
@@ -775,7 +803,7 @@
            Screen4-La-2a, 
            Label, 
            COL 61,63, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 10,50 ,
            ID IS 203,
@@ -790,7 +818,7 @@
            Screen4-La-2aa, 
            Label, 
            COL 95,63, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 10,50 ,
            ID IS 205,
@@ -805,7 +833,7 @@
            Screen4-La-2aaa, 
            Label, 
            COL 108,63, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 10,50 ,
            ID IS 206,
@@ -820,7 +848,7 @@
            lab-storico, 
            Label, 
            COL 122,63, 
-           LINE 7,78,
+           LINE 7,50,
            LINES 1,33 ,
            SIZE 7,00 ,
            ID IS 209,
@@ -831,12 +859,43 @@
            VISIBLE v-storico,
            .
 
+      * LABEL
+       05
+           Screen3-La-1aaa, 
+           Label, 
+           COL 61,63, 
+           LINE 3,00,
+           LINES 1,33 ,
+           SIZE 10,50 ,
+           ID IS 4,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Tipol. Cli.",
+           .
+
+      * LABEL
+       05
+           lab-tipo, 
+           Label, 
+           COL 80,25, 
+           LINE 3,00,
+           LINES 1,31 ,
+           SIZE 50,00 ,
+           COLOR IS 5,
+           ID IS 5,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-tipo-buf,
+           .
+
       * GRID
        05
            gd-listini, 
            Grid, 
            COL 2,38, 
-           LINE 12,94,
+           LINE 12,31,
            LINES 42,63 ,
            SIZE 187,38 ,
            ADJUSTABLE-COLUMNS,
@@ -4417,6 +4476,9 @@
            display lab-art.
            move "<< HELP >> blank = TUTTI I GRUPPI GDO" to lab-gdo-buf.
            display lab-gdo.
+           move "<< HELP >> blank = TUTTE LE TIPOLOGIE CLIENTI" to 
+           lab-tipo-buf.
+           display lab-tipo.
            accept como-data from century-date.
            perform DATE-TO-SCREEN.
            move como-data to ef-data-buf.
@@ -4801,10 +4863,12 @@
        Form1-BeforeProcedure.
            EVALUATE Control-Id
            WHEN 5001 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5002 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
            When 5001 PERFORM ef-gdo-BeforeProcedure
+           When 5002 PERFORM ef-gdo-BeforeProcedure
            END-EVALUATE
            .
 
@@ -4843,14 +4907,17 @@
       * <TOTEM:PARA. CARICA-LISTINI>
            if ef-gdo-buf = spaces and art-codice = 0 and 
            ef-cod-art-cli-buf = spaces
-              display message "Indicare Gruppo GDO o Articolo o Cod.art.
-      -    "cli."
+              display message "Indicare almeno uno dei seguenti valori:"
+                       x"0d0a""- Gruppo GDO"
+                       x"0d0a""- Articolo"
+                       x"0d0a""- Cod.art.cli."
                         title tit-err
                          icon 2
               exit paragraph
            end-if.                             
 
            if ef-gdo-buf         = save-gdo         and
+              tcl-codice         = save-tipo        and
               art-codice         = save-articolo    and
               chk-escludi-buf    = save-fa          and
               chk-escludi-sp-buf = save-sp          and
@@ -4866,7 +4933,8 @@
            move chk-escludi-sp-buf to save-sp. 
            move chk-storico-buf    to save-storico.
            move ef-cod-art-cli-buf to save-cod-art-cli.
-           move data-richiesta     to save-data.    
+           move data-richiesta     to save-data.
+           move tcl-codice         to save-tipo.
                                       
            modify gd-listini, reset-grid = 1.
            perform GD-LISTINI-CONTENT.
@@ -4891,7 +4959,20 @@
                    move gdo-codice       to ef-gdo-buf
                    move gdo-intestazione to lab-gdo-buf
                    display ef-gdo lab-gdo
-                end-if
+                end-if   
+
+           when 78-ID-ef-tipo
+                inquire ef-tipo, value in tcl-codice
+                move   "ttipocli"     to como-file
+                call   "zoom-gt"   using como-file, tcl-rec
+                                  giving stato-zoom
+                cancel "zoom-gt"
+      
+                if stato-zoom = 0
+                   move tcl-codice      to ef-tipo-buf
+                   move tcl-descrizione to lab-tipo-buf
+                   display ef-tipo lab-tipo
+                end-if  
 
            when 78-ID-ef-art
                 inquire ef-art, value in art-codice
@@ -4914,7 +4995,24 @@
       * <TOTEM:PARA. CONTROLLO>
            set tutto-ok to true.
 
-           evaluate CONTROL-ID
+           evaluate CONTROL-ID  
+      *    
+           when 78-ID-ef-tipo
+                inquire ef-tipo, value in tcl-codice
+                if tcl-codice = spaces
+                   move "Tutte le tipologie clienti" to tcl-descrizione
+                else
+                   read ttipocli no lock
+                        invalid
+                        move spaces to tcl-descrizione
+                        set errori to true
+                        display message "Tipologia clienti non valida"
+                                  title tit-err
+                                   icon 2
+                   end-read
+                end-if
+                move tcl-descrizione to lab-tipo-buf
+                display lab-tipo 
       *    
            when 78-ID-ef-gdo
                 inquire ef-gdo, value in gdo-codice
@@ -5343,6 +5441,18 @@
                  if lst-data of listini < 20210101
                     exit perform
                  end-if
+
+                 if ef-tipo-buf not = spaces
+                    move lst-gdo of listini to gdo-codice
+                    read tgrupgdo no lock
+                         invalid continue
+                     not invalid
+                         if gdo-tipocli not = ef-tipo-buf
+                            exit perform cycle
+                         end-if
+                    end-read
+                 end-if
+
                  move lst-articolo of listini to tlst-articolo
                  move lst-gdo      of listini to tlst-gdo
                  read tmp-listini no lock key tmp-k-art-gdo
@@ -5825,7 +5935,7 @@
       * <TOTEM:END>
        pb-carica-LinkTo.
       * <TOTEM:PARA. pb-carica-LinkTo>
-           perform varying control-id from 78-id-ef-gdo by 1 
+           perform varying control-id from 78-id-ef-tipo by 1 
                      until control-id > 78-ID-ef-data
               perform CONTROLLO
               if errori 
