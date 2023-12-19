@@ -655,7 +655,7 @@
               move r-fido-x to r-fido convert
              |Posson capitare dei codici con lettere che vanno scartati
               if r-cod-cli (2:1) = "A" or 
-                 r-reportType not = "RptAnagNERISK"
+                 r-reportType(2:13) not = "RptAnagNERISK"
                  initialize como-riga
                  string "RIGA: "        delimited size
                         riga-csv        delimited size
