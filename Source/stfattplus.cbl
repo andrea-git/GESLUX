@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          stfattplus.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 dicembre 2023 12:51:18.
+       DATE-WRITTEN.        mercoledì 20 dicembre 2023 18:10:20.
        REMARKS.
       *{TOTEM}END
 
@@ -2111,7 +2111,10 @@
               end-if
            end-perform.
 
-           if tutto-ok
+           if tutto-ok     
+              initialize stfatt-linkage 
+                         stordcp-limiti replacing numeric data by zeroes
+                                             alphanumeric data by spaces
               inquire cbo-documento, value in cbo-documento-buf
               evaluate cbo-documento-buf
               when "Fatture"
@@ -2151,9 +2154,6 @@
 
            if tutto-ok
               modify form1-Handle, visible 0
-              initialize stfatt-linkage 
-                         stordcp-limiti replacing numeric data by zeroes
-                                             alphanumeric data by spaces
               move anno            to LinkAnno stordc-da-anno
                                                stordc-a-anno
               move 3               to LinkElab

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7C14114048-472-271556942
+PROGRAM_UNIQUE_CODE=TOTEM-7E7C1417827-48-244439064
 
 {{@DESCRIPTION:
 
@@ -1870,7 +1870,10 @@ BEGIN-TEXT
               end-if
            end-perform.
 
-           if tutto-ok
+           if tutto-ok     
+              initialize stfatt-linkage 
+                         stordcp-limiti replacing numeric data by zeroes
+                                             alphanumeric data by spaces
               inquire cbo-documento, value in cbo-documento-buf
               evaluate cbo-documento-buf
               when "Fatture"
@@ -1910,9 +1913,6 @@ BEGIN-TEXT
 
            if tutto-ok
               modify form1-Handle, visible 0
-              initialize stfatt-linkage 
-                         stordcp-limiti replacing numeric data by zeroes
-                                             alphanumeric data by spaces
               move anno            to LinkAnno stordc-da-anno
                                                stordc-a-anno
               move 3               to LinkElab
