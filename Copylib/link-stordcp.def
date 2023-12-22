@@ -12,4 +12,5 @@
                88 stordc-tutti VALUE IS "T". 
            05 stordc-tipocli PIC  xx.
            05 stordc-stampante pic x(200).
-           05 filler           pic x(500).
+           05 stordc-magg      pic 9(3)v99.
+           05 filler           pic x(495).

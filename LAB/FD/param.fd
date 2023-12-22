@@ -75,7 +75,16 @@
                    15 prm-sost-batt    PIC  9.
                        88 prm-sost-batt-si VALUE IS 1. 
                        88 prm-sost-batt-no VALUE IS 0. 
-                   15 prm-num-vuoto-2  PIC  9(13).
+                   15 prm-forza1       PIC  9.
+                       88 prm-forza1-si VALUE IS 1. 
+                       88 prm-forza1-no VALUE IS 0. 
+                   15 prm-forza2       PIC  9.
+                       88 prm-forza2-si VALUE IS 1. 
+                       88 prm-forza2-no VALUE IS 0. 
+                   15 prm-forza3       PIC  9.
+                       88 prm-forza3-si VALUE IS 1. 
+                       88 prm-forza3-no VALUE IS 0. 
+                   15 prm-num-vuoto-2  PIC  9(10).
                    15 prm-num-vuoto-3  PIC  9(18).
                    15 prm-stampante    PIC  x(100).
                    15 prm-path-logo    PIC  x(200).

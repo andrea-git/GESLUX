@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          stfattplus.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 13 gennaio 2023 12:54:09.
+       DATE-WRITTEN.        mercoledì 20 dicembre 2023 18:10:20.
        REMARKS.
       *{TOTEM}END
 
@@ -30,6 +30,7 @@
            COPY "tparamge.sl".
            COPY "tordini.sl".
            COPY "tnotacr.sl".
+           COPY "btnotacr.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -37,6 +38,7 @@
            COPY "tparamge.fd".
            COPY "tordini.fd".
            COPY "tnotacr.fd".
+           COPY "btnotacr.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -61,6 +63,7 @@
           88 Screen-Time-Out VALUE 99.
       * Properties & User defined Working Stoarge
            COPY  "LINK-STFATT.DEF".
+           COPY  "LINK-STORDCP.DEF".
        78 titolo VALUE IS "Geslux - Stampa fatture / Note Credito". 
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
@@ -122,6 +125,8 @@
            88 Valid-STATUS-tordini VALUE IS "00" THRU "09". 
        77 magg PIC  9(5)v99.
        77 ef-magg-buf      PIC  zz.zz9,99.
+       77 STATUS-btnotacr  PIC  X(2).
+           88 Valid-STATUS-btnotacr VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -131,6 +136,7 @@
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
+       77 TMP-DataSet1-btnotacr-BUF     PIC X(912).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -151,6 +157,11 @@
        77 DataSet1-tnotacr-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tnotacr-KEY-Asc  VALUE "A".
           88 DataSet1-tnotacr-KEY-Desc VALUE "D".
+       77 DataSet1-btnotacr-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-btnotacr-LOCK  VALUE "Y".
+       77 DataSet1-btnotacr-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-btnotacr-KEY-Asc  VALUE "A".
+          88 DataSet1-btnotacr-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -183,6 +194,14 @@
        77 tnotacr-k-andamento-data-SPLITBUF  PIC X(10).
        77 tnotacr-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tnotacr-k-andamento-clides-SPLITBUF  PIC X(20).
+       77 btnotacr-k1-SPLITBUF  PIC X(23).
+       77 btnotacr-k-data-SPLITBUF  PIC X(17).
+       77 btnotacr-k-fattura-SPLITBUF  PIC X(13).
+       77 btnotacr-k-reso-SPLITBUF  PIC X(13).
+       77 btnotacr-k-bolla-SPLITBUF  PIC X(25).
+       77 btnotacr-k-vettore-SPLITBUF  PIC X(18).
+       77 btnotacr-k-nota-SPLITBUF  PIC X(13).
+       77 btnotacr-k-fatman-SPLITBUF  PIC X(13).
 
       *{TOTEM}END
 
@@ -248,7 +267,7 @@
            COL 16,30, 
            LINE 4,72,
            LINES 1,33 ,
-           SIZE 10,00 ,
+           SIZE 11,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED 1,
@@ -267,8 +286,8 @@
            Combo-Box, 
            COL 16,30, 
            LINE 6,89,
-           LINES 2,72 ,
-           SIZE 10,00 ,
+           LINES 5,00 ,
+           SIZE 11,00 ,
            3-D,
            COLOR IS 513,
            ID IS 78-ID-cbo-documento,                
@@ -312,7 +331,7 @@
            WIDTH-IN-CELLS,
            LEFT,
            TRANSPARENT,
-           TITLE "&Numero",
+           TITLE "Numero",
            .
 
       * LABEL
@@ -560,6 +579,7 @@
       *    PERFORM OPEN-tparamge
            PERFORM OPEN-tordini
            PERFORM OPEN-tnotacr
+           PERFORM OPEN-btnotacr
       *    After Open
            .
 
@@ -599,12 +619,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-btnotacr.
+      * <TOTEM:EPT. INIT:stfattplus, FD:btnotacr, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT btnotacr
+           IF NOT Valid-STATUS-btnotacr
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:stfattplus, FD:btnotacr, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
       *    tparamge CLOSE MODE IS FALSE
       *    PERFORM CLOSE-tparamge
            PERFORM CLOSE-tordini
            PERFORM CLOSE-tnotacr
+           PERFORM CLOSE-btnotacr
       *    After Close
            .
 
@@ -623,6 +656,12 @@
       * <TOTEM:EPT. INIT:stfattplus, FD:tnotacr, BeforeClose>
       * <TOTEM:END>
            CLOSE tnotacr
+           .
+
+       CLOSE-btnotacr.
+      * <TOTEM:EPT. INIT:stfattplus, FD:btnotacr, BeforeClose>
+      * <TOTEM:END>
+           CLOSE btnotacr
            .
 
        DataSet1-tparamge-INITSTART.
@@ -1488,10 +1527,240 @@
       * <TOTEM:END>
            .
 
+       btnotacr-k1-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k1-SPLITBUF
+           MOVE btno-cod-cli(1:5) TO btnotacr-k1-SPLITBUF(1:5)
+           MOVE btno-prg-destino(1:5) TO btnotacr-k1-SPLITBUF(6:5)
+           MOVE btno-anno(1:4) TO btnotacr-k1-SPLITBUF(11:4)
+           MOVE btno-numero(1:8) TO btnotacr-k1-SPLITBUF(15:8)
+           .
+
+       btnotacr-k-data-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k-data-SPLITBUF
+           MOVE btno-data(1:8) TO btnotacr-k-data-SPLITBUF(1:8)
+           MOVE btno-numero(1:8) TO btnotacr-k-data-SPLITBUF(9:8)
+           .
+
+       btnotacr-k-fattura-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k-fattura-SPLITBUF
+           MOVE btno-anno-fatt(1:4) TO btnotacr-k-fattura-SPLITBUF(1:4)
+           MOVE btno-num-fatt(1:8) TO btnotacr-k-fattura-SPLITBUF(5:8)
+           .
+
+       btnotacr-k-reso-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k-reso-SPLITBUF
+           MOVE btno-anno(1:4) TO btnotacr-k-reso-SPLITBUF(1:4)
+           MOVE btno-num-reso(1:8) TO btnotacr-k-reso-SPLITBUF(5:8)
+           .
+
+       btnotacr-k-bolla-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k-bolla-SPLITBUF
+           MOVE btno-anno-bolla(1:4) TO btnotacr-k-bolla-SPLITBUF(1:4)
+           MOVE btno-num-bolla(1:20) TO btnotacr-k-bolla-SPLITBUF(5:20)
+           .
+
+       btnotacr-k-vettore-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k-vettore-SPLITBUF
+           MOVE btno-vettore(1:5) TO btnotacr-k-vettore-SPLITBUF(1:5)
+           MOVE btno-anno(1:4) TO btnotacr-k-vettore-SPLITBUF(6:4)
+           MOVE btno-numero(1:8) TO btnotacr-k-vettore-SPLITBUF(10:8)
+           .
+
+       btnotacr-k-nota-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k-nota-SPLITBUF
+           MOVE btno-anno-nc(1:4) TO btnotacr-k-nota-SPLITBUF(1:4)
+           MOVE btno-num-nc(1:8) TO btnotacr-k-nota-SPLITBUF(5:8)
+           .
+
+       btnotacr-k-fatman-MERGE-SPLITBUF.
+           INITIALIZE btnotacr-k-fatman-SPLITBUF
+           MOVE btno-anno-fm(1:4) TO btnotacr-k-fatman-SPLITBUF(1:4)
+           MOVE btno-num-fm(1:8) TO btnotacr-k-fatman-SPLITBUF(5:8)
+           .
+
+       DataSet1-btnotacr-INITSTART.
+           IF DataSet1-btnotacr-KEY-Asc
+              MOVE Low-Value TO btno-chiave
+           ELSE
+              MOVE High-Value TO btno-chiave
+           END-IF
+           .
+
+       DataSet1-btnotacr-INITEND.
+           IF DataSet1-btnotacr-KEY-Asc
+              MOVE High-Value TO btno-chiave
+           ELSE
+              MOVE Low-Value TO btno-chiave
+           END-IF
+           .
+
+      * btnotacr
+       DataSet1-btnotacr-START.
+           IF DataSet1-btnotacr-KEY-Asc
+              START btnotacr KEY >= btno-chiave
+           ELSE
+              START btnotacr KEY <= btno-chiave
+           END-IF
+           .
+
+       DataSet1-btnotacr-START-NOTGREATER.
+           IF DataSet1-btnotacr-KEY-Asc
+              START btnotacr KEY <= btno-chiave
+           ELSE
+              START btnotacr KEY >= btno-chiave
+           END-IF
+           .
+
+       DataSet1-btnotacr-START-GREATER.
+           IF DataSet1-btnotacr-KEY-Asc
+              START btnotacr KEY > btno-chiave
+           ELSE
+              START btnotacr KEY < btno-chiave
+           END-IF
+           .
+
+       DataSet1-btnotacr-START-LESS.
+           IF DataSet1-btnotacr-KEY-Asc
+              START btnotacr KEY < btno-chiave
+           ELSE
+              START btnotacr KEY > btno-chiave
+           END-IF
+           .
+
+       DataSet1-btnotacr-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-btnotacr-LOCK
+              READ btnotacr WITH LOCK 
+              KEY btno-chiave
+           ELSE
+              READ btnotacr WITH NO LOCK 
+              KEY btno-chiave
+           END-IF
+           PERFORM btnotacr-k1-MERGE-SPLITBUF
+           PERFORM btnotacr-k-data-MERGE-SPLITBUF
+           PERFORM btnotacr-k-fattura-MERGE-SPLITBUF
+           PERFORM btnotacr-k-reso-MERGE-SPLITBUF
+           PERFORM btnotacr-k-bolla-MERGE-SPLITBUF
+           PERFORM btnotacr-k-vettore-MERGE-SPLITBUF
+           PERFORM btnotacr-k-nota-MERGE-SPLITBUF
+           PERFORM btnotacr-k-fatman-MERGE-SPLITBUF
+           MOVE STATUS-btnotacr TO TOTEM-ERR-STAT 
+           MOVE "btnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-btnotacr-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-btnotacr-KEY-Asc
+              IF DataSet1-btnotacr-LOCK
+                 READ btnotacr NEXT WITH LOCK
+              ELSE
+                 READ btnotacr NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-btnotacr-LOCK
+                 READ btnotacr PREVIOUS WITH LOCK
+              ELSE
+                 READ btnotacr PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM btnotacr-k1-MERGE-SPLITBUF
+           PERFORM btnotacr-k-data-MERGE-SPLITBUF
+           PERFORM btnotacr-k-fattura-MERGE-SPLITBUF
+           PERFORM btnotacr-k-reso-MERGE-SPLITBUF
+           PERFORM btnotacr-k-bolla-MERGE-SPLITBUF
+           PERFORM btnotacr-k-vettore-MERGE-SPLITBUF
+           PERFORM btnotacr-k-nota-MERGE-SPLITBUF
+           PERFORM btnotacr-k-fatman-MERGE-SPLITBUF
+           MOVE STATUS-btnotacr TO TOTEM-ERR-STAT
+           MOVE "btnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-btnotacr-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-btnotacr-KEY-Asc
+              IF DataSet1-btnotacr-LOCK
+                 READ btnotacr PREVIOUS WITH LOCK
+              ELSE
+                 READ btnotacr PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-btnotacr-LOCK
+                 READ btnotacr NEXT WITH LOCK
+              ELSE
+                 READ btnotacr NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM btnotacr-k1-MERGE-SPLITBUF
+           PERFORM btnotacr-k-data-MERGE-SPLITBUF
+           PERFORM btnotacr-k-fattura-MERGE-SPLITBUF
+           PERFORM btnotacr-k-reso-MERGE-SPLITBUF
+           PERFORM btnotacr-k-bolla-MERGE-SPLITBUF
+           PERFORM btnotacr-k-vettore-MERGE-SPLITBUF
+           PERFORM btnotacr-k-nota-MERGE-SPLITBUF
+           PERFORM btnotacr-k-fatman-MERGE-SPLITBUF
+           MOVE STATUS-btnotacr TO TOTEM-ERR-STAT
+           MOVE "btnotacr" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-btnotacr-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-btnotacr TO TOTEM-ERR-STAT
+           MOVE "btnotacr" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-btnotacr-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-btnotacr TO TOTEM-ERR-STAT
+           MOVE "btnotacr" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-btnotacr-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-btnotacr TO TOTEM-ERR-STAT
+           MOVE "btnotacr" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:btnotacr, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tge-rec OF tparamge
            INITIALIZE tor-rec OF tordini
            INITIALIZE tno-rec OF tnotacr
+           INITIALIZE btno-rec OF btnotacr
            .
 
 
@@ -1518,6 +1787,14 @@
       * FD's Initialize Paragraph
        DataSet1-tnotacr-INITREC.
            INITIALIZE tno-rec OF tnotacr
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-btnotacr-INITREC.
+           INITIALIZE btno-rec OF btnotacr
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1579,6 +1856,7 @@
            modify cbo-documento, reset-list  = 1.
            modify cbo-documento, item-to-add = "Fatture".
            modify cbo-documento, item-to-add = "Note Cr.".
+           modify cbo-documento, item-to-add = "Bozze NC".
            modify cbo-documento, value = "Fatture".
 
            .
@@ -1833,53 +2111,73 @@
               end-if
            end-perform.
 
-           if tutto-ok
+           if tutto-ok     
+              initialize stfatt-linkage 
+                         stordcp-limiti replacing numeric data by zeroes
+                                             alphanumeric data by spaces
               inquire cbo-documento, value in cbo-documento-buf
-              if cbo-documento-buf = "Fatture"
-                 move anno       to tor-anno-fattura
-                 move ef-num-buf to tor-num-fattura
-                 read tordini key k-fattura
-                      invalid
-                      set errori to true
-                      display message "Fattura non valida"
-                                 icon 3 
-                                title tit-err
-                 end-read
-              else                           
-                 move anno       to tno-anno-fattura
-                 move ef-num-buf to tno-num-fattura
-                 read tnotacr key k-fattura
-                      invalid
-                      set errori to true
-                      display message "Nota credito non valida"
-                                 icon 3 
-                                title tit-err 
-                 end-read
-              end-if
+              evaluate cbo-documento-buf
+              when "Fatture"
+                   move anno       to tor-anno-fattura
+                   move ef-num-buf to tor-num-fattura
+                   read tordini key k-fattura
+                        invalid
+                        set errori to true
+                        display message "Fattura non valida"
+                                   icon 3 
+                                  title tit-err
+                   end-read   
+                   set fatture     to true
+              when "Note Cr."
+                   move anno       to tno-anno-fattura
+                   move ef-num-buf to tno-num-fattura
+                   read tnotacr key k-fattura
+                        invalid
+                        set errori to true
+                        display message "Nota credito non valida"
+                                   icon 3 
+                                  title tit-err 
+                   end-read   
+                   set NoteCredito to true
+              when "Bozze NC"
+                   move anno       to btno-anno
+                   move ef-num-buf to btno-numero
+                   read btnotacr key btno-chiave
+                        invalid
+                        set errori to true
+                        display message "Bozza nota credito non valida"
+                                   icon 3 
+                                  title tit-err 
+                   end-read      
+              end-evaluate
            end-if
 
            if tutto-ok
               modify form1-Handle, visible 0
-              initialize stfatt-linkage replacing numeric data by zeroes
-                                             alphanumeric data by spaces
-              move anno            to LinkAnno
+              move anno            to LinkAnno stordc-da-anno
+                                               stordc-a-anno
               move 3               to LinkElab
               move 1               to link-tipo-stampa
 
               compute lotto = magg * 100
 
+              move magg to stordc-magg
+
               set tutte    to true
               move 1 to num-copie 
 
+              move ef-num-buf      to num-da num-a stordc-da-num 
+           stordc-a-num
+                                    
               evaluate cbo-documento-buf
-              when "Fatture"    set fatture     to true
-              when "Note Cr."   set NoteCredito to true
+              when "Fatture"
+              when "Note Cr."
+                   call   "stfatt-p" using stfatt-linkage
+                   cancel "stfatt-p"               
+              when "Bozze NC"               
+                   call   "stbozze-p" using stordcp-limiti
+                   cancel "stbozze-p"
               end-evaluate
-
-              move ef-num-buf      to num-da num-a
-                                                 
-              call   "stfatt-p" using stfatt-linkage
-              cancel "stfatt-p"               
 
               modify form1-Handle, visible 1
               move 78-ID-ef-anno to CONTROL-ID      
