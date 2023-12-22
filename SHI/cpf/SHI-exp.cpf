@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=exp-shi-Ev-Before-Program
 AFTER_PROGRAM=exp-shi-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B18175426-884-1643720817
+PROGRAM_UNIQUE_CODE=TOTEM-7E7C16222744-108-2162026426
 
 {{@DESCRIPTION:
 
@@ -1312,6 +1312,74 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM104_WK
 
 @}}
+[FDITEM105_WK]
+m_strName=Screen1-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM105_WK
+
+@}}
+[FDITEM106_WK]
+m_strName=STRIP_NOTACR-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM106_WK
+
+@}}
+[FDITEM107_WK]
+m_strName=Screen2-Gd-1-Record
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM107_WK
+
+@}}
+[FDITEM108_WK]
+m_strName=col-rec
+m_strRawPic=X(1000)
+m_strPic=X(1000)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM108_WK
+
+@}}
+[FDITEM109_WK]
+m_strName=path-fileseq
+m_strRawPic=X(512)
+m_strPic=X(512)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM109_WK
+
+@}}
+[FDITEM110_WK]
+m_strName=STATUS-fileseq
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM110_WK
+
+@}}
+[FDITEM111_WK]
+m_strName=Valid-STATUS-fileseq
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -1857,6 +1925,118 @@ Begin Screen form3
    End
 End
 
+Begin Screen Form1a
+   PREFIX            = Screen2
+   IMPORTED-SCREEN   = FALSE
+   LOCK-CONTROL      = FALSE
+   LEVEL             = 1
+   (Name)            = Form1a
+   Absolute Column   = 0
+   Absolute Line     = 0
+   Action            = (None)
+   Auto Minimize     = FALSE
+   Auto Resize       = FALSE
+   Bind To Thread    = FALSE
+   Boxed             = FALSE
+   Cell              = FALSE
+   Cell Height       = 18
+   Cell Width        = 10
+   Color             = 65793
+   Confirm Delete    = TRUE
+   Confirm Insert    = FALSE
+   Confirm Update    = FALSE
+   Controls Uncropped = FALSE
+   Data Set          = "(None)"
+   Erase Screen      = FALSE
+   Font              = Verdana/12/C0/@Occidentale
+   Font Variable     = Verdana12-Occidentale
+   Handle Variable   = Form1-Handle
+   Height in Cells   = TRUE
+   Help ID           = 0
+   Label Offset      = 20
+   Lines             = 40,00
+   Link To Thread    = TRUE
+   Max Lines         = 0,00
+   Max Size          = 0,00
+   Message Process   = (Type = 0, Color = 0)
+   Min Lines         = 0,00
+   Min Size          = 0,00
+   Modeless          = TRUE
+   Operation Mode    = Interactive Mode
+   Resizable         = FALSE
+   Scroll            = FALSE
+   Size              = 123,90
+   System Menu       = TRUE
+   Title Bar         = TRUE
+   Unit              = Cells
+   User Gray         = TRUE
+   User White        = TRUE
+   Visible           = NONE
+   Width in Cells    = TRUE
+   Window Type       = Floating
+   Wrap              = FALSE
+   Event Procedure   = Screen2-Event-Proc
+   Begin Grid gd1
+      SCREEN-COL        = 1,80
+      SCREEN-LINE       = 2,06
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd1
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = 3D
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 1,80
+      Column Headings   = FALSE
+      Columns' Setting  = ( X = 1, Name = col-rec, READONLY = 0 )
+      Columns' Setting  = ( PIC = "X(1000)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
+      Columns' Setting  = ( DISP = 120, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 481
+      Cursor Frame Width = 3
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = TRUE
+      ID                = 1
+      Last Row          = 0
+      Line              = 2,06
+      Lines             = 37,89
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 0
+      Num Columns       = 1
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Record Data       = Screen2-Gd-1-Record
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 122,20
+      Size Unit         = Default
+      Tab Order         = 1
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 0
+      Visible           = NONE
+      Vpadding          = 10
+      Vscroll           = TRUE
+      Width in Cells    = TRUE
+      Event Procedure   = Screen2-Gd-1-Event-Proc
+      Msg-Begin-Entry   = gd1-Ev-Msg-Begin-Entry
+   End
+End
+
 END-SPDATA
 
 @}}
@@ -2032,6 +2212,41 @@ BEGIN-TEXT
 END-TEXT
 END-DATA
 BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1a
+   ACTOBJ            = Form1a
+   TEXTMODE          = 0
+   ENTRYPOINT        = AfterDisplay
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>
+      *<<** Customized_Default, SP-G, Screen2-blockpgm-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Form1a
+   ACTOBJ            = Form1a
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move splcrt2graf-percorso-stampa to path-fileseq.
+           open input fileseq.
+           modify gd1, mass-update = 1.
+           move 0 to riga.
+           perform until 1 = 2        
+              read fileseq next at end exit perform end-read
+              if rec-stampa = spaces exit perform cycle end-if
+              move rec-stampa to col-rec
+              add 1 to riga
+              modify gd1(riga, 1), cell-data = col-rec
+           end-perform.
+           modify gd1, mass-update = 0.
+           close fileseq.
+END-TEXT
+END-DATA
+BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = PARAGRAFO-COPY
 BEGIN-TEXT
@@ -2081,15 +2296,16 @@ BEGIN-TEXT
                  write lm-riga
               end-if
            else
-              set splcrt2graf-anteprima  to true
-              set splcrt2graf-unix       to true
-              set splcrt2graf-verticale  to true
-              set splcrt2graf-forza-crt  to true
-              set splcrt2graf-10pt    to true
-              set splcrt2graf-si-grasssetto to false
-           
-              call   "splcrt2graf" using splcrt2graf-link
-              cancel "splcrt2graf" 
+              perform FORM1A-OPEN-ROUTINE
+      *        set splcrt2graf-anteprima  to true
+      *        set splcrt2graf-unix       to true
+      *        set splcrt2graf-verticale  to true
+      *        set splcrt2graf-forza-crt  to true
+      *        set splcrt2graf-10pt    to true
+      *        set splcrt2graf-si-grasssetto to false
+      *     
+      *        call   "splcrt2graf" using splcrt2graf-link
+      *        cancel "splcrt2graf" 
               if exp-ord-path-riepilogo-c not = spaces
                  move exp-ord-path-riepilogo-c 
                    to splcrt2graf-percorso-stampa
@@ -2484,6 +2700,13 @@ BEGIN-TEXT
            perform ESPORTA.
 END-TEXT
 END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-Begin-Entry
+BEGIN-TEXT
+           set event-action to event-action-fail.
+END-TEXT
+END-DATA
 
 @}}
 
@@ -2568,8 +2791,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=28
-REL_SYM_INFO_L=4
+REL_SYM_SIZE=34
+REL_SYM_INFO_L=5
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=2067638006
 REL_SYM_INFO_X1=2301
@@ -2578,6 +2801,8 @@ REL_SYM_INFO_X2=2301
 REL_SYM_INFO_Y2=2039105804
 REL_SYM_INFO_X3=2301
 REL_SYM_INFO_Y3=2127665721
+REL_SYM_INFO_X4=2301
+REL_SYM_INFO_Y4=1175338067
 
 [DRAW_BASESYMBOL_2301_2067638006]
 OBJ_NAME=2301
@@ -2771,6 +2996,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1175338067]
+OBJ_NAME=2301
+OBJ_ID=1175338067
+KIND=1
+{{@LABEL_2301_1175338067
+fileseq
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2314
+TOP=1082
+RIGHT=2714
+BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1865930328]
 OBJ_NAME=0
 OBJ_ID=1865930328
@@ -2901,6 +3174,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1175338067]
+OBJ_NAME=0
+OBJ_ID=1175338067
+REL_M_OBJ_ID=0
+ENTITY=fileseq
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1175338067
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

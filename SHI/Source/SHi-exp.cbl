@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 13 luglio 2021 13:34:52.
+       DATE-WRITTEN.        venerdì 22 dicembre 2023 23:54:15.
        REMARKS.
       *{TOTEM}END
 
@@ -31,6 +31,7 @@
            COPY "log-macrobatch.sl".
            COPY "macrobatch.sl".
            COPY "paramSHI.sl".
+           COPY "fileseq.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -39,6 +40,7 @@
            COPY "log-macrobatch.fd".
            COPY "macrobatch.fd".
            COPY "paramSHI.fd".
+           COPY "fileseq.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -126,6 +128,16 @@
            88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
        77 STATUS-macrobatch            PIC  X(2).
            88 Valid-STATUS-macrobatch VALUE IS "00" THRU "09". 
+       77 Screen1-Handle
+                  USAGE IS HANDLE OF WINDOW.
+       77 STRIP_NOTACR-BMP PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       01 Screen2-Gd-1-Record.
+           05 col-rec          PIC  X(1000).
+       77 path-fileseq     PIC  X(512).
+       77 STATUS-fileseq   PIC  X(2).
+           88 Valid-STATUS-fileseq VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -134,10 +146,13 @@
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form3-FLAG-REFRESH PIC  9.
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
+       77 STATUS-Form1a-FLAG-REFRESH PIC  9.
+          88 Form1a-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
        77 TMP-DataSet1-macrobatch-BUF     PIC X(9848).
        77 TMP-DataSet1-paramSHI-BUF     PIC X(9574).
+       77 TMP-DataSet1-fileseq-BUF     PIC X(32000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -162,6 +177,11 @@
        77 DataSet1-paramSHI-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-paramSHI-KEY-Asc  VALUE "A".
           88 DataSet1-paramSHI-KEY-Desc VALUE "D".
+       77 DataSet1-fileseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-fileseq-LOCK  VALUE "Y".
+       77 DataSet1-fileseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-fileseq-KEY-Asc  VALUE "A".
+          88 DataSet1-fileseq-KEY-Desc VALUE "D".
 
 
       *{TOTEM}END
@@ -279,6 +299,38 @@
            CENTER,
            TRANSPARENT,
            TITLE "Creazione Flussi in corso...",
+           .
+
+      * FORM
+       01 
+           Form1a, 
+           .
+
+      * GRID
+       05
+           gd1, 
+           Grid, 
+           COL 1,80, 
+           LINE 2,06,
+           LINES 37,89 ,
+           SIZE 122,20 ,
+           3-D,
+           DATA-COLUMNS (1),
+           SEPARATION (5),
+           CURSOR-COLOR 481
+           CURSOR-FRAME-WIDTH 3,
+           DIVIDER-COLOR 1,
+           HEADING-COLOR 257,
+           HEADING-DIVIDER-COLOR 1,
+           HSCROLL,
+           ID IS 1,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RECORD-DATA Screen2-Gd-1-Record,
+           TILED-HEADINGS,
+           VPADDING 10,
+           VSCROLL,
+           EVENT PROCEDURE Screen2-Gd-1-Event-Proc,
            .
 
       *{TOTEM}END
@@ -427,6 +479,8 @@
       *    macrobatch OPEN MODE IS FALSE
       *    PERFORM OPEN-macrobatch
            PERFORM OPEN-paramSHI
+      *    fileseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-fileseq
       *    After Open
            .
 
@@ -492,6 +546,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-fileseq.
+      * <TOTEM:EPT. INIT:SHI-exp, FD:fileseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT fileseq
+           IF NOT Valid-STATUS-fileseq
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:SHI-exp, FD:fileseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
       *    lineseq CLOSE MODE IS FALSE
@@ -501,6 +567,8 @@
       *    macrobatch CLOSE MODE IS FALSE
       *    PERFORM CLOSE-macrobatch
            PERFORM CLOSE-paramSHI
+      *    fileseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-fileseq
       *    After Close
            .
 
@@ -523,6 +591,11 @@
       * <TOTEM:EPT. INIT:SHI-exp, FD:paramSHI, BeforeClose>
       * <TOTEM:END>
            CLOSE paramSHI
+           .
+
+       CLOSE-fileseq.
+      * <TOTEM:EPT. INIT:SHI-exp, FD:fileseq, BeforeClose>
+      * <TOTEM:END>
            .
 
        DataSet1-lineseq-INITSTART.
@@ -1004,13 +1077,105 @@
       * <TOTEM:END>
            .
 
+       DataSet1-fileseq-INITSTART.
+           .
+
+       DataSet1-fileseq-INITEND.
+           .
+
+       DataSet1-fileseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-fileseq-LOCK
+              READ fileseq WITH LOCK 
+           ELSE
+              READ fileseq WITH NO LOCK 
+           END-IF
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT 
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-fileseq-KEY-Asc
+              IF DataSet1-fileseq-LOCK
+                 READ fileseq NEXT WITH LOCK
+              ELSE
+                 READ fileseq NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-fileseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-fileseq TO TOTEM-ERR-STAT
+           MOVE "fileseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:fileseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE line-riga OF lineseq
            INITIALIZE lm-riga OF log-macrobatch
            INITIALIZE mb-rec OF macrobatch
            INITIALIZE shi-rec OF paramSHI
+           INITIALIZE rec-stampa OF fileseq
            .
 
+
+      * GRID
+       gd1-Content.
+           .
 
       * FD's Initialize Paragraph
        DataSet1-lineseq-INITREC.
@@ -1039,6 +1204,14 @@
       * FD's Initialize Paragraph
        DataSet1-paramSHI-INITREC.
            INITIALIZE shi-rec OF paramSHI
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-fileseq-INITREC.
+           INITIALIZE rec-stampa OF fileseq
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -1468,12 +1641,212 @@
        form3-Restore-Status.
            .
 
+       Form1a-Open-Routine.
+           PERFORM Form1a-Scrn
+           PERFORM Form1a-Proc
+           .
+
+       Form1a-Scrn.
+           PERFORM Form1a-Create-Win
+           PERFORM Form1a-Init-Value
+           PERFORM Form1a-Init-Data
+      * Tab keystrok settings
+      * Tool Bar
+           PERFORM Form1a-DISPLAY
+           .
+
+       Form1a-Create-Win.
+           Display Floating GRAPHICAL WINDOW
+              LINES 40,00,
+              SIZE 123,90,
+              HEIGHT-IN-CELLS,
+              WIDTH-IN-CELLS,
+              COLOR 65793,
+              CONTROL FONT Verdana12-Occidentale,
+              LINK TO THREAD,
+              MODELESS,
+              NO SCROLL,
+              TITLE-BAR,
+              WITH SYSTEM MENU,
+              USER-GRAY,
+              USER-WHITE,
+              No WRAP,
+              EVENT PROCEDURE Screen2-Event-Proc,
+              HANDLE IS Form1-Handle,
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterCreateWin>
+      * <TOTEM:END>
+
+
+      * Tool Bar    
+      * Status-bar
+           DISPLAY Form1a UPON Form1-Handle
+      * DISPLAY-COLUMNS settings
+              MODIFY gd1, DISPLAY-COLUMNS (1, 0)
+           .
+
+       Form1a-PROC.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeAccept>
+           move splcrt2graf-percorso-stampa to path-fileseq.
+           open input fileseq.
+           modify gd1, mass-update = 1.
+           move 0 to riga.
+           perform until 1 = 2        
+              read fileseq next at end exit perform end-read
+              if rec-stampa = spaces exit perform cycle end-if
+              move rec-stampa to col-rec
+              add 1 to riga
+              modify gd1(riga, 1), cell-data = col-rec
+           end-perform.
+           modify gd1, mass-update = 0.
+           close fileseq.
+
+           .
+      * <TOTEM:END>
+           PERFORM UNTIL Exit-Pushed
+              ACCEPT Form1a
+                 ON EXCEPTION
+                    PERFORM Form1a-Evaluate-Func
+                 MOVE 3 TO TOTEM-Form-Index
+              END-ACCEPT
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterEndAccept>
+      * <TOTEM:END>
+           END-PERFORM
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeDestroyWindow>
+      * <TOTEM:END>
+           DESTROY Form1-Handle
+           INITIALIZE Key-Status
+           .
+
+       Form1a-Evaluate-Func.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterAccept>
+      * <TOTEM:END>
+           EVALUATE TRUE
+              WHEN Exit-Pushed
+                 PERFORM Form1a-Exit
+              WHEN Event-Occurred
+                 IF Event-Type = Cmd-Close
+                    PERFORM Form1a-Exit
+                 END-IF
+           END-EVALUATE
+      * avoid changing focus
+           MOVE 4 TO Accept-Control
+           .
+
+       Form1a-CLEAR.
+           PERFORM Form1a-INIT-VALUE
+           PERFORM Form1a-DISPLAY
+           .
+
+       Form1a-DISPLAY.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeDisplay>
+      * <TOTEM:END>
+           DISPLAY Form1a UPON Form1-Handle
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterDisplay>
+           SET LK-BL-SCRITTURA     TO TRUE.
+           MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
+           MOVE FORM1-HANDLE       TO LK-HND-WIN.
+           CALL "BLOCKPGM"  USING LK-BLOCKPGM.
+           CANCEL "BLOCKPGM".
+
+           .
+      * <TOTEM:END>
+           .
+
+       Form1a-Exit.
+      * for main screen
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeExit>
+      * <TOTEM:END>
+           MOVE 27 TO Key-Status
+           .
+
+       Form1a-Init-Data.
+           MOVE 3 TO TOTEM-Form-Index
+           MOVE 0 TO TOTEM-Frame-Index
+      * GRID
+           PERFORM gd1-Content
+           .
+
+       Form1a-Init-Value.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, SetDefault>
+      * <TOTEM:END>
+           PERFORM Form1a-FLD-TO-BUF
+           .
+
+
+       Form1a-ALLGRID-RESET.
+           .
+
+      * for Form's Validation
+       Form1a-VALIDATION-ROUTINE.
+           SET TOTEM-CHECK-OK TO TRUE
+           .
+
+
+       Form1a-Buf-To-Fld.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeBufToFld>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterBufToFld>
+      * <TOTEM:END>
+           .
+
+       Form1a-Fld-To-Buf.
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeFldToBuf>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterFldToBuf>
+      * <TOTEM:END>
+           .
+
+       Form1a-CONTROLLO-OLD.
+           set SiSalvato to true.
+           if mod = 0 exit paragraph end-if.
+           perform Form1a-BUF-TO-FLD.
+           move 0 to scelta.
+           .
+       Form1a-EXTENDED-FILE-STATUS.
+           CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
+           CALL "C$RERR" USING EXTEND-STAT, TEXT-MESSAGE
+           MOVE PRIMARY-ERROR TO TOTEM-MSG-ID
+           PERFORM Form1a-SHOW-MSG-ROUTINE
+           .
+
+       Form1a-SHOW-MSG-ROUTINE.
+           PERFORM SHOW-MSG-ROUTINE
+           PERFORM Form1a-DISPLAY-MESSAGE
+           .
+
+       Form1a-DISPLAY-MESSAGE.
+           PERFORM MESSAGE-BOX-ROUTINE
+           DISPLAY MESSAGE BOX TOTEM-MSG-TEXT
+               TITLE IS TOTEM-MSG-TITLE
+               TYPE  IS TOTEM-MSG-BUTTON-TYPE
+               ICON  IS TOTEM-MSG-DEFAULT-BUTTON
+               RETURNING TOTEM-MSG-RETURN-VALUE
+           .
+
+       Form1a-Save-Status.
+           .             
+
+       Form1a-Restore-Status.
+           .
+
 
 
        Screen4-Event-Proc.
            .
 
        form3-Event-Proc.
+           .
+
+       Screen2-Event-Proc.
+           .
+
+       Screen2-Gd-1-Event-Proc.
+           EVALUATE Event-Type ALSO Event-Control-Id ALSO
+                                    Event-Window-Handle
+           WHEN Msg-Begin-Entry ALSO 1 ALSO
+                    Form1-Handle 
+              PERFORM gd1-Ev-Msg-Begin-Entry
+           END-EVALUATE
            .
 
       * USER DEFINE PARAGRAPH
@@ -1522,15 +1895,16 @@
                  write lm-riga
               end-if
            else
-              set splcrt2graf-anteprima  to true
-              set splcrt2graf-unix       to true
-              set splcrt2graf-verticale  to true
-              set splcrt2graf-forza-crt  to true
-              set splcrt2graf-10pt    to true
-              set splcrt2graf-si-grasssetto to false
-           
-              call   "splcrt2graf" using splcrt2graf-link
-              cancel "splcrt2graf" 
+              perform FORM1A-OPEN-ROUTINE
+      *        set splcrt2graf-anteprima  to true
+      *        set splcrt2graf-unix       to true
+      *        set splcrt2graf-verticale  to true
+      *        set splcrt2graf-forza-crt  to true
+      *        set splcrt2graf-10pt    to true
+      *        set splcrt2graf-si-grasssetto to false
+      *     
+      *        call   "splcrt2graf" using splcrt2graf-link
+      *        cancel "splcrt2graf" 
               if exp-ord-path-riepilogo-c not = spaces
                  move exp-ord-path-riepilogo-c 
                    to splcrt2graf-percorso-stampa
@@ -1907,6 +2281,11 @@
       * <TOTEM:PARA. Screen4-Pb-1aaa-LinkTo>
            set crea-anagrafiche to true
            perform ESPORTA 
+           .
+      * <TOTEM:END>
+       gd1-Ev-Msg-Begin-Entry.
+      * <TOTEM:PARA. gd1-Ev-Msg-Begin-Entry>
+           set event-action to event-action-fail 
            .
       * <TOTEM:END>
 
