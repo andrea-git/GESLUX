@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gparam.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 23 dicembre 2023 00:25:11.
+       DATE-WRITTEN.        sabato 23 dicembre 2023 00:45:11.
        REMARKS.
       *{TOTEM}END
 
@@ -2093,7 +2093,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Parametro SHI",
+           TITLE "Prioritario",
            .
 
       * FRAME
@@ -3210,7 +3210,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Parametro SHI",
+           TITLE "Prioritario",
            .
 
       * FRAME
@@ -4325,7 +4325,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Parametro SHI",
+           TITLE "Prioritario",
            .
 
       * FRAME
@@ -5404,7 +5404,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Parametro SHI",
+           TITLE "Prioritario",
            .
 
       * FRAME
@@ -6482,7 +6482,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Parametro SHI",
+           TITLE "Prioritario",
            .
 
       * GRID
