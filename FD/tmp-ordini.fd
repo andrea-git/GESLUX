@@ -11,6 +11,7 @@
                    88 tmp-ord-no-omaggi VALUE IS 0. 
            05 tmp-ord-dati.
                10 tmp-ord-evasione PIC  9(8).
+               10 tmp-ord-data-e   PIC  9(8).
                10 tmp-ord-causale  PIC  x(4).
                10 tmp-ord-data-movim           PIC  9(8).
                10 tmp-ord-qta      PIC  9(5)v999.

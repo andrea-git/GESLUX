@@ -231,6 +231,7 @@ OMAGGI              end-if
            read ttipocli no lock invalid move spaces to tcl-descrizione.
            move tcl-descrizione   to tmp-ord-cli-tipo-d.
            move tor-numero        to tmp-ord-evasione.
+           move tor-data-ordine   to tmp-ord-data-e.
            move art-descrizione   to tmp-ord-desart.
            move ror-anno          to tmp-ord-anno.
            move ror-num-ordine    to tmp-ord-movim.
@@ -465,6 +466,9 @@ OMAGGI              end-if
               move tmp-ord-age-d      to r-age-d
               move tmp-ord-localita   to r-destino
               move tmp-ord-evasione   to r-evasione
+              move tmp-ord-data-e     to como-data
+              perform DATE-TO-SCREEN
+              move como-data          to r-data-e
               move tmp-ord-data-movim to como-data
               perform DATE-TO-SCREEN
               move como-data          to r-data-mov
@@ -509,6 +513,8 @@ OMAGGI              end-if
                         "Data Ordine"       delimited size
                         separatore          delimited size
                         "Nr. Evasione"      delimited size
+                        separatore          delimited size
+                        "Data Evasione"     delimited size
                         separatore          delimited size
                         "Nr. Bolla"         delimited size
                         separatore          delimited size
@@ -562,6 +568,8 @@ OMAGGI              end-if
                      r-data-mov           delimited size
                      separatore           delimited size
                      r-evasione           delimited size
+                     separatore           delimited size
+                     r-data-e             delimited size
                      separatore           delimited size
                      r-numdoc             delimited size
                      separatore           delimited size

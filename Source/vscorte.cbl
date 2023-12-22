@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 12 gennaio 2023 15:45:33.
+       DATE-WRITTEN.        sabato 16 dicembre 2023 15:43:01.
        REMARKS.
       *{TOTEM}END
 
@@ -302,6 +302,7 @@
            05 r-age-d          PIC  x(40).
            05 r-data-mov       PIC  99/99/9999.
            05 r-evasione       PIC  z(8).
+           05 r-data-e         PIC  99/99/9999.
            05 r-numdoc         PIC  z(8).
            05 r-datadoc        PIC  99/99/9999.
            05 r-marca          PIC  z(4).
@@ -448,7 +449,7 @@
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
-       77 TMP-DataSet1-tmp-ordini-BUF     PIC X(548).
+       77 TMP-DataSet1-tmp-ordini-BUF     PIC X(556).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
