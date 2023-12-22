@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          SHI-exp.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 22 dicembre 2023 23:54:15.
+       DATE-WRITTEN.        sabato 23 dicembre 2023 00:42:42.
        REMARKS.
       *{TOTEM}END
 
@@ -138,6 +138,8 @@
        77 path-fileseq     PIC  X(512).
        77 STATUS-fileseq   PIC  X(2).
            88 Valid-STATUS-fileseq VALUE IS "00" THRU "09". 
+       77 Form1a-Handle
+                  USAGE IS HANDLE OF WINDOW.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -1672,14 +1674,14 @@
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Screen2-Event-Proc,
-              HANDLE IS Form1-Handle,
+              HANDLE IS Form1a-Handle,
       * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterCreateWin>
       * <TOTEM:END>
 
 
       * Tool Bar    
       * Status-bar
-           DISPLAY Form1a UPON Form1-Handle
+           DISPLAY Form1a UPON Form1a-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gd1, DISPLAY-COLUMNS (1, 0)
            .
@@ -1713,7 +1715,7 @@
            END-PERFORM
       * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeDestroyWindow>
       * <TOTEM:END>
-           DESTROY Form1-Handle
+           DESTROY Form1a-Handle
            INITIALIZE Key-Status
            .
 
@@ -1740,7 +1742,7 @@
        Form1a-DISPLAY.
       * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, BeforeDisplay>
       * <TOTEM:END>
-           DISPLAY Form1a UPON Form1-Handle
+           DISPLAY Form1a UPON Form1a-Handle
       * <TOTEM:EPT. FORM:Form1a, FORM:Form1a, AfterDisplay>
            SET LK-BL-SCRITTURA     TO TRUE.
            MOVE COMO-PROG-ID       TO LK-BL-PROG-ID.
@@ -1844,7 +1846,7 @@
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
            WHEN Msg-Begin-Entry ALSO 1 ALSO
-                    Form1-Handle 
+                    Form1a-Handle 
               PERFORM gd1-Ev-Msg-Begin-Entry
            END-EVALUATE
            .

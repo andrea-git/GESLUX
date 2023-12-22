@@ -24,6 +24,7 @@
            copy "progmag.sl".
            copy "tmp-tordini-exp.sl".
            copy "listini.sl".
+           copy "param.sl".
 
            copy "fileseq.sl".
 
@@ -78,6 +79,7 @@
            copy "progmag.fd".
            copy "tmp-tordini-exp.fd".   
            copy "listini.fd".
+           copy "param.fd".
 
            copy "fileseq.fd".
        FD  lineseq.
@@ -99,7 +101,8 @@
        WORKING-STORAGE SECTION.
        copy "exp-ws.def".
        copy "exparticoli.def".
-       copy "link-totivato.def".
+       copy "link-totivato.def".  
+       copy "trova-parametro.def".
 
        77  como-mag             pic x(3).
        78  titolo               value "Export Vettori".
@@ -122,6 +125,7 @@
        77  status-riepilogo-c   pic xx.
        77  status-tmp-tordini-exp  pic xx.  
        77  status-listini       pic xx.
+       77  status-param         pic xx.
 
        77  status-lineseq       pic xx.
        77  status-lineseq2      pic xx.
@@ -914,6 +918,7 @@
            open input progmag.
            open input ttipocli.
            open input listini.
+           open input param.
 
            open output tmp-tordini-exp
            close       tmp-tordini-exp
@@ -1148,7 +1153,7 @@
            perform EXP-ORDINE.
 
       ***---
-       EXP-ORDINE.
+       EXP-ORDINE.                                
            move tor-cod-cli     to cli-codice
            set cli-tipo-C       to true
            read clienti invalid continue end-read.
@@ -1217,6 +1222,12 @@
            end-if.
            move tca-caus-trasporto to HUSCTES_UDF6
            move space              to HUSCTES_UDF7
+           
+           move tor-cod-cli     to como-prm-cliente.
+           move tor-prg-destino to como-prm-destino.
+           perform TROVA-PARAMETRO.
+           move prm-param-shi to HUSCTES_UDF7.
+
            move space              to HUSCTES_UDF8
            move space              to HUSCTES_UDF9
 
@@ -1543,6 +1554,7 @@
            close tmp-tordini-exp.
            close ttipocli.
            close listini.
+           close param.
   
       ***---
        VALIDA-ORDINE.
@@ -1678,3 +1690,4 @@
       ***---
            COPY "exp-procedure.cpy".
            copy "Exparticoli-Procedure.cpy".
+           copy "trova-parametro.cpy".

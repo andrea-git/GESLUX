@@ -84,7 +84,10 @@
                    15 prm-forza3       PIC  9.
                        88 prm-forza3-si VALUE IS 1. 
                        88 prm-forza3-no VALUE IS 0. 
-                   15 prm-num-vuoto-2  PIC  9(10).
+                   15 prm-param-shi    PIC  9.
+                       88 prm-param-shi-si VALUE IS 1. 
+                       88 prm-param-shi-no VALUE IS 0. 
+                   15 prm-num-vuoto-2  PIC  9(9).
                    15 prm-num-vuoto-3  PIC  9(18).
                    15 prm-stampante    PIC  x(100).
                    15 prm-path-logo    PIC  x(200).

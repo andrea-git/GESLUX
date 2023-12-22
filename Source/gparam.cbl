@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gparam.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 5 dicembre 2023 19:14:24.
+       DATE-WRITTEN.        sabato 23 dicembre 2023 00:25:11.
        REMARKS.
       *{TOTEM}END
 
@@ -173,6 +173,8 @@
       -    "ne bolla (verrà controllata la presenza di entrambi)". 
        78 78-forza VALUE IS "La regola (possibile solo una) spuntata pre
       -    "varrà sul corriere del magazzino in evasioni". 
+       78 78-param-shi VALUE IS "Questo parametro (1/0) verrà esportato 
+      -    "negli ordini SHI". 
        77 STATUS-clienti   PIC  X(2).
            88 Valid-STATUS-clienti VALUE IS "00" THRU "09". 
        77 STATUS-destini   PIC  X(2).
@@ -559,6 +561,17 @@
                   VALUE IS 0.
        77 chk-forza2-1-buf PIC  9
                   VALUE IS 0.
+       77 chk-param-shi-buf            PIC  9
+                  VALUE IS 0.
+       77 78-pb-param-shi  PIC  X(30).
+       77 chk-param-shi-1-buf          PIC  9
+                  VALUE IS 0.
+       77 chk-param-shi-2-buf          PIC  9
+                  VALUE IS 0.
+       77 chk-param-shi-3-buf          PIC  9
+                  VALUE IS 0.
+       77 chk-param-shi-4-buf          PIC  9
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -702,9 +715,10 @@
                        88 old-prm-sost-batt-si VALUE IS 1. 
                        88 old-prm-sost-batt-no VALUE IS 0.   
                    15 old-prm-forza1       PIC  9. 
-                   15 old-prm-forza2       PIC  9.
+                   15 old-prm-forza2       PIC  9. 
                    15 old-prm-forza3       PIC  9.
-                   15 old-prm-num-vuoto-2  PIC  9(10).
+                   15 old-prm-param-shi    PIC  9.
+                   15 old-prm-num-vuoto-2  PIC  9(9).
                    15 old-prm-num-vuoto-3  PIC  9(18).
                    15 old-prm-stampante    PIC  x(100).
                    15 old-prm-path-logo    pic  x(200).
@@ -788,9 +802,10 @@
                        88 como-prm-sost-batt-si VALUE IS 1. 
                        88 como-prm-sost-batt-no VALUE IS 0.   
                    15 como-prm-forza1       PIC  9. 
-                   15 como-prm-forza2       PIC  9.
+                   15 como-prm-forza2       PIC  9. 
                    15 como-prm-forza3       PIC  9.
-                   15 como-prm-num-vuoto-2  PIC  9(10).
+                   15 como-prm-param-shi    PIC  9.
+                   15 como-prm-num-vuoto-2  PIC  9(9).
                    15 como-prm-num-vuoto-3  PIC  9(18).
                    15 como-prm-stampante    PIC  x(100).
                    15 como-prm-path-logo    PIC  x(200).
@@ -856,130 +871,135 @@
        78  78-ID-chk-pb-perce VALUE 5024.
        78  78-ID-chk-pb-amp VALUE 5025.
        78  78-ID-chk-sost-batt VALUE 5026.
-       78  78-ID-gd-mag VALUE 5027.
-       78  78-ID-ef-stampante VALUE 5028.
-       78  78-ID-chk-layout-pers VALUE 5029.
-       78  78-ID-ef-path-logo VALUE 5030.
-       78  78-ID-chk-gestisci-1 VALUE 5031.
-       78  78-ID-ef-ini-vol-1 VALUE 5032.
-       78  78-ID-ef-parz-1 VALUE 5033.
-       78  78-ID-ef-gg-cons-1 VALUE 5034.
-       78  78-ID-ef-val-1 VALUE 5035.
-       78  78-ID-ef-cons-max-1 VALUE 5036.
-       78  78-ID-ef-blocco-kg-1 VALUE 5037.
-       78  78-ID-ef-min-kg1-1 VALUE 5038.
-       78  78-ID-ef-min-vet1-1 VALUE 5039.
-       78  78-ID-chk-forza1-1 VALUE 5040.
-       78  78-ID-ef-min-kg2-1 VALUE 5041.
-       78  78-ID-ef-min-vet2-1 VALUE 5042.
-       78  78-ID-chk-forza2-1 VALUE 5043.
-       78  78-ID-ef-max-kg-1 VALUE 5044.
-       78  78-ID-ef-max-vet-1 VALUE 5045.
-       78  78-ID-chk-forza3-1 VALUE 5046.
-       78  78-ID-chk-accorpa-1 VALUE 5047.
-       78  78-ID-chk-promo-1 VALUE 5048.
-       78  78-ID-chk-prenot-1 VALUE 5049.
-       78  78-ID-chk-banco-1 VALUE 5050.
-       78  78-ID-chk-escludi-1 VALUE 5051.
-       78  78-ID-chk-imb-min-1 VALUE 5052.
-       78  78-ID-chk-art-forn-1 VALUE 5053.
-       78  78-ID-chk-pb-perce-1 VALUE 5054.
-       78  78-ID-chk-pb-amp-1 VALUE 5055.
-       78  78-ID-chk-sost-batt-1 VALUE 5056.
-       78  78-ID-gd-mag-1 VALUE 5057.
-       78  78-ID-ef-stampante-1 VALUE 5058.
-       78  78-ID-chk-layout-pers-1 VALUE 5059.
-       78  78-ID-ef-path-logo-1 VALUE 5060.
-       78  78-ID-chk-gestisci-2 VALUE 5061.
-       78  78-ID-ef-ini-vol-2 VALUE 5062.
-       78  78-ID-ef-parz-2 VALUE 5063.
-       78  78-ID-ef-gg-cons-2 VALUE 5064.
-       78  78-ID-ef-val-2 VALUE 5065.
-       78  78-ID-ef-cons-max-2 VALUE 5066.
-       78  78-ID-ef-blocco-kg-2 VALUE 5067.
-       78  78-ID-ef-min-kg1-2 VALUE 5068.
-       78  78-ID-ef-min-vet1-2 VALUE 5069.
-       78  78-ID-chk-forza1-2 VALUE 5070.
-       78  78-ID-ef-min-kg2-2 VALUE 5071.
-       78  78-ID-ef-min-vet2-2 VALUE 5072.
-       78  78-ID-chk-forza2-2 VALUE 5073.
-       78  78-ID-ef-max-kg-2 VALUE 5074.
-       78  78-ID-ef-max-vet-2 VALUE 5075.
-       78  78-ID-chk-forza3-2 VALUE 5076.
-       78  78-ID-chk-accorpa-2 VALUE 5077.
-       78  78-ID-chk-promo-2 VALUE 5078.
-       78  78-ID-chk-prenot-2 VALUE 5079.
-       78  78-ID-chk-banco-2 VALUE 5080.
-       78  78-ID-chk-escludi-2 VALUE 5081.
-       78  78-ID-chk-imb-min-2 VALUE 5082.
-       78  78-ID-chk-art-forn-2 VALUE 5083.
-       78  78-ID-chk-pb-perce-2 VALUE 5084.
-       78  78-ID-chk-pb-amp-2 VALUE 5085.
-       78  78-ID-chk-sost-batt-2 VALUE 5086.
-       78  78-ID-gd-mag-2 VALUE 5087.
-       78  78-ID-ef-stampante-2 VALUE 5088.
-       78  78-ID-chk-gestisci-3 VALUE 5089.
-       78  78-ID-ef-parz-3 VALUE 5090.
-       78  78-ID-ef-gg-cons-3 VALUE 5091.
-       78  78-ID-ef-val-3 VALUE 5092.
-       78  78-ID-ef-cons-max-3 VALUE 5093.
-       78  78-ID-ef-blocco-kg-3 VALUE 5094.
-       78  78-ID-ef-min-kg1-3 VALUE 5095.
-       78  78-ID-ef-min-vet1-3 VALUE 5096.
-       78  78-ID-chk-forza1-3 VALUE 5097.
-       78  78-ID-ef-min-kg2-3 VALUE 5098.
-       78  78-ID-ef-min-vet2-3 VALUE 5099.
-       78  78-ID-chk-forza2-3 VALUE 5100.
-       78  78-ID-ef-max-kg-3 VALUE 5101.
-       78  78-ID-ef-max-vet-3 VALUE 5102.
-       78  78-ID-chk-forza3-3 VALUE 5103.
-       78  78-ID-chk-accorpa-3 VALUE 5104.
-       78  78-ID-chk-promo-3 VALUE 5105.
-       78  78-ID-chk-prenot-3 VALUE 5106.
-       78  78-ID-chk-banco-3 VALUE 5107.
-       78  78-ID-chk-escludi-3 VALUE 5108.
-       78  78-ID-chk-imb-min-3 VALUE 5109.
-       78  78-ID-chk-art-forn-3 VALUE 5110.
-       78  78-ID-chk-pb-perce-3 VALUE 5111.
-       78  78-ID-chk-pb-amp-3 VALUE 5112.
-       78  78-ID-chk-sost-batt-3 VALUE 5113.
-       78  78-ID-gd-mag-3 VALUE 5114.
-       78  78-ID-ef-stampante-3 VALUE 5115.
-       78  78-ID-chk-layout-pers-3 VALUE 5116.
-       78  78-ID-ef-path-logo-3 VALUE 5117.
-       78  78-ID-chk-gestisci-4 VALUE 5118.
-       78  78-ID-ef-parz-4 VALUE 5119.
-       78  78-ID-ef-gg-cons-4 VALUE 5120.
-       78  78-ID-ef-val-4 VALUE 5121.
-       78  78-ID-ef-cons-max-4 VALUE 5122.
-       78  78-ID-ef-blocco-kg-4 VALUE 5123.
-       78  78-ID-ef-min-kg1-4 VALUE 5124.
-       78  78-ID-ef-min-vet1-4 VALUE 5125.
-       78  78-ID-chk-forza1-4 VALUE 5126.
-       78  78-ID-ef-min-kg2-4 VALUE 5127.
-       78  78-ID-ef-min-vet2-4 VALUE 5128.
-       78  78-ID-chk-forza2-4 VALUE 5129.
-       78  78-ID-ef-max-kg-4 VALUE 5130.
-       78  78-ID-ef-max-vet-4 VALUE 5131.
-       78  78-ID-chk-forza3-4 VALUE 5132.
-       78  78-ID-chk-accorpa-4 VALUE 5133.
-       78  78-ID-chk-promo-4 VALUE 5134.
-       78  78-ID-chk-prenot-4 VALUE 5135.
-       78  78-ID-chk-banco-4 VALUE 5136.
-       78  78-ID-chk-escludi-4 VALUE 5137.
-       78  78-ID-chk-imb-min-4 VALUE 5138.
-       78  78-ID-chk-art-forn-4 VALUE 5139.
-       78  78-ID-chk-pb-perce-4 VALUE 5140.
-       78  78-ID-chk-pb-amp-4 VALUE 5141.
-       78  78-ID-chk-sost-batt-4 VALUE 5142.
-       78  78-ID-gd-mag-4 VALUE 5143.
-       78  78-ID-ef-stampante-4 VALUE 5144.
-       78  78-ID-chk-layout-pers-4 VALUE 5145.
-       78  78-ID-ef-path-logo-4 VALUE 5146.
-       78  78-ID-gd-tipocli VALUE 5147.
-       78  78-ID-gd-clienti VALUE 5148.
-       78  78-ID-gd-gdo VALUE 5149.
-       78  78-ID-gd-destini VALUE 5150.
+       78  78-ID-chk-param-shi VALUE 5027.
+       78  78-ID-gd-mag VALUE 5028.
+       78  78-ID-ef-stampante VALUE 5029.
+       78  78-ID-chk-layout-pers VALUE 5030.
+       78  78-ID-ef-path-logo VALUE 5031.
+       78  78-ID-chk-gestisci-1 VALUE 5032.
+       78  78-ID-ef-ini-vol-1 VALUE 5033.
+       78  78-ID-ef-parz-1 VALUE 5034.
+       78  78-ID-ef-gg-cons-1 VALUE 5035.
+       78  78-ID-ef-val-1 VALUE 5036.
+       78  78-ID-ef-cons-max-1 VALUE 5037.
+       78  78-ID-ef-blocco-kg-1 VALUE 5038.
+       78  78-ID-ef-min-kg1-1 VALUE 5039.
+       78  78-ID-ef-min-vet1-1 VALUE 5040.
+       78  78-ID-chk-forza1-1 VALUE 5041.
+       78  78-ID-ef-min-kg2-1 VALUE 5042.
+       78  78-ID-ef-min-vet2-1 VALUE 5043.
+       78  78-ID-chk-forza2-1 VALUE 5044.
+       78  78-ID-ef-max-kg-1 VALUE 5045.
+       78  78-ID-ef-max-vet-1 VALUE 5046.
+       78  78-ID-chk-forza3-1 VALUE 5047.
+       78  78-ID-chk-accorpa-1 VALUE 5048.
+       78  78-ID-chk-promo-1 VALUE 5049.
+       78  78-ID-chk-prenot-1 VALUE 5050.
+       78  78-ID-chk-banco-1 VALUE 5051.
+       78  78-ID-chk-escludi-1 VALUE 5052.
+       78  78-ID-chk-imb-min-1 VALUE 5053.
+       78  78-ID-chk-art-forn-1 VALUE 5054.
+       78  78-ID-chk-pb-perce-1 VALUE 5055.
+       78  78-ID-chk-pb-amp-1 VALUE 5056.
+       78  78-ID-chk-sost-batt-1 VALUE 5057.
+       78  78-ID-chk-param-shi-1 VALUE 5058.
+       78  78-ID-gd-mag-1 VALUE 5059.
+       78  78-ID-ef-stampante-1 VALUE 5060.
+       78  78-ID-chk-layout-pers-1 VALUE 5061.
+       78  78-ID-ef-path-logo-1 VALUE 5062.
+       78  78-ID-chk-gestisci-2 VALUE 5063.
+       78  78-ID-ef-ini-vol-2 VALUE 5064.
+       78  78-ID-ef-parz-2 VALUE 5065.
+       78  78-ID-ef-gg-cons-2 VALUE 5066.
+       78  78-ID-ef-val-2 VALUE 5067.
+       78  78-ID-ef-cons-max-2 VALUE 5068.
+       78  78-ID-ef-blocco-kg-2 VALUE 5069.
+       78  78-ID-ef-min-kg1-2 VALUE 5070.
+       78  78-ID-ef-min-vet1-2 VALUE 5071.
+       78  78-ID-chk-forza1-2 VALUE 5072.
+       78  78-ID-ef-min-kg2-2 VALUE 5073.
+       78  78-ID-ef-min-vet2-2 VALUE 5074.
+       78  78-ID-chk-forza2-2 VALUE 5075.
+       78  78-ID-ef-max-kg-2 VALUE 5076.
+       78  78-ID-ef-max-vet-2 VALUE 5077.
+       78  78-ID-chk-forza3-2 VALUE 5078.
+       78  78-ID-chk-accorpa-2 VALUE 5079.
+       78  78-ID-chk-promo-2 VALUE 5080.
+       78  78-ID-chk-prenot-2 VALUE 5081.
+       78  78-ID-chk-banco-2 VALUE 5082.
+       78  78-ID-chk-escludi-2 VALUE 5083.
+       78  78-ID-chk-imb-min-2 VALUE 5084.
+       78  78-ID-chk-art-forn-2 VALUE 5085.
+       78  78-ID-chk-pb-perce-2 VALUE 5086.
+       78  78-ID-chk-pb-amp-2 VALUE 5087.
+       78  78-ID-chk-sost-batt-2 VALUE 5088.
+       78  78-ID-chk-param-shi-2 VALUE 5089.
+       78  78-ID-gd-mag-2 VALUE 5090.
+       78  78-ID-ef-stampante-2 VALUE 5091.
+       78  78-ID-chk-gestisci-3 VALUE 5092.
+       78  78-ID-ef-parz-3 VALUE 5093.
+       78  78-ID-ef-gg-cons-3 VALUE 5094.
+       78  78-ID-ef-val-3 VALUE 5095.
+       78  78-ID-ef-cons-max-3 VALUE 5096.
+       78  78-ID-ef-blocco-kg-3 VALUE 5097.
+       78  78-ID-ef-min-kg1-3 VALUE 5098.
+       78  78-ID-ef-min-vet1-3 VALUE 5099.
+       78  78-ID-chk-forza1-3 VALUE 5100.
+       78  78-ID-ef-min-kg2-3 VALUE 5101.
+       78  78-ID-ef-min-vet2-3 VALUE 5102.
+       78  78-ID-chk-forza2-3 VALUE 5103.
+       78  78-ID-ef-max-kg-3 VALUE 5104.
+       78  78-ID-ef-max-vet-3 VALUE 5105.
+       78  78-ID-chk-forza3-3 VALUE 5106.
+       78  78-ID-chk-accorpa-3 VALUE 5107.
+       78  78-ID-chk-promo-3 VALUE 5108.
+       78  78-ID-chk-prenot-3 VALUE 5109.
+       78  78-ID-chk-banco-3 VALUE 5110.
+       78  78-ID-chk-escludi-3 VALUE 5111.
+       78  78-ID-chk-imb-min-3 VALUE 5112.
+       78  78-ID-chk-art-forn-3 VALUE 5113.
+       78  78-ID-chk-pb-perce-3 VALUE 5114.
+       78  78-ID-chk-pb-amp-3 VALUE 5115.
+       78  78-ID-chk-sost-batt-3 VALUE 5116.
+       78  78-ID-chk-param-shi-3 VALUE 5117.
+       78  78-ID-gd-mag-3 VALUE 5118.
+       78  78-ID-ef-stampante-3 VALUE 5119.
+       78  78-ID-chk-layout-pers-3 VALUE 5120.
+       78  78-ID-ef-path-logo-3 VALUE 5121.
+       78  78-ID-chk-gestisci-4 VALUE 5122.
+       78  78-ID-ef-parz-4 VALUE 5123.
+       78  78-ID-ef-gg-cons-4 VALUE 5124.
+       78  78-ID-ef-val-4 VALUE 5125.
+       78  78-ID-ef-cons-max-4 VALUE 5126.
+       78  78-ID-ef-blocco-kg-4 VALUE 5127.
+       78  78-ID-ef-min-kg1-4 VALUE 5128.
+       78  78-ID-ef-min-vet1-4 VALUE 5129.
+       78  78-ID-chk-forza1-4 VALUE 5130.
+       78  78-ID-ef-min-kg2-4 VALUE 5131.
+       78  78-ID-ef-min-vet2-4 VALUE 5132.
+       78  78-ID-chk-forza2-4 VALUE 5133.
+       78  78-ID-ef-max-kg-4 VALUE 5134.
+       78  78-ID-ef-max-vet-4 VALUE 5135.
+       78  78-ID-chk-forza3-4 VALUE 5136.
+       78  78-ID-chk-accorpa-4 VALUE 5137.
+       78  78-ID-chk-promo-4 VALUE 5138.
+       78  78-ID-chk-prenot-4 VALUE 5139.
+       78  78-ID-chk-banco-4 VALUE 5140.
+       78  78-ID-chk-escludi-4 VALUE 5141.
+       78  78-ID-chk-imb-min-4 VALUE 5142.
+       78  78-ID-chk-art-forn-4 VALUE 5143.
+       78  78-ID-chk-pb-perce-4 VALUE 5144.
+       78  78-ID-chk-pb-amp-4 VALUE 5145.
+       78  78-ID-chk-sost-batt-4 VALUE 5146.
+       78  78-ID-chk-param-shi-4 VALUE 5147.
+       78  78-ID-gd-mag-4 VALUE 5148.
+       78  78-ID-ef-stampante-4 VALUE 5149.
+       78  78-ID-chk-layout-pers-4 VALUE 5150.
+       78  78-ID-ef-path-logo-4 VALUE 5151.
+       78  78-ID-gd-tipocli VALUE 5152.
+       78  78-ID-gd-clienti VALUE 5153.
+       78  78-ID-gd-gdo VALUE 5154.
+       78  78-ID-gd-destini VALUE 5155.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1503,6 +1523,23 @@
            VALUE chk-sost-batt-buf,
            AFTER PROCEDURE chk-sost-batt-AfterProcedure,
            .
+      * CHECK BOX
+       05
+           chk-param-shi, 
+           Check-Box, 
+           COL 39,00, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED mod,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-param-shi,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-param-shi-buf,
+           AFTER PROCEDURE chk-param-shi-AfterProcedure,
+           .
       * GRID
        05
            gd-mag, 
@@ -1735,7 +1772,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 45,
+           ID IS 46,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1751,7 +1788,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 46,
+           ID IS 47,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1767,7 +1804,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 47,
+           ID IS 48,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1783,7 +1820,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 48,
+           ID IS 49,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1799,7 +1836,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 49,
+           ID IS 50,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1815,7 +1852,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 50,
+           ID IS 51,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1831,7 +1868,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 51,
+           ID IS 52,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1847,7 +1884,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
-           ID IS 52,
+           ID IS 53,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -1863,7 +1900,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 53,
+           ID IS 54,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2041,6 +2078,22 @@
            RIGHT,
            TRANSPARENT,
            TITLE "Forza",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2aabfc, 
+           Label, 
+           COL 22,50, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 300,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Parametro SHI",
            .
 
       * FRAME
@@ -2473,7 +2526,7 @@
            LINE 43,92,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-tipocli-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imb-min-1,                
@@ -2490,7 +2543,7 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-tipocli-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-art-forn-1,                
@@ -2507,7 +2560,7 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-tipocli-dati,
            EXCEPTION-VALUE 1015
            FLAT,
            FONT IS Small-Font,
@@ -2525,7 +2578,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-tipocli-dati,
            EXCEPTION-VALUE 1010
            FLAT,
            FONT IS Small-Font,
@@ -2543,7 +2596,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-tipocli-dati,
            EXCEPTION-VALUE 1006
            FLAT,
            FONT IS Small-Font,
@@ -2561,7 +2614,7 @@
            LINE 48,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-tipocli-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-sost-batt-1,                
@@ -2569,6 +2622,23 @@
            WIDTH-IN-CELLS,
            VALUE chk-sost-batt-1-buf,
            AFTER PROCEDURE chk-sost-batt-1-AfterProcedure,
+           .
+      * CHECK BOX
+       05
+           chk-param-shi-1, 
+           Check-Box, 
+           COL 80,17, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED e-tipocli-dati,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-param-shi-1,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-param-shi-1-buf,
+           AFTER PROCEDURE chk-param-shi-1-AfterProcedure,
            .
       * GRID
        05
@@ -2608,7 +2678,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 84,
+           ID IS 85,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2625,7 +2695,7 @@
            LINES 1,31 ,
            SIZE 21,00 ,
            FONT IS Small-Font,
-           ID IS 85,
+           ID IS 86,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2641,7 +2711,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 86,
+           ID IS 87,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2657,7 +2727,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 87,
+           ID IS 88,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2673,7 +2743,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 88,
+           ID IS 89,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2689,7 +2759,7 @@
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
-           ID IS 89,
+           ID IS 90,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2705,7 +2775,7 @@
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
-           ID IS 90,
+           ID IS 91,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2721,7 +2791,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 91,
+           ID IS 92,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2737,7 +2807,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 92,
+           ID IS 93,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2753,7 +2823,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 93,
+           ID IS 94,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2769,7 +2839,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 94,
+           ID IS 95,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2899,7 +2969,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 95,
+           ID IS 96,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2915,7 +2985,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 96,
+           ID IS 97,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2931,7 +3001,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
-           ID IS 97,
+           ID IS 98,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2947,7 +3017,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 98,
+           ID IS 99,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3040,7 +3110,7 @@
            ENABLED e-tipocli-dati,
            EXCEPTION-VALUE 1020,
            FONT IS Small-Font,
-           ID IS 103,
+           ID IS 104,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -3055,7 +3125,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 104,
+           ID IS 105,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3072,7 +3142,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 105,
+           ID IS 106,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3088,7 +3158,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 106,
+           ID IS 107,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3104,7 +3174,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 107,
+           ID IS 108,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3119,12 +3189,28 @@
            LINE 35,38,
            LINES 1,31 ,
            SIZE 5,00 ,
-           ID IS 108,
+           ID IS 109,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            TRANSPARENT,
            TITLE "Forza",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2aabfca, 
+           Label, 
+           COL 63,67, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 110,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Parametro SHI",
            .
 
       * FRAME
@@ -3135,7 +3221,7 @@
            LINE 25,38,
            LINES 38,00 ,
            SIZE 40,33 ,
-           ID IS 109,
+           ID IS 111,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE-POSITION 2,
@@ -3556,7 +3642,7 @@
            LINE 43,92,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-gdo-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imb-min-2,                
@@ -3573,7 +3659,7 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-gdo-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-art-forn-2,                
@@ -3590,11 +3676,11 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-gdo-dati,
            EXCEPTION-VALUE 1016
            FLAT,
            FONT IS Small-Font,
-           ID IS 133,
+           ID IS 135,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            VALUE chk-pb-bosch-2-buf,
@@ -3608,7 +3694,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-gdo-dati,
            EXCEPTION-VALUE 1011
            FLAT,
            FONT IS Small-Font,
@@ -3626,7 +3712,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-gdo-dati,
            EXCEPTION-VALUE 1007
            FLAT,
            FONT IS Small-Font,
@@ -3644,7 +3730,7 @@
            LINE 48,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-gdo-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-sost-batt-2,                
@@ -3652,6 +3738,23 @@
            WIDTH-IN-CELLS,
            VALUE chk-sost-batt-2-buf,
            AFTER PROCEDURE chk-sost-batt-2-AfterProcedure,
+           .
+      * CHECK BOX
+       05
+           chk-param-shi-2, 
+           Check-Box, 
+           COL 121,50, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED e-gdo-dati,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-param-shi-2,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-param-shi-2-buf,
+           AFTER PROCEDURE chk-param-shi-2-AfterProcedure,
            .
       * GRID
        05
@@ -3691,7 +3794,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 138,
+           ID IS 141,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3707,7 +3810,7 @@
            LINES 1,31 ,
            SIZE 21,00 ,
            FONT IS Small-Font,
-           ID IS 139,
+           ID IS 142,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3723,7 +3826,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 140,
+           ID IS 143,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3739,7 +3842,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 141,
+           ID IS 144,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3755,7 +3858,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 142,
+           ID IS 145,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3771,7 +3874,7 @@
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
-           ID IS 143,
+           ID IS 146,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3787,7 +3890,7 @@
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
-           ID IS 144,
+           ID IS 147,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3803,7 +3906,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 145,
+           ID IS 148,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3819,7 +3922,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 146,
+           ID IS 149,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3835,7 +3938,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 147,
+           ID IS 150,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3851,7 +3954,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 148,
+           ID IS 151,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3868,7 +3971,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 149,
+           ID IS 152,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3885,7 +3988,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 150,
+           ID IS 153,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3901,7 +4004,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 151,
+           ID IS 154,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3918,7 +4021,7 @@
            SIZE 11,00 ,
            COLOR IS 5,
            FONT IS Large-Font,
-           ID IS 152,
+           ID IS 155,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "GESTISCI",
@@ -3933,7 +4036,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 153,
+           ID IS 156,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3949,7 +4052,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 154,
+           ID IS 157,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3965,7 +4068,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 155,
+           ID IS 158,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3981,7 +4084,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 156,
+           ID IS 159,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3997,7 +4100,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 157,
+           ID IS 160,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4013,7 +4116,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
-           ID IS 158,
+           ID IS 161,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4029,7 +4132,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 159,
+           ID IS 162,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4068,7 +4171,7 @@
            ENABLED e-gdo-dati,
            FLAT,
            FONT IS Small-Font,
-           ID IS 161,
+           ID IS 164,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            VALUE chk-layout-pers-2-buf,
@@ -4085,7 +4188,7 @@
            ENABLED e-gdo-dati,
            EXCEPTION-VALUE 1025,
            FONT IS Small-Font,
-           ID IS 162,
+           ID IS 165,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -4103,7 +4206,7 @@
            COLOR IS 513,
            ENABLED e-gdo-dati,
            FONT IS Small-Font,
-           ID IS 163,
+           ID IS 166,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            READ-ONLY,
@@ -4122,7 +4225,7 @@
            ENABLED e-gdo-dati,
            EXCEPTION-VALUE 1021,
            FONT IS Small-Font,
-           ID IS 164,
+           ID IS 167,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -4137,7 +4240,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 165,
+           ID IS 168,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4154,7 +4257,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 166,
+           ID IS 169,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4170,7 +4273,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 167,
+           ID IS 170,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4186,7 +4289,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 168,
+           ID IS 171,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4201,12 +4304,28 @@
            LINE 35,38,
            LINES 1,31 ,
            SIZE 5,00 ,
-           ID IS 169,
+           ID IS 172,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            TRANSPARENT,
            TITLE "Forza",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2aabfcaa, 
+           Label, 
+           COL 105,00, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 173,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Parametro SHI",
            .
 
       * FRAME
@@ -4217,7 +4336,7 @@
            LINE 25,38,
            LINES 38,00 ,
            SIZE 40,33 ,
-           ID IS 170,
+           ID IS 174,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE-POSITION 2,
@@ -4618,7 +4737,7 @@
            LINE 43,92,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-clienti-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imb-min-3,                
@@ -4635,7 +4754,7 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-clienti-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-art-forn-3,                
@@ -4652,11 +4771,11 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-clienti-dati,
            EXCEPTION-VALUE 1017
            FLAT,
            FONT IS Small-Font,
-           ID IS 193,
+           ID IS 197,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            VALUE chk-pb-bosch-3-buf,
@@ -4670,7 +4789,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-clienti-dati,
            EXCEPTION-VALUE 1012
            FLAT,
            FONT IS Small-Font,
@@ -4688,7 +4807,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-clienti-dati,
            EXCEPTION-VALUE 1008
            FLAT,
            FONT IS Small-Font,
@@ -4706,7 +4825,7 @@
            LINE 48,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-clienti-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-sost-batt-3,                
@@ -4714,6 +4833,23 @@
            WIDTH-IN-CELLS,
            VALUE chk-sost-batt-3-buf,
            AFTER PROCEDURE chk-sost-batt-3-AfterProcedure,
+           .
+      * CHECK BOX
+       05
+           chk-param-shi-3, 
+           Check-Box, 
+           COL 163,00, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED e-clienti-dati,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-param-shi-3,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-param-shi-3-buf,
+           AFTER PROCEDURE chk-param-shi-3-AfterProcedure,
            .
       * GRID
        05
@@ -4753,7 +4889,7 @@
            LINES 1,31 ,
            SIZE 21,00 ,
            FONT IS Small-Font,
-           ID IS 198,
+           ID IS 203,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4769,7 +4905,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 199,
+           ID IS 204,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4785,7 +4921,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 200,
+           ID IS 205,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4801,7 +4937,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 201,
+           ID IS 206,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4817,7 +4953,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 202,
+           ID IS 207,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4833,7 +4969,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 203,
+           ID IS 208,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4849,7 +4985,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 204,
+           ID IS 209,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4865,7 +5001,7 @@
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
-           ID IS 205,
+           ID IS 210,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4881,7 +5017,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 206,
+           ID IS 211,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4897,7 +5033,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 207,
+           ID IS 212,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4914,7 +5050,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 208,
+           ID IS 213,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4931,7 +5067,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 209,
+           ID IS 214,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4947,7 +5083,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 210,
+           ID IS 215,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4964,7 +5100,7 @@
            SIZE 11,00 ,
            COLOR IS 5,
            FONT IS Large-Font,
-           ID IS 211,
+           ID IS 216,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "GESTISCI",
@@ -4979,7 +5115,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 212,
+           ID IS 217,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4995,7 +5131,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 213,
+           ID IS 218,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5011,7 +5147,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 214,
+           ID IS 219,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5027,7 +5163,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 215,
+           ID IS 220,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5043,7 +5179,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 216,
+           ID IS 221,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5059,7 +5195,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
-           ID IS 217,
+           ID IS 222,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5075,7 +5211,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 218,
+           ID IS 223,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5168,7 +5304,7 @@
            ENABLED e-clienti-dati,
            EXCEPTION-VALUE 1022,
            FONT IS Small-Font,
-           ID IS 223,
+           ID IS 228,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -5183,7 +5319,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 224,
+           ID IS 229,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5200,7 +5336,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 225,
+           ID IS 230,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5216,7 +5352,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 226,
+           ID IS 231,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5232,7 +5368,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 227,
+           ID IS 232,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5247,12 +5383,28 @@
            LINE 35,38,
            LINES 1,31 ,
            SIZE 5,00 ,
-           ID IS 228,
+           ID IS 233,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            TRANSPARENT,
            TITLE "Forza",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2aabfcab, 
+           Label, 
+           COL 146,50, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 250,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Parametro SHI",
            .
 
       * FRAME
@@ -5263,7 +5415,7 @@
            LINE 25,38,
            LINES 38,00 ,
            SIZE 40,33 ,
-           ID IS 229,
+           ID IS 251,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE-POSITION 2,
@@ -5664,7 +5816,7 @@
            LINE 43,92,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-destini-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imb-min-4,                
@@ -5681,7 +5833,7 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-destini-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-art-forn-4,                
@@ -5698,11 +5850,11 @@
            LINE 45,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-destini-dati,
            EXCEPTION-VALUE 1018
            FLAT,
            FONT IS Small-Font,
-           ID IS 267,
+           ID IS 274,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            VALUE chk-pb-bosch-4-buf,
@@ -5716,7 +5868,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-destini-dati,
            EXCEPTION-VALUE 1013
            FLAT,
            FONT IS Small-Font,
@@ -5734,7 +5886,7 @@
            LINE 46,76,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-destini-dati,
            EXCEPTION-VALUE 1009
            FLAT,
            FONT IS Small-Font,
@@ -5752,7 +5904,7 @@
            LINE 48,30,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-destini-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-sost-batt-4,                
@@ -5760,6 +5912,23 @@
            WIDTH-IN-CELLS,
            VALUE chk-sost-batt-4-buf,
            AFTER PROCEDURE chk-sost-batt-4-AfterProcedure,
+           .
+      * CHECK BOX
+       05
+           chk-param-shi-4, 
+           Check-Box, 
+           COL 204,67, 
+           LINE 48,30,
+           LINES 1,54 ,
+           SIZE 3,00 ,
+           ENABLED e-destini-dati,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 78-ID-chk-param-shi-4,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE chk-param-shi-4-buf,
+           AFTER PROCEDURE chk-param-shi-4-AfterProcedure,
            .
       * GRID
        05
@@ -5798,7 +5967,7 @@
            LINES 1,31 ,
            SIZE 21,00 ,
            FONT IS Small-Font,
-           ID IS 272,
+           ID IS 280,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5814,7 +5983,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 273,
+           ID IS 281,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5830,7 +5999,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 274,
+           ID IS 282,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5846,7 +6015,7 @@
            LINES 1,31 ,
            SIZE 18,00 ,
            FONT IS Small-Font,
-           ID IS 275,
+           ID IS 283,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5862,7 +6031,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 276,
+           ID IS 284,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5878,7 +6047,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 277,
+           ID IS 285,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5894,7 +6063,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 278,
+           ID IS 286,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5910,7 +6079,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 279,
+           ID IS 287,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5926,7 +6095,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 280,
+           ID IS 288,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5942,7 +6111,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 281,
+           ID IS 289,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5959,7 +6128,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 282,
+           ID IS 290,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5976,7 +6145,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 283,
+           ID IS 291,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5992,7 +6161,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 284,
+           ID IS 292,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6009,7 +6178,7 @@
            SIZE 11,00 ,
            COLOR IS 5,
            FONT IS Large-Font,
-           ID IS 285,
+           ID IS 293,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "GESTISCI",
@@ -6024,7 +6193,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 286,
+           ID IS 294,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6040,7 +6209,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 287,
+           ID IS 295,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6056,7 +6225,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 288,
+           ID IS 296,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6072,7 +6241,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 289,
+           ID IS 297,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6088,7 +6257,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 290,
+           ID IS 298,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6104,7 +6273,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
-           ID IS 291,
+           ID IS 301,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6120,7 +6289,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 292,
+           ID IS 302,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6213,7 +6382,7 @@
            ENABLED e-destini-dati,
            EXCEPTION-VALUE 1023,
            FONT IS Small-Font,
-           ID IS 297,
+           ID IS 307,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -6228,7 +6397,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 298,
+           ID IS 308,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6245,7 +6414,7 @@
            SIZE 5,50 ,
            COLOR IS 2,
            FONT IS Small-Font,
-           ID IS 300,
+           ID IS 309,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6261,7 +6430,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 301,
+           ID IS 310,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6277,7 +6446,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
-           ID IS 302,
+           ID IS 311,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6292,12 +6461,28 @@
            LINE 35,38,
            LINES 1,31 ,
            SIZE 5,00 ,
-           ID IS 303,
+           ID IS 312,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
            TRANSPARENT,
            TITLE "Forza",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2aabfcac, 
+           Label, 
+           COL 188,17, 
+           LINE 48,53,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 313,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Parametro SHI",
            .
 
       * GRID
@@ -6426,7 +6611,7 @@
            LINE 1,00,
            LINES 1,90 ,
            SIZE 3,90 ,
-           ID IS 304,
+           ID IS 314,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -6443,7 +6628,7 @@
            LINES 1,90 ,
            SIZE 5,90 ,
            FONT IS Default-Font,
-           ID IS 305,
+           ID IS 315,
            TRANSPARENT,
            TITLE "CUSTOM CONTROL",
            VISIBLE v-custom,
@@ -6460,7 +6645,7 @@
            TRANSPARENT-COLOR TR-COLOR,
            BITMAP-HANDLE logo-gparam-bmp,
            BITMAP-NUMBER 1,
-           ID IS 306,
+           ID IS 316,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            .
@@ -6475,7 +6660,7 @@
            SIZE 40,17 ,
            COLOR IS 5,
            FONT IS Large-Font,
-           ID IS 307,
+           ID IS 317,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -6493,7 +6678,7 @@
            SIZE 40,17 ,
            COLOR IS 5,
            FONT IS Large-Font,
-           ID IS 308,
+           ID IS 318,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -6511,7 +6696,7 @@
            SIZE 40,17 ,
            COLOR IS 5,
            FONT IS Large-Font,
-           ID IS 309,
+           ID IS 319,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -6529,7 +6714,7 @@
            SIZE 40,17 ,
            COLOR IS 5,
            FONT IS Large-Font,
-           ID IS 310,
+           ID IS 320,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -6557,7 +6742,7 @@
            ENABLED E-ESCI,
            EXCEPTION-VALUE 27,
            FLAT,
-           ID IS 311,
+           ID IS 321,
            SELF-ACT,
            ESCAPE-BUTTON,
            TITLE "Esci (Esc)",
@@ -6576,7 +6761,7 @@
            SQUARE,
            ENABLED 0,
            FLAT,
-           ID IS 312,
+           ID IS 322,
            SELF-ACT,
            TITLE "Nuovo (F2)",
            BITMAP-NUMBER=BitmapNumNew
@@ -6596,7 +6781,7 @@
            ENABLED E-CANCELLA,
            EXCEPTION-VALUE 4,
            FLAT,
-           ID IS 313,
+           ID IS 323,
            SELF-ACT,
            TITLE "Cancella (F4)",
            BITMAP-NUMBER BitmapNumDelete
@@ -6616,7 +6801,7 @@
            ENABLED E-SALVA,
            EXCEPTION-VALUE 3,
            FLAT,
-           ID IS 314,
+           ID IS 324,
            SELF-ACT,
            TITLE "Salva (F3)",
            BITMAP-NUMBER BitmapNumSave
@@ -6637,7 +6822,7 @@
            ENABLED E-ANTEPRIMA,
            EXCEPTION-VALUE 6,
            FLAT,
-           ID IS 315,
+           ID IS 325,
            SELF-ACT,
            TITLE "Anteprima (F6)",
            .
@@ -6657,7 +6842,7 @@
            ENABLED E-MODIFICA,
            EXCEPTION-VALUE 150
            FLAT,
-           ID IS 316,
+           ID IS 326,
            SELF-ACT,
            TITLE "Modifica (F5)",
            BITMAP-NUMBER BitmapNumEdit
@@ -6679,7 +6864,7 @@
            ENABLED 1,
            EXCEPTION-VALUE 7,
            FLAT,
-           ID IS 317,
+           ID IS 327,
            SELF-ACT,
            TITLE "Stampa (F7)",
            .
@@ -6698,7 +6883,7 @@
            ENABLED E-CERCA,
            EXCEPTION-VALUE 8,
            FLAT,
-           ID IS 318,
+           ID IS 328,
            SELF-ACT,
            TITLE "Cerca (F8)",
            BITMAP-NUMBER BitmapNumZoom
@@ -8684,6 +8869,7 @@
            move prm-forza1            of param to chk-forza1-buf. 
            move prm-forza2            of param to chk-forza2-buf. 
            move prm-forza3            of param to chk-forza3-buf. 
+           move prm-param-shi         of param to chk-param-shi-buf. 
 
            modify gd-mag,   mass-update = 1, reset-grid = 1.
            perform GD-MAG-CONTENT.
@@ -9143,127 +9329,132 @@
            WHEN 5024 MOVE 78-pb-perce to TOTEM-HINT-TEXT
            WHEN 5025 MOVE 78-pb-amp to TOTEM-HINT-TEXT
            WHEN 5026 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
-           WHEN 5027 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5029 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5030 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5032 MOVE 78-ini to TOTEM-HINT-TEXT
-           WHEN 5033 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5034 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5035 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5036 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5037 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5038 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5039 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5040 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5041 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5042 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
-           WHEN 5043 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5044 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5045 MOVE 78-vet-max to TOTEM-HINT-TEXT
-           WHEN 5046 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5047 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5048 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5049 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5050 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5051 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5052 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5053 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 5027 MOVE 78-pb-param-shi to TOTEM-HINT-TEXT
+           WHEN 5028 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5031 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5033 MOVE 78-ini to TOTEM-HINT-TEXT
+           WHEN 5034 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5035 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5036 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5037 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5038 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5039 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5040 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
+           WHEN 5041 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5042 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5043 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5044 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5045 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5046 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5047 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5048 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5049 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5050 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5051 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5052 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5053 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5054 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
            WHEN 80 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5054 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5055 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5056 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
-           WHEN 5057 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5059 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5060 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5062 MOVE 78-ini to TOTEM-HINT-TEXT
-           WHEN 5063 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5064 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5065 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5066 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5067 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5068 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5069 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5070 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5071 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5072 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
-           WHEN 5073 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5074 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5075 MOVE 78-vet-max to TOTEM-HINT-TEXT
-           WHEN 5076 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5077 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5078 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5079 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5080 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5081 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5082 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5083 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
-           WHEN 133 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5084 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5085 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5086 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
-           WHEN 5087 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 161 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 163 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5090 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5091 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5092 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5093 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5094 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5095 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5096 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5097 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5098 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5099 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5055 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5056 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5057 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5058 MOVE 78-pb-param-shi to TOTEM-HINT-TEXT
+           WHEN 5059 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5061 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5062 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5064 MOVE 78-ini to TOTEM-HINT-TEXT
+           WHEN 5065 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5066 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5067 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5068 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5069 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5070 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5071 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
+           WHEN 5072 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5073 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5074 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5075 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5076 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5077 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5078 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5079 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5080 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5081 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5082 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5083 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5084 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5085 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 135 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5086 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5087 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5088 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5089 MOVE 78-pb-param-shi to TOTEM-HINT-TEXT
+           WHEN 5090 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 164 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 166 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5093 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5094 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5095 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5096 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5097 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5098 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5099 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
            WHEN 5100 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5101 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5102 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5101 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5102 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
            WHEN 5103 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5104 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5105 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5106 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5107 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5108 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5109 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5110 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
-           WHEN 193 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5111 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5112 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5113 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
-           WHEN 5114 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5116 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5117 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5119 MOVE 78-parziale to TOTEM-HINT-TEXT
-           WHEN 5120 MOVE 78-per-cons to TOTEM-HINT-TEXT
-           WHEN 5121 MOVE 78-val to TOTEM-HINT-TEXT
-           WHEN 5122 MOVE 78-max to TOTEM-HINT-TEXT
-           WHEN 5123 MOVE 78-blocco to TOTEM-HINT-TEXT
-           WHEN 5124 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
-           WHEN 5125 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
-           WHEN 5126 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5127 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
-           WHEN 5128 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
-           WHEN 5129 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5130 MOVE 78-kg-max to TOTEM-HINT-TEXT
-           WHEN 5131 MOVE 78-vet-max to TOTEM-HINT-TEXT
-           WHEN 5132 MOVE 78-forza to TOTEM-HINT-TEXT
-           WHEN 5133 MOVE 78-accorpa to TOTEM-HINT-TEXT
-           WHEN 5134 MOVE 78-promo to TOTEM-HINT-TEXT
-           WHEN 5135 MOVE 78-prenot to TOTEM-HINT-TEXT
-           WHEN 5136 MOVE 78-banco to TOTEM-HINT-TEXT
-           WHEN 5137 MOVE 78-escludi to TOTEM-HINT-TEXT
-           WHEN 5138 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
-           WHEN 5139 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
-           WHEN 267 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5140 MOVE 78-pb-perce to TOTEM-HINT-TEXT
-           WHEN 5141 MOVE 78-pb-amp to TOTEM-HINT-TEXT
-           WHEN 5142 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
-           WHEN 5143 MOVE 78-mag to TOTEM-HINT-TEXT
-           WHEN 5145 MOVE 78-logo-pers to TOTEM-HINT-TEXT
-           WHEN 5146 MOVE 78-path-logo to TOTEM-HINT-TEXT
-           WHEN 5147 MOVE "Tipologia Clienti" to TOTEM-HINT-TEXT
-           WHEN 5148 MOVE "Clienti" to TOTEM-HINT-TEXT
-           WHEN 5149 MOVE "Gruppi GDO" to TOTEM-HINT-TEXT
-           WHEN 5150 MOVE "Destini" to TOTEM-HINT-TEXT
+           WHEN 5104 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5105 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5106 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5107 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5108 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5109 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5110 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5111 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5112 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5113 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 197 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5114 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5115 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5116 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5117 MOVE 78-pb-param-shi to TOTEM-HINT-TEXT
+           WHEN 5118 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5120 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5121 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5123 MOVE 78-parziale to TOTEM-HINT-TEXT
+           WHEN 5124 MOVE 78-per-cons to TOTEM-HINT-TEXT
+           WHEN 5125 MOVE 78-val to TOTEM-HINT-TEXT
+           WHEN 5126 MOVE 78-max to TOTEM-HINT-TEXT
+           WHEN 5127 MOVE 78-blocco to TOTEM-HINT-TEXT
+           WHEN 5128 MOVE 78-kg-min1 to TOTEM-HINT-TEXT
+           WHEN 5129 MOVE 78-vet-min1 to TOTEM-HINT-TEXT
+           WHEN 5130 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5131 MOVE 78-kg-min2 to TOTEM-HINT-TEXT
+           WHEN 5132 MOVE 78-vet-min2 to TOTEM-HINT-TEXT
+           WHEN 5133 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5134 MOVE 78-kg-max to TOTEM-HINT-TEXT
+           WHEN 5135 MOVE 78-vet-max to TOTEM-HINT-TEXT
+           WHEN 5136 MOVE 78-forza to TOTEM-HINT-TEXT
+           WHEN 5137 MOVE 78-accorpa to TOTEM-HINT-TEXT
+           WHEN 5138 MOVE 78-promo to TOTEM-HINT-TEXT
+           WHEN 5139 MOVE 78-prenot to TOTEM-HINT-TEXT
+           WHEN 5140 MOVE 78-banco to TOTEM-HINT-TEXT
+           WHEN 5141 MOVE 78-escludi to TOTEM-HINT-TEXT
+           WHEN 5142 MOVE 78-imb-minimo to TOTEM-HINT-TEXT
+           WHEN 5143 MOVE 78-cod-art-forn to TOTEM-HINT-TEXT
+           WHEN 274 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5144 MOVE 78-pb-perce to TOTEM-HINT-TEXT
+           WHEN 5145 MOVE 78-pb-amp to TOTEM-HINT-TEXT
+           WHEN 5146 MOVE 78-pb-sost-batt to TOTEM-HINT-TEXT
+           WHEN 5147 MOVE 78-pb-param-shi to TOTEM-HINT-TEXT
+           WHEN 5148 MOVE 78-mag to TOTEM-HINT-TEXT
+           WHEN 5150 MOVE 78-logo-pers to TOTEM-HINT-TEXT
+           WHEN 5151 MOVE 78-path-logo to TOTEM-HINT-TEXT
+           WHEN 5152 MOVE "Tipologia Clienti" to TOTEM-HINT-TEXT
+           WHEN 5153 MOVE "Clienti" to TOTEM-HINT-TEXT
+           WHEN 5154 MOVE "Gruppi GDO" to TOTEM-HINT-TEXT
+           WHEN 5155 MOVE "Destini" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -9293,118 +9484,123 @@
            When 5024 PERFORM chk-pb-perce-BeforeProcedure
            When 5025 PERFORM chk-pb-amp-BeforeProcedure
            When 5026 PERFORM chk-sost-batt-BeforeProcedure
-           When 5029 PERFORM chk-pb-perce-BeforeProcedure
-           When 5030 PERFORM ef-path-logo-BeforeProcedure
-           When 5032 PERFORM ef-ini-vol-1-BeforeProcedure
-           When 5033 PERFORM ef-parz-1-BeforeProcedure
-           When 5034 PERFORM ef-gg-cons-1-BeforeProcedure
-           When 5035 PERFORM ef-val-1-BeforeProcedure
-           When 5036 PERFORM ef-cons-max-1-BeforeProcedure
-           When 5037 PERFORM ef-blocco-kg-1-BeforeProcedure
-           When 5038 PERFORM ef-min-kg-1-BeforeProcedure
-           When 5039 PERFORM ef-min-vet-30kg-1-BeforeProcedure
-           When 5040 PERFORM chk-forza1-1-BeforeProcedure
-           When 5041 PERFORM ef-min-kg-1-BeforeProcedure
-           When 5042 PERFORM ef-min-vet-1-BeforeProcedure
-           When 5043 PERFORM chk-forza2-1-BeforeProcedure
-           When 5044 PERFORM ef-max-kg-1-BeforeProcedure
-           When 5045 PERFORM ef-max-vet-1-BeforeProcedure
-           When 5046 PERFORM chk-forza3-1-BeforeProcedure
-           When 5047 PERFORM chk-accorpa-1-BeforeProcedure
-           When 5048 PERFORM chk-promoa-BeforeProcedure
-           When 5049 PERFORM chk-intera-1-BeforeProcedure
-           When 5050 PERFORM chk-banco-1-BeforeProcedure
-           When 5051 PERFORM chk-intera-BeforeProcedure
-           When 5052 PERFORM chk-banco-BeforeProcedure
+           When 5027 PERFORM chk-param-shi-BeforeProcedure
+           When 5030 PERFORM chk-pb-perce-BeforeProcedure
+           When 5031 PERFORM ef-path-logo-BeforeProcedure
+           When 5033 PERFORM ef-ini-vol-1-BeforeProcedure
+           When 5034 PERFORM ef-parz-1-BeforeProcedure
+           When 5035 PERFORM ef-gg-cons-1-BeforeProcedure
+           When 5036 PERFORM ef-val-1-BeforeProcedure
+           When 5037 PERFORM ef-cons-max-1-BeforeProcedure
+           When 5038 PERFORM ef-blocco-kg-1-BeforeProcedure
+           When 5039 PERFORM ef-min-kg-1-BeforeProcedure
+           When 5040 PERFORM ef-min-vet-30kg-1-BeforeProcedure
+           When 5041 PERFORM chk-forza1-1-BeforeProcedure
+           When 5042 PERFORM ef-min-kg-1-BeforeProcedure
+           When 5043 PERFORM ef-min-vet-1-BeforeProcedure
+           When 5044 PERFORM chk-forza2-1-BeforeProcedure
+           When 5045 PERFORM ef-max-kg-1-BeforeProcedure
+           When 5046 PERFORM ef-max-vet-1-BeforeProcedure
+           When 5047 PERFORM chk-forza3-1-BeforeProcedure
+           When 5048 PERFORM chk-accorpa-1-BeforeProcedure
+           When 5049 PERFORM chk-promoa-BeforeProcedure
+           When 5050 PERFORM chk-intera-1-BeforeProcedure
+           When 5051 PERFORM chk-banco-1-BeforeProcedure
+           When 5052 PERFORM chk-intera-BeforeProcedure
            When 5053 PERFORM chk-banco-BeforeProcedure
+           When 5054 PERFORM chk-banco-BeforeProcedure
            When 80 PERFORM chk-pb-bosch-1-BeforeProcedure
-           When 5054 PERFORM chk-pb-perce-1-BeforeProcedure
-           When 5055 PERFORM chk-pb-amp-1-BeforeProcedure
-           When 5056 PERFORM chk-sost-batt-1-BeforeProcedure
-           When 5059 PERFORM chk-pb-perce-BeforeProcedure
-           When 5060 PERFORM ef-path-logoa-BeforeProcedure
-           When 5062 PERFORM ef-ini-vol-2-BeforeProcedure
-           When 5063 PERFORM ef-parz-2-BeforeProcedure
-           When 5064 PERFORM ef-gg-cons-2-BeforeProcedure
-           When 5065 PERFORM ef-val-2-BeforeProcedure
-           When 5066 PERFORM ef-cons-max-2-BeforeProcedure
-           When 5067 PERFORM ef-blocco-kg-2-BeforeProcedure
-           When 5068 PERFORM ef-min-kg-2-BeforeProcedure
-           When 5069 PERFORM ef-min-vet-30kg-2-BeforeProcedure
-           When 5070 PERFORM chk-forza1-2-BeforeProcedure
-           When 5071 PERFORM ef-min-kg-2-BeforeProcedure
-           When 5072 PERFORM ef-min-vet-2-BeforeProcedure
-           When 5073 PERFORM chk-forza2-2-BeforeProcedure
-           When 5074 PERFORM ef-max-kg-2-BeforeProcedure
-           When 5075 PERFORM ef-max-vet-2-BeforeProcedure
-           When 5076 PERFORM chk-forza3-2-BeforeProcedure
-           When 5077 PERFORM chk-accorpa-2-BeforeProcedure
-           When 5078 PERFORM chk-promo-2-BeforeProcedure
-           When 5079 PERFORM chk-intera-2-BeforeProcedure
-           When 5080 PERFORM chk-banco-2-BeforeProcedure
-           When 5081 PERFORM chk-intera-BeforeProcedure
-           When 5082 PERFORM chk-banco-BeforeProcedure
-           When 5083 PERFORM chk-banco-BeforeProcedure
-           When 133 PERFORM chk-pb-bosch-2-BeforeProcedure
-           When 5084 PERFORM chk-pb-perce-2-BeforeProcedure
-           When 5085 PERFORM chk-pb-amp-2-BeforeProcedure
-           When 5086 PERFORM chk-sost-batt-2-BeforeProcedure
-           When 161 PERFORM chk-pb-perce-BeforeProcedure
-           When 163 PERFORM ef-path-logoa-BeforeProcedure
-           When 5090 PERFORM ef-parz-3-BeforeProcedure
-           When 5091 PERFORM ef-gg-cons-3-BeforeProcedure
-           When 5092 PERFORM ef-val-3-BeforeProcedure
-           When 5093 PERFORM ef-cons-max-3-BeforeProcedure
-           When 5094 PERFORM ef-blocco-kg-3-BeforeProcedure
-           When 5095 PERFORM ef-min-kg-3-BeforeProcedure
-           When 5096 PERFORM ef-min-vet-30kg-3-BeforeProcedure
-           When 5097 PERFORM chk-forza1-3-BeforeProcedure
+           When 5055 PERFORM chk-pb-perce-1-BeforeProcedure
+           When 5056 PERFORM chk-pb-amp-1-BeforeProcedure
+           When 5057 PERFORM chk-sost-batt-1-BeforeProcedure
+           When 5058 PERFORM chk-param-shi-1-BeforeProcedure
+           When 5061 PERFORM chk-pb-perce-BeforeProcedure
+           When 5062 PERFORM ef-path-logoa-BeforeProcedure
+           When 5064 PERFORM ef-ini-vol-2-BeforeProcedure
+           When 5065 PERFORM ef-parz-2-BeforeProcedure
+           When 5066 PERFORM ef-gg-cons-2-BeforeProcedure
+           When 5067 PERFORM ef-val-2-BeforeProcedure
+           When 5068 PERFORM ef-cons-max-2-BeforeProcedure
+           When 5069 PERFORM ef-blocco-kg-2-BeforeProcedure
+           When 5070 PERFORM ef-min-kg-2-BeforeProcedure
+           When 5071 PERFORM ef-min-vet-30kg-2-BeforeProcedure
+           When 5072 PERFORM chk-forza1-2-BeforeProcedure
+           When 5073 PERFORM ef-min-kg-2-BeforeProcedure
+           When 5074 PERFORM ef-min-vet-2-BeforeProcedure
+           When 5075 PERFORM chk-forza2-2-BeforeProcedure
+           When 5076 PERFORM ef-max-kg-2-BeforeProcedure
+           When 5077 PERFORM ef-max-vet-2-BeforeProcedure
+           When 5078 PERFORM chk-forza3-2-BeforeProcedure
+           When 5079 PERFORM chk-accorpa-2-BeforeProcedure
+           When 5080 PERFORM chk-promo-2-BeforeProcedure
+           When 5081 PERFORM chk-intera-2-BeforeProcedure
+           When 5082 PERFORM chk-banco-2-BeforeProcedure
+           When 5083 PERFORM chk-intera-BeforeProcedure
+           When 5084 PERFORM chk-banco-BeforeProcedure
+           When 5085 PERFORM chk-banco-BeforeProcedure
+           When 135 PERFORM chk-pb-bosch-2-BeforeProcedure
+           When 5086 PERFORM chk-pb-perce-2-BeforeProcedure
+           When 5087 PERFORM chk-pb-amp-2-BeforeProcedure
+           When 5088 PERFORM chk-sost-batt-2-BeforeProcedure
+           When 5089 PERFORM chk-param-shi-2-BeforeProcedure
+           When 164 PERFORM chk-pb-perce-BeforeProcedure
+           When 166 PERFORM ef-path-logoa-BeforeProcedure
+           When 5093 PERFORM ef-parz-3-BeforeProcedure
+           When 5094 PERFORM ef-gg-cons-3-BeforeProcedure
+           When 5095 PERFORM ef-val-3-BeforeProcedure
+           When 5096 PERFORM ef-cons-max-3-BeforeProcedure
+           When 5097 PERFORM ef-blocco-kg-3-BeforeProcedure
            When 5098 PERFORM ef-min-kg-3-BeforeProcedure
-           When 5099 PERFORM ef-min-vet-3-BeforeProcedure
-           When 5100 PERFORM chk-forza2-3-BeforeProcedure
-           When 5101 PERFORM ef-max-kg-3-BeforeProcedure
-           When 5102 PERFORM ef-max-vet-3-BeforeProcedure
-           When 5103 PERFORM chk-forza3-3-BeforeProcedure
-           When 5104 PERFORM chk-accorpa-3-BeforeProcedure
-           When 5105 PERFORM chk-promo-3-BeforeProcedure
-           When 5106 PERFORM chk-intera-3-BeforeProcedure
-           When 5107 PERFORM chk-banco-3-BeforeProcedure
-           When 5108 PERFORM chk-intera-BeforeProcedure
-           When 5109 PERFORM chk-banco-BeforeProcedure
-           When 5110 PERFORM chk-banco-BeforeProcedure
-           When 193 PERFORM chk-pb-bosch-3-BeforeProcedure
-           When 5111 PERFORM chk-pb-perce-3-BeforeProcedure
-           When 5112 PERFORM chk-pb-amp-3-BeforeProcedure
-           When 5113 PERFORM chk-sost-batt-3-BeforeProcedure
-           When 5116 PERFORM chk-pb-perce-BeforeProcedure
-           When 5117 PERFORM ef-path-logoa-BeforeProcedure
-           When 5119 PERFORM ef-parz-4-BeforeProcedure
-           When 5120 PERFORM ef-gg-cons-4-BeforeProcedure
-           When 5121 PERFORM ef-val-4-BeforeProcedure
-           When 5122 PERFORM ef-cons-max-4-BeforeProcedure
-           When 5123 PERFORM ef-blocco-kg-4-BeforeProcedure
-           When 5124 PERFORM ef-min-kg-4-BeforeProcedure
-           When 5125 PERFORM ef-min-vet-30kg-4-BeforeProcedure
-           When 5126 PERFORM chk-forza1-4-BeforeProcedure
-           When 5127 PERFORM ef-min-kg-4-BeforeProcedure
-           When 5128 PERFORM ef-min-vet-4-BeforeProcedure
-           When 5129 PERFORM chk-forza2-4-BeforeProcedure
-           When 5130 PERFORM ef-max-kg-4-BeforeProcedure
-           When 5131 PERFORM ef-max-vet-4-BeforeProcedure
-           When 5132 PERFORM chk-forza3-4-BeforeProcedure
-           When 5133 PERFORM chk-accorpa-4-BeforeProcedure
-           When 5134 PERFORM chk-promo-4-BeforeProcedure
-           When 5135 PERFORM chk-intera-4-BeforeProcedure
-           When 5136 PERFORM chk-banco-4-BeforeProcedure
-           When 5137 PERFORM chk-intera-BeforeProcedure
-           When 5138 PERFORM chk-banco-BeforeProcedure
-           When 5139 PERFORM chk-banco-BeforeProcedure
-           When 267 PERFORM chk-pb-bosch-4-BeforeProcedure
-           When 5140 PERFORM chk-pb-perce-4-BeforeProcedure
-           When 5141 PERFORM chk-pb-amp-4-BeforeProcedure
-           When 5142 PERFORM chk-sost-batt-4-BeforeProcedure
-           When 5145 PERFORM chk-pb-perce-BeforeProcedure
-           When 5146 PERFORM ef-path-logoa-BeforeProcedure
+           When 5099 PERFORM ef-min-vet-30kg-3-BeforeProcedure
+           When 5100 PERFORM chk-forza1-3-BeforeProcedure
+           When 5101 PERFORM ef-min-kg-3-BeforeProcedure
+           When 5102 PERFORM ef-min-vet-3-BeforeProcedure
+           When 5103 PERFORM chk-forza2-3-BeforeProcedure
+           When 5104 PERFORM ef-max-kg-3-BeforeProcedure
+           When 5105 PERFORM ef-max-vet-3-BeforeProcedure
+           When 5106 PERFORM chk-forza3-3-BeforeProcedure
+           When 5107 PERFORM chk-accorpa-3-BeforeProcedure
+           When 5108 PERFORM chk-promo-3-BeforeProcedure
+           When 5109 PERFORM chk-intera-3-BeforeProcedure
+           When 5110 PERFORM chk-banco-3-BeforeProcedure
+           When 5111 PERFORM chk-intera-BeforeProcedure
+           When 5112 PERFORM chk-banco-BeforeProcedure
+           When 5113 PERFORM chk-banco-BeforeProcedure
+           When 197 PERFORM chk-pb-bosch-3-BeforeProcedure
+           When 5114 PERFORM chk-pb-perce-3-BeforeProcedure
+           When 5115 PERFORM chk-pb-amp-3-BeforeProcedure
+           When 5116 PERFORM chk-sost-batt-3-BeforeProcedure
+           When 5117 PERFORM chk-param-shi-3-BeforeProcedure
+           When 5120 PERFORM chk-pb-perce-BeforeProcedure
+           When 5121 PERFORM ef-path-logoa-BeforeProcedure
+           When 5123 PERFORM ef-parz-4-BeforeProcedure
+           When 5124 PERFORM ef-gg-cons-4-BeforeProcedure
+           When 5125 PERFORM ef-val-4-BeforeProcedure
+           When 5126 PERFORM ef-cons-max-4-BeforeProcedure
+           When 5127 PERFORM ef-blocco-kg-4-BeforeProcedure
+           When 5128 PERFORM ef-min-kg-4-BeforeProcedure
+           When 5129 PERFORM ef-min-vet-30kg-4-BeforeProcedure
+           When 5130 PERFORM chk-forza1-4-BeforeProcedure
+           When 5131 PERFORM ef-min-kg-4-BeforeProcedure
+           When 5132 PERFORM ef-min-vet-4-BeforeProcedure
+           When 5133 PERFORM chk-forza2-4-BeforeProcedure
+           When 5134 PERFORM ef-max-kg-4-BeforeProcedure
+           When 5135 PERFORM ef-max-vet-4-BeforeProcedure
+           When 5136 PERFORM chk-forza3-4-BeforeProcedure
+           When 5137 PERFORM chk-accorpa-4-BeforeProcedure
+           When 5138 PERFORM chk-promo-4-BeforeProcedure
+           When 5139 PERFORM chk-intera-4-BeforeProcedure
+           When 5140 PERFORM chk-banco-4-BeforeProcedure
+           When 5141 PERFORM chk-intera-BeforeProcedure
+           When 5142 PERFORM chk-banco-BeforeProcedure
+           When 5143 PERFORM chk-banco-BeforeProcedure
+           When 274 PERFORM chk-pb-bosch-4-BeforeProcedure
+           When 5144 PERFORM chk-pb-perce-4-BeforeProcedure
+           When 5145 PERFORM chk-pb-amp-4-BeforeProcedure
+           When 5146 PERFORM chk-sost-batt-4-BeforeProcedure
+           When 5147 PERFORM chk-param-shi-4-BeforeProcedure
+           When 5150 PERFORM chk-pb-perce-BeforeProcedure
+           When 5151 PERFORM ef-path-logoa-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -9413,181 +9609,181 @@
        Screen1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5027 ALSO
+           WHEN Msg-Begin-Drag ALSO 5028 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5027 ALSO
+           WHEN Msg-Begin-Entry ALSO 5028 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5027 ALSO
+           WHEN Msg-End-Drag ALSO 5028 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5027 ALSO
+           WHEN Msg-Finish-Entry ALSO 5028 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5027 ALSO
+           WHEN Msg-Goto-Cell ALSO 5028 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5027 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5028 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5027 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5028 ALSO
                     form1-handle 
               PERFORM gd-mag-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5057 ALSO
+           WHEN Msg-Begin-Drag ALSO 5059 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5057 ALSO
+           WHEN Msg-Begin-Entry ALSO 5059 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5057 ALSO
+           WHEN Msg-End-Drag ALSO 5059 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5057 ALSO
+           WHEN Msg-Finish-Entry ALSO 5059 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5057 ALSO
+           WHEN Msg-Goto-Cell ALSO 5059 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5057 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5059 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5057 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5059 ALSO
                     form1-handle 
               PERFORM gd-mag-1-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5087 ALSO
+           WHEN Msg-Begin-Drag ALSO 5090 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5087 ALSO
+           WHEN Msg-Begin-Entry ALSO 5090 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5087 ALSO
+           WHEN Msg-End-Drag ALSO 5090 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5087 ALSO
+           WHEN Msg-Finish-Entry ALSO 5090 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5087 ALSO
+           WHEN Msg-Goto-Cell ALSO 5090 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5087 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5090 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5087 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5090 ALSO
                     form1-handle 
               PERFORM gd-mag-2-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5114 ALSO
+           WHEN Msg-Begin-Drag ALSO 5118 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5114 ALSO
+           WHEN Msg-Begin-Entry ALSO 5118 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5114 ALSO
+           WHEN Msg-End-Drag ALSO 5118 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5114 ALSO
+           WHEN Msg-Finish-Entry ALSO 5118 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5114 ALSO
+           WHEN Msg-Goto-Cell ALSO 5118 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5114 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5118 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5114 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5118 ALSO
                     form1-handle 
               PERFORM gd-mag-3-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5143 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5143 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5143 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5143 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5143 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5143 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5143 ALSO
-                    form1-handle 
-              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5147 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5147 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5147 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5147 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5147 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5147 ALSO
-                    form1-handle 
-              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Mouse
            WHEN Msg-Begin-Drag ALSO 5148 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Begin-Drag
+              PERFORM gd-mag-4-Ev-Msg-Begin-Drag
            WHEN Msg-Begin-Entry ALSO 5148 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Begin-Entry
+              PERFORM gd-mag-4-Ev-Msg-Begin-Entry
            WHEN Msg-End-Drag ALSO 5148 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-End-Drag
+              PERFORM gd-mag-4-Ev-Msg-End-Drag
+           WHEN Msg-Finish-Entry ALSO 5148 ALSO
+                    form1-handle 
+              PERFORM gd-mag-4-Ev-Msg-Finish-Entry
            WHEN Msg-Goto-Cell ALSO 5148 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Goto-Cell
+              PERFORM gd-mag-4-Ev-Msg-Goto-Cell
            WHEN Msg-Goto-Cell-Drag ALSO 5148 ALSO
                     form1-handle 
-              PERFORM gd-clienti-Ev-Msg-Goto-Cell-Drag
+              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Drag
            WHEN Msg-Goto-Cell-Mouse ALSO 5148 ALSO
                     form1-handle 
+              PERFORM gd-mag-4-Ev-Msg-Goto-Cell-Mouse
+           WHEN Msg-Begin-Drag ALSO 5152 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Begin-Drag
+           WHEN Msg-Begin-Entry ALSO 5152 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Begin-Entry
+           WHEN Msg-End-Drag ALSO 5152 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-End-Drag
+           WHEN Msg-Goto-Cell ALSO 5152 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Goto-Cell
+           WHEN Msg-Goto-Cell-Drag ALSO 5152 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Drag
+           WHEN Msg-Goto-Cell-Mouse ALSO 5152 ALSO
+                    form1-handle 
+              PERFORM gd-tipocli-Ev-Msg-Goto-Cell-Mouse
+           WHEN Msg-Begin-Drag ALSO 5153 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Begin-Drag
+           WHEN Msg-Begin-Entry ALSO 5153 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Begin-Entry
+           WHEN Msg-End-Drag ALSO 5153 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-End-Drag
+           WHEN Msg-Goto-Cell ALSO 5153 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Goto-Cell
+           WHEN Msg-Goto-Cell-Drag ALSO 5153 ALSO
+                    form1-handle 
+              PERFORM gd-clienti-Ev-Msg-Goto-Cell-Drag
+           WHEN Msg-Goto-Cell-Mouse ALSO 5153 ALSO
+                    form1-handle 
               PERFORM gd-clienti-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5149 ALSO
+           WHEN Msg-Begin-Drag ALSO 5154 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5149 ALSO
+           WHEN Msg-Begin-Entry ALSO 5154 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5149 ALSO
+           WHEN Msg-End-Drag ALSO 5154 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5149 ALSO
+           WHEN Msg-Goto-Cell ALSO 5154 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5149 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5154 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5149 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5154 ALSO
                     form1-handle 
               PERFORM gd-gdo-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Begin-Drag ALSO 5150 ALSO
+           WHEN Msg-Begin-Drag ALSO 5155 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5150 ALSO
+           WHEN Msg-Begin-Entry ALSO 5155 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5150 ALSO
+           WHEN Msg-End-Drag ALSO 5155 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-End-Drag
-           WHEN Msg-Goto-Cell ALSO 5150 ALSO
+           WHEN Msg-Goto-Cell ALSO 5155 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5150 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5155 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5150 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5155 ALSO
                     form1-handle 
               PERFORM gd-destini-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -10581,6 +10777,7 @@
            move prm-forza1            of param to chk-forza1-4-buf. 
            move prm-forza2            of param to chk-forza2-4-buf. 
            move prm-forza3            of param to chk-forza3-4-buf. 
+           move prm-param-shi         of param to chk-param-shi-4-buf. 
 
            modify gd-mag-4, reset-grid = 1.
            perform GD-MAG-4-CONTENT.
@@ -10825,7 +11022,8 @@
               prm-path-logo        of param not = old-prm-path-logo   or
               prm-forza1           of param not = old-prm-forza1 or
               prm-forza2           of param not = old-prm-forza2 or
-              prm-forza3           of param not = old-prm-forza3
+              prm-forza3           of param not = old-prm-forza3 or
+              prm-param-shi        of param not = old-prm-param-shi
 
               set rec-cambiato  to true
            end-if
@@ -11039,12 +11237,15 @@
 
            if como-prm-forza2 not = old-prm-forza2
               move como-prm-forza2 to prm-forza2 of param
-           end-if   
+           end-if                              
 
            if como-prm-forza3 not = old-prm-forza3
               move como-prm-forza3 to prm-forza3 of param
            end-if   
 
+           if como-prm-param-shi not = old-prm-param-shi
+              move como-prm-param-shi to prm-param-shi of param
+           end-if   
 
            if como-prm-cod-art-forn not = old-prm-cod-art-forn
               move como-prm-cod-art-forn to prm-cod-art-forn of param
@@ -11254,6 +11455,7 @@
            move prm-forza1 of param to chk-forza1-3-buf.
            move prm-forza2 of param to chk-forza2-3-buf.
            move prm-forza3 of param to chk-forza3-3-buf.
+           move prm-param-shi of param to chk-param-shi-3-buf.
 
            modify gd-mag-3, reset-grid = 1.
            perform GD-MAG-3-CONTENT.
@@ -11490,6 +11692,7 @@
            move prm-forza1 of param to chk-forza1-2-buf.
            move prm-forza2 of param to chk-forza2-2-buf.
            move prm-forza3 of param to chk-forza3-2-buf.
+           move prm-param-shi of param to chk-param-shi-2-buf.
 
            modify gd-mag-2, reset-grid = 1.
            perform GD-MAG-2-CONTENT.
@@ -11729,6 +11932,7 @@
            move prm-forza1 of param to chk-forza1-1-buf.
            move prm-forza2 of param to chk-forza2-1-buf.
            move prm-forza3 of param to chk-forza3-1-buf.
+           move prm-param-shi of param to chk-param-shi-1-buf.
 
            modify gd-mag-1, reset-grid = 1.
            perform GD-MAG-1-CONTENT.
@@ -11991,7 +12195,13 @@
                  modify chk-forza1-1, value chk-forza1-1-buf
                  modify chk-forza2-1, value chk-forza2-1-buf
               end-if
-           end-if
+           end-if         
+
+           if como-prm-param-shi not = old-prm-param-shi
+              move como-prm-param-shi to chk-param-shi-1-buf
+              modify chk-param-shi-1 value chk-param-shi-1-buf
+              set modificato to true
+           end-if   
 
            if como-prm-imb-minimo not = old-prm-imb-minimo
               move como-prm-imb-minimo to chk-imb-min-1-buf
@@ -12224,6 +12434,12 @@
               end-if
            end-if                                                    
 
+           if como-prm-param-shi not = old-prm-param-shi
+              move como-prm-param-shi to chk-param-shi-2-buf
+              modify chk-param-shi-2 value chk-param-shi-2-buf
+              set modificato to true
+           end-if                                                    
+
            if como-prm-cod-art-forn not = old-prm-cod-art-forn
               move como-prm-cod-art-forn to chk-art-forn-2-buf
               modify chk-art-forn-2 value chk-art-forn-2-buf
@@ -12440,11 +12656,18 @@
               end-if
            end-if                                                    
               
+           if como-prm-param-shi not = old-prm-param-shi
+              move como-prm-param-shi to chk-param-shi-3-buf
+              modify chk-param-shi-3 value chk-param-shi-3-buf
+              set modificato to true
+           end-if                                         
+              
            if como-prm-imb-minimo not = old-prm-imb-minimo
               move como-prm-imb-minimo to chk-imb-min-3-buf
               modify chk-imb-min-3 value chk-imb-min-3-buf
               set modificato to true
            end-if
+
            if como-prm-cod-art-forn not = old-prm-cod-art-forn
               move como-prm-cod-art-forn to chk-art-forn-3-buf
               modify chk-art-forn-3 value chk-art-forn-3-buf
@@ -12661,11 +12884,18 @@
               end-if
            end-if                     
                                
+           if como-prm-param-shi not = old-prm-param-shi
+              move como-prm-param-shi to chk-param-shi-4-buf
+              modify chk-param-shi-4 value chk-param-shi-4-buf
+              set modificato to true
+           end-if          
+                               
            if como-prm-imb-minimo not = old-prm-imb-minimo
               move como-prm-imb-minimo to chk-imb-min-4-buf
               modify chk-imb-min-4 value chk-imb-min-4-buf
               set modificato to true
            end-if
+
            if como-prm-cod-art-forn not = old-prm-cod-art-forn
               move como-prm-cod-art-forn to chk-art-forn-4-buf
               modify chk-art-forn-4 value chk-art-forn-4-buf
@@ -12881,7 +13111,8 @@
            set prm-forza1-no           of param to true
            set prm-forza2-no           of param to true
            set prm-forza3-no           of param to true 
-           set prm-cod-art-forn-no     of param to true
+           set prm-cod-art-forn-no     of param to true 
+           set prm-param-shi-no         of param to true
            set prm-add-piombo-perce-no  of param to true
            set prm-add-piombo-ampere-no of param to true
            set prm-add-piombo-bosch-no  of param to true
@@ -13065,6 +13296,8 @@
            move chk-forza2-buf  to prm-forza2 of param.
            move chk-forza3-buf  to prm-forza3 of param.
 
+           move chk-param-shi-buf  to prm-param-shi of param.
+
            initialize prm-tab-depositi of param.
            inquire gd-mag, last-row in tot-righe.
            move 1 to idx.
@@ -13117,6 +13350,7 @@
            move chk-forza1-1-buf  to prm-forza1 of param.
            move chk-forza2-1-buf  to prm-forza2 of param.
            move chk-forza3-1-buf  to prm-forza3 of param.
+           move chk-param-shi-1-buf  to prm-param-shi of param.
 
            initialize prm-tab-depositi of param
            inquire gd-mag-1, last-row in tot-righe
@@ -13173,6 +13407,8 @@
            move chk-forza2-2-buf  to prm-forza2 of param.
            move chk-forza3-2-buf  to prm-forza3 of param.
 
+           move chk-param-shi-2-buf  to prm-param-shi of param.
+
            initialize prm-tab-depositi of param
            inquire gd-mag-2, last-row in tot-righe
            move 1 to idx
@@ -13227,6 +13463,7 @@
            move chk-forza1-3-buf  to prm-forza1 of param.
            move chk-forza2-3-buf  to prm-forza2 of param.
            move chk-forza3-3-buf  to prm-forza3 of param.
+           move chk-param-shi-3-buf  to prm-param-shi of param.
 
            initialize prm-tab-depositi of param
            inquire gd-mag-3, last-row in tot-righe
@@ -13283,6 +13520,7 @@
            move chk-forza1-4-buf  to prm-forza1 of param.
            move chk-forza2-4-buf  to prm-forza2 of param.
            move chk-forza3-4-buf  to prm-forza3 of param.
+           move chk-param-shi-4-buf  to prm-param-shi of param.
 
            initialize prm-tab-depositi of param
            inquire gd-mag-4, last-row in tot-righe
@@ -14345,6 +14583,8 @@
               move chk-forza2-buf to chk-forza2-1-buf
               move chk-forza3-buf to chk-forza3-1-buf
 
+              move chk-param-shi-buf  to chk-param-shi-1-buf
+
               perform GD-MAG-1-CONTENT
               perform varying riga from 2 by 1 
                         until riga > tot-righe
@@ -14638,6 +14878,7 @@
                  move chk-forza1-buf to chk-forza1-2-buf
                  move chk-forza2-buf to chk-forza2-2-buf
                  move chk-forza3-buf to chk-forza3-2-buf
+                 move chk-param-shi-buf  to chk-param-shi-2-buf
 
                  inquire gd-mag, last-row in tot-righe
                  modify gd-mag-2, reset-grid = 1
@@ -14799,6 +15040,7 @@
                     move chk-forza1-buf to chk-forza1-3-buf
                     move chk-forza2-buf to chk-forza2-3-buf
                     move chk-forza3-buf to chk-forza3-3-buf
+                    move chk-param-shi-buf  to chk-param-shi-3-buf
 
                     perform GD-MAG-3-CONTENT
                     perform varying riga from 2 by 1 
@@ -15017,6 +15259,7 @@
                        move chk-forza1-buf to chk-forza1-4-buf
                        move chk-forza2-buf to chk-forza2-4-buf
                        move chk-forza3-buf to chk-forza3-4-buf
+                       move chk-param-shi-buf  to chk-param-shi-4-buf
 
                        modify gd-mag-4, reset-grid = 1
                        perform GD-MAG-4-CONTENT
@@ -16393,6 +16636,56 @@
        chk-forza3-4-LinkTo.
       * <TOTEM:PARA. chk-forza3-4-LinkTo>
            perform CONTROLLO 
+           .
+      * <TOTEM:END>
+       chk-param-shi-BeforeProcedure.
+      * <TOTEM:PARA. chk-param-shi-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-param-shi-1-BeforeProcedure.
+      * <TOTEM:PARA. chk-param-shi-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-param-shi-2-BeforeProcedure.
+      * <TOTEM:PARA. chk-param-shi-2-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-param-shi-3-BeforeProcedure.
+      * <TOTEM:PARA. chk-param-shi-3-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-param-shi-4-BeforeProcedure.
+      * <TOTEM:PARA. chk-param-shi-4-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-param-shi-AfterProcedure.
+      * <TOTEM:PARA. chk-param-shi-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-param-shi-1-AfterProcedure.
+      * <TOTEM:PARA. chk-param-shi-1-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-param-shi-2-AfterProcedure.
+      * <TOTEM:PARA. chk-param-shi-2-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-param-shi-3-AfterProcedure.
+      * <TOTEM:PARA. chk-param-shi-3-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-param-shi-4-AfterProcedure.
+      * <TOTEM:PARA. chk-param-shi-4-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 

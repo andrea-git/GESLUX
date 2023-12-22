@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=exp-shi-Ev-Before-Program
 AFTER_PROGRAM=exp-shi-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7C16222744-108-2162026426
+PROGRAM_UNIQUE_CODE=TOTEM-7E7C16234313-25-396823386
 
 {{@DESCRIPTION:
 
@@ -1380,6 +1380,15 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM111_WK
 
 @}}
+[FDITEM112_WK]
+m_strName=Form1a-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -1950,7 +1959,7 @@ Begin Screen Form1a
    Erase Screen      = FALSE
    Font              = Verdana/12/C0/@Occidentale
    Font Variable     = Verdana12-Occidentale
-   Handle Variable   = Form1-Handle
+   Handle Variable   = Form1a-Handle
    Height in Cells   = TRUE
    Help ID           = 0
    Label Offset      = 20
