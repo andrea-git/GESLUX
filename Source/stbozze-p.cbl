@@ -116,7 +116,9 @@
        77  tot-pag               pic 9(2).
        77  num-pag               pic 9(2).
        77  resto                 pic 9(3).
-       77  como-z                pic z.zz9.
+       77  como-z                pic z.zz9.         
+       77  prz-3dec              pic 9(9)v9(3).
+       77  como-prz              pic 9(9)v9(3).
 
        01  pagina-di.
          05 filler               pic x(7) value "Pagina ".
@@ -1397,16 +1399,33 @@
               brno-prz-unitario  not = 0 or
               brno-cod-iva       not = tge-cod-iva-omag
 
-              if stordc-magg > 0                   
+              if stordc-magg > 0                                           
+                 if brno-imponib-merce > 0
+                    compute prz-3dec = brno-imponib-merce +
+                                       brno-imp-consumo   +
+                                       brno-imp-cou-cobat +
+                                       brno-add-piombo
+                    compute prz-3dec = 
+                            prz-3dec * stordc-magg / 100 + 
+                            prz-3dec
+                    move prz-3dec to como-prz
+                    compute prz-3dec = como-prz -  
+                                       brno-imp-consumo   -
+                                       brno-imp-cou-cobat -
+                                       brno-add-piombo
+              
+                    add 0,005 to prz-3dec giving brno-imponib-merce
+                 end-if
 
-                 compute brno-prz-unitario =
-                         brno-prz-unitario * 
-                      (( 100 + stordc-magg ) / 100)
-                 compute brno-imponib-merce =
-                         brno-prz-unitario  -
-                         brno-imp-cou-cobat -
-                         brno-imp-consumo   -
-                         brno-add-piombo
+
+      *           compute brno-prz-unitario =
+      *                   brno-prz-unitario * 
+      *                (( 100 + stordc-magg ) / 100)
+      *           compute brno-imponib-merce =
+      *                   brno-prz-unitario  -
+      *                   brno-imp-cou-cobat -
+      *                   brno-imp-consumo   -
+      *                   brno-add-piombo
               end-if
 
               move brno-imponib-merce   to st-brno-imponib-merce
