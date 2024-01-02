@@ -1397,19 +1397,16 @@
               brno-prz-unitario  not = 0 or
               brno-cod-iva       not = tge-cod-iva-omag
 
-              if stordc-magg > 0
-                 compute brno-imponib-merce =
-                         brno-imponib-merce *        
-                      (( 100 + stordc-magg ) / 100)
-                 compute brno-imp-cou-cobat =
-                         brno-imp-cou-cobat * 
-                      (( 100 + stordc-magg ) / 100) 
-                 compute brno-imp-consumo =
-                         brno-imp-consumo * 
-                      (( 100 + stordc-magg ) / 100)
+              if stordc-magg > 0                   
+
                  compute brno-prz-unitario =
                          brno-prz-unitario * 
                       (( 100 + stordc-magg ) / 100)
+                 compute brno-imponib-merce =
+                         brno-prz-unitario  -
+                         brno-imp-cou-cobat -
+                         brno-imp-consumo   -
+                         brno-add-piombo
               end-if
 
               move brno-imponib-merce   to st-brno-imponib-merce
