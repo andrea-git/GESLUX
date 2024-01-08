@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 6 dicembre 2023 11:33:41.
+       DATE-WRITTEN.        lunedì 8 gennaio 2024 12:25:03.
        REMARKS.
       *{TOTEM}END
 
@@ -14368,7 +14368,7 @@
               set contatore-lock to true
               set ingresso to true
               perform SCRIVI-LOCKFILE
-           else
+           else    
 
               set  cli-tipo-C  to true
               move tte-cliente to cli-codice
@@ -14415,7 +14415,13 @@
               end-if
               read tcaumag no lock invalid continue end-read
               move tte-cliente        to tor-cod-cli
-              move tte-destino        to tor-prg-destino   
+              move tte-destino        to tor-prg-destino 
+
+              move tte-cliente to como-prm-cliente
+              move tte-destino to como-prm-destino
+              perform TROVA-PARAMETRO
+ 
+              if tte-destino = 1971 stop "K" end-if
               if tte-num-master = 1
                  move tte-num-ord-cli-m(1) to tor-num-ord-cli
                  move tte-data-ordine-m(1) to tor-data-ordine
