@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=accetordforn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B18174844-854-1193016474
+PROGRAM_UNIQUE_CODE=TOTEM-7E818153133-745-271523683
 
 {{@DESCRIPTION:
 
@@ -3022,7 +3022,7 @@ Begin Screen Form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 32
+      ID                = 46
       Justification     = Unaligned
       Label Offset      = 25
       Line              = 20,44
@@ -4504,7 +4504,12 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = chk3-LinkTo
 BEGIN-TEXT
-
+           inquire chk3, value in chk3-buf.
+           if chk3-buf = 1
+              modify chk3, bitmap-number = 2
+           else
+              modify chk3, bitmap-number = 1
+           end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA

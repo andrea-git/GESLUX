@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          inventario.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:17:12.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        lunedì 8 gennaio 2024 16:32:17.
        REMARKS.
       *{TOTEM}END
 
@@ -48,9 +48,7 @@
                COPY "opensave.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -3235,6 +3233,12 @@
       * <TOTEM:END>
        chk3-LinkTo.
       * <TOTEM:PARA. chk3-LinkTo>
+           inquire chk3, value in chk3-buf.
+           if chk3-buf = 1
+              modify chk3, bitmap-number = 2
+           else
+              modify chk3, bitmap-number = 1
+           end-if 
            .
       * <TOTEM:END>
        chk4-LinkTo.

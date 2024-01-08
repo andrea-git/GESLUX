@@ -18,7 +18,8 @@
                           
        PROCEDURE DIVISION.
 
-       MAIN.                      
+       MAIN.         
+           set environment "MACROBATCH" to "2". |per utilizzo divisioni (tutte anziché auto) in evasione clienti
            call   "macrobatch" using "X".
            cancel "macrobatch".
            goback.

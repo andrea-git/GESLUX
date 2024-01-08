@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 8 gennaio 2024 12:25:03.
+       DATE-WRITTEN.        lunedì 8 gennaio 2024 16:25:55.
        REMARKS.
       *{TOTEM}END
 
@@ -169,6 +169,7 @@
                   VALUE IS 0.
        77 idx-gen          PIC  9(3)
                   VALUE IS 0.
+       77 macrobatch       PIC  x.
        01 FILLER           PIC  9.
            88 evasioni-generate VALUE IS 1    WHEN SET TO FALSE  0. 
        01 tab-tipologie.
@@ -14326,8 +14327,10 @@
            if RichiamoBatch
               move cli-tipo to tcl-codice
               read ttipocli no lock
-              if tcl-edi-auto-no
-                 set record-ok to false
+              if macrobatch not = "2"
+                 if tcl-edi-auto-no
+                    set record-ok to false
+                 end-if
               end-if
            else
               set record-ok to false
@@ -15941,6 +15944,8 @@
       * <TOTEM:PARA. aggmese-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
            if lk-bl-prog-id = "macrobatch"
+           
+              accept macrobatch from environment "MACROBATCH"
               set RichiamoBatch to true
 
               open i-o macrobatch

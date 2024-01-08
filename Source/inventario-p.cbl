@@ -116,7 +116,7 @@
        77  como-quantita       pic 9(8).
        77  como-imballo        pic x(3).
        77  quantita-x          pic x(10).
-       77  como-peso           pic 9(6).
+       77  como-peso           pic 9(7).
        77  save-giacenza       pic 9(8).
        77  save-giacenza3      pic s9(8).
        77  save-quantita       pic 9(8).
