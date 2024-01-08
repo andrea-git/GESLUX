@@ -36,6 +36,7 @@
            copy "macrobatch.sl".
            copy "lockfile.sl".
            copy "lineseq-mail.sl".
+           copy "lock-div.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -44,7 +45,8 @@
            copy "tsetinvio.fd".
            copy "lineseq-mail.fd".   
            copy "macrobatch.fd".
-           copy "lockfile.fd".  
+           copy "lockfile.fd".    
+           copy "lock-div.fd".
 
        WORKING-STORAGE SECTION.  
        77  status-log-macrobatch   pic xx.
@@ -53,11 +55,13 @@
        77  status-lineseq1         pic xx.
        77  status-macrobatch       pic xx.
        77  status-lockfile         pic xx.
+       77  status-lock-div         pic xx.
        77  path-lineseq-mail       pic x(256).
 
        77  wstampa                 pic x(256).
        77  path-log-macrobatch     pic x(256) value spaces.
        77  debugger-test           pic x.
+       77  cod-err                 pic x(4).
        
        77  user-cod                pic x(10).   
        77  como-data               pic 9(8).
@@ -79,6 +83,11 @@
        LOCKFILE-ERR SECTION.
            use after error procedure on lockfile.
            continue.
+
+      ***---
+       LOCK-DIV-ERR SECTION.
+           use after error procedure on lock-div.
+           call "C$RERR" using cod-err. 
        END DECLARATIVES.
 
        MAIN.            
@@ -98,7 +107,7 @@
                    como-ora            delimited size
                    ".log"              delimited size
               into path-log-macrobatch
-           end-string.
+           end-string.          
 
            open output log-macrobatch.
            open i-o    macrobatch lockfile.             
@@ -122,10 +131,28 @@
                   "INIZIO PROCEDURA, INVIO MAIL " delimited size
              into lm-riga
            end-string.
-           write lm-riga.              
-           
+           write lm-riga.       
       
            perform INVIO-MAIL-INI.
+
+           open input lock-div.
+           if status-lock-div = "00"
+              close       lock-div
+              open output lock-div  
+              if status-lock-div not = "00"
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output   delimited size
+                        "ERRORE: " delimited size
+                        cod-err    delimited size
+                        " SU FILE LOCK-DIV. ELABORAZIONE INTERROTTA"
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              close lock-div
+           end-if.
 
            initialize lck-rec replacing numeric data by zeroes 
                                    alphanumeric data by spaces. 

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B18175349-885-214725988
+PROGRAM_UNIQUE_CODE=TOTEM-7E81883239-394-1866314464
 
 {{@DESCRIPTION:
 
@@ -17425,7 +17425,20 @@ LABLAB                   end-if
                          move mto-prg-destino to como-prm-destino
                       
                          perform SCRIVI-RIGHE-ORDINE 
-                         
+                                        
+
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output         delimited size
+                                   "PRIMA SOST-ART" delimited size
+                                   mto-numero       delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
                          move mto-chiave to sost-art-chiave
                          move user-codi  to sost-art-user
                          |Deve fare solo gli AUTO
@@ -21249,10 +21262,21 @@ BEGIN-TEXT
                     exit perform
                  end-if
               end-perform
-              if errori
-                 display message "Selezionare almeno una divisione"
-                           title tit-err
-                            icon 2
+              if errori                 
+                 if RichiamoBatch 
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output           delimited size
+                           "SELEZIONARE ALMENO UNA DIVISIONE" delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                 else
+                    display message "Selezionare almeno una divisione"
+                              title tit-err
+                               icon 2
+                 end-if
               end-if
            end-if. 
 
@@ -21281,11 +21305,22 @@ BEGIN-TEXT
                  end-if
               end-perform
               close lock-div
-              if errori
-                 display message "Ci sono altri utenti che utilizzano le divisioni selezionate."
-                          x"0d0a""Verifiacre la griglia"
-                           title tit-err
-                            icon 2
+              if errori                 
+                 if RichiamoBatch 
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output           delimited size
+                           "CI SONO ALTRI UTENTI CHE UTILIZZANO LE DIVISIONI SELEZIONATE." delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                 else
+                    display message "Ci sono altri utenti che utilizzano le divisioni selezionate."
+                             x"0d0a""Verifiacre la griglia"
+                              title tit-err
+                               icon 2
+                 end-if
               end-if
            end-if.
 

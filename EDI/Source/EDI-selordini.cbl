@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 24 novembre 2023 19:00:09.
+       DATE-WRITTEN.        lunedì 8 gennaio 2024 09:59:11.
        REMARKS.
       *{TOTEM}END
 
@@ -18299,7 +18299,20 @@ LABLAB                   end-if
                          move mto-prg-destino to como-prm-destino
                       
                          perform SCRIVI-RIGHE-ORDINE 
-                         
+                                        
+
+                         if RichiamoBatch
+                            call   "set-ini-log" using r-output
+                            cancel "set-ini-log"
+                            initialize lm-riga
+                            string r-output         delimited size
+                                   "PRIMA SOST-ART" delimited size
+                                   mto-numero       delimited size
+                              into lm-riga
+                            end-string
+                            write lm-riga
+                         end-if
+
                          move mto-chiave to sost-art-chiave
                          move user-codi  to sost-art-user
                          |Deve fare solo gli AUTO
@@ -22037,10 +22050,22 @@ LABLAB        if tcl-si-recupero and
                     exit perform
                  end-if
               end-perform
-              if errori
-                 display message "Selezionare almeno una divisione"
-                           title tit-err
-                            icon 2
+              if errori                 
+                 if RichiamoBatch 
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output           delimited size
+                           "SELEZIONARE ALMENO UNA DIVISIONE" delimited 
+           size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                 else
+                    display message "Selezionare almeno una divisione"
+                              title tit-err
+                               icon 2
+                 end-if
               end-if
            end-if. 
 
@@ -22069,12 +22094,24 @@ LABLAB        if tcl-si-recupero and
                  end-if
               end-perform
               close lock-div
-              if errori
-                 display message "Ci sono altri utenti che utilizzano le
-      -    " divisioni selezionate."
-                          x"0d0a""Verifiacre la griglia"
-                           title tit-err
-                            icon 2
+              if errori                 
+                 if RichiamoBatch 
+                    call   "set-ini-log" using r-output
+                    cancel "set-ini-log"
+                    initialize lm-riga
+                    string r-output           delimited size
+                           "CI SONO ALTRI UTENTI CHE UTILIZZANO LE DIVIS
+      -    "IONI SELEZIONATE." delimited size
+                      into lm-riga
+                    end-string
+                    write lm-riga
+                 else
+                    display message "Ci sono altri utenti che utilizzano
+      -    " le divisioni selezionate."
+                             x"0d0a""Verifiacre la griglia"
+                              title tit-err
+                               icon 2
+                 end-if
               end-if
            end-if.
 
