@@ -65,7 +65,7 @@
                10 tcs-magazzino    PIC  x(3).
                10 tcs-causale      PIC  x(4).
            05 tcs-dati.
-               10 tcs-tot-utf      PIC  9(5)v999.
+               10 tcs-tot-utf      PIC  9(11)v999.
                10 tcs-elemento
                           OCCURS 1000 TIMES.
                    15 tcs-prg-chiave.

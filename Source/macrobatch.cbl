@@ -135,18 +135,37 @@
       
            perform INVIO-MAIL-INI.
 
-           open input lock-div.
+           open input lock-div.     
+
+           call   "set-ini-log" using r-output.
+           cancel "set-ini-log".
+           initialize lm-riga.
+           string r-output                        delimited size
+                  "OPEN INPUT LOCK-DIV, STATUS: " delimited size
+                  status-lock-div                 delimited size
+             into lm-riga
+           end-string.
+           write lm-riga. 
+
            if status-lock-div = "00"
               close       lock-div
-              open output lock-div  
+              open output lock-div         
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
               if status-lock-div not = "00"
-                 call   "set-ini-log" using r-output
-                 cancel "set-ini-log"
                  initialize lm-riga
                  string r-output   delimited size
                         "ERRORE: " delimited size
                         cod-err    delimited size
                         " SU FILE LOCK-DIV. ELABORAZIONE INTERROTTA"
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              else   
+                 initialize lm-riga
+                 string r-output                         delimited size
+                        "OPEN OUTPUT LOCK-DIV, STATUS: " delimited size
+                        status-lock-div                  delimited size
                    into lm-riga
                  end-string
                  write lm-riga

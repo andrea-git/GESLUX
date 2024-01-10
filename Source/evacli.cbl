@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 8 gennaio 2024 16:25:55.
+       DATE-WRITTEN.        mercoledì 10 gennaio 2024 11:12:39.
        REMARKS.
       *{TOTEM}END
 
@@ -11740,7 +11740,19 @@
                     add 1 to riga
                  end-perform
            end-start.
-           if RichiamoBatch
+           if RichiamoBatch 
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output           delimited size
+                        "PB-ESEGUI-LINKTO" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
               move 1 to tipo-evasione
               perform PB-ESEGUI-LINKTO
               move 27 to key-status
@@ -13933,18 +13945,138 @@
              not invalid perform LOOP-MTORDINI
            end-start.
 
-           if tot-master > 0
-              perform CICLO-PROMO
-              perform CICLO-EVADIBILITA-PROMO
-              perform CICLO-BANCO
-              perform CICLO-EVADIBILITA-BANCO
+           if tot-master > 0              
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output               delimited size
+                        "TOT MASTER TROVATI: " delimited size
+                        tot-master             delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+                                           
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output      delimited size
+                        "CICLO-PROMO" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+
+              perform CICLO-PROMO                       
+              
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                  delimited size
+                        "CICLO-EVADIBILITA-PROMO" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
+              perform CICLO-EVADIBILITA-PROMO                        
+              
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output      delimited size
+                        "CICLO-BANCO" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+
+              perform CICLO-BANCO   
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                  delimited size
+                        "CICLO-EVADIBILITA-BANCO" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
+              perform CICLO-EVADIBILITA-BANCO       
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output     delimited size
+                        "RIEMPI-GD1" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
               perform RIEMPI-GD1
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output          delimited size
+                        "EVASIONE-INTERA" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
       *****        if EvasioneIntera
                  perform EVASIONE-INTERA
-      *****        end-if
+      *****        end-if     
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output     delimited size
+                        "RIEMPI-GD3" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
               perform RIEMPI-GD3
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output         delimited size
+                        "RIEMPI-GD-RIEP" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
               perform RIEMPI-GD-RIEP
-              move 2 to event-data-2
+              move 2 to event-data-2 
+
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output        delimited size
+                        "SPOSTAMENTO-1" delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              end-if
+              
               perform SPOSTAMENTO-1
 
               initialize line-riga
@@ -13987,7 +14119,18 @@
            end-if.
 
       ***---
-       LOOP-MTORDINI.
+       LOOP-MTORDINI.              
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output        delimited size
+                     "LOOP-MTORDINI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            |FILTRO TUTTI I MASTER APPARTENENTI ALL'EVASIONE SCELTA E NON CHIUSI
            |FILTRO TUTTI I MASTER CON DATA CONSEGNA < DI OGGI+GG-CONSEGNA-MAX 
            |SE EVADI TUTTO=NO, ALTRIMENTI NON GUARDO NEMMENO I GIORNI DI CONSEGNA
@@ -14216,7 +14359,17 @@
            move spaces to mess.
            accept mess from environment "SW_MESS_EVASIONE".
            if RichiamoBatch
-              move "N" to mess
+              move "N" to mess      
+
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output          delimited size
+                     "GENERA-EVASIONI" delimited size
+                into lm-riga
+              end-string
+              write lm-riga   
+              
            end-if.
 
            set PrimaVolta to true.
@@ -14255,10 +14408,32 @@
               perform COUNTER-VIDEO
 
            end-perform.
-
+                          
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output           delimited size
+                     "RICHIAMO EVAOMAG" delimited size
+                into lm-riga
+              end-string
+              write lm-riga   
+           end-if.
+   
            call   "evaomag" using tge-anno primo-numero ultimo-numero.
            cancel "evaomag".
-
+                          
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output              delimited size
+                     "RICHIAMO EVACONTRAS" delimited size
+                into lm-riga
+              end-string
+              write lm-riga   
+           end-if.  
+              
            call   "evacontras" using tge-anno primo-numero 
            ultimo-numero.
            cancel "evacontras".
@@ -14422,9 +14597,23 @@
 
               move tte-cliente to como-prm-cliente
               move tte-destino to como-prm-destino
+                          
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                     delimited size
+                        "TROVA-PARAMETRO. CLIENTE: " delimited size
+                        tte-cliente                  delimited size
+                        " - DESTINO: "               delimited size
+                        tte-destino                  delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga   
+              end-if
+
               perform TROVA-PARAMETRO
- 
-              if tte-destino = 1971 stop "K" end-if
+                                           
               if tte-num-master = 1
                  move tte-num-ord-cli-m(1) to tor-num-ord-cli
                  move tte-data-ordine-m(1) to tor-data-ordine
@@ -15915,7 +16104,22 @@
            
            if link-status-nambar = -1 set errori       to true
            else                       move link-numero to tor-numero
-           end-if 
+           end-if.    
+                          
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output                   delimited size
+                     "GENERATA EVASIONE ANNO: " delimited size
+                     link-anno                  delimited size
+                     " - NUMERO: "              delimited size
+                     link-numero                delimited size
+                into lm-riga
+              end-string
+              write lm-riga   
+           end-if   
+              
            .
       * <TOTEM:END>
 

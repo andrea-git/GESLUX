@@ -61,7 +61,7 @@
        77  modulinv-path         pic x(256).
        77  SaveMarca             pic 9(5) value 0.
        77  prg-cod-articolo-edit pic z(6).
-       77  prg-peso-edit         pic zz9,999.
+       77  prg-peso-edit         pic zz.zz9,999.
        77  imballi-ed            pic z.zz9.
        77  qta-edit              pic z.zzz.
        77  giacenza-ed           pic ---.---.--9.
