@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E81A95413-184-236377030
+PROGRAM_UNIQUE_CODE=TOTEM-7E81B83044-521-781914649
 
 {{@DESCRIPTION:
 
@@ -11471,6 +11470,21 @@ BEGIN-TEXT
               else                 set tor-ev-immediata to true
               end-if
               write tor-rec
+                          
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                   delimited size
+                        "GENERATA EVASIONE ANNO: " delimited size
+                        tor-anno                   delimited size
+                        " - NUMERO: "              delimited size
+                        tor-numero                 delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga   
+              end-if
+           
               if stordc-da-anno = 0 or
                  stordc-da-num  = 0
                  move tor-anno   to stordc-da-anno
@@ -12823,22 +12837,7 @@ BEGIN-TEXT
            
            if link-status-nambar = -1 set errori       to true
            else                       move link-numero to tor-numero
-           end-if.    
-                          
-           if RichiamoBatch
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                   delimited size
-                     "GENERATA EVASIONE ANNO: " delimited size
-                     link-anno                  delimited size
-                     " - NUMERO: "              delimited size
-                     link-numero                delimited size
-                into lm-riga
-              end-string
-              write lm-riga   
-           end-if.  
-              
+           end-if.      
 END-TEXT
 END-DATA
 BEGIN-DATA
