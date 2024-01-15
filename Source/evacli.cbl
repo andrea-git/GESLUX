@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 gennaio 2024 11:12:39.
+       DATE-WRITTEN.        giovedì 11 gennaio 2024 09:32:20.
        REMARKS.
       *{TOTEM}END
 
@@ -14718,6 +14718,21 @@
               else                 set tor-ev-immediata to true
               end-if
               write tor-rec
+                          
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                   delimited size
+                        "GENERATA EVASIONE ANNO: " delimited size
+                        tor-anno                   delimited size
+                        " - NUMERO: "              delimited size
+                        tor-numero                 delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga   
+              end-if
+           
               if stordc-da-anno = 0 or
                  stordc-da-num  = 0
                  move tor-anno   to stordc-da-anno
@@ -16104,22 +16119,7 @@
            
            if link-status-nambar = -1 set errori       to true
            else                       move link-numero to tor-numero
-           end-if.    
-                          
-           if RichiamoBatch
-              call   "set-ini-log" using r-output
-              cancel "set-ini-log"
-              initialize lm-riga
-              string r-output                   delimited size
-                     "GENERATA EVASIONE ANNO: " delimited size
-                     link-anno                  delimited size
-                     " - NUMERO: "              delimited size
-                     link-numero                delimited size
-                into lm-riga
-              end-string
-              write lm-riga   
-           end-if   
-              
+           end-if       
            .
       * <TOTEM:END>
 
