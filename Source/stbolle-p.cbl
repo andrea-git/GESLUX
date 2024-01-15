@@ -172,6 +172,9 @@
        77  como-iva-2dec           pic 9(12)v99.
        01  filler                  pic 9 value 0.
          88 trovataIva                   value 1, false 0.
+
+       01  filler                  pic 9 value 0.
+         88 primaBolla                   value 1, false 0.
                                               
        77  contras-note-bolla-pre  pic x(100).
        77  contras-note-bolla-post pic x(100).
@@ -1755,7 +1758,22 @@ LABLAB                             end-if
                              tor-data-bolla = 0 and
                              tor-num-bolla  = 0
                              exit perform
-                          end-if
+                          end-if                          
+                          if LinkPgm = "stfatt"  
+                             if stbolle-cliente not = 0 and
+                                stbolle-cliente not = tor-cod-cli
+                                exit perform cycle
+                             end-if
+                             if stbolle-gdo not = spaces 
+                                move tor-cod-cli to cli-codice
+                                set cli-tipo-C   to true
+                                read clienti     no lock
+                                if cli-gdo not = stbolle-gdo
+                                   exit perform cycle
+                                end-if
+                             end-if
+                          end-if 
+                                
                           if tor-num-bolla  >=  stb-numero-da and
                              tor-num-bolla  <=  stb-numero-a
                              if LinkPgm = "gordcvar"
@@ -1764,6 +1782,13 @@ LABLAB                             end-if
       *                          if tor-anno-fattura = 0 and 
       *                             tor-data-fattura = 0 and
       *                             tor-num-prenot   = 0
+                                   if LinkPgm = "stfatt"  
+                                      if primaBolla
+                                         set primaBolla to false
+                                      else
+                                         perform SALTO-PAGINA-GRAF
+                                      end-if
+                                   end-if
                                    perform STAMPA-DATI
       *                          end-if
                              end-if

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          stfatt.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 10 gennaio 2023 17:41:12.
+       DATE-WRITTEN.        lunedì 15 gennaio 2024 18:59:59.
        REMARKS.
       *{TOTEM}END
 
@@ -63,7 +63,9 @@
           88 Screen-Time-Out VALUE 99.
       * Properties & User defined Working Stoarge
            COPY  "LINK-STFATT.DEF".
-       78 titolo VALUE IS "Geslux - Stampa fatture / Note Credito". 
+       78 titolo VALUE IS "Geslux - Stampa fatture / Note Credito / Boll
+      -    "e". 
+           COPY  "LINK-STBOLLE.DEF".
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
        77 Default-Font
@@ -301,7 +303,7 @@
            Combo-Box, 
            COL 31,30, 
            LINE 6,50,
-           LINES 4,00 ,
+           LINES 7,00 ,
            SIZE 10,00 ,
            3-D,
            COLOR IS 513,
@@ -1883,8 +1885,9 @@ LUBEXX     move tge-anno to anno.
            modify cbo-tipo, value = "Tutte".
 
            modify cbo-documento, reset-list  = 1.
-           modify cbo-documento, item-to-add = "Fatture".
+           modify cbo-documento, item-to-add = "Fatture".    
            modify cbo-documento, item-to-add = "Note Cr.".
+           modify cbo-documento, item-to-add = "Bolle".
            modify cbo-documento, value = "Fatture".
 
            .
@@ -2364,12 +2367,31 @@ LUBEXX     move tge-anno to anno.
 
               inquire cbo-documento, value cbo-documento-buf
               evaluate cbo-documento-buf
-              when "Fatture"    set fatture     to true
-              when "Note Cr."   set NoteCredito to true
-              end-evaluate
-                                                 
-              call   "stfatt-p" using stfatt-linkage
-              cancel "stfatt-p"               
+              when "Fatture"    
+                   set Fatture     to true
+                   call   "stfatt-p" using stfatt-linkage
+                   cancel "stfatt-p"     
+              when "Note Cr."   
+                   set NoteCredito to true
+                   call   "stfatt-p" using stfatt-linkage
+                   cancel "stfatt-p"     
+              when "Bolle"      
+                   initialize stbolle-linkage replacing numeric data by 
+           zeroes
+                                                   alphanumeric data by 
+           spaces  
+                   move ef-cli-buf      to stbolle-cliente
+                   move ef-gdo-buf      to stbolle-gdo
+                   set stbolle-ristampa to true
+                   move anno            to stbolle-anno
+                   move ef-num-from-buf to stb-numero-da 
+                   move ef-num-to-buf   to stb-numero-a
+                   set  stbolle-k-bolla to true
+
+                   move spaces to stbolle-path
+                   call   "stbolle-p" using stbolle-linkage
+                   cancel "stbolle-p"     
+              end-evaluate  
 
               modify form1-Handle, visible 1
               move 78-ID-ef-anno to CONTROL-ID      
@@ -2385,6 +2407,14 @@ LUBEXX     move tge-anno to anno.
        Screen4-Cm-1-AfterProcedure.
       * <TOTEM:PARA. Screen4-Cm-1-AfterProcedure>
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           inquire cbo-documento, value in cbo-documento-buf.
+           if cbo-documento-buf = "Bolle"
+              modify rb-copia, enabled false
+              modify cbo-tipo, enabled false
+           else                          
+              modify rb-copia, enabled true 
+              modify cbo-tipo, enabled true
+           end-if 
            .
       * <TOTEM:END>
        TOOL-CERCA-LinkTo.
