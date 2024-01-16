@@ -8,5 +8,10 @@
            when 78-ID-ef-molt
                 inquire ef-molt, value in ef-molt-buf
 
+           |78-ID-ef-perce-confronto è l'ID del control ef-perce-confronto
+           when 78-ID-ef-perce-confronto
+                inquire ef-perce-confronto, value in 
+           ef-perce-confronto-buf
+
            end-evaluate.
 
