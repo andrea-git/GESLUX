@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E81B83044-521-781914649
+PROGRAM_UNIQUE_CODE=TOTEM-7E811181154-657-209724015
 
 {{@DESCRIPTION:
 
@@ -11146,6 +11147,18 @@ BEGIN-TEXT
                     end-if
                     if record-ok
                        perform SCRIVI-TESTA
+                          
+                       if RichiamoBatch
+                          call   "set-ini-log" using r-output
+                          cancel "set-ini-log"
+                          initialize lm-riga
+                          string r-output        delimited size
+                                 "SCRIVI-TESTA1" delimited size
+                            into lm-riga
+                          end-string
+                          write lm-riga   
+                       end-if
+
                        if contatore-lock
                           exit perform
                        end-if
@@ -11543,12 +11556,35 @@ BEGIN-TEXT
                              |necessita di una nuova testa
                              if num-imballi = 1
                                 perform SCRIVI-TESTA
+                          
+                                if RichiamoBatch
+                                   call   "set-ini-log" using r-output
+                                   cancel "set-ini-log"
+                                   initialize lm-riga
+                                   string r-output        delimited size
+                                          "SCRIVI-TESTA2" delimited size
+                                     into lm-riga
+                                   end-string
+                                   write lm-riga   
+                                end-if
+
                                 move 0 to num-imballi |e ricomincio
                              else
                                 subtract 1 from num-imballi
                                 compute k-mro-evadibile-ok = k-mro-qta-imb * num-imballi
                                 perform RIGA-EVASIONE
-                                perform SCRIVI-TESTA
+                                perform SCRIVI-TESTA    
+                          
+                                if RichiamoBatch
+                                   call   "set-ini-log" using r-output
+                                   cancel "set-ini-log"
+                                   initialize lm-riga
+                                   string r-output        delimited size
+                                          "SCRIVI-TESTA3" delimited size
+                                     into lm-riga
+                                   end-string
+                                   write lm-riga   
+                                end-if
                  
                                 |Calcolo gli imballi rimanente (ciclici)
                                 subtract  num-imballi from num-imballi-tot
@@ -11567,6 +11603,16 @@ BEGIN-TEXT
                        |Il blister non sarà splittato internamente
                        if ( tot-utf + el-peso-utf-blister-ok(blister-id) ) > 500
                           perform SCRIVI-TESTA
+                          if RichiamoBatch
+                             call   "set-ini-log" using r-output
+                             cancel "set-ini-log"
+                             initialize lm-riga
+                             string r-output        delimited size
+                                    "SCRIVI-TESTA4" delimited size
+                               into lm-riga
+                             end-string
+                             write lm-riga   
+                          end-if
                        end-if
                     end-if
                     perform RIGA-EVASIONE
@@ -11602,13 +11648,36 @@ BEGIN-TEXT
                              |necessita di una nuova testa
                              if num-imballi = 1
                                 perform SCRIVI-TESTA
+                          
+                                if RichiamoBatch
+                                   call   "set-ini-log" using r-output
+                                   cancel "set-ini-log"
+                                   initialize lm-riga
+                                   string r-output        delimited size
+                                          "SCRIVI-TESTA5" delimited size
+                                     into lm-riga
+                                   end-string
+                                   write lm-riga   
+                                end-if
+
                                 move 0 to num-imballi |e ricomincio
                              else
                                 subtract 1 from num-imballi
                                 compute k-mro-evadibile-ok = 
                                         k-mro-qta-imb * num-imballi
                                 perform RIGA-EVASIONE
-                                perform SCRIVI-TESTA
+                                perform SCRIVI-TESTA    
+                          
+                                if RichiamoBatch
+                                   call   "set-ini-log" using r-output
+                                   cancel "set-ini-log"
+                                   initialize lm-riga
+                                   string r-output        delimited size
+                                          "SCRIVI-TESTA6" delimited size
+                                     into lm-riga
+                                   end-string
+                                   write lm-riga   
+                                end-if
                  
                                 |Calcolo gli imballi rimanente (ciclici)
                                 subtract  num-imballi from num-imballi-tot
@@ -11627,6 +11696,18 @@ BEGIN-TEXT
                        |Il blister non sarà splittato internamente
                        if ( tot-peso + el-peso-peso-blister-ok(blister-id) ) > 500
                           perform SCRIVI-TESTA
+                          
+                          if RichiamoBatch
+                             call   "set-ini-log" using r-output
+                             cancel "set-ini-log"
+                             initialize lm-riga
+                             string r-output        delimited size
+                                    "SCRIVI-TESTA7" delimited size
+                               into lm-riga
+                             end-string
+                             write lm-riga   
+                          end-if
+
                           perform RIGA-EVASIONE
                        else
                           |Questo blister ci sta
@@ -11643,6 +11724,17 @@ BEGIN-TEXT
               
       ***---
        RIGA-EVASIONE.
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output        delimited size
+                     "RIGA-EVASIONE" delimited size
+                into lm-riga
+              end-string
+              write lm-riga   
+           end-if.
+
            initialize ror-rec replacing numeric data by zeroes
                                    alphanumeric data by spaces.
 
