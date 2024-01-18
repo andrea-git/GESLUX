@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          nambar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 26 settembre 2023 13:42:03.
+       DATE-WRITTEN.        giovedì 18 gennaio 2024 15:05:12.
        REMARKS.
       *{TOTEM}END
 
@@ -3773,8 +3773,10 @@ PATCH         open input tcontat
               set FromEvasione to false
            end-if.
 
-           set RecLocked to false.
-           perform until 1 = 2
+           
+           perform until 1 = 2                      
+              set RecLocked to false
+              move 0 to link-status-nambar
               open i-o tcontat allowing readers
               if not RecLocked
                  if status-tcontat not = "00"

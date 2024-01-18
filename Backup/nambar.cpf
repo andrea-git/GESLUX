@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen1
 BEFORE_PROGRAM=nambar-Ev-Before-Program
 AFTER_PROGRAM=nambar-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E791A113911-957-268097479
+PROGRAM_UNIQUE_CODE=TOTEM-7E8112135945-437-701528532
 
 {{@DESCRIPTION:
 
@@ -2438,8 +2438,10 @@ BEGIN-TEXT
               set FromEvasione to false
            end-if.
 
-           set RecLocked to false.
-           perform until 1 = 2
+           
+           perform until 1 = 2                      
+              set RecLocked to false
+              move 0 to link-status-nambar
               open i-o tcontat allowing readers
               if not RecLocked
                  if status-tcontat not = "00"
