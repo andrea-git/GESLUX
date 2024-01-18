@@ -1283,10 +1283,10 @@
                   tor-prg-destino     delimited by size 
                   into HUSCTES_DES_CODICE.
 
-           if tor-vettore = 0
-              move "M"                to HUSCTES_TIPO_SPED
-           else
+           if tor-vettore = 75
               move "D"                to HUSCTES_TIPO_SPED
+           else
+              move "M"                to HUSCTES_TIPO_SPED
            end-if.
 
            move tor-num-ord-cli       to HUSCTES_RIF_ORDINE.
