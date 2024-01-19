@@ -194,8 +194,24 @@
                             end-if
                       end-start
                    end-if
+              end-read 
+           else
+              move art-scorta of articoli to sco-codice
+              read tscorte no lock
+                   invalid continue
               end-read
            end-if. 
+
+           if sco-perce-confronto > 0
+              if sco-perce-confronto = 100
+                 compute prz-confronto = prz-confronto * 2
+              else 
+                 compute prz-confronto =  
+                         prz-confronto / 
+                       ( 1 - ( sco-perce-confronto / 100 ) )
+              end-if
+           end-if.         
+           
 
       ***---
        VALUTA-SCELTA-PARTENZA.

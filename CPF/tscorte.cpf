@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8110144959-461-141748748
+PROGRAM_UNIQUE_CODE=TOTEM-7E8113162826-371-1421667
 
 {{@DESCRIPTION:
 
@@ -1272,7 +1272,7 @@ Begin Screen Form1
       Enable            = NONE
       Enable Variable   = MOD
       Field Edited (Style) = 1
-      Field Edited Format = --9
+      Field Edited Format = zz9
       Field Picture     = s9(3)
       Field Variable    = sco-perce-confronto
       File              = tscorte
@@ -1288,7 +1288,7 @@ Begin Screen Form1
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
-      Max Text          = 4
+      Max Text          = 3
       Max Value         = 0
       Min Value         = 0
       No AutoSel        = FALSE
@@ -5153,7 +5153,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 189
+      ID                = 195
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 35,15
@@ -5187,7 +5187,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 190
+      ID                = 196
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 35,15

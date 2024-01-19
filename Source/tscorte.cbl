@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 gennaio 2024 17:59:19.
+       DATE-WRITTEN.        venerdì 19 gennaio 2024 17:28:59.
        REMARKS.
       *{TOTEM}END
 
@@ -145,7 +145,7 @@
       * Data.Check-Box
               05 chk-immbaa-BUF PIC 9 VALUE ZERO.
       * Data.Entry-Field
-              05 ef-perce-confronto-BUF PIC --9.
+              05 ef-perce-confronto-BUF PIC zz9.
       * Data.Check-Box
               05 chk-lun-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
@@ -638,7 +638,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
-           MAX-TEXT 4,
+           MAX-TEXT 3,
            NUMERIC,
            VALUE ef-perce-confronto-BUF,
            .
@@ -2298,7 +2298,7 @@
            LINES 2,23 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 189,
+           ID IS 195,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2314,7 +2314,7 @@
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 190,
+           ID IS 196,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
