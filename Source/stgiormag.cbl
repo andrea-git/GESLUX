@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          stgiormag.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:19:18.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 24 gennaio 2024 12:49:34.
        REMARKS.
       *{TOTEM}END
 
@@ -45,9 +45,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -1600,14 +1598,14 @@
        statraff-Ev-Before-Program.
       * <TOTEM:PARA. statraff-Ev-Before-Program>
            move LK-BL-PROG-ID    TO COMO-PROG-ID.
-           move 1 to Passwd-password.
-           call   "passwd" using Passwd-linkage.
-           cancel "passwd".
-
-           if not Passwd-StatusOk
-              perform STATRAFF-EV-AFTER-PROGRAM
-              goback
-           end-if 
+      *****     move 1 to Passwd-password.
+      *****     call   "passwd" using Passwd-linkage.
+      *****     cancel "passwd".
+      *****
+      *****     if not Passwd-StatusOk
+      *****        perform STATRAFF-EV-AFTER-PROGRAM
+      *****        goback
+      *****     end-if 
            .
       * <TOTEM:END>
        statraff-Ev-After-Program.

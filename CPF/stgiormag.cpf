@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen2
 BEFORE_PROGRAM=statraff-Ev-Before-Program
 AFTER_PROGRAM=statraff-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B1817498-570-269823631
+PROGRAM_UNIQUE_CODE=TOTEM-7E8118114920-555-120130094
 
 {{@DESCRIPTION:
 
@@ -2415,14 +2415,14 @@ BEGIN-DATA
    PARAGRAPH         = statraff-Ev-Before-Program
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen4-blockpgm-1 **>>  
-           move 1 to Passwd-password.
-           call   "passwd" using Passwd-linkage.
-           cancel "passwd".
-
-           if not Passwd-StatusOk
-              perform STATRAFF-EV-AFTER-PROGRAM
-              goback
-           end-if.
+      *****     move 1 to Passwd-password.
+      *****     call   "passwd" using Passwd-linkage.
+      *****     cancel "passwd".
+      *****
+      *****     if not Passwd-StatusOk
+      *****        perform STATRAFF-EV-AFTER-PROGRAM
+      *****        goback
+      *****     end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8113161049-132-2018827533
+PROGRAM_UNIQUE_CODE=TOTEM-7E8118182117-728-32361977
 
 {{@DESCRIPTION:
 
@@ -16822,7 +16822,7 @@ BEGIN-TEXT
               move art-codice           to prg-cod-articolo
               move tca-cod-magaz        to prg-cod-magazzino
               move col-imb              to prg-tipo-imballo
-              move col-peso              to prg-peso
+              move col-peso             to prg-peso
               move "prg-artico-sons-a"  to como-file
               call "zoom-gt"  using como-file, prg-rec
                              giving stato-zoom
@@ -17060,6 +17060,12 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = AGGIUNGI-RIGA
 BEGIN-TEXT
+           if emro-cod-articolo not = emro-prg-cod-articolo
+              display message "CONTATTARE ASSISTENZA CON CODICE KL1"
+                        title tit-err
+                         icon 3
+           end-if.
+
            move emro-prg-chiave    to HiddenKey
            move emro-prg-forzato   to HiddenKeyL
            move emro-errori        to hid-emro-errori
@@ -20741,6 +20747,11 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
                  set emro-prezzo-non-valido to true
                  set emto-prz-ko            to true
               end-if           
+              if emro-cod-articolo not = emro-prg-cod-articolo
+                 display message "CONTATTARE ASSISTENZA CON CODICE KL2"
+                           title tit-err
+                            icon 3
+              end-if
               rewrite emro-rec
            end-perform.
 END-TEXT
@@ -22885,8 +22896,7 @@ BEGIN-TEXT
       
               inquire ef-evadi-dal, value in col-evadi-dal
       
-              move prg-peso      to col-peso
-              move prg-chiave    to HiddenKey              
+              move prg-peso      to col-peso               
               move imq-qta-imb   to hid-emro-qta-imballi
               move prg-chiave    to HiddenKeyL HiddenKey        
               move col-evadi-dal to como-data

@@ -3896,7 +3896,7 @@ LABLAB     copy "blister.fd".
            end-if.
            close mtordini.
 
-           open input mrordini.
+           open input mrordini.     
            if status-mrordini = "35"
               open output mrordini
            end-if.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 8 gennaio 2024 09:59:11.
+       DATE-WRITTEN.        mercoledì 24 gennaio 2024 19:44:14.
        REMARKS.
       *{TOTEM}END
 
@@ -15637,7 +15637,7 @@
               move art-codice           to prg-cod-articolo
               move tca-cod-magaz        to prg-cod-magazzino
               move col-imb              to prg-tipo-imballo
-              move col-peso              to prg-peso
+              move col-peso             to prg-peso
               move "prg-artico-sons-a"  to como-file
               call "zoom-gt"  using como-file, prg-rec
                              giving stato-zoom
@@ -17911,6 +17911,12 @@
 
        AGGIUNGI-RIGA.
       * <TOTEM:PARA. AGGIUNGI-RIGA>
+           if emro-cod-articolo not = emro-prg-cod-articolo
+              display message "CONTATTARE ASSISTENZA CON CODICE KL1"
+                        title tit-err
+                         icon 3
+           end-if.
+
            move emro-prg-chiave    to HiddenKey
            move emro-prg-forzato   to HiddenKeyL
            move emro-errori        to hid-emro-errori
@@ -21592,6 +21598,11 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
                  set emro-prezzo-non-valido to true
                  set emto-prz-ko            to true
               end-if           
+              if emro-cod-articolo not = emro-prg-cod-articolo
+                 display message "CONTATTARE ASSISTENZA CON CODICE KL2"
+                           title tit-err
+                            icon 3
+              end-if
               rewrite emro-rec
            end-perform 
            .
@@ -23612,8 +23623,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       
               inquire ef-evadi-dal, value in col-evadi-dal
       
-              move prg-peso      to col-peso
-              move prg-chiave    to HiddenKey              
+              move prg-peso      to col-peso               
               move imq-qta-imb   to hid-emro-qta-imballi
               move prg-chiave    to HiddenKeyL HiddenKey        
               move col-evadi-dal to como-data
