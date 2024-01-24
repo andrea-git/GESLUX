@@ -130,6 +130,7 @@
                                           
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).
+       77  statusCheck           signed-short.
 
       *    FILE-STATUS
        77  status-lineseq        pic xx.
@@ -912,6 +913,7 @@
                           |OPEN L2
                           open input  lineseq
 
+
                           if status-lineseq = "35"
                              move "CANCELLAZIONE RIUSCITA" to como-riga
                              perform SCRIVI-RIGA-LOG
@@ -1186,6 +1188,29 @@
                     end-perform
                end-start
            end-if. 
+           call   "check-prg-edi" using tge-anno 
+                                        primo-numero 
+                                        ultimo-numero
+                                 giving statusCheck
+           cancel "check-prg-edi".
+           if statusCheck = -1
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output                    delimited size
+                        "*************************" delimited size
+                        "ERRORI PROGRESSIVI"        delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga         
+              else
+                 display message "ERRORE PROGRESSIVI!"
+                          x"0d0a""CONTATTARE ASSISTENZA CON CODICE XL3"
+                           title "ERRORE"
+              end-if
+           end-if.
+
 
       ***---
        ELABORA-FILE.
@@ -1872,7 +1897,8 @@
 
                  if emro-progressivo-non-attivo  or
                     emro-progressivo-non-trovato or
-                    emro-progressivo-non-forzato
+                    emro-progressivo-non-forzato or
+                    emro-progressivo-non-valido
                     set emro-bloccato to true
 
                     set emto-bloccato to true
@@ -2062,6 +2088,15 @@
                  rewrite emto-rec
               end-if
            end-if.
+                           
+           if emro-articolo not = emro-prg-cod-articolo
+              set emro-progressivo-non-valido to true
+              set emro-bloccato to true
+           
+              set emto-bloccato to true
+              set emto-prg-ko   to true
+              rewrite emto-rec
+           end-if.         
 
            compute prz-minimo-kg = emro-prg-peso * 0,5
            if prz-minimo-kg > emro-prz-EDI      
@@ -2071,7 +2106,7 @@
               set emto-bloccato to true
               set emto-prz-ko   to true
               rewrite emto-rec
-           end-if.
+           end-if.         
 
            perform DATI-COMUNI.
            write emro-rec.
@@ -3782,7 +3817,6 @@ BLISTR              end-if
               if emro-prz-GESLUX not = emro-prz-EDI
                  set emro-prezzo-non-valido to true
                  set emro-bloccato to true
-
                  set blocco-prezzo to true
               else                                 
                  set emro-prezzo-valido to true        

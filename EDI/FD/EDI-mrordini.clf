@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E811818835-727-2066219231
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E8118221024-796-74681240
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -659,35 +660,34 @@ m_strTrue=3
 
 @}}
 [FDITEM67_]
-m_strName=emro-ordine
-m_nItemLevel=10
+m_strName=emro-progressivo-non-valido
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=4
 {{@DataItem_m_strDescriptionFDITEM67_
 
 @}}
 [FDITEM68_]
-m_strName=emro-ordine-testa
-m_nItemLevel=15
+m_strName=emro-ordine
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM68_
 
 @}}
 [FDITEM69_]
-m_strName=emro-ordine-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
-m_nItemLevel=20
+m_strName=emro-ordine-testa
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM69_
 
 @}}
 [FDITEM70_]
-m_strName=emro-ordine-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=emro-ordine-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
@@ -695,35 +695,35 @@ m_bFixed=1
 
 @}}
 [FDITEM71_]
-m_strName=emro-ordine-riga
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_nItemLevel=15
+m_strName=emro-ordine-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=20
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM71_
 
 @}}
 [FDITEM72_]
-m_strName=emro-dati-comuni
-m_nItemLevel=10
+m_strName=emro-ordine-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM72_
 
 @}}
 [FDITEM73_]
-m_strName=emro-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=emro-dati-comuni
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM73_
 
 @}}
 [FDITEM74_]
-m_strName=emro-ora-creazione
+m_strName=emro-data-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -733,9 +733,9 @@ m_bFixed=1
 
 @}}
 [FDITEM75_]
-m_strName=emro-utente-creazione
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=emro-ora-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -743,9 +743,9 @@ m_bFixed=1
 
 @}}
 [FDITEM76_]
-m_strName=emro-data-ultima-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=emro-utente-creazione
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -753,7 +753,7 @@ m_bFixed=1
 
 @}}
 [FDITEM77_]
-m_strName=emro-ora-ultima-modifica
+m_strName=emro-data-ultima-modifica
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -763,9 +763,9 @@ m_bFixed=1
 
 @}}
 [FDITEM78_]
-m_strName=emro-utente-ultima-modifica
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=emro-ora-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -773,27 +773,27 @@ m_bFixed=1
 
 @}}
 [FDITEM79_]
-m_strName=emro-dati-import
-m_nItemLevel=5
+m_strName=emro-utente-ultima-modifica
+m_strRawPic=X(10)
+m_strPic=X(10)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM79_
 
 @}}
 [FDITEM80_]
-m_strName=emro-nome-file
-m_strRawPic=x(100)
-m_strPic=X(100)
-m_nItemLevel=10
+m_strName=emro-dati-import
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM80_
 
 @}}
 [FDITEM81_]
-m_strName=emro-riga-file
-m_strRawPic=9(6)
-m_strPic=9(6)
+m_strName=emro-nome-file
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -801,7 +801,9 @@ m_bFixed=1
 
 @}}
 [FDITEM82_]
-m_strName=emro-record-02D
+m_strName=emro-riga-file
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -809,17 +811,15 @@ m_bFixed=1
 
 @}}
 [FDITEM83_]
-m_strName=emro-01D-filler
-m_strRawPic=x(35)
-m_strPic=x(35)
-m_nItemLevel=15
+m_strName=emro-record-02D
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM83_
 
 @}}
 [FDITEM84_]
-m_strName=emro-02D-filler
+m_strName=emro-01D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -829,7 +829,7 @@ m_bFixed=1
 
 @}}
 [FDITEM85_]
-m_strName=emro-03D-filler
+m_strName=emro-02D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -839,7 +839,7 @@ m_bFixed=1
 
 @}}
 [FDITEM86_]
-m_strName=emro-04D-filler
+m_strName=emro-03D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -849,7 +849,7 @@ m_bFixed=1
 
 @}}
 [FDITEM87_]
-m_strName=emro-05D-filler
+m_strName=emro-04D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -859,7 +859,7 @@ m_bFixed=1
 
 @}}
 [FDITEM88_]
-m_strName=emro-06D-filler
+m_strName=emro-05D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -869,7 +869,7 @@ m_bFixed=1
 
 @}}
 [FDITEM89_]
-m_strName=emro-07D-filler
+m_strName=emro-06D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -879,7 +879,7 @@ m_bFixed=1
 
 @}}
 [FDITEM90_]
-m_strName=emro-08D-filler
+m_strName=emro-07D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -889,7 +889,7 @@ m_bFixed=1
 
 @}}
 [FDITEM91_]
-m_strName=emro-09D-filler
+m_strName=emro-08D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -899,7 +899,7 @@ m_bFixed=1
 
 @}}
 [FDITEM92_]
-m_strName=emro-10D-filler
+m_strName=emro-09D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -909,7 +909,7 @@ m_bFixed=1
 
 @}}
 [FDITEM93_]
-m_strName=emro-11D-filler
+m_strName=emro-10D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -919,7 +919,7 @@ m_bFixed=1
 
 @}}
 [FDITEM94_]
-m_strName=emro-12D-filler
+m_strName=emro-11D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -929,9 +929,9 @@ m_bFixed=1
 
 @}}
 [FDITEM95_]
-m_strName=emro-02D13-LIN-CODFORTU
+m_strName=emro-12D-filler
 m_strRawPic=x(35)
-m_strPic=X(35)
+m_strPic=x(35)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -939,6 +939,16 @@ m_bFixed=1
 
 @}}
 [FDITEM96_]
+m_strName=emro-02D13-LIN-CODFORTU
+m_strRawPic=x(35)
+m_strPic=X(35)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM96_
+
+@}}
+[FDITEM97_]
 m_strName=emro-02D14-LIN-CODDISTU
 m_strRawPic=x(35)
 m_strPic=x(35)
@@ -946,23 +956,13 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=emro-02D13-LIN-COD
-{{@DataItem_m_strDescriptionFDITEM96_
-
-@}}
-[FDITEM97_]
-m_strName=emro-02D15-LIN-DESART
-m_strRawPic=x(100)
-m_strPic=x(100)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM97_
 
 @}}
 [FDITEM98_]
-m_strName=emro-16D-filler
-m_strRawPic=x(35)
-m_strPic=x(35)
+m_strName=emro-02D15-LIN-DESART
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -970,9 +970,9 @@ m_bFixed=1
 
 @}}
 [FDITEM99_]
-m_strName=emro-02D17-QTAORD
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=emro-16D-filler
+m_strRawPic=x(35)
+m_strPic=x(35)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -980,9 +980,9 @@ m_bFixed=1
 
 @}}
 [FDITEM100_]
-m_strName=emro-18D-filler
-m_strRawPic=x(35)
-m_strPic=x(35)
+m_strName=emro-02D17-QTAORD
+m_strRawPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -990,9 +990,9 @@ m_bFixed=1
 
 @}}
 [FDITEM101_]
-m_strName=emro-02D19-LIN-PRZUNI
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=emro-18D-filler
+m_strRawPic=x(35)
+m_strPic=x(35)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1000,9 +1000,9 @@ m_bFixed=1
 
 @}}
 [FDITEM102_]
-m_strName=emro-19D-filler
-m_strRawPic=x(35)
-m_strPic=x(35)
+m_strName=emro-02D19-LIN-PRZUNI
+m_strRawPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1010,7 +1010,7 @@ m_bFixed=1
 
 @}}
 [FDITEM103_]
-m_strName=emro-20D-filler
+m_strName=emro-19D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -1020,7 +1020,7 @@ m_bFixed=1
 
 @}}
 [FDITEM104_]
-m_strName=emro-21D-filler
+m_strName=emro-20D-filler
 m_strRawPic=x(35)
 m_strPic=x(35)
 m_nItemLevel=15
@@ -1030,6 +1030,16 @@ m_bFixed=1
 
 @}}
 [FDITEM105_]
+m_strName=emro-21D-filler
+m_strRawPic=x(35)
+m_strPic=x(35)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM105_
+
+@}}
+[FDITEM106_]
 m_strName=emro-02D22-LIN-NRCUINTU
 m_strRawPic=x(20)
 m_strPic=x(20)
@@ -1037,10 +1047,10 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=emro-21D-filler_1
-{{@DataItem_m_strDescriptionFDITEM105_
+{{@DataItem_m_strDescriptionFDITEM106_
 
 @}}
-[FDITEM106_]
+[FDITEM107_]
 m_strName=emro-02D222-QTAPZ
 m_strRawPic=x(20)
 m_strPic=x(20)
@@ -1048,17 +1058,17 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=emro-21D-filler_1_
-{{@DataItem_m_strDescriptionFDITEM106_
+{{@DataItem_m_strDescriptionFDITEM107_
 
 @}}
-[FDITEM107_]
+[FDITEM108_]
 m_strName=FILLER
 m_strRawPic=x(180)
 m_strPic=x(180)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM107_
+{{@DataItem_m_strDescriptionFDITEM108_
 
 @}}
 [CStoAcucobolSL_]
