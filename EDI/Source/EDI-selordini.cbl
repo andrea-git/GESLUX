@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 25 gennaio 2024 16:52:23.
+       DATE-WRITTEN.        giovedì 25 gennaio 2024 18:06:15.
        REMARKS.
       *{TOTEM}END
 
@@ -825,6 +825,7 @@
        77 unlock-bmp       PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 lab-err-fido-buf PIC  X(3).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -1915,85 +1916,85 @@
        05
            Screen1-La-2, 
            Label, 
-           COL 30,00, 
+           COL 21,67, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 12,00 ,
+           SIZE 10,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 7,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "CLIENTE:",
+           TITLE "CLIENTE",
            .
 
       * LABEL
        05
            Screen1-La-2a, 
            Label, 
-           COL 50,00, 
+           COL 41,67, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 12,00 ,
+           SIZE 11,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 8,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "DESTINO:",
+           TITLE "DESTINO",
            .
 
       * LABEL
        05
            Screen1-La-2aa, 
            Label, 
-           COL 69,67, 
+           COL 78,83, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 9,00 ,
+           SIZE 8,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "RIGHE:",
+           TITLE "RIGHE",
            .
 
       * LABEL
        05
            Screen1-La-2aaa, 
            Label, 
-           COL 88,00, 
+           COL 96,33, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 7,00 ,
+           SIZE 6,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 10,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "Q.TA:",
+           TITLE "Q.TA",
            .
 
       * LABEL
        05
            Screen1-La-2aaaa, 
            Label, 
-           COL 103,83, 
+           COL 112,17, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 14,00 ,
+           SIZE 13,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 11,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "ARTICOLO:",
+           TITLE "ARTICOLO",
            .
 
       * LABEL
        05
            Screen1-La-2aaab, 
            Label, 
-           COL 125,00, 
+           COL 132,50, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 19,00 ,
+           SIZE 17,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 12,
            HEIGHT-IN-CELLS,
@@ -2005,22 +2006,22 @@
        05
            Screen1-La-2aaac, 
            Label, 
-           COL 151,50, 
+           COL 159,00, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 11,00 ,
+           SIZE 10,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 13,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "PREZZO:",
+           TITLE "PREZZO",
            .
 
       * LABEL
        05
            lab-err-cli, 
            Label, 
-           COL 42,83, 
+           COL 32,83, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2037,7 +2038,7 @@
        05
            lab-err-des, 
            Label, 
-           COL 62,67, 
+           COL 53,50, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2054,7 +2055,7 @@
        05
            lab-err-righe, 
            Label, 
-           COL 80,17, 
+           COL 87,67, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2071,7 +2072,7 @@
        05
            lab-err-qta, 
            Label, 
-           COL 96,83, 
+           COL 103,50, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2088,7 +2089,7 @@
        05
            lab-err-art, 
            Label, 
-           COL 118,50, 
+           COL 125,17, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2105,7 +2106,7 @@
        05
            lab-err-prg, 
            Label, 
-           COL 144,50, 
+           COL 151,17, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2122,7 +2123,7 @@
        05
            lab-err-prz, 
            Label, 
-           COL 163,67, 
+           COL 169,50, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2139,22 +2140,22 @@
        05
            Screen1-La-2b, 
            Label, 
-           COL 10,33, 
+           COL 3,67, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 11,00 ,
+           SIZE 10,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 21,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "DOPPIO:",
+           TITLE "DOPPIO",
            .
 
       * LABEL
        05
            lab-err-doppio, 
            Label, 
-           COL 22,00, 
+           COL 13,67, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2171,7 +2172,7 @@
        05
            lab-err-bloc, 
            Label, 
-           COL 183,67, 
+           COL 190,33, 
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
@@ -2188,15 +2189,47 @@
        05
            Screen1-La-2aaaca, 
            Label, 
-           COL 171,50, 
+           COL 178,17, 
            LINE 40,93,
            LINES 1,31 ,
-           SIZE 11,00 ,
+           SIZE 10,00 ,
            FONT IS Verdana10B-Occidentale,
            ID IS 24,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           TITLE "BLOCCO:",
+           TITLE "BLOCCO",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2ab, 
+           Label, 
+           COL 62,50, 
+           LINE 40,93,
+           LINES 1,31 ,
+           SIZE 6,00 ,
+           FONT IS Verdana10B-Occidentale,
+           ID IS 25,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TITLE "FIDO",
+           .
+
+      * LABEL
+       05
+           lab-err-fido, 
+           Label, 
+           COL 70,17, 
+           LINE 40,93,
+           LINES 1,31 ,
+           SIZE 6,00 ,
+           COLOR IS col-lab-err-des,
+           FONT IS Verdana10B-Occidentale,
+           ID IS 26,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TITLE lab-err-fido-buf,
            .
 
       * LABEL
@@ -2209,7 +2242,7 @@
            SIZE 40,33 ,
            COLOR IS 5,
            FONT IS Verdana12B-Occidentale,
-           ID IS 25,
+           ID IS 27,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -17912,7 +17945,8 @@
 
        AGGIUNGI-RIGA.
       * <TOTEM:PARA. AGGIUNGI-RIGA>
-           if emro-cod-articolo not = emro-prg-cod-articolo
+           if emro-cod-articolo not = emro-prg-cod-articolo and not 
+           emro-si-blister
               display message "CONTATTARE ASSISTENZA CON CODICE KL1"
                         title tit-err
                          icon 3
@@ -18579,9 +18613,12 @@ LUBEXX                      read clienti no lock invalid continue
               move 78-colore-fatt-tot to col-lab-err-bloc
            end-if.
 
-           if emto-cliente-fuori-fido
-              move "ERR" to lab-err-cli-buf
-              move 78-colore-fatt-tot to col-lab-cli-bloc
+           if emto-cliente-fido-ok                   
+              move "OK" to lab-err-fido-buf
+              move 78-colore-fatt-tot to col-lab-fido-cli
+           else   
+              move "ERR" to lab-err-fido-buf
+              move 78-colore-fatt-tot to col-lab-fido-cli
            end-if.
 
            evaluate true
@@ -21604,7 +21641,8 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
                  set emro-prezzo-non-valido to true
                  set emto-prz-ko            to true
               end-if           
-              if emro-cod-articolo not = emro-prg-cod-articolo
+              if emro-cod-articolo not = emro-prg-cod-articolo and not 
+           emro-si-blister
                  display message "CONTATTARE ASSISTENZA CON CODICE KL2"
                            title tit-err
                             icon 3
