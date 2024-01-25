@@ -44,7 +44,7 @@
        77  path-lineseq-mail     pic x(256).   
 
        77  wstampa               pic x(256).
-                                          
+       77  invio-mail            pic x value space.                                   
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).
        77  separatore            pic x.           
@@ -261,7 +261,10 @@
                                
            move "check-prg-edi" to NomeProgramma.
            move 5 to tentativi-mail.
-      *     perform CICLO-SEND-MAIL.
+           accept invio-mail from environment "CHECK_PRG_EDI_MAIL".
+           if invio-mail = "S"
+              perform CICLO-SEND-MAIL
+           end-if.
 
       ***---
        AFTER-SEND-MAIL.
