@@ -50,4 +50,4 @@
            if status-edi-mrordini = "35"
               open output edi-mrordini
            end-if.
-           close edi-mrordini.
+           close edi-mrordini.    

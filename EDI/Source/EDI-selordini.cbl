@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 25 gennaio 2024 12:38:14.
+       DATE-WRITTEN.        giovedì 25 gennaio 2024 16:52:23.
        REMARKS.
       *{TOTEM}END
 
@@ -18569,7 +18569,7 @@ LUBEXX                      read clienti no lock invalid continue
            else 
               move "ERR" to lab-err-prz-buf
               move 78-colore-fatt-tot to col-lab-err-prz
-           end-if.
+           end-if. 
 
            if emto-bloc-forzato-no
               move "OK"  to lab-err-bloc-buf
@@ -18577,6 +18577,11 @@ LUBEXX                      read clienti no lock invalid continue
            else 
               move "ERR" to lab-err-bloc-buf
               move 78-colore-fatt-tot to col-lab-err-bloc
+           end-if.
+
+           if emto-cliente-fuori-fido
+              move "ERR" to lab-err-cli-buf
+              move 78-colore-fatt-tot to col-lab-cli-bloc
            end-if.
 
            evaluate true

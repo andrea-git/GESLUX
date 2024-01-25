@@ -2088,15 +2088,17 @@
               end-if
            end-if.
                            
-           if emro-cod-articolo not = emro-prg-cod-articolo and
-              not emro-si-blister
-              set emro-progressivo-non-valido to true
-              set emro-bloccato to true
-           
-              set emto-bloccato to true
-              set emto-prg-ko   to true
-              rewrite emto-rec
-           end-if.         
+           if emro-progressivo-valido
+              if emro-cod-articolo not = emro-prg-cod-articolo and
+                 not emro-si-blister
+                 set emro-progressivo-non-valido to true
+                 set emro-bloccato to true
+              
+                 set emto-bloccato to true
+                 set emto-prg-ko   to true
+                 rewrite emto-rec
+              end-if
+           end-if.
 
            compute prz-minimo-kg = emro-prg-peso * 0,5
            if prz-minimo-kg > emro-prz-EDI      
