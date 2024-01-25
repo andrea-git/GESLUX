@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 24 gennaio 2024 19:44:14.
+       DATE-WRITTEN.        giovedì 25 gennaio 2024 12:38:14.
        REMARKS.
       *{TOTEM}END
 
@@ -15212,6 +15212,7 @@
                     end-perform
                     close lock-div
               end-start
+
            end-if.
 
            .
@@ -22049,7 +22050,7 @@ LABLAB        if tcl-si-recupero and
 
            set controllo-finale to false.
 
-           if tutto-ok
+           if tutto-ok and tipo-elab = 2
               set errori to true
               inquire gd-tipocli, last-row in tot-righe
               perform varying riga from 2 by 1 
@@ -22080,7 +22081,7 @@ LABLAB        if tcl-si-recupero and
               end-if
            end-if. 
 
-           if tutto-ok
+           if tutto-ok and tipo-elab = 2
               inquire gd-tipocli, last-row in tot-righe
               open input lock-div
               perform varying riga from 2 by 1 
@@ -22127,30 +22128,34 @@ LABLAB        if tcl-si-recupero and
            end-if.
 
            if tutto-ok
-              move 0 to idx
-              initialize tab-tipologie replacing numeric data by zeroes
-                                            alphanumeric data by spaces
-              inquire gd-tipocli, last-row in tot-righe
-
-              open i-o lock-div
-              perform varying riga from 2 by 1 
-                        until riga > tot-righe
-                 inquire gd-tipocli(riga, 1), 
-                         hidden-data in hid-col-sel
-                 if hid-col-sel = 1      
-                    add 1 to idx
-                                                 
+              if tipo-elab = 2
+                 move 0 to idx
+                 initialize tab-tipologie replacing numeric data by 
+           zeroes
+                                               alphanumeric data by 
+           spaces
+                 inquire gd-tipocli, last-row in tot-righe
+              
+                 open i-o lock-div
+                 perform varying riga from 2 by 1 
+                           until riga > tot-righe
                     inquire gd-tipocli(riga, 1), 
-                            cell-data in el-tipo(idx)
-
-                    move el-tipo(idx) to ld-tipocli
-                    move user-codi    to ld-user       
-                    accept ld-data from century-date
-                    accept ld-ora  from time
-                    write ld-rec
-                 end-if
-              end-perform
-              close      lock-div   
+                            hidden-data in hid-col-sel
+                    if hid-col-sel = 1      
+                       add 1 to idx
+                                                    
+                       inquire gd-tipocli(riga, 1), 
+                               cell-data in el-tipo(idx)
+              
+                       move el-tipo(idx) to ld-tipocli
+                       move user-codi    to ld-user       
+                       accept ld-data from century-date
+                       accept ld-ora  from time
+                       write ld-rec
+                    end-if
+                 end-perform
+                 close      lock-div   
+              end-if
 
               modify form1-Handle, visible 0
               if tipo-elab = 1

@@ -205,7 +205,8 @@
                           exit perform
                        end-if
                     end-if
-                    if emro-cod-articolo not = emro-prg-cod-articolo   
+                    if emro-cod-articolo not = emro-prg-cod-articolo and
+                       not emro-si-blister
                        move emro-anno   to emto-anno
                        move emro-numero to emto-numero
                        read edi-mtordini no lock 
@@ -222,7 +223,7 @@
                               separatore             delimited size
                               emto-stato             delimited size                              
                               separatore             delimited size
-                              emro-articolo          delimited size
+                              emro-cod-articolo      delimited size
                               separatore             delimited size
                               emro-prg-cod-articolo  delimited size
                               separatore             delimited size

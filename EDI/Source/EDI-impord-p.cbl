@@ -1767,7 +1767,6 @@
            move emro-02D13-LIN-CODFORTU to NumericEdi.
            perform TRATTA-NUMERICO.
            move como-numero        to emro-cod-articolo.
-                                             
 
            if como-numero = 0  and 
               RecuperaArticolo and 
@@ -2089,7 +2088,8 @@
               end-if
            end-if.
                            
-           if emro-articolo not = emro-prg-cod-articolo
+           if emro-cod-articolo not = emro-prg-cod-articolo and
+              not emro-si-blister
               set emro-progressivo-non-valido to true
               set emro-bloccato to true
            

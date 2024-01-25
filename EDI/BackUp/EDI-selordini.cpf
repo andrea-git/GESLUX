@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8118182117-728-32361977
+PROGRAM_UNIQUE_CODE=TOTEM-7E8119113147-275-2103029648
 
 {{@DESCRIPTION:
 
@@ -16324,6 +16324,7 @@ BEGIN-TEXT
                     end-perform
                     close lock-div
               end-start
+
            end-if.
                                    
 END-TEXT
@@ -21261,7 +21262,7 @@ BEGIN-TEXT
 
            set controllo-finale to false.
 
-           if tutto-ok
+           if tutto-ok and tipo-elab = 2
               set errori to true
               inquire gd-tipocli, last-row in tot-righe
               perform varying riga from 2 by 1 
@@ -21291,7 +21292,7 @@ BEGIN-TEXT
               end-if
            end-if. 
 
-           if tutto-ok
+           if tutto-ok and tipo-elab = 2
               inquire gd-tipocli, last-row in tot-righe
               open input lock-div
               perform varying riga from 2 by 1 
@@ -21336,30 +21337,32 @@ BEGIN-TEXT
            end-if.
 
            if tutto-ok
-              move 0 to idx
-              initialize tab-tipologie replacing numeric data by zeroes
-                                            alphanumeric data by spaces
-              inquire gd-tipocli, last-row in tot-righe
-
-              open i-o lock-div
-              perform varying riga from 2 by 1 
-                        until riga > tot-righe
-                 inquire gd-tipocli(riga, 1), 
-                         hidden-data in hid-col-sel
-                 if hid-col-sel = 1      
-                    add 1 to idx
-                                                 
+              if tipo-elab = 2
+                 move 0 to idx
+                 initialize tab-tipologie replacing numeric data by zeroes
+                                               alphanumeric data by spaces
+                 inquire gd-tipocli, last-row in tot-righe
+              
+                 open i-o lock-div
+                 perform varying riga from 2 by 1 
+                           until riga > tot-righe
                     inquire gd-tipocli(riga, 1), 
-                            cell-data in el-tipo(idx)
-
-                    move el-tipo(idx) to ld-tipocli
-                    move user-codi    to ld-user       
-                    accept ld-data from century-date
-                    accept ld-ora  from time
-                    write ld-rec
-                 end-if
-              end-perform
-              close      lock-div   
+                            hidden-data in hid-col-sel
+                    if hid-col-sel = 1      
+                       add 1 to idx
+                                                    
+                       inquire gd-tipocli(riga, 1), 
+                               cell-data in el-tipo(idx)
+              
+                       move el-tipo(idx) to ld-tipocli
+                       move user-codi    to ld-user       
+                       accept ld-data from century-date
+                       accept ld-ora  from time
+                       write ld-rec
+                    end-if
+                 end-perform
+                 close      lock-div   
+              end-if
 
               modify form1-Handle, visible 0
               if tipo-elab = 1
