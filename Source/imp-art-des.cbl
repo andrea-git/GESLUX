@@ -33,6 +33,7 @@
            88 RecLocked          value 1 false 0.
 
       * VARIABILI
+       77  como-des              pic x(50).
        77  num-rec-ita           pic 9(6)   value 0.
        77  num-rec-spa           pic 9(6)   value 0.
        77  num-rec-ko            pic 9(6)   value 0.
@@ -84,7 +85,13 @@
                  perform until 1 = 2
                     read articoli next at end exit perform end-read
                     add 1 to num-rec-ita
-                    move art-descrizione to art-des-ita
+                    move art-descrizione1 to como-des
+                    inspect como-des 
+                            replacing trailing spaces by low-value
+                    string como-des         delimited low-value
+                           art-descrizione2 delimited size
+                      into art-des-ita
+                    end-string
                     rewrite art-rec
                  end-perform
            end-start.

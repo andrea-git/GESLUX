@@ -2,13 +2,12 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E811F163946-758-1049426066
+PROGRAM_UNIQUE_CODE=TOTEM-7E811F2070-954-2206428479
 
 {{@DESCRIPTION:
 
@@ -7168,6 +7167,26 @@ m_bFixed=1
 
 @}}
 [FDITEM515_WK]
+m_strName=como-des
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM515_WK
+
+@}}
+[FDITEM516_WK]
+m_strName=como-des2
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM516_WK
+
+@}}
+[FDITEM517_WK]
 m_strName=v-copiada
 m_strRawPic=9
 m_strPic=9
@@ -7175,7 +7194,7 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM515_WK
+{{@DataItem_m_strDescriptionFDITEM517_WK
 
 @}}
 
@@ -14422,7 +14441,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 74
+            ID                = 75
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 14,31
@@ -14484,7 +14503,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 74
+            ID                = 89
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 14,31
@@ -14547,7 +14566,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare l'altezza in cm dell'articolo
-            ID                = 75
+            ID                = 90
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 18,77
@@ -14610,7 +14629,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la larghezza in cm dell'articolo
-            ID                = 89
+            ID                = 113
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 18,77
@@ -14673,7 +14692,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la profondità in cm dell'articolo
-            ID                = 90
+            ID                = 114
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 18,77
@@ -14736,7 +14755,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la quantità per cartone
-            ID                = 113
+            ID                = 115
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 18,77
@@ -14799,7 +14818,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il numero di Cartoni per UDC
-            ID                = 114
+            ID                = 116
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 18,77
@@ -14925,7 +14944,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il peso dell'articolo per SHI
-            ID                = 115
+            ID                = 62
             Justification     = Right
             Line              = 20,77
             Lines             = 1,31
@@ -14987,7 +15006,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il peso dell'articolo per GET
-            ID                = 116
+            ID                = 117
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 20,77
@@ -15302,7 +15321,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la quantità per le pedane STANDARD
-            ID                = 117
+            ID                = 125
             ID Variable       = AUTO-ID
             Justification     = Right
             Line              = 27,23
@@ -15362,7 +15381,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag diretti
-            ID                = 125
+            ID                = 127
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 32,08
@@ -15414,7 +15433,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag GDA
-            ID                = 127
+            ID                = 138
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 32,08
@@ -15466,7 +15485,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Imposta il flag Gruppi
-            ID                = 138
+            ID                = 139
             ID Variable       = AUTO-ID
             Left Text         = FALSE
             Line              = 32,08
@@ -15512,7 +15531,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 139
+            ID                = 140
             Line              = 12,00
             Lines             = 1,31
             Lines Unit        = Default
@@ -15548,7 +15567,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 140
+            ID                = 141
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 4,00
@@ -15582,7 +15601,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 141
+            ID                = 142
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 6,00
@@ -15616,7 +15635,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 142
+            ID                = 143
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 10,00
@@ -15650,7 +15669,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 143
+            ID                = 144
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 11,69
@@ -15684,7 +15703,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 144
+            ID                = 145
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 8,00
@@ -15718,7 +15737,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 145
+            ID                = 146
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 18,77
@@ -15752,7 +15771,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 146
+            ID                = 147
             Justification     = Right
             Label Offset      = 20
             Line              = 18,77
@@ -15786,7 +15805,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 147
+            ID                = 148
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 18,77
@@ -15820,7 +15839,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 148
+            ID                = 149
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 18,77
@@ -15854,7 +15873,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 149
+            ID                = 150
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 18,77
@@ -15888,7 +15907,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 150
+            ID                = 151
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 25,23
@@ -15922,7 +15941,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 151
+            ID                = 152
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 25,23
@@ -15956,7 +15975,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 152
+            ID                = 153
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 25,23
@@ -15990,7 +16009,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 153
+            ID                = 154
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 27,23
@@ -16024,7 +16043,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 154
+            ID                = 155
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 27,23
@@ -16122,7 +16141,7 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 155
+            ID                = 687
             Kind              = Horizontal
             Line              = 2,70
             Line Styles       = Solid
@@ -16237,7 +16256,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2abaaa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 30,39
+            SCREEN-LINE       = 30,38
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2abaaa
@@ -16501,7 +16520,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-30aaa
-            SCREEN-COL        = 4,33
+            SCREEN-COL        = 4,34
             SCREEN-LINE       = 20,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -16518,7 +16537,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 143
+            ID                = 173
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 14,31
@@ -16552,7 +16571,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 143
+            ID                = 174
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 14,31
@@ -18877,7 +18896,7 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 173
+            ID                = 175
             Kind              = Horizontal
             Line              = 7,08
             Line Styles       = Solid
@@ -18910,7 +18929,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 174
+            ID                = 176
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 9,00
@@ -19063,7 +19082,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 175
+            ID                = 177
             Justification     = Left
             Label Offset      = 20
             Line              = 9,00
@@ -19096,7 +19115,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 176
+            ID                = 178
             Justification     = Left
             Label Offset      = 20
             Line              = 11,00
@@ -19129,7 +19148,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 177
+            ID                = 179
             Justification     = Left
             Label Offset      = 20
             Line              = 11,00
@@ -19162,7 +19181,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 178
+            ID                = 180
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 14,50
@@ -19195,7 +19214,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 179
+            ID                = 181
             Justification     = Left
             Label Offset      = 20
             Line              = 20,85
@@ -19228,7 +19247,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 687
+            ID                = 182
             Justification     = Center
             Label Offset      = 20
             Line              = 6,54
@@ -19785,7 +19804,7 @@ Begin Screen Form1
             Destroy Type      = Automatic
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 180
+            ID                = 704
             Kind              = Horizontal
             Line              = 2,46
             Line Styles       = Solid
@@ -19818,7 +19837,7 @@ Begin Screen Form1
             Font              = Default Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 181
+            ID                = 705
             Justification     = Left
             Label Offset      = 20
             Line              = 9,00
@@ -19852,7 +19871,7 @@ Begin Screen Form1
             Font Variable     = Verdana12-Occidentale
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 182
+            ID                = 706
             Justification     = Right
             Label Offset      = 20
             Line              = 38,92
@@ -24200,6 +24219,19 @@ BEGIN-TEXT
            else
               move 0 to v-moq
               move 0 to v-reale
+              if event-data-1 = 2   
+                 inquire ef-des-ita, value in art-des-ita of articoli
+                 if art-des-ita of articoli = spaces  
+                    inquire ef-des1, value in como-des
+                    inquire ef-des2, value in como-des2          
+                    inspect como-des replacing trailing spaces by low-value
+                    string como-des delimited low-value
+                           como-des2
+                      into ef-des-ita-buf
+                    end-string                                        
+                    display ef-des-ita
+                 end-if
+              end-if
            end-if.
            display ef-moq ef-reale            
 END-TEXT

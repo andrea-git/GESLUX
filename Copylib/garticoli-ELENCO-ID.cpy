@@ -132,8 +132,8 @@
            when 78-ID-ef-qta-stda
                 inquire ef-qta-stda, value in ef-qta-stda-buf
 
-           |115 è l'ID del control ef-peso-SHI
-           when 115
+           |62 è l'ID del control ef-peso-SHI
+           when 62
                 inquire ef-peso-SHI, value in ef-peso-SHI-buf
 
            |78-ID-ef-peso-GET è l'ID del control ef-peso-GET

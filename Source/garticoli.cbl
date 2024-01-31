@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 31 gennaio 2024 17:49:43.
+       DATE-WRITTEN.        mercoledì 31 gennaio 2024 21:25:50.
        REMARKS.
       *{TOTEM}END
 
@@ -132,6 +132,8 @@
        77 copia-bmp        PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 como-des         PIC  x(50).
+       77 como-des2        PIC  x(50).
        77 v-copiada        PIC  9
                   VALUE IS 0.
 
@@ -3712,7 +3714,7 @@
            COLOR IS 513,
            ENABLED mod-campi,
            FONT IS Small-Font,
-           ID IS 115,
+           ID IS 62,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -3904,7 +3906,7 @@
            SIZE 3,00 ,
            EXCEPTION-VALUE 1012,
            FONT IS Small-Font,
-           ID IS 139,
+           ID IS 140,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TITLE "...",
@@ -3919,7 +3921,7 @@
            LINES 1,31 ,
            SIZE 13,17 ,
            FONT IS Small-Font,
-           ID IS 140,
+           ID IS 141,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3935,7 +3937,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 141,
+           ID IS 142,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3951,7 +3953,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 142,
+           ID IS 143,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3967,7 +3969,7 @@
            LINES 2,00 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
-           ID IS 143,
+           ID IS 144,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3983,7 +3985,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 144,
+           ID IS 145,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -3999,7 +4001,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 145,
+           ID IS 146,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4015,7 +4017,7 @@
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
-           ID IS 146,
+           ID IS 147,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -4032,7 +4034,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
-           ID IS 147,
+           ID IS 148,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4048,7 +4050,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
-           ID IS 148,
+           ID IS 149,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4064,7 +4066,7 @@
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
-           ID IS 149,
+           ID IS 150,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4080,7 +4082,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 150,
+           ID IS 151,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4096,7 +4098,7 @@
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
-           ID IS 151,
+           ID IS 152,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4112,7 +4114,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 152,
+           ID IS 153,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4128,7 +4130,7 @@
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
-           ID IS 153,
+           ID IS 154,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4144,7 +4146,7 @@
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
-           ID IS 154,
+           ID IS 155,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4190,7 +4192,7 @@
            COL 21,34, 
            LINE 9,16,
            SIZE 146,00 ,
-           ID IS 155,
+           ID IS 687,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),
@@ -4250,7 +4252,7 @@
            Form1-Br-2abaaa, 
            Bar,
            COL 21,34, 
-           LINE 30,39,
+           LINE 30,38,
            SIZE 146,00 ,
            ID IS 159,
            HEIGHT-IN-CELLS,
@@ -4376,12 +4378,12 @@
        10
            Form1-La-30aaa, 
            Label, 
-           COL 4,33, 
+           COL 4,34, 
            LINE 20,77,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
-           ID IS 143,
+           ID IS 173,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -4397,7 +4399,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 143,
+           ID IS 174,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5166,7 +5168,7 @@
            COL 21,34, 
            LINE 13,54,
            SIZE 146,00 ,
-           ID IS 173,
+           ID IS 175,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),
@@ -5183,7 +5185,7 @@
            LINES 1,31 ,
            SIZE 12,00 ,
            COLOR IS 2,
-           ID IS 174,
+           ID IS 176,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5238,7 +5240,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 2,
-           ID IS 175,
+           ID IS 177,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5255,7 +5257,7 @@
            LINES 1,31 ,
            SIZE 11,00 ,
            COLOR IS 2,
-           ID IS 176,
+           ID IS 178,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5272,7 +5274,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 2,
-           ID IS 177,
+           ID IS 179,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5289,7 +5291,7 @@
            LINES 1,31 ,
            SIZE 7,00 ,
            COLOR IS 2,
-           ID IS 178,
+           ID IS 180,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -5305,7 +5307,7 @@
            LINES 1,31 ,
            SIZE 13,00 ,
            COLOR IS 2,
-           ID IS 179,
+           ID IS 181,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5322,7 +5324,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
-           ID IS 687,
+           ID IS 182,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            CENTER,
@@ -5603,7 +5605,7 @@
            COL 21,34, 
            LINE 8,92,
            SIZE 146,00 ,
-           ID IS 180,
+           ID IS 704,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            COLORS (8, 8),
@@ -5620,7 +5622,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 5,
-           ID IS 181,
+           ID IS 705,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -5638,7 +5640,7 @@
            SIZE 30,67 ,
            COLOR IS 2,
            FONT IS Verdana12-Occidentale,
-           ID IS 182,
+           ID IS 706,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RIGHT,
@@ -15269,7 +15271,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 115 TO CONTROL-ID
+               MOVE 62 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-peso-GET's Validation
@@ -18851,8 +18853,8 @@
            if art-peso-SHI of articoli not = old-art-peso-SHI
               and SiSalvato
               set NoSalvato to true
-              |115 è l'ID del campo ef-peso-SHI
-              move 115 to store-id
+              |62 è l'ID del campo ef-peso-SHI
+              move 62 to store-id
            end-if
 
 
@@ -19156,8 +19158,8 @@
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
-           |115 è l'ID del campo ef-peso-SHI
-           when 115
+           |62 è l'ID del campo ef-peso-SHI
+           when 62
                 if  KeyboardReleased
                    set KeyboardSaved to true
       *            sostituisco il punto come virgola
@@ -19421,8 +19423,8 @@
                    set environment "KEYSTROKE" to "DATA=46   46"
                 end-if
 
-           |115 è l'ID del campo ef-peso-SHI
-           when 115
+           |62 è l'ID del campo ef-peso-SHI
+           when 62
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -19574,8 +19576,8 @@
            |78-ID-ef-qta-stda è l'ID del campo ef-qta-stda
            when 78-ID-ef-qta-stda
                 perform CONTROLLO
-           |115 è l'ID del campo ef-peso-SHI
-           when 115
+           |62 è l'ID del campo ef-peso-SHI
+           when 62
                 perform CONTROLLO
            |78-ID-ef-peso-GET è l'ID del campo ef-peso-GET
            when 78-ID-ef-peso-GET
@@ -20442,7 +20444,7 @@
            TOTEM-HINT-TEXT
            WHEN 5076 MOVE "Digitare il valore di pericolosità ADR" to 
            TOTEM-HINT-TEXT
-           WHEN 115 MOVE "Digitare il peso dell'articolo per SHI" to 
+           WHEN 62 MOVE "Digitare il peso dell'articolo per SHI" to 
            TOTEM-HINT-TEXT
            WHEN 5077 MOVE "Digitare il peso dell'articolo per GET" to 
            TOTEM-HINT-TEXT
@@ -20601,7 +20603,7 @@
            When 5074 PERFORM ef-ean-5-BeforeProcedure
            When 5075 PERFORM ef-ean-5-BeforeProcedure
            When 5076 PERFORM ef-ean-5-BeforeProcedure
-           When 115 PERFORM ef-ean-5-BeforeProcedure
+           When 62 PERFORM ef-ean-5-BeforeProcedure
            When 5077 PERFORM ef-ean-5-BeforeProcedure
            When 5078 PERFORM ef-ean-5-BeforeProcedure
            When 5079 PERFORM ef-ean-5-BeforeProcedure
@@ -20733,7 +20735,7 @@
            When 5074 PERFORM ef-ean-5-AfterProcedure
            When 5075 PERFORM ef-ean-5-AfterProcedure
            When 5076 PERFORM ef-ean-5-AfterProcedure
-           When 115 PERFORM ef-ean-5-AfterProcedure
+           When 62 PERFORM ef-ean-5-AfterProcedure
            When 5077 PERFORM ef-ean-5-AfterProcedure
            When 5078 PERFORM ef-ean-5-AfterProcedure
            When 5079 PERFORM ef-ean-5-AfterProcedure
@@ -22459,6 +22461,20 @@ LABLAB
            else
               move 0 to v-moq
               move 0 to v-reale
+              if event-data-1 = 2   
+                 inquire ef-des-ita, value in art-des-ita of articoli
+                 if art-des-ita of articoli = spaces  
+                    inquire ef-des1, value in como-des
+                    inquire ef-des2, value in como-des2          
+                    inspect como-des replacing trailing spaces by 
+           low-value
+                    string como-des delimited low-value
+                           como-des2
+                      into ef-des-ita-buf
+                    end-string                                        
+                    display ef-des-ita
+                 end-if
+              end-if
            end-if.
            display ef-moq ef-reale            
            .

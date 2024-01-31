@@ -2318,6 +2318,16 @@ LUBEXX        if tutto-ok
                     art-disattivo of articoli
                     move 0 to art-scorta of articoli ef-scorta-buf
                     display ef-scorta
+                 end-if   
+
+                 if art-des-ita of articoli = spaces
+                    move art-descrizione1 of articoli to como-des
+                    inspect como-des  
+                            replacing trailing spaces by low-value
+                    string como-des delimited low-value
+                           art-descrizione2 of articoli
+                      into art-des-ita of articoli
+                    end-string                    
                  end-if
 
                  write art-rec of articoli
