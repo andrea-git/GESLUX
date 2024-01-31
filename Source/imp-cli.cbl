@@ -186,6 +186,7 @@
                        cli-tipo       
                        cli-gdo        
               end-unstring
+              move "B01" to cli-pag
               set cli-esigibilita-iva-immediata to true
               set cli-tipo-art-diretti          to true
               set cli-attivo                    to true
