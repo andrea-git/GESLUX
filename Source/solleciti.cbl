@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 19 aprile 2023 16:44:54.
+       DATE-WRITTEN.        mercoledì 31 gennaio 2024 16:14:31.
        REMARKS.
       *{TOTEM}END
 
@@ -10569,7 +10569,11 @@
            when 12  move "DICEMBRE"  to mese-esteso
            end-evaluate.
 
-           accept  PathPod from environment "PATH_POD".
+           if sol-anno-b of tmp-sol < 2020                          
+              accept  PathPod from environment "PATH_POD_OLD"
+           else
+              accept  PathPod from environment "PATH_POD"
+           end-if.
            inspect PathPod replacing trailing spaces by low-value.
            move sol-num-b of tmp-sol to NomeFile.
            call "C$JUSTIFY" using NomeFile, "L".

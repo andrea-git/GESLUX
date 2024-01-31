@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 10 gennaio 2023 14:38:03.
+       DATE-WRITTEN.        mercoledì 31 gennaio 2024 17:49:43.
        REMARKS.
       *{TOTEM}END
 
@@ -308,6 +308,10 @@
               10 ef-scheda-BUF PIC X(512).
       * Data.Entry-Field
               10 ef-toss-BUF PIC X(512).
+      * Data.Entry-Field
+              10 ef-des-ita-BUF PIC X(60).
+      * Data.Entry-Field
+              10 ef-des-spa-BUF PIC X(60).
       * Data.Entry-Field
               10 ef-altezza-pz-BUF PIC zzz.zz9,99.
       * Data.Entry-Field
@@ -770,26 +774,28 @@
        78  78-ID-ef-brand VALUE 5066.
        78  78-ID-ef-scheda VALUE 5067.
        78  78-ID-ef-toss VALUE 5068.
-       78  78-ID-ef-altezza-pz VALUE 5069.
-       78  78-ID-ef-larghezza-pz VALUE 5070.
-       78  78-ID-ef-profondita-pz VALUE 5071.
-       78  78-ID-ef-qta-cartone VALUE 5072.
-       78  78-ID-ef-qta-stda VALUE 5073.
-       78  78-ID-ef-adr VALUE 5074.
-       78  78-ID-ef-peso-GET VALUE 5075.
-       78  78-ID-ef-altezza VALUE 5076.
-       78  78-ID-ef-larghezza VALUE 5077.
-       78  78-ID-ef-profondita VALUE 5078.
-       78  78-ID-ef-qta-epal VALUE 5079.
-       78  78-ID-ef-qta-std VALUE 5080.
-       78  78-ID-chk-T1 VALUE 5081.
-       78  78-ID-chk-T2 VALUE 5082.
-       78  78-ID-chk-T3 VALUE 5083.
-       78  78-ID-EF-ORD-FORNa VALUE 5084.
-       78  78-ID-EF-ORD-FORNb VALUE 5085.
-       78  78-ID-EF-ORD-FORNc VALUE 5086.
-       78  78-ID-ef-dt-val-da VALUE 5087.
-       78  78-ID-ef-dt-val-a VALUE 5088.
+       78  78-ID-ef-des-ita VALUE 5069.
+       78  78-ID-ef-des-spa VALUE 5070.
+       78  78-ID-ef-altezza-pz VALUE 5071.
+       78  78-ID-ef-larghezza-pz VALUE 5072.
+       78  78-ID-ef-profondita-pz VALUE 5073.
+       78  78-ID-ef-qta-cartone VALUE 5074.
+       78  78-ID-ef-qta-stda VALUE 5075.
+       78  78-ID-ef-adr VALUE 5076.
+       78  78-ID-ef-peso-GET VALUE 5077.
+       78  78-ID-ef-altezza VALUE 5078.
+       78  78-ID-ef-larghezza VALUE 5079.
+       78  78-ID-ef-profondita VALUE 5080.
+       78  78-ID-ef-qta-epal VALUE 5081.
+       78  78-ID-ef-qta-std VALUE 5082.
+       78  78-ID-chk-T1 VALUE 5083.
+       78  78-ID-chk-T2 VALUE 5084.
+       78  78-ID-chk-T3 VALUE 5085.
+       78  78-ID-EF-ORD-FORNa VALUE 5086.
+       78  78-ID-EF-ORD-FORNb VALUE 5087.
+       78  78-ID-EF-ORD-FORNc VALUE 5088.
+       78  78-ID-ef-dt-val-da VALUE 5089.
+       78  78-ID-ef-dt-val-a VALUE 5090.
        78  78-ID-ef-ean VALUE 5001.
        78  78-ID-ef-frn VALUE 5001.
       ***** Fine ID Logici *****
@@ -3539,10 +3545,48 @@
 
       * ENTRY FIELD
        10
+           ef-des-ita, 
+           Entry-Field, 
+           COL 21,67, 
+           LINE 20,77,
+           LINES 1,31 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-des-ita,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 60,
+           VALUE ef-des-ita-BUF,
+           BEFORE PROCEDURE ef-scheda-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       10
+           ef-des-spa, 
+           Entry-Field, 
+           COL 101,67, 
+           LINE 20,77,
+           LINES 1,31 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-des-spa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 60,
+           VALUE ef-des-spa-BUF,
+           BEFORE PROCEDURE ef-scheda-BeforeProcedure, 
+           .
+
+      * ENTRY FIELD
+       10
            ef-altezza-pz, 
            Entry-Field, 
            COL 21,67, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3562,7 +3606,7 @@
            ef-larghezza-pz, 
            Entry-Field, 
            COL 58,34, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3582,7 +3626,7 @@
            ef-profondita-pz, 
            Entry-Field, 
            COL 88,67, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3602,7 +3646,7 @@
            ef-qta-cartone, 
            Entry-Field, 
            COL 122,34, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3622,7 +3666,7 @@
            ef-qta-stda, 
            Entry-Field, 
            COL 151,67, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3642,7 +3686,7 @@
            ef-adr, 
            Entry-Field, 
            COL 21,67, 
-           LINE 25,69,
+           LINE 27,23,
            LINES 1,31 ,
            SIZE 18,00 ,
            BOXED,
@@ -3661,7 +3705,7 @@
            ef-peso-SHI, 
            Entry-Field, 
            COL 58,34, 
-           LINE 25,69,
+           LINE 27,23,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3681,7 +3725,7 @@
            ef-peso-GET, 
            Entry-Field, 
            COL 88,67, 
-           LINE 25,69,
+           LINE 27,23,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3701,7 +3745,7 @@
            ef-altezza, 
            Entry-Field, 
            COL 21,67, 
-           LINE 30,15,
+           LINE 31,69,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3721,7 +3765,7 @@
            ef-larghezza, 
            Entry-Field, 
            COL 54,67, 
-           LINE 30,15,
+           LINE 31,69,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3741,7 +3785,7 @@
            ef-profondita, 
            Entry-Field, 
            COL 88,67, 
-           LINE 30,15,
+           LINE 31,69,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3761,7 +3805,7 @@
            ef-qta-epal, 
            Entry-Field, 
            COL 21,67, 
-           LINE 32,15,
+           LINE 33,69,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3781,7 +3825,7 @@
            ef-qta-std, 
            Entry-Field, 
            COL 54,67, 
-           LINE 32,15,
+           LINE 33,69,
            LINES 1,31 ,
            SIZE 10,00 ,
            BOXED,
@@ -3801,7 +3845,7 @@
            chk-T1, 
            Check-Box, 
            COL 9,00, 
-           LINE 37,00,
+           LINE 38,54,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -3819,7 +3863,7 @@
            chk-T2, 
            Check-Box, 
            COL 19,17, 
-           LINE 37,00,
+           LINE 38,54,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -3837,7 +3881,7 @@
            chk-T3, 
            Check-Box, 
            COL 30,17, 
-           LINE 37,00,
+           LINE 38,54,
            LINES 1,31 ,
            SIZE 2,50 ,
            ENABLED mod-campi,
@@ -3951,7 +3995,7 @@
            Form1-La-28ada, 
            Label, 
            COL 4,34, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -3967,7 +4011,7 @@
            Form1-La-28aaaa, 
            Label, 
            COL 39,34, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -3984,7 +4028,7 @@
            Form1-La-28abaa, 
            Label, 
            COL 72,84, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -4000,7 +4044,7 @@
            Form1-La-28acba, 
            Label, 
            COL 105,67, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -4016,7 +4060,7 @@
            Form1-La-28acaaa, 
            Label, 
            COL 137,34, 
-           LINE 23,69,
+           LINE 25,23,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -4032,7 +4076,7 @@
            Form1-La-28abb, 
            Label, 
            COL 72,84, 
-           LINE 30,15,
+           LINE 31,69,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -4048,7 +4092,7 @@
            Form1-La-28aab, 
            Label, 
            COL 37,67, 
-           LINE 30,15,
+           LINE 31,69,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -4064,7 +4108,7 @@
            Form1-La-28ae, 
            Label, 
            COL 4,34, 
-           LINE 30,15,
+           LINE 31,69,
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
@@ -4080,7 +4124,7 @@
            Form1-La-28acc, 
            Label, 
            COL 4,34, 
-           LINE 32,15,
+           LINE 33,69,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -4096,7 +4140,7 @@
            Form1-La-28acab, 
            Label, 
            COL 37,67, 
-           LINE 32,15,
+           LINE 33,69,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -4112,7 +4156,7 @@
            Form1-La-28baa, 
            Label, 
            COL 4,34, 
-           LINE 25,69,
+           LINE 27,23,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -4159,7 +4203,7 @@
            Form1-La-5aaacbaa, 
            Label, 
            COL 3,84, 
-           LINE 21,69,
+           LINE 23,23,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -4175,7 +4219,7 @@
            Form1-Br-2abaa, 
            Bar,
            COL 21,34, 
-           LINE 22,38,
+           LINE 23,92,
            SIZE 146,00 ,
            ID IS 157,
            HEIGHT-IN-CELLS,
@@ -4190,7 +4234,7 @@
            Form1-La-5aaacbaaa, 
            Label, 
            COL 3,84, 
-           LINE 28,15,
+           LINE 29,69,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -4206,7 +4250,7 @@
            Form1-Br-2abaaa, 
            Bar,
            COL 21,34, 
-           LINE 28,84,
+           LINE 30,39,
            SIZE 146,00 ,
            ID IS 159,
            HEIGHT-IN-CELLS,
@@ -4221,7 +4265,7 @@
            Form1-La-28aaaaa, 
            Label, 
            COL 43,34, 
-           LINE 25,69,
+           LINE 27,23,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -4254,7 +4298,7 @@
            Form1-La-33ac, 
            Label, 
            COL 15,17, 
-           LINE 37,00,
+           LINE 38,54,
            LINES 1,31 ,
            SIZE 3,00 ,
            FONT IS Small-Font,
@@ -4270,7 +4314,7 @@
            Form1-La-32aac, 
            Label, 
            COL 26,17, 
-           LINE 37,00,
+           LINE 38,54,
            LINES 1,31 ,
            SIZE 3,00 ,
            FONT IS Small-Font,
@@ -4286,7 +4330,7 @@
            Form1-La-5aaacbaaaa, 
            Label, 
            COL 3,84, 
-           LINE 34,92,
+           LINE 36,46,
            LINES 1,31 ,
            SIZE 17,00 ,
            COLOR IS 80,
@@ -4302,7 +4346,7 @@
            Form1-Br-2abaaaa, 
            Bar,
            COL 21,34, 
-           LINE 35,61,
+           LINE 37,15,
            SIZE 146,00 ,
            ID IS 165,
            HEIGHT-IN-CELLS,
@@ -4317,7 +4361,7 @@
            Form1-La-28aaaaaa, 
            Label, 
            COL 72,84, 
-           LINE 25,69,
+           LINE 27,23,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -4326,6 +4370,38 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Peso GET  (Kg)",
+           .
+
+      * LABEL
+       10
+           Form1-La-30aaa, 
+           Label, 
+           COL 4,33, 
+           LINE 20,77,
+           LINES 1,31 ,
+           SIZE 16,00 ,
+           FONT IS Small-Font,
+           ID IS 143,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Descrizione italiano",
+           .
+
+      * LABEL
+       10
+           Form1-La-30aaaa, 
+           Label, 
+           COL 83,50, 
+           LINE 20,77,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 143,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Descrizione spagnolo",
            .
 
       * PAGE
@@ -15106,6 +15182,26 @@
                MOVE 5068 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-des-ita's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-des-ita-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 2 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5069 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-des-spa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-des-spa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 2 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5070 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-altezza-pz's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-altezza-pz-VALIDATION
@@ -15113,7 +15209,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5069 TO CONTROL-ID
+               MOVE 5071 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-larghezza-pz's Validation
@@ -15123,7 +15219,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5070 TO CONTROL-ID
+               MOVE 5072 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-profondita-pz's Validation
@@ -15133,7 +15229,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5071 TO CONTROL-ID
+               MOVE 5073 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-cartone's Validation
@@ -15143,7 +15239,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5072 TO CONTROL-ID
+               MOVE 5074 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-stda's Validation
@@ -15153,7 +15249,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5073 TO CONTROL-ID
+               MOVE 5075 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-adr's Validation
@@ -15163,7 +15259,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5074 TO CONTROL-ID
+               MOVE 5076 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-peso-SHI's Validation
@@ -15183,7 +15279,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5075 TO CONTROL-ID
+               MOVE 5077 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-altezza's Validation
@@ -15193,7 +15289,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5076 TO CONTROL-ID
+               MOVE 5078 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-larghezza's Validation
@@ -15203,7 +15299,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5077 TO CONTROL-ID
+               MOVE 5079 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-profondita's Validation
@@ -15213,7 +15309,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5078 TO CONTROL-ID
+               MOVE 5080 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-epal's Validation
@@ -15223,7 +15319,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5079 TO CONTROL-ID
+               MOVE 5081 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-qta-std's Validation
@@ -15233,7 +15329,7 @@
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5080 TO CONTROL-ID
+               MOVE 5082 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-peso-utf-prg's Validation
@@ -15243,7 +15339,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 91 TO CONTROL-ID
+               MOVE 93 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-peso-non-utf-prg's Validation
@@ -15253,7 +15349,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 92 TO CONTROL-ID
+               MOVE 94 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-COSTO-ULTIMO's Validation
@@ -15263,7 +15359,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 93 TO CONTROL-ID
+               MOVE 95 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-COSTO-MEDIO's Validation
@@ -15273,7 +15369,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 94 TO CONTROL-ID
+               MOVE 96 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-COSTO-MP's Validation
@@ -15283,7 +15379,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 95 TO CONTROL-ID
+               MOVE 97 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-GIACENZA's Validation
@@ -15293,7 +15389,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 96 TO CONTROL-ID
+               MOVE 98 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-CLI's Validation
@@ -15303,7 +15399,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 97 TO CONTROL-ID
+               MOVE 99 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-giac-buona's Validation
@@ -15313,7 +15409,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 98 TO CONTROL-ID
+               MOVE 100 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORN's Validation
@@ -15323,7 +15419,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 99 TO CONTROL-ID
+               MOVE 101 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORNa's Validation
@@ -15333,7 +15429,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5084 TO CONTROL-ID
+               MOVE 5086 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORNb's Validation
@@ -15343,7 +15439,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5085 TO CONTROL-ID
+               MOVE 5087 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORNc's Validation
@@ -15353,7 +15449,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5086 TO CONTROL-ID
+               MOVE 5088 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORNca's Validation
@@ -15363,7 +15459,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 103 TO CONTROL-ID
+               MOVE 105 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ORD-FORNcb's Validation
@@ -15373,7 +15469,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 104 TO CONTROL-ID
+               MOVE 106 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-INI-UDM's Validation
@@ -15383,7 +15479,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 105 TO CONTROL-ID
+               MOVE 107 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-INI-KG's Validation
@@ -15393,7 +15489,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 106 TO CONTROL-ID
+               MOVE 108 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-INI-VALORE's Validation
@@ -15403,7 +15499,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 107 TO CONTROL-ID
+               MOVE 109 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ACQ-UDM's Validation
@@ -15413,7 +15509,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 108 TO CONTROL-ID
+               MOVE 110 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ACQ-KG's Validation
@@ -15423,7 +15519,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 109 TO CONTROL-ID
+               MOVE 111 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-ACQ-VALORE's Validation
@@ -15433,7 +15529,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 110 TO CONTROL-ID
+               MOVE 112 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VEN-UDM's Validation
@@ -15443,7 +15539,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 111 TO CONTROL-ID
+               MOVE 113 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VEN-KG's Validation
@@ -15453,7 +15549,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 112 TO CONTROL-ID
+               MOVE 114 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VEN-VALORE's Validation
@@ -15463,7 +15559,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 113 TO CONTROL-ID
+               MOVE 115 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VAR-UDM's Validation
@@ -15473,7 +15569,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 114 TO CONTROL-ID
+               MOVE 116 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VAR-KG's Validation
@@ -15483,7 +15579,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 115 TO CONTROL-ID
+               MOVE 117 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-VAR-VALORE's Validation
@@ -15493,7 +15589,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 116 TO CONTROL-ID
+               MOVE 118 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-UDM's Validation
@@ -15503,7 +15599,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 117 TO CONTROL-ID
+               MOVE 119 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-KG's Validation
@@ -15513,7 +15609,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 118 TO CONTROL-ID
+               MOVE 120 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-VALORE's Validation
@@ -15523,7 +15619,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 119 TO CONTROL-ID
+               MOVE 121 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-UDM's Validation
@@ -15533,7 +15629,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 120 TO CONTROL-ID
+               MOVE 122 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-KG's Validation
@@ -15543,7 +15639,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 121 TO CONTROL-ID
+               MOVE 123 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-VALORE's Validation
@@ -15553,7 +15649,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 122 TO CONTROL-ID
+               MOVE 124 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-UDMa's Validation
@@ -15563,7 +15659,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 123 TO CONTROL-ID
+               MOVE 125 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-KGa's Validation
@@ -15573,7 +15669,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 124 TO CONTROL-ID
+               MOVE 126 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-FORN-VALOREa's Validation
@@ -15583,7 +15679,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 125 TO CONTROL-ID
+               MOVE 127 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-UDMa's Validation
@@ -15593,7 +15689,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 126 TO CONTROL-ID
+               MOVE 128 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-KGa's Validation
@@ -15603,7 +15699,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 127 TO CONTROL-ID
+               MOVE 129 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * EF-CLI-VALOREa's Validation
@@ -15613,7 +15709,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 128 TO CONTROL-ID
+               MOVE 130 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gia-udm's Validation
@@ -15623,7 +15719,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 129 TO CONTROL-ID
+               MOVE 131 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-gia-kg's Validation
@@ -15633,7 +15729,7 @@
                MOVE 3 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 130 TO CONTROL-ID
+               MOVE 132 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-dt-val-da's Validation
@@ -15643,7 +15739,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5087 TO CONTROL-ID
+               MOVE 5089 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-dt-val-a's Validation
@@ -15653,7 +15749,7 @@
                MOVE 4 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5088 TO CONTROL-ID
+               MOVE 5090 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -16455,6 +16551,40 @@
            PERFORM ef-toss-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-toss-AFTER-VALIDATION
+           .
+
+       ef-des-ita-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-ita, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-des-ita-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-ita, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-des-ita's Validation
+       ef-des-ita-VALIDATION.
+           PERFORM ef-des-ita-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-des-ita-AFTER-VALIDATION
+           .
+
+       ef-des-spa-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-spa, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-des-spa-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-spa, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-des-spa's Validation
+       ef-des-spa-VALIDATION.
+           PERFORM ef-des-spa-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-des-spa-AFTER-VALIDATION
            .
 
        ef-altezza-pz-BEFORE-VALIDATION.
@@ -17597,6 +17727,10 @@
            MOVE ef-scheda-BUF TO art-scheda-tecnica of articoli
       * DB_Entry-Field : ef-toss
            MOVE ef-toss-BUF TO art-tossicologica of articoli
+      * DB_Entry-Field : ef-des-ita
+           MOVE ef-des-ita-BUF TO art-des-ita of articoli
+      * DB_Entry-Field : ef-des-spa
+           MOVE ef-des-spa-BUF TO art-des-spa of articoli
       * DB_Entry-Field : ef-altezza-pz
            MOVE ef-altezza-pz-BUF TO art-altezza-pz OF articoli
       * DB_Entry-Field : ef-larghezza-pz
@@ -17965,6 +18099,10 @@
            MOVE art-scheda-tecnica of articoli TO ef-scheda-BUF
       * DB_Entry-Field : ef-toss
            MOVE art-tossicologica of articoli TO ef-toss-BUF
+      * DB_Entry-Field : ef-des-ita
+           MOVE art-des-ita of articoli TO ef-des-ita-BUF
+      * DB_Entry-Field : ef-des-spa
+           MOVE art-des-spa of articoli TO ef-des-spa-BUF
       * DB_Entry-Field : ef-altezza-pz
            MOVE art-altezza-pz OF articoli TO ef-altezza-pz-BUF
       * DB_Entry-Field : ef-larghezza-pz
@@ -18643,6 +18781,22 @@
               set NoSalvato to true
               |78-ID-ef-toss è l'ID del campo ef-toss
               move 78-ID-ef-toss to store-id 
+           end-if
+
+
+           if art-des-ita of articoli not = old-art-des-ita
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-des-ita è l'ID del campo ef-des-ita
+              move 78-ID-ef-des-ita to store-id 
+           end-if
+
+
+           if art-des-spa of articoli not = old-art-des-spa
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-des-spa è l'ID del campo ef-des-spa
+              move 78-ID-ef-des-spa to store-id 
            end-if
 
 
@@ -20276,103 +20430,103 @@
            to TOTEM-HINT-TEXT
            WHEN 5068 MOVE "Digitare il percorso della scheda tossicologi
       -    "ca" to TOTEM-HINT-TEXT
-           WHEN 5069 MOVE "Digitare l'altezza in cm dell'articolo" to 
+           WHEN 5071 MOVE "Digitare l'altezza in cm dell'articolo" to 
            TOTEM-HINT-TEXT
-           WHEN 5070 MOVE "Digitare la larghezza in cm dell'articolo" 
+           WHEN 5072 MOVE "Digitare la larghezza in cm dell'articolo" 
            to TOTEM-HINT-TEXT
-           WHEN 5071 MOVE "Digitare la profondità in cm dell'articolo" 
+           WHEN 5073 MOVE "Digitare la profondità in cm dell'articolo" 
            to TOTEM-HINT-TEXT
-           WHEN 5072 MOVE "Digitare la quantità per cartone" to 
+           WHEN 5074 MOVE "Digitare la quantità per cartone" to 
            TOTEM-HINT-TEXT
-           WHEN 5073 MOVE "Digitare il numero di Cartoni per UDC" to 
+           WHEN 5075 MOVE "Digitare il numero di Cartoni per UDC" to 
            TOTEM-HINT-TEXT
-           WHEN 5074 MOVE "Digitare il valore di pericolosità ADR" to 
+           WHEN 5076 MOVE "Digitare il valore di pericolosità ADR" to 
            TOTEM-HINT-TEXT
            WHEN 115 MOVE "Digitare il peso dell'articolo per SHI" to 
            TOTEM-HINT-TEXT
-           WHEN 5075 MOVE "Digitare il peso dell'articolo per GET" to 
+           WHEN 5077 MOVE "Digitare il peso dell'articolo per GET" to 
            TOTEM-HINT-TEXT
-           WHEN 5076 MOVE "Digitare l'altezza in cm dell'articolo" to 
+           WHEN 5078 MOVE "Digitare l'altezza in cm dell'articolo" to 
            TOTEM-HINT-TEXT
-           WHEN 5077 MOVE "Digitare la larghezza in cm dell'articolo" 
+           WHEN 5079 MOVE "Digitare la larghezza in cm dell'articolo" 
            to TOTEM-HINT-TEXT
-           WHEN 5078 MOVE "Digitare la profondità in cm dell'articolo" 
+           WHEN 5080 MOVE "Digitare la profondità in cm dell'articolo" 
            to TOTEM-HINT-TEXT
-           WHEN 5079 MOVE "Digitare la quantità per le pedane EPAL" to 
+           WHEN 5081 MOVE "Digitare la quantità per le pedane EPAL" to 
            TOTEM-HINT-TEXT
-           WHEN 5080 MOVE "Digitare la quantità per le pedane STANDARD" 
+           WHEN 5082 MOVE "Digitare la quantità per le pedane STANDARD" 
            to TOTEM-HINT-TEXT
-           WHEN 5081 MOVE "Imposta il flag diretti" to TOTEM-HINT-TEXT
-           WHEN 5082 MOVE "Imposta il flag GDA" to TOTEM-HINT-TEXT
-           WHEN 5083 MOVE "Imposta il flag Gruppi" to TOTEM-HINT-TEXT
-           WHEN 91 MOVE "Valore del costo ultimo" to TOTEM-HINT-TEXT
-           WHEN 92 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
+           WHEN 5083 MOVE "Imposta il flag diretti" to TOTEM-HINT-TEXT
+           WHEN 5084 MOVE "Imposta il flag GDA" to TOTEM-HINT-TEXT
+           WHEN 5085 MOVE "Imposta il flag Gruppi" to TOTEM-HINT-TEXT
            WHEN 93 MOVE "Valore del costo ultimo" to TOTEM-HINT-TEXT
            WHEN 94 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
-           WHEN 95 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
-           WHEN 96 MOVE "Valore della giacenza" to TOTEM-HINT-TEXT
-           WHEN 97 MOVE "Valore impegnato" to TOTEM-HINT-TEXT
-           WHEN 98 MOVE "Valore giacenza 'buona' (magazzini con Pren Pro
-      -    "mo = S)" to TOTEM-HINT-TEXT
-           WHEN 99 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
-           WHEN 5084 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
-           WHEN 5085 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 95 MOVE "Valore del costo ultimo" to TOTEM-HINT-TEXT
+           WHEN 96 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
+           WHEN 97 MOVE "Valore del costo medio" to TOTEM-HINT-TEXT
+           WHEN 98 MOVE "Valore della giacenza" to TOTEM-HINT-TEXT
+           WHEN 99 MOVE "Valore impegnato" to TOTEM-HINT-TEXT
+           WHEN 100 MOVE "Valore giacenza 'buona' (magazzini con Pren Pr
+      -    "omo = S)" to TOTEM-HINT-TEXT
+           WHEN 101 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
            WHEN 5086 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
-           WHEN 103 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
-           WHEN 104 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
-           WHEN 105 MOVE "Quantità iniziale espressa in unità di misura"
+           WHEN 5087 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 5088 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 105 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 106 MOVE "Valore ordinato" to TOTEM-HINT-TEXT
+           WHEN 107 MOVE "Quantità iniziale espressa in unità di misura"
             to TOTEM-HINT-TEXT
-           WHEN 106 MOVE "Peso iniziale espresso in Kg." to 
+           WHEN 108 MOVE "Peso iniziale espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 107 MOVE "Valore in euro iniziale" to TOTEM-HINT-TEXT
-           WHEN 108 MOVE "Quantità degli acquisti espressa in unità di m
+           WHEN 109 MOVE "Valore in euro iniziale" to TOTEM-HINT-TEXT
+           WHEN 110 MOVE "Quantità degli acquisti espressa in unità di m
       -    "isura" to TOTEM-HINT-TEXT
-           WHEN 109 MOVE "Peso degli acquisti espresso in Kg." to 
+           WHEN 111 MOVE "Peso degli acquisti espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 110 MOVE "Valore in euro degli acquisti" to 
+           WHEN 112 MOVE "Valore in euro degli acquisti" to 
            TOTEM-HINT-TEXT
-           WHEN 111 MOVE "Quantità delle vendite espressa in unità di mi
+           WHEN 113 MOVE "Quantità delle vendite espressa in unità di mi
       -    "sura" to TOTEM-HINT-TEXT
-           WHEN 112 MOVE "Peso delle vendite espresso in Kg." to 
+           WHEN 114 MOVE "Peso delle vendite espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 113 MOVE "Valore in euro delle vendite" to 
+           WHEN 115 MOVE "Valore in euro delle vendite" to 
            TOTEM-HINT-TEXT
-           WHEN 114 MOVE "Quantità delle variazioni inventariali espress
+           WHEN 116 MOVE "Quantità delle variazioni inventariali espress
       -    "a in unità di misura" to TOTEM-HINT-TEXT
-           WHEN 115 MOVE "Peso delle variazioni inventariali espresso in
+           WHEN 117 MOVE "Peso delle variazioni inventariali espresso in
       -    " Kg." to TOTEM-HINT-TEXT
-           WHEN 116 MOVE "Valore in euro delle variazioni inventariali" 
+           WHEN 118 MOVE "Valore in euro delle variazioni inventariali" 
            to TOTEM-HINT-TEXT
-           WHEN 117 MOVE "Quantità dei resi ai fornitori espressa in uni
+           WHEN 119 MOVE "Quantità dei resi ai fornitori espressa in uni
       -    "tà di misura" to TOTEM-HINT-TEXT
-           WHEN 118 MOVE "Peso dei resi ai fornitori espresso in Kg." 
+           WHEN 120 MOVE "Peso dei resi ai fornitori espresso in Kg." 
            to TOTEM-HINT-TEXT
-           WHEN 119 MOVE "Valore in euro dei resi ai fornitori" to 
+           WHEN 121 MOVE "Valore in euro dei resi ai fornitori" to 
            TOTEM-HINT-TEXT
-           WHEN 120 MOVE "Quantità dei resi dai clienti espressa in unit
+           WHEN 122 MOVE "Quantità dei resi dai clienti espressa in unit
       -    "à di misura" to TOTEM-HINT-TEXT
-           WHEN 121 MOVE "Peso dei resi dai clienti espresso in Kg." to 
+           WHEN 123 MOVE "Peso dei resi dai clienti espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 122 MOVE "Valore in euro dei resi dai clienti" to 
+           WHEN 124 MOVE "Valore in euro dei resi dai clienti" to 
            TOTEM-HINT-TEXT
-           WHEN 123 MOVE "Quantità delle entrate di lavorazione espressa
+           WHEN 125 MOVE "Quantità delle entrate di lavorazione espressa
       -    " in unità di misura" to TOTEM-HINT-TEXT
-           WHEN 124 MOVE "Peso delle entrate di lavorazione espressa in 
+           WHEN 126 MOVE "Peso delle entrate di lavorazione espressa in 
       -    "Kg" to TOTEM-HINT-TEXT
-           WHEN 125 MOVE "Valore delle entrate di lavorazione espresso i
+           WHEN 127 MOVE "Valore delle entrate di lavorazione espresso i
       -    "n Euro" to TOTEM-HINT-TEXT
-           WHEN 126 MOVE "Quantità delle uscite di lavorazione espressa 
+           WHEN 128 MOVE "Quantità delle uscite di lavorazione espressa 
       -    "in unità di misura" to TOTEM-HINT-TEXT
-           WHEN 127 MOVE "Peso delle uscite di lavorazione espressa in K
+           WHEN 129 MOVE "Peso delle uscite di lavorazione espressa in K
       -    "g" to TOTEM-HINT-TEXT
-           WHEN 128 MOVE "Valore delle uscite di lavorazione espresso in
+           WHEN 130 MOVE "Valore delle uscite di lavorazione espresso in
       -    " Euro" to TOTEM-HINT-TEXT
-           WHEN 129 MOVE "Quantità delle vendite espressa in unità di mi
+           WHEN 131 MOVE "Quantità delle vendite espressa in unità di mi
       -    "sura" to TOTEM-HINT-TEXT
-           WHEN 130 MOVE "Peso delle vendite espresso in Kg." to 
+           WHEN 132 MOVE "Peso delle vendite espresso in Kg." to 
            TOTEM-HINT-TEXT
-           WHEN 5087 MOVE "." to TOTEM-HINT-TEXT
-           WHEN 5088 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5089 MOVE "." to TOTEM-HINT-TEXT
+           WHEN 5090 MOVE "." to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -20441,24 +20595,22 @@
            When 5066 PERFORM ef-foto-BeforeProcedure
            When 5067 PERFORM ef-scheda-BeforeProcedure
            When 5068 PERFORM ef-scheda-BeforeProcedure
-           When 5069 PERFORM ef-ean-5-BeforeProcedure
-           When 5070 PERFORM ef-ean-5-BeforeProcedure
            When 5071 PERFORM ef-ean-5-BeforeProcedure
            When 5072 PERFORM ef-ean-5-BeforeProcedure
            When 5073 PERFORM ef-ean-5-BeforeProcedure
            When 5074 PERFORM ef-ean-5-BeforeProcedure
-           When 115 PERFORM ef-ean-5-BeforeProcedure
            When 5075 PERFORM ef-ean-5-BeforeProcedure
            When 5076 PERFORM ef-ean-5-BeforeProcedure
+           When 115 PERFORM ef-ean-5-BeforeProcedure
            When 5077 PERFORM ef-ean-5-BeforeProcedure
            When 5078 PERFORM ef-ean-5-BeforeProcedure
            When 5079 PERFORM ef-ean-5-BeforeProcedure
            When 5080 PERFORM ef-ean-5-BeforeProcedure
-           When 5081 PERFORM chk-utf-BeforeProcedure
-           When 5082 PERFORM chk-cobat-BeforeProcedure
+           When 5081 PERFORM ef-ean-5-BeforeProcedure
+           When 5082 PERFORM ef-ean-5-BeforeProcedure
            When 5083 PERFORM chk-utf-BeforeProcedure
-           When 91 PERFORM ef-voce-BeforeProcedure
-           When 92 PERFORM ef-voce-BeforeProcedure
+           When 5084 PERFORM chk-cobat-BeforeProcedure
+           When 5085 PERFORM chk-utf-BeforeProcedure
            When 93 PERFORM ef-voce-BeforeProcedure
            When 94 PERFORM ef-voce-BeforeProcedure
            When 95 PERFORM ef-voce-BeforeProcedure
@@ -20466,11 +20618,11 @@
            When 97 PERFORM ef-voce-BeforeProcedure
            When 98 PERFORM ef-voce-BeforeProcedure
            When 99 PERFORM ef-voce-BeforeProcedure
-           When 5084 PERFORM ef-voce-BeforeProcedure
-           When 5085 PERFORM ef-voce-BeforeProcedure
+           When 100 PERFORM ef-voce-BeforeProcedure
+           When 101 PERFORM ef-voce-BeforeProcedure
            When 5086 PERFORM ef-voce-BeforeProcedure
-           When 103 PERFORM ef-voce-BeforeProcedure
-           When 104 PERFORM ef-voce-BeforeProcedure
+           When 5087 PERFORM ef-voce-BeforeProcedure
+           When 5088 PERFORM ef-voce-BeforeProcedure
            When 105 PERFORM ef-voce-BeforeProcedure
            When 106 PERFORM ef-voce-BeforeProcedure
            When 107 PERFORM ef-voce-BeforeProcedure
@@ -20497,8 +20649,10 @@
            When 128 PERFORM ef-voce-BeforeProcedure
            When 129 PERFORM ef-voce-BeforeProcedure
            When 130 PERFORM ef-voce-BeforeProcedure
-           When 5087 PERFORM ef-voce-BeforeProcedure
-           When 5088 PERFORM ef-voce-BeforeProcedure
+           When 131 PERFORM ef-voce-BeforeProcedure
+           When 132 PERFORM ef-voce-BeforeProcedure
+           When 5089 PERFORM ef-voce-BeforeProcedure
+           When 5090 PERFORM ef-voce-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -20571,36 +20725,36 @@
            When 5066 PERFORM ef-foto-AfterProcedure
            When 5067 PERFORM ef-scheda-AfterProcedure
            When 5068 PERFORM ef-scheda-AfterProcedure
-           When 5069 PERFORM ef-ean-5-AfterProcedure
-           When 5070 PERFORM ef-ean-5-AfterProcedure
+           When 5069 PERFORM ef-scheda-AfterProcedure
+           When 5070 PERFORM ef-scheda-AfterProcedure
            When 5071 PERFORM ef-ean-5-AfterProcedure
            When 5072 PERFORM ef-ean-5-AfterProcedure
            When 5073 PERFORM ef-ean-5-AfterProcedure
            When 5074 PERFORM ef-ean-5-AfterProcedure
-           When 115 PERFORM ef-ean-5-AfterProcedure
            When 5075 PERFORM ef-ean-5-AfterProcedure
            When 5076 PERFORM ef-ean-5-AfterProcedure
+           When 115 PERFORM ef-ean-5-AfterProcedure
            When 5077 PERFORM ef-ean-5-AfterProcedure
            When 5078 PERFORM ef-ean-5-AfterProcedure
            When 5079 PERFORM ef-ean-5-AfterProcedure
            When 5080 PERFORM ef-ean-5-AfterProcedure
-           When 5081 PERFORM chk-utf-AfterProcedure
-           When 5082 PERFORM chk-cobat-AfterProcedure
+           When 5081 PERFORM ef-ean-5-AfterProcedure
+           When 5082 PERFORM ef-ean-5-AfterProcedure
            When 5083 PERFORM chk-utf-AfterProcedure
-           When 91 PERFORM ef-voce-AfterProcedure
-           When 92 PERFORM ef-voce-AfterProcedure
+           When 5084 PERFORM chk-cobat-AfterProcedure
+           When 5085 PERFORM chk-utf-AfterProcedure
            When 93 PERFORM ef-voce-AfterProcedure
            When 94 PERFORM ef-voce-AfterProcedure
            When 95 PERFORM ef-voce-AfterProcedure
-           When 96 PERFORM EF-PREZZO-FINITO-AfterProcedure
+           When 96 PERFORM ef-voce-AfterProcedure
            When 97 PERFORM ef-voce-AfterProcedure
-           When 98 PERFORM ef-voce-AfterProcedure
+           When 98 PERFORM EF-PREZZO-FINITO-AfterProcedure
            When 99 PERFORM ef-voce-AfterProcedure
-           When 5084 PERFORM ef-voce-AfterProcedure
-           When 5085 PERFORM ef-voce-AfterProcedure
+           When 100 PERFORM ef-voce-AfterProcedure
+           When 101 PERFORM ef-voce-AfterProcedure
            When 5086 PERFORM ef-voce-AfterProcedure
-           When 103 PERFORM ef-voce-AfterProcedure
-           When 104 PERFORM ef-voce-AfterProcedure
+           When 5087 PERFORM ef-voce-AfterProcedure
+           When 5088 PERFORM ef-voce-AfterProcedure
            When 105 PERFORM ef-voce-AfterProcedure
            When 106 PERFORM ef-voce-AfterProcedure
            When 107 PERFORM ef-voce-AfterProcedure
@@ -20627,8 +20781,10 @@
            When 128 PERFORM ef-voce-AfterProcedure
            When 129 PERFORM ef-voce-AfterProcedure
            When 130 PERFORM ef-voce-AfterProcedure
-           When 5087 PERFORM ef-voce-AfterProcedure
-           When 5088 PERFORM ef-voce-AfterProcedure
+           When 131 PERFORM ef-voce-AfterProcedure
+           When 132 PERFORM ef-voce-AfterProcedure
+           When 5089 PERFORM ef-voce-AfterProcedure
+           When 5090 PERFORM ef-voce-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -21721,6 +21877,18 @@ LABLAB
               INQUIRE ef-toss, VALUE IN art-tossicologica of articoli
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-toss-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-des-ita, VALUE IN art-des-ita of articoli
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-des-ita-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-des-spa, VALUE IN art-des-spa of articoli
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-des-spa-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

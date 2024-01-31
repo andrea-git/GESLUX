@@ -455,6 +455,8 @@
                    15 old-art-num-vuoto-2          PIC  9(3).
                    15 old-art-num-vuoto-3          PIC  9(18).
                    15 old-art-note2    PIC  X(300).
+                   15 old-art-des-ita  pic x(60).
+                   15 old-art-des-spa  pic x(60).
        77 form3-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 Verdana12BI-Occidentale

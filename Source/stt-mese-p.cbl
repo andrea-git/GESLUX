@@ -752,10 +752,8 @@
 
                     move anno-curr   to anno-prev
                     add 1 to anno-curr giving anno-next
-           end-evaluate.
+           end-evaluate. 
 
-           accept  PathPod from environment "PATH_POD".
-           inspect PathPod replacing trailing spaces by low-value.
            move tor-num-bolla  to NomeFile.
            call "C$JUSTIFY" using NomeFile, "L".
            inspect NomeFile replacing leading x"30" by x"20".
@@ -769,7 +767,15 @@
            inspect mese-esteso-next replacing trailing 
                                     spaces by low-value.
                                                
-           initialize FilePod.
+           initialize FilePod.  
+
+           if anno-prev < 2020
+              accept  PathPod from environment "PATH_POD_OLD"
+           else
+              accept  PathPod from environment "PATH_POD"
+           end-if.
+           inspect PathPod replacing trailing spaces by low-value.
+
            string PathPod          delimited low-value
                   anno-prev        delimited size
                   "\"              delimited size
@@ -787,7 +793,15 @@
                             giving status-code.
 
            if status-code not = 0
-              initialize FilePod
+              initialize FilePod     
+
+              if anno-curr < 2020
+                 accept  PathPod from environment "PATH_POD_OLD"
+              else
+                 accept  PathPod from environment "PATH_POD"
+              end-if
+              inspect PathPod replacing trailing spaces by low-value
+
               string PathPod          delimited low-value
                      anno-curr        delimited size
                      "\"              delimited size
@@ -805,7 +819,15 @@
                                giving status-code
                                 
               if status-code not = 0             
-                 initialize FilePod
+                 initialize FilePod     
+
+                 if anno-next < 2020
+                    accept  PathPod from environment "PATH_POD_OLD"
+                 else
+                    accept  PathPod from environment "PATH_POD"
+                 end-if
+                 inspect PathPod replacing trailing spaces by low-value
+
                  string PathPod          delimited low-value
                         anno-next        delimited size
                         "\"              delimited size

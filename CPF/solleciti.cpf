@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B1817496-232-791411510
+PROGRAM_UNIQUE_CODE=TOTEM-7E811F151332-555-18081289
 
 {{@DESCRIPTION:
 
@@ -11659,7 +11659,11 @@ BEGIN-TEXT
            when 12  move "DICEMBRE"  to mese-esteso
            end-evaluate.
 
-           accept  PathPod from environment "PATH_POD".
+           if sol-anno-b of tmp-sol < 2020                          
+              accept  PathPod from environment "PATH_POD_OLD"
+           else
+              accept  PathPod from environment "PATH_POD"
+           end-if.
            inspect PathPod replacing trailing spaces by low-value.
            move sol-num-b of tmp-sol to NomeFile.
            call "C$JUSTIFY" using NomeFile, "L".

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E79672345-471-1895329229
+PROGRAM_UNIQUE_CODE=TOTEM-7E811F151214-670-256079383
 
 {{@DESCRIPTION:
 
@@ -23980,9 +23980,7 @@ PATCH      end-evaluate.
                     move anno-curr   to anno-prev
                     add 1 to anno-curr giving anno-next
            end-evaluate.
-
-           accept  PathPod from environment "PATH_POD".
-           inspect PathPod replacing trailing spaces by low-value.
+                           
            move tor-num-bolla  to NomeFile.
            call "C$JUSTIFY" using NomeFile, "L".
            inspect NomeFile replacing leading x"30" by x"20".
@@ -23992,7 +23990,14 @@ PATCH      end-evaluate.
            inspect mese-esteso-prev replacing trailing spaces by low-value.
            inspect mese-esteso-curr replacing trailing spaces by low-value.
            inspect mese-esteso-next replacing trailing spaces by low-value.
-                                               
+                              
+           if anno-prev < 2020
+              accept  PathPod from environment "PATH_POD_OLD"
+           else
+              accept  PathPod from environment "PATH_POD"
+           end-if.
+           inspect PathPod replacing trailing spaces by low-value.
+                 
            initialize FilePod.
            string PathPod          delimited low-value
                   anno-prev        delimited size
@@ -24011,6 +24016,13 @@ PATCH      end-evaluate.
                             giving status-code.
 
            if status-code not = 0
+              if anno-curr < 2020
+                 accept  PathPod from environment "PATH_POD_OLD"
+              else
+                 accept  PathPod from environment "PATH_POD"
+              end-if
+              inspect PathPod replacing trailing spaces by low-value
+
               initialize FilePod
               string PathPod          delimited low-value
                      anno-curr        delimited size
@@ -24028,7 +24040,13 @@ PATCH      end-evaluate.
               CALL "C$FILEINFO" using FilePod, FILE-INFO
                                giving status-code
                                 
-              if status-code not = 0             
+              if status-code not = 0    
+                 if anno-next < 2020
+                    accept  PathPod from environment "PATH_POD_OLD"
+                 else
+                    accept  PathPod from environment "PATH_POD"
+                 end-if
+                 inspect PathPod replacing trailing spaces by low-value         
                  initialize FilePod
                  string PathPod          delimited low-value
                         anno-next        delimited size

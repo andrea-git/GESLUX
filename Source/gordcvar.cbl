@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 6 settembre 2023 09:39:56.
+       DATE-WRITTEN.        mercoledì 31 gennaio 2024 16:21:47.
        REMARKS.
       *{TOTEM}END
 
@@ -974,9 +974,11 @@
        77 tpromo-tpr-chiave-volantino-SPLITBUF  PIC X(22).
        77 tpromo-tpr-k-fine-vol-SPLITBUF  PIC X(22).
        77 tpromo-tpr-k-data-ins-SPLITBUF  PIC X(29).
+       77 listini-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
+       77 listini-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini-lst-k-data-SPLITBUF  PIC X(29).
        77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
-       77 listini-lst-k-data-SPLITBUF  PIC X(29).
        77 lisagente-k-codice-SPLITBUF  PIC X(5).
        77 reltor-k-bolla-SPLITBUF  PIC X(13).
        77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
@@ -11200,24 +11202,24 @@
       * <TOTEM:END>
            .
 
-       listini-lst-k-articolo-MERGE-SPLITBUF.
-           INITIALIZE listini-lst-k-articolo-SPLITBUF
+       listini-lst-k-gdo-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-gdo-articolo-SPLITBUF
            MOVE lst-gdo OF listini(1:5) TO 
-           listini-lst-k-articolo-SPLITBUF(1:5)
+           listini-lst-k-gdo-articolo-SPLITBUF(1:5)
            MOVE lst-articolo OF listini(1:6) TO 
-           listini-lst-k-articolo-SPLITBUF(6:6)
+           listini-lst-k-gdo-articolo-SPLITBUF(6:6)
            MOVE lst-data OF listini(1:8) TO 
-           listini-lst-k-articolo-SPLITBUF(12:8)
+           listini-lst-k-gdo-articolo-SPLITBUF(12:8)
            .
 
-       listini-lst-k-cod-art-cli-MERGE-SPLITBUF.
-           INITIALIZE listini-lst-k-cod-art-cli-SPLITBUF
+       listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-gdo-cod-art-cli-SPLITBUF
            MOVE lst-gdo OF listini(1:5) TO 
-           listini-lst-k-cod-art-cli-SPLITBUF(1:5)
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(1:5)
            MOVE lst-cod-art-cli OF listini(1:15) TO 
-           listini-lst-k-cod-art-cli-SPLITBUF(6:15)
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(6:15)
            MOVE lst-data OF listini(1:8) TO 
-           listini-lst-k-cod-art-cli-SPLITBUF(21:8)
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(21:8)
            .
 
        listini-lst-k-data-MERGE-SPLITBUF.
@@ -11228,6 +11230,26 @@
            listini-lst-k-data-SPLITBUF(9:5)
            MOVE lst-cod-art-cli OF listini(1:15) TO 
            listini-lst-k-data-SPLITBUF(14:15)
+           .
+
+       listini-lst-k-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-articolo-SPLITBUF
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini-lst-k-articolo-SPLITBUF(1:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-articolo-SPLITBUF(7:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-articolo-SPLITBUF(15:5)
+           .
+
+       listini-lst-k-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-cod-art-cli-SPLITBUF
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(1:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(16:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(24:5)
            .
 
        DataSet1-listini-INITSTART.
@@ -11291,9 +11313,11 @@
               READ listini WITH NO LOCK 
               KEY lst-chiave OF listini
            END-IF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
-           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -11321,9 +11345,11 @@
                  READ listini PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
-           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -11351,9 +11377,11 @@
                  READ listini NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
-           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
            MOVE "listini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -16538,9 +16566,7 @@ PATCH      end-evaluate.
                     move anno-curr   to anno-prev
                     add 1 to anno-curr giving anno-next
            end-evaluate.
-
-           accept  PathPod from environment "PATH_POD".
-           inspect PathPod replacing trailing spaces by low-value.
+                           
            move tor-num-bolla  to NomeFile.
            call "C$JUSTIFY" using NomeFile, "L".
            inspect NomeFile replacing leading x"30" by x"20".
@@ -16554,7 +16580,14 @@ PATCH      end-evaluate.
            low-value.
            inspect mese-esteso-next replacing trailing spaces by 
            low-value.
-                                               
+                              
+           if anno-prev < 2020
+              accept  PathPod from environment "PATH_POD_OLD"
+           else
+              accept  PathPod from environment "PATH_POD"
+           end-if.
+           inspect PathPod replacing trailing spaces by low-value.
+                 
            initialize FilePod.
            string PathPod          delimited low-value
                   anno-prev        delimited size
@@ -16573,6 +16606,13 @@ PATCH      end-evaluate.
                             giving status-code.
 
            if status-code not = 0
+              if anno-curr < 2020
+                 accept  PathPod from environment "PATH_POD_OLD"
+              else
+                 accept  PathPod from environment "PATH_POD"
+              end-if
+              inspect PathPod replacing trailing spaces by low-value
+
               initialize FilePod
               string PathPod          delimited low-value
                      anno-curr        delimited size
@@ -16590,7 +16630,14 @@ PATCH      end-evaluate.
               CALL "C$FILEINFO" using FilePod, FILE-INFO
                                giving status-code
                                 
-              if status-code not = 0             
+              if status-code not = 0    
+                 if anno-next < 2020
+                    accept  PathPod from environment "PATH_POD_OLD"
+                 else
+                    accept  PathPod from environment "PATH_POD"
+                 end-if
+                 inspect PathPod replacing trailing spaces by low-value 
+                   
                  initialize FilePod
                  string PathPod          delimited low-value
                         anno-next        delimited size

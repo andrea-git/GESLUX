@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7B18174819-442-3018932313
+PROGRAM_UNIQUE_CODE=TOTEM-7E811F163946-758-1049426066
 
 {{@DESCRIPTION:
 
@@ -14393,9 +14394,133 @@ Begin Screen Form1
             Before Procedure  = ef-scheda-BeforeProcedure
             After Procedure   = ef-scheda-AfterProcedure
          End
+         Begin Data.Entry-Field ef-des-ita
+            SCREEN-COL        = 21,67
+            SCREEN-LINE       = 20,77
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = ef-des-ita
+            Auto              = FALSE
+            Auto Decimal      = 0
+            Border            = Boxed
+            Case              = Mixed
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 513
+            Column            = 20,00
+            Csize             = 0
+            Csize Unit        = Default
+            Cursor            = 0
+            Cursor Col        = 0
+            Cursor Row        = 0
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi
+            Field Edited (Style) = 0
+            Field Edited Format = X(60)
+            Field Picture     = X(60)
+            Field Variable    = art-des-ita of articoli
+            File              = articoli
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 74
+            ID Variable       = AUTO-ID
+            Justification     = Unaligned
+            Line              = 14,31
+            Lines             = 1,31
+            Lines Unit        = Default
+            Max Lines         = 0
+            Max Text          = 60
+            Max Value         = 0
+            Min Value         = 0
+            No AutoSel        = FALSE
+            No Tab            = FALSE
+            Notify Change     = FALSE
+            Numeric           = FALSE
+            Occurs            = 0
+            Read Only         = FALSE
+            Required          = FALSE
+            Secure            = FALSE
+            Size              = 0,00
+            Size Unit         = Default
+            Style             = Singleline
+            Tab Order         = 10
+            Use Return        = FALSE
+            Use Tab           = FALSE
+            Value Multiple    = FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD="
+            Before Procedure  = ef-scheda-BeforeProcedure
+            After Procedure   = ef-scheda-AfterProcedure
+         End
+         Begin Data.Entry-Field ef-des-spa
+            SCREEN-COL        = 101,67
+            SCREEN-LINE       = 20,77
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = ef-des-spa
+            Auto              = FALSE
+            Auto Decimal      = 0
+            Border            = Boxed
+            Case              = Mixed
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 513
+            Column            = 100,00
+            Csize             = 0
+            Csize Unit        = Default
+            Cursor            = 0
+            Cursor Col        = 0
+            Cursor Row        = 0
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi
+            Field Edited (Style) = 0
+            Field Edited Format = X(60)
+            Field Picture     = X(60)
+            Field Variable    = art-des-spa of articoli
+            File              = articoli
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 74
+            ID Variable       = AUTO-ID
+            Justification     = Unaligned
+            Line              = 14,31
+            Lines             = 1,31
+            Lines Unit        = Default
+            Max Lines         = 0
+            Max Text          = 60
+            Max Value         = 0
+            Min Value         = 0
+            No AutoSel        = FALSE
+            No Tab            = FALSE
+            Notify Change     = FALSE
+            Numeric           = FALSE
+            Occurs            = 0
+            Read Only         = FALSE
+            Required          = FALSE
+            Secure            = FALSE
+            Size              = 0,00
+            Size Unit         = Default
+            Style             = Singleline
+            Tab Order         = 11
+            Use Return        = FALSE
+            Use Tab           = FALSE
+            Value Multiple    = FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "CONTROLLO-OLD="
+            Before Procedure  = ef-scheda-BeforeProcedure
+            After Procedure   = ef-scheda-AfterProcedure
+         End
          Begin Data.Entry-Field ef-altezza-pz
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-altezza-pz
@@ -14428,7 +14553,7 @@ Begin Screen Form1
             ID                = 75
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14446,7 +14571,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 10
+            Tab Order         = 12
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14458,7 +14583,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-larghezza-pz
             SCREEN-COL        = 58,34
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-larghezza-pz
@@ -14491,7 +14616,7 @@ Begin Screen Form1
             ID                = 89
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14509,7 +14634,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 11
+            Tab Order         = 13
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14521,7 +14646,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-profondita-pz
             SCREEN-COL        = 88,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-profondita-pz
@@ -14554,7 +14679,7 @@ Begin Screen Form1
             ID                = 90
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14572,7 +14697,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 12
+            Tab Order         = 14
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14584,7 +14709,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-cartone
             SCREEN-COL        = 122,34
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-cartone
@@ -14617,7 +14742,7 @@ Begin Screen Form1
             ID                = 113
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14635,7 +14760,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 13
+            Tab Order         = 15
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14647,7 +14772,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-stda
             SCREEN-COL        = 151,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-stda
@@ -14680,7 +14805,7 @@ Begin Screen Form1
             ID                = 114
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14698,7 +14823,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 14
+            Tab Order         = 16
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14710,7 +14835,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-adr
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-adr
@@ -14743,7 +14868,7 @@ Begin Screen Form1
             ID                = 43
             ID Variable       = AUTO-ID
             Justification     = Unaligned
-            Line              = 19,23
+            Line              = 20,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14761,7 +14886,7 @@ Begin Screen Form1
             Size              = 18,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 15
+            Tab Order         = 17
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14773,7 +14898,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-SHI
             SCREEN-COL        = 58,34
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-SHI
@@ -14805,7 +14930,7 @@ Begin Screen Form1
             Hint              = Digitare il peso dell'articolo per SHI
             ID                = 115
             Justification     = Right
-            Line              = 19,23
+            Line              = 20,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14823,7 +14948,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 16
+            Tab Order         = 18
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14835,7 +14960,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-peso-GET
             SCREEN-COL        = 88,67
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-peso-GET
@@ -14868,7 +14993,7 @@ Begin Screen Form1
             ID                = 116
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 19,23
+            Line              = 20,77
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14886,7 +15011,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 17
+            Tab Order         = 19
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14898,7 +15023,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-altezza
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 30,15
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-altezza
@@ -14931,7 +15056,7 @@ Begin Screen Form1
             ID                = 29
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 23,69
+            Line              = 25,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -14949,7 +15074,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 18
+            Tab Order         = 20
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14961,7 +15086,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-larghezza
             SCREEN-COL        = 54,67
-            SCREEN-LINE       = 30,15
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-larghezza
@@ -14994,7 +15119,7 @@ Begin Screen Form1
             ID                = 31
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 23,69
+            Line              = 25,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15012,7 +15137,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 19
+            Tab Order         = 21
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15024,7 +15149,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-profondita
             SCREEN-COL        = 88,67
-            SCREEN-LINE       = 30,15
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-profondita
@@ -15057,7 +15182,7 @@ Begin Screen Form1
             ID                = 33
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 23,69
+            Line              = 25,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15075,7 +15200,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 20
+            Tab Order         = 22
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15087,7 +15212,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-epal
             SCREEN-COL        = 21,67
-            SCREEN-LINE       = 32,15
+            SCREEN-LINE       = 33,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-epal
@@ -15120,7 +15245,7 @@ Begin Screen Form1
             ID                = 35
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 25,69
+            Line              = 27,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15138,7 +15263,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 21
+            Tab Order         = 23
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15150,7 +15275,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-qta-std
             SCREEN-COL        = 54,67
-            SCREEN-LINE       = 32,15
+            SCREEN-LINE       = 33,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-qta-std
@@ -15183,7 +15308,7 @@ Begin Screen Form1
             ID                = 117
             ID Variable       = AUTO-ID
             Justification     = Right
-            Line              = 25,69
+            Line              = 27,23
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
@@ -15201,7 +15326,7 @@ Begin Screen Form1
             Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 22
+            Tab Order         = 24
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15213,7 +15338,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-T1
             SCREEN-COL        = 9,00
-            SCREEN-LINE       = 37,00
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-T1
@@ -15243,7 +15368,7 @@ Begin Screen Form1
             ID                = 125
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 30,54
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -15252,7 +15377,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 23
+            Tab Order         = 25
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
@@ -15265,7 +15390,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-T2
             SCREEN-COL        = 19,17
-            SCREEN-LINE       = 37,00
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-T2
@@ -15295,7 +15420,7 @@ Begin Screen Form1
             ID                = 127
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 30,54
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -15304,7 +15429,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 24
+            Tab Order         = 26
             Termination Value = 0
             Title             = "art-soggetto-cobat"
             Value             = 0:FALSE
@@ -15317,7 +15442,7 @@ Begin Screen Form1
          End
          Begin Data.Check-Box chk-T3
             SCREEN-COL        = 30,17
-            SCREEN-LINE       = 37,00
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = chk-T3
@@ -15347,7 +15472,7 @@ Begin Screen Form1
             ID                = 138
             ID Variable       = AUTO-ID
             Left Text         = FALSE
-            Line              = 30,54
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Tab            = FALSE
@@ -15356,7 +15481,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 2,50
             Size Unit         = Default
-            Tab Order         = 25
+            Tab Order         = 27
             Termination Value = 0
             Title             = "art-soggetto-imposte"
             Value             = 0:FALSE
@@ -15401,7 +15526,7 @@ Begin Screen Form1
             Size              = 3,00
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 26
+            Tab Order         = 28
             Termination Value = 0
             Title             = "..."
             Visible           = NONE
@@ -15436,7 +15561,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 13,17
             Size Unit         = Default
-            Tab Order         = 27
+            Tab Order         = 29
             Title             = "Note aggiuntive"
             Transparent       = TRUE
             Visible           = NONE
@@ -15470,7 +15595,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 28
+            Tab Order         = 30
             Title             = "Foto"
             Transparent       = TRUE
             Visible           = NONE
@@ -15504,7 +15629,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 29
+            Tab Order         = 31
             Title             = "Scheda tecnica"
             Transparent       = TRUE
             Visible           = NONE
@@ -15538,7 +15663,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 30
+            Tab Order         = 32
             Title             = "Scheda tossicologica"
             Transparent       = TRUE
             Visible           = NONE
@@ -15572,7 +15697,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 31
+            Tab Order         = 33
             Title             = "Logo Brand"
             Transparent       = TRUE
             Visible           = NONE
@@ -15580,7 +15705,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28ada
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28ada
@@ -15599,14 +15724,14 @@ Begin Screen Form1
             ID                = 145
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 32
+            Tab Order         = 34
             Title             = "Altezza pezzo (cm)"
             Transparent       = TRUE
             Visible           = NONE
@@ -15614,7 +15739,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28aaaa
             SCREEN-COL        = 39,34
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaa
@@ -15633,14 +15758,14 @@ Begin Screen Form1
             ID                = 146
             Justification     = Right
             Label Offset      = 20
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 33
+            Tab Order         = 35
             Title             = "Largh. pezzo (cm)"
             Transparent       = TRUE
             Visible           = NONE
@@ -15648,7 +15773,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28abaa
             SCREEN-COL        = 72,84
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28abaa
@@ -15667,14 +15792,14 @@ Begin Screen Form1
             ID                = 147
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 34
+            Tab Order         = 36
             Title             = "Prof. pezzo (cm)"
             Transparent       = TRUE
             Visible           = NONE
@@ -15682,7 +15807,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acba
             SCREEN-COL        = 105,67
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acba
@@ -15701,14 +15826,14 @@ Begin Screen Form1
             ID                = 148
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,00
             Size Unit         = Default
-            Tab Order         = 35
+            Tab Order         = 37
             Title             = "Conf. per Cartone"
             Transparent       = TRUE
             Visible           = NONE
@@ -15716,7 +15841,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acaaa
             SCREEN-COL        = 137,34
-            SCREEN-LINE       = 23,69
+            SCREEN-LINE       = 25,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acaaa
@@ -15735,14 +15860,14 @@ Begin Screen Form1
             ID                = 149
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 17,23
+            Line              = 18,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 14,00
             Size Unit         = Default
-            Tab Order         = 36
+            Tab Order         = 38
             Title             = "Cartoni per UDC"
             Transparent       = TRUE
             Visible           = NONE
@@ -15750,7 +15875,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28abb
             SCREEN-COL        = 72,84
-            SCREEN-LINE       = 30,15
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28abb
@@ -15769,14 +15894,14 @@ Begin Screen Form1
             ID                = 150
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 23,69
+            Line              = 25,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 37
+            Tab Order         = 39
             Title             = "Prof. bancale (cm)"
             Transparent       = TRUE
             Visible           = NONE
@@ -15784,7 +15909,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28aab
             SCREEN-COL        = 37,67
-            SCREEN-LINE       = 30,15
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aab
@@ -15803,14 +15928,14 @@ Begin Screen Form1
             ID                = 151
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 23,69
+            Line              = 25,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 38
+            Tab Order         = 40
             Title             = "Largh. bancale (cm)"
             Transparent       = TRUE
             Visible           = NONE
@@ -15818,7 +15943,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28ae
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 30,15
+            SCREEN-LINE       = 31,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28ae
@@ -15837,14 +15962,14 @@ Begin Screen Form1
             ID                = 152
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 23,69
+            Line              = 25,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 39
+            Tab Order         = 41
             Title             = "Altezza bancale (cm)"
             Transparent       = TRUE
             Visible           = NONE
@@ -15852,7 +15977,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acc
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 32,15
+            SCREEN-LINE       = 33,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acc
@@ -15871,14 +15996,14 @@ Begin Screen Form1
             ID                = 153
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 25,69
+            Line              = 27,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 16,00
             Size Unit         = Default
-            Tab Order         = 40
+            Tab Order         = 42
             Title             = "Q.ta bancale EPAL"
             Transparent       = TRUE
             Visible           = NONE
@@ -15886,7 +16011,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28acab
             SCREEN-COL        = 37,67
-            SCREEN-LINE       = 32,15
+            SCREEN-LINE       = 33,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28acab
@@ -15905,14 +16030,14 @@ Begin Screen Form1
             ID                = 154
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 25,69
+            Line              = 27,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 41
+            Tab Order         = 43
             Title             = "Q.ta bancale STD"
             Transparent       = TRUE
             Visible           = NONE
@@ -15920,7 +16045,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-28baa
             SCREEN-COL        = 4,34
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28baa
@@ -15939,14 +16064,14 @@ Begin Screen Form1
             ID                = 685
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 19,23
+            Line              = 20,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 42
+            Tab Order         = 44
             Title             = "Pericolosità ADR"
             Transparent       = TRUE
             Visible           = NONE
@@ -15979,7 +16104,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 43
+            Tab Order         = 45
             Title             = "Dati Aggiuntivi"
             Transparent       = FALSE
             Visible           = NONE
@@ -16011,14 +16136,14 @@ Begin Screen Form1
             Size (Lines)      = 146,00
             Size (Lines) in Pixels = 876
             Size (Lines) Unit = Default
-            Tab Order         = 44
+            Tab Order         = 46
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5aaacbaa
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 21,69
+            SCREEN-LINE       = 23,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacbaa
@@ -16036,14 +16161,14 @@ Begin Screen Form1
             ID                = 156
             Justification     = Center
             Label Offset      = 20
-            Line              = 15,23
+            Line              = 16,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 45
+            Tab Order         = 47
             Title             = "Dimensioni varie"
             Transparent       = FALSE
             Visible           = NONE
@@ -16051,7 +16176,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2abaa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 22,38
+            SCREEN-LINE       = 23,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2abaa
@@ -16066,7 +16191,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 157
             Kind              = Horizontal
-            Line              = 15,92
+            Line              = 17,46
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -16075,14 +16200,14 @@ Begin Screen Form1
             Size (Lines)      = 146,00
             Size (Lines) in Pixels = 876
             Size (Lines) Unit = Default
-            Tab Order         = 46
+            Tab Order         = 48
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5aaacbaaa
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 28,15
+            SCREEN-LINE       = 29,69
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacbaaa
@@ -16100,14 +16225,14 @@ Begin Screen Form1
             ID                = 158
             Justification     = Center
             Label Offset      = 20
-            Line              = 21,69
+            Line              = 23,23
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 47
+            Tab Order         = 49
             Title             = "Dimensioni"
             Transparent       = FALSE
             Visible           = NONE
@@ -16115,7 +16240,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2abaaa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 28,84
+            SCREEN-LINE       = 30,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2abaaa
@@ -16130,7 +16255,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 159
             Kind              = Horizontal
-            Line              = 22,38
+            Line              = 23,92
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -16139,14 +16264,14 @@ Begin Screen Form1
             Size (Lines)      = 146,00
             Size (Lines) in Pixels = 876
             Size (Lines) Unit = Default
-            Tab Order         = 48
+            Tab Order         = 50
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-28aaaaa
             SCREEN-COL        = 43,34
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaaa
@@ -16165,14 +16290,14 @@ Begin Screen Form1
             ID                = 160
             Justification     = Right
             Label Offset      = 20
-            Line              = 19,23
+            Line              = 20,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 49
+            Tab Order         = 51
             Title             = "Peso SHI  (Kg)"
             Transparent       = TRUE
             Visible           = NONE
@@ -16206,7 +16331,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 50
+            Tab Order         = 52
             Title             = "T1"
             Transparent       = TRUE
             Visible           = NONE
@@ -16214,7 +16339,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33ac
             SCREEN-COL        = 15,17
-            SCREEN-LINE       = 37,00
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33ac
@@ -16233,14 +16358,14 @@ Begin Screen Form1
             ID                = 162
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 30,54
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 51
+            Tab Order         = 53
             Title             = "T2"
             Transparent       = TRUE
             Visible           = NONE
@@ -16248,7 +16373,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32aac
             SCREEN-COL        = 26,17
-            SCREEN-LINE       = 37,00
+            SCREEN-LINE       = 38,54
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32aac
@@ -16267,14 +16392,14 @@ Begin Screen Form1
             ID                = 163
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 30,54
+            Line              = 32,08
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 52
+            Tab Order         = 54
             Title             = "T3"
             Transparent       = TRUE
             Visible           = NONE
@@ -16282,7 +16407,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-5aaacbaaaa
             SCREEN-COL        = 3,84
-            SCREEN-LINE       = 34,92
+            SCREEN-LINE       = 36,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-5aaacbaaaa
@@ -16300,14 +16425,14 @@ Begin Screen Form1
             ID                = 164
             Justification     = Center
             Label Offset      = 20
-            Line              = 28,46
+            Line              = 30,00
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 17,00
             Size Unit         = Default
-            Tab Order         = 53
+            Tab Order         = 55
             Title             = "Flag"
             Transparent       = FALSE
             Visible           = NONE
@@ -16315,7 +16440,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2abaaaa
             SCREEN-COL        = 21,34
-            SCREEN-LINE       = 35,61
+            SCREEN-LINE       = 37,15
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2abaaaa
@@ -16330,7 +16455,7 @@ Begin Screen Form1
             Help ID           = 0
             ID                = 165
             Kind              = Horizontal
-            Line              = 29,15
+            Line              = 30,69
             Line Styles       = Solid
             Occurs            = 0
             Position Shift    = 0
@@ -16339,14 +16464,14 @@ Begin Screen Form1
             Size (Lines)      = 146,00
             Size (Lines) in Pixels = 876
             Size (Lines) Unit = Default
-            Tab Order         = 54
+            Tab Order         = 56
             Visible           = NONE
             Width             = 2
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-28aaaaaa
             SCREEN-COL        = 72,84
-            SCREEN-LINE       = 25,69
+            SCREEN-LINE       = 27,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-28aaaaaa
@@ -16365,15 +16490,83 @@ Begin Screen Form1
             ID                = 169
             Justification     = Unaligned
             Label Offset      = 20
-            Line              = 19,23
+            Line              = 20,77
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
             Occurs            = 0
             Size              = 13,00
             Size Unit         = Default
-            Tab Order         = 55
+            Tab Order         = 57
             Title             = "Peso GET  (Kg)"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-30aaa
+            SCREEN-COL        = 4,33
+            SCREEN-LINE       = 20,77
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-30aaa
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 2,67
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 143
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 14,31
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 16,00
+            Size Unit         = Default
+            Tab Order         = 58
+            Title             = "Descrizione italiano"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-30aaaa
+            SCREEN-COL        = 83,50
+            SCREEN-LINE       = 20,77
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-30aaaa
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 81,83
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 143
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 14,31
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 17,00
+            Size Unit         = Default
+            Tab Order         = 59
+            Title             = "Descrizione spagnolo"
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
