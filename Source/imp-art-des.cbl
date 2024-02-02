@@ -90,7 +90,7 @@
                             replacing trailing spaces by low-value
                     string como-des         delimited low-value
                            art-descrizione2 delimited size
-                      into art-des-ita
+                      into art-des-ing
                     end-string
                     rewrite art-rec
                  end-perform

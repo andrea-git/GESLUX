@@ -469,7 +469,7 @@
                             art-SHARK                  of articoli
                             art-litri                  of articoli
                             art-note2                  of articoli
-                            art-des-ita                of articoli
+                            art-des-ing                of articoli
                             art-des-spa                of articoli
               end-unstring 
               move "PZ"  to art-unita-di-misura of articoli

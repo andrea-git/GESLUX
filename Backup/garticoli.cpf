@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E811F2070-954-2206428479
+PROGRAM_UNIQUE_CODE=TOTEM-7E82210357-559-139561811
 
 {{@DESCRIPTION:
 
@@ -14410,12 +14410,12 @@ Begin Screen Form1
             Before Procedure  = ef-scheda-BeforeProcedure
             After Procedure   = ef-scheda-AfterProcedure
          End
-         Begin Data.Entry-Field ef-des-ita
+         Begin Data.Entry-Field ef-des-ing
             SCREEN-COL        = 21,67
             SCREEN-LINE       = 20,77
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = ef-des-ita
+            (Name)            = ef-des-ing
             Auto              = FALSE
             Auto Decimal      = 0
             Border            = Boxed
@@ -14435,7 +14435,7 @@ Begin Screen Form1
             Field Edited (Style) = 0
             Field Edited Format = X(60)
             Field Picture     = X(60)
-            Field Variable    = art-des-ita of articoli
+            Field Variable    = art-des-ing of articoli
             File              = articoli
             Font              = Small Font
             Font Variable     = Small-Font
@@ -24220,16 +24220,16 @@ BEGIN-TEXT
               move 0 to v-moq
               move 0 to v-reale
               if event-data-1 = 2   
-                 inquire ef-des-ita, value in art-des-ita of articoli
-                 if art-des-ita of articoli = spaces  
+                 inquire ef-des-ing, value in art-des-ing of articoli
+                 if art-des-ing of articoli = spaces  
                     inquire ef-des1, value in como-des
                     inquire ef-des2, value in como-des2          
                     inspect como-des replacing trailing spaces by low-value
                     string como-des delimited low-value
                            como-des2
-                      into ef-des-ita-buf
+                      into ef-des-ing-buf
                     end-string                                        
-                    display ef-des-ita
+                    display ef-des-ing
                  end-if
               end-if
            end-if.

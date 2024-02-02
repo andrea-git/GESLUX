@@ -2320,13 +2320,13 @@ LUBEXX        if tutto-ok
                     display ef-scorta
                  end-if   
 
-                 if art-des-ita of articoli = spaces
+                 if art-des-ing of articoli = spaces
                     move art-descrizione1 of articoli to como-des
                     inspect como-des  
                             replacing trailing spaces by low-value
                     string como-des delimited low-value
                            art-descrizione2 of articoli
-                      into art-des-ita of articoli
+                      into art-des-ing of articoli
                     end-string                    
                  end-if
 

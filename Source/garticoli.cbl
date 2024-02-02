@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 31 gennaio 2024 21:25:50.
+       DATE-WRITTEN.        venerdì 2 febbraio 2024 11:38:35.
        REMARKS.
       *{TOTEM}END
 
@@ -311,7 +311,7 @@
       * Data.Entry-Field
               10 ef-toss-BUF PIC X(512).
       * Data.Entry-Field
-              10 ef-des-ita-BUF PIC X(60).
+              10 ef-des-ing-BUF PIC X(60).
       * Data.Entry-Field
               10 ef-des-spa-BUF PIC X(60).
       * Data.Entry-Field
@@ -776,7 +776,7 @@
        78  78-ID-ef-brand VALUE 5066.
        78  78-ID-ef-scheda VALUE 5067.
        78  78-ID-ef-toss VALUE 5068.
-       78  78-ID-ef-des-ita VALUE 5069.
+       78  78-ID-ef-des-ing VALUE 5069.
        78  78-ID-ef-des-spa VALUE 5070.
        78  78-ID-ef-altezza-pz VALUE 5071.
        78  78-ID-ef-larghezza-pz VALUE 5072.
@@ -3547,7 +3547,7 @@
 
       * ENTRY FIELD
        10
-           ef-des-ita, 
+           ef-des-ing, 
            Entry-Field, 
            COL 21,67, 
            LINE 20,77,
@@ -3556,11 +3556,11 @@
            COLOR IS 513,
            ENABLED mod-campi,
            FONT IS Small-Font,
-           ID IS 78-ID-ef-des-ita,                
+           ID IS 78-ID-ef-des-ing,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            MAX-TEXT 60,
-           VALUE ef-des-ita-BUF,
+           VALUE ef-des-ing-BUF,
            BEFORE PROCEDURE ef-scheda-BeforeProcedure, 
            .
 
@@ -15184,9 +15184,9 @@
                MOVE 5068 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
-      * ef-des-ita's Validation
+      * ef-des-ing's Validation
            SET TOTEM-CHECK-OK TO FALSE
-           PERFORM ef-des-ita-VALIDATION
+           PERFORM ef-des-ing-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 2 TO Screen1-Ta-1-TAB-VALUE
                PERFORM Screen1-Ta-1-TABCHANGE
@@ -16555,21 +16555,21 @@
            PERFORM ef-toss-AFTER-VALIDATION
            .
 
-       ef-des-ita-BEFORE-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-ita, BeforeValidation>
+       ef-des-ing-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-ing, BeforeValidation>
       * <TOTEM:END>
            .
 
-       ef-des-ita-AFTER-VALIDATION.
-      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-ita, AfterValidation>
+       ef-des-ing-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-des-ing, AfterValidation>
       * <TOTEM:END>
            .
 
-      * ef-des-ita's Validation
-       ef-des-ita-VALIDATION.
-           PERFORM ef-des-ita-BEFORE-VALIDATION
+      * ef-des-ing's Validation
+       ef-des-ing-VALIDATION.
+           PERFORM ef-des-ing-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
-           PERFORM ef-des-ita-AFTER-VALIDATION
+           PERFORM ef-des-ing-AFTER-VALIDATION
            .
 
        ef-des-spa-BEFORE-VALIDATION.
@@ -17729,8 +17729,8 @@
            MOVE ef-scheda-BUF TO art-scheda-tecnica of articoli
       * DB_Entry-Field : ef-toss
            MOVE ef-toss-BUF TO art-tossicologica of articoli
-      * DB_Entry-Field : ef-des-ita
-           MOVE ef-des-ita-BUF TO art-des-ita of articoli
+      * DB_Entry-Field : ef-des-ing
+           MOVE ef-des-ing-BUF TO art-des-ing of articoli
       * DB_Entry-Field : ef-des-spa
            MOVE ef-des-spa-BUF TO art-des-spa of articoli
       * DB_Entry-Field : ef-altezza-pz
@@ -18101,8 +18101,8 @@
            MOVE art-scheda-tecnica of articoli TO ef-scheda-BUF
       * DB_Entry-Field : ef-toss
            MOVE art-tossicologica of articoli TO ef-toss-BUF
-      * DB_Entry-Field : ef-des-ita
-           MOVE art-des-ita of articoli TO ef-des-ita-BUF
+      * DB_Entry-Field : ef-des-ing
+           MOVE art-des-ing of articoli TO ef-des-ing-BUF
       * DB_Entry-Field : ef-des-spa
            MOVE art-des-spa of articoli TO ef-des-spa-BUF
       * DB_Entry-Field : ef-altezza-pz
@@ -18786,11 +18786,11 @@
            end-if
 
 
-           if art-des-ita of articoli not = old-art-des-ita
+           if art-des-ing of articoli not = old-art-des-ing
               and SiSalvato
               set NoSalvato to true
-              |78-ID-ef-des-ita è l'ID del campo ef-des-ita
-              move 78-ID-ef-des-ita to store-id 
+              |78-ID-ef-des-ing è l'ID del campo ef-des-ing
+              move 78-ID-ef-des-ing to store-id 
            end-if
 
 
@@ -21882,9 +21882,9 @@ LABLAB
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-des-ita, VALUE IN art-des-ita of articoli
+              INQUIRE ef-des-ing, VALUE IN art-des-ing of articoli
               SET TOTEM-CHECK-OK TO FALSE
-              PERFORM ef-des-ita-VALIDATION
+              PERFORM ef-des-ing-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
@@ -22462,17 +22462,17 @@ LABLAB
               move 0 to v-moq
               move 0 to v-reale
               if event-data-1 = 2   
-                 inquire ef-des-ita, value in art-des-ita of articoli
-                 if art-des-ita of articoli = spaces  
+                 inquire ef-des-ing, value in art-des-ing of articoli
+                 if art-des-ing of articoli = spaces  
                     inquire ef-des1, value in como-des
                     inquire ef-des2, value in como-des2          
                     inspect como-des replacing trailing spaces by 
            low-value
                     string como-des delimited low-value
                            como-des2
-                      into ef-des-ita-buf
+                      into ef-des-ing-buf
                     end-string                                        
-                    display ef-des-ita
+                    display ef-des-ing
                  end-if
               end-if
            end-if.
