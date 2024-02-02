@@ -34,7 +34,7 @@
 
       * VARIABILI
        77  como-des              pic x(50).
-       77  num-rec-ita           pic 9(6)   value 0.
+       77  num-rec-ing           pic 9(6)   value 0.
        77  num-rec-spa           pic 9(6)   value 0.
        77  num-rec-ko            pic 9(6)   value 0.
 
@@ -84,21 +84,32 @@
              not invalid
                  perform until 1 = 2
                     read articoli next at end exit perform end-read
-                    add 1 to num-rec-ita
-                    move art-descrizione1 to como-des
-                    inspect como-des 
-                            replacing trailing spaces by low-value
-                    string como-des         delimited low-value
-                           art-descrizione2 delimited size
-                      into art-des-ing
-                    end-string
+                    add 1 to num-rec-ing
+                    if art-des-ing = spaces
+                       move art-descrizione1 to como-des
+                       inspect como-des 
+                               replacing trailing spaces by low-value
+                       string como-des         delimited low-value
+                              art-descrizione2 delimited size
+                         into art-des-ing
+                       end-string
+                    end-if
+                    if art-des-spa = spaces
+                       move art-descrizione1 to como-des
+                       inspect como-des 
+                               replacing trailing spaces by low-value
+                       string como-des         delimited low-value
+                              art-descrizione2 delimited size
+                         into art-des-spa
+                       end-string
+                       end-if
                     rewrite art-rec
                  end-perform
            end-start.
 
            display message "Operazione terminata!"              
                     x"0d0a""ARTICOLI (SPAGNOLO): ", num-rec-spa,
-                    x"0d0a""ARTICOLI (ITALIANO): ", num-rec-ita,
+                    x"0d0a""ARTICOLI (INGLESE): ", num-rec-ing,
                     x"0d0a""ERRATI: ", num-rec-ko
                      title titolo
                       icon 2.
