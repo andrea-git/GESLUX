@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen1
 BEFORE_PROGRAM=nambar-Ev-Before-Program
 AFTER_PROGRAM=nambar-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8112135945-437-701528532
+PROGRAM_UNIQUE_CODE=TOTEM-7E82584137-48-273066974
 
 {{@DESCRIPTION:
 
@@ -297,7 +297,7 @@ m_bFixed=1
 
 @}}
 [FDITEM21_WK]
-m_strName=FromEvasione
+m_strName=RichiamoBatch
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -307,28 +307,29 @@ m_strFalse=0
 
 @}}
 [FDITEM22_WK]
-m_strName=numero-edit
-m_strRawPic=zz.zzz.zz9
-m_strPic=zz.zzz.zz9
-m_nItemLevel=77
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM22_WK
 
 @}}
 [FDITEM23_WK]
-m_strName=batch-notturno
-m_strRawPic=x
-m_strPic=x
-m_nItemLevel=77
+m_strName=FromEvasione
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
+m_strFalse=0
 {{@DataItem_m_strDescriptionFDITEM23_WK
 
 @}}
 [FDITEM24_WK]
-m_strName=Small-Font
-m_nUsage=37
+m_strName=numero-edit
+m_strRawPic=zz.zzz.zz9
+m_strPic=zz.zzz.zz9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -336,8 +337,9 @@ m_bFixed=1
 
 @}}
 [FDITEM25_WK]
-m_strName=Timmons16-Occidentale
-m_nUsage=26
+m_strName=batch-notturno
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -345,8 +347,8 @@ m_bFixed=1
 
 @}}
 [FDITEM26_WK]
-m_strName=Impact24-Occidentale
-m_nUsage=26
+m_strName=Small-Font
+m_nUsage=37
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -354,7 +356,7 @@ m_bFixed=1
 
 @}}
 [FDITEM27_WK]
-m_strName=Timmons10-Occidentale
+m_strName=Timmons16-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
@@ -363,7 +365,7 @@ m_bFixed=1
 
 @}}
 [FDITEM28_WK]
-m_strName=Timmons12-Occidentale
+m_strName=Impact24-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
@@ -372,9 +374,8 @@ m_bFixed=1
 
 @}}
 [FDITEM29_WK]
-m_strName=status-type
-m_strRawPic=9
-m_strPic=9
+m_strName=Timmons10-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -382,19 +383,23 @@ m_bFixed=1
 
 @}}
 [FDITEM30_WK]
-m_strName=tipo-status
-m_strRawPic=x(30)
-m_strPic=x(30)
+m_strName=r-output
+m_strRawPic=x(25)
+m_strPic=X(25)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LOG-MACROBATCH.DEF
+m_strCopyFile=log-macrobatch.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LOG-MACROBATCH.DEF
+m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM30_WK
+
 
 @}}
 [FDITEM31_WK]
-m_strName=STATUS-tcontat
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Timmons12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -402,19 +407,19 @@ m_bFixed=1
 
 @}}
 [FDITEM32_WK]
-m_strName=Valid-STATUS-tcontat
-m_nItemLevel=88
+m_strName=status-type
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM32_WK
 
 @}}
 [FDITEM33_WK]
-m_strName=v-peso
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=tipo-status
+m_strRawPic=x(30)
+m_strPic=x(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -422,9 +427,9 @@ m_bFixed=1
 
 @}}
 [FDITEM34_WK]
-m_strName=SaveNumeroStart
-m_strRawPic=9(10)
-m_strPic=9(10)
+m_strName=STATUS-tcontat
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -432,19 +437,19 @@ m_bFixed=1
 
 @}}
 [FDITEM35_WK]
-m_strName=titolo
-m_strDefaultValue="Assegnazione numero"
-m_nItemLevel=78
+m_strName=Valid-STATUS-tcontat
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM35_WK
 
 @}}
 [FDITEM36_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=11
+m_strName=v-peso
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -452,9 +457,9 @@ m_bFixed=1
 
 @}}
 [FDITEM37_WK]
-m_strName=peso-edit
-m_strRawPic=zz.zzz.zzz.zz9,999
-m_strPic=zz.zzz.zzz.zz9,999
+m_strName=SaveNumeroStart
+m_strRawPic=9(10)
+m_strPic=9(10)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -462,19 +467,19 @@ m_bFixed=1
 
 @}}
 [FDITEM38_WK]
-m_strName=lab-caricato-buf
-m_strRawPic=X(35)
-m_strPic=X(35)
-m_strDefaultValue="Ordine caricato con successo!"
-m_nItemLevel=77
+m_strName=titolo
+m_strDefaultValue="Assegnazione numero"
+m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
 [FDITEM39_WK]
-m_strName=Verdana11-Occidentale
-m_nUsage=26
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=11
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -482,8 +487,9 @@ m_bFixed=1
 
 @}}
 [FDITEM40_WK]
-m_strName=Verdana13-Occidentale
-m_nUsage=26
+m_strName=peso-edit
+m_strRawPic=zz.zzz.zzz.zz9,999
+m_strPic=zz.zzz.zzz.zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -491,9 +497,10 @@ m_bFixed=1
 
 @}}
 [FDITEM41_WK]
-m_strName=STATUS-tordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lab-caricato-buf
+m_strRawPic=X(35)
+m_strPic=X(35)
+m_strDefaultValue="Ordine caricato con successo!"
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -501,18 +508,17 @@ m_bFixed=1
 
 @}}
 [FDITEM42_WK]
-m_strName=Valid-STATUS-tordini
-m_nItemLevel=88
+m_strName=Verdana11-Occidentale
+m_nUsage=26
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM42_WK
 
 @}}
 [FDITEM43_WK]
-m_strName=STATUS-tmovmag
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana13-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -520,28 +526,28 @@ m_bFixed=1
 
 @}}
 [FDITEM44_WK]
-m_strName=Valid-STATUS-tmovmag
-m_nItemLevel=88
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM44_WK
 
 @}}
 [FDITEM45_WK]
-m_strName=Screen2-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=Valid-STATUS-tordini
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM45_WK
 
 @}}
 [FDITEM46_WK]
-m_strName=v-screen
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=STATUS-tmovmag
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -549,28 +555,28 @@ m_bFixed=1
 
 @}}
 [FDITEM47_WK]
-m_strName=STATUS-tnotacr
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM47_WK
-
-@}}
-[FDITEM48_WK]
-m_strName=Valid-STATUS-tnotacr
+m_strName=Valid-STATUS-tmovmag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
+m_strName=Screen2-Handle
+m_nUsage=24
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM48_WK
 
 @}}
 [FDITEM49_WK]
-m_strName=STATUS-btnotacr
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=v-screen
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -578,68 +584,66 @@ m_bFixed=1
 
 @}}
 [FDITEM50_WK]
+m_strName=STATUS-tnotacr
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
+m_strName=Valid-STATUS-tnotacr
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
+m_strName=STATUS-btnotacr
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
 m_strName=Valid-STATUS-btnotacr
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM50_WK
+{{@DataItem_m_strDescriptionFDITEM53_WK
 
 @}}
-[FDITEM51_WK]
+[FDITEM54_WK]
 m_strName=STATUS-contestazioni
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM51_WK
+{{@DataItem_m_strDescriptionFDITEM54_WK
 
 @}}
-[FDITEM52_WK]
+[FDITEM55_WK]
 m_strName=Valid-STATUS-contestazioni
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM52_WK
-
-@}}
-[FDITEM53_WK]
-m_strName=STATUS-tordforn
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM53_WK
-
-@}}
-[FDITEM54_WK]
-m_strName=Valid-STATUS-tordforn
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM54_WK
-
-@}}
-[FDITEM55_WK]
-m_strName=lines-finestra
-m_strRawPic=S9(4)V9(2)
-m_strPic=S9(4)V9(2)
-m_strDefaultValue=22,00
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM55_WK
 
 @}}
 [FDITEM56_WK]
-m_strName=lines-pb
-m_strRawPic=S9(4)V9(2)
-m_strPic=S9(4)V9(2)
-m_strDefaultValue=22,38
+m_strName=STATUS-tordforn
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -647,21 +651,19 @@ m_bFixed=1
 
 @}}
 [FDITEM57_WK]
-m_strName=lab-caricato-2-buf
-m_strRawPic=X(35)
-m_strPic=X(35)
-m_strDefaultValue="Movimento caricato con successo!"
-m_nItemLevel=77
+m_strName=Valid-STATUS-tordforn
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
 [FDITEM58_WK]
-m_strName=v-secondo-numero
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=lines-finestra
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=22,00
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -669,9 +671,10 @@ m_bFixed=1
 
 @}}
 [FDITEM59_WK]
-m_strName=numero-edit-2
-m_strRawPic=zz.zzz.zz9
-m_strPic=zz.zzz.zz9
+m_strName=lines-pb
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=22,38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -679,10 +682,10 @@ m_bFixed=1
 
 @}}
 [FDITEM60_WK]
-m_strName=lines-enter
-m_strRawPic=S9(4)V9(2)
-m_strPic=S9(4)V9(2)
-m_strDefaultValue=21,00
+m_strName=lab-caricato-2-buf
+m_strRawPic=X(35)
+m_strPic=X(35)
+m_strDefaultValue="Movimento caricato con successo!"
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -690,9 +693,10 @@ m_bFixed=1
 
 @}}
 [FDITEM61_WK]
-m_strName=STATUS-teva
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=v-secondo-numero
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -700,18 +704,20 @@ m_bFixed=1
 
 @}}
 [FDITEM62_WK]
-m_strName=Valid-STATUS-teva
-m_nItemLevel=88
+m_strName=numero-edit-2
+m_strRawPic=zz.zzz.zz9
+m_strPic=zz.zzz.zz9
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
 [FDITEM63_WK]
-m_strName=STATUS-mtordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=lines-enter
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=21,00
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -719,30 +725,28 @@ m_bFixed=1
 
 @}}
 [FDITEM64_WK]
-m_strName=Valid-STATUS-mtordini
-m_nItemLevel=88
+m_strName=STATUS-teva
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
 [FDITEM65_WK]
-m_strName=lines-2-numero-1
-m_strRawPic=S9(4)V9(2)
-m_strPic=S9(4)V9(2)
-m_strDefaultValue=11,46
-m_nItemLevel=77
+m_strName=Valid-STATUS-teva
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
 [FDITEM66_WK]
-m_strName=lines-2-numero-2
-m_strRawPic=S9(4)V9(2)
-m_strPic=S9(4)V9(2)
-m_strDefaultValue=13,00
+m_strName=STATUS-mtordini
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -750,21 +754,19 @@ m_bFixed=1
 
 @}}
 [FDITEM67_WK]
-m_strName=lines-2-numero-3
-m_strRawPic=S9(4)V9(2)
-m_strPic=S9(4)V9(2)
-m_strDefaultValue=15,00
-m_nItemLevel=77
+m_strName=Valid-STATUS-mtordini
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM67_WK
 
 @}}
 [FDITEM68_WK]
-m_strName=line-2-numero
+m_strName=lines-2-numero-1
 m_strRawPic=S9(4)V9(2)
 m_strPic=S9(4)V9(2)
-m_strDefaultValue=2,20
+m_strDefaultValue=11,46
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -772,10 +774,10 @@ m_bFixed=1
 
 @}}
 [FDITEM69_WK]
-m_strName=v-peso-2
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=lines-2-numero-2
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=13,00
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -783,9 +785,10 @@ m_bFixed=1
 
 @}}
 [FDITEM70_WK]
-m_strName=peso-edit-2
-m_strRawPic=zz.zzz.zzz.zz9,999
-m_strPic=zz.zzz.zzz.zz9,999
+m_strName=lines-2-numero-3
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=15,00
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -793,6 +796,38 @@ m_bFixed=1
 
 @}}
 [FDITEM71_WK]
+m_strName=line-2-numero
+m_strRawPic=S9(4)V9(2)
+m_strPic=S9(4)V9(2)
+m_strDefaultValue=2,20
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM71_WK
+
+@}}
+[FDITEM72_WK]
+m_strName=v-peso-2
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM72_WK
+
+@}}
+[FDITEM73_WK]
+m_strName=peso-edit-2
+m_strRawPic=zz.zzz.zzz.zz9,999
+m_strPic=zz.zzz.zzz.zz9,999
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM73_WK
+
+@}}
+[FDITEM74_WK]
 m_strName=line-peso-2
 m_strRawPic=S9(4)V9(2)
 m_strPic=S9(4)V9(2)
@@ -800,7 +835,36 @@ m_strDefaultValue=21,00
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM71_WK
+{{@DataItem_m_strDescriptionFDITEM74_WK
+
+@}}
+[FDITEM75_WK]
+m_strName=path-log-macrobatch
+m_strRawPic=X(256)
+m_strPic=X(256)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM75_WK
+
+@}}
+[FDITEM76_WK]
+m_strName=STATUS-log-macrobatch
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM76_WK
+
+@}}
+[FDITEM77_WK]
+m_strName=Valid-STATUS-log-macrobatch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM77_WK
 
 @}}
 
@@ -824,7 +888,6 @@ m_strCopyFile=LINK-NAMBAR.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM0_LK
-
 
 @}}
 [FDITEM1_LK]
@@ -1172,6 +1235,48 @@ m_strCopyFile=LINK-NAMBAR.DEF
 m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
 m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM26_LK
+
+@}}
+[FDITEM27_LK]
+m_strName=link-macrobatch-log-path
+m_strRawPic=x(256)
+m_strPic=X(256)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
+m_strCopyFile=LINK-NAMBAR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM27_LK
+
+@}}
+[FDITEM28_LK]
+m_strName=link-macrobatch
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
+m_strCopyFile=LINK-NAMBAR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM28_LK
+
+@}}
+[FDITEM29_LK]
+m_strName=FILLER
+m_strRawPic=x(500)
+m_strPic=X(500)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
+m_strCopyFile=LINK-NAMBAR.DEF
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-NAMBAR.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM29_LK
 
 @}}
 
@@ -2138,14 +2243,36 @@ BEGIN-TEXT
            set RecLocked to false.
            evaluate status-tcontat
            when "35"
-                display message "File [TCONTAT] not found!"
-                           title titolo
-                            icon 3
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TCONTAT] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TCONTAT] not found!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            when "39"
-                display message "File [TCONTAT] Mismatch size!"
-                           title titolo
-                            icon 3
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TCONTAT] mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TCONTAT] Mismatch size!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            when "98"
 LUBEXX          initialize extend-stat, text-message, status-type
@@ -2155,12 +2282,26 @@ LUBEXX                              status-type
 LUBEXX          if status-type = 1 move "FILE STATUS"        to tipo-status
 LUBEXX          else               move "TRANSACTION STATUS" to tipo-status
 LUBEXX          end-if
-                display message "[TCONTAT] Indexed file corrupt!"
-LUBEXX                   x"0d0a""Error: " extend-stat
-LUBEXX                   x"0d0a"text-message
-LUBEXX                   x"0d0a"tipo-status
-                           title titolo
-                            icon 3
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited size
+                          "[TCONTAT] Indexed file corrupt!" delimited size
+                          "Error: "                         delimited size
+                          extend-stat " - "  text-message " - " tipo-status
+                                                            delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TCONTAT] Indexed file corrupt!"
+LUBEXX                      x"0d0a""Error: " extend-stat
+LUBEXX                      x"0d0a"text-message
+LUBEXX                      x"0d0a"tipo-status
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            when "93"
            when "99" 
@@ -2172,20 +2313,53 @@ LUBEXX                   x"0d0a"tipo-status
            use after error procedure on tordini.
            set tutto-ok  to true.
            evaluate status-tordini
-           when "35"
-                display message "File [TORDINI] not found!"
-                           title titolo
-                            icon 3
+           when "35"       
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TORDINI] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TORDINI] not found!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
-           when "39"
-                display message "File [TORDINI] Mismatch size!"
-                           title titolo
-                            icon 3
+           when "39"                    
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TORDINI] Mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TORDINI] Mismatch size!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
-           when "98"
-                display message "[TORDINI] Indexed file corrupt!"
-                           title titolo
-                            icon 3
+           when "98"                    
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited size
+                          "[TORDINI] Indexed file corrupt!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TORDINI] Indexed file corrupt!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            end-evaluate.
  
@@ -2194,20 +2368,53 @@ LUBEXX                   x"0d0a"tipo-status
            use after error procedure on tmovmag.
            set tutto-ok  to true.
            evaluate status-tmovmag
-           when "35"
-                display message "File [TMOVMAG] not found!"
-                           title titolo
-                            icon 3
+           when "35"                      
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TMOVMAG] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TMOVMAG] not found!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "39"
-                display message "File [TMOVMAG] Mismatch size!"
-                           title titolo
-                            icon 3
+           when "39"                      
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TMOVMAG] Mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TMOVMAG] Mismatch size!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "98"
-                display message "[TMOVMAG] Indexed file corrupt!"
-                           title titolo
-                            icon 3
+           when "98"             
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited size
+                          "[TMOVMAG] Indexed file corrupt!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TMOVMAG] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
            end-evaluate.
  
@@ -2216,20 +2423,53 @@ LUBEXX                   x"0d0a"tipo-status
            use after error procedure on tnotacr.
            set tutto-ok  to true.
            evaluate status-tnotacr
-           when "35"
-                display message "File [TNOTACR] not found!"
-                           title titolo
-                            icon 3
+           when "35"             
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TNOTACR] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TNOTACR] not found!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "39"
-                display message "File [TNOTACR] Mismatch size!"
-                           title titolo
-                            icon 3
+           when "39"  
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TNOTACR] Mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TNOTACR] Mismatch size!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "98"
-                display message "[TNOTACR] Indexed file corrupt!"
-                           title titolo
-                            icon 3
+           when "98"  
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited size
+                          "[TNOTACR] Indexed file corrupt!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TNOTACR] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
            end-evaluate.
 END-TEXT
@@ -2238,6 +2478,17 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = CHECK-ESISTENZA
 BEGIN-TEXT
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output          delimited size   
+                     "CHECK-ESISTENZA" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            set tutto-ok to true.
            perform LEGGI-NUMERO.
 
@@ -2407,15 +2658,37 @@ BEGIN-TEXT
                  move 1 to geslock-v-termina
               end-if
               move 0 to geslock-v-ignora
-              call   "geslock" using geslock-linkage
-              cancel "geslock"
-           end-if.
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output          delimited size   
+                        geslock-messaggio delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              else
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+              end-if
+           end-if.              
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = LEGGI-NUMERO
 BEGIN-TEXT
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output       delimited size   
+                     "LEGGI-NUMERO" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            move link-anno  to con-anno.
            read tcontat
                 invalid 
@@ -2441,6 +2714,24 @@ BEGIN-TEXT
               set FromEvasione to false
            end-if.
 
+           if link-macrobatch = "X"
+              set RichiamoBatch to true
+           else                        
+              set RichiamoBatch to false
+           end-if.
+
+           if RichiamoBatch
+              move link-macrobatch-log-path to path-log-macrobatch
+              open extend log-macrobatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output              delimited size
+                     "|=> INGRESSO NAMBAR" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
            
            perform until 1 = 2                      
               set RecLocked to false
@@ -2528,7 +2819,18 @@ BEGIN-DATA
    PARAGRAPH         = nambar-Ev-After-Program
 BEGIN-TEXT
            set environment "KEYSTROKE" to "DATA=46 44"
-           close tcontat.
+           close tcontat.       
+
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output            delimited size   
+                     "<=| USCITA NAMBAR" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
 END-TEXT
 END-DATA
 
@@ -2616,8 +2918,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=58
-REL_SYM_INFO_L=9
+REL_SYM_SIZE=64
+REL_SYM_INFO_L=10
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=454786776
 REL_SYM_INFO_X1=2301
@@ -2636,6 +2938,8 @@ REL_SYM_INFO_X7=2301
 REL_SYM_INFO_Y7=1740199023
 REL_SYM_INFO_X8=2301
 REL_SYM_INFO_Y8=1453610435
+REL_SYM_INFO_X9=2301
+REL_SYM_INFO_Y9=1039914246
 
 [DRAW_BASESYMBOL_2301_454786776]
 OBJ_NAME=2301
@@ -3069,6 +3373,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_1039914246]
+OBJ_NAME=2301
+OBJ_ID=1039914246
+KIND=1
+{{@LABEL_2301_1039914246
+log-macrobatch
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=1598
+RIGHT=2148
+BOTTOM=1820
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_572190216]
 OBJ_NAME=0
 OBJ_ID=572190216
@@ -3354,6 +3706,37 @@ DSN_INFO_END_VALUE=
 DSN_INFO_PRIMARY=0
 DSN_INFO_OPEN=1
 DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1039914246]
+OBJ_NAME=0
+OBJ_ID=1039914246
+REL_M_OBJ_ID=0
+ENTITY=log-macrobatch
+LINK=0
+LINK_NAME=
+DSN_SIZE=32
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=3
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1039914246
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
 DSN_INFO_EXCLUSIVE=0
 DSN_INFO_IS_LOGICAL=0
 DSN_INFO_LOGICAL_FDNAME=

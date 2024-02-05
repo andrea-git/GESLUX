@@ -1,28 +1,32 @@
       *
        01 link-nambar.
-           05 link-WriteUpdate        PIC  x.
-               88 link-crea           VALUE IS "W". 
-               88 link-crea-multi     VALUE IS "M". 
-               88 link-aggiorna       VALUE IS "U". 
-           05 link-num-record         PIC  9(3).
-           05 link-nambar-causale     PIC  x(4).
-           05 link-anno               PIC  9(4).
-           05 link-numero             PIC  9(8).
-           05 link-secondo-numero     PIC  9(8).
-           05 link-peso-tot           PIC  9(11)v999.
-           05 link-peso-tot-2         PIC  9(11)v999.
-           05 link-file               PIC  x(20).
-               88 link-gmovmag        VALUE IS "gmovmag". 
-               88 link-gmovmagr       VALUE IS "gmovmagr". 
-               88 link-gordc          VALUE IS "gordc". 
-               88 link-gordcvart      VALUE IS "gordcvart". 
-               88 link-gcontest       VALUE IS "gcontest". 
-               88 link-notacr         VALUE IS "notacr". 
-               88 link-fatman         VALUE IS "fatman". 
-               88 link-gmovdis        VALUE IS "gmovdis". 
-               88 link-bnotacr        VALUE IS "bnotacr". 
-               88 link-gordforn       VALUE IS "gordforn". 
-               88 link-evasione       VALUE IS "evasione". 
-               88 link-evasione-imp   VALUE IS "evasione-imp". 
-               88 link-ordine         VALUE IS "ordine".
-           05 link-status-nambar      USAGE IS SIGNED-SHORT.
+           05 link-WriteUpdate PIC  x.
+               88 link-crea VALUE IS "W". 
+               88 link-crea-multi VALUE IS "M". 
+               88 link-aggiorna VALUE IS "U". 
+           05 link-num-record  PIC  9(3).
+           05 link-nambar-causale          PIC  x(4).
+           05 link-anno        PIC  9(4).
+           05 link-numero      PIC  9(8).
+           05 link-secondo-numero          PIC  9(8).
+           05 link-peso-tot    PIC  9(11)v999.
+           05 link-peso-tot-2  PIC  9(11)v999.
+           05 link-file        PIC  x(20).
+               88 link-gmovmag VALUE IS "gmovmag". 
+               88 link-gmovmagr VALUE IS "gmovmagr". 
+               88 link-gordc VALUE IS "gordc". 
+               88 link-gordcvart VALUE IS "gordcvart". 
+               88 link-gcontest VALUE IS "gcontest". 
+               88 link-notacr VALUE IS "notacr". 
+               88 link-fatman VALUE IS "fatman". 
+               88 link-gmovdis VALUE IS "gmovdis". 
+               88 link-bnotacr VALUE IS "bnotacr". 
+               88 link-gordforn VALUE IS "gordforn". 
+               88 link-evasione VALUE IS "evasione". 
+               88 link-evasione-imp VALUE IS "evasione-imp". 
+               88 link-ordine VALUE IS "ordine". 
+           05 link-status-nambar
+                      USAGE IS SIGNED-SHORT.
+           05 link-macrobatch-log-path     PIC  x(256).
+           05 link-macrobatch  PIC  x.
+           05 FILLER           PIC  x(500).

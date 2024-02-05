@@ -68,6 +68,7 @@
        77  como-ora                pic 9(8).  
 
        77  ws-narg                 pic 9(3) comp-1 value 0.
+       77  statusCopia             signed-short.
 
        copy "log-macrobatch.def".      
        copy "mail.def".
@@ -241,9 +242,10 @@
            goback.
 
       ***---
-       ESEGUI-PROGRAMMI.   
+       ESEGUI-PROGRAMMI.         
            close log-macrobatch.
-           if ws-narg = 0
+           if ws-narg = 0        
+              perform COPIA-ARCHIVI
               perform CALL-EDI-IMPORD
               read macrobatch no lock
               if mb-edi-impord-stato-ok
@@ -526,6 +528,11 @@
       * CALL-RICALDIN.
       *     call   "ricaldin-bat" using batch-linkage.
       *     cancel "ricaldin-bat".                 
+
+      ***---
+       COPIA-ARCHIVI.
+           call   "mb-copia-arc" using path-log-macrobatch.
+           cancel "mb-copia-arc".
 
       ***---
        PARAGRAFO-COPY.

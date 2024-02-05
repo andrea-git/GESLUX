@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 17 gennaio 2024 09:56:20.
+       DATE-WRITTEN.        lunedì 5 febbraio 2024 11:51:24.
        REMARKS.
       *{TOTEM}END
 
@@ -16192,16 +16192,40 @@
 
        VALORIZZA-NUMERO.
       * <TOTEM:PARA. VALORIZZA-NUMERO>
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output           delimited size
+                     "VALORIZZA-NUMERO" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            move spaces to tge-codice
            read tparamge no lock
 
            move tge-anno     to link-anno.
 
            set  link-gordc    to true.
-           set  link-crea     to true.
+           if RichiamoBatch
+              move "X" to link-macrobatch
+              move path-log-macrobatch to link-macrobatch-log-path
+              close log-macrobatch
+           else
+              move space  to link-macrobatch
+              move spaces to link-macrobatch-log-path
+           end-if.
+
+           set  link-crea    to true.
 
            call   "nambar" using link-nambar.
            cancel "nambar".
+
+           if RichiamoBatch
+              open extend log-macrobatch
+           end-if.
            
            if primo-numero = 0
               move link-numero to primo-numero

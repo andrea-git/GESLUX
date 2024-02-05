@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          nambar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 18 gennaio 2024 15:05:12.
+       DATE-WRITTEN.        lunedì 5 febbraio 2024 12:40:08.
        REMARKS.
       *{TOTEM}END
 
@@ -36,6 +36,7 @@
            COPY "tordforn.sl".
            COPY "teva.sl".
            COPY "mtordini.sl".
+           COPY "log-macrobatch.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -49,6 +50,7 @@
            COPY "tordforn.fd".
            COPY "teva.fd".
            COPY "mtordini.fd".
+           COPY "log-macrobatch.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -77,6 +79,8 @@
            COPY  "LINK-GESLOCK.DEF".
        77 pgm-chiamante    PIC  x(20).
        01 FILLER           PIC  9.
+           88 RichiamoBatch VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 FILLER           PIC  9.
            88 FromEvasione VALUE IS 1    WHEN SET TO FALSE  0. 
        77 numero-edit      PIC  zz.zzz.zz9.
        77 batch-notturno   PIC  x.
@@ -88,6 +92,7 @@
                   USAGE IS HANDLE OF FONT.
        77 Timmons10-Occidentale
                   USAGE IS HANDLE OF FONT.
+           COPY  "LOG-MACROBATCH.DEF".
        77 Timmons12-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 status-type      PIC  9.
@@ -151,6 +156,9 @@
        77 peso-edit-2      PIC  zz.zzz.zzz.zz9,999.
        77 line-peso-2      PIC  S9(4)V9(2)
                   VALUE IS 21,00.
+       77 path-log-macrobatch          PIC  X(256).
+       77 STATUS-log-macrobatch        PIC  X(2).
+           88 Valid-STATUS-log-macrobatch VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -166,6 +174,7 @@
        77 TMP-DataSet1-tordforn-BUF     PIC X(556).
        77 TMP-DataSet1-teva-BUF     PIC X(199).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
+       77 TMP-DataSet1-log-macrobatch-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -216,6 +225,11 @@
        77 DataSet1-mtordini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-mtordini-KEY-Asc  VALUE "A".
           88 DataSet1-mtordini-KEY-Desc VALUE "D".
+       77 DataSet1-log-macrobatch-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-log-macrobatch-LOCK  VALUE "Y".
+       77 DataSet1-log-macrobatch-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Asc  VALUE "A".
+          88 DataSet1-log-macrobatch-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -602,14 +616,36 @@
            set RecLocked to false.
            evaluate status-tcontat
            when "35"
-                display message "File [TCONTAT] not found!"
-                           title titolo
-                            icon 3
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TCONTAT] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TCONTAT] not found!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            when "39"
-                display message "File [TCONTAT] Mismatch size!"
-                           title titolo
-                            icon 3
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TCONTAT] mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TCONTAT] Mismatch size!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            when "98"
 LUBEXX          initialize extend-stat, text-message, status-type
@@ -621,12 +657,31 @@ LUBEXX          if status-type = 1 move "FILE STATUS"        to
 LUBEXX          else               move "TRANSACTION STATUS" to 
            tipo-status
 LUBEXX          end-if
-                display message "[TCONTAT] Indexed file corrupt!"
-LUBEXX                   x"0d0a""Error: " extend-stat
-LUBEXX                   x"0d0a"text-message
-LUBEXX                   x"0d0a"tipo-status
-                           title titolo
-                            icon 3
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited 
+           size
+                          "[TCONTAT] Indexed file corrupt!" delimited 
+           size
+                          "Error: "                         delimited 
+           size
+                          extend-stat " - "  text-message " - " 
+           tipo-status
+                                                            delimited 
+           size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TCONTAT] Indexed file corrupt!"
+LUBEXX                      x"0d0a""Error: " extend-stat
+LUBEXX                      x"0d0a"text-message
+LUBEXX                      x"0d0a"tipo-status
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            when "93"
            when "99" 
@@ -638,20 +693,55 @@ LUBEXX                   x"0d0a"tipo-status
            use after error procedure on tordini.
            set tutto-ok  to true.
            evaluate status-tordini
-           when "35"
-                display message "File [TORDINI] not found!"
-                           title titolo
-                            icon 3
+           when "35"       
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TORDINI] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TORDINI] not found!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
-           when "39"
-                display message "File [TORDINI] Mismatch size!"
-                           title titolo
-                            icon 3
+           when "39"                    
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TORDINI] Mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TORDINI] Mismatch size!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
-           when "98"
-                display message "[TORDINI] Indexed file corrupt!"
-                           title titolo
-                            icon 3
+           when "98"                    
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited 
+           size
+                          "[TORDINI] Indexed file corrupt!" delimited 
+           size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TORDINI] Indexed file corrupt!"
+                              title titolo
+                               icon 3
+                end-if
                 set errori to true
            end-evaluate.
  
@@ -660,20 +750,55 @@ LUBEXX                   x"0d0a"tipo-status
            use after error procedure on tmovmag.
            set tutto-ok  to true.
            evaluate status-tmovmag
-           when "35"
-                display message "File [TMOVMAG] not found!"
-                           title titolo
-                            icon 3
+           when "35"                      
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TMOVMAG] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TMOVMAG] not found!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "39"
-                display message "File [TMOVMAG] Mismatch size!"
-                           title titolo
-                            icon 3
+           when "39"                      
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TMOVMAG] Mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TMOVMAG] Mismatch size!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "98"
-                display message "[TMOVMAG] Indexed file corrupt!"
-                           title titolo
-                            icon 3
+           when "98"             
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited 
+           size
+                          "[TMOVMAG] Indexed file corrupt!" delimited 
+           size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TMOVMAG] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
            end-evaluate.
  
@@ -682,20 +807,55 @@ LUBEXX                   x"0d0a"tipo-status
            use after error procedure on tnotacr.
            set tutto-ok  to true.
            evaluate status-tnotacr
-           when "35"
-                display message "File [TNOTACR] not found!"
-                           title titolo
-                            icon 3
+           when "35"             
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                    delimited size
+                          "File [TNOTACR] not found!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TNOTACR] not found!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "39"
-                display message "File [TNOTACR] Mismatch size!"
-                           title titolo
-                            icon 3
+           when "39"  
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                        delimited size
+                          "File [TNOTACR] Mismatch size!" delimited size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "File [TNOTACR] Mismatch size!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
-           when "98"
-                display message "[TNOTACR] Indexed file corrupt!"
-                           title titolo
-                            icon 3
+           when "98"  
+                if RichiamoBatch
+                   call   "set-ini-log" using r-output
+                   cancel "set-ini-log"
+                   initialize lm-riga
+                   string r-output                          delimited 
+           size
+                          "[TNOTACR] Indexed file corrupt!" delimited 
+           size
+                     into lm-riga
+                   end-string
+                   write lm-riga
+                else
+                   display message "[TNOTACR] Indexed file corrupt!"
+                             title titolo
+                              icon 3
+                end-if
                 set errori to true
            end-evaluate.
 
@@ -827,6 +987,8 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM OPEN-tordforn
            PERFORM OPEN-teva
            PERFORM OPEN-mtordini
+      *    log-macrobatch OPEN MODE IS FALSE
+      *    PERFORM OPEN-log-macrobatch
       *    After Open
            .
 
@@ -947,6 +1109,18 @@ LUBEXX                   x"0d0a"tipo-status
       * <TOTEM:END>
            .
 
+       OPEN-log-macrobatch.
+      * <TOTEM:EPT. INIT:nambar, FD:log-macrobatch, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  EXTEND log-macrobatch
+           IF NOT Valid-STATUS-log-macrobatch
+              PERFORM  Screen1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:nambar, FD:log-macrobatch, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
       *    tcontat CLOSE MODE IS FALSE
@@ -959,6 +1133,8 @@ LUBEXX                   x"0d0a"tipo-status
            PERFORM CLOSE-tordforn
            PERFORM CLOSE-teva
            PERFORM CLOSE-mtordini
+      *    log-macrobatch CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-log-macrobatch
       *    After Close
            .
 
@@ -1013,6 +1189,11 @@ LUBEXX                   x"0d0a"tipo-status
       * <TOTEM:EPT. INIT:nambar, FD:mtordini, BeforeClose>
       * <TOTEM:END>
            CLOSE mtordini
+           .
+
+       CLOSE-log-macrobatch.
+      * <TOTEM:EPT. INIT:nambar, FD:log-macrobatch, BeforeClose>
+      * <TOTEM:END>
            .
 
        DataSet1-tcontat-INITSTART.
@@ -3133,6 +3314,76 @@ LUBEXX                   x"0d0a"tipo-status
       * <TOTEM:END>
            .
 
+       DataSet1-log-macrobatch-INITSTART.
+           .
+
+       DataSet1-log-macrobatch-INITEND.
+           .
+
+       DataSet1-log-macrobatch-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeWrite>
+      * <TOTEM:END>
+           WRITE lm-riga OF log-macrobatch.
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-log-macrobatch-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-log-macrobatch TO TOTEM-ERR-STAT
+           MOVE "log-macrobatch" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:log-macrobatch, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE con-rec OF tcontat
            INITIALIZE tor-rec OF tordini
@@ -3143,6 +3394,7 @@ LUBEXX                   x"0d0a"tipo-status
            INITIALIZE tof-rec OF tordforn
            INITIALIZE teva-rec OF teva
            INITIALIZE mto-rec OF mtordini
+           INITIALIZE lm-riga OF log-macrobatch
            .
 
 
@@ -3213,6 +3465,14 @@ LUBEXX                   x"0d0a"tipo-status
       * FD's Initialize Paragraph
        DataSet1-mtordini-INITREC.
            INITIALIZE mto-rec OF mtordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-log-macrobatch-INITREC.
+           INITIALIZE lm-riga OF log-macrobatch
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3571,6 +3831,17 @@ PATCH         open input tcontat
       * USER DEFINE PARAGRAPH
        CHECK-ESISTENZA.
       * <TOTEM:PARA. CHECK-ESISTENZA>
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output          delimited size   
+                     "CHECK-ESISTENZA" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            set tutto-ok to true.
            perform LEGGI-NUMERO.
 
@@ -3740,14 +4011,36 @@ PATCH         open input tcontat
                  move 1 to geslock-v-termina
               end-if
               move 0 to geslock-v-ignora
-              call   "geslock" using geslock-linkage
-              cancel "geslock"
-           end-if 
+              if RichiamoBatch
+                 call   "set-ini-log" using r-output
+                 cancel "set-ini-log"
+                 initialize lm-riga
+                 string r-output          delimited size   
+                        geslock-messaggio delimited size
+                   into lm-riga
+                 end-string
+                 write lm-riga
+              else
+                 call   "geslock" using geslock-linkage
+                 cancel "geslock"
+              end-if
+           end-if               
            .
       * <TOTEM:END>
 
        LEGGI-NUMERO.
       * <TOTEM:PARA. LEGGI-NUMERO>
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output       delimited size   
+                     "LEGGI-NUMERO" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+
            move link-anno  to con-anno.
            read tcontat
                 invalid 
@@ -3773,6 +4066,24 @@ PATCH         open input tcontat
               set FromEvasione to false
            end-if.
 
+           if link-macrobatch = "X"
+              set RichiamoBatch to true
+           else                        
+              set RichiamoBatch to false
+           end-if.
+
+           if RichiamoBatch
+              move link-macrobatch-log-path to path-log-macrobatch
+              open extend log-macrobatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output              delimited size
+                     "|=> INGRESSO NAMBAR" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
            
            perform until 1 = 2                      
               set RecLocked to false
@@ -3859,7 +4170,18 @@ PATCH         open input tcontat
        nambar-Ev-After-Program.
       * <TOTEM:PARA. nambar-Ev-After-Program>
            set environment "KEYSTROKE" to "DATA=46 44"
-           close tcontat 
+           close tcontat.       
+
+           if RichiamoBatch
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output            delimited size   
+                     "<=| USCITA NAMBAR" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if 
            .
       * <TOTEM:END>
 

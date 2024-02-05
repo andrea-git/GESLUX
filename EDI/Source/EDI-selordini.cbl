@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 25 gennaio 2024 18:06:15.
+       DATE-WRITTEN.        lunedì 5 febbraio 2024 12:25:40.
        REMARKS.
       *{TOTEM}END
 
@@ -826,6 +826,8 @@
                   USAGE IS COMP-4
                   VALUE IS 0.
        77 lab-err-fido-buf PIC  X(3).
+       77 col-lab-err-fido PIC  9(6)
+                  VALUE IS 0.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -2223,7 +2225,7 @@
            LINE 40,93,
            LINES 1,31 ,
            SIZE 6,00 ,
-           COLOR IS col-lab-err-des,
+           COLOR IS col-lab-err-fido,
            FONT IS Verdana10B-Occidentale,
            ID IS 26,
            HEIGHT-IN-CELLS,
@@ -18429,21 +18431,43 @@ LUBEXX                      read clienti no lock invalid continue
                 into lm-riga
               end-string
               write lm-riga
-           end-if.
-
+           end-if.           
 
       ***---
-       VALORIZZA-NUMERO.           
+       VALORIZZA-NUMERO.     
+           if RichiamoBatch 
+              call   "set-ini-log" using r-output
+              cancel "set-ini-log"
+              initialize lm-riga
+              string r-output           delimited size
+                     "VALORIZZA-NUMERO" delimited size
+                into lm-riga
+              end-string
+              write lm-riga
+           end-if.
+      
            move spaces to tge-codice
            read tparamge no lock
 
            move tge-anno     to link-anno.
 
            set  link-ordine  to true.
-           set  link-crea    to true.
+           set link-crea to true.
+           if RichiamoBatch
+              move "X" to link-macrobatch
+              move path-log-macrobatch to link-macrobatch-log-path
+              close log-macrobatch
+           else
+              move space  to link-macrobatch
+              move spaces to link-macrobatch-log-path
+           end-if.
 
            call   "nambar" using link-nambar.
-           cancel "nambar".
+           cancel "nambar".          
+
+           if RichiamoBatch
+              open extend log-macrobatch
+           end-if.
            
            if primo-numero = 0
               move link-numero to primo-numero
@@ -18615,10 +18639,10 @@ LUBEXX                      read clienti no lock invalid continue
 
            if emto-cliente-fido-ok                   
               move "OK" to lab-err-fido-buf
-              move 78-colore-fatt-tot to col-lab-fido-cli
+              move 78-colore-fatt-tot to col-lab-err-fido
            else   
               move "ERR" to lab-err-fido-buf
-              move 78-colore-fatt-tot to col-lab-fido-cli
+              move 78-colore-fatt-tot to col-lab-err-fido
            end-if.
 
            evaluate true
@@ -18974,7 +18998,6 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
               if emto-attivo or emto-bloccato
                  set emto-caricato to true
                  rewrite emto-rec
-                 display message "CHECK"
               end-if
               |||||
               set record-ok to false
@@ -21831,7 +21854,7 @@ LABLAB        if tcl-si-recupero and
               call   "set-ini-log" using r-output
               cancel "set-ini-log"
               initialize lm-riga
-              string r-output                 delimited size
+              string r-output                     delimited size
                      "|=> INGRESSO EDI-SELORDINI" delimited size
                 into lm-riga
               end-string
