@@ -92,7 +92,7 @@
                        string como-des         delimited low-value
                               art-descrizione2 delimited size
                          into art-des-ing
-                       end-string
+                       end-string                         
                     end-if
                     if art-des-spa = spaces
                        move art-descrizione1 to como-des
@@ -102,7 +102,7 @@
                               art-descrizione2 delimited size
                          into art-des-spa
                        end-string
-                       end-if
+                    end-if
                     rewrite art-rec
                  end-perform
            end-start.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 2 febbraio 2024 11:38:35.
+       DATE-WRITTEN.        martedì 6 febbraio 2024 17:00:22.
        REMARKS.
       *{TOTEM}END
 
@@ -22473,6 +22473,18 @@ LABLAB
                       into ef-des-ing-buf
                     end-string                                        
                     display ef-des-ing
+                 end-if
+                 inquire ef-des-spa, value in art-des-spa of articoli
+                 if art-des-spa of articoli = spaces  
+                    inquire ef-des1, value in como-des
+                    inquire ef-des2, value in como-des2          
+                    inspect como-des replacing trailing spaces by 
+           low-value
+                    string como-des delimited low-value
+                           como-des2
+                      into ef-des-spa-buf
+                    end-string                                        
+                    display ef-des-spa
                  end-if
               end-if
            end-if.

@@ -2327,7 +2327,21 @@ LUBEXX        if tutto-ok
                     string como-des delimited low-value
                            art-descrizione2 of articoli
                       into art-des-ing of articoli
-                    end-string                    
+                    end-string 
+                    move art-des-ing of articoli to ef-des-ing-buf
+                    modify ef-des-ing value ef-des-ing-buf
+                 end-if
+
+                 if art-des-spa of articoli = spaces
+                    move art-descrizione1 of articoli to como-des
+                    inspect como-des  
+                            replacing trailing spaces by low-value
+                    string como-des delimited low-value
+                           art-descrizione2 of articoli
+                      into art-des-spa of articoli
+                    end-string
+                    move art-des-spa of articoli to ef-des-spa-buf
+                    modify ef-des-spa value ef-des-spa-buf
                  end-if
 
                  write art-rec of articoli

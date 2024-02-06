@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E82511212-854-216689159
+PROGRAM_UNIQUE_CODE=TOTEM-7E826155554-844-1637826837
 
 {{@DESCRIPTION:
 
@@ -24233,6 +24233,17 @@ BEGIN-TEXT
                       into ef-des-ing-buf
                     end-string                                        
                     display ef-des-ing
+                 end-if
+                 inquire ef-des-spa, value in art-des-spa of articoli
+                 if art-des-spa of articoli = spaces  
+                    inquire ef-des1, value in como-des
+                    inquire ef-des2, value in como-des2          
+                    inspect como-des replacing trailing spaces by low-value
+                    string como-des delimited low-value
+                           como-des2
+                      into ef-des-spa-buf
+                    end-string                                        
+                    display ef-des-spa
                  end-if
               end-if
            end-if.
