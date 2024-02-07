@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 6 febbraio 2024 17:00:22.
+       DATE-WRITTEN.        mercoledì 7 febbraio 2024 11:30:16.
        REMARKS.
       *{TOTEM}END
 
@@ -4387,7 +4387,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Descrizione italiano",
+           TITLE "Descrizione inglese",
            .
 
       * LABEL
