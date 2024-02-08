@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 5 febbraio 2024 12:25:40.
+       DATE-WRITTEN.        giovedì 8 febbraio 2024 14:19:35.
        REMARKS.
       *{TOTEM}END
 
@@ -15647,7 +15647,7 @@
            if tcl-gdo-si or tcl-gdo-opz
               move 1 to v-forza
            end-if.
-           display pb-forza.
+           display pb-forza.        
 
       *****     
       *****             15 emto-righe       PIC  9.
@@ -20009,18 +20009,29 @@ LABLAB          end-if
                                title tit-err
                                 icon mb-warning-icon
                      move 78-ID-ef-prov-d to control-id
+                 not invalid
+                     if prv-codice = "EE"
+                        move 0 to ef-cap-d-buf 
+                        modify ef-cap-d, enabled false, value 
+           ef-cap-d-buf 
+                     else
+                        modify ef-cap-d, enabled true
+                     end-if
                 end-read
 
-           when 78-ID-ef-cap-d
-                inquire ef-cap-d, value in anc-cap
-                read anacap
-                     invalid
-                     set errori to true        
-                     display message "CAP NON valido"
-                               title tit-err
-                                icon mb-warning-icon
-                     move 78-ID-ef-cap-d to control-id
-                end-read
+           when 78-ID-ef-cap-d                        
+                inquire ef-prov-d, value in prv-codice
+                if prv-codice not = "EE"
+                   inquire ef-cap-d, value in anc-cap
+                   read anacap
+                        invalid
+                        set errori to true        
+                        display message "CAP NON valido"
+                                  title tit-err
+                                   icon mb-warning-icon
+                        move 78-ID-ef-cap-d to control-id
+                   end-read
+                end-if
 
            |78-ID-ef-age è l'ID del control ef-age
            when 78-ID-ef-age
@@ -21075,8 +21086,18 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
               end-if
            end-if
                      
-           display form1
-           modify tool-modifica,  value mod
+           display form1    
+                       
+           if mod = 1
+              inquire ef-prov-d, value in prv-codice
+              if prv-codice = "EE"
+                 modify ef-cap-d, enabled false, value 0
+              else                                          
+                 modify ef-cap-d, enabled true
+              end-if
+           end-if.
+
+           modify tool-modifica,  value mod.
            perform CANCELLA-COLORE 
 
            move 4 to ACCEPT-CONTROL.
@@ -21528,7 +21549,7 @@ PATCH       bitmap-number = BitmapNumSave.
            move 0 to mod.
            perform ABILITAZIONI.
            set RicaricaGrid to true.
-           display form1. 
+           display form1.    
 
       ***---
        SCRIVI-RIGHE.      
