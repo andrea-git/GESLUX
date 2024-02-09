@@ -1,0 +1,21 @@
+       FD  log4mas.
+       01 l4m-rec.
+           05 l4m-chiave.
+               10 l4m-data-estrazione          PIC  9(8).
+               10 l4m-prog         PIC  9(10).
+           05 l4m-dati.
+               10 l4m-articolo     PIC  9(6).
+               10 l4m-art-des      PIC  x(100).
+               10 l4m-mto-chiave.
+                   15 l4m-anno         PIC  9(4).
+                   15 l4m-mto-numero   PIC  9(8).
+      *(( XFD NAME = l4m-cli-codice_1 ))
+               10 l4m-cli-codice   PIC  9(5).
+               10 l4m-cli-ragsoc   PIC  x(100).
+               10 l4m-des-prog     PIC  9(5).
+               10 l4m-des-ragsoc   PIC  x(100).
+               10 l4m-localita     PIC  x(100).
+               10 l4m-num-ord-cli  PIC  x(15).
+               10 l4m-mto-data-ordine          PIC  9(8).
+               10 l4m-pezzi        PIC  9(8).
+               10 FILLER           PIC  x(500).

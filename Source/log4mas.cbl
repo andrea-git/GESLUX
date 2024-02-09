@@ -13,12 +13,7 @@
            copy "clienti.sl".
            copy "destini.sl".
            copy "lineseq.sl".    
-           
-       SELECT csvFile
-           ASSIGN       TO path-csvFile
-           ORGANIZATION IS LINE SEQUENTIAL
-           ACCESS MODE  IS SEQUENTIAL
-           FILE STATUS  IS STATUS-csvFile.
+           copy "log4mas.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -29,10 +24,8 @@
            copy "mrordini.fd".
            copy "clienti.fd".
            copy "destini.fd".
-           copy "lineseq.fd".
-
-       FD  csvFile.
-       01 line-csvFile        PIC  x(1000).
+           copy "lineseq.fd".    
+           copy "log4mas.fd".
 
        WORKING-STORAGE SECTION.
            copy "comune.def".
@@ -46,19 +39,20 @@
        77  status-mrordini         pic x(2).
        77  status-clienti          pic x(2).
        77  status-destini          pic x(2).
-       77  status-csvFile          pic x(2).
-       77  path-csvFile            pic x(256).
+       77  status-log4mas          pic x(2).
        77  status-lineseq          pic x(2).
        77  wstampa                 pic x(256).
-
-       77  separatore              pic x.
+                                            
        77  como-articolo           pic 9(6).
                                             
        77  como-data               pic 9(8).
        77  como-ora                pic 9(8).
-       77  como-qta                pic z(8).
        77  como-impegnato          pic s9(9).
        77  como-riga               pic x(100). 
+
+       77  como-data-del           pic 9(8).
+       77  como-anno               pic 9(4).
+       77  num-del                 pic 9(5) value 0.
 
        77  nargs    pic 99 comp-1.      
        01  r-inizio                pic x(25).
@@ -158,32 +152,93 @@
            
            set RecLocked   to false.
 
-           accept separatore from environment "SEPARATORE".
-                                          
-           initialize path-csvFile.
-           accept path-csvFile from environment "LOG4MAS_PATH".
-           if path-csvFile = spaces
-              goback 
-           end-if.
-                                          
-           inspect path-csvFile replacing trailing spaces by low-value.
-           string  path-csvFile    delimited low-value
-                   "log4mas-path_" delimited size
-                   como-data       delimited size
-                   ".csv"          delimited size
-              into path-csvFile
-           end-string.
-
       ***---
        OPEN-FILES.                           
-           open output lineseq csvFile.
+           open output lineseq.
+           open i-o log4mas.
            if tutto-ok
               open input articoli progmag mtordini mrordini
                          clienti  destini
            end-if.                        
       
       ***---
-       ELABORAZIONE.     
+       ELABORAZIONE.         
+           move 0 to num-del.          
+           move como-data(1:4) to como-anno.
+           subtract 1 from como-anno.
+           string como-anno      delimited size
+                  como-data(5:4) delimited size
+             into como-data-del
+           end-string.
+
+           initialize como-riga.
+           string "CANCELLAZIONE DATI FINO AL: " 
+                  como-data-del(7:2)
+                  "/"
+                  como-data-del(5:2)
+                  "/"
+                  como-data-del(1:4)
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.    
+
+           move low-value to l4m-rec.
+           start log4mas key >= l4m-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read log4mas next at end exit perform end-read
+                    if l4m-data-estrazione > como-data-del
+                       exit perform
+                    end-if
+
+                    add 1 to num-del
+                    delete log4mas record
+                 end-perform
+           end-start.
+
+           initialize como-riga.
+           string "CANCELLATI RECORDS: "
+                  num-del
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.    
+
+           move 0 to num-del.
+           initialize como-riga.
+           string "CANCELLAZIONE DATI DEL: " 
+                  como-data(7:2)
+                  "/"
+                  como-data(5:2)
+                  "/"
+                  como-data(1:4)
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.    
+                                   
+           move low-value to l4m-rec.
+           move como-data to l4m-data-estrazione.
+           start log4mas key >= l4m-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read log4mas next at end exit perform end-read
+                    if l4m-data-estrazione > como-data
+                       exit perform
+                    end-if
+
+                    add 1 to num-del
+                    delete log4mas record
+                 end-perform
+           end-start.
+
+           initialize como-riga.
+           string "CANCELLATI RECORDS: "
+                  num-del
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.    
+
            move "INIZIO ELABORAZIONE" to como-riga.
            perform SCRIVI-RIGA-LOG.
 
@@ -282,7 +337,7 @@
                                        move "NON TROVATO" 
                                          to des-localita
                                   end-read
-                                  perform SCRIVI-CSV
+                                  perform SCRIVI-LOG4MAS
                              end-read
                           end-perform
                     end-start
@@ -292,86 +347,49 @@
            perform SCRIVI-RIGA-LOG.
 
       ***---
-       SCRIVI-CSV.
-           if como-articolo = 0
-              initialize line-csvFile
-              string "Articolo"    delimited size
-                     separatore    delimited size
-                     "Descrizione" delimited size
-                     separatore    delimited size
-                     "Anno"        delimited size
-                     separatore    delimited size
-                     "Numero"      delimited size
-                     separatore    delimited size
-                     "Cliente"     delimited size
-                     separatore    delimited size
-                     "Destino"     delimited size
-                     separatore    delimited size
-                     "Località"    delimited size
-                     separatore    delimited size
-                     "Ord.Cli."    delimited size
-                     separatore    delimited size
-                     "Data"        delimited size
-                     separatore    delimited size
-                     "Pezzi"       delimited size
-                     separatore    delimited size
-                into line-csvFile
-              end-string
-              write line-csvFile
+       SCRIVI-LOG4MAS.
+           if como-articolo not = art-codice  
+              move art-codice to como-articolo
+              initialize l4m-rec replacing numeric data by zeroes
+                                      alphanumeric data by spaces
+              move como-data       to l4m-data-estrazione
+              move art-codice      to l4m-articolo
+              move art-descrizione to l4m-art-des
+              move como-impegnato  to l4m-pezzi
+              perform WRITE-LOG4MAS
            end-if.
-           if como-articolo not = art-codice
-              initialize line-csvFile
-              move art-codice to como-articolo    
-              move como-impegnato to como-qta
-              string art-codice      delimited size
-                     separatore      delimited size
-                     art-descrizione delimited size
-                     separatore      delimited size
-                     separatore      delimited size
-                     separatore      delimited size
-                     separatore      delimited size
-                     separatore      delimited size
-                     separatore      delimited size
-                     separatore      delimited size
-                     separatore      delimited size
-                     como-qta        delimited size
-                into line-csvFile
-              end-string
-              write line-csvFile
-           end-if.                          
-           initialize line-csvFile.
-           compute como-qta = mro-qta - mro-qta-e.
-           string separatore   delimited size
-                  separatore   delimited size
-                  mto-anno     delimited size
-                  separatore   delimited size
-                  mto-numero   delimited size
-                  separatore   delimited size
-                  cli-ragsoc-1 delimited size
-                  separatore   delimited size
-                  des-ragsoc-1 delimited size
-                  separatore   delimited size
-                  des-localita delimited size
-                  separatore   delimited size
-                  mto-num-ord-cli 
-                  separatore   delimited size
-                  mto-data-ordine(7:2)       
-                  "/"
-                  mto-data-ordine(5:2)       
-                  "/"
-                  mto-data-ordine(1:4)
-                  separatore   delimited size
-                  como-qta
-                  separatore   delimited size
-             into line-csvFile
-           end-string.
-           write line-csvFile.
+           initialize l4m-rec replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+           compute l4m-pezzi = mro-qta - mro-qta-e.
+           
+           move como-data       to l4m-data-estrazione.
+           move art-codice      to l4m-articolo.
+           move art-descrizione to l4m-art-des. 
+           move mto-chiave      to l4m-mto-chiave.
+           move cli-codice      to l4m-cli-codice.
+           move cli-ragsoc-1    to l4m-cli-ragsoc.
+           move des-prog        to l4m-des-prog.
+           move des-ragsoc-1    to l4m-des-ragsoc.
+           move des-localita    to l4m-localita.
+           move mto-num-ord-cli to l4m-num-ord-cli.
+           move mto-data-ordine to l4m-mto-data-ordine.
+           perform WRITE-LOG4MAS.
+
+      ***---
+       WRITE-LOG4MAS.
+           perform until 1 = 2
+              add 1 to l4m-prog
+              write l4m-rec
+                    invalid continue
+                not invalid exit perform
+              end-write
+           end-perform.
 
 
       ***---
        CLOSE-FILES.
            close lineseq articoli progmag mtordini mrordini
-                 clienti destini csvFile.
+                 clienti destini log4mas.
 
       ***---
        SCRIVI-RIGA-LOG.

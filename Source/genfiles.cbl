@@ -175,8 +175,9 @@ LABLAB     copy "blister.sl".
            copy "macrobatch.sl".
            copy "hleb.sl".
            copy "anacap.sl".          
-
+                              
            copy "lock-div.sl".
+           copy "log4mas.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -350,7 +351,9 @@ LABLAB     copy "blister.fd".
            copy "macrobatch.fd".  
            copy "hleb.fd".              
            copy "anacap.fd".  
-           copy "lock-div.fd".   
+           copy "lock-div.fd".
+
+           copy "log4mas.fd".
 
        WORKING-STORAGE SECTION.
            COPY "acucobol.def".
@@ -524,6 +527,7 @@ LABLAB     copy "blister.fd".
        77  status-hleb          pic x(2).
        77  status-anacap        pic x(2).
        77  status-lock-div      pic x(2).
+       77  status-log4mas       pic x(2).
 
            copy "EDI-status.def".
 
@@ -2810,6 +2814,23 @@ LABLAB     copy "blister.fd".
                 
            end-evaluate.
 
+      ***---
+       LOG4MAS-ERR SECTION.
+           use after error procedure on log4mas.
+           evaluate status-log4mas
+           when "35" continue
+           when "39"
+                display message "File [LOG4MAS] Mismatch size!"
+                           title titolo
+                            icon 3
+                
+           when "98"
+                display message "[LOG4MAS] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                
+           end-evaluate.
+
            copy "EDI-declaratives.cpy".
 
        END DECLARATIVES.
@@ -4006,6 +4027,12 @@ LABLAB     copy "blister.fd".
               open output lock-div
            end-if.
            close lock-div.
+
+           open input log4mas.
+           if status-log4mas = "35"
+              open output log4mas
+           end-if.
+           close log4mas.
 
            copy "EDI-procedure.cpy".
 
