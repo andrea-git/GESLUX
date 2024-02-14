@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=169.254.227.129
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E828122546-987-481031700
+PROGRAM_UNIQUE_CODE=TOTEM-7E82E17844-155-1979715018
 
 {{@DESCRIPTION:
 
@@ -17454,12 +17455,18 @@ BEGIN-TEXT
                            not invalid
                                read timposte previous
                          end-start
-                      
+
+                         move emto-cod-ese-iva      to mto-cod-ese-iva     
+                                                   
                          if cli-iva not = spaces
                             move cli-iva to iva-std
+                            |Lo ricalcolo perchè il cliente puo cambiare
+                            move iva-std to mto-cod-ese-iva
                          else
                             if cli-iva-ese not = spaces
                                move cli-iva-ese to iva-std
+                               |Lo ricalcolo perchè il cliente puo cambiare
+                               move iva-std to mto-cod-ese-iva
                             else
                                move tge-cod-iva-std to iva-std
                             end-if
@@ -17474,7 +17481,6 @@ BEGIN-TEXT
                            to mto-data-passaggio-ordine
                          move emto-cod-agente       to mto-cod-agente      
                          move emto-cod-pagamento    to mto-cod-pagamento   
-                         move emto-cod-ese-iva      to mto-cod-ese-iva     
                          move emto-vettore          to mto-vettore         
                          move emto-note1            to mto-note1           
                          move emto-data-note1       to mto-data-note1      

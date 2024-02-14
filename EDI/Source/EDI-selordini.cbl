@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 8 febbraio 2024 14:19:35.
+       DATE-WRITTEN.        mercoledì 14 febbraio 2024 18:16:25.
        REMARKS.
       *{TOTEM}END
 
@@ -18242,12 +18242,19 @@
                            not invalid
                                read timposte previous
                          end-start
-                      
+
+                         move emto-cod-ese-iva      to mto-cod-ese-iva  
+              
+                                                   
                          if cli-iva not = spaces
                             move cli-iva to iva-std
+                            |Lo ricalcolo perchè il cliente puo cambiare
+                            move iva-std to mto-cod-ese-iva
                          else
                             if cli-iva-ese not = spaces
                                move cli-iva-ese to iva-std
+                               |Lo ricalcolo perchè il cliente puo cambiare
+                               move iva-std to mto-cod-ese-iva
                             else
                                move tge-cod-iva-std to iva-std
                             end-if
@@ -18264,8 +18271,6 @@
               
                          move emto-cod-pagamento    to 
            mto-cod-pagamento   
-                         move emto-cod-ese-iva      to mto-cod-ese-iva  
-              
                          move emto-vettore          to mto-vettore      
               
                          move emto-note1            to mto-note1        
