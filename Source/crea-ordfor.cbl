@@ -771,7 +771,6 @@
               end-string
            end-if.
 
-
       ***---
        OPEN-FILES.
            perform OPEN-TCONTAT-LOCK.
@@ -1191,7 +1190,7 @@
               read tcontat  no lock invalid continue end-read
               add 1 to con-num-ord-forn giving primo-numero    
                     
-              move "CICLO COPERTURA FABBISGNO NO PROGRAMMAZIONE" 
+              move "CICLO COPERTURA FABBISOGNO NO PROGRAMMAZIONE" 
                 to como-riga
               perform SCRIVI-RIGA-LOG
 
@@ -1504,8 +1503,25 @@
                             art-qta-epal * num-bancali
                                         
                     |Arrotondo a imballo
+                    initialize como-riga
+                    string "QTA ORD = CPFM-QTA-M("
+                           idx-mese
+                           ")"
+                       into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
-                    perform CHECK-IMBALLO
+                    perform CHECK-IMBALLO  
+                    
+                    initialize como-riga
+                    string "QTA ORD = ROF-QTA-ORD("
+                           rof-qta-ord
+                           "), DOPO CHECK-IMBALLO"
+                       into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     move rof-qta-ord to cpfm-qta-m(idx-mese)
            
                  else
@@ -1548,9 +1564,28 @@
                     compute cpfm-qta-m(idx-mese) = 
                             art-qta-epal * num-bancali
               
-                    |Arrotondo a imballo
+                    |Arrotondo a imballo     
+                    initialize como-riga
+                    string "QTA ORD = ART-QTA-EPAL("
+                           art-qta-epal
+                           ") * num-bancali ("
+                           num-bancali
+                           ")"
+                       into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
-                    perform CHECK-IMBALLO
+                    perform CHECK-IMBALLO         
+                    
+                    initialize como-riga
+                    string "QTA ORD = ROF-QTA-ORD("
+                           rof-qta-ord
+                           "), DOPO CHECK-IMBALLO"
+                       into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
                     move rof-qta-ord to cpfm-qta-m(idx-mese)
               
                  else
@@ -1897,6 +1932,13 @@
            read articoli no lock invalid continue end-read.
 
            perform VALORI-PREZZO-IMPOSTE.
+                                                 
+           initialize como-riga
+           string "QTA ORD = CPFM-QTA-M(1): "
+                  cpfm-qta-m(1)
+              into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG
 
            move cpfm-qta-m(1) to rof-qta-ord.
 
@@ -2181,6 +2223,15 @@
                  read articoli no lock invalid continue end-read
 
                  perform VALORI-PREZZO-IMPOSTE
+                                                         
+                 initialize como-riga
+                 string "QTA ORD = CPFM-QTA-M("
+                        idx
+                        "): "
+                        cpfm-qta-m(idx)
+                    into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
 
                  move cpfm-qta-m(idx) to rof-qta-ord
 
@@ -2295,7 +2346,10 @@
            end-if.
 
       ***---
-       QTA-BANCALE-EPAL.
+       QTA-BANCALE-EPAL.       
+           move "QTA-BANCALE-EPAL" to como-riga
+           perform SCRIVI-RIGA-LOG.
+
            move cpfm-tipo-imballo to imq-codice.
            read timbalqta no lock invalid continue end-read.
            move imq-tipo          to imb-codice.
@@ -2308,12 +2362,32 @@
               move art-qta-std to art-qta-epal
            end-if.
 
-           if rof-qta-ord < rof-qta-imballi
+           if rof-qta-ord < rof-qta-imballi           
+              initialize como-riga
+              string "QTA ORD = ROF-QTA-IMBALLI("
+                     rof-qta-imballi
+                     ")"            
+                 into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
               move rof-qta-imballi to rof-qta-ord
            else
               divide rof-qta-ord by rof-qta-imballi giving ris
                                                  remainder resto
-              if resto not = 0
+              if resto not = 0       
+                                             
+                 initialize como-riga
+                 string "QTA ORD = rof-qta-imballi ("
+                        rof-qta-imballi
+                        ")* "
+                        "ris (" 
+                        ris 
+                        ") + 1"
+                    into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+
                  compute rof-qta-ord = rof-qta-imballi * ( ris + 1 )
               end-if
            end-if.
@@ -2349,8 +2423,18 @@
       *****                      else
       *****                         add 1 to num-bancali
       *****             
-      *****                      end-if
-                   
+      *****                      end-if                            
+                                             
+                            initialize como-riga
+                            string "QTA ORD = art-qta-epal ("
+                                   art-qta-epal
+                                   ") * num-bancali (" 
+                                   num-bancali
+                                   ")"
+                               into como-riga
+                            end-string
+                            perform SCRIVI-RIGA-LOG
+
                             compute rof-qta-ord  =
                                     art-qta-epal * num-bancali
                          end-if
@@ -2360,7 +2444,17 @@
                                   ( art-qta-epal * 
                                     tge-perce-arrot-bancale / 100 )
                    
-                            if rof-qta-ord >= ris
+                            if rof-qta-ord >= ris                              
+                                             
+                               initialize como-riga
+                               string "QTA ORD = art-qta-epal ("
+                                      art-qta-epal
+                                      ")"
+                                  into como-riga
+                               end-string
+                               perform SCRIVI-RIGA-LOG  
+                                                     
+
                                move art-qta-epal to rof-qta-ord
                             end-if
       *****                   else
@@ -2373,7 +2467,10 @@
            end-read.       
 
       ***---
-       QTA-SCORTA-NON-PROGRAMMATA.
+       QTA-SCORTA-NON-PROGRAMMATA.   
+           move "QTA-SCORTA-NON-PROGRAMMATA" to como-riga
+           perform SCRIVI-RIGA-LOG.
+
            perform CHECK-BANCALE.
            perform CHECK-MOQ.
            perform CHECK-IMBALLO.
@@ -2418,7 +2515,17 @@
       *****                         add 1 to num-bancali
       *****             
       *****                      end-if
-                   
+                                              
+                            initialize como-riga
+                            string "QTA ORD = art-qta-epal ("
+                                   art-qta-epal
+                                   ") * num-bancali (" 
+                                   num-bancali
+                                   ")"
+                              into como-riga
+                            end-string
+                            perform SCRIVI-RIGA-LOG
+
                             compute rof-qta-ord  =
                                     art-qta-epal * num-bancali
                          end-if
@@ -2428,7 +2535,14 @@
                                   ( art-qta-epal * 
                                     tge-perce-arrot-bancale / 100 )
                    
-                            if rof-qta-ord >= ris
+                            if rof-qta-ord >= ris             
+                               initialize como-riga
+                               string "QTA ORD = art-qta-epal ("
+                                      art-qta-epal
+                                      ")"
+                                  into como-riga
+                               end-string
+                               perform SCRIVI-RIGA-LOG
                                move art-qta-epal to rof-qta-ord
                             end-if
       *****                   else
@@ -2443,7 +2557,16 @@
       ***---
        CHECK-MOQ.
            if LinkAuto = 1
-              if rof-qta-ord < art-moq
+              if rof-qta-ord < art-moq      
+                                    
+                 initialize como-riga
+                 string "QTA ORD = art-moq ("
+                        art-moq
+                        ")"
+                    into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+
                  move art-moq to rof-qta-ord
               end-if
            end-if.
@@ -2456,14 +2579,49 @@
            read timballi  no lock invalid continue end-read.
            move imq-qta-imb     to rof-qta-imballi.
 
-           move 0 to resto.
-           if rof-qta-ord < rof-qta-imballi
+           move 0 to resto.          
+           
+           initialize como-riga
+           string "rof-qta-ord: "
+                  rof-qta-ord
+                  " - rof-qta-imballi: "
+                  rof-qta-imballi
+              into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG
+
+           if rof-qta-ord < rof-qta-imballi      
+        
+              initialize como-riga
+              string "QTA ORD = rof-qta-imballi ("
+                     rof-qta-imballi
+                     ")"
+                 into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
               move rof-qta-imballi to rof-qta-ord
            else
               divide rof-qta-ord by rof-qta-imballi giving ris
                                                  remainder resto
-              if resto not = 0
+              if resto not = 0                   
+                                             
+                 initialize como-riga
+                 string "QTA ORD = rof-qta-imballi ("
+                        rof-qta-imballi
+                        ") * ris (" 
+                        ris 
+                        ") + 1"
+                    into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+
                  compute rof-qta-ord = rof-qta-imballi * ( ris + 1 )
+              else
+                    
+                 move "QTA ORD = Già impostata" to como-riga
+                 perform SCRIVI-RIGA-LOG
+
               end-if
            end-if.
 

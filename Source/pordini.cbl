@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        domenica 15 ottobre 2023 23:40:40.
+       DATE-WRITTEN.        venerdì 16 febbraio 2024 17:08:49.
        REMARKS.
       *{TOTEM}END
 
@@ -12532,13 +12532,21 @@
                          
                                set integer to true
                                move como-impegnato to como-n1
-                               perform EDIT-NUMERO-1     
+                               perform EDIT-NUMERO-1 
 
-                               if como-impegnato > 0
-                                  string "ARTICOLO OK. "
-                                         " - COMO-IMPEGNATO("
+                               set integer to true
+                               move ord2-promo to como-n2
+                               perform EDIT-NUMERO-2
+    
+                               initialize como-riga
+
+                               if ( como-impegnato + ord2-promo ) > 0
+                                  string "ARTICOLO OK: "
+                                         "COMO-IMPEGNATO("
                                          como-xx-1 delimited low-value
-                                         ") > 0"       
+                                         ") + ORD2-PROMO ("           
+                                         como-xx-2 delimited low-value
+                                         ")> 0"       
                                     into como-riga
                                   end-string      
                                   perform SCRIVI-RIGA-LOG
@@ -12551,9 +12559,11 @@
                                   rewrite ord2-rec 
                                   set tutto-ok to true
                                else       
-                                  string "ARTICOLO KO. "
-                                         " - COMO-IMPEGNATO("
+                                  string "ARTICOLO KO: "
+                                         "COMO-IMPEGNATO("
                                          como-xx-1 delimited low-value
+                                         ") + ORD2-PROMO ("           
+                                         como-xx-2 delimited low-value
                                          ") <= 0"      
                                     into como-riga
                                   end-string             
@@ -12600,8 +12610,8 @@
                                                              
                                   initialize como-riga
                                   if ord2-fabb-qta(como-idx) > 0
-                                     string "ARTICOLO OK. "
-                                            " - QTA MESE(" 
+                                     string "ARTICOLO OK: "
+                                            "QTA MESE(" 
                                             como-idx
                                             ") > 0 ("
                                             como-xx-1 delimited 
@@ -12620,8 +12630,8 @@
                                      rewrite ord2-rec
                                      set tutto-ok to true
                                   else                          
-                                     string "ARTICOLO KO. "
-                                            " - QTA MESE(" 
+                                     string "ARTICOLO KO: "
+                                            "QTA MESE(" 
                                             como-idx
                                             ") <= 0 ("                  
                                             como-xx-1 delimited 
@@ -12669,8 +12679,8 @@
 
                                   initialize como-riga
                                   if como-n1 < como-n2
-                                     string "ARTICOLO OK. "
-                                            " - N1 (" 
+                                     string "ARTICOLO OK: "
+                                            "N1 (" 
                                             como-xx-1 delimited 
            low-value
                                             ") < N2("                   
@@ -12706,8 +12716,8 @@
                                        into como-riga
                                      end-string
                                   else                
-                                     string "ARTICOLO KO. "
-                                            " - N1 ("  
+                                     string "ARTICOLO KO: "
+                                            "N1 ("  
                                             como-xx-1 delimited 
            low-value
                                             ") >= N2("                  
