@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 14 febbraio 2024 18:16:25.
+       DATE-WRITTEN.        martedì 20 febbraio 2024 16:26:21.
        REMARKS.
       *{TOTEM}END
 
@@ -268,11 +268,6 @@
                   USAGE IS HANDLE OF FONT.
        01 gruppo-hidden.
            05 hid-emro-qta-imballi         PIC  9(5).
-           05 HiddenKeyL.
-               10 hid-prg-cod-articoloL        PIC  9(6).
-               10 hid-prg-cod-magazzinoL       PIC  X(3).
-               10 hid-prg-tipo-imballoL        PIC  X(3).
-               10 hid-prg-pesoL    PIC  9(5)v9(3).
            05 HiddenKey.
                10 hid-prg-cod-articolo         PIC  9(6).
                10 hid-prg-cod-magazzino        PIC  X(3).
@@ -17949,13 +17944,39 @@
       * <TOTEM:PARA. AGGIUNGI-RIGA>
            if emro-cod-articolo not = emro-prg-cod-articolo and not 
            emro-si-blister
-              display message "CONTATTARE ASSISTENZA CON CODICE KL1"
+              display message "Discordanza articolo - progressivo sulla 
+      -    "riga: " emro-riga, 
+                       x"0d0a""Articolo: " emro-cod-articolo
+                       x"0d0a""Progressivo: " emro-prg-cod-articolo
+                       x"0d0a""Ripassare il codice selezionando il progr
+      -    "essivo desiderato"
                         title tit-err
-                         icon 3
+                         icon 3 
+              set emro-progressivo-non-valido to true
+              rewrite emro-rec
+              if emto-attivo
+                 set emto-prg-ko                 to true
+                 set emto-bloccato               to true
+                 rewrite emto-rec
+              end-if     
+           
+              if emto-attivo
+                 move 78-colore-chiuso         to col-lab-stato
+                 move "ATTIVO"                 to lab-stato-buf
+              end-if
+              if emto-bloccato
+                 move 78-colore-fatt-tot       to col-lab-stato
+                 move "BLOCCATO"               to lab-stato-buf
+              end-if
+              if emto-caricato
+                 move 78-colore-sped-tot       to col-lab-stato
+                 move "CARICATO"               to lab-stato-buf
+              end-if
+              display lab-stato
            end-if.
 
            move emro-prg-chiave    to HiddenKey
-           move emro-prg-forzato   to HiddenKeyL
+      *     move emro-prg-forzato   to HiddenKeyL
            move emro-errori        to hid-emro-errori
            move emro-blister       to hid-emro-blister
            move emro-stato         to hid-emro-stato
@@ -19049,7 +19070,32 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                         set emto-cliente-fuori-fido to true
                         set emto-cliente-non-attivo to true
                      end-if
-                 end-read
+                 end-read       
+
+                 if record-ok and emto-prg-ok
+                    move low-value   to emro-chiave
+                    move emto-chiave to emro-chiave
+                    start edi-mrordini key >= emro-chiave
+                          invalid continue
+                      not invalid
+                          perform until 1 = 2
+                             read edi-mrordini next at end exit perform 
+           end-read
+                             if emro-anno   not = emto-anno or
+                                emro-numero not = emto-numero
+                                exit perform
+                             end-if
+                             if emro-cod-articolo not = 
+           emro-prg-cod-articolo
+                                set emto-bloccato to true
+                                set emto-prg-ko to true
+                                rewrite emto-rec
+                                set emro-progressivo-non-valido to true
+                                rewrite emro-rec
+                             end-if
+                          end-perform
+                    end-start
+                 end-if
 
                  if emto-cliente-valido  and
                     emto-cliente-fido-ok and 
@@ -19061,9 +19107,11 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                     emto-prz-ok          and
                     emto-bloc-forzato-no and
                     emto-esistente-no
-                    set emto-attivo          to true
+                    set emto-attivo   to true
                  else
-                    set emto-bloccato to true
+                    if emto-attivo
+                       set emto-bloccato to true
+                    end-if
                  end-if
                  rewrite emto-rec
               end-if
@@ -19115,7 +19163,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                       end-if
                    end-perform
               end-read
-           end-if 
+           end-if  
            .
       * <TOTEM:END>
 
@@ -21544,6 +21592,10 @@ PATCH       bitmap-number = BitmapNumSave.
               emto-prz-ok and
               emto-cliente-fido-ok
               set emto-attivo to true
+           else
+              if emto-attivo
+                 set emto-bloccato to true
+              end-if
            end-if.
 
 
@@ -21692,7 +21744,15 @@ PATCH         |Nel caso in cui passi un prezzo da bloccare
               end-if           
               if emro-cod-articolo not = emro-prg-cod-articolo and not 
            emro-si-blister
-                 display message "CONTATTARE ASSISTENZA CON CODICE KL2"
+                 set emro-progressivo-non-valido to true
+                 set emto-prg-ko                 to true
+
+                 display message "Discordanza articolo - progressivo sul
+      -    "la riga: " emro-riga, 
+                          x"0d0a""Articolo: " emro-cod-articolo
+                          x"0d0a""Progressivo: " emro-prg-cod-articolo
+                          x"0d0a""Ripassare il codice selezionando il pr
+      -    "ogressivo desiderato"
                            title tit-err
                             icon 3
               end-if
@@ -23722,7 +23782,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
       
               move prg-peso      to col-peso               
               move imq-qta-imb   to hid-emro-qta-imballi
-              move prg-chiave    to HiddenKeyL HiddenKey        
+      *        move prg-chiave    to HiddenKeyL HiddenKey
+              move prg-chiave    to HiddenKey        
               move col-evadi-dal to como-data
               perform DATE-TO-FILE
               move como-data to hid-emro-evadi-dal
