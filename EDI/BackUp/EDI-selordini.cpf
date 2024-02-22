@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8214133126-859-1840317782
+PROGRAM_UNIQUE_CODE=TOTEM-7E8216143810-651-112327015
 
 {{@DESCRIPTION:
 
@@ -18234,7 +18234,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                                 emro-numero not = emto-numero
                                 exit perform
                              end-if
-                             if emro-cod-articolo not = emro-prg-cod-articolo
+                             if emro-cod-articolo not = emro-prg-cod-articolo and not emro-si-blister
                                 set emto-bloccato to true
                                 set emto-prg-ko to true
                                 rewrite emto-rec

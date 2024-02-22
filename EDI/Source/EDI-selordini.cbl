@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 20 febbraio 2024 16:26:21.
+       DATE-WRITTEN.        giovedì 22 febbraio 2024 15:40:44.
        REMARKS.
       *{TOTEM}END
 
@@ -19086,7 +19086,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                                 exit perform
                              end-if
                              if emro-cod-articolo not = 
-           emro-prg-cod-articolo
+           emro-prg-cod-articolo and not emro-si-blister
                                 set emto-bloccato to true
                                 set emto-prg-ko to true
                                 rewrite emto-rec
