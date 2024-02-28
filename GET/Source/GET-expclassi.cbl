@@ -21,7 +21,6 @@
            copy "paramget.fd".
 
        WORKING-STORAGE SECTION.
-       copy "link-geslock.def".
        copy "exp-ws.def".
 
        78  titolo                value "Export Classi Articoli".

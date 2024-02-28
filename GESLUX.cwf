@@ -23587,7 +23587,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:Source\evacontras.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\mtordini.sl;FD\tordini.fd;FD\rordini.fd;FD\mtordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def
+COPY_DEPENDENCE=FD\tordini.sl;FD\rordini.sl;FD\mtordini.sl;FD\tordini.fd;FD\rordini.fd;FD\mtordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;Copylib\link-geslock.def
 ADDITIONAL_OPTIONS=-Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -77134,7 +77134,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GET:Debug Mode:GET\SOURCE\GET-expclassi.cbl]
-COPY_DEPENDENCE=FD\lineseq.sl;\Lubex\GESLUX\FD\fileseq.sl;\Lubex\GESLUX\FD\tcla1art.sl;FD\paramGET.sl;FD\lineseq.fd;\Lubex\GESLUX\FD\fileseq.fd;\Lubex\GESLUX\FD\tcla1art.fd;FD\paramGET.fd;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\SHI\Copylib\exp-ws.def;\Lubex\GESLUX\SHI\Copylib\link-exp.def;\Lubex\GESLUX\SHI\Copylib\exp-procedure.cpy
+COPY_DEPENDENCE=FD\lineseq.sl;\Lubex\GESLUX\FD\fileseq.sl;\Lubex\GESLUX\FD\tcla1art.sl;FD\paramGET.sl;FD\lineseq.fd;\Lubex\GESLUX\FD\fileseq.fd;\Lubex\GESLUX\FD\tcla1art.fd;FD\paramGET.fd;\Lubex\GESLUX\SHI\Copylib\exp-ws.def;\Lubex\GESLUX\SHI\Copylib\link-exp.def;\Lubex\GESLUX\SHI\Copylib\exp-procedure.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
