@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          conford.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 2 maggio 2023 16:56:26.
+       DATE-WRITTEN.        martedì 5 marzo 2024 17:54:13.
        REMARKS.
       *{TOTEM}END
 
@@ -38,17 +38,16 @@
            COPY "progmag.sl".
            COPY "rlistini.sl".
            COPY "tlistini.sl".
-           COPY "tparamge.sl".
            COPY "destinif.sl".
            COPY "impforn.sl".
            COPY "timposte.sl".
-           COPY "tscorte.sl".
            COPY "distinteb.sl".
            COPY "tpiombo.sl".
            COPY "param.sl".
            COPY "lineseq-mail.sl".
            COPY "rordini.sl".
            COPY "tordini.sl".
+           COPY "tscorte.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -64,17 +63,16 @@
            COPY "progmag.fd".
            COPY "rlistini.fd".
            COPY "tlistini.fd".
-           COPY "tparamge.fd".
            COPY "destinif.fd".
            COPY "impforn.fd".
            COPY "timposte.fd".
-           COPY "tscorte.fd".
            COPY "distinteb.fd".
            COPY "tpiombo.fd".
            COPY "param.fd".
            COPY "lineseq-mail.fd".
            COPY "rordini.fd".
            COPY "tordini.fd".
+           COPY "tscorte.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -236,17 +234,16 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
-       77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
-       77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-distinteb-BUF     PIC X(672).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-lineseq-mail-BUF     PIC X(1000).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tordini-BUF     PIC X(3938).
+       77 TMP-DataSet1-tscorte-BUF     PIC X(205).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -307,11 +304,6 @@
        77 DataSet1-tlistini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tlistini-KEY-Asc  VALUE "A".
           88 DataSet1-tlistini-KEY-Desc VALUE "D".
-       77 DataSet1-tparamge-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tparamge-LOCK  VALUE "Y".
-       77 DataSet1-tparamge-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tparamge-KEY-Asc  VALUE "A".
-          88 DataSet1-tparamge-KEY-Desc VALUE "D".
        77 DataSet1-destinif-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-destinif-LOCK  VALUE "Y".
        77 DataSet1-destinif-KEY-ORDER  PIC X VALUE "A".
@@ -327,11 +319,6 @@
        77 DataSet1-timposte-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-timposte-KEY-Asc  VALUE "A".
           88 DataSet1-timposte-KEY-Desc VALUE "D".
-       77 DataSet1-tscorte-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tscorte-LOCK  VALUE "Y".
-       77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tscorte-KEY-Asc  VALUE "A".
-          88 DataSet1-tscorte-KEY-Desc VALUE "D".
        77 DataSet1-distinteb-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-distinteb-LOCK  VALUE "Y".
        77 DataSet1-distinteb-KEY-ORDER  PIC X VALUE "A".
@@ -362,6 +349,11 @@
        77 DataSet1-tordini-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tordini-KEY-Asc  VALUE "A".
           88 DataSet1-tordini-KEY-Desc VALUE "D".
+       77 DataSet1-tscorte-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tscorte-LOCK  VALUE "Y".
+       77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tscorte-KEY-Asc  VALUE "A".
+          88 DataSet1-tscorte-KEY-Desc VALUE "D".
 
        77 mrordini-mro-k-promo-SPLITBUF  PIC X(33).
        77 mrordini-mro-k-articolo-SPLITBUF  PIC X(24).
@@ -849,11 +841,9 @@
            PERFORM OPEN-progmag
            PERFORM OPEN-rlistini
            PERFORM OPEN-tlistini
-           PERFORM OPEN-tparamge
            PERFORM OPEN-destinif
            PERFORM OPEN-impforn
            PERFORM OPEN-timposte
-           PERFORM OPEN-tscorte
            PERFORM OPEN-distinteb
            PERFORM OPEN-tpiombo
            PERFORM OPEN-param
@@ -861,6 +851,7 @@
       *    PERFORM OPEN-lineseq-mail
            PERFORM OPEN-rordini
            PERFORM OPEN-tordini
+           PERFORM OPEN-tscorte
       *    After Open
            .
 
@@ -1003,18 +994,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-tparamge.
-      * <TOTEM:EPT. INIT:conford, FD:tparamge, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tparamge
-           IF NOT Valid-STATUS-tparamge
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:tparamge, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-destinif.
       * <TOTEM:EPT. INIT:conford, FD:destinif, BeforeOpen>
       * <TOTEM:END>
@@ -1048,18 +1027,6 @@
               GO TO EXIT-STOP-ROUTINE
            END-IF
       * <TOTEM:EPT. INIT:conford, FD:timposte, AfterOpen>
-      * <TOTEM:END>
-           .
-
-       OPEN-tscorte.
-      * <TOTEM:EPT. INIT:conford, FD:tscorte, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tscorte
-           IF NOT Valid-STATUS-tscorte
-              PERFORM  Screen2-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:conford, FD:tscorte, AfterOpen>
       * <TOTEM:END>
            .
 
@@ -1135,6 +1102,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tscorte.
+      * <TOTEM:EPT. INIT:conford, FD:tscorte, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tscorte
+           IF NOT Valid-STATUS-tscorte
+              PERFORM  Screen2-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:conford, FD:tscorte, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-usr-tel
@@ -1150,11 +1129,9 @@
            PERFORM CLOSE-progmag
            PERFORM CLOSE-rlistini
            PERFORM CLOSE-tlistini
-           PERFORM CLOSE-tparamge
            PERFORM CLOSE-destinif
            PERFORM CLOSE-impforn
            PERFORM CLOSE-timposte
-           PERFORM CLOSE-tscorte
            PERFORM CLOSE-distinteb
            PERFORM CLOSE-tpiombo
            PERFORM CLOSE-param
@@ -1162,6 +1139,7 @@
       *    PERFORM CLOSE-lineseq-mail
            PERFORM CLOSE-rordini
            PERFORM CLOSE-tordini
+           PERFORM CLOSE-tscorte
       *    After Close
            .
 
@@ -1229,12 +1207,6 @@
            CLOSE tlistini
            .
 
-       CLOSE-tparamge.
-      * <TOTEM:EPT. INIT:conford, FD:tparamge, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tparamge
-           .
-
        CLOSE-destinif.
       * <TOTEM:EPT. INIT:conford, FD:destinif, BeforeClose>
       * <TOTEM:END>
@@ -1251,12 +1223,6 @@
       * <TOTEM:EPT. INIT:conford, FD:timposte, BeforeClose>
       * <TOTEM:END>
            CLOSE timposte
-           .
-
-       CLOSE-tscorte.
-      * <TOTEM:EPT. INIT:conford, FD:tscorte, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tscorte
            .
 
        CLOSE-distinteb.
@@ -1292,6 +1258,12 @@
       * <TOTEM:EPT. INIT:conford, FD:tordini, BeforeClose>
       * <TOTEM:END>
            CLOSE tordini
+           .
+
+       CLOSE-tscorte.
+      * <TOTEM:EPT. INIT:conford, FD:tscorte, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tscorte
            .
 
        DataSet1-usr-tel-INITSTART.
@@ -3219,160 +3191,6 @@
       * <TOTEM:END>
            .
 
-       DataSet1-tparamge-INITSTART.
-           IF DataSet1-tparamge-KEY-Asc
-              MOVE Low-Value TO tge-chiave
-           ELSE
-              MOVE High-Value TO tge-chiave
-           END-IF
-           .
-
-       DataSet1-tparamge-INITEND.
-           IF DataSet1-tparamge-KEY-Asc
-              MOVE High-Value TO tge-chiave
-           ELSE
-              MOVE Low-Value TO tge-chiave
-           END-IF
-           .
-
-      * tparamge
-       DataSet1-tparamge-START.
-           IF DataSet1-tparamge-KEY-Asc
-              START tparamge KEY >= tge-chiave
-           ELSE
-              START tparamge KEY <= tge-chiave
-           END-IF
-           .
-
-       DataSet1-tparamge-START-NOTGREATER.
-           IF DataSet1-tparamge-KEY-Asc
-              START tparamge KEY <= tge-chiave
-           ELSE
-              START tparamge KEY >= tge-chiave
-           END-IF
-           .
-
-       DataSet1-tparamge-START-GREATER.
-           IF DataSet1-tparamge-KEY-Asc
-              START tparamge KEY > tge-chiave
-           ELSE
-              START tparamge KEY < tge-chiave
-           END-IF
-           .
-
-       DataSet1-tparamge-START-LESS.
-           IF DataSet1-tparamge-KEY-Asc
-              START tparamge KEY < tge-chiave
-           ELSE
-              START tparamge KEY > tge-chiave
-           END-IF
-           .
-
-       DataSet1-tparamge-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tparamge-LOCK
-              READ tparamge WITH LOCK 
-              KEY tge-chiave
-           ELSE
-              READ tparamge WITH NO LOCK 
-              KEY tge-chiave
-           END-IF
-           MOVE STATUS-tparamge TO TOTEM-ERR-STAT 
-           MOVE "tparamge" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tparamge-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tparamge-KEY-Asc
-              IF DataSet1-tparamge-LOCK
-                 READ tparamge NEXT WITH LOCK
-              ELSE
-                 READ tparamge NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tparamge-LOCK
-                 READ tparamge PREVIOUS WITH LOCK
-              ELSE
-                 READ tparamge PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
-           MOVE "tparamge" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tparamge-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tparamge-KEY-Asc
-              IF DataSet1-tparamge-LOCK
-                 READ tparamge PREVIOUS WITH LOCK
-              ELSE
-                 READ tparamge PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tparamge-LOCK
-                 READ tparamge NEXT WITH LOCK
-              ELSE
-                 READ tparamge NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
-           MOVE "tparamge" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tparamge-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
-           MOVE "tparamge" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tparamge-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
-           MOVE "tparamge" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tparamge-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-tparamge TO TOTEM-ERR-STAT
-           MOVE "tparamge" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tparamge, AfterDelete>
-      * <TOTEM:END>
-           .
-
        destinif-K1-MERGE-SPLITBUF.
            INITIALIZE destinif-K1-SPLITBUF
            MOVE desf-ragsoc-1(1:40) TO destinif-K1-SPLITBUF(1:40)
@@ -3852,160 +3670,6 @@
            MOVE "timposte" TO TOTEM-ERR-FILE
            MOVE "DELETE" TO TOTEM-ERR-MODE
       * <TOTEM:EPT. FD:DataSet1, FD:timposte, AfterDelete>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tscorte-INITSTART.
-           IF DataSet1-tscorte-KEY-Asc
-              MOVE Low-Value TO sco-chiave
-           ELSE
-              MOVE High-Value TO sco-chiave
-           END-IF
-           .
-
-       DataSet1-tscorte-INITEND.
-           IF DataSet1-tscorte-KEY-Asc
-              MOVE High-Value TO sco-chiave
-           ELSE
-              MOVE Low-Value TO sco-chiave
-           END-IF
-           .
-
-      * tscorte
-       DataSet1-tscorte-START.
-           IF DataSet1-tscorte-KEY-Asc
-              START tscorte KEY >= sco-chiave
-           ELSE
-              START tscorte KEY <= sco-chiave
-           END-IF
-           .
-
-       DataSet1-tscorte-START-NOTGREATER.
-           IF DataSet1-tscorte-KEY-Asc
-              START tscorte KEY <= sco-chiave
-           ELSE
-              START tscorte KEY >= sco-chiave
-           END-IF
-           .
-
-       DataSet1-tscorte-START-GREATER.
-           IF DataSet1-tscorte-KEY-Asc
-              START tscorte KEY > sco-chiave
-           ELSE
-              START tscorte KEY < sco-chiave
-           END-IF
-           .
-
-       DataSet1-tscorte-START-LESS.
-           IF DataSet1-tscorte-KEY-Asc
-              START tscorte KEY < sco-chiave
-           ELSE
-              START tscorte KEY > sco-chiave
-           END-IF
-           .
-
-       DataSet1-tscorte-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tscorte-LOCK
-              READ tscorte WITH LOCK 
-              KEY sco-chiave
-           ELSE
-              READ tscorte WITH NO LOCK 
-              KEY sco-chiave
-           END-IF
-           MOVE STATUS-tscorte TO TOTEM-ERR-STAT 
-           MOVE "tscorte" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tscorte-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tscorte-KEY-Asc
-              IF DataSet1-tscorte-LOCK
-                 READ tscorte NEXT WITH LOCK
-              ELSE
-                 READ tscorte NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tscorte-LOCK
-                 READ tscorte PREVIOUS WITH LOCK
-              ELSE
-                 READ tscorte PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
-           MOVE "tscorte" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tscorte-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tscorte-KEY-Asc
-              IF DataSet1-tscorte-LOCK
-                 READ tscorte PREVIOUS WITH LOCK
-              ELSE
-                 READ tscorte PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tscorte-LOCK
-                 READ tscorte NEXT WITH LOCK
-              ELSE
-                 READ tscorte NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
-           MOVE "tscorte" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tscorte-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
-           MOVE "tscorte" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tscorte-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
-           MOVE "tscorte" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tscorte-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
-           MOVE "tscorte" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterDelete>
       * <TOTEM:END>
            .
 
@@ -5156,6 +4820,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tscorte-INITSTART.
+           IF DataSet1-tscorte-KEY-Asc
+              MOVE Low-Value TO sco-chiave
+           ELSE
+              MOVE High-Value TO sco-chiave
+           END-IF
+           .
+
+       DataSet1-tscorte-INITEND.
+           IF DataSet1-tscorte-KEY-Asc
+              MOVE High-Value TO sco-chiave
+           ELSE
+              MOVE Low-Value TO sco-chiave
+           END-IF
+           .
+
+      * tscorte
+       DataSet1-tscorte-START.
+           IF DataSet1-tscorte-KEY-Asc
+              START tscorte KEY >= sco-chiave
+           ELSE
+              START tscorte KEY <= sco-chiave
+           END-IF
+           .
+
+       DataSet1-tscorte-START-NOTGREATER.
+           IF DataSet1-tscorte-KEY-Asc
+              START tscorte KEY <= sco-chiave
+           ELSE
+              START tscorte KEY >= sco-chiave
+           END-IF
+           .
+
+       DataSet1-tscorte-START-GREATER.
+           IF DataSet1-tscorte-KEY-Asc
+              START tscorte KEY > sco-chiave
+           ELSE
+              START tscorte KEY < sco-chiave
+           END-IF
+           .
+
+       DataSet1-tscorte-START-LESS.
+           IF DataSet1-tscorte-KEY-Asc
+              START tscorte KEY < sco-chiave
+           ELSE
+              START tscorte KEY > sco-chiave
+           END-IF
+           .
+
+       DataSet1-tscorte-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tscorte-LOCK
+              READ tscorte WITH LOCK 
+              KEY sco-chiave
+           ELSE
+              READ tscorte WITH NO LOCK 
+              KEY sco-chiave
+           END-IF
+           MOVE STATUS-tscorte TO TOTEM-ERR-STAT 
+           MOVE "tscorte" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tscorte-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tscorte-KEY-Asc
+              IF DataSet1-tscorte-LOCK
+                 READ tscorte NEXT WITH LOCK
+              ELSE
+                 READ tscorte NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tscorte-LOCK
+                 READ tscorte PREVIOUS WITH LOCK
+              ELSE
+                 READ tscorte PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
+           MOVE "tscorte" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tscorte-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tscorte-KEY-Asc
+              IF DataSet1-tscorte-LOCK
+                 READ tscorte PREVIOUS WITH LOCK
+              ELSE
+                 READ tscorte PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tscorte-LOCK
+                 READ tscorte NEXT WITH LOCK
+              ELSE
+                 READ tscorte NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
+           MOVE "tscorte" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tscorte-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
+           MOVE "tscorte" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tscorte-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
+           MOVE "tscorte" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tscorte-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tscorte TO TOTEM-ERR-STAT
+           MOVE "tscorte" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tscorte, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE usr-rec OF usr-tel
            INITIALIZE tsi-rec OF tsetinvio
@@ -5168,17 +4986,16 @@
            INITIALIZE prg-rec OF progmag
            INITIALIZE rlis-rec OF rlistini
            INITIALIZE tlis-rec OF tlistini
-           INITIALIZE tge-rec OF tparamge
            INITIALIZE desf-rec OF destinif
            INITIALIZE imf-rec OF impforn
            INITIALIZE imp-rec OF timposte
-           INITIALIZE sco-rec OF tscorte
            INITIALIZE dis-rec OF distinteb
            INITIALIZE tpb-rec OF tpiombo
            INITIALIZE prm-rec OF param
            INITIALIZE line-riga-mail OF lineseq-mail
            INITIALIZE ror-rec OF rordini
            INITIALIZE tor-rec OF tordini
+           INITIALIZE sco-rec OF tscorte
            .
 
 
@@ -5271,14 +5088,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-tparamge-INITREC.
-           INITIALIZE tge-rec OF tparamge
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-destinif-INITREC.
            INITIALIZE desf-rec OF destinif
                REPLACING NUMERIC       DATA BY ZEROS
@@ -5297,14 +5106,6 @@
       * FD's Initialize Paragraph
        DataSet1-timposte-INITREC.
            INITIALIZE imp-rec OF timposte
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-tscorte-INITREC.
-           INITIALIZE sco-rec OF tscorte
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -5353,6 +5154,14 @@
       * FD's Initialize Paragraph
        DataSet1-tordini-INITREC.
            INITIALIZE tor-rec OF tordini
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tscorte-INITREC.
+           INITIALIZE sco-rec OF tscorte
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -6274,17 +6083,18 @@
            end-start.
 
       ***---
-       CALCOLA-TRASPORTO.
+       CALCOLA-TRASPORTO.  
+           move art-scorta of articoli to sco-codice
+           read tscorte no lock invalid continue end-read.
+
            move 0 to costo-trasporto.
-           move spaces to tge-chiave.
-           read tparamge no lock.   
            if como-trasporto-f = 1
               compute costo-trasporto = 
-                      prg-peso * tge-trasp-f
+                      prg-peso * sco-trasp-f
            end-if.
            if como-trasporto-c = 1
               compute costo-trasporto = costo-trasporto +
-                    ( prg-peso * tge-trasp-c)
+                    ( prg-peso * sco-trasp-c)
            end-if. 
                                         
 

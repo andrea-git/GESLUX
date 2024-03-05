@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 19 gennaio 2024 17:28:59.
+       DATE-WRITTEN.        martedì 5 marzo 2024 18:08:10.
        REMARKS.
       *{TOTEM}END
 
@@ -161,24 +161,6 @@
       * Data.Check-Box
               05 chk-dom-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
-              05 chk-imma-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chk-immaa-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chk-chiusura-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chk-chiusura2-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chl-blocco-edi-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chk-prese-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chk-presea-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chk-preseaa-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
-              05 chk-preseaaa-BUF PIC 9 VALUE ZERO.
-      * Data.Check-Box
               05 chk-gen-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-feb-BUF PIC 9 VALUE ZERO.
@@ -202,6 +184,28 @@
               05 chk-nov-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-dic-BUF PIC 9 VALUE ZERO.
+      * Data.Entry-Field
+              05 ef-trasp-f-BUF PIC zzz.zzz,zzz.
+      * Data.Check-Box
+              05 chk-imma-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-immaa-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-chiusura-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-chiusura2-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chl-blocco-edi-BUF PIC 9 VALUE ZERO.
+      * Data.Entry-Field
+              05 ef-trasp-fa-BUF PIC zzz.zzz,zzz.
+      * Data.Check-Box
+              05 chk-prese-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-presea-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-preseaa-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-preseaaa-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-preseaaaa-BUF PIC 9 VALUE ZERO.
 
@@ -352,6 +356,8 @@
                        88 old-sco-blocco-edi-si VALUE IS 1.
                        88 old-sco-blocco-edi-no VALUE IS 0.
                    15 old-sco-perce-confronto pic s9(3).
+                   15 old-sco-trasp-f pic 9(6)v999.
+                   15 old-sco-trasp-c pic 9(6)v999.
                        
       *{TOTEM}END
 
@@ -368,27 +374,29 @@
        78  78-ID-ef-molt VALUE 5009.
        78  78-ID-chk-immbaa VALUE 5010.
        78  78-ID-ef-perce-confronto VALUE 5011.
-       78  78-ID-chk-imma VALUE 5012.
-       78  78-ID-chk-immaa VALUE 5013.
-       78  78-ID-chk-chiusura VALUE 5014.
-       78  78-ID-chk-chiusura2 VALUE 5015.
-       78  78-ID-chl-blocco-edi VALUE 5016.
-       78  78-ID-chk-presea VALUE 5017.
-       78  78-ID-chk-preseaa VALUE 5018.
-       78  78-ID-chk-preseaaa VALUE 5019.
-       78  78-ID-chk-gen VALUE 5020.
-       78  78-ID-chk-feb VALUE 5021.
-       78  78-ID-chk-marz VALUE 5022.
-       78  78-ID-chk-apr VALUE 5023.
-       78  78-ID-chk-mag VALUE 5024.
-       78  78-ID-chk-giu VALUE 5025.
-       78  78-ID-chk-lug VALUE 5026.
-       78  78-ID-chk-ago VALUE 5027.
-       78  78-ID-chk-set VALUE 5028.
-       78  78-ID-chk-ott VALUE 5029.
-       78  78-ID-chk-nov VALUE 5030.
-       78  78-ID-chk-dic VALUE 5031.
-       78  78-ID-chk-preseaaaa VALUE 5032.
+       78  78-ID-chk-gen VALUE 5012.
+       78  78-ID-chk-feb VALUE 5013.
+       78  78-ID-chk-marz VALUE 5014.
+       78  78-ID-chk-apr VALUE 5015.
+       78  78-ID-chk-mag VALUE 5016.
+       78  78-ID-chk-giu VALUE 5017.
+       78  78-ID-chk-lug VALUE 5018.
+       78  78-ID-chk-ago VALUE 5019.
+       78  78-ID-chk-set VALUE 5020.
+       78  78-ID-chk-ott VALUE 5021.
+       78  78-ID-chk-nov VALUE 5022.
+       78  78-ID-chk-dic VALUE 5023.
+       78  78-ID-ef-trasp-f VALUE 5024.
+       78  78-ID-chk-imma VALUE 5025.
+       78  78-ID-chk-immaa VALUE 5026.
+       78  78-ID-chk-chiusura VALUE 5027.
+       78  78-ID-chk-chiusura2 VALUE 5028.
+       78  78-ID-chl-blocco-edi VALUE 5029.
+       78  78-ID-ef-trasp-fa VALUE 5030.
+       78  78-ID-chk-presea VALUE 5031.
+       78  78-ID-chk-preseaa VALUE 5032.
+       78  78-ID-chk-preseaaa VALUE 5033.
+       78  78-ID-chk-preseaaaa VALUE 5034.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -889,744 +897,6 @@
            VALUE chk-dom-BUF,
             .
 
-      * CHECK BOX
-       05
-           chk-imma, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 40,08,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           FLAT,
-           ID IS 78-ID-chk-imma,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-imma-BUF,
-            .
-
-      * CHECK BOX
-       05
-           chk-immaa, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 42,77,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           FLAT,
-           ID IS 78-ID-chk-immaa,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-immaa-BUF,
-            .
-
-      * CHECK BOX
-       05
-           chk-chiusura, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 45,08,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           EXCEPTION-VALUE 1003
-           FLAT,
-           ID IS 78-ID-chk-chiusura,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-chiusura-BUF,
-            .
-
-      * CHECK BOX
-       05
-           chk-chiusura2, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 47,77,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           EXCEPTION-VALUE 1004
-           FLAT,
-           ID IS 78-ID-chk-chiusura2,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-chiusura2-BUF,
-            .
-
-      * CHECK BOX
-       05
-           chl-blocco-edi, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 50,46,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           EXCEPTION-VALUE 1004
-           FLAT,
-           ID IS 78-ID-chl-blocco-edi,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chl-blocco-edi-BUF,
-            .
-
-      * LABEL
-       05
-           Screen1-La-1, 
-           Label, 
-           COL 3,00, 
-           LINE 2,00,
-           LINES 1,31 ,
-           SIZE 12,00 ,
-           FONT IS Small-Font,
-           ID IS 100,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Codice",
-           .
-
-      * LABEL
-       05
-           Screen1-Custom1-1, 
-           Label, 
-           COL 33,86, 
-           LINE 2,23,
-           LINES 0,69 ,
-           SIZE 15,00 ,
-           FONT IS Default-Font,
-           ID IS 101,
-           TRANSPARENT,
-           TITLE "CUSTOM CONTROL",
-           VISIBLE v-custom,
-           .
-
-      * LABEL
-       05
-           Screen1-blockpgm-2, 
-           Label, 
-           COL 50,00, 
-           LINE 2,00,
-           LINES 1,00 ,
-           SIZE 8,14 ,
-           ID IS 102,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "BlockPgm",
-           VISIBLE v-custom,
-           .
-
-      * BAR
-       05
-           Screen1-Br-1, 
-           Bar,
-           COL 1,00, 
-           LINE 4,00,
-           SIZE 123,00 ,
-           ID IS 103,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           COLORS (1),
-           WIDTH 1,
-           .
-
-      * LABEL
-       05
-           Screen1-La-2, 
-           Label, 
-           COL 3,00, 
-           LINE 5,00,
-           LINES 1,31 ,
-           SIZE 15,00 ,
-           FONT IS Small-Font,
-           ID IS 33,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Descrizione",
-           .
-
-      * LABEL
-       05
-           Screen1-La-4, 
-           Label, 
-           COL 3,00, 
-           LINE 12,85,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 35,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Livello scorta",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11, 
-           Label, 
-           COL 3,00, 
-           LINE 10,85,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 42,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Mese di Riferimento",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11a, 
-           Label, 
-           COL 3,00, 
-           LINE 15,62,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 59,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Articolo Attivo",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aa, 
-           Label, 
-           COL 3,00, 
-           LINE 18,92,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 60,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Programmazione",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaa, 
-           Label, 
-           COL 3,00, 
-           LINE 22,31,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 61,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Su richiesta",
-           .
-
-      * LABEL
-       05
-           Screen1-La-3, 
-           Label, 
-           COL 31,17, 
-           LINE 14,85,
-           LINES 3,08 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 62,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE 'Colorazione fabbisogno nero su programma ordini. Quand
-      -    'o attivo (AND) "Su richiesta" attivo impedisce la cancellazi
-      -    'one del master se presenti ordini fornitori relativi.',
-           .
-
-      * LABEL
-       05
-           Screen1-La-3a, 
-           Label, 
-           COL 31,17, 
-           LINE 18,54,
-           LINES 2,15 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 63,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "In fase di creazione automatica genera un ordine forni
-      -    "tore per ogni mese fino a quello di riferimento utilizzando 
-      -    "il fabbisogno presente",
-           .
-
-      * LABEL
-       05
-           Screen1-La-5, 
-           Label, 
-           COL 31,17, 
-           LINE 21,00,
-           LINES 3,92 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 64,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Il fabbisogno di tutti i 6 mesi sarà dato da impegnato
-      -    " - giacenza attuale se l'impegnato supererà la giacenza altr
-      -    "imenti sarà sempre 0. Per rifornirsi rapidamente della quant
-      -    "ità da evadere. SOLO PER ARTICOLI NON SOSTITUITI",
-           .
-
-      * LABEL
-       05
-           Screen1-La-6, 
-           Label, 
-           COL 31,17, 
-           LINE 12,85,
-           LINES 1,31 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 65,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Aumento in % della scorta di sicurezza",
-           .
-
-      * LABEL
-       05
-           Screen1-La-6a, 
-           Label, 
-           COL 31,17, 
-           LINE 10,85,
-           LINES 1,31 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 66,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Mese su cui fare l'ordine (programma ordini)",
-           .
-
-      * LABEL
-       05
-           Form1-La-5aaac, 
-           Label, 
-           COL 2,00, 
-           LINE 8,08,
-           LINES 1,31 ,
-           SIZE 14,00 ,
-           COLOR IS 80,
-           ID IS 138,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           CENTER,
-           TITLE "Fornitori",
-           .
-
-      * BAR
-       05
-           Form1-Br-2a, 
-           Bar,
-           COL 16,71, 
-           LINE 8,62,
-           SIZE 107,33 ,
-           ID IS 131,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           COLORS (1),
-           WIDTH 1,
-           .
-
-      * LABEL
-       05
-           Form1-La-5aaaca, 
-           Label, 
-           COL 2,00, 
-           LINE 38,00,
-           LINES 1,31 ,
-           SIZE 14,00 ,
-           COLOR IS 80,
-           ID IS 132,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           CENTER,
-           TITLE "Clienti",
-           .
-
-      * BAR
-       05
-           Form1-Br-2aa, 
-           Bar,
-           COL 16,71, 
-           LINE 38,54,
-           SIZE 107,33 ,
-           ID IS 133,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           COLORS (1),
-           WIDTH 1,
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaaa, 
-           Label, 
-           COL 3,00, 
-           LINE 40,08,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 134,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Evasione forzata",
-           .
-
-      * LABEL
-       05
-           Screen1-La-5a, 
-           Label, 
-           COL 31,17, 
-           LINE 39,15,
-           LINES 3,38 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 135,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "In fase di evasione automatica ordini master, gli arti
-      -    "coli che ne fanno parte saranno da considerare comunque evad
-      -    "ibili senza tener conto degli attuali ragionamenti sulla gia
-      -    "cenza.",
-           .
-
-      * CHECK BOX
-       05
-           chk-prese, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 54,69,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           FLAT,
-           ID IS 136,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-prese-BUF,
-            .
-
-      * CHECK BOX
-       05
-           chk-presea, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 56,23,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           FLAT,
-           ID IS 78-ID-chk-presea,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-presea-BUF,
-            .
-
-      * CHECK BOX
-       05
-           chk-preseaa, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 57,77,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           FLAT,
-           ID IS 78-ID-chk-preseaa,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-preseaa-BUF,
-            .
-
-      * CHECK BOX
-       05
-           chk-preseaaa, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 59,31,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           FLAT,
-           ID IS 78-ID-chk-preseaaa,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-preseaaa-BUF,
-            .
-
-      * LABEL
-       05
-           Form1-La-5aaacaa, 
-           Label, 
-           COL 2,00, 
-           LINE 52,77,
-           LINES 1,31 ,
-           SIZE 14,00 ,
-           COLOR IS 80,
-           ID IS 141,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           CENTER,
-           TITLE "Altro",
-           .
-
-      * BAR
-       05
-           Form1-Br-2aaa, 
-           Bar,
-           COL 16,71, 
-           LINE 53,31,
-           SIZE 107,33 ,
-           ID IS 142,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           COLORS (1),
-           WIDTH 1,
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaaaa, 
-           Label, 
-           COL 3,00, 
-           LINE 54,69,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 143,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Prese",
-           .
-
-      * LABEL
-       05
-           Screen1-La-5aa, 
-           Label, 
-           COL 31,17, 
-           LINE 54,62,
-           LINES 1,31 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 144,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Per considerare gli articoli nella generazione del fil
-      -    "e delle prese",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaab, 
-           Label, 
-           COL 3,00, 
-           LINE 26,15,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 145,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Ordine auto",
-           VISIBLE 1,
-           .
-
-      * LABEL
-       05
-           Screen1-La-5b, 
-           Label, 
-           COL 31,17, 
-           LINE 25,23,
-           LINES 3,38 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 146,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE 'Quando impostato, in combinazione col flag "Su richies
-      -    'ta", genera in automatico, durante elanborazione notturna, o
-      -    'rdini fornitori EXD in base ai master caricati',
-           VISIBLE 1,
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaaab, 
-           Label, 
-           COL 3,00, 
-           LINE 45,08,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 147,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Chiusura forzata",
-           .
-
-      * LABEL
-       05
-           Screen1-La-5ab, 
-           Label, 
-           COL 31,17, 
-           LINE 44,69,
-           LINES 2,23 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 148,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Le righe inevase con questo flag saranno chiuse indipe
-      -    "ndentemente dallo stato dell'ordine e dal flag tenere saldi.
-      -    "",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaaaba, 
-           Label, 
-           COL 3,00, 
-           LINE 47,77,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 149,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Chiusura forzata 2",
-           .
-
-      * LABEL
-       05
-           Screen1-La-5aba, 
-           Label, 
-           COL 31,17, 
-           LINE 47,38,
-           LINES 2,08 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 150,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Il master cui rimangono articoli inevasi con questo fl
-      -    "ag valorizzato sarà comunque chiuso (indipendentemente dal T
-      -    "ENERE SALDI).",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaaaaa, 
-           Label, 
-           COL 3,00, 
-           LINE 56,23,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 151,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Avviso Listino",
-           .
-
-      * LABEL
-       05
-           Screen1-La-5aaa, 
-           Label, 
-           COL 31,17, 
-           LINE 56,15,
-           LINES 1,31 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 152,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "In inserimento promo richiede all'utente la conferma",
-           .
-
-      * LABEL
-       05
-           Screen1-La-11aaaba, 
-           Label, 
-           COL 3,00, 
-           LINE 29,23,
-           LINES 1,31 ,
-           SIZE 17,00 ,
-           FONT IS Small-Font,
-           ID IS 153,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE "Produzione",
-           VISIBLE 1,
-           .
-
-      * LABEL
-       05
-           Screen1-La-5ba, 
-           Label, 
-           COL 31,17, 
-           LINE 29,23,
-           LINES 1,31 ,
-           SIZE 52,00 ,
-           FONT IS Small-Font,
-           ID IS 154,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           TRANSPARENT,
-           TITLE 'Per questi articoli il "Prezzo di confronto" è il COST
-      -    'O MEDIO',
-           VISIBLE 1,
-           .
-
       * FRAME
        05
            Screen1-Fr-1a, 
@@ -2038,6 +1308,804 @@
            VALUE chk-dic-BUF,
             .
 
+      * ENTRY FIELD
+       05
+           ef-trasp-f, 
+           Entry-Field, 
+           COL 109,67, 
+           LINE 35,62,
+           LINES 1,31 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED MOD,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-trasp-f,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 10,
+           NUMERIC,
+           VALUE ef-trasp-f-BUF,
+           .
+
+      * CHECK BOX
+       05
+           chk-imma, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 40,08,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-imma,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-imma-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chk-immaa, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 42,77,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-immaa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-immaa-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chk-chiusura, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 45,08,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           EXCEPTION-VALUE 1003
+           FLAT,
+           ID IS 78-ID-chk-chiusura,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-chiusura-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chk-chiusura2, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 47,77,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           EXCEPTION-VALUE 1004
+           FLAT,
+           ID IS 78-ID-chk-chiusura2,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-chiusura2-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chl-blocco-edi, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 50,46,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           EXCEPTION-VALUE 1004
+           FLAT,
+           ID IS 78-ID-chl-blocco-edi,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chl-blocco-edi-BUF,
+            .
+
+      * ENTRY FIELD
+       05
+           ef-trasp-fa, 
+           Entry-Field, 
+           COL 109,67, 
+           LINE 50,23,
+           LINES 1,31 ,
+           SIZE 7,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED MOD,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-trasp-fa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RIGHT,
+           MAX-TEXT 10,
+           NUMERIC,
+           VALUE ef-trasp-fa-BUF,
+           .
+
+      * CHECK BOX
+       05
+           chk-prese, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 54,69,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 136,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-prese-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chk-presea, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 56,23,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-presea,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-presea-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chk-preseaa, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 57,77,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-preseaa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-preseaa-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chk-preseaaa, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 59,31,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-preseaaa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-preseaaa-BUF,
+            .
+
+      * CHECK BOX
+       05
+           chk-preseaaaa, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 60,85,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-preseaaaa,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-preseaaaa-BUF,
+            .
+
+      * LABEL
+       05
+           Screen1-La-1, 
+           Label, 
+           COL 3,00, 
+           LINE 2,00,
+           LINES 1,31 ,
+           SIZE 12,00 ,
+           FONT IS Small-Font,
+           ID IS 100,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Codice",
+           .
+
+      * LABEL
+       05
+           Screen1-Custom1-1, 
+           Label, 
+           COL 33,86, 
+           LINE 2,23,
+           LINES 0,69 ,
+           SIZE 15,00 ,
+           FONT IS Default-Font,
+           ID IS 101,
+           TRANSPARENT,
+           TITLE "CUSTOM CONTROL",
+           VISIBLE v-custom,
+           .
+
+      * LABEL
+       05
+           Screen1-blockpgm-2, 
+           Label, 
+           COL 50,00, 
+           LINE 2,00,
+           LINES 1,00 ,
+           SIZE 8,14 ,
+           ID IS 102,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "BlockPgm",
+           VISIBLE v-custom,
+           .
+
+      * BAR
+       05
+           Screen1-Br-1, 
+           Bar,
+           COL 1,00, 
+           LINE 4,00,
+           SIZE 123,00 ,
+           ID IS 103,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (1),
+           WIDTH 1,
+           .
+
+      * LABEL
+       05
+           Screen1-La-2, 
+           Label, 
+           COL 3,00, 
+           LINE 5,00,
+           LINES 1,31 ,
+           SIZE 15,00 ,
+           FONT IS Small-Font,
+           ID IS 33,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Descrizione",
+           .
+
+      * LABEL
+       05
+           Screen1-La-4, 
+           Label, 
+           COL 3,00, 
+           LINE 12,85,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 35,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Livello scorta",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11, 
+           Label, 
+           COL 3,00, 
+           LINE 10,85,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 42,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Mese di Riferimento",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11a, 
+           Label, 
+           COL 3,00, 
+           LINE 15,62,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 59,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Articolo Attivo",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aa, 
+           Label, 
+           COL 3,00, 
+           LINE 18,92,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 60,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Programmazione",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaa, 
+           Label, 
+           COL 3,00, 
+           LINE 22,31,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 61,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Su richiesta",
+           .
+
+      * LABEL
+       05
+           Screen1-La-3, 
+           Label, 
+           COL 31,17, 
+           LINE 14,85,
+           LINES 3,08 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 62,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE 'Colorazione fabbisogno nero su programma ordini. Quand
+      -    'o attivo (AND) "Su richiesta" attivo impedisce la cancellazi
+      -    'one del master se presenti ordini fornitori relativi.',
+           .
+
+      * LABEL
+       05
+           Screen1-La-3a, 
+           Label, 
+           COL 31,17, 
+           LINE 18,54,
+           LINES 2,15 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 63,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "In fase di creazione automatica genera un ordine forni
+      -    "tore per ogni mese fino a quello di riferimento utilizzando 
+      -    "il fabbisogno presente",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5, 
+           Label, 
+           COL 31,17, 
+           LINE 21,00,
+           LINES 3,92 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 64,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Il fabbisogno di tutti i 6 mesi sarà dato da impegnato
+      -    " - giacenza attuale se l'impegnato supererà la giacenza altr
+      -    "imenti sarà sempre 0. Per rifornirsi rapidamente della quant
+      -    "ità da evadere. SOLO PER ARTICOLI NON SOSTITUITI",
+           .
+
+      * LABEL
+       05
+           Screen1-La-6, 
+           Label, 
+           COL 31,17, 
+           LINE 12,85,
+           LINES 1,31 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 65,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Aumento in % della scorta di sicurezza",
+           .
+
+      * LABEL
+       05
+           Screen1-La-6a, 
+           Label, 
+           COL 31,17, 
+           LINE 10,85,
+           LINES 1,31 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 66,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Mese su cui fare l'ordine (programma ordini)",
+           .
+
+      * LABEL
+       05
+           Form1-La-5aaac, 
+           Label, 
+           COL 2,00, 
+           LINE 8,08,
+           LINES 1,31 ,
+           SIZE 14,00 ,
+           COLOR IS 80,
+           ID IS 138,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TITLE "Fornitori",
+           .
+
+      * BAR
+       05
+           Form1-Br-2a, 
+           Bar,
+           COL 16,71, 
+           LINE 8,62,
+           SIZE 107,33 ,
+           ID IS 131,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (1),
+           WIDTH 1,
+           .
+
+      * LABEL
+       05
+           Form1-La-5aaaca, 
+           Label, 
+           COL 2,00, 
+           LINE 38,00,
+           LINES 1,31 ,
+           SIZE 14,00 ,
+           COLOR IS 80,
+           ID IS 132,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TITLE "Clienti",
+           .
+
+      * BAR
+       05
+           Form1-Br-2aa, 
+           Bar,
+           COL 16,71, 
+           LINE 38,54,
+           SIZE 107,33 ,
+           ID IS 133,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (1),
+           WIDTH 1,
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaaa, 
+           Label, 
+           COL 3,00, 
+           LINE 40,08,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 134,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Evasione forzata",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5a, 
+           Label, 
+           COL 31,17, 
+           LINE 39,15,
+           LINES 3,38 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 135,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "In fase di evasione automatica ordini master, gli arti
+      -    "coli che ne fanno parte saranno da considerare comunque evad
+      -    "ibili senza tener conto degli attuali ragionamenti sulla gia
+      -    "cenza.",
+           .
+
+      * LABEL
+       05
+           Form1-La-5aaacaa, 
+           Label, 
+           COL 2,00, 
+           LINE 52,77,
+           LINES 1,31 ,
+           SIZE 14,00 ,
+           COLOR IS 80,
+           ID IS 141,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           CENTER,
+           TITLE "Altro",
+           .
+
+      * BAR
+       05
+           Form1-Br-2aaa, 
+           Bar,
+           COL 16,71, 
+           LINE 53,31,
+           SIZE 107,33 ,
+           ID IS 142,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           COLORS (1),
+           WIDTH 1,
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaaaa, 
+           Label, 
+           COL 3,00, 
+           LINE 54,69,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 143,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Prese",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5aa, 
+           Label, 
+           COL 31,17, 
+           LINE 54,62,
+           LINES 1,31 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 144,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Per considerare gli articoli nella generazione del fil
+      -    "e delle prese",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaab, 
+           Label, 
+           COL 3,00, 
+           LINE 26,15,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 145,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Ordine auto",
+           VISIBLE 1,
+           .
+
+      * LABEL
+       05
+           Screen1-La-5b, 
+           Label, 
+           COL 31,17, 
+           LINE 25,23,
+           LINES 3,38 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 146,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE 'Quando impostato, in combinazione col flag "Su richies
+      -    'ta", genera in automatico, durante elanborazione notturna, o
+      -    'rdini fornitori EXD in base ai master caricati',
+           VISIBLE 1,
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaaab, 
+           Label, 
+           COL 3,00, 
+           LINE 45,08,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 147,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Chiusura forzata",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5ab, 
+           Label, 
+           COL 31,17, 
+           LINE 44,69,
+           LINES 2,23 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 148,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Le righe inevase con questo flag saranno chiuse indipe
+      -    "ndentemente dallo stato dell'ordine e dal flag tenere saldi.
+      -    "",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaaaba, 
+           Label, 
+           COL 3,00, 
+           LINE 47,77,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 149,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Chiusura forzata 2",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5aba, 
+           Label, 
+           COL 31,17, 
+           LINE 47,38,
+           LINES 2,08 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 150,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Il master cui rimangono articoli inevasi con questo fl
+      -    "ag valorizzato sarà comunque chiuso (indipendentemente dal T
+      -    "ENERE SALDI).",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaaaaa, 
+           Label, 
+           COL 3,00, 
+           LINE 56,23,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 151,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Avviso Listino",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5aaa, 
+           Label, 
+           COL 31,17, 
+           LINE 56,15,
+           LINES 1,31 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 152,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "In inserimento promo richiede all'utente la conferma",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaaba, 
+           Label, 
+           COL 3,00, 
+           LINE 29,23,
+           LINES 1,31 ,
+           SIZE 17,00 ,
+           FONT IS Small-Font,
+           ID IS 153,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Produzione",
+           VISIBLE 1,
+           .
+
+      * LABEL
+       05
+           Screen1-La-5ba, 
+           Label, 
+           COL 31,17, 
+           LINE 29,23,
+           LINES 1,31 ,
+           SIZE 52,00 ,
+           FONT IS Small-Font,
+           ID IS 154,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE 'Per questi articoli il "Prezzo di confronto" è il COST
+      -    'O MEDIO',
+           VISIBLE 1,
+           .
+
       * LABEL
        05
            Screen1-La-11aaaaaaa, 
@@ -2136,24 +2204,6 @@
            TITLE "Non permette l'inserimento dell'articolo nella promo G
       -    "DO",
            .
-
-      * CHECK BOX
-       05
-           chk-preseaaaa, 
-           Check-Box, 
-           COL 22,33, 
-           LINE 60,85,
-           LINES 1,31 ,
-           SIZE 3,00 ,
-           ENABLED MOD,
-           FLAT,
-           ID IS 78-ID-chk-preseaaaa,                
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
-           SELF-ACT,
-           TITLE "Check Box",
-           VALUE chk-preseaaaa-BUF,
-            .
 
       * LABEL
        05
@@ -2320,6 +2370,40 @@
            TRANSPARENT,
            TITLE "Applica la seguente formula al prezzo di confronto: Pr
       -    "z_confronto = prz_confronto / (1-(VALORE/100))",
+           .
+
+      * LABEL
+       05
+           Screen1-La-4aeaaabaaaaaa, 
+           Label, 
+           COL 89,17, 
+           LINE 35,62,
+           LINES 1,31 ,
+           SIZE 16,00 ,
+           FONT IS Small-Font,
+           ID IS 30,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "Trasporto fornitore",
+           .
+
+      * LABEL
+       05
+           Screen1-La-4aeaaabaaaaaaa, 
+           Label, 
+           COL 89,17, 
+           LINE 50,23,
+           LINES 1,31 ,
+           SIZE 16,00 ,
+           FONT IS Small-Font,
+           ID IS 30,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "Trasporto cliente",
            .
 
       * TOOLBAR
@@ -3703,24 +3787,6 @@
       * DB_CHECK BOX
               MOVE 0 TO sco-dom
       * DB_CHECK BOX
-              MOVE 0 TO sco-forzata
-      * DB_CHECK BOX
-              MOVE 0 TO sco-forzata-saldi
-      * DB_CHECK BOX
-              MOVE 0 TO sco-chiu-forzata
-      * DB_CHECK BOX
-              MOVE 0 TO sco-chiu-forzata2
-      * DB_CHECK BOX
-              MOVE 0 TO sco-blocco-edi
-      * DB_CHECK BOX
-              MOVE 0 TO sco-prese
-      * DB_CHECK BOX
-              MOVE 0 TO sco-avviso-promo
-      * DB_CHECK BOX
-              MOVE 0 TO sco-permetti-sost
-      * DB_CHECK BOX
-              MOVE 0 TO sco-no-gdo
-      * DB_CHECK BOX
               MOVE 0 TO sco-gen
       * DB_CHECK BOX
               MOVE 0 TO sco-feb
@@ -3744,6 +3810,24 @@
               MOVE 0 TO sco-nov
       * DB_CHECK BOX
               MOVE 0 TO sco-dic
+      * DB_CHECK BOX
+              MOVE 0 TO sco-forzata
+      * DB_CHECK BOX
+              MOVE 0 TO sco-forzata-saldi
+      * DB_CHECK BOX
+              MOVE 0 TO sco-chiu-forzata
+      * DB_CHECK BOX
+              MOVE 0 TO sco-chiu-forzata2
+      * DB_CHECK BOX
+              MOVE 0 TO sco-blocco-edi
+      * DB_CHECK BOX
+              MOVE 0 TO sco-prese
+      * DB_CHECK BOX
+              MOVE 0 TO sco-avviso-promo
+      * DB_CHECK BOX
+              MOVE 0 TO sco-permetti-sost
+      * DB_CHECK BOX
+              MOVE 0 TO sco-no-gdo
       * DB_CHECK BOX
               MOVE 0 TO sco-auto-lst
            MOVE ALL X'9' TO Form1-KEYISTMP2
@@ -3806,6 +3890,22 @@
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5011 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-trasp-f's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-trasp-f-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5024 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-trasp-fa's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-trasp-fa-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5030 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -3912,6 +4012,40 @@
            PERFORM ef-perce-confronto-AFTER-VALIDATION
            .
 
+       ef-trasp-f-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-trasp-f, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-trasp-f-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-trasp-f, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-trasp-f's Validation
+       ef-trasp-f-VALIDATION.
+           PERFORM ef-trasp-f-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-trasp-f-AFTER-VALIDATION
+           .
+
+       ef-trasp-fa-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-trasp-fa, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-trasp-fa-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-trasp-fa, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-trasp-fa's Validation
+       ef-trasp-fa-VALIDATION.
+           PERFORM ef-trasp-fa-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-trasp-fa-AFTER-VALIDATION
+           .
+
 
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
@@ -4006,60 +4140,6 @@
               ELSE
                  MOVE 0 TO sco-dom
               END-IF
-      * DB_CHECK BOX : chk-imma
-              IF chk-imma-BUF = 1
-                 MOVE 1 TO sco-forzata
-              ELSE
-                 MOVE 0 TO sco-forzata
-              END-IF
-      * DB_CHECK BOX : chk-immaa
-              IF chk-immaa-BUF = 1
-                 MOVE 1 TO sco-forzata-saldi
-              ELSE
-                 MOVE 0 TO sco-forzata-saldi
-              END-IF
-      * DB_CHECK BOX : chk-chiusura
-              IF chk-chiusura-BUF = 1
-                 MOVE 1 TO sco-chiu-forzata
-              ELSE
-                 MOVE 0 TO sco-chiu-forzata
-              END-IF
-      * DB_CHECK BOX : chk-chiusura2
-              IF chk-chiusura2-BUF = 1
-                 MOVE 1 TO sco-chiu-forzata2
-              ELSE
-                 MOVE 0 TO sco-chiu-forzata2
-              END-IF
-      * DB_CHECK BOX : chl-blocco-edi
-              IF chl-blocco-edi-BUF = 1
-                 MOVE 1 TO sco-blocco-edi
-              ELSE
-                 MOVE 0 TO sco-blocco-edi
-              END-IF
-      * DB_CHECK BOX : chk-prese
-              IF chk-prese-BUF = 1
-                 MOVE 1 TO sco-prese
-              ELSE
-                 MOVE 0 TO sco-prese
-              END-IF
-      * DB_CHECK BOX : chk-presea
-              IF chk-presea-BUF = 1
-                 MOVE 1 TO sco-avviso-promo
-              ELSE
-                 MOVE 0 TO sco-avviso-promo
-              END-IF
-      * DB_CHECK BOX : chk-preseaa
-              IF chk-preseaa-BUF = 1
-                 MOVE 1 TO sco-permetti-sost
-              ELSE
-                 MOVE 0 TO sco-permetti-sost
-              END-IF
-      * DB_CHECK BOX : chk-preseaaa
-              IF chk-preseaaa-BUF = 1
-                 MOVE 1 TO sco-no-gdo
-              ELSE
-                 MOVE 0 TO sco-no-gdo
-              END-IF
       * DB_CHECK BOX : chk-gen
               IF chk-gen-BUF = 1
                  MOVE 1 TO sco-gen
@@ -4131,6 +4211,64 @@
                  MOVE 1 TO sco-dic
               ELSE
                  MOVE 0 TO sco-dic
+              END-IF
+      * DB_Entry-Field : ef-trasp-f
+           MOVE ef-trasp-f-BUF TO sco-trasp-f
+      * DB_CHECK BOX : chk-imma
+              IF chk-imma-BUF = 1
+                 MOVE 1 TO sco-forzata
+              ELSE
+                 MOVE 0 TO sco-forzata
+              END-IF
+      * DB_CHECK BOX : chk-immaa
+              IF chk-immaa-BUF = 1
+                 MOVE 1 TO sco-forzata-saldi
+              ELSE
+                 MOVE 0 TO sco-forzata-saldi
+              END-IF
+      * DB_CHECK BOX : chk-chiusura
+              IF chk-chiusura-BUF = 1
+                 MOVE 1 TO sco-chiu-forzata
+              ELSE
+                 MOVE 0 TO sco-chiu-forzata
+              END-IF
+      * DB_CHECK BOX : chk-chiusura2
+              IF chk-chiusura2-BUF = 1
+                 MOVE 1 TO sco-chiu-forzata2
+              ELSE
+                 MOVE 0 TO sco-chiu-forzata2
+              END-IF
+      * DB_CHECK BOX : chl-blocco-edi
+              IF chl-blocco-edi-BUF = 1
+                 MOVE 1 TO sco-blocco-edi
+              ELSE
+                 MOVE 0 TO sco-blocco-edi
+              END-IF
+      * DB_Entry-Field : ef-trasp-fa
+           MOVE ef-trasp-fa-BUF TO sco-trasp-f
+      * DB_CHECK BOX : chk-prese
+              IF chk-prese-BUF = 1
+                 MOVE 1 TO sco-prese
+              ELSE
+                 MOVE 0 TO sco-prese
+              END-IF
+      * DB_CHECK BOX : chk-presea
+              IF chk-presea-BUF = 1
+                 MOVE 1 TO sco-avviso-promo
+              ELSE
+                 MOVE 0 TO sco-avviso-promo
+              END-IF
+      * DB_CHECK BOX : chk-preseaa
+              IF chk-preseaa-BUF = 1
+                 MOVE 1 TO sco-permetti-sost
+              ELSE
+                 MOVE 0 TO sco-permetti-sost
+              END-IF
+      * DB_CHECK BOX : chk-preseaaa
+              IF chk-preseaaa-BUF = 1
+                 MOVE 1 TO sco-no-gdo
+              ELSE
+                 MOVE 0 TO sco-no-gdo
               END-IF
       * DB_CHECK BOX : chk-preseaaaa
               IF chk-preseaaaa-BUF = 1
@@ -4235,60 +4373,6 @@
               ELSE
                  MOVE 0 TO chk-dom-BUF
               END-IF
-      * DB_CHECK BOX : chk-imma
-              IF sco-forzata = 1
-                 MOVE 1 TO chk-imma-BUF
-              ELSE
-                 MOVE 0 TO chk-imma-BUF
-              END-IF
-      * DB_CHECK BOX : chk-immaa
-              IF sco-forzata-saldi = 1
-                 MOVE 1 TO chk-immaa-BUF
-              ELSE
-                 MOVE 0 TO chk-immaa-BUF
-              END-IF
-      * DB_CHECK BOX : chk-chiusura
-              IF sco-chiu-forzata = 1
-                 MOVE 1 TO chk-chiusura-BUF
-              ELSE
-                 MOVE 0 TO chk-chiusura-BUF
-              END-IF
-      * DB_CHECK BOX : chk-chiusura2
-              IF sco-chiu-forzata2 = 1
-                 MOVE 1 TO chk-chiusura2-BUF
-              ELSE
-                 MOVE 0 TO chk-chiusura2-BUF
-              END-IF
-      * DB_CHECK BOX : chl-blocco-edi
-              IF sco-blocco-edi = 1
-                 MOVE 1 TO chl-blocco-edi-BUF
-              ELSE
-                 MOVE 0 TO chl-blocco-edi-BUF
-              END-IF
-      * DB_CHECK BOX : chk-prese
-              IF sco-prese = 1
-                 MOVE 1 TO chk-prese-BUF
-              ELSE
-                 MOVE 0 TO chk-prese-BUF
-              END-IF
-      * DB_CHECK BOX : chk-presea
-              IF sco-avviso-promo = 1
-                 MOVE 1 TO chk-presea-BUF
-              ELSE
-                 MOVE 0 TO chk-presea-BUF
-              END-IF
-      * DB_CHECK BOX : chk-preseaa
-              IF sco-permetti-sost = 1
-                 MOVE 1 TO chk-preseaa-BUF
-              ELSE
-                 MOVE 0 TO chk-preseaa-BUF
-              END-IF
-      * DB_CHECK BOX : chk-preseaaa
-              IF sco-no-gdo = 1
-                 MOVE 1 TO chk-preseaaa-BUF
-              ELSE
-                 MOVE 0 TO chk-preseaaa-BUF
-              END-IF
       * DB_CHECK BOX : chk-gen
               IF sco-gen = 1
                  MOVE 1 TO chk-gen-BUF
@@ -4360,6 +4444,64 @@
                  MOVE 1 TO chk-dic-BUF
               ELSE
                  MOVE 0 TO chk-dic-BUF
+              END-IF
+      * DB_Entry-Field : ef-trasp-f
+           MOVE sco-trasp-f TO ef-trasp-f-BUF
+      * DB_CHECK BOX : chk-imma
+              IF sco-forzata = 1
+                 MOVE 1 TO chk-imma-BUF
+              ELSE
+                 MOVE 0 TO chk-imma-BUF
+              END-IF
+      * DB_CHECK BOX : chk-immaa
+              IF sco-forzata-saldi = 1
+                 MOVE 1 TO chk-immaa-BUF
+              ELSE
+                 MOVE 0 TO chk-immaa-BUF
+              END-IF
+      * DB_CHECK BOX : chk-chiusura
+              IF sco-chiu-forzata = 1
+                 MOVE 1 TO chk-chiusura-BUF
+              ELSE
+                 MOVE 0 TO chk-chiusura-BUF
+              END-IF
+      * DB_CHECK BOX : chk-chiusura2
+              IF sco-chiu-forzata2 = 1
+                 MOVE 1 TO chk-chiusura2-BUF
+              ELSE
+                 MOVE 0 TO chk-chiusura2-BUF
+              END-IF
+      * DB_CHECK BOX : chl-blocco-edi
+              IF sco-blocco-edi = 1
+                 MOVE 1 TO chl-blocco-edi-BUF
+              ELSE
+                 MOVE 0 TO chl-blocco-edi-BUF
+              END-IF
+      * DB_Entry-Field : ef-trasp-fa
+           MOVE sco-trasp-f TO ef-trasp-fa-BUF
+      * DB_CHECK BOX : chk-prese
+              IF sco-prese = 1
+                 MOVE 1 TO chk-prese-BUF
+              ELSE
+                 MOVE 0 TO chk-prese-BUF
+              END-IF
+      * DB_CHECK BOX : chk-presea
+              IF sco-avviso-promo = 1
+                 MOVE 1 TO chk-presea-BUF
+              ELSE
+                 MOVE 0 TO chk-presea-BUF
+              END-IF
+      * DB_CHECK BOX : chk-preseaa
+              IF sco-permetti-sost = 1
+                 MOVE 1 TO chk-preseaa-BUF
+              ELSE
+                 MOVE 0 TO chk-preseaa-BUF
+              END-IF
+      * DB_CHECK BOX : chk-preseaaa
+              IF sco-no-gdo = 1
+                 MOVE 1 TO chk-preseaaa-BUF
+              ELSE
+                 MOVE 0 TO chk-preseaaa-BUF
               END-IF
       * DB_CHECK BOX : chk-preseaaaa
               IF sco-auto-lst = 1
@@ -4512,69 +4654,6 @@
               move 22 to store-id
            end-if
 
-           if sco-forzata not = old-sco-forzata
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-imma è l'ID del campo chk-imma
-              move 78-ID-chk-imma to store-id 
-           end-if
-
-           if sco-forzata-saldi not = old-sco-forzata-saldi
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-immaa è l'ID del campo chk-immaa
-              move 78-ID-chk-immaa to store-id 
-           end-if
-
-           if sco-chiu-forzata not = old-sco-chiu-forzata
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-chiusura è l'ID del campo chk-chiusura
-              move 78-ID-chk-chiusura to store-id 
-           end-if
-
-           if sco-chiu-forzata2 not = old-sco-chiu-forzata2
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-chiusura2 è l'ID del campo chk-chiusura2
-              move 78-ID-chk-chiusura2 to store-id 
-           end-if
-
-           if sco-blocco-edi not = old-sco-blocco-edi
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chl-blocco-edi è l'ID del campo chl-blocco-edi
-              move 78-ID-chl-blocco-edi to store-id 
-           end-if
-
-           if sco-prese not = old-sco-prese
-              and SiSalvato
-              set NoSalvato to true
-              |136 è l'ID del campo chk-prese
-              move 136 to store-id
-           end-if
-
-           if sco-avviso-promo not = old-sco-avviso-promo
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-presea è l'ID del campo chk-presea
-              move 78-ID-chk-presea to store-id 
-           end-if
-
-           if sco-permetti-sost not = old-sco-permetti-sost
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-preseaa è l'ID del campo chk-preseaa
-              move 78-ID-chk-preseaa to store-id 
-           end-if
-
-           if sco-no-gdo not = old-sco-no-gdo
-              and SiSalvato
-              set NoSalvato to true
-              |78-ID-chk-preseaaa è l'ID del campo chk-preseaaa
-              move 78-ID-chk-preseaaa to store-id 
-           end-if
-
            if sco-gen not = old-sco-gen
               and SiSalvato
               set NoSalvato to true
@@ -4657,6 +4736,83 @@
               set NoSalvato to true
               |78-ID-chk-dic è l'ID del campo chk-dic
               move 78-ID-chk-dic to store-id 
+           end-if
+
+           if sco-trasp-f not = old-sco-trasp-f
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-trasp-f è l'ID del campo ef-trasp-f
+              move 78-ID-ef-trasp-f to store-id 
+           end-if
+
+           if sco-forzata not = old-sco-forzata
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-imma è l'ID del campo chk-imma
+              move 78-ID-chk-imma to store-id 
+           end-if
+
+           if sco-forzata-saldi not = old-sco-forzata-saldi
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-immaa è l'ID del campo chk-immaa
+              move 78-ID-chk-immaa to store-id 
+           end-if
+
+           if sco-chiu-forzata not = old-sco-chiu-forzata
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-chiusura è l'ID del campo chk-chiusura
+              move 78-ID-chk-chiusura to store-id 
+           end-if
+
+           if sco-chiu-forzata2 not = old-sco-chiu-forzata2
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-chiusura2 è l'ID del campo chk-chiusura2
+              move 78-ID-chk-chiusura2 to store-id 
+           end-if
+
+           if sco-blocco-edi not = old-sco-blocco-edi
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chl-blocco-edi è l'ID del campo chl-blocco-edi
+              move 78-ID-chl-blocco-edi to store-id 
+           end-if
+
+           if sco-trasp-f not = old-sco-trasp-f
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-trasp-fa è l'ID del campo ef-trasp-fa
+              move 78-ID-ef-trasp-fa to store-id 
+           end-if
+
+           if sco-prese not = old-sco-prese
+              and SiSalvato
+              set NoSalvato to true
+              |136 è l'ID del campo chk-prese
+              move 136 to store-id
+           end-if
+
+           if sco-avviso-promo not = old-sco-avviso-promo
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-presea è l'ID del campo chk-presea
+              move 78-ID-chk-presea to store-id 
+           end-if
+
+           if sco-permetti-sost not = old-sco-permetti-sost
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-preseaa è l'ID del campo chk-preseaa
+              move 78-ID-chk-preseaa to store-id 
+           end-if
+
+           if sco-no-gdo not = old-sco-no-gdo
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-preseaaa è l'ID del campo chk-preseaaa
+              move 78-ID-chk-preseaaa to store-id 
            end-if
 
            if sco-auto-lst not = old-sco-auto-lst
@@ -4751,6 +4907,20 @@
       *            sostituisco il punto come virgola
                    set environment "KEYSTROKE" to "DATA=44 46"
                 end-if
+           |78-ID-ef-trasp-f è l'ID del campo ef-trasp-f
+           when 78-ID-ef-trasp-f
+                if  KeyboardReleased
+                   set KeyboardSaved to true
+      *            sostituisco il punto come virgola
+                   set environment "KEYSTROKE" to "DATA=44 46"
+                end-if
+           |78-ID-ef-trasp-fa è l'ID del campo ef-trasp-fa
+           when 78-ID-ef-trasp-fa
+                if  KeyboardReleased
+                   set KeyboardSaved to true
+      *            sostituisco il punto come virgola
+                   set environment "KEYSTROKE" to "DATA=44 46"
+                end-if
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella BEFORE della screen
@@ -4793,6 +4963,24 @@
 
            |78-ID-ef-perce-confronto è l'ID del campo ef-perce-confronto
            when 78-ID-ef-perce-confronto
+                if  KeyboardSaved
+                   set KeyboardReleased to true
+      *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
+                   set environment "KEYSTROKE" to "DATA=44   44"
+                   set environment "KEYSTROKE" to "DATA=46   46"
+                end-if
+
+           |78-ID-ef-trasp-f è l'ID del campo ef-trasp-f
+           when 78-ID-ef-trasp-f
+                if  KeyboardSaved
+                   set KeyboardReleased to true
+      *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
+                   set environment "KEYSTROKE" to "DATA=44   44"
+                   set environment "KEYSTROKE" to "DATA=46   46"
+                end-if
+
+           |78-ID-ef-trasp-fa è l'ID del campo ef-trasp-fa
+           when 78-ID-ef-trasp-fa
                 if  KeyboardSaved
                    set KeyboardReleased to true
       *            setto la tastiera originale (PUNTO come PUNTO, VIROGLA come VIRGOLA)
@@ -4857,7 +5045,6 @@
            WHEN 5014 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5015 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5016 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
-           WHEN 136 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5017 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5018 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5019 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
@@ -4865,15 +5052,20 @@
            WHEN 5021 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5022 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5023 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
-           WHEN 5024 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 5024 MOVE "Digitare il costo del trasporto fornitore" 
+           to TOTEM-HINT-TEXT
            WHEN 5025 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5026 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5027 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5028 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5029 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
-           WHEN 5030 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 5030 MOVE "Digitare il costo del trasporto fornitore" 
+           to TOTEM-HINT-TEXT
+           WHEN 136 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5031 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5032 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 5033 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 5034 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -4901,7 +5093,6 @@
            When 5014 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5015 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5016 PERFORM Screen1-DaCb-1-BeforeProcedure
-           When 136 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5017 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5018 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5019 PERFORM Screen1-DaCb-1-BeforeProcedure
@@ -4909,15 +5100,18 @@
            When 5021 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5022 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5023 PERFORM Screen1-DaCb-1-BeforeProcedure
-           When 5024 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 5024 PERFORM Screen1-DaEf-1-BeforeProcedure
            When 5025 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5026 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5027 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5028 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5029 PERFORM Screen1-DaCb-1-BeforeProcedure
-           When 5030 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 5030 PERFORM Screen1-DaEf-1-BeforeProcedure
+           When 136 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5031 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5032 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 5033 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 5034 PERFORM Screen1-DaCb-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -4949,7 +5143,6 @@
            When 5014 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5015 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5016 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 136 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5017 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5018 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5019 PERFORM Screen1-DaCb-1-AfterProcedure
@@ -4957,15 +5150,18 @@
            When 5021 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5022 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5023 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 5024 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 5024 PERFORM ef-codiva-AfterProcedure
            When 5025 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5026 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5027 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5028 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5029 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 5030 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 5030 PERFORM ef-codiva-AfterProcedure
+           When 136 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5031 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5032 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 5033 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 5034 PERFORM Screen1-DaCb-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -6027,6 +6223,25 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-NU
            .
       * <TOTEM:END>
+       ef-codiva-AfterProcedure.
+      * <TOTEM:PARA. ef-codiva-AfterProcedure>
+              INQUIRE ef-trasp-f, VALUE IN sco-trasp-f
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-trasp-f-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-trasp-fa, VALUE IN sco-trasp-f
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-trasp-fa-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+
+           .
+      * <TOTEM:END>
+
 
       *{TOTEM}END
 

@@ -3671,15 +3671,15 @@ LUBEXX        end-if
       ***---
        CALCOLA-TRASPORTO.
            move 0 to costo-trasporto.
-           move spaces to tge-chiave.
-           read tparamge no lock. 
+           move art-scorta of articoli to sco-codice.
+           read tscorte no lock invalid continue end-read.
            if como-trasporto-f = 1
               compute costo-trasporto = 
-                      prg-peso * tge-trasp-f
+                      prg-peso * sco-trasp-f
            end-if.
            if como-trasporto-c = 1
               compute costo-trasporto = costo-trasporto +
-                    (prg-peso * tge-trasp-c)
+                    (prg-peso * sco-trasp-c)
            end-if. 
 
 

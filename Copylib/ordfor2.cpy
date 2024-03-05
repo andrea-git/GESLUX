@@ -850,19 +850,19 @@ LUBEXX        if mese-end = 12
       ***---
        CALCOLA-TRASPORTO.
            move 0 to costo-trasporto.
-           move spaces to tge-chiave.
-           read tparamge no lock.
+           move art-scorta to sco-codice.
+           read tscorte no lock invalid continue end-read.
 
            move tlis-fornitore to desf-codice.
            move tlis-destino   to desf-prog.
            read destinif no lock invalid continue end-read.  
            if como-trasporto-f = 1
               compute costo-trasporto = 
-                    ( art-peso-utf + art-peso-non-utf ) * tge-trasp-f
+                    ( art-peso-utf + art-peso-non-utf ) * sco-trasp-f
            end-if.
            if como-trasporto-c = 1
               compute costo-trasporto = costo-trasporto +
-                    (( art-peso-utf + art-peso-non-utf ) * tge-trasp-c)
+                    (( art-peso-utf + art-peso-non-utf ) * sco-trasp-c)
            end-if. 
 
       ***---
