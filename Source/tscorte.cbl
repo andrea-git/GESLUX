@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 5 marzo 2024 18:08:10.
+       DATE-WRITTEN.        giovedì 14 marzo 2024 11:30:16.
        REMARKS.
       *{TOTEM}END
 
@@ -2398,7 +2398,7 @@
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
-           ID IS 30,
+           ID IS 31,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -4245,7 +4245,7 @@
                  MOVE 0 TO sco-blocco-edi
               END-IF
       * DB_Entry-Field : ef-trasp-fa
-           MOVE ef-trasp-fa-BUF TO sco-trasp-f
+           MOVE ef-trasp-fa-BUF TO sco-trasp-c
       * DB_CHECK BOX : chk-prese
               IF chk-prese-BUF = 1
                  MOVE 1 TO sco-prese
@@ -4478,7 +4478,7 @@
                  MOVE 0 TO chl-blocco-edi-BUF
               END-IF
       * DB_Entry-Field : ef-trasp-fa
-           MOVE sco-trasp-f TO ef-trasp-fa-BUF
+           MOVE sco-trasp-c TO ef-trasp-fa-BUF
       * DB_CHECK BOX : chk-prese
               IF sco-prese = 1
                  MOVE 1 TO chk-prese-BUF
@@ -4780,7 +4780,7 @@
               move 78-ID-chl-blocco-edi to store-id 
            end-if
 
-           if sco-trasp-f not = old-sco-trasp-f
+           if sco-trasp-c not = old-sco-trasp-c
               and SiSalvato
               set NoSalvato to true
               |78-ID-ef-trasp-fa è l'ID del campo ef-trasp-fa
@@ -6231,7 +6231,7 @@
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF
-              INQUIRE ef-trasp-fa, VALUE IN sco-trasp-f
+              INQUIRE ef-trasp-fa, VALUE IN sco-trasp-c
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-trasp-fa-VALIDATION
               IF NOT TOTEM-CHECK-OK
