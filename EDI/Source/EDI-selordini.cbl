@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 22 febbraio 2024 15:40:44.
+       DATE-WRITTEN.        martedì 19 marzo 2024 12:29:31.
        REMARKS.
       *{TOTEM}END
 
@@ -73,6 +73,7 @@
            COPY "EDI-clides.sl".
            COPY "anacap.sl".
            COPY "lock-div.sl".
+           COPY "lineseq.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -123,6 +124,7 @@
            COPY "EDI-clides.fd".
            COPY "anacap.fd".
            COPY "lock-div.fd".
+           COPY "lineseq.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -189,6 +191,9 @@
                   VALUE IS 0.
        77 mult PIC  9v99.
        77 como-perce       PIC  9(3)v99.
+       77 cmd-lancio       PIC  x(1000).
+       77 status-run
+                  USAGE IS SIGNED-SHORT.
        77 promo-forzata    PIC  9(15).
        77 tot-righe-edi    PIC  9(10).
        77 old-des          PIC  9(5).
@@ -823,6 +828,12 @@
        77 lab-err-fido-buf PIC  X(3).
        77 col-lab-err-fido PIC  9(6)
                   VALUE IS 0.
+       77 excel-BMP        PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+       77 wstampa          PIC  X(256).
+       77 STATUS-lineseq   PIC  X(2).
+           88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -984,6 +995,7 @@
        77 TMP-DataSet1-EDI-clides-BUF     PIC X(840).
        77 TMP-DataSet1-anacap-BUF     PIC X(1209).
        77 TMP-DataSet1-lock-div-BUF     PIC X(38).
+       77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1219,6 +1231,11 @@
        77 DataSet1-lock-div-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lock-div-KEY-Asc  VALUE "A".
           88 DataSet1-lock-div-KEY-Desc VALUE "D".
+       77 DataSet1-lineseq-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-lineseq-LOCK  VALUE "Y".
+       77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-lineseq-KEY-Asc  VALUE "A".
+          88 DataSet1-lineseq-KEY-Desc VALUE "D".
 
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -1735,21 +1752,22 @@
 
       * PUSH BUTTON
        05
-           pb-genera, 
+           pb-excel, 
            Push-Button, 
-           COL 157,83, 
+           COL 138,00, 
            LINE 46,69,
            LINES 30,00 ,
-           SIZE 73,00 ,
-           BITMAP-HANDLE GENERA-BMP,
+           SIZE 28,00 ,
+           BITMAP-HANDLE excel-BMP,
            BITMAP-NUMBER 1,
            UNFRAMED,
            SQUARE,
-           EXCEPTION-VALUE 1001,
+           EXCEPTION-VALUE 1003,
            FLAT,
-           ID IS 250,
-           AFTER PROCEDURE pb-genera-AfterProcedure, 
-           BEFORE PROCEDURE pb-genera-BeforeProcedure, 
+           ID IS 251,
+           TITLE "&Excel",
+           AFTER PROCEDURE pb-excel-AfterProcedure, 
+           BEFORE PROCEDURE pb-excel-BeforeProcedure, 
            .
 
       * PUSH BUTTON
@@ -1770,6 +1788,25 @@
            TITLE "&Aggiorna",
            AFTER PROCEDURE pb-aggiorna-AfterProcedure, 
            BEFORE PROCEDURE pb-aggiorna-BeforeProcedure, 
+           .
+
+      * PUSH BUTTON
+       05
+           pb-genera, 
+           Push-Button, 
+           COL 157,83, 
+           LINE 46,69,
+           LINES 30,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE GENERA-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           EXCEPTION-VALUE 1001,
+           FLAT,
+           ID IS 250,
+           AFTER PROCEDURE pb-genera-AfterProcedure, 
+           BEFORE PROCEDURE pb-genera-BeforeProcedure, 
            .
 
       * FRAME
@@ -5117,8 +5154,9 @@
            DESTROY Arial10B-Occidentale
            DESTROY Arial9-Occidentale
            DESTROY Arial-Black12B-Occidentale
-           CALL "w$bitmap" USING WBITMAP-DESTROY, GENERA-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, excel-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-AGGIORNA-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, GENERA-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-CANCEL-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-OK-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, BLUE-DA-28X24-BMP
@@ -5255,14 +5293,18 @@
            .
 
        INIT-BMP.
-      * pb-genera
-           COPY RESOURCE "GENERA.BMP".
-           CALL "w$bitmap" USING WBITMAP-LOAD "GENERA.BMP", 
-                   GIVING GENERA-BMP.
+      * pb-excel
+           COPY RESOURCE "excel.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "excel.BMP", 
+                   GIVING excel-BMP.
       * pb-aggiorna
            COPY RESOURCE "BOTTONE-AGGIORNA.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-AGGIORNA.BMP", 
                    GIVING BOTTONE-AGGIORNA-BMP.
+      * pb-genera
+           COPY RESOURCE "GENERA.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "GENERA.BMP", 
+                   GIVING GENERA-BMP.
       * pb-annulla2
            COPY RESOURCE "BOTTONE-CANCEL.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "BOTTONE-CANCEL.BMP", 
@@ -5381,6 +5423,8 @@
            PERFORM OPEN-anacap
       *    lock-div OPEN MODE IS FALSE
       *    PERFORM OPEN-lock-div
+      *    lineseq OPEN MODE IS FALSE
+      *    PERFORM OPEN-lineseq
       *    After Open
            .
 
@@ -5999,6 +6043,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-lineseq.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:lineseq, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT lineseq
+           IF NOT Valid-STATUS-lineseq
+              PERFORM  Form-ini-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:lineseq, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-clienti
@@ -6053,6 +6109,8 @@
            PERFORM CLOSE-anacap
       *    lock-div CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lock-div
+      *    lineseq CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-lineseq
       *    After Close
            .
 
@@ -6323,6 +6381,11 @@
 
        CLOSE-lock-div.
       * <TOTEM:EPT. INIT:EDI-selordini, FD:lock-div, BeforeClose>
+      * <TOTEM:END>
+           .
+
+       CLOSE-lineseq.
+      * <TOTEM:EPT. INIT:EDI-selordini, FD:lineseq, BeforeClose>
       * <TOTEM:END>
            .
 
@@ -13981,6 +14044,76 @@
       * <TOTEM:END>
            .
 
+       DataSet1-lineseq-INITSTART.
+           .
+
+       DataSet1-lineseq-INITEND.
+           .
+
+       DataSet1-lineseq-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeWrite>
+      * <TOTEM:END>
+           WRITE line-riga OF lineseq.
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-lineseq-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-lineseq TO TOTEM-ERR-STAT
+           MOVE "lineseq" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:lineseq, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE cli-rec OF clienti
            INITIALIZE des-rec OF destini
@@ -14028,6 +14161,7 @@
            INITIALIZE ecd-rec OF EDI-clides
            INITIALIZE anc-rec OF anacap
            INITIALIZE ld-rec OF lock-div
+           INITIALIZE line-riga OF lineseq
            .
 
 
@@ -14494,6 +14628,14 @@
                          ALPHABETIC    DATA BY SPACES
            .
 
+      * FD's Initialize Paragraph
+       DataSet1-lineseq-INITREC.
+           INITIALIZE line-riga OF lineseq
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
       *
        DataSet1-DISPATCH-BUFTOFLD.
            EVALUATE TOTEM-Form-Index ALSO TOTEM-Frame-Index
@@ -14630,10 +14772,12 @@
                  IF Event-Type = Cmd-Close
                     PERFORM Form2-Exit
                  END-IF
-              WHEN Key-Status = 1001
-                 PERFORM pb-genera-LinkTo
+              WHEN Key-Status = 1003
+                 PERFORM pb-excel-LinkTo
               WHEN Key-Status = 1002
                  PERFORM pb-aggiorna-LinkTo
+              WHEN Key-Status = 1001
+                 PERFORM pb-genera-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-ok2-LinkTo
            END-EVALUATE
@@ -24060,6 +24204,132 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                     exit perform
                  end-if
               end-perform  
+           end-if 
+           .
+      * <TOTEM:END>
+       pb-excel-BeforeProcedure.
+      * <TOTEM:PARA. pb-excel-BeforeProcedure>
+           modify pb-excel, bitmap-number = 2 
+           .
+      * <TOTEM:END>
+       pb-excel-AfterProcedure.
+      * <TOTEM:PARA. pb-excel-AfterProcedure>
+           modify pb-excel, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       pb-excel-LinkTo.
+      * <TOTEM:PARA. pb-excel-LinkTo>
+           inquire gd-ordini, last-row in tot-righe
+           if tot-righe < 2 exit paragraph end-if.
+           display message "Portare i dati a video in Excel?"
+                      title titolo
+                       type mb-yes-no
+                    default mb-no
+                     giving scelta
+           if scelta = mb-yes
+              initialize wstampa
+              accept  como-data from century-date
+              accept  como-ora  from time
+
+              accept  wstampa from environment "PATH_ST"
+              inspect wstampa replacing trailing spaces by low-value
+              string  wstampa              delimited low-value
+                      "report_ordini_edi_" delimited size
+                      user-codi            delimited spaces
+                      "_"                  delimited size
+                      como-data            delimited size
+                      "_"                  delimited size
+                      como-ora             delimited size
+                      ".csv"               delimited size
+                 into wstampa
+              end-string
+              inspect wstampa replacing trailing low-value by spaces
+              open output lineseq
+              initialize line-riga
+              string "Anno"             delimited size
+                     ";"                delimited size
+                     "Numero"           delimited size
+                     ";"                delimited size
+                     "N.Ord.Cli."       delimited size
+                     ";"                delimited size
+                     "Data"             delimited size
+                     ";"                delimited size
+                     "Stato"            delimited size
+                     ";"                delimited size
+                     "Cli"              delimited size
+                     ";"                delimited size
+                     "Ragione Sociale"  delimited size
+                     ";"                delimited size
+                     "Destino"          delimited size
+                     ";"                delimited size
+                     "Indirizzo"        delimited size
+                     ";"                delimited size
+                     "Località"         delimited size
+                into line-riga
+              end-string
+              write line-riga 
+
+              perform varying riga from 2 by 1 
+                        until riga > tot-righe
+                 inquire gd-ordini(riga,  2), cell-data Col-anno        
+              
+                 inquire gd-ordini(riga,  3), cell-data Col-numero      
+              
+                 inquire gd-ordini(riga,  4), cell-data Col-ord-cli     
+              
+                 inquire gd-ordini(riga,  5), cell-data Col-data        
+              
+                 inquire gd-ordini(riga,  6), cell-data col-stato       
+              
+                 inquire gd-ordini(riga,  7), cell-data Col-cliente     
+              
+                 inquire gd-ordini(riga,  8), cell-data Col-rag-soc-cli 
+              
+                 inquire gd-ordini(riga,  9), cell-data 
+           Col-rag-soc-destini
+                 inquire gd-ordini(riga, 10), cell-data Col-indirizzo   
+              
+                 inquire gd-ordini(riga, 11), cell-data Col-localita    
+              
+                 string Col-anno            delimited size
+                        ";"                 delimited size
+                        Col-numero          delimited size
+                        ";"                 delimited size
+                        Col-ord-cli         delimited size
+                        ";"                 delimited size
+                        Col-data            delimited size
+                        ";"                 delimited size
+                        col-stato           delimited size
+                        ";"                 delimited size
+                        Col-cliente         delimited size
+                        ";"                 delimited size
+                        Col-rag-soc-cli     delimited size
+                        ";"                 delimited size
+                        Col-rag-soc-destini delimited size
+                        ";"                 delimited size
+                        Col-indirizzo       delimited size
+                        ";"                 delimited size
+                        Col-localita        delimited size
+                    into line-riga
+                 end-string
+                 write line-riga
+              end-perform        
+              close lineseq
+
+              inspect wstampa replacing trailing spaces by low-value
+              string "START "   delimited size
+                    x"22222022" delimited size
+                      wstampa   delimited low-value
+                    x"22"       delimited size
+               into cmd-lancio
+              end-string
+              call "C$SYSTEM" using cmd-lancio, 225
+                             giving status-run
+              if status-run = -1
+                 call "C$SYSTEM" using cmd-lancio, 64
+                                giving status-run
+              end-if              
+
            end-if 
            .
       * <TOTEM:END>
