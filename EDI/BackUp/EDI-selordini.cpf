@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E831311741-2-66752632
+PROGRAM_UNIQUE_CODE=TOTEM-7E8314171359-477-2071131004
 
 {{@DESCRIPTION:
 
@@ -8297,7 +8297,7 @@ Begin Screen Form2
          Font              = Default Font
          Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 251
+         ID                = 252
          Line              = 1,15
          Lines             = 2,35
          Lines in Pixels   = 30
@@ -23480,7 +23480,7 @@ BEGIN-TEXT
               accept  como-data from century-date
               accept  como-ora  from time
 
-              accept  wstampa from environment "PATH_ST"
+              accept  wstampa from environment "PATH_ST_CLIENT"
               inspect wstampa replacing trailing spaces by low-value
               string  wstampa              delimited low-value
                       "report_ordini_edi_" delimited size

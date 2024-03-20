@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 19 marzo 2024 12:29:31.
+       DATE-WRITTEN.        mercoledì 20 marzo 2024 18:14:42.
        REMARKS.
       *{TOTEM}END
 
@@ -1784,7 +1784,7 @@
            SQUARE,
            EXCEPTION-VALUE 1002,
            FLAT,
-           ID IS 251,
+           ID IS 252,
            TITLE "&Aggiorna",
            AFTER PROCEDURE pb-aggiorna-AfterProcedure, 
            BEFORE PROCEDURE pb-aggiorna-BeforeProcedure, 
@@ -24231,7 +24231,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               accept  como-data from century-date
               accept  como-ora  from time
 
-              accept  wstampa from environment "PATH_ST"
+              accept  wstampa from environment "PATH_ST_CLIENT"
               inspect wstampa replacing trailing spaces by low-value
               string  wstampa              delimited low-value
                       "report_ordini_edi_" delimited size
