@@ -159,8 +159,9 @@
        77  qta-eccesso           pic 9(12).
        77  qta-da-ordinare       pic 9(12).
        77  tot-qta-m             pic 9(12).
-       77  como-mese             pic 99.
+       77  como-mese             pic 99.          
        77  primo-numero          pic 9(8) value 0.
+       77  ultimo-numero         pic 9(8) value 0.
        77  mese-oggi             pic 99.
        77  anno-oggi             pic 9(4).
        77  mese-consegna         pic 99.
@@ -2944,11 +2945,20 @@
               perform varying primo-numero from primo-numero by 1
                         until primo-numero > con-num-ord-forn
                  move tge-anno     to tof-anno
-                 move primo-numero to tof-numero
+                 move primo-numero to tof-numero ultimo-numero
                  call   "ordf-sol" using tof-chiave
                  cancel "ordf-sol"
-              end-perform
+              end-perform                 
+
+              if linkAuto = 1
+                 call   "ordf-ord" using tge-anno
+                                         primo-numero
+                                         ultimo-numero
+                 cancel "ordf-sol"
+              end-if
+
            end-if.
+                                          
 
            goback.                
 
