@@ -161,7 +161,6 @@
        77  tot-qta-m             pic 9(12).
        77  como-mese             pic 99.          
        77  primo-numero          pic 9(8) value 0.
-       77  ultimo-numero         pic 9(8) value 0.
        77  mese-oggi             pic 99.
        77  anno-oggi             pic 9(4).
        77  mese-consegna         pic 99.
@@ -2772,12 +2771,22 @@
                                end-if
                                move rof-riga to save-riga
                                if rof-cod-articolo = tra-cod-articolo
-                                  display message 
-                                  "ARTICOLO " tra-cod-articolo
-                           x"0d0a""ORDINE NON GENERATO!!!"
-                           x"0d0a""CONTATTARE ASSISTENZA!!!"
-                                            title "ERRORE CREA-ORDFOR"
-                                             icon 2
+                                  if LinkAuto = 1
+                                     initialize como-riga
+                                     string 
+                                     "*ER* - ARTICOLO " tra-cod-articolo
+                                     ": ORDINE NON GENERATO"
+                                        into como-riga
+                                     end-string
+                                     perform SCRIVI-RIGA-LOG
+                                  else
+                                     display message 
+                                     "ARTICOLO " tra-cod-articolo
+                              x"0d0a""ORDINE NON GENERATO!!!"
+                              x"0d0a""CONTATTARE ASSISTENZA!!!"
+                                               title"ERRORE CREA-ORDFOR"
+                                                icon 2
+                                  end-if
                                   set trovato to true
                                   exit perform
                                end-if
@@ -2815,13 +2824,22 @@
                     move tof-chiave to rof-chiave-testa
                     start rordforn key >= rof-chiave
                           invalid 
-                          display message 
-                                  "ATTENZIONE!!!"
-                           x"0d0a""ORDINE N. " tof-numero
-                           x"0d0a""SENZA ARTICOLI DI RIFERIMENTO!!!!"
-                           x"0d0a""CONTATTARE ASSISTENZA!!!"
-                                     title "ERRORE"
-                                      icon 2
+                          if LinkAuto = 1
+                             initialize como-riga
+                             string "*ER* ORDINE N. " tof-numero
+                                    ": SENZA ARTICOLI DI RIFERIMENTO"
+                               into como-riga
+                             end-string
+                             perform SCRIVI-RIGA-LOG
+                          else
+                             display message 
+                                     "ATTENZIONE!!!"
+                              x"0d0a""ORDINE N. " tof-numero
+                              x"0d0a""SENZA ARTICOLI DI RIFERIMENTO!!!!"
+                              x"0d0a""CONTATTARE ASSISTENZA!!!"
+                                        title "ERRORE"
+                                         icon 2
+                          end-if
                       not invalid
                           perform until 1 = 2
                              read rordforn next 
@@ -2834,7 +2852,18 @@
                              read tlistini no lock
                              if tlis-fornitore not = tof-cod-forn or
                                 tlis-destino   not = tof-destino
-                                display message 
+                                if LinkAuto = 1
+                                   initialize como-riga
+                                   string "*ER* CONTROLLARE ORDINE N. " 
+                                          tof-numero
+                                          ": ARTICOLO " 
+                                          rof-cod-articolo
+                                          " CON LISTINO ERRATO!!!"
+                                     into como-riga
+                                   end-string
+                                   perform SCRIVI-RIGA-LOG
+                                else
+                                   display message 
                                   "ATTENZIONE!!!"
                            x"0d0a""CONTROLLARE ORDINE N. " tof-numero
                            x"0d0a""ARTICOLO " rof-cod-articolo
@@ -2842,6 +2871,7 @@
                            x"0d0a""CONTATTARE ASSISTENZA!!!"
                                      title "ERRORE"
                                       icon 2
+                                end-if
                                 exit perform
                              end-if
                           end-perform
@@ -2945,15 +2975,15 @@
               perform varying primo-numero from primo-numero by 1
                         until primo-numero > con-num-ord-forn
                  move tge-anno     to tof-anno
-                 move primo-numero to tof-numero ultimo-numero
+                 move primo-numero to tof-numero 
                  call   "ordf-sol" using tof-chiave
                  cancel "ordf-sol"
-              end-perform                 
+              end-perform
 
               if linkAuto = 1
                  call   "ordf-ord" using tge-anno
-                                         primo-numero
-                                         ultimo-numero
+                                         LinkFirst
+                                         LinkLast
                  cancel "ordf-sol"
               end-if
 
