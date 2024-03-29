@@ -904,12 +904,6 @@
                                      move 0 to ef-amperaggio-buf
                    end-evaluate 
 
-
-
-
-
-
-
                    evaluate true
                    when nom-si-ic-cou move 1 to mod-imposte
                    when nom-no-ic-cou move 0 to mod-imposte
@@ -3793,7 +3787,7 @@ LUBEXX        end-if
 
       ***---
        CONTROLLA-PRESENZA-LISTINI-F.
-           if user-codi not = "BOSS" 
+           if user-codi not = "BOSS" and sco-art-attivo 
               move low-value to rlis-rec
               move art-codice of articoli to rlis-articolo
               start rlistini key >= rlis-k-art
