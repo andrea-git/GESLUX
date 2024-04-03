@@ -7937,6 +7937,8 @@
            IF DataSet1-tparamge2-KEY-Asc
               IF DataSet1-tparamge2-LOCK
                  READ tparamge2 PREVIOUS WITH LOCK
+
+
               ELSE
                  READ tparamge2 PREVIOUS WITH NO LOCK
               END-IF
@@ -10407,7 +10409,8 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10643,7 +10646,8 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
+
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -12608,6 +12612,7 @@
            como-n1
                                   perform EDIT-NUMERO-1     
                                                              
+
                                   initialize como-riga
                                   if ord2-fabb-qta(como-idx) > 0
                                      string "ARTICOLO OK: "
@@ -14989,6 +14994,7 @@
                        else
                           if ord2-fabb-qta(6) < ord2-fabb-qta(5)
                              set errori to true
+
                           end-if
                        end-if
                     end-if
