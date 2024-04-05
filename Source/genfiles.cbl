@@ -3737,21 +3737,7 @@ LABLAB     copy "blister.fd".
            open input rlistini.     
            if status-rlistini = "35"
               open output rlistini
-           end-if.
-           open input tlistini
-           move low-value to rlis-rec.
-           start rlistini key >= rlis-chiave
-           perform until 1 = 2
-              read rlistini next at end exit perform end-read
-              move rlis-codice to tlis-codice
-              read tlistini no lock
-              if rlis-ini-val  not = tlis-ini-val or
-                 rlis-fine-val not = tlis-fine-val 
-                 display message tlis-codice
-              end-if
-           end-perform
-
-           close tlistini.
+           end-if.  
            close rlistini.
 
            open input nforn.

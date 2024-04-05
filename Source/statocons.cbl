@@ -324,12 +324,7 @@
                  column 35,00
            end-if.
 
-           goback.
-
-      ***---
-       SETTA-RIGA-STAMPA.
-           perform SETTA-INIZIO-RIGA.
-           perform RIGA-LOG.        
+           goback.      
 
       ***---
        RIGA-LOG.
