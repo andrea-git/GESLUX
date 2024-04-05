@@ -146,12 +146,12 @@
            end-if.
            
            inspect wstampa replacing trailing spaces by low-value.
-           string  wstampa      delimited low-value
-                   "STATOCONS_" delimited size
-                   como-data    delimited size
-                   "_"          delimited size
-                   como-ora     delimited size
-                   ".log"       delimited size
+           string  wstampa         delimited low-value
+                   "AGG-DATALISF_" delimited size
+                   como-data       delimited size
+                   "_"             delimited size
+                   como-ora        delimited size
+                   ".log"          delimited size
               into wstampa
            end-string.
       
