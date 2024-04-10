@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-evasioni.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 6 aprile 2024 17:05:34.
+       DATE-WRITTEN.        mercoledì 10 aprile 2024 18:19:35.
        REMARKS.
       *{TOTEM}END
 
@@ -63,6 +63,7 @@
            COPY  "LINK-GORDCVAR.DEF".
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
+           COPY  "LINK-RICALIMP-ART.DEF".
        77 CANCEL-73X21-BMP PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -89,6 +90,16 @@
        77 num-from         PIC  9(8).
        77 num-to           PIC  9(8).
        77 deleted          PIC  9(5).
+       77 tor-numero-x     PIC  x(8).
+       77 idx-tot-art      PIC  9(5).
+       01 link-ra-articoli-tab.
+           03 link-ra-articoli
+                      OCCURS 999 TIMES.
+               05 link-ra-articolo PIC  9(6).
+       01 tab-art.
+           05 el-art           PIC  9(6)
+                      OCCURS 9999 TIMES
+                      INDEXED  idx-art.
        77 BLUE-FINO-28X24-BMP          PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -1426,6 +1437,10 @@
            end-if.
 
            if tutto-ok
+              initialize tab-art ra-linkage 
+                         replacing numeric data by zeroes
+                              alphanumeric data by spaces   
+              move 0 to idx-tot-art
               move 0 to deleted
               call "W$MOUSE" using set-mouse-shape, wait-pointer
               perform varying num-from from num-from by 1
@@ -1451,7 +1466,55 @@
                                                    user-codi
                                                    livello-abil
                                                    gordcvar-linkage
+                                                   link-ra-articoli-tab
                          cancel "gordcvar"
+                         if LinkRicaricaGrid = 1
+                            if ra-evasioni = spaces
+                               move tor-numero to tor-numero-x
+                               inspect tor-numero-x 
+                                       replacing leading x"30" by x"20"
+                               call "C$JUSTIFY" using tor-numero-x, "L" 
+                       
+                               move tor-numero-x to ra-evasioni
+                            else
+                               move tor-numero to tor-numero-x
+                               inspect tor-numero-x 
+                                       replacing leading x"30" by x"20"
+                               call "C$JUSTIFY" using tor-numero-x, "L" 
+                       
+                               inspect tor-numero-x replacing trailing 
+           spaces by low-value
+
+                               inspect ra-evasioni replacing trailing 
+           spaces by low-value
+                               string  ra-evasioni   delimited 
+           low-value                   
+                                       "-"           delimited size
+                                       tor-numero-x  delimited low-value
+                                  into ra-evasioni
+                               end-string
+                               inspect ra-evasioni replacing trailing 
+           low-value by spaces
+                            end-if
+                            perform varying idx from 1 by 1 
+                                      until idx > 999
+                               if link-ra-articolo(idx) = 0
+                                  exit perform
+                               end-if
+                               set idx-art to 1
+                               search el-art
+                                 at end move 0 to idx-art
+                               when el-art(idx-art) = 
+           link-ra-articolo(idx)
+                                    continue
+                               end-search
+                               if idx-art = 0
+                                  add 1 to idx-tot-art
+                                  move link-ra-articolo(idx) to 
+           el-art(idx-tot-art)
+                               end-if
+                            end-perform
+                         end-if
                       else
                          if tor-anno-fattura not = 0
                             display message "EVASIONE FATTURATA!!!"
@@ -1471,6 +1534,20 @@
                       end-if
                  end-read
               end-perform   
+
+              if idx-tot-art > 0
+                 perform varying idx from 1 by 1 
+                           until idx > idx-tot-art
+                    move el-art(idx) to ra-articolo(idx)
+                 end-perform
+                 move user-codi    to ra-user
+                 move Form1-Handle to ra-form-handle
+                 move anno-to      to ra-anno
+                 move 99999999     to ra-numero
+                 call   "ricalimp-art" using ra-linkage
+                 cancel "ricalimp-art"             
+              end-if
+
               call "W$MOUSE" using set-mouse-shape, arrow-pointer
 
               display message "OPERAZIONE TERMINATA!!!"

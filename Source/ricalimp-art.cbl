@@ -67,7 +67,7 @@
            copy "log-progmag.fd".
 
        FD  ra-log.
-       01 riga-ra-log PIC  x(200).
+       01 riga-ra-log PIC  x(350).
 
        WORKING-STORAGE SECTION.
            copy "link-geslock.def".  
@@ -111,7 +111,7 @@
        77  como-data             pic 9(8).
        77  como-ora              pic 9(8).    
        77  r-output              pic x(25).
-       77  como-riga             pic x(50). 
+       77  como-riga             pic x(300). 
        77  counter               pic 9(10).
        77  counter2              pic 9(10). 
        77  counter-edit          pic z.zzz.zzz.zz9.
@@ -278,15 +278,23 @@
            end-string
            inspect path-ra-log replacing trailing low-value by spaces.
            open extend ra-log.
-
                                  
            initialize como-riga.
-           string "** INIZIO PROGRAMMA: " delimited size
-                  ra-anno                 delimited size
-                  " - "                   delimited size
-                  ra-numero               delimited size
-             into como-riga
-           end-string.
+           if ra-evasioni not = spaces
+              string "** INIZIO PROGRAMMA: " delimited size
+                     ra-anno                 delimited size
+                     " EVASIONI: "           delimited size
+                     ra-evasioni             delimited size
+                into como-riga
+              end-string
+           else
+              string "** INIZIO PROGRAMMA: " delimited size
+                     ra-anno                 delimited size
+                     " - "                   delimited size
+                     ra-numero               delimited size
+                into como-riga
+              end-string
+           end-if.
            perform SCRIVI-RA-LOG.
 
            move spaces  to ra-chiave.

@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E811F151214-670-256079383
+PROGRAM_UNIQUE_CODE=TOTEM-7E84A141324-573-363223903
 
 {{@DESCRIPTION:
 
@@ -16297,6 +16297,37 @@ m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM23_LK
 
 @}}
+[FDITEM24_LK]
+m_strName=link-ra-articoli-tab
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM24_LK
+
+@}}
+[FDITEM25_LK]
+m_strName=link-ra-articoli
+m_nItemLevel=3
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=999
+m_nSize=999
+{{@DataItem_m_strDescriptionFDITEM25_LK
+
+@}}
+[FDITEM26_LK]
+m_strName=link-ra-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=999
+m_nSize=999
+{{@DataItem_m_strDescriptionFDITEM26_LK
+
+@}}
 
 
 {{@SCREEN:
@@ -24151,15 +24182,21 @@ BEGIN-TEXT
            if not SystemErrorOccurred
               perform SALV-MOD
            end-if.
-
+                                     
            if ra-idx not = 0 and mag-codice not = "LBX"
-              move user-codi to ra-user
-              modify lab-attendere, visible true
-              move Form1-Handle to ra-form-handle
-              move LinkChiave   to ra-evasione
-              call   "ricalimp-art" using ra-linkage
-              cancel "ricalimp-art"             
-              modify lab-attendere, visible false
+              if PgmChiamante not = "del-evasioni"
+                 move user-codi to ra-user
+                 modify lab-attendere, visible true
+                 move Form1-Handle to ra-form-handle
+                 move LinkChiave   to ra-evasione
+                 call   "ricalimp-art" using ra-linkage
+                 cancel "ricalimp-art"             
+                 modify lab-attendere, visible false 
+              else
+                 |Lo uso come flag
+                 move 1 to LinkRicaricaGrid
+                 move ra-articoli-tab to link-ra-articoli-tab
+              end-if
               initialize ra-linkage replacing numeric data by zeroes
                                          alphanumeric data by spaces
               move 0 to ra-idx

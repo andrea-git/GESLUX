@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 31 gennaio 2024 16:21:47.
+       DATE-WRITTEN.        mercoledì 10 aprile 2024 17:34:26.
        REMARKS.
       *{TOTEM}END
 
@@ -1081,6 +1081,10 @@
       *{TOTEM}LINKAGE
            COPY  "COMMON-LINKAGE.DEF".
            COPY  "LINK-GORDCVAR.DEF".
+       01 link-ra-articoli-tab.
+           03 link-ra-articoli
+                      OCCURS 999 TIMES.
+               05 link-ra-articolo PIC  9(6).
 
       *{TOTEM}END
 
@@ -4057,7 +4061,7 @@
 
       *{TOTEM}LINKPARA
        PROCEDURE  DIVISION USING LK-BLOCKPGM, USER-CODI, LIVELLO-ABIL, 
-           gordcvar-linkage.
+           gordcvar-linkage, link-ra-articoli-tab.
       *{TOTEM}END
 
       *{TOTEM}DECLARATIVE
@@ -16871,15 +16875,21 @@ PATCH      end-evaluate.
            if not SystemErrorOccurred
               perform SALV-MOD
            end-if.
-
+                                     
            if ra-idx not = 0 and mag-codice not = "LBX"
-              move user-codi to ra-user
-              modify lab-attendere, visible true
-              move Form1-Handle to ra-form-handle
-              move LinkChiave   to ra-evasione
-              call   "ricalimp-art" using ra-linkage
-              cancel "ricalimp-art"             
-              modify lab-attendere, visible false
+              if PgmChiamante not = "del-evasioni"
+                 move user-codi to ra-user
+                 modify lab-attendere, visible true
+                 move Form1-Handle to ra-form-handle
+                 move LinkChiave   to ra-evasione
+                 call   "ricalimp-art" using ra-linkage
+                 cancel "ricalimp-art"             
+                 modify lab-attendere, visible false 
+              else
+                 |Lo uso come flag
+                 move 1 to LinkRicaricaGrid
+                 move ra-articoli-tab to link-ra-articoli-tab
+              end-if
               initialize ra-linkage replacing numeric data by zeroes
                                          alphanumeric data by spaces
               move 0 to ra-idx

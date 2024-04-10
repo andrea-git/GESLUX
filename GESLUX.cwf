@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -22864,7 +22864,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\del-evasioni.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\tordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-passwd.def;Copylib\link-gordcvar.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Copylib\calcola-colore-trasparente.cpy
+COPY_DEPENDENCE=FD\tordini.sl;FD\tordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-passwd.def;Copylib\link-gordcvar.def;Copylib\link-ricalimp-art.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Copylib\calcola-colore-trasparente.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -46610,7 +46610,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\del-evasioni.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\tordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-passwd.def;Copylib\link-gordcvar.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Copylib\calcola-colore-trasparente.cpy
+COPY_DEPENDENCE=FD\tordini.sl;FD\tordini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Copylib\link-passwd.def;Copylib\link-gordcvar.def;Copylib\link-ricalimp-art.def;Copylib\common-linkage.def;Copylib\blockpgm.lks;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp;Resource\Blue-fino-28x24.bmp;Resource\Blue-da-28x24.bmp;Copylib\calcola-colore-trasparente.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
