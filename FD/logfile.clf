@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E835165016-50-2315319272
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E848202445-604-224848930
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -100,25 +100,24 @@ m_strTrue="R"
 
 @}}
 [FDITEM9_]
-m_strName=log-dati
-m_nItemLevel=5
+m_strName=log-batch
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="B"
 {{@DataItem_m_strDescriptionFDITEM9_
 
 @}}
 [FDITEM10_]
-m_strName=log-chiave-file
-m_strRawPic=x(20)
-m_strPic=X(20)
-m_nItemLevel=10
+m_strName=log-dati
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM10_
 
 @}}
 [FDITEM11_]
-m_strName=log-utente
+m_strName=log-chiave-file
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=10
@@ -128,9 +127,9 @@ m_bFixed=1
 
 @}}
 [FDITEM12_]
-m_strName=log-descrizione
-m_strRawPic=x(100)
-m_strPic=X(100)
+m_strName=log-utente
+m_strRawPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -138,7 +137,9 @@ m_bFixed=1
 
 @}}
 [FDITEM13_]
-m_strName=log-vuoti
+m_strName=log-descrizione
+m_strRawPic=x(100)
+m_strPic=X(100)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -146,17 +147,15 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=log-num-vuoto-1
-m_strRawPic=9(15)
-m_strPic=9(15)
-m_nItemLevel=15
+m_strName=log-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM14_
 
 @}}
 [FDITEM15_]
-m_strName=log-num-vuoto-2
+m_strName=log-num-vuoto-1
 m_strRawPic=9(15)
 m_strPic=9(15)
 m_nItemLevel=15
@@ -166,7 +165,7 @@ m_bFixed=1
 
 @}}
 [FDITEM16_]
-m_strName=log-num-vuoto-3
+m_strName=log-num-vuoto-2
 m_strRawPic=9(15)
 m_strPic=9(15)
 m_nItemLevel=15
@@ -176,9 +175,9 @@ m_bFixed=1
 
 @}}
 [FDITEM17_]
-m_strName=log-alfa-vuoto-1
-m_strRawPic=X(20)
-m_strPic=X(20)
+m_strName=log-num-vuoto-3
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -186,7 +185,7 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=log-alfa-vuoto-2
+m_strName=log-alfa-vuoto-1
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
@@ -196,7 +195,7 @@ m_bFixed=1
 
 @}}
 [FDITEM19_]
-m_strName=log-alfa-vuoto-3
+m_strName=log-alfa-vuoto-2
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
@@ -205,12 +204,23 @@ m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM19_
 
 @}}
+[FDITEM20_]
+m_strName=log-alfa-vuoto-3
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+
+@}}
 [CStoAcucobolSL_]
 m_nType=1
 m_strAssignToName="logfile"
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-logfile
+m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

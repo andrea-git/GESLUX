@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-evasioni.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 7 gennaio 2021 11:54:37.
+       DATE-WRITTEN.        sabato 6 aprile 2024 17:05:34.
        REMARKS.
       *{TOTEM}END
 
@@ -112,7 +112,7 @@
       * Data.Entry-Field
               05 ef-num-to-BUF PIC zzzzzzz9.
 
-       77 TMP-DataSet1-tordini-BUF     PIC X(3898).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -140,7 +140,7 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
        77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
        77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
@@ -657,7 +657,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.

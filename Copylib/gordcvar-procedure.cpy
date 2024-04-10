@@ -217,8 +217,18 @@ PATCH            perform SCRIVI-FILE-BACKUP
               string "CANCELLATE "  delimited size
                      DeletedRows    delimited size
                      " RIGHE"       delimited size
-                     into log-descrizione
+                into log-descrizione
               end-string
+              write log-rec invalid continue end-write
+
+              |SCRIVO IL LOG PER DOCUMENTARE L'INIZIO DELL'AGGIORNAMENTO
+              accept log-data from century-date
+              accept log-ora  from time
+              move "GORDCVAR"       to log-pgm
+              set log-batch to true
+              move LinkChiave       to log-chiave-file
+              move user-codi        to log-utente
+              move "INIZIO AGGIORNAMENTO " to log-descrizione
               write log-rec invalid continue end-write
  
               perform varying idx-master from 1 by 1 
@@ -229,14 +239,24 @@ PATCH            perform SCRIVI-FILE-BACKUP
               move 0 to orig-data-bolla tor-data-bolla
               move 0 to orig-num-bolla  tor-num-bolla
 
-              perform FINE-LOG-PROGMAG
+              perform FINE-LOG-PROGMAG                
+
+              |SCRIVO IL LOG PER DOCUMENTARE LA FINE DELL'AGGIORNAMENTO
+              accept log-data from century-date
+              accept log-ora  from time
+              move "GORDCVAR"       to log-pgm
+              set log-batch         to true
+              move LinkChiave       to log-chiave-file
+              move user-codi        to log-utente
+              move "FINE AGGIORNAMENTO " to log-descrizione
+              write log-rec invalid continue end-write
                 
-              |ATTIVANDO QUESTO FLAG RICHIAMO IL RICALCOLO 
+              |DISATTIVANDO QUESTO FLAG NON RICHIAMO IL RICALCOLO 
               |DELLE QTA PRENOTATE.
               |LO FACCIO ALLA FINE DIRETTAMENTE NEL PROGRAMMA
               |CHIAMANTE UNA VOLTA SOLA
               if PgmChiamante not = "del-evasioni"
-                 set HoSalvato to true
+                 set HoSalvato to false
               end-if
               perform FORM1-EXIT
               perform DESTROYXX
