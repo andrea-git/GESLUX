@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E84A164039-110-301527996
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E84B134056-365-652221844
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -833,9 +833,9 @@ m_strTrue=0
 
 @}}
 [FDITEM86_]
-m_strName=prm-num-vuoto-2
-m_strRawPic=9(9)
-m_strPic=9(9)
+m_strName=prm-ev-immediata
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -843,29 +843,27 @@ m_bFixed=1
 
 @}}
 [FDITEM87_]
-m_strName=prm-num-vuoto-3
-m_strRawPic=9(18)
-m_strPic=9(18)
-m_nItemLevel=15
+m_strName=prm-ev-immediata-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=1
 {{@DataItem_m_strDescriptionFDITEM87_
 
 @}}
 [FDITEM88_]
-m_strName=prm-stampante
-m_strRawPic=x(100)
-m_strPic=x(100)
-m_nItemLevel=15
+m_strName=prm-ev-immediata-no
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue=0
 {{@DataItem_m_strDescriptionFDITEM88_
 
 @}}
 [FDITEM89_]
-m_strName=prm-path-logo
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=prm-num-vuoto-2
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -873,9 +871,9 @@ m_bFixed=1
 
 @}}
 [FDITEM90_]
-m_strName=prm-alfa-vuoto
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=prm-num-vuoto-3
+m_strRawPic=9(18)
+m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -883,13 +881,43 @@ m_bFixed=1
 
 @}}
 [FDITEM91_]
+m_strName=prm-stampante
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_
+
+@}}
+[FDITEM92_]
+m_strName=prm-path-logo
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_
+
+@}}
+[FDITEM93_]
+m_strName=prm-alfa-vuoto
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM93_
+
+@}}
+[FDITEM94_]
 m_strName=prm-num-vuoto-1
 m_strRawPic=9(18)
 m_strPic=9(18)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM91_
+{{@DataItem_m_strDescriptionFDITEM94_
 
 @}}
 [CStoAcucobolSL_]
