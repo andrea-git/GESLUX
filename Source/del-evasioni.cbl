@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-evasioni.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 aprile 2024 18:19:35.
+       DATE-WRITTEN.        venerdì 12 aprile 2024 11:58:02.
        REMARKS.
       *{TOTEM}END
 
@@ -83,7 +83,7 @@
        77 form1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 AUTO-ID          PIC  9(6)
-                  VALUE IS 0.
+                  VALUE IS 100.
        77 Verdana18B-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 anno-to          PIC  9(4).
@@ -91,6 +91,7 @@
        77 num-to           PIC  9(8).
        77 deleted          PIC  9(5).
        77 tor-numero-x     PIC  x(8).
+       77 s-num            PIC  9(8).
        77 idx-tot-art      PIC  9(5).
        01 link-ra-articoli-tab.
            03 link-ra-articoli
@@ -108,6 +109,14 @@
                   VALUE IS 0.
        77 STATUS-tordini   PIC  X(2).
            88 Valid-STATUS-tordini VALUE IS "00" THRU "09". 
+       01 scr-elab-Gd-1-Record.
+           05 col-num          PIC  9(8).
+       77 tipo-del         PIC  9
+                  VALUE IS 2.
+       77 e-dalal          PIC  9
+                  VALUE IS 1.
+       77 e-grid           PIC  9
+                  VALUE IS 1.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -163,6 +172,7 @@
        78  78-ID-ef-anno VALUE 5001.
        78  78-ID-ef-num-from VALUE 5002.
        78  78-ID-ef-num-to VALUE 5003.
+       78  78-ID-gd1 VALUE 5004.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -185,9 +195,9 @@
        05
            ef-anno, 
            Entry-Field, 
-           COL 9,00, 
+           COL 7,90, 
            LINE 2,50,
-           LINES 2,10 CELLS,
+           LINES 2,20 CELLS,
            SIZE 5,00 CELLS,
            BOXED,
            COLOR IS 513,
@@ -199,16 +209,55 @@
            VALUE ef-anno-BUF,
            .
 
+      * RADIO BUTTON
+       05
+           rb-dal, 
+           Radio-Button, 
+           COL 1,80, 
+           LINE 6,60,
+           LINES 2,10 CELLS,
+           SIZE 1,50 CELLS,
+           EXCEPTION-VALUE 1001
+           FLAT,
+           GROUP 1,
+           GROUP-VALUE 1,
+           ID IS 8,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE tipo-del,
+           AFTER PROCEDURE rb-dal-AfterProcedure, 
+           BEFORE PROCEDURE rb-dal-BeforeProcedure, 
+           .
+      * RADIO BUTTON
+       05
+           rb-grid, 
+           Radio-Button, 
+           COL 1,80, 
+           LINE 10,60,
+           LINES 2,10 CELLS,
+           SIZE 1,50 CELLS,
+           EXCEPTION-VALUE 1002
+           FLAT,
+           GROUP 1,
+           GROUP-VALUE 2,
+           ID IS 9,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VALUE tipo-del,
+           AFTER PROCEDURE rb-grid-AfterProcedure, 
+           BEFORE PROCEDURE rb-grid-BeforeProcedure, 
+           .
       * ENTRY FIELD
        05
            ef-num-from, 
            Entry-Field, 
-           COL 2,80, 
-           LINE 6,61,
-           LINES 2,10 CELLS,
-           SIZE 9,00 CELLS,
+           COL 4,40, 
+           LINE 6,60,
+           LINES 2,20 CELLS,
+           SIZE 8,50 CELLS,
            BOXED,
            COLOR IS 513,
+           ENABLED e-dalal,
            ID IS 78-ID-ef-num-from,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -221,12 +270,13 @@
        05
            ef-num-to, 
            Entry-Field, 
-           COL 28,80, 
-           LINE 6,61,
-           LINES 2,10 CELLS,
-           SIZE 9,00 CELLS,
+           COL 27,90, 
+           LINE 6,60,
+           LINES 2,20 CELLS,
+           SIZE 8,50 CELLS,
            BOXED,
            COLOR IS 513,
+           ENABLED e-dalal,
            ID IS 78-ID-ef-num-to,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -235,12 +285,41 @@
            VALUE ef-num-to-BUF,
            .
 
+      * GRID
+       05
+           gd1, 
+           Grid, 
+           COL 4,30, 
+           LINE 10,30,
+           LINES 38,20 CELLS,
+           SIZE 32,00 CELLS,
+           BOXED,
+           DATA-COLUMNS (1),
+           ALIGNMENT ("R"),
+           SEPARATION (5),
+           NUM-COL-HEADINGS 1,
+           COLUMN-HEADINGS,
+           CURSOR-COLOR 481
+           CURSOR-FRAME-WIDTH 1,
+           DIVIDER-COLOR 1,
+           ENABLED e-grid,
+           HEADING-COLOR 257,
+           HEADING-DIVIDER-COLOR 1,
+           ID IS 78-ID-gd1,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           RECORD-DATA scr-elab-Gd-1-Record,
+           TILED-HEADINGS,
+           VPADDING 10,
+           EVENT PROCEDURE scr-elab-Gd-1-Event-Proc,
+           .
+
       * PUSH BUTTON
        05
            pb-sib, 
            Push-Button, 
            COL 23,50, 
-           LINE 11,20,
+           LINE 50,20,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -260,7 +339,7 @@
            pb-noa, 
            Push-Button, 
            COL 31,50, 
-           LINE 11,20,
+           LINE 50,20,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -282,14 +361,14 @@
            Screen4-Br-1aaa, 
            Bar,
            COL 1,00, 
-           LINE 11,00,
+           LINE 50,00,
            SIZE 38,70 CELLS,
            ID IS 12,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           COLORS (8, 8),
-           SHADING (-1, 1),
-           WIDTH 2,
+           COLORS (8),
+           SHADING (-1),
+           WIDTH 1,
            .
 
       * LABEL
@@ -297,7 +376,7 @@
            scr-elab-blockpgm-1, 
            Label, 
            COL 1,70, 
-           LINE 11,80,
+           LINE 50,80,
            LINES 1,70 CELLS,
            SIZE 3,20 CELLS,
            ID IS 2,
@@ -312,7 +391,7 @@
        05
            Screen3-La-1a, 
            Label, 
-           COL 3,00, 
+           COL 2,00, 
            LINE 2,50,
            LINES 2,10 CELLS,
            SIZE 5,00 CELLS,
@@ -328,7 +407,7 @@
        05
            Screen3-La-1aa, 
            Label, 
-           COL 16,80, 
+           COL 16,90, 
            LINE 6,60,
            LINES 2,10 CELLS,
            SIZE 7,00 CELLS,
@@ -344,7 +423,7 @@
        05
            Bitmap-freccia-finoa, 
            Bitmap, 
-           COL 24,80, 
+           COL 24,40, 
            LINE 6,30,
            LINES 24,00 ,
            SIZE 28,00 ,
@@ -359,7 +438,7 @@
        05
            Bitmap-freccia-daa, 
            Bitmap, 
-           COL 12,80, 
+           COL 13,40, 
            LINE 6,30,
            LINES 24,00 ,
            SIZE 28,00 ,
@@ -375,7 +454,7 @@
            scr-elab-Custom1-1, 
            Label, 
            COL 7,90, 
-           LINE 12,20,
+           LINE 51,20,
            LINES 1,60 CELLS,
            SIZE 2,60 CELLS,
            FONT IS Default-Font,
@@ -967,6 +1046,13 @@
            .
 
 
+      * GRID
+       gd1-Content.
+      * CELLS' SETTING
+              MODIFY gd1, X = 1, Y = 1,
+                CELL-DATA = "Num. evasione",
+           .
+
       * FD's Initialize Paragraph
        DataSet1-tordini-INITREC.
            INITIALIZE tor-rec OF tordini
@@ -995,7 +1081,7 @@
 
        form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 13,90,
+              LINES 52,90,
               SIZE 38,70,
               CELL HEIGHT 10,
               CELL WIDTH 10,
@@ -1024,6 +1110,7 @@
       * Status-bar
            DISPLAY form1 UPON form1-handle
       * DISPLAY-COLUMNS settings
+              MODIFY gd1, DISPLAY-COLUMNS (1, 0)
            .
 
        form1-PROC.
@@ -1033,7 +1120,16 @@
            move        0      to num-from ef-num-from-buf.
            move 99999999      to num-to   ef-num-to-buf.
 
+           move 1 to tipo-del.
+
+           move 0 to e-grid.
+           move 1 to e-dalal.
+
            display form1.
+
+           modify gd1, reset-grid = 1.
+           perform GD1-CONTENT.
+           modify gd1, insert-rows = 1.
 
            .
       * <TOTEM:END>
@@ -1062,6 +1158,10 @@
                  IF Event-Type = Cmd-Close
                     PERFORM form1-Exit
                  END-IF
+              WHEN Key-Status = 1001
+                 PERFORM rb-dal-LinkTo
+              WHEN Key-Status = 1002
+                 PERFORM rb-grid-LinkTo
               WHEN Key-Status = 1000
                  PERFORM pb-sib-LinkTo
            END-EVALUATE
@@ -1099,6 +1199,8 @@
        form1-Init-Data.
            MOVE 1 TO TOTEM-Form-Index
            MOVE 0 TO TOTEM-Frame-Index
+      * GRID
+           PERFORM gd1-Content
            .
 
        form1-Init-Value.
@@ -1343,6 +1445,15 @@
            perform form1-AFTER-SCREEN
            .
 
+       scr-elab-Gd-1-Event-Proc.
+           EVALUATE Event-Type ALSO Event-Control-Id ALSO
+                                    Event-Window-Handle
+           WHEN Msg-Finish-Entry ALSO 5004 ALSO
+                    form1-handle 
+              PERFORM gd1-Ev-Msg-Finish-Entry
+           END-EVALUATE
+           .
+
       * USER DEFINE PARAGRAPH
        CONTROLLO.
       * <TOTEM:PARA. CONTROLLO>
@@ -1414,23 +1525,44 @@
       * <TOTEM:END>
        pb-sib-LinkTo.
       * <TOTEM:PARA. pb-sib-LinkTo>
-           perform varying control-id from 78-ID-ef-anno by 1
-                     until control-id > 78-ID-ef-num-to
-               perform CONTROLLO
-               if errori
-                  exit perform
-               end-if
-           end-perform.
+           if tipo-del = 1
+              perform varying control-id from 78-ID-ef-anno by 1
+                        until control-id > 78-ID-ef-num-to
+                  perform CONTROLLO
+                  if errori
+                     exit perform
+                  end-if
+              end-perform
+           else
+              inquire gd1, last-row in tot-righe
+              if tot-righe = 1
+                 display message "Indicare almeno un'evasione"
+                           title tit-err
+                            icon 2
+                 set errori to true
+              end-if
+           end-if.
 
            if tutto-ok
-              display message "Verranno annullate le bozze dal " 
+              if tipo-del = 1
+                 display message "Verranno annullate le bozze dal " 
            num-from " al " num-to
-                       x"0d0a""Confermi?"
-                        title titolo
-                         icon 2
-                         type mb-yes-no
-                      default mb-no
-                       giving scelta
+                          x"0d0a""Confermi?"
+                           title titolo
+                            icon 2
+                            type mb-yes-no
+                         default mb-no
+                          giving scelta
+              else                     
+                 display message "Verranno annullate le bozze in elenco.
+      -    ""
+                          x"0d0a""Confermi?"
+                           title titolo
+                            icon 2
+                            type mb-yes-no
+                         default mb-no
+                          giving scelta
+              end-if
               if scelta = mb-no
                  set errori to true
               end-if
@@ -1443,97 +1575,11 @@
               move 0 to idx-tot-art
               move 0 to deleted
               call "W$MOUSE" using set-mouse-shape, wait-pointer
-              perform varying num-from from num-from by 1
-                        until num-from > num-to
-                 move anno-to  to tor-anno
-                 move num-from to tor-numero
-                 read tordini no lock
-                      invalid
-                      display message "EVASIONE INESISTENTE!!!"
-                               x"0d0a""ANNO: " tor-anno " - N. " 
-           tor-numero
-                                title tit-err
-                                 icon 2
-                  not invalid
-                      if tor-anno-bolla   = 0 and
-                         tor-anno-fattura = 0
-                         add 1 to deleted                         
-                         initialize gordcvar-linkage
-                         move tor-chiave     to LinkChiave
-                         move "del-evasioni" to LinkPgm
-                         move 3              to livello-abil
-                         call   "gordcvar"   using lk-blockpgm
-                                                   user-codi
-                                                   livello-abil
-                                                   gordcvar-linkage
-                                                   link-ra-articoli-tab
-                         cancel "gordcvar"
-                         if LinkRicaricaGrid = 1
-                            if ra-evasioni = spaces
-                               move tor-numero to tor-numero-x
-                               inspect tor-numero-x 
-                                       replacing leading x"30" by x"20"
-                               call "C$JUSTIFY" using tor-numero-x, "L" 
-                       
-                               move tor-numero-x to ra-evasioni
-                            else
-                               move tor-numero to tor-numero-x
-                               inspect tor-numero-x 
-                                       replacing leading x"30" by x"20"
-                               call "C$JUSTIFY" using tor-numero-x, "L" 
-                       
-                               inspect tor-numero-x replacing trailing 
-           spaces by low-value
-
-                               inspect ra-evasioni replacing trailing 
-           spaces by low-value
-                               string  ra-evasioni   delimited 
-           low-value                   
-                                       "-"           delimited size
-                                       tor-numero-x  delimited low-value
-                                  into ra-evasioni
-                               end-string
-                               inspect ra-evasioni replacing trailing 
-           low-value by spaces
-                            end-if
-                            perform varying idx from 1 by 1 
-                                      until idx > 999
-                               if link-ra-articolo(idx) = 0
-                                  exit perform
-                               end-if
-                               set idx-art to 1
-                               search el-art
-                                 at end move 0 to idx-art
-                               when el-art(idx-art) = 
-           link-ra-articolo(idx)
-                                    continue
-                               end-search
-                               if idx-art = 0
-                                  add 1 to idx-tot-art
-                                  move link-ra-articolo(idx) to 
-           el-art(idx-tot-art)
-                               end-if
-                            end-perform
-                         end-if
-                      else
-                         if tor-anno-fattura not = 0
-                            display message "EVASIONE FATTURATA!!!"
-                                   x"0d0a""ANNO: " tor-anno " - N. " 
-           tor-numero
-                                      title tit-err
-                                       icon 2
-                         else
-                            if tor-anno-bolla not = 0
-                               display message "EVASIONE BOLLETTATA!!!"
-                                        x"0d0a""ANNO: " tor-anno " - N. 
-      -    "" tor-numero
-                                         title tit-err
-                                          icon 2
-                            end-if
-                         end-if
-                      end-if
-                 end-read
-              end-perform   
+              if tipo-del = 1
+                 perform DEL-DAL-AL
+              else
+                 perform DEL-ELENCO
+              end-if
 
               if idx-tot-art > 0
                  perform varying idx from 1 by 1 
@@ -1554,11 +1600,112 @@
                        x"0d0a""CANCELLATE " deleted " EVASIONI"
                         title titolo
                          icon 2
-              modify pb-sib, bitmap-number = 1
-              move 78-ID-ef-anno to control-id
-              move             4 to accept-control
               call   "tprev-elab" using user-codi
               cancel "tprev-elab"
+              move 27 to key-status
+           end-if.
+
+      ***---
+       DEL-DAL-AL.
+           perform varying num-from from num-from by 1
+                     until num-from > num-to
+              move anno-to  to tor-anno
+              move num-from to tor-numero
+              read tordini no lock
+                   invalid
+                   display message "EVASIONE INESISTENTE!!!"
+                            x"0d0a""ANNO: " tor-anno " - N. " tor-numero
+                             title tit-err
+                              icon 2
+               not invalid
+                   if tor-anno-bolla   = 0 and
+                      tor-anno-fattura = 0   
+                      perform CANCELLA-EVASIONE
+                   else
+                      if tor-anno-fattura not = 0
+                         display message "EVASIONE FATTURATA!!!"
+                                x"0d0a""ANNO: " tor-anno " - N. " 
+           tor-numero
+                                   title tit-err
+                                    icon 2
+                      else
+                         if tor-anno-bolla not = 0
+                            display message "EVASIONE BOLLETTATA!!!"
+                                     x"0d0a""ANNO: " tor-anno " - N. " 
+           tor-numero
+                                      title tit-err
+                                       icon 2
+                         end-if
+                      end-if
+                   end-if
+              end-read
+           end-perform.
+
+      ***---
+       DEL-ELENCO.     
+           inquire gd1, last-row in tot-righe,
+           perform varying riga from 2 by 1
+                     until riga > tot-righe
+              move anno-to  to tor-anno  
+              inquire gd1(riga, 1), cell-data in tor-numero    
+              perform CANCELLA-EVASIONE
+           end-perform.
+
+      ***---
+       CANCELLA-EVASIONE.   
+           add 1 to deleted.
+           initialize gordcvar-linkage
+           move tor-chiave     to LinkChiave
+           move "del-evasioni" to LinkPgm
+           move 3              to livello-abil
+           call   "gordcvar"   using lk-blockpgm
+                                     user-codi
+                                     livello-abil
+                                     gordcvar-linkage
+                                     link-ra-articoli-tab
+           cancel "gordcvar"
+           if LinkRicaricaGrid = 1
+              if ra-evasioni = spaces
+                 move tor-numero to tor-numero-x
+                 inspect tor-numero-x 
+                         replacing leading x"30" by x"20"
+                 call "C$JUSTIFY" using tor-numero-x, "L"             
+                 move tor-numero-x to ra-evasioni
+              else
+                 move tor-numero to tor-numero-x
+                 inspect tor-numero-x 
+                         replacing leading x"30" by x"20"
+                 call "C$JUSTIFY" using tor-numero-x, "L"             
+                 inspect tor-numero-x replacing trailing spaces by 
+           low-value
+
+                 inspect ra-evasioni replacing trailing spaces by 
+           low-value
+                 string  ra-evasioni   delimited low-value              
+                
+                         "-"           delimited size
+                         tor-numero-x  delimited low-value
+                    into ra-evasioni
+                 end-string
+                 inspect ra-evasioni replacing trailing low-value by 
+           spaces
+              end-if
+              perform varying idx from 1 by 1 
+                        until idx > 999
+                 if link-ra-articolo(idx) = 0
+                    exit perform
+                 end-if
+                 set idx-art to 1
+                 search el-art
+                   at end move 0 to idx-art
+                 when el-art(idx-art) = link-ra-articolo(idx)
+                      continue
+                 end-search
+                 if idx-art = 0
+                    add 1 to idx-tot-art
+                    move link-ra-articolo(idx) to el-art(idx-tot-art)
+                 end-if
+              end-perform
            end-if 
            .
       * <TOTEM:END>
@@ -1640,6 +1787,115 @@
            .
       * <TOTEM:END>
 
+       rb-dal-BeforeProcedure.
+      * <TOTEM:PARA. rb-dal-BeforeProcedure>
+           modify control-handle, color = colore-nu
+           .
+      * <TOTEM:END>
+       rb-grid-BeforeProcedure.
+      * <TOTEM:PARA. rb-grid-BeforeProcedure>
+           modify control-handle, color = colore-nu
+           .
+      * <TOTEM:END>
+       rb-dal-AfterProcedure.
+      * <TOTEM:PARA. rb-dal-AfterProcedure>
+           modify control-handle, color = colore-or
+           .
+      * <TOTEM:END>
+       rb-grid-AfterProcedure.
+      * <TOTEM:PARA. rb-grid-AfterProcedure>
+           modify control-handle, color = colore-or
+           .
+      * <TOTEM:END>
+       rb-dal-LinkTo.
+      * <TOTEM:PARA. rb-dal-LinkTo>
+           move 1 to e-dalal.
+           move 0 to e-grid.
+           display ef-num-from ef-num-to.
+
+
+           modify gd1, enabled e-grid 
+           .
+      * <TOTEM:END>
+       rb-grid-LinkTo.
+      * <TOTEM:PARA. rb-grid-LinkTo>
+           move 0 to e-dalal.
+           move 1 to e-grid.
+           display ef-num-from ef-num-to.
+
+
+           modify gd1, enabled e-grid 
+           .
+      * <TOTEM:END>
+       gd1-Ev-Msg-Finish-Entry.
+      * <TOTEM:PARA. gd1-Ev-Msg-Finish-Entry>
+           set tutto-ok to true.
+           inquire ef-anno, value in tor-anno.
+           inquire gd1(event-data-2, 1), cell-data in tor-numero.
+           if tor-numero = 0          
+              modify gd1, record-to-delete = event-data-2
+              inquire gd1, last-row in tot-righe
+              if tot-righe = 1
+                 modify gd1, insert-rows = 1
+              end-if
+              exit paragraph
+           else
+              read tordini no lock 
+                   invalid
+                   display message "Evasione non valida"
+                             title tit-err
+                              icon 2
+                   set errori to true
+               not invalid       
+                   if tor-anno-fattura not = 0
+                      display message "EVASIONE FATTURATA!!!"
+                                title tit-err
+                                 icon 2
+                      set errori to true
+                   else
+                      if tor-anno-bolla not = 0
+                         display message "EVASIONE BOLLETTATA!!!"
+                                   title tit-err
+                                    icon 2
+                         set errori to true
+                      end-if
+                   end-if
+              end-read
+              if tutto-ok
+                 move tor-numero to s-num
+                 inquire gd1, last-row in tot-righe
+                 perform varying riga from 2 by 1 
+                           until riga > tot-righe
+                    if riga = event-data-2 
+                       exit perform cycle
+                    end-if      
+                    inquire gd1(riga, 1), cell-data in tor-numero
+                    if tor-numero = s-num      
+                       subtract 1 from riga
+                       display message "Evasione già presente a riga " 
+           riga
+                                 title tit-err
+                                  icon 2
+                       set errori to true
+                       exit perform
+                    end-if   
+                 end-perform
+              end-if
+           end-if.
+
+           if errori
+              set event-action to event-action-fail
+           else
+              inquire gd1, last-row in tot-righe
+              add 1 to tot-righe giving riga
+              perform varying riga from riga by 1 
+                        until riga > 999
+                 modify gd1, record-to-delete = riga
+              end-perform
+              modify gd1, insert-rows = 1
+           end-if 
+           .
+      * <TOTEM:END>
 
       *{TOTEM}END
 

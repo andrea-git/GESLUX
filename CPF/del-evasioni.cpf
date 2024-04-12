@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=check-utf-Ev-Before-Program
 AFTER_PROGRAM=check-utf-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E84A141321-567-3259217081
+PROGRAM_UNIQUE_CODE=TOTEM-7E84C83424-366-1728713688
 
 {{@DESCRIPTION:
 
@@ -471,7 +471,7 @@ m_bFixed=1
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
-m_strDefaultValue=0
+m_strDefaultValue=100
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -538,9 +538,9 @@ m_bFixed=1
 
 @}}
 [FDITEM42_WK]
-m_strName=idx-tot-art
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=s-num
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -548,14 +548,24 @@ m_bFixed=1
 
 @}}
 [FDITEM43_WK]
-m_strName=link-ra-articoli-tab
-m_nItemLevel=1
+m_strName=idx-tot-art
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM43_WK
 
 @}}
 [FDITEM44_WK]
+m_strName=link-ra-articoli-tab
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
 m_strName=link-ra-articoli
 m_nItemLevel=3
 m_nSync=-1
@@ -563,10 +573,10 @@ m_bOccurs=1
 m_bFixed=1
 m_strRawSize=999
 m_nSize=999
-{{@DataItem_m_strDescriptionFDITEM44_WK
+{{@DataItem_m_strDescriptionFDITEM45_WK
 
 @}}
-[FDITEM45_WK]
+[FDITEM46_WK]
 m_strName=link-ra-articolo
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -575,18 +585,18 @@ m_nSync=-1
 m_bFixed=1
 m_strRawSize=999
 m_nSize=999
-{{@DataItem_m_strDescriptionFDITEM45_WK
-
-@}}
-[FDITEM46_WK]
-m_strName=tab-art
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM46_WK
 
 @}}
 [FDITEM47_WK]
+m_strName=tab-art
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
 m_strName=el-art
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -598,23 +608,11 @@ m_strRawSize=9999
 m_nSize=9999
 m_bIndexed=1
 m_lstIndex=idx-art,
-{{@DataItem_m_strDescriptionFDITEM47_WK
-
-@}}
-[FDITEM48_WK]
-m_strName=BLUE-FINO-28X24-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM48_WK
 
 @}}
 [FDITEM49_WK]
-m_strName=BLUE-DA-28X24-BMP
+m_strName=BLUE-FINO-28X24-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -626,9 +624,11 @@ m_bFixed=1
 
 @}}
 [FDITEM50_WK]
-m_strName=STATUS-tordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=BLUE-DA-28X24-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -636,12 +636,73 @@ m_bFixed=1
 
 @}}
 [FDITEM51_WK]
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM51_WK
+
+@}}
+[FDITEM52_WK]
 m_strName=Valid-STATUS-tordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM51_WK
+{{@DataItem_m_strDescriptionFDITEM52_WK
+
+@}}
+[FDITEM53_WK]
+m_strName=scr-elab-Gd-1-Record
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM53_WK
+
+@}}
+[FDITEM54_WK]
+m_strName=col-num
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM54_WK
+
+@}}
+[FDITEM55_WK]
+m_strName=tipo-del
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=2
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
+m_strName=e-dalal
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM56_WK
+
+@}}
+[FDITEM57_WK]
+m_strName=e-grid
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM57_WK
 
 @}}
 
@@ -871,7 +932,7 @@ Begin Screen form1
    Height in Cells   = TRUE
    Help ID           = 1
    Label Offset      = 0
-   Lines             = 13,90
+   Lines             = 52,90
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -894,7 +955,7 @@ Begin Screen form1
    Window Type       = Independent
    Wrap              = FALSE
    Begin Data.Entry-Field ef-anno
-      SCREEN-COL        = 9,00
+      SCREEN-COL        = 7,90
       SCREEN-LINE       = 2,50
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -906,7 +967,7 @@ Begin Screen form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 9,00
+      Column            = 7,90
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -927,7 +988,7 @@ Begin Screen form1
       ID Variable       = AUTO-ID
       Justification     = Right
       Line              = 2,50
-      Lines             = 2,10
+      Lines             = 2,20
       Lines Unit        = Default
       Max Lines         = 0
       Max Text          = 4
@@ -954,9 +1015,105 @@ Begin Screen form1
       Before Procedure  = ef-anno-BeforeProcedure
       After Procedure   = ef-anno-AfterProcedure
    End
+   Begin Radio-Button rb-dal
+      SCREEN-COL        = 1,80
+      SCREEN-LINE       = 6,60
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = rb-dal
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,80
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1001
+      Flat              = TRUE
+      Font              = Default Font
+      Group             = 1
+      Group Value       = 1
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 8
+      Left Text         = FALSE
+      Line              = 6,60
+      Lines             = 2,10
+      Lines Unit        = Default
+      No Group Tab      = FALSE
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,50
+      Size Unit         = Default
+      Tab Order         = 2
+      Termination Value = 0
+      Value             = 1
+      Value Picture     = 9
+      Value Variable    = tipo-del
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = rb-dal-BeforeProcedure
+      After Procedure   = rb-dal-AfterProcedure
+      Link To           = rb-dal-LinkTo
+   End
+   Begin Radio-Button rb-grid
+      SCREEN-COL        = 1,80
+      SCREEN-LINE       = 10,60
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = rb-grid
+      Bitmap Frame      = FALSE
+      Bitmap Number     = 1
+      Bitmap Square     = TRUE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 1,80
+      Copy Resource     = TRUE
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Exception Value   = 1002
+      Flat              = TRUE
+      Font              = Default Font
+      Group             = 1
+      Group Value       = 2
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 9
+      Left Text         = FALSE
+      Line              = 10,60
+      Lines             = 2,10
+      Lines Unit        = Default
+      No Group Tab      = FALSE
+      No Tab            = FALSE
+      Notify            = FALSE
+      Occurs            = 0
+      Self Act          = FALSE
+      Size              = 1,50
+      Size Unit         = Default
+      Tab Order         = 3
+      Termination Value = 0
+      Value             = 2
+      Value Picture     = 9
+      Value Variable    = tipo-del
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = rb-grid-BeforeProcedure
+      After Procedure   = rb-grid-AfterProcedure
+      Link To           = rb-grid-LinkTo
+   End
    Begin Data.Entry-Field ef-num-from
-      SCREEN-COL        = 2,80
-      SCREEN-LINE       = 6,61
+      SCREEN-COL        = 4,40
+      SCREEN-LINE       = 6,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-num-from
@@ -967,7 +1124,7 @@ Begin Screen form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 2,80
+      Column            = 4,40
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -975,6 +1132,7 @@ Begin Screen form1
       Cursor Row        = 0
       Destroy Type      = Automatic
       Enable            = NONE
+      Enable Variable   = e-dalal
       Field Edited (Style) = 1
       Field Edited Format = zzzzzzz9
       Field Picture     = 9(8)
@@ -987,8 +1145,8 @@ Begin Screen form1
       ID                = 3
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 6,61
-      Lines             = 2,10
+      Line              = 6,60
+      Lines             = 2,20
       Lines Unit        = Default
       Max Lines         = 0
       Max Text          = 8
@@ -1002,10 +1160,10 @@ Begin Screen form1
       Read Only         = FALSE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 9,00
+      Size              = 8,50
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 2
+      Tab Order         = 4
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -1016,8 +1174,8 @@ Begin Screen form1
       After Procedure   = ef-num-from-AfterProcedure
    End
    Begin Data.Entry-Field ef-num-to
-      SCREEN-COL        = 28,80
-      SCREEN-LINE       = 6,61
+      SCREEN-COL        = 27,90
+      SCREEN-LINE       = 6,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = ef-num-to
@@ -1028,7 +1186,7 @@ Begin Screen form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 28,80
+      Column            = 27,90
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -1036,6 +1194,7 @@ Begin Screen form1
       Cursor Row        = 0
       Destroy Type      = Automatic
       Enable            = NONE
+      Enable Variable   = e-dalal
       Field Edited (Style) = 1
       Field Edited Format = zzzzzzz9
       Field Picture     = 9(8)
@@ -1048,8 +1207,8 @@ Begin Screen form1
       ID                = 4
       ID Variable       = AUTO-ID
       Justification     = Right
-      Line              = 6,61
-      Lines             = 2,10
+      Line              = 6,60
+      Lines             = 2,20
       Lines Unit        = Default
       Max Lines         = 0
       Max Text          = 8
@@ -1063,10 +1222,10 @@ Begin Screen form1
       Read Only         = FALSE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 9,00
+      Size              = 8,50
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 3
+      Tab Order         = 5
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -1076,9 +1235,71 @@ Begin Screen form1
       Before Procedure  = ef-num-to-BeforeProcedure
       After Procedure   = ef-num-to-AfterProcedure
    End
+   Begin Grid gd1
+      SCREEN-COL        = 4,30
+      SCREEN-LINE       = 10,30
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = gd1
+      Action            = (None)
+      Adjustable Columns = FALSE
+      Border            = Boxed
+      Cells' Setting    = ( X = 1, Y = 1, Data = "Num. evasione" )
+      Centered Headings = FALSE
+      Color             = 0
+      Column            = 4,30
+      Column Headings   = TRUE
+      Columns' Setting  = ( X = 1, Name = col-num, READONLY = 0 )
+      Columns' Setting  = ( PIC = "9(8)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "R" )
+      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Cursor Color      = 481
+      Cursor Frame Width = 1
+      Cursor X          = 0
+      Cursor Y          = 0
+      Destroy Type      = Automatic
+      Divider Color     = 1
+      Drag Color        = 0
+      Enable            = NONE
+      Enable Variable   = e-grid
+      End Color         = 0
+      Font              = Default Font
+      Heading Color     = 257
+      Heading Divider Color = 1
+      Heading Font      = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hscroll           = FALSE
+      ID                = 100
+      ID Variable       = AUTO-ID
+      Last Row          = 0
+      Line              = 10,30
+      Lines             = 38,20
+      Lines Unit        = Default
+      No Tab            = FALSE
+      Num Col Headings  = 1
+      Num Columns       = 1
+      Num Rows          = 0
+      Occurs            = 0
+      Paged             = FALSE
+      Record Data       = scr-elab-Gd-1-Record
+      Row Dividers      = 1
+      Row Headings      = FALSE
+      Size              = 32,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Tiled Headings    = TRUE
+      Use Tab           = FALSE
+      Virtual Width     = 0
+      Visible           = NONE
+      Vpadding          = 10
+      Vscroll           = FALSE
+      Width in Cells    = TRUE
+      Event Procedure   = scr-elab-Gd-1-Event-Proc
+      Msg-Finish-Entry  = gd1-Ev-Msg-Finish-Entry
+   End
    Begin Push-Button pb-sib
       SCREEN-COL        = 23,50
-      SCREEN-LINE       = 11,20
+      SCREEN-LINE       = 50,20
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-sib
@@ -1102,7 +1323,7 @@ Begin Screen form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 5
-      Line              = 11,20
+      Line              = 50,20
       Lines             = 3,70
       Lines in Pixels   = 30
       Lines Unit        = Default
@@ -1114,7 +1335,7 @@ Begin Screen form1
       Size in Pixels    = 73
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 4
+      Tab Order         = 7
       Termination Value = 0
       Visible           = NONE
       Width in Cells    = FALSE
@@ -1124,7 +1345,7 @@ Begin Screen form1
    End
    Begin Push-Button pb-noa
       SCREEN-COL        = 31,50
-      SCREEN-LINE       = 11,20
+      SCREEN-LINE       = 50,20
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-noa
@@ -1148,7 +1369,7 @@ Begin Screen form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 11
-      Line              = 11,20
+      Line              = 50,20
       Lines             = 3,70
       Lines in Pixels   = 30
       Lines Unit        = Default
@@ -1160,7 +1381,7 @@ Begin Screen form1
       Size in Pixels    = 73
       Size Unit         = Default
       Style             = Escape Button
-      Tab Order         = 5
+      Tab Order         = 8
       Termination Value = 0
       Visible           = NONE
       Width in Cells    = FALSE
@@ -1169,7 +1390,7 @@ Begin Screen form1
    End
    Begin Bar Screen4-Br-1aaa
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 11,00
+      SCREEN-LINE       = 50,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Br-1aaa
@@ -1184,25 +1405,25 @@ Begin Screen form1
       Help ID           = 0
       ID                = 12
       Kind              = Horizontal
-      Line              = 11,00
+      Line              = 50,00
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
-      COLORS            = ( 8, 8 )
-      SHADING           = ( -1, 1 )
+      COLORS            = ( 8 )
+      SHADING           = ( -1 )
       Size (Lines)      = 38,70
       Size (Lines) in Pixels = 387
       Size (Lines) Unit = Default
-      Tab Order         = 6
+      Tab Order         = 9
       Visible           = NONE
-      Width             = 2
+      Width             = 1
       Width in Cells    = TRUE
    End
    Begin CsCtrl.blockpgm Label scr-elab-blockpgm-1
       CUST-SYMBOL       = blockpgm
       CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
       SCREEN-COL        = 1,70
-      SCREEN-LINE       = 11,80
+      SCREEN-LINE       = 50,80
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = scr-elab-blockpgm-1
@@ -1220,14 +1441,14 @@ Begin Screen form1
       ID                = 2
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 11,80
+      Line              = 50,80
       Lines             = 1,70
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 3,20
       Size Unit         = Default
-      Tab Order         = 7
+      Tab Order         = 10
       Title             = "BlockPgm"
       Transparent       = TRUE
       Visible           = NONE
@@ -1235,7 +1456,7 @@ Begin Screen form1
       Width in Cells    = TRUE
    End
    Begin Label Screen3-La-1a
-      SCREEN-COL        = 3,00
+      SCREEN-COL        = 2,00
       SCREEN-LINE       = 2,50
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1243,7 +1464,7 @@ Begin Screen form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 3,00
+      Column            = 2,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -1261,14 +1482,14 @@ Begin Screen form1
       Occurs            = 0
       Size              = 5,00
       Size Unit         = Default
-      Tab Order         = 8
+      Tab Order         = 11
       Title             = "Anno"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Screen3-La-1aa
-      SCREEN-COL        = 16,80
+      SCREEN-COL        = 16,90
       SCREEN-LINE       = 6,60
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1276,7 +1497,7 @@ Begin Screen form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 0
-      Column            = 16,80
+      Column            = 16,90
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -1294,14 +1515,14 @@ Begin Screen form1
       Occurs            = 0
       Size              = 7,00
       Size Unit         = Default
-      Tab Order         = 9
+      Tab Order         = 12
       Title             = "Numero"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Bitmap Bitmap-freccia-finoa
-      SCREEN-COL        = 24,80
+      SCREEN-COL        = 24,40
       SCREEN-LINE       = 6,30
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1312,7 +1533,7 @@ Begin Screen form1
       Bitmap Number     = 1
       Bitmap Start      = 0
       Bitmap Timer      = 0
-      Column            = 24,80
+      Column            = 24,40
       Copy Resource     = TRUE
       Destroy Type      = Automatic
       Font              = Default Font
@@ -1327,7 +1548,7 @@ Begin Screen form1
       Size              = 2,80
       Size in Pixels    = 28
       Size Unit         = Default
-      Tab Order         = 10
+      Tab Order         = 13
       Transparent Color = 0
       Transparent Color Variable = tr-color
       Visible           = NONE
@@ -1335,7 +1556,7 @@ Begin Screen form1
       Additional Properties = "Transparent-color TR-COLOR"
    End
    Begin Bitmap Bitmap-freccia-daa
-      SCREEN-COL        = 12,80
+      SCREEN-COL        = 13,40
       SCREEN-LINE       = 6,30
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -1346,7 +1567,7 @@ Begin Screen form1
       Bitmap Number     = 1
       Bitmap Start      = 0
       Bitmap Timer      = 0
-      Column            = 12,80
+      Column            = 13,40
       Copy Resource     = TRUE
       Destroy Type      = Automatic
       Font              = Default Font
@@ -1361,7 +1582,7 @@ Begin Screen form1
       Size              = 2,80
       Size in Pixels    = 28
       Size Unit         = Default
-      Tab Order         = 11
+      Tab Order         = 14
       Transparent Color = 0
       Transparent Color Variable = tr-color
       Visible           = NONE
@@ -1372,7 +1593,7 @@ Begin Screen form1
       CUST-SYMBOL       = Custom1
       CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
       SCREEN-COL        = 7,90
-      SCREEN-LINE       = 12,20
+      SCREEN-LINE       = 51,20
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = scr-elab-Custom1-1
@@ -1393,14 +1614,14 @@ Begin Screen form1
       ID                = 7
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 12,20
+      Line              = 51,20
       Lines             = 1,60
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 2,60
       Size Unit         = Default
-      Tab Order         = 12
+      Tab Order         = 15
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -1456,7 +1677,16 @@ BEGIN-TEXT
            move        0      to num-from ef-num-from-buf.
            move 99999999      to num-to   ef-num-to-buf.
 
+           move 1 to tipo-del.
+
+           move 0 to e-grid.
+           move 1 to e-dalal.
+
            display form1.
+
+           modify gd1, reset-grid = 1.
+           perform GD1-CONTENT.
+           modify gd1, insert-rows = 1.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -1553,22 +1783,42 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = pb-sib-LinkTo
 BEGIN-TEXT
-           perform varying control-id from 78-ID-ef-anno by 1
-                     until control-id > 78-ID-ef-num-to
-               perform CONTROLLO
-               if errori
-                  exit perform
-               end-if
-           end-perform.
+           if tipo-del = 1
+              perform varying control-id from 78-ID-ef-anno by 1
+                        until control-id > 78-ID-ef-num-to
+                  perform CONTROLLO
+                  if errori
+                     exit perform
+                  end-if
+              end-perform
+           else
+              inquire gd1, last-row in tot-righe
+              if tot-righe = 1
+                 display message "Indicare almeno un'evasione"
+                           title tit-err
+                            icon 2
+                 set errori to true
+              end-if
+           end-if.
 
            if tutto-ok
-              display message "Verranno annullate le bozze dal " num-from " al " num-to
-                       x"0d0a""Confermi?"
-                        title titolo
-                         icon 2
-                         type mb-yes-no
-                      default mb-no
-                       giving scelta
+              if tipo-del = 1
+                 display message "Verranno annullate le bozze dal " num-from " al " num-to
+                          x"0d0a""Confermi?"
+                           title titolo
+                            icon 2
+                            type mb-yes-no
+                         default mb-no
+                          giving scelta
+              else                     
+                 display message "Verranno annullate le bozze in elenco."
+                          x"0d0a""Confermi?"
+                           title titolo
+                            icon 2
+                            type mb-yes-no
+                         default mb-no
+                          giving scelta
+              end-if
               if scelta = mb-no
                  set errori to true
               end-if
@@ -1581,86 +1831,11 @@ BEGIN-TEXT
               move 0 to idx-tot-art
               move 0 to deleted
               call "W$MOUSE" using set-mouse-shape, wait-pointer
-              perform varying num-from from num-from by 1
-                        until num-from > num-to
-                 move anno-to  to tor-anno
-                 move num-from to tor-numero
-                 read tordini no lock
-                      invalid
-                      display message "EVASIONE INESISTENTE!!!"
-                               x"0d0a""ANNO: " tor-anno " - N. " tor-numero
-                                title tit-err
-                                 icon 2
-                  not invalid
-                      if tor-anno-bolla   = 0 and
-                         tor-anno-fattura = 0
-                         add 1 to deleted                         
-                         initialize gordcvar-linkage
-                         move tor-chiave     to LinkChiave
-                         move "del-evasioni" to LinkPgm
-                         move 3              to livello-abil
-                         call   "gordcvar"   using lk-blockpgm
-                                                   user-codi
-                                                   livello-abil
-                                                   gordcvar-linkage
-                                                   link-ra-articoli-tab
-                         cancel "gordcvar"
-                         if LinkRicaricaGrid = 1
-                            if ra-evasioni = spaces
-                               move tor-numero to tor-numero-x
-                               inspect tor-numero-x 
-                                       replacing leading x"30" by x"20"
-                               call "C$JUSTIFY" using tor-numero-x, "L"             
-                               move tor-numero-x to ra-evasioni
-                            else
-                               move tor-numero to tor-numero-x
-                               inspect tor-numero-x 
-                                       replacing leading x"30" by x"20"
-                               call "C$JUSTIFY" using tor-numero-x, "L"             
-                               inspect tor-numero-x replacing trailing spaces by low-value
-
-                               inspect ra-evasioni replacing trailing spaces by low-value
-                               string  ra-evasioni   delimited low-value                   
-                                       "-"           delimited size
-                                       tor-numero-x  delimited low-value
-                                  into ra-evasioni
-                               end-string
-                               inspect ra-evasioni replacing trailing low-value by spaces
-                            end-if
-                            perform varying idx from 1 by 1 
-                                      until idx > 999
-                               if link-ra-articolo(idx) = 0
-                                  exit perform
-                               end-if
-                               set idx-art to 1
-                               search el-art
-                                 at end move 0 to idx-art
-                               when el-art(idx-art) = link-ra-articolo(idx)
-                                    continue
-                               end-search
-                               if idx-art = 0
-                                  add 1 to idx-tot-art
-                                  move link-ra-articolo(idx) to el-art(idx-tot-art)
-                               end-if
-                            end-perform
-                         end-if
-                      else
-                         if tor-anno-fattura not = 0
-                            display message "EVASIONE FATTURATA!!!"
-                                   x"0d0a""ANNO: " tor-anno " - N. " tor-numero
-                                      title tit-err
-                                       icon 2
-                         else
-                            if tor-anno-bolla not = 0
-                               display message "EVASIONE BOLLETTATA!!!"
-                                        x"0d0a""ANNO: " tor-anno " - N. " tor-numero
-                                         title tit-err
-                                          icon 2
-                            end-if
-                         end-if
-                      end-if
-                 end-read
-              end-perform   
+              if tipo-del = 1
+                 perform DEL-DAL-AL
+              else
+                 perform DEL-ELENCO
+              end-if
 
               if idx-tot-art > 0
                  perform varying idx from 1 by 1 
@@ -1681,11 +1856,106 @@ BEGIN-TEXT
                        x"0d0a""CANCELLATE " deleted " EVASIONI"
                         title titolo
                          icon 2
-              modify pb-sib, bitmap-number = 1
-              move 78-ID-ef-anno to control-id
-              move             4 to accept-control
               call   "tprev-elab" using user-codi
               cancel "tprev-elab"
+              move 27 to key-status
+           end-if.
+
+      ***---
+       DEL-DAL-AL.
+           perform varying num-from from num-from by 1
+                     until num-from > num-to
+              move anno-to  to tor-anno
+              move num-from to tor-numero
+              read tordini no lock
+                   invalid
+                   display message "EVASIONE INESISTENTE!!!"
+                            x"0d0a""ANNO: " tor-anno " - N. " tor-numero
+                             title tit-err
+                              icon 2
+               not invalid
+                   if tor-anno-bolla   = 0 and
+                      tor-anno-fattura = 0   
+                      perform CANCELLA-EVASIONE
+                   else
+                      if tor-anno-fattura not = 0
+                         display message "EVASIONE FATTURATA!!!"
+                                x"0d0a""ANNO: " tor-anno " - N. " tor-numero
+                                   title tit-err
+                                    icon 2
+                      else
+                         if tor-anno-bolla not = 0
+                            display message "EVASIONE BOLLETTATA!!!"
+                                     x"0d0a""ANNO: " tor-anno " - N. " tor-numero
+                                      title tit-err
+                                       icon 2
+                         end-if
+                      end-if
+                   end-if
+              end-read
+           end-perform.
+
+      ***---
+       DEL-ELENCO.     
+           inquire gd1, last-row in tot-righe,
+           perform varying riga from 2 by 1
+                     until riga > tot-righe
+              move anno-to  to tor-anno  
+              inquire gd1(riga, 1), cell-data in tor-numero    
+              perform CANCELLA-EVASIONE
+           end-perform.
+
+      ***---
+       CANCELLA-EVASIONE.   
+           add 1 to deleted.
+           initialize gordcvar-linkage
+           move tor-chiave     to LinkChiave
+           move "del-evasioni" to LinkPgm
+           move 3              to livello-abil
+           call   "gordcvar"   using lk-blockpgm
+                                     user-codi
+                                     livello-abil
+                                     gordcvar-linkage
+                                     link-ra-articoli-tab
+           cancel "gordcvar"
+           if LinkRicaricaGrid = 1
+              if ra-evasioni = spaces
+                 move tor-numero to tor-numero-x
+                 inspect tor-numero-x 
+                         replacing leading x"30" by x"20"
+                 call "C$JUSTIFY" using tor-numero-x, "L"             
+                 move tor-numero-x to ra-evasioni
+              else
+                 move tor-numero to tor-numero-x
+                 inspect tor-numero-x 
+                         replacing leading x"30" by x"20"
+                 call "C$JUSTIFY" using tor-numero-x, "L"             
+                 inspect tor-numero-x replacing trailing spaces by low-value
+
+                 inspect ra-evasioni replacing trailing spaces by low-value
+                 string  ra-evasioni   delimited low-value                   
+                         "-"           delimited size
+                         tor-numero-x  delimited low-value
+                    into ra-evasioni
+                 end-string
+                 inspect ra-evasioni replacing trailing low-value by spaces
+              end-if
+              perform varying idx from 1 by 1 
+                        until idx > 999
+                 if link-ra-articolo(idx) = 0
+                    exit perform
+                 end-if
+                 set idx-art to 1
+                 search el-art
+                   at end move 0 to idx-art
+                 when el-art(idx-art) = link-ra-articolo(idx)
+                      continue
+                 end-search
+                 if idx-art = 0
+                    add 1 to idx-tot-art
+                    move link-ra-articolo(idx) to el-art(idx-tot-art)
+                 end-if
+              end-perform
            end-if.
 END-TEXT
 END-DATA
@@ -1758,6 +2028,128 @@ BEGIN-DATA
 BEGIN-TEXT
       *<<** Default_Code **>>
       *<<** Customized_Default, SP-G, scr-elab-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-dal-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, scr-elab-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-grid-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, scr-elab-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-dal-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, scr-elab-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-grid-AfterProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, scr-elab-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-dal-LinkTo
+BEGIN-TEXT
+           move 1 to e-dalal.
+           move 0 to e-grid.
+           display ef-num-from ef-num-to.
+
+
+           modify gd1, enabled e-grid.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = rb-grid-LinkTo
+BEGIN-TEXT
+           move 0 to e-dalal.
+           move 1 to e-grid.
+           display ef-num-from ef-num-to.
+
+
+           modify gd1, enabled e-grid.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = gd1-Ev-Msg-Finish-Entry
+BEGIN-TEXT
+           set tutto-ok to true.
+           inquire ef-anno, value in tor-anno.
+           inquire gd1(event-data-2, 1), cell-data in tor-numero.
+           if tor-numero = 0          
+              modify gd1, record-to-delete = event-data-2
+              inquire gd1, last-row in tot-righe
+              if tot-righe = 1
+                 modify gd1, insert-rows = 1
+              end-if
+              exit paragraph
+           else
+              read tordini no lock 
+                   invalid
+                   display message "Evasione non valida"
+                             title tit-err
+                              icon 2
+                   set errori to true
+               not invalid       
+                   if tor-anno-fattura not = 0
+                      display message "EVASIONE FATTURATA!!!"
+                                title tit-err
+                                 icon 2
+                      set errori to true
+                   else
+                      if tor-anno-bolla not = 0
+                         display message "EVASIONE BOLLETTATA!!!"
+                                   title tit-err
+                                    icon 2
+                         set errori to true
+                      end-if
+                   end-if
+              end-read
+              if tutto-ok
+                 move tor-numero to s-num
+                 inquire gd1, last-row in tot-righe
+                 perform varying riga from 2 by 1 
+                           until riga > tot-righe
+                    if riga = event-data-2 
+                       exit perform cycle
+                    end-if      
+                    inquire gd1(riga, 1), cell-data in tor-numero
+                    if tor-numero = s-num      
+                       subtract 1 from riga
+                       display message "Evasione già presente a riga " riga
+                                 title tit-err
+                                  icon 2
+                       set errori to true
+                       exit perform
+                    end-if   
+                 end-perform
+              end-if
+           end-if.
+
+           if errori
+              set event-action to event-action-fail
+           else
+              inquire gd1, last-row in tot-righe
+              add 1 to tot-righe giving riga
+              perform varying riga from riga by 1 
+                        until riga > 999
+                 modify gd1, record-to-delete = riga
+              end-perform
+              modify gd1, insert-rows = 1
+           end-if.
 END-TEXT
 END-DATA
 
