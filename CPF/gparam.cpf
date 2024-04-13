@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=169.254.100.132
+aNote-andre=192.168.56.1
 
 
 [PROGRAM_CONTENT]
@@ -11,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=gparam-Ev-Before-Program
 AFTER_PROGRAM=gparam-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E84C81824-385-2745417804
+PROGRAM_UNIQUE_CODE=TOTEM-7E84D225647-477-313136200
 
 {{@DESCRIPTION:
 
@@ -8244,7 +8244,7 @@ Begin Screen Form1
          Csize Unit        = Default
          Destroy Type      = Automatic
          Enable            = NONE
-         Enable Variable   = mod
+         Enable Variable   = e-tipocli-dati
          Exception Value   = 0
          Flat              = TRUE
          Font              = Small Font
@@ -11121,7 +11121,7 @@ Begin Screen Form1
          Csize Unit        = Default
          Destroy Type      = Automatic
          Enable            = NONE
-         Enable Variable   = mod
+         Enable Variable   = e-gdo-dati
          Exception Value   = 0
          Flat              = TRUE
          Font              = Small Font
@@ -13934,7 +13934,7 @@ Begin Screen Form1
          Csize Unit        = Default
          Destroy Type      = Automatic
          Enable            = NONE
-         Enable Variable   = mod
+         Enable Variable   = e-clienti-dati
          Exception Value   = 0
          Flat              = TRUE
          Font              = Small Font
@@ -16717,7 +16717,7 @@ Begin Screen Form1
          Csize Unit        = Default
          Destroy Type      = Automatic
          Enable            = NONE
-         Enable Variable   = mod
+         Enable Variable   = e-destini-dati
          Exception Value   = 0
          Flat              = TRUE
          Font              = Small Font

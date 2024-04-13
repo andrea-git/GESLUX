@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gparam.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 11 aprile 2024 15:59:53.
+       DATE-WRITTEN.        venerdì 12 aprile 2024 23:17:18.
        REMARKS.
       *{TOTEM}END
 
@@ -2700,7 +2700,7 @@
            LINE 49,84,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-tipocli-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imm-1,                
@@ -3849,7 +3849,7 @@
            LINE 49,84,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-gdo-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imm-2,                
@@ -4977,7 +4977,7 @@
            LINE 49,84,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-clienti-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imm-3,                
@@ -6089,7 +6089,7 @@
            LINE 49,84,
            LINES 1,54 ,
            SIZE 3,00 ,
-           ENABLED mod,
+           ENABLED e-destini-dati,
            FLAT,
            FONT IS Small-Font,
            ID IS 78-ID-chk-imm-4,                

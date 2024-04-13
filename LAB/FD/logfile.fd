@@ -8,6 +8,7 @@
                    88 log-cancellazione VALUE IS "C". 
                    88 log-write VALUE IS "W". 
                    88 log-rewrite VALUE IS "R". 
+                   88 log-batch VALUE IS "B". 
            05 log-dati.
                10 log-chiave-file  PIC  x(20).
                10 log-utente       PIC  x(20).

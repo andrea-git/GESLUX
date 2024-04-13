@@ -1567,7 +1567,8 @@
                                                        
            set emto-ev-immediata-no to true.
            if emto-01T61-ev-immediata = "X" or
-              emto-01T61-ev-immediata = "x"
+              emto-01T61-ev-immediata = "x" or
+              prm-ev-immediata-si
               set emto-ev-immediata-si to true
            end-if.
            rewrite emto-rec.

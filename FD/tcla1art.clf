@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+aNote-andre=192.168.56.1
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E835165017-814-585317185
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E84D202925-245-212923337
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -61,37 +62,39 @@ m_bFixed=1
 
 @}}
 [FDITEM5_]
-m_strName=cl1-dati-comuni
+m_strName=cl1-descrizione-eng
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=cl1-descrizione_1
 {{@DataItem_m_strDescriptionFDITEM5_
 
 @}}
 [FDITEM6_]
-m_strName=cl1-data-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=cl1-descrizione-spa
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=cl1-descrizione_2
 {{@DataItem_m_strDescriptionFDITEM6_
 
 @}}
 [FDITEM7_]
-m_strName=cl1-ora-creazione
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=15
+m_strName=cl1-dati-comuni
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM7_
 
 @}}
 [FDITEM8_]
-m_strName=cl1-utente-creazione
-m_strRawPic=x(10)
-m_strPic=X(10)
+m_strName=cl1-data-creazione
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -99,7 +102,7 @@ m_bFixed=1
 
 @}}
 [FDITEM9_]
-m_strName=cl1-data-ultima-modifica
+m_strName=cl1-ora-creazione
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=15
@@ -109,9 +112,9 @@ m_bFixed=1
 
 @}}
 [FDITEM10_]
-m_strName=cl1-ora-ultima-modifica
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=cl1-utente-creazione
+m_strRawPic=x(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -119,9 +122,9 @@ m_bFixed=1
 
 @}}
 [FDITEM11_]
-m_strName=cl1-utente-ultima-modifica
-m_strRawPic=x(10)
-m_strPic=X(10)
+m_strName=cl1-data-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -129,17 +132,19 @@ m_bFixed=1
 
 @}}
 [FDITEM12_]
-m_strName=cl1-vuoti
-m_nItemLevel=10
+m_strName=cl1-ora-ultima-modifica
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM12_
 
 @}}
 [FDITEM13_]
-m_strName=cl1-livello
-m_strRawPic=99
-m_strPic=99
+m_strName=cl1-utente-ultima-modifica
+m_strRawPic=x(10)
+m_strPic=X(10)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -147,19 +152,17 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=cl1-num-vuoto-1
-m_strRawPic=9(13)
-m_strPic=9(13)
-m_nItemLevel=15
+m_strName=cl1-vuoti
+m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM14_
 
 @}}
 [FDITEM15_]
-m_strName=cl1-num-vuoto-2
-m_strRawPic=9(15)
-m_strPic=9(15)
+m_strName=cl1-livello
+m_strRawPic=99
+m_strPic=99
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -167,9 +170,9 @@ m_bFixed=1
 
 @}}
 [FDITEM16_]
-m_strName=cl1-num-vuoto-3
-m_strRawPic=9(15)
-m_strPic=9(15)
+m_strName=cl1-num-vuoto-1
+m_strRawPic=9(13)
+m_strPic=9(13)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -177,9 +180,9 @@ m_bFixed=1
 
 @}}
 [FDITEM17_]
-m_strName=cl1-alfa-vuoto-1
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=cl1-num-vuoto-2
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -187,9 +190,9 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=cl1-alfa-vuoto-2
-m_strRawPic=x(20)
-m_strPic=X(20)
+m_strName=cl1-num-vuoto-3
+m_strRawPic=9(15)
+m_strPic=9(15)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -197,13 +200,43 @@ m_bFixed=1
 
 @}}
 [FDITEM19_]
-m_strName=cl1-alfa-vuoto-3
+m_strName=cl1-alfa-vuoto-1
 m_strRawPic=x(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM19_
+
+@}}
+[FDITEM20_]
+m_strName=cl1-alfa-vuoto-2
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM20_
+
+@}}
+[FDITEM21_]
+m_strName=cl1-alfa-vuoto-3
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_
+
+@}}
+[FDITEM22_]
+m_strName=FILLER
+m_strRawPic=x(200)
+m_strPic=x(200)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM22_
 
 @}}
 [CStoAcucobolSL_]
