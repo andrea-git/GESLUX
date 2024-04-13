@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tcla1art.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 23 dicembre 2021 15:40:06.
+       DATE-WRITTEN.        domenica 14 aprile 2024 01:23:29.
        REMARKS.
       *{TOTEM}END
 
@@ -93,6 +93,8 @@
            05 col-id           PIC  z(4).
            05 col-des          PIC  X(30).
            05 col-liv          PIC  zz.
+           05 col-eng          PIC  x(50).
+           05 col-spa          PIC  x(50).
        77 Screen1-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 esegui_73x21-bmp PIC  S9(9)
@@ -109,27 +111,6 @@
        77 lab-des2         PIC  x(50).
        01 FILLER           PIC  XX.
            88 ricarica VALUE IS "SI"    WHEN SET TO FALSE  "NO". 
-       01 old-cl1-rec.
-           03 old-cl1-chiave.
-               05 old-cl1-codice   PIC  9(4).
-           03 old-cl1-dati.
-               05 old-cl1-descrizione          PIC  x(30).
-               05 old-cl1-dati-comuni.
-                   10 old-cl1-data-creazione       PIC  9(8).
-                   10 old-cl1-ora-creazione        PIC  9(8).
-                   10 old-cl1-utente-creazione     PIC  x(10).
-                   10 old-cl1-data-ultima-modifica PIC  9(8).
-                   10 old-cl1-ora-ultima-modifica  PIC  9(8).
-                   10 old-cl1-utente-ultima-modifica           PIC  
-           x(10).
-               05 old-cl1-vuoti.
-                   10 old-cl1-livello  PIC  99.
-                   10 old-cl1-num-vuoto-1          PIC  9(13).
-                   10 old-cl1-num-vuoto-2          PIC  9(15).
-                   10 old-cl1-num-vuoto-3          PIC  9(15).
-                   10 old-cl1-alfa-vuoto-1         PIC  x(20).
-                   10 old-cl1-alfa-vuoto-2         PIC  x(20).
-                   10 old-cl1-alfa-vuoto-3         PIC  x(20).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -137,12 +118,12 @@
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-tcla1art-RESTOREBUF  PIC X(191).
+       77 TMP-Form1-tcla1art-RESTOREBUF  PIC X(591).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(191).
+       77 Form1-MULKEY-TMPBUF   PIC X(591).
        77 STATUS-SCREEN-SEARCH-FLAG-REFRESH PIC  9.
           88 SCREEN-SEARCH-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tcla1art-BUF     PIC X(191).
+       77 TMP-DataSet1-tcla1art-BUF     PIC X(591).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -155,6 +136,29 @@
           88 DataSet1-tcla1art-KEY1-Desc VALUE "D".
 
 
+       01 old-cl1-rec.
+           05 old-cl1-chiave.
+               10 old-cl1-codice       PIC  9(4).
+           05 old-cl1-dati.
+               10 old-cl1-descrizione  PIC  x(30).
+               10 old-cl1-descrizione-eng          PIC  x(100).
+               10 old-cl1-descrizione-spa          PIC  x(100).
+               10 old-cl1-dati-comuni.
+                   15 old-cl1-data-creazione           PIC  9(8).
+                   15 old-cl1-ora-creazione            PIC  9(8).
+                   15 old-cl1-utente-creazione         PIC  x(10).
+                   15 old-cl1-data-ultima-modifica     PIC  9(8).
+                   15 old-cl1-ora-ultima-modifica      PIC  9(8).
+                   15 old-cl1-utente-ultima-modifica   PIC  x(10).
+               10 old-cl1-vuoti.
+                   15 old-cl1-livello      PIC  99.
+                   15 old-cl1-num-vuoto-1  PIC  9(13).
+                   15 old-cl1-num-vuoto-2  PIC  9(15).
+                   15 old-cl1-num-vuoto-3  PIC  9(15).
+                   15 old-cl1-alfa-vuoto-1 PIC  x(20).
+                   15 old-cl1-alfa-vuoto-2 PIC  x(20).
+                   15 old-cl1-alfa-vuoto-3 PIC  x(20).
+                   15 FILLER           PIC  x(200).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -195,29 +199,30 @@
        05
            form1-gd-1, 
            Grid, 
-           COL 2,00, 
-           LINE 1,85,
+           COL 2,17, 
+           LINE 2,00,
            LINES 37,00 ,
-           SIZE 83,17 ,
+           SIZE 143,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
-           DATA-COLUMNS (1, 5, 35),
-           ALIGNMENT ("R", "U", "R"),
-           SEPARATION (5, 5, 5),
-           DATA-TYPES ("9(4)", "X(30)", "z9"),
+           DATA-COLUMNS (1, 5, 35, 37, 87),
+           ALIGNMENT ("R", "U", "R", "U", "U"),
+           SEPARATION (5, 5, 5, 5, 5),
+           DATA-TYPES ("9(4)", "X(30)", "z9", "X", "X"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 2,
            DIVIDER-COLOR 1,
            HEADING-COLOR 257,
            HEADING-DIVIDER-COLOR 1,
+           HSCROLL,
            ID IS 1,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 80,
+           VIRTUAL-WIDTH 140,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -985,6 +990,12 @@
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 3, Y = 1,
                 CELL-DATA = "Livello",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 4, Y = 1,
+                CELL-DATA = "Descrizione inglese",
+      * CELLS' SETTING
+              MODIFY form1-gd-1, X = 5, Y = 1,
+                CELL-DATA = "Descrizione spagnolo",
       * COLUMNS' SETTING
               MODIFY form1-gd-1, X = 1  
                 COLUMN-FONT = Small-Font,
@@ -1027,7 +1038,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 39,00,
-              SIZE 85,17,
+              SIZE 145,67,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1054,7 +1065,7 @@
       * Status-bar
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 71)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 11, 51, 61, 101)
            .
 
        Form1-PROC.
@@ -1820,7 +1831,7 @@
            if scelta = mb-yes
 
               inquire form1-gd-1, cursor-y  in riga
-              perform valore-riga
+              perform VALORE-RIGA
 
               delete tcla1art record 
                  invalid 
@@ -1852,7 +1863,7 @@
               move 2 to riga 
            end-if.
 
-           modify form1-gd-1, start-x = 1, x     = 3,
+           modify form1-gd-1, start-x = 1, x = 5,
                                   start-y = riga,
                                         y = riga,
                                   region-color 257,
@@ -1867,6 +1878,8 @@
            inquire form1-gd-1, cursor-y in riga.
 
            perform VALORE-RIGA.
+
+           if mod = 0 exit paragraph end-if.
 
            evaluate colonna
            when 1
@@ -1909,6 +1922,22 @@
                    display message box "Livello obbligatorio"
                            title = tit-err
                            icon mb-warning-icon
+                end-if            
+           when 4
+                if cl1-descrizione-eng = spaces
+                   set errori to true
+                   move 4 to colonna
+                   display message box MSG-Descrizione-mancante|"Descrizione mancante"
+                           title = tit-err
+                           icon mb-warning-icon
+                end-if         
+           when 5
+                if cl1-descrizione-spa = spaces
+                   set errori to true
+                   move 5 to colonna
+                   display message box MSG-Descrizione-mancante|"Descrizione mancante"
+                           title = tit-err
+                           icon mb-warning-icon
                 end-if
            end-evaluate.
 
@@ -1943,8 +1972,10 @@
        INTESTAZIONE.
       * <TOTEM:PARA. INTESTAZIONE>
            modify form1-gd-1(1, 1), cell-data = "Codice".         
-           modify form1-gd-1(1, 2), cell-data = "Descrizione".
-           modify form1-gd-1(1, 3), cell-data = "Livello" 
+           modify form1-gd-1(1, 2), cell-data = "Descrizione".   
+           modify form1-gd-1(1, 3), cell-data = "Livello".
+           modify form1-gd-1(1, 4), cell-data = "Descrizione inglese".
+           modify form1-gd-1(1, 5), cell-data = "Descrizione spagnolo" 
            .
       * <TOTEM:END>
 
@@ -1961,8 +1992,11 @@
                           at end exit perform
                       not at end
                           move cl1-codice      to col-id
-                          move cl1-descrizione to col-des
+                          move cl1-descrizione to col-des  
                           move cl1-livello     to col-liv
+                          move cl1-descrizione-eng to col-eng
+                          move cl1-descrizione-spa to col-spa
+
                           modify form1-gd-1, record-to-add = rec-grid
                      end-read                                           
                   end-perform
@@ -2020,7 +2054,7 @@
            set tutto-ok to true.
 
            if nuovo
-              perform valore-riga
+              perform VALORE-RIGA
               if cl1-codice not = 0
                  perform SALVA
               else
@@ -2089,14 +2123,14 @@
 
        SALVA.
       * <TOTEM:PARA. SALVA>
-           if sisalvato or mod = 0 exit paragraph end-if.
+           if mod = 0 exit paragraph end-if.
 
            inquire form1-gd-1, cursor-x in colonna, 
                                cursor-y in riga.
 
 
            perform varying colonna from 1 by 1 
-                     until colonna > 3
+                     until colonna > 5
               perform CONTROLLO
               if errori exit perform end-if
            end-perform.
@@ -2165,7 +2199,9 @@
       * <TOTEM:PARA. VALORE-RIGA>
            inquire form1-gd-1(riga, 1), cell-data cl1-codice.
            inquire form1-gd-1(riga, 2), cell-data cl1-descrizione. 
-           inquire form1-gd-1(riga, 3), cell-data cl1-livello  
+           inquire form1-gd-1(riga, 3), cell-data cl1-livello.      
+           inquire form1-gd-1(riga, 4), cell-data cl1-descrizione-eng. 
+           inquire form1-gd-1(riga, 5), cell-data cl1-descrizione-spa  
            .
       * <TOTEM:END>
 
