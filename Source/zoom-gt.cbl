@@ -3553,7 +3553,7 @@
       * CAMPO 3
            add 1 to idx
            move  2                       to xzoom-field-length(idx).
-           move  86                      to xzoom-field-offset(idx).
+           move  286                     to xzoom-field-offset(idx).
            move  6                       to xzoom-field-column(idx).
            move "Livello"                to xzoom-field-name(idx).  
            move 2                           to xzoom-field-digits(Idx).
@@ -3569,11 +3569,11 @@
            move "000"                   to xzoom-to-value.
 
            |FILTRO SUL LIVELLO
-           if como-record(87:2) not = "00"
-              move como-record(87:2)       to xzoom-wild-value(1)
+           if como-record(287:2) not = "00"
+              move como-record(287:2)      to xzoom-wild-value(1)
               move 2                       to xzoom-wild-value-length(1)
               move 2                       to xzoom-wild-length(1)
-              move 86                      to xzoom-wild-offset(1)
+              move 286                     to xzoom-wild-offset(1)
               set xzoom-when-true(1)       to true
               set xzoom-begin-with(1)      to true
               set xzoom-ignore-case(1)     to false
