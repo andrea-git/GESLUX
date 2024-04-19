@@ -7939,6 +7939,7 @@
                  READ tparamge2 PREVIOUS WITH LOCK
 
 
+
               ELSE
                  READ tparamge2 PREVIOUS WITH NO LOCK
               END-IF
@@ -12421,7 +12422,7 @@
            end-string.
            perform SCRIVI-RIGA-LOG.
 
-           set errori to true.
+           set errori to true.            
            accept data-odierna from century-date.
            inquire form1-gd-1, last-row in tot-righe.
            perform varying riga from 3 by 1
@@ -12681,7 +12682,7 @@
                                   set decimal to true        
                                   move sco-molt-pordini to como-n8
                                   perform EDIT-NUMERO-8         
-
+                                                  move 10000 to como-n2
                                   initialize como-riga
                                   if como-n1 < como-n2
                                      string "ARTICOLO OK: "

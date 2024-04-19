@@ -1377,7 +1377,20 @@
       *****        move 15 to cpfm-qta-m(3)
       *****        move 15 to cpfm-qta-m(4)
       *****        move "C09" to cpfm-tipo-imballo
-      *****     end-if.     
+      *****     end-if.          
+           if articolo-fisso > 0    
+              if no-qta-fisso not = "S"
+                 move mese1-fisso to cpfm-qta-m(1)
+                 move mese2-fisso to cpfm-qta-m(2)
+                 move mese3-fisso to cpfm-qta-m(3)
+                 move mese4-fisso to cpfm-qta-m(4)
+                 move mese5-fisso to cpfm-qta-m(5)
+                 move mese6-fisso to cpfm-qta-m(6)
+                 if qta-epal-fisso > 0
+                    move qta-epal-fisso to art-qta-epal
+                 end-if
+              end-if
+           end-if.                                          
 
            |1. prendo il maggiore tra moq e tot
            move 0 to tot-qta-moq.
@@ -1400,7 +1413,7 @@
               end-string
               perform SCRIVI-RIGA-LOG
 
-           end-if.                           
+           end-if.                                           
                   
            if art-qta-epal = 0 and art-qta-std not = 0
               move art-qta-std to art-qta-epal
@@ -1468,8 +1481,7 @@
                   " - MESE 6: "   tot-qta-mese6
              into como-riga
            end-string.
-           perform SCRIVI-RIGA-LOG.
-
+           perform SCRIVI-RIGA-LOG.                         
            perform varying idx-mese from 1 by 1 
                      until idx-mese > ultimo-mese-moq
                  
@@ -1486,30 +1498,9 @@
                          tot-qta-moq -     |Totale qta trasformata
                          como-qta-ordinata |Differenza con ordinata precedentemente
 
-                 if como-qta-rical > 0 
-                    |Arrotondo a bancale
-                    if como-qta-rical > art-qta-epal
-                       move 0 to resto
-                       divide como-qta-rical by art-qta-epal
-                                   giving num-bancali
-                                remainder resto
-                       if resto not = 0
-                          add 1 to num-bancali
-                       end-if
-                    else
-                       move 1 to num-bancali
-                    end-if
-                    compute cpfm-qta-m(idx-mese) = 
-                            art-qta-epal * num-bancali
-                                        
-                    |Arrotondo a imballo
-                    initialize como-riga
-                    string "QTA ORD = CPFM-QTA-M("
-                           idx-mese
-                           ")"
-                       into como-riga
-                    end-string
-                    perform SCRIVI-RIGA-LOG
+                 if como-qta-rical > 0  
+      *              perform ARROTONDA-BANCALE-PROGRAMMAZIONE
+                    perform ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE
 
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
                     perform CHECK-IMBALLO  
@@ -1548,33 +1539,10 @@
                       compute como-qta-rical = 
                               tot-qta-mese6 - como-qta-ordinata
                  end-evaluate
-                 if como-qta-rical > 0 
-                    |Arrotondo a bancale
-                    if como-qta-rical > art-qta-epal
-                       move 0 to resto
-                       divide como-qta-rical by art-qta-epal
-                                   giving num-bancali
-                                remainder resto
-                       if resto not = 0
-                          add 1 to num-bancali
-                       end-if
-                    else
-                       move 1 to num-bancali
-                    end-if
-                    compute cpfm-qta-m(idx-mese) = 
-                            art-qta-epal * num-bancali
-              
-                    |Arrotondo a imballo     
-                    initialize como-riga
-                    string "QTA ORD = ART-QTA-EPAL("
-                           art-qta-epal
-                           ") * num-bancali ("
-                           num-bancali
-                           ")"
-                       into como-riga
-                    end-string
-                    perform SCRIVI-RIGA-LOG
-
+                 if como-qta-rical > 0                      
+      *              perform ARROTONDA-BANCALE-PROGRAMMAZIONE
+                    perform ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE
+                    
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
                     perform CHECK-IMBALLO         
                     
@@ -1604,6 +1572,59 @@
                   " - MESE 6: "   cpfm-qta-m(6)
              into como-riga
            end-string.
+           perform SCRIVI-RIGA-LOG.
+           
+      ***--- 
+       ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE.
+           if cpfm-qta-m(idx-mese) <= art-moq
+              move art-moq to cpfm-qta-m(idx-mese)
+           else                            
+              move 0 to resto
+              divide cpfm-qta-m(idx-mese) by art-moq 
+              giving num-bancali
+              remainder resto
+              if resto not = 0
+                 add 1 to num-bancali
+              end-if                          
+              compute cpfm-qta-m(idx-mese) = 
+                      art-moq * num-bancali
+           end-if.                                                    
+                   
+           compute ris2 =
+                 ( art-qta-epal * 
+                   tge-perce-arrot-bancale / 100 )
+
+           divide cpfm-qta-m(idx-mese) by art-qta-epal 
+           giving num-bancali  
+           compute ris = art-qta-epal * num-bancali.
+           compute resto = cpfm-qta-m(idx-mese) - ris.
+           if resto > ris2
+              add 1 to num-bancali
+              compute cpfm-qta-m(idx-mese) = num-bancali * art-qta-epal
+           end-if.      
+
+      ***---
+       ARROTONDA-BANCALE-PROGRAMMAZIONE.
+           if como-qta-rical > art-qta-epal
+              move 0 to resto
+              divide como-qta-rical by art-qta-epal
+                          giving num-bancali
+                       remainder resto
+              if resto not = 0
+                 add 1 to num-bancali
+              end-if
+           else
+              move 1 to num-bancali
+           end-if.
+           compute cpfm-qta-m(idx-mese) = 
+                   art-qta-epal * num-bancali.
+                                        
+           initialize como-riga
+           string "QTA ORD = CPFM-QTA-M("
+                  idx-mese
+                  ")"
+              into como-riga
+           end-string
            perform SCRIVI-RIGA-LOG.
 
       ***---
@@ -2109,7 +2130,7 @@
            |di riferimento, devo fare un controllo in tempo reale tra 
            |quello che ho ordinato e quello che serve, considerando 
            |sempre le quantità a bancali.    
-           
+      *     
       *     if articolo-fisso > 0    
       *        if no-qta-fisso not = "S"
       *           move mese1-fisso to cpfm-qta-m(1)
