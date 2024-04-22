@@ -1090,11 +1090,39 @@
                 if v-reale = 1
                    inquire ef-reale, value in ef-reale-buf
                    move ef-reale-buf to art-peso-reale of articoli
-                   if art-peso-reale of articoli = 0
+                   if art-peso-reale of articoli = 0   
+                      move 78-ID-ef-reale to CONTROL-ID
                       set errori to true
                       display message "Peso reale obbligatorio"
                                 title tit-err
                                  icon 2
+                   end-if
+                end-if
+                 
+           when 78-ID-ef-moq
+                if sco-moq-si
+                   inquire ef-moq, value in art-moq of articoli
+                   if art-moq of articoli > 0 
+                      if art-moq of articoli < imq-qta-imb
+                         set errori to true
+                      else
+                         move 0 to resto
+                         divide art-moq  of articoli by imq-qta-imb 
+                                giving cont
+                             remainder resto
+                         if resto > 0
+                            set errori to true
+                         end-if
+                      end-if
+                      if errori
+                         set errori to true  
+                         move 78-ID-ef-moq to CONTROL-ID
+                         display message "Il valore di MOQ dev'essere "
+                                         "multiplo dell'imballo "
+                                         "(" imq-qta-imb ")"
+                                   title tit-err
+                                   icon MB-WARNING-ICON
+                      end-if
                    end-if
                 end-if
 
@@ -1109,9 +1137,9 @@
                    if not trovato
                       set errori to true
                       move 78-ID-ef-forn to CONTROL-ID
-                      display message box "Fornitore NON valido"
-                              title = tit-err
-                              icon MB-WARNING-ICON
+                      display message "Fornitore NON valido"
+                                title tit-err
+                                 icon MB-WARNING-ICON
                    end-if
                 end-if
                 modify lab-forn title lab-forn-buf

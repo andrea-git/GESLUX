@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E84D225627-772-3233523453
+PROGRAM_UNIQUE_CODE=TOTEM-7E841692736-921-1427112550
 
 {{@DESCRIPTION:
 
@@ -9324,7 +9324,7 @@ Begin Screen Form1
             Visible           = NONE
             Visible Variable  = v-moq
             Width in Cells    = TRUE
-            My Property       = "CONTROLLO-OLD="
+            My Property       = "CONTROLLO-OLD=;CONTROLLO="
             Before Procedure  = ef-perce-imposte-BeforeProcedure
             After Procedure   = ef-perce-imposte-AfterProcedure
          End

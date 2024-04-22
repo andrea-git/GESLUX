@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 5 marzo 2024 18:01:22.
+       DATE-WRITTEN.        lunedì 22 aprile 2024 11:42:02.
        REMARKS.
       *{TOTEM}END
 
@@ -454,7 +454,7 @@
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-tnomen-BUF     PIC X(228).
-       77 TMP-DataSet1-tcla1art-BUF     PIC X(191).
+       77 TMP-DataSet1-tcla1art-BUF     PIC X(591).
        77 TMP-DataSet1-tsetmerc-BUF     PIC X(191).
        77 TMP-DataSet1-tudm-BUF     PIC X(189).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
@@ -19542,6 +19542,9 @@
                 perform CONTROLLO
            |78-ID-ef-scorta è l'ID del campo ef-scorta
            when 78-ID-ef-scorta
+                perform CONTROLLO
+           |78-ID-ef-moq è l'ID del campo ef-moq
+           when 78-ID-ef-moq
                 perform CONTROLLO
            |78-ID-ef-amperaggio è l'ID del campo ef-amperaggio
            when 78-ID-ef-amperaggio

@@ -1576,6 +1576,13 @@
            
       ***--- 
        ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE.
+           initialize como-riga
+           string "MESE: " idx-mese " - QTA IMPOSTATA: " 
+                  cpfm-qta-m(idx-mese)
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
            if cpfm-qta-m(idx-mese) <= art-moq
               move art-moq to cpfm-qta-m(idx-mese)
            else                            
@@ -1601,7 +1608,13 @@
            if resto > ris2
               add 1 to num-bancali
               compute cpfm-qta-m(idx-mese) = num-bancali * art-qta-epal
-           end-if.      
+           end-if.       
+           initialize como-riga
+           string "MESE: " idx-mese " - QTA RICALCOLATA: " 
+                  cpfm-qta-m(idx-mese)
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
 
       ***---
        ARROTONDA-BANCALE-PROGRAMMAZIONE.
@@ -2196,7 +2209,20 @@
                  compute cpfm-qta-m(primo-mese) = art-qta-epal * ris
               else
                  move art-qta-epal to cpfm-qta-m(primo-mese)                       
-              end-if                         
+              end-if                              
+                                   
+              initialize como-riga
+              string "PRIMA RICALCOLO QTA-ORD:"
+                     " - MESE 1: "   cpfm-qta-m(1)
+                     " - MESE 2: "   cpfm-qta-m(2)
+                     " - MESE 3: "   cpfm-qta-m(3)
+                     " - MESE 4: "   cpfm-qta-m(4)
+                     " - MESE 5: "   cpfm-qta-m(5)
+                     " - MESE 6: "   cpfm-qta-m(6)
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+                      
               add 1 to primo-mese
               perform varying como-mese from primo-mese by 1 
                         until como-mese > sco-m-rif
@@ -2205,7 +2231,19 @@
                  end-if
                  perform CALCOLA-QTA
                  perform CALCOLA-QTA-ORD
-              end-perform                       
+              end-perform                   
+                                   
+              initialize como-riga               
+              string "DOPO RICALCOLO QTA-ORD:" 
+                     " - MESE 1: "   cpfm-qta-m(1)
+                     " - MESE 2: "   cpfm-qta-m(2)
+                     " - MESE 3: "   cpfm-qta-m(3)
+                     " - MESE 4: "   cpfm-qta-m(4)
+                     " - MESE 5: "   cpfm-qta-m(5)
+                     " - MESE 6: "   cpfm-qta-m(6)
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG                 
            end-if.                          
            perform varying idx from 1 by 1 
                      until idx > 6  
