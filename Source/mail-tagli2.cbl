@@ -1,10 +1,11 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID.                      mail-tagli.
+       PROGRAM-ID.                      mail-tagli2.
        AUTHOR.                          Luciano.
-       REMARKS. programma di invio mail dei tagli. Batch 
-                schedulato sul server. Il programma stampa i tagli per 
-                il giorno precedente a quello di esecuzione. Nel log di 
-                SYSERR metto il log di funzionamento.
+       REMARKS. programma di invio mail dei tagli per la divisione 17. 
+                Batch schedulato sul server. Il programma stampa i tagli 
+                per il giorno precedente a quello di esecuzione. Nel log 
+                di SYSERR metto il log di funzionamento.
+                Si differenzia da mail-tagli per un parametro in linkage
       ******************************************************************
                                                                               
        SPECIAL-NAMES. decimal-point is comma.
@@ -182,12 +183,12 @@
               accept como-ora  from time
               accept  wstampa from environment "SCHEDULER_PATH_LOG"
               inspect wstampa replacing trailing spaces by low-value
-              string  wstampa       delimited low-value
-                      "MAIL_TAGLI_" delimited size
-                      como-data     delimited size
-                      "_"           delimited size
-                      como-ora      delimited size
-                      ".log"        delimited size
+              string  wstampa        delimited low-value
+                      "MAIL_TAGLI2_" delimited size
+                      como-data      delimited size
+                      "_"            delimited size
+                      como-ora       delimited size
+                      ".log"         delimited size
                       into wstampa
               end-string
               set RichiamoSchedulato to true
@@ -225,7 +226,7 @@
        ELABORAZIONE.
            accept data-oggi  from century-date
 
-           move 20240402 to data-oggi
+           move 20240402  to data-oggi
 
            compute data-oggi = FUNCTION integer-of-date (data-oggi)
            subtract 1 from data-oggi
@@ -234,7 +235,7 @@
            perform CANCELLAZIONE-TAGLI.
 
            initialize como-riga.
-           string "CONTROLLO PRESENZA TAGLI DEL: " delimited size
+           string "CONTROLLO PRESENZA TAGLI (17) DEL: " delimited size
                   data-oggi(7:2)                   delimited size
                   "/"                              delimited size
                   data-oggi(5:2)                   delimited size
@@ -275,7 +276,7 @@
            perform SETTA-RIGA-STAMPA.
 
            move data-oggi to lin-data
-           set lin-pdf    to true
+           set lin-pdf2   to true
            if RichiamoSchedulato
               call   "lab-inevaso" using RichiamoSchedulatoFlag
                                          lab-inevaso-linkage
@@ -389,9 +390,11 @@
                   data-oggi(1:4)   delimited by size
                   into sostituto
 
-           accept LinkAddress from environment "MAIL_TAGLI_ADDRESSES"
+           accept LinkAddress from environment 
+                              "MAIL_TAGLI_ADDRESSES2"
            accept LinkAddressCC 
-                              from environment "MAIL_TAGLI_ADDRESSES_CC"
+                              from environment 
+                              "MAIL_TAGLI_ADDRESSES_CC2"
            accept LinkSubject from environment "MAIL_TAGLI_SUBJECT"
            if LinkSubject = space
               move "Riepilogo gestione tagli in data $1"   

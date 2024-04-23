@@ -148,6 +148,7 @@
        77  valore-z              pic zzz.zzz.zz9,99.
        77  valore-x              pic x(14).
        77  como-qta              pic 9(8).
+       77  filtro-div            pic xx value space.
 
        77  num-righe             pic 9(4).
 
@@ -680,6 +681,10 @@
               move batch-log to wstampa
               open extend lineseq
            end-if.
+           if lin-pdf2
+              set lin-pdf to true
+              move "17" to filtro-div
+           end-if.
            accept  como-data from century-date.
            accept  como-ora  from time.
            set PrimaVolta to true.
@@ -893,7 +898,18 @@
                  move tag-articolo to art-codice tin-articolo 
                  read articoli no lock invalid continue end-read
 
-                 set record-ok to false
+                 set record-ok to false                         
+
+                 if filtro-div not = spaces
+                    move tag-gdo to gdo-codice
+                    read tgrupgdo no lock
+                         invalid  exit perform cycle
+                     not invalid
+                         if gdo-tipocli not = filtro-div
+                            exit perform cycle
+                         end-if
+                    end-read
+                 end-if
 
                  if scorta-2-0
                     if art-scorta = 2 or art-scorta = 0
@@ -963,7 +979,12 @@
            end-if.  
 
            if not trovato
-              if not lin-pdf
+              if lin-pdf
+                 if RichiamoSchedulato
+                    move "NESSUN TAGLIO TROVATO" to como-riga
+                    perform SETTA-RIGA-STAMPA
+                 end-if
+              else
                  display message "Nessun taglio trovato"
                          title titolo
                          icon 2
@@ -987,7 +1008,7 @@
                 accept selprint-stampante 
                       from environment "STAMPANTE_ANTEPRIMA"
                 move 1 to selprint-num-copie
-           when lin-pdf
+           when lin-pdf  
                 if primavolta
                    perform CREA-PDF
                    if settaPDF-OK
@@ -2015,6 +2036,11 @@
 
            if settaPDF-OK
               move settaPDF-nome-file to lin-path-pdf
+
+              initialize como-riga
+              string "File PDF: " lin-path-pdf into como-riga
+              perform SETTA-RIGA-STAMPA
+
            else
               if RichiamoSchedulato
                  move -1 to batch-status
