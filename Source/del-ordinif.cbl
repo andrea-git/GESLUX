@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-ordinif.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 9 giugno 2022 12:28:46.
+       DATE-WRITTEN.        lunedì 29 aprile 2024 14:17:26.
        REMARKS.
       *{TOTEM}END
 
@@ -1241,15 +1241,14 @@
                  move anno-to  to tof-anno
                  move num-from to tof-numero
                  read tordforn no lock
-                      invalid
-                      display message "ORDINE INESISTENTE!!!" 
-                               x"0d0a""ANNO: " tof-anno " - N. " 
-           tof-numero
-                                title tit-err
-                                 icon 2
+                      invalid  continue
+      *                display message "ORDINE INESISTENTE!!!" 
+      *                         x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+      *                          title tit-err
+      *                           icon 2
                   not invalid
-                      evaluate true
-                      when tof-inserito
+      *                evaluate true
+      *                when tof-inserito
                            add 1 to deleted                         
                            initialize gordfornvar-linkage
                            move tof-chiave     to LinkChiave
@@ -1260,25 +1259,22 @@
                                                      livello-abil
                                                      gordfornvar-linkage
                            cancel "gordfornvar"
-                      when tof-inviato
-                           display message "ORDINE INVIATO!!!"  
-                                    x"0d0a""ANNO: " tof-anno " - N. " 
-           tof-numero
-                                     title tit-err
-                                      icon 2  
-                      when tof-in-lavorazione
-                           display message "ORDINE IN LAVORAZIONE!!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " 
-           tof-numero
-                                     title tit-err
-                                      icon 2
-                      when tof-chiuso
-                           display message "ORDINE CHIUSO!!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " 
-           tof-numero
-                                     title tit-err
-                                      icon 2
-                      end-evaluate
+      *                when tof-inviato
+      *                     display message "ORDINE INVIATO!!!"  
+      *                              x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+      *                               title tit-err
+      *                                icon 2  
+      *                when tof-in-lavorazione
+      *                     display message "ORDINE IN LAVORAZIONE!!!"
+      *                              x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+      *                               title tit-err
+      *                                icon 2
+      *                when tof-chiuso
+      *                     display message "ORDINE CHIUSO!!!"
+      *                              x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+      *                               title tit-err
+      *                                icon 2
+      *                end-evaluate
                  end-read
               end-perform   
               call "W$MOUSE" using set-mouse-shape, arrow-pointer

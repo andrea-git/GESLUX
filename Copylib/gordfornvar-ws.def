@@ -16,6 +16,7 @@
        77 qta-arrivo       PIC  9(8).
        77 SaveLastPrg      PIC  9(8).
        77 NumBitmapNotaCr  PIC  99.
+       77 forza-canc       PIC  x.
        77 STATUS-reva      PIC  X(2).
            88 Valid-STATUS-reva VALUE IS "00" THRU "09". 
        01 FILLER           PIC  9.

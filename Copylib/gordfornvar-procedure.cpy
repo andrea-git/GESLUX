@@ -140,43 +140,46 @@
       *     close check-rordforn.
 
       ***---
-       CANCELLA.
-           evaluate true
-           when tof-inserito
-      *****     when tof-accettato
-      *          if PgmChiamante = "del-ordinif"
-                if LinkOrdineDeleteOp = 1
-                   move mb-yes to scelta
-                else
-                   display message "Cancellare l'ordine corrente?"
-                             title titolo
-                              type mb-yes-no
-                           default mb-no
-                            giving scelta
-                             icon 2
-                end-if
-           when tof-inviato
-                move mb-no   to scelta
-                display message "Ordine già inviato."
-                                x"0d0a"
-                                "Cancellazione impossibile."
-                        title titolo 
-                        icon 2
-           when tof-in-lavorazione
-                move mb-no   to scelta
-                display message "Ordine in lavorazione."
-                                x"0d0a"
-                                "Cancellazione impossibile."
-                        title titolo 
-                        icon 2
-           when tof-chiuso
-                display message "Ordine chiuso."
-                                x"0d0a"
-                                "Cancellazione impossibile."
-                        title titolo 
-                        icon 2
-                move mb-no   to scelta
-           end-evaluate
+       CANCELLA.                
+           accept forza-canc from environment "FORZA_CANC".
+           if forza-canc = "S"
+              move mb-yes to scelta
+           else
+              evaluate true
+              when tof-inserito       
+                   if LinkOrdineDeleteOp = 1
+                      move mb-yes to scelta
+                   else
+                      display message "Cancellare l'ordine corrente?"
+                                title titolo
+                                 type mb-yes-no
+                              default mb-no
+                               giving scelta
+                                icon 2
+                   end-if
+              when tof-inviato
+                   move mb-no   to scelta
+                   display message "Ordine già inviato."
+                                   x"0d0a"
+                                   "Cancellazione impossibile."
+                           title titolo 
+                           icon 2
+              when tof-in-lavorazione
+                   move mb-no   to scelta
+                   display message "Ordine in lavorazione."
+                                   x"0d0a"
+                                   "Cancellazione impossibile."
+                           title titolo 
+                           icon 2
+              when tof-chiuso
+                   display message "Ordine chiuso."
+                                   x"0d0a"
+                                   "Cancellazione impossibile."
+                           title titolo 
+                           icon 2
+                   move mb-no   to scelta
+              end-evaluate
+           end-if.
 
       *    se è l'ultimo ordine per il fornitore devo aggiornare la 
       *    numerazione sull'anagrafica del fornitore

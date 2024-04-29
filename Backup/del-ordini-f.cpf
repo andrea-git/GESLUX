@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
 BEFORE_PROGRAM=check-utf-Ev-Before-Program
 AFTER_PROGRAM=check-utf-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E66E10138-682-9119136
+PROGRAM_UNIQUE_CODE=TOTEM-7E841D121819-568-2346338
 
 {{@DESCRIPTION:
 
@@ -309,6 +310,16 @@ m_bFixed=1
 
 @}}
 [FDITEM23_WK]
+m_strName=forza-canc
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM23_WK
+
+@}}
+[FDITEM24_WK]
 m_strName=bottone-cancel-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -317,21 +328,12 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM23_WK
-
-@}}
-[FDITEM24_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM24_WK
 
 @}}
 [FDITEM25_WK]
-m_strName=form1-Handle
-m_nUsage=24
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -339,10 +341,8 @@ m_bFixed=1
 
 @}}
 [FDITEM26_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=0
+m_strName=form1-Handle
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -350,8 +350,10 @@ m_bFixed=1
 
 @}}
 [FDITEM27_WK]
-m_strName=Verdana18B-Occidentale
-m_nUsage=26
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -359,9 +361,8 @@ m_bFixed=1
 
 @}}
 [FDITEM28_WK]
-m_strName=anno-to
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=Verdana18B-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -369,9 +370,9 @@ m_bFixed=1
 
 @}}
 [FDITEM29_WK]
-m_strName=num-from
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=anno-to
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -379,7 +380,7 @@ m_bFixed=1
 
 @}}
 [FDITEM30_WK]
-m_strName=num-to
+m_strName=num-from
 m_strRawPic=9(8)
 m_strPic=9(8)
 m_nItemLevel=77
@@ -389,10 +390,9 @@ m_bFixed=1
 
 @}}
 [FDITEM31_WK]
-m_strName=n-elab
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_strDefaultValue=0
+m_strName=num-to
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -400,7 +400,7 @@ m_bFixed=1
 
 @}}
 [FDITEM32_WK]
-m_strName=n-find
+m_strName=n-elab
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_strDefaultValue=0
@@ -411,7 +411,7 @@ m_bFixed=1
 
 @}}
 [FDITEM33_WK]
-m_strName=n-del
+m_strName=n-find
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_strDefaultValue=0
@@ -422,7 +422,7 @@ m_bFixed=1
 
 @}}
 [FDITEM34_WK]
-m_strName=n-err
+m_strName=n-del
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_strDefaultValue=0
@@ -433,7 +433,7 @@ m_bFixed=1
 
 @}}
 [FDITEM35_WK]
-m_strName=n-inv
+m_strName=n-err
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_strDefaultValue=0
@@ -444,7 +444,7 @@ m_bFixed=1
 
 @}}
 [FDITEM36_WK]
-m_strName=n-lav
+m_strName=n-inv
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_strDefaultValue=0
@@ -455,7 +455,7 @@ m_bFixed=1
 
 @}}
 [FDITEM37_WK]
-m_strName=n-chi
+m_strName=n-lav
 m_strRawPic=9(5)
 m_strPic=9(5)
 m_strDefaultValue=0
@@ -466,10 +466,9 @@ m_bFixed=1
 
 @}}
 [FDITEM38_WK]
-m_strName=BLUE-FINO-28X24-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
+m_strName=n-chi
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
@@ -478,7 +477,7 @@ m_bFixed=1
 
 @}}
 [FDITEM39_WK]
-m_strName=BLUE-DA-28X24-BMP
+m_strName=BLUE-FINO-28X24-BMP
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -490,9 +489,11 @@ m_bFixed=1
 
 @}}
 [FDITEM40_WK]
-m_strName=STATUS-tordini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=BLUE-DA-28X24-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -500,31 +501,41 @@ m_bFixed=1
 
 @}}
 [FDITEM41_WK]
+m_strName=STATUS-tordini
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM41_WK
+
+@}}
+[FDITEM42_WK]
 m_strName=Valid-STATUS-tordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM41_WK
+{{@DataItem_m_strDescriptionFDITEM42_WK
 
 @}}
-[FDITEM42_WK]
+[FDITEM43_WK]
 m_strName=STATUS-tordforn
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM42_WK
+{{@DataItem_m_strDescriptionFDITEM43_WK
 
 @}}
-[FDITEM43_WK]
+[FDITEM44_WK]
 m_strName=Valid-STATUS-tordforn
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM43_WK
+{{@DataItem_m_strDescriptionFDITEM44_WK
 
 @}}
 
@@ -1457,6 +1468,8 @@ BEGIN-TEXT
               end-if
            end-if.
 
+           accept forza-canc from environment "FORZA_CANC".
+
            if tutto-ok
               move 0 to n-elab
               move 0 to n-find
@@ -1474,56 +1487,74 @@ BEGIN-TEXT
                  read tordforn no lock
                       invalid
                       add 1 to n-find
-                      display message "ORDINE INESISTENTE!!!"
-                               x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                               x"0d0a""ANNO: " tof-anno " - N. " tof-numero
-                                title tit-err
-                                 icon 2
+                      if forza-canc not = "S"
+                         display message "ORDINE INESISTENTE!!!"
+                                  x"0d0a""IMPOSSIBILE CANCELLARE!!"
+                                  x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+                                   title tit-err
+                                    icon 2
+                      end-if
                   not invalid
-                      evaluate true
-                      when tof-inserito
-                           initialize gordfornvar-linkage
-                           move tof-chiave     to LinkChiave
-                           move "del-ordinif"  to LinkPgm
-                           move 3              to livello-abil
-                           move 1              to LinkOrdineDeleteOp
-                           call   "gordfornvar"   using lk-blockpgm
-                                                        user-codi
-                                                        livello-abil
-                                                        gordfornvar-linkage
-                           cancel "gordfornvar"
-                           if LinkOrdineDeleteStatus = 0
-                              add 1 to n-del
-                           else                     
-                              add 1 to n-err
-                              display message "ORDINE NON CANCELLATO!!!"  
-                                       x"0d0a""ERRORE, CONTATTARE ASSISTENZA, INDICANDO ANNO E NUMERO!!"
+                      if forza-canc = "S"      
+                         initialize gordfornvar-linkage
+                         move tof-chiave     to LinkChiave
+                         move "del-ordinif"  to LinkPgm
+                         move 3              to livello-abil
+                         move 1              to LinkOrdineDeleteOp
+                         call   "gordfornvar"   using lk-blockpgm
+                                                      user-codi
+                                                      livello-abil
+                                                      gordfornvar-linkage
+                         cancel "gordfornvar"
+                         if LinkOrdineDeleteStatus = 0
+                            add 1 to n-del
+                         end-if
+                      else
+                         evaluate true
+                         when tof-inserito
+                              initialize gordfornvar-linkage
+                              move tof-chiave     to LinkChiave
+                              move "del-ordinif"  to LinkPgm
+                              move 3              to livello-abil
+                              move 1              to LinkOrdineDeleteOp
+                              call   "gordfornvar"   using lk-blockpgm
+                                                           user-codi
+                                                           livello-abil
+                                                           gordfornvar-linkage
+                              cancel "gordfornvar"
+                              if LinkOrdineDeleteStatus = 0
+                                 add 1 to n-del
+                              else                     
+                                 add 1 to n-err
+                                 display message "ORDINE NON CANCELLATO!!!"  
+                                          x"0d0a""ERRORE, CONTATTARE ASSISTENZA, INDICANDO ANNO E NUMERO!!"
+                                          x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+                                           title tit-err
+                                            icon 2  
+                              end-if   
+                         when tof-inviato      
+                              add 1 to n-inv
+                              display message "ORDINE INVIATO!!!"  
+                                       x"0d0a""IMPOSSIBILE CANCELLARE!!"
                                        x"0d0a""ANNO: " tof-anno " - N. " tof-numero
                                         title tit-err
                                          icon 2  
-                           end-if   
-                      when tof-inviato      
-                           add 1 to n-inv
-                           display message "ORDINE INVIATO!!!"  
-                                    x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " tof-numero
-                                     title tit-err
-                                      icon 2  
-                      when tof-in-lavorazione   
-                           add 1 to n-lav
-                           display message "ORDINE IN LAVORAZIONE!!!"
-                                    x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " tof-numero
-                                     title tit-err
-                                      icon 2
-                      when tof-chiuso       
-                           add 1 to n-chi
-                           display message "ORDINE CHIUSO!!!"
-                                    x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " tof-numero
-                                     title tit-err
-                                      icon 2
-                      end-evaluate
+                         when tof-in-lavorazione   
+                              add 1 to n-lav
+                              display message "ORDINE IN LAVORAZIONE!!!"
+                                       x"0d0a""IMPOSSIBILE CANCELLARE!!"
+                                       x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+                                        title tit-err
+                                         icon 2
+                         when tof-chiuso       
+                              add 1 to n-chi
+                              display message "ORDINE CHIUSO!!!"
+                                       x"0d0a""IMPOSSIBILE CANCELLARE!!"
+                                       x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+                                        title tit-err
+                                         icon 2
+                         end-evaluate
+                    end-if
                  end-read
               end-perform   
               call "W$MOUSE" using set-mouse-shape, arrow-pointer

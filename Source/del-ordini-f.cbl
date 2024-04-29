@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-ordini-f.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 14 giugno 2022 12:13:24.
+       DATE-WRITTEN.        lunedì 29 aprile 2024 14:46:33.
        REMARKS.
       *{TOTEM}END
 
@@ -74,6 +74,7 @@
        77 bottone-ok-bmp   PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
+       77 forza-canc       PIC  x.
        77 bottone-cancel-bmp           PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
@@ -1246,6 +1247,8 @@
               end-if
            end-if.
 
+           accept forza-canc from environment "FORZA_CANC".
+
            if tutto-ok
               move 0 to n-elab
               move 0 to n-find
@@ -1263,64 +1266,83 @@
                  read tordforn no lock
                       invalid
                       add 1 to n-find
-                      display message "ORDINE INESISTENTE!!!"
-                               x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                               x"0d0a""ANNO: " tof-anno " - N. " 
+                      if forza-canc not = "S"
+                         display message "ORDINE INESISTENTE!!!"
+                                  x"0d0a""IMPOSSIBILE CANCELLARE!!"
+                                  x"0d0a""ANNO: " tof-anno " - N. " 
            tof-numero
-                                title tit-err
-                                 icon 2
+                                   title tit-err
+                                    icon 2
+                      end-if
                   not invalid
-                      evaluate true
-                      when tof-inserito
-                           initialize gordfornvar-linkage
-                           move tof-chiave     to LinkChiave
-                           move "del-ordinif"  to LinkPgm
-                           move 3              to livello-abil
-                           move 1              to LinkOrdineDeleteOp
-                           call   "gordfornvar"   using lk-blockpgm
-                                                        user-codi
-                                                        livello-abil
-                                                        
+                      if forza-canc = "S"      
+                         initialize gordfornvar-linkage
+                         move tof-chiave     to LinkChiave
+                         move "del-ordinif"  to LinkPgm
+                         move 3              to livello-abil
+                         move 1              to LinkOrdineDeleteOp
+                         call   "gordfornvar"   using lk-blockpgm
+                                                      user-codi
+                                                      livello-abil
+                                                      
            gordfornvar-linkage
-                           cancel "gordfornvar"
-                           if LinkOrdineDeleteStatus = 0
-                              add 1 to n-del
-                           else                     
-                              add 1 to n-err
-                              display message "ORDINE NON CANCELLATO!!!"
-             
-                                       x"0d0a""ERRORE, CONTATTARE ASSIST
-      -    "ENZA, INDICANDO ANNO E NUMERO!!"
+                         cancel "gordfornvar"
+                         if LinkOrdineDeleteStatus = 0
+                            add 1 to n-del
+                         end-if
+                      else
+                         evaluate true
+                         when tof-inserito
+                              initialize gordfornvar-linkage
+                              move tof-chiave     to LinkChiave
+                              move "del-ordinif"  to LinkPgm
+                              move 3              to livello-abil
+                              move 1              to LinkOrdineDeleteOp
+                              call   "gordfornvar"   using lk-blockpgm
+                                                           user-codi
+                                                           livello-abil
+                                                           
+           gordfornvar-linkage
+                              cancel "gordfornvar"
+                              if LinkOrdineDeleteStatus = 0
+                                 add 1 to n-del
+                              else                     
+                                 add 1 to n-err
+                                 display message "ORDINE NON CANCELLATO!
+      -    "!!"  
+                                          x"0d0a""ERRORE, CONTATTARE ASS
+      -    "ISTENZA, INDICANDO ANNO E NUMERO!!"
+                                          x"0d0a""ANNO: " tof-anno " - N
+      -    ". " tof-numero
+                                           title tit-err
+                                            icon 2  
+                              end-if   
+                         when tof-inviato      
+                              add 1 to n-inv
+                              display message "ORDINE INVIATO!!!"  
+                                       x"0d0a""IMPOSSIBILE CANCELLARE!!"
                                        x"0d0a""ANNO: " tof-anno " - N. "
             tof-numero
                                         title tit-err
                                          icon 2  
-                           end-if   
-                      when tof-inviato      
-                           add 1 to n-inv
-                           display message "ORDINE INVIATO!!!"  
-                                    x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " 
-           tof-numero
-                                     title tit-err
-                                      icon 2  
-                      when tof-in-lavorazione   
-                           add 1 to n-lav
-                           display message "ORDINE IN LAVORAZIONE!!!"
-                                    x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " 
-           tof-numero
-                                     title tit-err
-                                      icon 2
-                      when tof-chiuso       
-                           add 1 to n-chi
-                           display message "ORDINE CHIUSO!!!"
-                                    x"0d0a""IMPOSSIBILE CANCELLARE!!"
-                                    x"0d0a""ANNO: " tof-anno " - N. " 
-           tof-numero
-                                     title tit-err
-                                      icon 2
-                      end-evaluate
+                         when tof-in-lavorazione   
+                              add 1 to n-lav
+                              display message "ORDINE IN LAVORAZIONE!!!"
+                                       x"0d0a""IMPOSSIBILE CANCELLARE!!"
+                                       x"0d0a""ANNO: " tof-anno " - N. "
+            tof-numero
+                                        title tit-err
+                                         icon 2
+                         when tof-chiuso       
+                              add 1 to n-chi
+                              display message "ORDINE CHIUSO!!!"
+                                       x"0d0a""IMPOSSIBILE CANCELLARE!!"
+                                       x"0d0a""ANNO: " tof-anno " - N. "
+            tof-numero
+                                        title tit-err
+                                         icon 2
+                         end-evaluate
+                    end-if
                  end-read
               end-perform   
               call "W$MOUSE" using set-mouse-shape, arrow-pointer
