@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          del-ordini-f.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 29 aprile 2024 14:46:33.
+       DATE-WRITTEN.        lunedì 29 aprile 2024 16:19:36.
        REMARKS.
       *{TOTEM}END
 
@@ -1275,74 +1275,46 @@
                                     icon 2
                       end-if
                   not invalid
-                      if forza-canc = "S"      
-                         initialize gordfornvar-linkage
-                         move tof-chiave     to LinkChiave
-                         move "del-ordinif"  to LinkPgm
-                         move 3              to livello-abil
-                         move 1              to LinkOrdineDeleteOp
-                         call   "gordfornvar"   using lk-blockpgm
-                                                      user-codi
-                                                      livello-abil
-                                                      
-           gordfornvar-linkage
-                         cancel "gordfornvar"
-                         if LinkOrdineDeleteStatus = 0
-                            add 1 to n-del
-                         end-if
-                      else
-                         evaluate true
-                         when tof-inserito
-                              initialize gordfornvar-linkage
-                              move tof-chiave     to LinkChiave
-                              move "del-ordinif"  to LinkPgm
-                              move 3              to livello-abil
-                              move 1              to LinkOrdineDeleteOp
-                              call   "gordfornvar"   using lk-blockpgm
-                                                           user-codi
-                                                           livello-abil
-                                                           
-           gordfornvar-linkage
-                              cancel "gordfornvar"
-                              if LinkOrdineDeleteStatus = 0
-                                 add 1 to n-del
-                              else                     
-                                 add 1 to n-err
-                                 display message "ORDINE NON CANCELLATO!
-      -    "!!"  
-                                          x"0d0a""ERRORE, CONTATTARE ASS
-      -    "ISTENZA, INDICANDO ANNO E NUMERO!!"
-                                          x"0d0a""ANNO: " tof-anno " - N
-      -    ". " tof-numero
-                                           title tit-err
-                                            icon 2  
-                              end-if   
-                         when tof-inviato      
-                              add 1 to n-inv
+                      evaluate true
+                      when tof-inserito
+                           perform DEL-ORDINE-F
+                      when tof-inviato      
+                           add 1 to n-inv
+                           if forza-canc = "S" 
+                              perform DEL-ORDINE-F
+                           else
                               display message "ORDINE INVIATO!!!"  
                                        x"0d0a""IMPOSSIBILE CANCELLARE!!"
                                        x"0d0a""ANNO: " tof-anno " - N. "
             tof-numero
                                         title tit-err
                                          icon 2  
-                         when tof-in-lavorazione   
-                              add 1 to n-lav
+                           end-if
+                      when tof-in-lavorazione   
+                           add 1 to n-lav
+                           if forza-canc = "S" 
+                              perform DEL-ORDINE-F
+                           else
                               display message "ORDINE IN LAVORAZIONE!!!"
                                        x"0d0a""IMPOSSIBILE CANCELLARE!!"
                                        x"0d0a""ANNO: " tof-anno " - N. "
             tof-numero
                                         title tit-err
                                          icon 2
-                         when tof-chiuso       
-                              add 1 to n-chi
+                           end-if
+                      when tof-chiuso       
+                           add 1 to n-chi
+                           if forza-canc = "S" 
+                              perform DEL-ORDINE-F
+                           else
                               display message "ORDINE CHIUSO!!!"
                                        x"0d0a""IMPOSSIBILE CANCELLARE!!"
                                        x"0d0a""ANNO: " tof-anno " - N. "
             tof-numero
                                         title tit-err
                                          icon 2
-                         end-evaluate
-                    end-if
+                           end-if
+                      end-evaluate
                  end-read
               end-perform   
               call "W$MOUSE" using set-mouse-shape, arrow-pointer
@@ -1364,6 +1336,32 @@
               move             4 to accept-control
               call   "tprev-elab" using user-codi
               cancel "tprev-elab"
+           end-if.
+
+      ***---
+       DEL-ORDINE-F.
+           initialize gordfornvar-linkage.
+           move tof-chiave     to LinkChiave.
+           move "del-ordinif"  to LinkPgm.
+           move 3              to livello-abil.
+           move 1              to LinkOrdineDeleteOp.
+           call   "gordfornvar"   using lk-blockpgm
+                                        user-codi
+                                        livello-abil
+                                        gordfornvar-linkage.
+           cancel "gordfornvar".
+           if LinkOrdineDeleteStatus = 0
+              add 1 to n-del
+           else                     
+              add 1 to n-err
+              if forza-canc not = "S"
+                 display message "ORDINE NON CANCELLATO!!!"  
+                          x"0d0a""ERRORE, CONTATTARE ASSISTENZA, INDICAN
+      -    "DO ANNO E NUMERO!!"
+                          x"0d0a""ANNO: " tof-anno " - N. " tof-numero
+                           title tit-err
+                            icon 2  
+              end-if
            end-if 
            .
       * <TOTEM:END>
