@@ -80,6 +80,7 @@
        77  path-backup           pic x(256).
        77  path-log              pic x(256).
        77  nome-file             pic x(256).
+       77  s-nome-file           pic x(256).
        77  file-backup           pic x(256).  
        77  cmd                   pic x(200).
        77  como-riga             pic x(200).
@@ -209,6 +210,8 @@
            evaluate status-clienti
            when "99" set RecLocked to true
            end-evaluate.
+       LINESEQ-ERR SECTION.
+           use after error procedure on lineseq.
        END DECLARATIVES.
 
       ***---
@@ -344,6 +347,7 @@
               set errori to true
            else                 
       *       CONTROLLO L'ESISTENZA DELLA CARTELLA
+              initialize return-code
               call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
                                             path-import,
                                             "*.*"
@@ -352,14 +356,15 @@
 
               if Dir-import-Handle = ZERO     
                  initialize como-riga
-                 string "APERTURA NON RIUSCITA. PATH IMPORT= "
+                 string "APERTURA NON RIUSCITA O FILES. PATH IMPORT= "
                         path-import   delimited size
                    into como-riga
                  end-string
                  perform SCRIVI-RIGA-LOG
                  set errori             to true
               else
-      *          cartella di backup
+      *          cartella di backup    
+                 initialize return-code
                  call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
                                                path-backup,
                                                "*.*"
@@ -377,7 +382,8 @@
                  else
                     call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, 
                                                   Dir-backup-Handle
-      *             cartella di log
+      *             cartella di log        
+                    initialize return-code
                     call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
                                                   path-log,
                                                   "*.*"
@@ -420,17 +426,20 @@
               move 0 to batch-status
            end-if. 
 
-           initialize Dir-import-Handle
+           initialize Dir-import-Handle  
+                      return-code
            call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
                                          path-import,
                                          "PMITRADE_*.*"
 
            move RETURN-CODE        to Dir-import-Handle
 
-           if Dir-import-Handle = ZERO
-              move 1 to batch-status
+           if Dir-import-Handle = 0
+              if RichiamoSchedulato
+                 move 1 to batch-status
+              end-if
 
-              move "NESSUN FILE PMITRADE PRESENTE" to como-riga
+              move "NESSUN FILE PMITRADE_*.* PRESENTE" to como-riga
               perform SCRIVI-RIGA-LOG
 
               exit paragraph
@@ -472,12 +481,20 @@
 
               if nome-file = spaces exit perform end-if
 
+              |Ricerco il file più recente
+
               if nome-file not = "."      and
                            not = ".."     and
                            not = "Backup" and
                            not = "backup" and
-                           not = ".DS_Store" 
+                           not = ".DS_Store"  
 
+                 initialize como-riga
+                 string "TROVATO FILE: "  delimited size
+                        nome-file         delimited low-value
+                   into como-riga
+                 end-string     
+                                      
                  initialize wstampa
                  inspect nome-file  replacing trailing spaces
                                     by low-value
@@ -485,73 +502,154 @@
                         nome-file   delimited low-value
                    into wstampa
                  end-string
-                 open input lineseq
-                 if status-lineseq not = "00"
-                    initialize como-riga
-                    string "ELABORAZIONE FILE: "  delimited size
-                           nome-file              delimited low-value
-                           " NON RIUSCITA. ERR: " delimited size
-                           status-lineseq         delimited size
-                      into como-riga
-                    end-string
-                    perform SCRIVI-RIGA-LOG
-                    if RichiamoSchedulato
-                       move 1 to batch-status
-                    end-if
-                 else
-                    initialize como-riga
-                    string "ELABORAZIONE FILE: " delimited size
-                           nome-file             delimited low-value
-                      into como-riga
-                    end-string
-                    perform SCRIVI-RIGA-LOG
-                    perform ELABORA-FILE
-                    close lineseq
-                    initialize file-backup
-                    string  path-backup delimited low-value
-                            nome-file   delimited low-value
-                            "_"         delimited size
-                            como-data   delimited size
-                            "_"         delimited size
-                            como-ora    delimited size
-                       into file-backup
-                    end-string
-                    inspect wstampa   replacing trailing spaces 
-                                      by low-value
-                    initialize cmd
-                    string "move "     delimited size
-                           wstampa     delimited low-value
-                           " "         delimited size
-                           file-backup delimited size
-                           into cmd
-                    end-string            
-                    move 0 to status-call
-                    call "C$SYSTEM" using cmd, 225
-                                   giving status-call
-
-                    initialize como-riga
-                    string "ESECUZIONE COMANDO: " delimited size
-                           cmd                    delimited size
-                      into como-riga
-                    end-string
-                    perform SCRIVI-RIGA-LOG
-
-                    if status-call = 0    
-                       move "BACKUP EFFETTUATO" to como-riga
-                       perform SCRIVI-RIGA-LOG
-                    else
-                       move "BACKUP NON RIUSCITO" to como-riga
-                       perform SCRIVI-RIGA-LOG
-                       if RichiamoSchedulato
-                          move 1 to batch-status
-                       end-if
-                    end-if
-                 end-if
-                 exit perform |SOLO UNO
-              end-if
+                 move nome-file to s-nome-file
+             end-if
            end-perform.   
            call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, 
-                                         Dir-import-Handle.   
+                                         Dir-import-Handle.
+           move s-nome-file to nome-file.
+
+           open input lineseq.
+           if status-lineseq not = "00"
+              initialize como-riga
+              string "ELABORAZIONE FILE: "  delimited size
+                     nome-file             delimited low-value
+                     " NON RIUSCITA ERR: " delimited size
+                     status-lineseq
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+              if RichiamoSchedulato
+                 move 1 to batch-status
+              end-if
+           else
+              initialize como-riga
+              string "ELABORAZIONE FILE: " delimited size
+                     nome-file             delimited low-value
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+              perform ELABORA-FILE
+              close lineseq      
+              initialize file-backup
+              string  path-backup delimited low-value
+                      nome-file   delimited low-value
+                      "_"         delimited size
+                      como-data   delimited size
+                      "_"         delimited size
+                      como-ora    delimited size
+                 into file-backup
+              end-string
+              perform BACKUP-FILE   
+              perform SPOSTA-FILES-NON-ELABORATI
+           end-if. 
+           
+      ***---
+       SPOSTA-FILES-NON-ELABORATI.
+           initialize Dir-import-Handle return-code.
+           call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
+                                         path-import,
+                                         "PMITRADE_*.*"
+
+           move RETURN-CODE        to Dir-import-Handle
+
+           if return-code <= 0 exit paragraph end-if.
+
+           move "SPOSTAMENTO FILES NON ELABORATI" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
+           perform until 1 = 2
+              call "C$LIST-DIRECTORY" using LISTDIR-NEXT,
+                                            dir-import-handle,
+                                            nome-file
+
+              if nome-file = spaces exit perform end-if
+
+              |Ricerco il file più recente
+
+              if nome-file not = "."      and
+                           not = ".."     and
+                           not = "Backup" and
+                           not = "backup" and
+                           not = ".DS_Store" 
+                                      
+                 initialize wstampa
+                 inspect nome-file  replacing trailing spaces
+                                    by low-value
+                 string path-import delimited low-value
+                        nome-file   delimited low-value
+                   into wstampa
+                 end-string                     
+                 initialize como-riga
+                 string "SPOSTAMENTO FILE: " delimited size
+                        nome-file            delimited low-value
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+                 initialize file-backup
+                 string  path-backup       delimited low-value
+                         nome-file         delimited low-value
+                         "_NON-ELABORATO_" delimited size
+                         como-data         delimited size
+                         "_"               delimited size
+                         como-ora          delimited size
+                    into file-backup
+                 end-string
+                 perform BACKUP-FILE
+             end-if
+           end-perform.   
+           call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, 
+                                         Dir-import-Handle.
+                                                             
+
+           move "FINE SPOSTAMENTO FILES NON ELABORATI" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
+      ***---
+       BACKUP-FILE.
+           inspect wstampa   replacing trailing spaces 
+                             by low-value.
+           initialize cmd
+           string "move "     delimited size
+                  wstampa     delimited low-value
+                  " "         delimited size
+                  file-backup delimited size
+             into cmd
+           end-string.
+           move 0 to status-call.
+           call "C$SYSTEM" using cmd, 225
+                          giving status-call.
+
+           initialize como-riga.
+           string "ESECUZIONE COMANDO: " delimited size
+                  cmd                    delimited size
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+                        
+           if status-call = 0   
+              move file-backup to wstampa
+              perform 5 times            
+                 open input lineseq   
+                 if status-lineseq = "00"
+                    exit perform
+                 end-if
+                 call "C$SLEEP" using 1
+              end-perform
+              if status-lineseq = "00"
+                 move "BACKUP EFFETTUATO" to como-riga  
+                 close lineseq   
+              else                                   
+                 move "BACKUP NON RIUSCITO" to como-riga
+              end-if
+              perform SCRIVI-RIGA-LOG
+           else
+              move "BACKUP NON RIUSCITO" to como-riga
+              perform SCRIVI-RIGA-LOG
+              if RichiamoSchedulato
+                 move 1 to batch-status
+              end-if
+           end-if.
 
       ***---
        ELABORA-FILE.
