@@ -424,7 +424,14 @@
        ELABORAZIONE.
            if RichiamoSchedulato
               move 0 to batch-status
-           end-if. 
+           end-if.          
+
+           initialize como-riga.
+           string "CONTROLLO PATH-IMPORT: "
+                  path-import
+             into como-riga
+           end-string. 
+           perform SCRIVI-RIGA-LOG.
 
            initialize Dir-import-Handle  
                       return-code
@@ -523,12 +530,6 @@
                  move 1 to batch-status
               end-if
            else
-              initialize como-riga
-              string "ELABORAZIONE FILE: " delimited size
-                     nome-file             delimited low-value
-                into como-riga
-              end-string
-              perform SCRIVI-RIGA-LOG
               perform ELABORA-FILE
               close lineseq      
               initialize file-backup
@@ -545,7 +546,17 @@
            end-if. 
            
       ***---
-       SPOSTA-FILES-NON-ELABORATI.
+       SPOSTA-FILES-NON-ELABORATI. 
+           move "SPOSTAMENTO FILES NON ELABORATI" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
+           initialize como-riga.
+           string "CONTROLLO SPOSTAMENTO FILES SCARTATI "
+                  path-import
+             into como-riga
+           end-string. 
+           perform SCRIVI-RIGA-LOG.
+
            initialize Dir-import-Handle return-code.
            call "C$LIST-DIRECTORY" using LISTDIR-OPEN,
                                          path-import,
@@ -553,10 +564,11 @@
 
            move RETURN-CODE        to Dir-import-Handle
 
-           if return-code <= 0 exit paragraph end-if.
-
-           move "SPOSTAMENTO FILES NON ELABORATI" to como-riga.
-           perform SCRIVI-RIGA-LOG.
+           if return-code <= 0 
+              move "NESSUN FILE PMITRADE_*.* PRESENTE" to como-riga
+              perform SCRIVI-RIGA-LOG
+              exit paragraph 
+           end-if.             
 
            perform until 1 = 2
               call "C$LIST-DIRECTORY" using LISTDIR-NEXT,
@@ -599,8 +611,7 @@
              end-if
            end-perform.   
            call "C$LIST-DIRECTORY" using LISTDIR-CLOSE, 
-                                         Dir-import-Handle.
-                                                             
+                                         Dir-import-Handle.  
 
            move "FINE SPOSTAMENTO FILES NON ELABORATI" to como-riga.
            perform SCRIVI-RIGA-LOG.
@@ -653,6 +664,13 @@
 
       ***---
        ELABORA-FILE.
+           initialize como-riga.
+           string "ELABORAZIONE FILE: " delimited size
+                  nome-file             delimited low-value
+             into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
            |salto l'intestazione
            read lineseq next 
                 at end 
@@ -666,7 +684,7 @@
            end-read.
 
       ***---
-       ELABORA-FILE-OK.
+       ELABORA-FILE-OK.            
            move 1 to riga-csv.
            perform until 1 = 2
               read lineseq next at end exit perform end-read
