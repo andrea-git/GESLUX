@@ -1920,24 +1920,39 @@
       ***---
        CREA-PDF.
            accept DestFile from environment "PATH_ST_CLIENT".
-      
-      *****     inspect DestFile replacing trailing 
-      *****                               spaces by low-value.
-      
-           string "Riepilogo_tagli"   delimited size  
-                  "_("                delimited size
-                  como-data(7:2)      delimited by size
-                  "-"                 delimited size
-                  como-data(5:2)      delimited by size
-                  "-"                 delimited size
-                  como-data(1:4)      delimited by size
-                  "_-_"               delimited size
-                  como-ora(1:2)       delimited size
-                  "."                 delimited by size
-                  como-ora(3:2)       delimited size
-                  ")"                 delimited size
-                  into NomeFile
-           end-string.
+           if filtro-div not = spaces
+              string "Riepilogo_tagli" delimited size  
+                     "_"               delimited size  
+                     filtro-div        delimited size  
+                     "_("              delimited size
+                     como-data(7:2)    delimited by size
+                     "-"               delimited size
+                     como-data(5:2)    delimited by size
+                     "-"               delimited size
+                     como-data(1:4)    delimited by size
+                     "_-_"             delimited size
+                     como-ora(1:2)     delimited size
+                     "."               delimited by size
+                     como-ora(3:2)     delimited size
+                     ")"               delimited size
+                     into NomeFile
+              end-string
+           else
+              string "Riepilogo_tagli" delimited size  
+                     "_("              delimited size
+                     como-data(7:2)    delimited by size
+                     "-"               delimited size
+                     como-data(5:2)    delimited by size
+                     "-"               delimited size
+                     como-data(1:4)    delimited by size
+                     "_-_"             delimited size
+                     como-ora(1:2)     delimited size
+                     "."               delimited by size
+                     como-ora(3:2)     delimited size
+                     ")"               delimited size
+                     into NomeFile
+              end-string
+           end-if.
                   
            set settaPDF-setta   to true
       

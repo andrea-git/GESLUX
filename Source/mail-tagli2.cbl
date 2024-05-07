@@ -49,7 +49,7 @@
        77  como-riga             pic x(400).
        77  riga-stampa           pic x(400).
        77  nargs                 pic 99 comp-1 value 0.
-       77  data-oggi             pic 9(8).
+       77  data-ieri             pic 9(8).
 
       * FLAGS
        77  controllo             pic xx.
@@ -224,29 +224,27 @@
 
       ***---
        ELABORAZIONE.
-           accept data-oggi  from century-date
+           accept data-ieri  from century-date
 
-           move 20240402  to data-oggi
-
-           compute data-oggi = FUNCTION integer-of-date (data-oggi)
-           subtract 1 from data-oggi
-           compute data-oggi = FUNCTION date-of-integer (data-oggi)
+           compute data-ieri = FUNCTION integer-of-date (data-ieri)
+           subtract 1 from data-ieri
+           compute data-ieri = FUNCTION date-of-integer (data-ieri)
                                             
            perform CANCELLAZIONE-TAGLI.
 
            initialize como-riga.
            string "CONTROLLO PRESENZA TAGLI (17) DEL: " delimited size
-                  data-oggi(7:2)                   delimited size
+                  data-ieri(7:2)                   delimited size
                   "/"                              delimited size
-                  data-oggi(5:2)                   delimited size
+                  data-ieri(5:2)                   delimited size
                   "/"                              delimited size
-                  data-oggi(1:4)                   delimited size
+                  data-ieri(1:4)                   delimited size
                   into como-riga
            end-string.
            perform SETTA-RIGA-STAMPA.
 
            set si-tagli   to false
-           move data-oggi to tag-data
+           move data-ieri to tag-data
            move low-value to tag-gdo tag-articolo tag-prog
       
            start tagli key >= tag-data
@@ -255,7 +253,7 @@
                  read tagli next no lock
                       at end continue
                  end-read
-                 if tag-data = data-oggi
+                 if tag-data = data-ieri
                     set si-tagli to true
                  end-if
            end-start.
@@ -275,7 +273,7 @@
            move "CREAZIONE DEL PDF DEI TAGLI" to como-riga.
            perform SETTA-RIGA-STAMPA.
 
-           move data-oggi to lin-data
+           move data-ieri to lin-data
            set lin-pdf2   to true
            if RichiamoSchedulato
               call   "lab-inevaso" using RichiamoSchedulatoFlag
@@ -299,7 +297,11 @@
               if lin-path-pdf = spaces
                  move "NESSUN PDF CREATO"       to como-riga
               else
-                 move "CREAZIONE PDF TERMINATA" to como-riga
+                 initialize como-riga
+                 string "CREAZIONE PDF TERMINATA: "
+                        lin-path-pdf
+                   into como-riga
+                 end-string
               end-if
            end-if.
            perform SETTA-RIGA-STAMPA. 
@@ -310,23 +312,23 @@
            open i-o tagli.
            initialize como-riga.
            string "CANCELLAZIONE TAGLI DEL: " delimited size
-                  data-oggi(7:2)              delimited size
+                  data-ieri(7:2)              delimited size
                   "/"                         delimited size
-                  data-oggi(5:2)              delimited size
+                  data-ieri(5:2)              delimited size
                   "/"                         delimited size
-                  data-oggi(1:4)              delimited size
+                  data-ieri(1:4)              delimited size
                   into como-riga
            end-string.
            perform SETTA-RIGA-STAMPA.
 
-           move data-oggi to tag-data.
+           move data-ieri to tag-data.
       
            start tagli key >= tag-data
                  invalid set errori to true
              not invalid
                  perform until 1 = 2
                     read tagli next at end exit perform end-read
-                    if tag-data not = data-oggi
+                    if tag-data not = data-ieri
                        exit perform
                     end-if  
 
@@ -383,11 +385,11 @@
        INVIO-MAIL.
            move "$1"   to da-sostituire
            initialize sostituto
-           string data-oggi(7:2)   delimited by size
+           string data-ieri(7:2)   delimited by size
                   "/"              delimited by size
-                  data-oggi(5:2)   delimited by size
+                  data-ieri(5:2)   delimited by size
                   "/"              delimited by size
-                  data-oggi(1:4)   delimited by size
+                  data-ieri(1:4)   delimited by size
                   into sostituto
 
            accept LinkAddress from environment 
