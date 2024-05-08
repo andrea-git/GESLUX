@@ -2943,9 +2943,13 @@ LUBEXX           end-if
                  move col-cou    to col-coubat
                  move col-add-pb to col-add
 
-                 move col-qta to como-qta
-                 compute como-prz = hid-peso * 6,2
-                 move como-prz to col-prezzo
+                 if ef-vet-buf not = spaces
+                    move col-qta to como-qta
+                    compute como-prz = hid-peso * 6,2
+                    move como-prz to col-prezzo
+                 else
+                    move col-uni to col-prezzo
+                 end-if
 
 LUBEXX           move col-iva        to col-cod-iva
                  
