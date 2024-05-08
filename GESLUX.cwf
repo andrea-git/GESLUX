@@ -2,14 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=172.23.80.1
 
 
 [WORKSPACE_CONTENT]
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -52650,9 +52649,9 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\mail-tagli-w.cbl]
+COPY_DEPENDENCE=Copylib\link-batch.def
 ADDITIONAL_OPTIONS=-Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=.\Object\@.acu
 NAME_ERROR_FILE=@.err
@@ -52711,9 +52710,9 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\mail-tagli2.cbl]
+COPY_DEPENDENCE=FD\tsetinvio.sl;FD\lineseq.sl;FD\tagli.sl;FD\mrordini.sl;FD\lineseq-mail.sl;FD\tsetinvio.fd;FD\lineseq.fd;FD\tagli.fd;FD\mrordini.fd;FD\lineseq-mail.fd;Copylib\mail.def;LAB\Copylib\link-lab-inevaso.def;Copylib\link-batch.def;Copylib\mail-decl.cpy;Copylib\mail.cpy;Copylib\setta-inizio-riga.cpy
 ADDITIONAL_OPTIONS=-Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
-RECPMPILE=1
 ; Standard Options
 NAME_OBJECT_FILE=.\Object\@.acu
 NAME_ERROR_FILE=@.err

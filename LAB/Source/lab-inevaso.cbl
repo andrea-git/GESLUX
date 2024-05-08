@@ -2053,7 +2053,10 @@
               move settaPDF-nome-file to lin-path-pdf
 
               initialize como-riga
-              string "File PDF: " lin-path-pdf into como-riga
+              string "File PDF: " delimited size
+                     lin-path-pdf delimited size
+                into como-riga
+              end-string
               perform SETTA-RIGA-STAMPA
 
            else

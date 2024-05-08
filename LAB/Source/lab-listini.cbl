@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 10 novembre 2023 10:36:04.
+       DATE-WRITTEN.        mercoledì 8 maggio 2024 13:59:57.
        REMARKS.
       *{TOTEM}END
 
@@ -1516,7 +1516,7 @@
            COL 12,50, 
            LINE 47,19,
            LINES 1,19 ,
-           SIZE 52,50 ,
+           SIZE 56,00 ,
            COLOR IS 2,
            FONT IS Verdana12B-Occidentale,
            ID IS 205,

@@ -1,6 +1,6 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.                      mail-tagli2.
-       AUTHOR.                          Luciano.
+       AUTHOR.                          Andrea.
        REMARKS. programma di invio mail dei tagli per la divisione 17. 
                 Batch schedulato sul server. Il programma stampa i tagli 
                 per il giorno precedente a quello di esecuzione. Nel log 
@@ -397,7 +397,7 @@
            accept LinkAddressCC 
                               from environment 
                               "MAIL_TAGLI_ADDRESSES_CC2"
-           accept LinkSubject from environment "MAIL_TAGLI_SUBJECT"
+           accept LinkSubject from environment "MAIL_TAGLI_SUBJECT2"
            if LinkSubject = space
               move "Riepilogo gestione tagli in data $1"   
                     to LinkSubject
