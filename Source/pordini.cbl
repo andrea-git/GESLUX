@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          pordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 16 febbraio 2024 17:08:49.
+       DATE-WRITTEN.        lunedì 13 maggio 2024 10:24:46.
        REMARKS.
       *{TOTEM}END
 
@@ -7937,9 +7937,6 @@
            IF DataSet1-tparamge2-KEY-Asc
               IF DataSet1-tparamge2-LOCK
                  READ tparamge2 PREVIOUS WITH LOCK
-
-
-
               ELSE
                  READ tparamge2 PREVIOUS WITH NO LOCK
               END-IF
@@ -10410,8 +10407,7 @@
       * <TOTEM:END>
            DISPLAY scr-elab UPON scr-elab-Handle
       * <TOTEM:EPT. FORM:scr-elab, FORM:scr-elab, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -10647,8 +10643,7 @@
       * <TOTEM:END>
            DISPLAY scr-data UPON form1-handle
       * <TOTEM:EPT. FORM:scr-data, FORM:scr-data, AfterDisplay>
-
-
+
       *<<** Customized_Default, SP-G, scr-data-blockpgm-1, Disable **>>
 
            .
@@ -12422,7 +12417,7 @@
            end-string.
            perform SCRIVI-RIGA-LOG.
 
-           set errori to true.            
+           set errori to true.
            accept data-odierna from century-date.
            inquire form1-gd-1, last-row in tot-righe.
            perform varying riga from 3 by 1
@@ -12613,7 +12608,6 @@
            como-n1
                                   perform EDIT-NUMERO-1     
                                                              
-
                                   initialize como-riga
                                   if ord2-fabb-qta(como-idx) > 0
                                      string "ARTICOLO OK: "
@@ -12682,7 +12676,7 @@
                                   set decimal to true        
                                   move sco-molt-pordini to como-n8
                                   perform EDIT-NUMERO-8         
-                                                  move 10000 to como-n2
+
                                   initialize como-riga
                                   if como-n1 < como-n2
                                      string "ARTICOLO OK: "
@@ -14995,7 +14989,6 @@
                        else
                           if ord2-fabb-qta(6) < ord2-fabb-qta(5)
                              set errori to true
-
                           end-if
                        end-if
                     end-if
