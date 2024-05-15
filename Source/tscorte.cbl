@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 15 maggio 2024 12:17:46.
+       DATE-WRITTEN.        mercoledì 15 maggio 2024 12:50:13.
        REMARKS.
       *{TOTEM}END
 
@@ -2453,7 +2453,7 @@
            COL 31,17, 
            LINE 62,31,
            LINES 1,31 ,
-           SIZE 70,00 ,
+           SIZE 86,17 ,
            FONT IS Small-Font,
            ID IS 34,
            HEIGHT-IN-CELLS,
