@@ -34,6 +34,7 @@
            copy "param.sl".
            copy "tcontat.sl".    
            copy "timbalqta.sl".
+           copy "tscorte.sl".
 
        SELECT logfile
            ASSIGN       TO path-log
@@ -66,6 +67,7 @@
            copy "param.fd".
            copy "tcontat.fd".    
            copy "timbalqta.fd".  
+           copy "tscorte.fd".
 
        FD  logfile.
        01 riga-log        PIC  x(900).
@@ -110,7 +112,8 @@
        77  status-tcontat       pic xx.
        77  status-param         pic xx.
        77  path-tmp-sost-art    pic x(256).
-       77  status-timbalqta     pic xx.
+       77  status-timbalqta     pic xx.     
+       77  status-tscorte       pic xx.
 
        78  titolo value "Sostituzione automatica articoli".
 
@@ -607,7 +610,7 @@
            open input mtordini clienti catart tcaumag timposte tcontat
                       destini progmag ttipocli |timbalqta  timballi 
                       tpiombo tmarche tmagaz listini promoeva param
-                      timbalqta.
+                      timbalqta tscorte.
            open i-o mrordini articoli.
            if RecLocked
               set errori to true
@@ -785,6 +788,7 @@
                                invalid continue 
                           end-read
                           set record-ok to true      
+                          perform VERIFICA-SCORTA
                           if record-ok
                              move mro-cod-articolo to como-articolo
                              perform TROVA-PRINCIPALE
@@ -805,6 +809,20 @@
                     end-if
                  end-perform
            end-start.
+
+      ***---
+       VERIFICA-SCORTA.
+           |Se l'articolo presente nel master ha una scorta con 
+           |questo flag (sco-permetti-sost-2) disattivo non 
+           |fai alcuna sostituzione
+           move art-scorta to sco-codice
+           read tscorte no lock
+                invalid continue
+            not invalid
+                if sco-permetti-sost-2-no
+                   set record-ok to false
+                end-if   
+           end-read.
 
       ***---
        LOOP-RIGHE-SOST.       
@@ -871,8 +889,6 @@
                           perform SCRIVI-RIGA-LOG
                        end-if
 
-                       continue
-
                     else
                        if mro-cod-iva = "E15" or mro-si-omaggio or
                           mro-prz-unitario = 0
@@ -896,6 +912,7 @@
                                invalid continue 
                           end-read                          
                           set record-ok to true
+                          perform VERIFICA-SCORTA
       *****                 evaluate true  also true
       *****                 when des-tipo-art-diretti    also art-si-diretti
       *****                      set record-ok  to true
@@ -1620,7 +1637,7 @@
            close progmag articoli clienti destini ttipocli tcontat
                  mtordini mrordini catart tcaumag tpiombo |timbalqta timballi
                  timposte tmarche tmagaz listini promoeva param
-                 timbalqta.
+                 timbalqta tscorte.
            if RichiamoSchedulato
               if path-log not = spaces
                  close logfile

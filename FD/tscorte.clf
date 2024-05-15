@@ -2,10 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=172.23.80.1
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E85D82345-855-75128179
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E85F101735-621-2127124765
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -1205,9 +1206,9 @@ m_bFixed=1
 
 @}}
 [FDITEM124_]
-m_strName=sco-alfa-vuoto-1
-m_strRawPic=X(15)
-m_strPic=X(15)
+m_strName=sco-permetti-sost-2
+m_strRawPic=9(1)
+m_strPic=9(1)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1215,23 +1216,53 @@ m_bFixed=1
 
 @}}
 [FDITEM125_]
+m_strName=sco-permetti-sost-2-si
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM125_
+
+@}}
+[FDITEM126_]
+m_strName=sco-permetti-sost-2-no
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=0
+m_strFalse=0
+{{@DataItem_m_strDescriptionFDITEM126_
+
+@}}
+[FDITEM127_]
+m_strName=sco-alfa-vuoto-1
+m_strRawPic=X(14)
+m_strPic=X(14)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM127_
+
+@}}
+[FDITEM128_]
 m_strName=sco-alfa-vuoto-2
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM125_
+{{@DataItem_m_strDescriptionFDITEM128_
 
 @}}
-[FDITEM126_]
+[FDITEM129_]
 m_strName=sco-alfa-vuoto-3
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM126_
+{{@DataItem_m_strDescriptionFDITEM129_
 
 @}}
 [CStoAcucobolSL_]

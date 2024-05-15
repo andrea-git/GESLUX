@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 14 marzo 2024 11:30:16.
+       DATE-WRITTEN.        mercoledì 15 maggio 2024 12:17:46.
        REMARKS.
       *{TOTEM}END
 
@@ -208,6 +208,8 @@
               05 chk-preseaaa-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               05 chk-preseaaaa-BUF PIC 9 VALUE ZERO.
+      * Data.Check-Box
+              05 chk-preseaab-BUF PIC 9 VALUE ZERO.
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-KEY2-ORDER  PIC X VALUE "A".
@@ -357,7 +359,10 @@
                        88 old-sco-blocco-edi-no VALUE IS 0.
                    15 old-sco-perce-confronto pic s9(3).
                    15 old-sco-trasp-f pic 9(6)v999.
-                   15 old-sco-trasp-c pic 9(6)v999.
+                   15 old-sco-trasp-c pic 9(6)v999.           
+                   15 old-sco-permetti-sost-2 pic 9.
+                      88 old-sco-permetti-sost-2-si value 1.
+                      88 old-sco-permetti-sost-2-no value 0.    
                        
       *{TOTEM}END
 
@@ -397,6 +402,7 @@
        78  78-ID-chk-preseaa VALUE 5032.
        78  78-ID-chk-preseaaa VALUE 5033.
        78  78-ID-chk-preseaaaa VALUE 5034.
+       78  78-ID-chk-preseaab VALUE 5035.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -1533,6 +1539,24 @@
            VALUE chk-preseaaaa-BUF,
             .
 
+      * CHECK BOX
+       05
+           chk-preseaab, 
+           Check-Box, 
+           COL 22,33, 
+           LINE 62,38,
+           LINES 1,31 ,
+           SIZE 3,00 ,
+           ENABLED MOD,
+           FLAT,
+           ID IS 78-ID-chk-preseaab,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           SELF-ACT,
+           TITLE "Check Box",
+           VALUE chk-preseaab-BUF,
+            .
+
       * LABEL
        05
            Screen1-La-1, 
@@ -2214,7 +2238,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 187,
+           ID IS 188,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2230,7 +2254,7 @@
            LINES 1,31 ,
            SIZE 70,00 ,
            FONT IS Small-Font,
-           ID IS 188,
+           ID IS 189,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2246,7 +2270,7 @@
            LINES 2,23 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 189,
+           ID IS 190,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2262,7 +2286,7 @@
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 190,
+           ID IS 191,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2279,7 +2303,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 191,
+           ID IS 192,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2296,7 +2320,7 @@
            LINES 1,31 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 192,
+           ID IS 193,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2314,7 +2338,7 @@
            LINES 1,31 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 193,
+           ID IS 194,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2330,7 +2354,7 @@
            LINES 2,08 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 194,
+           ID IS 195,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2348,7 +2372,7 @@
            LINES 2,23 ,
            SIZE 17,00 ,
            FONT IS Small-Font,
-           ID IS 195,
+           ID IS 196,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2364,7 +2388,7 @@
            LINES 2,23 ,
            SIZE 52,00 ,
            FONT IS Small-Font,
-           ID IS 196,
+           ID IS 197,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
@@ -2404,6 +2428,39 @@
            LEFT,
            TRANSPARENT,
            TITLE "Trasporto cliente",
+           .
+
+      * LABEL
+       05
+           Screen1-La-11aaaaaaab, 
+           Label, 
+           COL 3,00, 
+           LINE 62,38,
+           LINES 1,31 ,
+           SIZE 18,50 ,
+           FONT IS Small-Font,
+           ID IS 32,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Permetti sostituzione 2",
+           .
+
+      * LABEL
+       05
+           Screen1-La-5aaaab, 
+           Label, 
+           COL 31,17, 
+           LINE 62,31,
+           LINES 1,31 ,
+           SIZE 70,00 ,
+           FONT IS Small-Font,
+           ID IS 34,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Se l'articolo presente nel master ha una scorta con qu
+      -    "esto flag disattivo non viene fatta alcuna sostituzione,",
            .
 
       * TOOLBAR
@@ -3219,7 +3276,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 63,46,
+              LINES 65,15,
               SIZE 123,00,
               HEIGHT-IN-CELLS,
               WIDTH-IN-CELLS,
@@ -3830,6 +3887,8 @@
               MOVE 0 TO sco-no-gdo
       * DB_CHECK BOX
               MOVE 0 TO sco-auto-lst
+      * DB_CHECK BOX
+              MOVE 0 TO sco-permetti-sost-2
            MOVE ALL X'9' TO Form1-KEYISTMP2
            MOVE ALL X'9' TO Form1-PKEYTMP
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
@@ -4276,6 +4335,12 @@
               ELSE
                  MOVE 0 TO sco-auto-lst
               END-IF
+      * DB_CHECK BOX : chk-preseaab
+              IF chk-preseaab-BUF = 1
+                 MOVE 1 TO sco-permetti-sost-2
+              ELSE
+                 MOVE 0 TO sco-permetti-sost-2
+              END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
       * <TOTEM:END>
            .
@@ -4508,6 +4573,12 @@
                  MOVE 1 TO chk-preseaaaa-BUF
               ELSE
                  MOVE 0 TO chk-preseaaaa-BUF
+              END-IF
+      * DB_CHECK BOX : chk-preseaab
+              IF sco-permetti-sost-2 = 1
+                 MOVE 1 TO chk-preseaab-BUF
+              ELSE
+                 MOVE 0 TO chk-preseaab-BUF
               END-IF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
            perform ABILITAZIONI.
@@ -4822,6 +4893,13 @@
               move 78-ID-chk-preseaaaa to store-id 
            end-if
 
+           if sco-permetti-sost-2 not = old-sco-permetti-sost-2
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-chk-preseaab è l'ID del campo chk-preseaab
+              move 78-ID-chk-preseaab to store-id 
+           end-if
+
            .
        Form1-EXTENDED-FILE-STATUS.
            CALL "C$RERRNAME" USING TOTEM-MSG-ERR-FILE
@@ -5066,6 +5144,7 @@
            WHEN 5032 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5033 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN 5034 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
+           WHEN 5035 MOVE "Seleziona/Deseleziona" to TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
            EVALUATE Control-Id
@@ -5112,6 +5191,7 @@
            When 5032 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5033 PERFORM Screen1-DaCb-1-BeforeProcedure
            When 5034 PERFORM Screen1-DaCb-1-BeforeProcedure
+           When 5035 PERFORM Screen1-DaCb-1-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -5162,6 +5242,7 @@
            When 5032 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5033 PERFORM Screen1-DaCb-1-AfterProcedure
            When 5034 PERFORM Screen1-DaCb-1-AfterProcedure
+           When 5035 PERFORM Screen1-DaCb-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
