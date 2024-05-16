@@ -2458,11 +2458,23 @@
                                when 1
                                when 3 
                                  if qta-imb-EDI = imq-qta-imb    and
-                                    prg-giacenza > como-giacenza and
+      *****                              prg-giacenza > como-giacenza and
                                     prg-attivo
-                                    move prg-giacenza to como-giacenza
-                                    move prg-chiave   to como-prg-chiave
-                                    set trovato-progressivo to true
+                                    if tcl-codice = "16"
+                                       move prg-giacenza  
+                                         to como-giacenza
+                                       move prg-chiave   
+                                         to como-prg-chiave
+                                       set trovato-progressivo to true
+                                    else                             
+                                       if prg-giacenza > como-giacenza
+                                          move prg-giacenza  
+                                            to como-giacenza
+                                          move prg-chiave   
+                                            to como-prg-chiave
+                                          set trovato-progressivo 
+                                           to true
+                                       end-if
                                  end-if
                                when 2
                                when 4
