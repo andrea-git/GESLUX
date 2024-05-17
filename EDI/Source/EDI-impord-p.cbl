@@ -2475,6 +2475,7 @@
                                           set trovato-progressivo 
                                            to true
                                        end-if
+                                    end-if
                                  end-if
                                when 2
                                when 4
