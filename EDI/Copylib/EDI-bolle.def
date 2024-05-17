@@ -19,7 +19,8 @@
          05 01T30-NAD-QCODNAD-DP     pic x(3). |destini EDI
          05 01T-filler3              pic x(47)  value all separatore.
          05 01T78-RFF-NUMRIF         pic x(35). |Num ord cli
-         05 01T-filler4              pic x(21)  value all separatore.
+         05 01T79-RFF-DATARIF        pic 9(8).  |Data ordine
+         05 01T-filler4              pic x(20)  value all separatore.
          05 01T100-RFF-AAS           pic 9(8). |data bolla
          05 01T101-RFF-AAS           pic x(35). |num bolla
          05 end-01T                  pic x(129) value all separatore.

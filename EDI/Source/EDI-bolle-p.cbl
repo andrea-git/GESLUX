@@ -718,6 +718,7 @@
            move ecd-cod-consegna   to 01T29-NAD-CODNAD-DP.
            move ecd-q-cod-consegna to 01T30-NAD-QCODNAD-DP.
            move tor-num-ord-cli    to 01T78-RFF-NUMRIF.
+           move tor-data-ordine    to 01T79-RFF-DATARIF.
            move tor-data-bolla     to 01T100-RFF-AAS.
            move tor-num-bolla      to 01T101-RFF-AAS.
 
@@ -750,6 +751,8 @@
            inspect 01T30-NAD-QCODNAD-DP
                    replacing trailing spaces by low-value.
            inspect 01T78-RFF-NUMRIF
+                   replacing trailing spaces by low-value.
+           inspect 01T79-RFF-DATARIF
                    replacing trailing spaces by low-value.
            inspect 01T101-RFF-AAS
                    replacing trailing spaces by low-value.
@@ -785,8 +788,10 @@
                   separatore            delimited size
                   01T30-NAD-QCODNAD-DP  delimited low-value              
                   separatore            delimited size
-                  01T-filler3           delimited size
+                  01T-filler3           delimited size     
                   01T78-RFF-NUMRIF      delimited low-value
+                  separatore            delimited size
+                  01T79-RFF-DATARIF     delimited low-value
                   separatore            delimited size
                   01T-filler4           delimited size
                   01T100-RFF-AAS        delimited size

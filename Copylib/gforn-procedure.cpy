@@ -1906,7 +1906,7 @@ LUBEXX          end-if
                           lab-nazione-d-buf lab-vettore-d-buf .
            display lab-citta-d   lab-regione-d
                    lab-nazione-d lab-vettore-d.
-           move 1 to riga-nuova.
+           move 1 to riga-nuova chk-invio-sol-buf.
            move 0 to ef-note-data-buf.
            initialize ef-ragsoc-1-d-buf  ef-ragsoc-2-d-buf
                       ef-indirizzo-d-buf ef-cap-d-buf
@@ -2793,7 +2793,7 @@ LUBEXX     |   end-if
                       desf-dati
                       notf-dati of notef1 
                                 replacing numeric data by zeroes
-                                     alphanumeric data by spaces
+                                     alphanumeric data by spaces  
                                  
            perform FORM1-IUD-DISPLAY.
 
