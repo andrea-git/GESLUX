@@ -2943,7 +2943,7 @@ LUBEXX           end-if
                  move col-cou    to col-coubat
                  move col-add-pb to col-add
 
-                 if ef-vet-buf not = spaces
+                 if Form1-RADIO-1-BUF = 2
                     move col-qta to como-qta
                     compute como-prz = hid-peso * 6,2
                     move como-prz to col-prezzo
