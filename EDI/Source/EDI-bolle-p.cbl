@@ -625,12 +625,16 @@
                   02D23-LIN-UDMNRCUINTU delimited size     
                   separatore            delimited size
                   02D-filler4           delimited size
+                  02D27-LIN-UDMQORD     delimited size
+                  02D-filler5           delimited size
+                  02D29-LIN-TIPQUANT    delimited size
+                  02D-filler6           delimited size
                   02D32-AAA             delimited size
                   separatore            delimited size
                   separatore            delimited size
                   02D34-VALORE          delimited low-value
                   separatore            delimited size
-                  02D-filler5           delimited size
+                  02D-filler7           delimited size
                   02D37-KGM             delimited size
                   separatore            delimited size
                   end-02D               delimited size
@@ -721,6 +725,7 @@
            move tor-data-ordine    to 01T79-RFF-DATARIF.
            move tor-data-bolla     to 01T100-RFF-AAS.
            move tor-num-bolla      to 01T101-RFF-AAS.
+           move tor-data-note1     to 01T40-DTM-DATAORARIF.
 
            inspect 01T1-BGM-TIPODOC     
                    replacing trailing spaces by low-value
@@ -754,6 +759,9 @@
                    replacing trailing spaces by low-value.
            inspect 01T79-RFF-DATARIF
                    replacing trailing spaces by low-value.
+           inspect 01T40-DTM-DATAORARIF
+                   replacing trailing spaces by low-value.
+                   
            inspect 01T101-RFF-AAS
                    replacing trailing spaces by low-value.
 
@@ -789,11 +797,15 @@
                   01T30-NAD-QCODNAD-DP  delimited low-value              
                   separatore            delimited size
                   01T-filler3           delimited size     
+                  01T40-DTM-DATAORARIF  delimited size
+                  01T-filler4           delimited size
                   01T78-RFF-NUMRIF      delimited low-value
                   separatore            delimited size
                   01T79-RFF-DATARIF     delimited low-value
                   separatore            delimited size
-                  01T-filler4           delimited size
+                  01T-filler5           delimited size
+                  01T98-IMB-IDETIMB     delimited size
+                  01T-filler6           delimited size
                   01T100-RFF-AAS        delimited size
                   separatore            delimited size
                   01T101-RFF-AAS        delimited low-value

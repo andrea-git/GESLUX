@@ -14,13 +14,17 @@
          05 01Tfiller1               pic x(8)   value all separatore.
          05 01T19-NAD-CODNAD-BY      pic x(17). |destini EDI
          05 01T20-NAD-QCODNAD-BY     pic x(3). |destini EDI
-         05 01Tfiller2               pic x(8)   value all separatore.
+         05 01Tfiller2               pic x(7)   value all separatore.
          05 01T29-NAD-CODNAD-DP      pic x(17). |destini EDI
          05 01T30-NAD-QCODNAD-DP     pic x(3). |destini EDI
-         05 01T-filler3              pic x(47)  value all separatore.
+         05 01T-filler3              pic x(10) value all separatore.
+         05 01T40-DTM-DATAORARIF     pic 9(8). |Data consegna
+         05 01T-filler4              pic x(38)  value all separatore.
          05 01T78-RFF-NUMRIF         pic x(35). |Num ord cli
          05 01T79-RFF-DATARIF        pic 9(8).  |Data ordine
-         05 01T-filler4              pic x(20)  value all separatore.
+         05 01T-filler5              pic x(18)  value all separatore.
+         05 01T98-IMB-IDETIMB        pic x(3)   value "CNT".
+         05 01T-filler6              pic x(2)   value all separatore.
          05 01T100-RFF-AAS           pic 9(8). |data bolla
          05 01T101-RFF-AAS           pic x(35). |num bolla
          05 end-01T                  pic x(129) value all separatore.
@@ -44,10 +48,14 @@
          05 02D21-LIN-QTAORD-S       pic x(1)  value "+".
          05 02D22-LIN-QTAORD         pic x(35). |qta
          05 02D23-LIN-UDMNRCUINTU    pic x(3)  value "PCE".
-         05 02D-filler4              pic x(8)  value all separatore.
+         05 02D-filler4              pic x(3)  value all separatore.
+         05 02D27-LIN-UDMQORD        pic x(3)  value "KGM".         
+         05 02D-filler5              pic x(2)  value all separatore.
+         05 02D29-LIN-TIPQUANT       pic x(3)  value "L01".         
+         05 02D-filler6              pic x(3)  value all separatore.
          05 02D32-AAA                pic x(3)  value "AAA".         
          05 02D34-VALORE             pic x(15). |peso * qta 
-         05 02D-filler5              pic x(2)  value all separatore.
+         05 02D-filler7              pic x(2)  value all separatore.
          05 02D37-KGM                pic x(3)  value "KGM".
          05 end-02D                  pic x(117) value all separatore.
 
