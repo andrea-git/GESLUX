@@ -19,7 +19,8 @@
          05 01T30-NAD-QCODNAD-DP     pic x(3). |destini EDI
          05 01T-filler3              pic x(10) value all separatore.
          05 01T40-DTM-DATAORARIF     pic 9(8). |Data consegna
-         05 01T-filler4              pic x(38)  value all separatore.
+         05 01T41-DTM-QFMTDAT        pic x(3)  value "102".
+         05 01T-filler4              pic x(37)  value all separatore.
          05 01T78-RFF-NUMRIF         pic x(35). |Num ord cli
          05 01T79-RFF-DATARIF        pic 9(8).  |Data ordine
          05 01T-filler5              pic x(18)  value all separatore.

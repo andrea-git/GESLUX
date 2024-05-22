@@ -798,6 +798,8 @@
                   separatore            delimited size
                   01T-filler3           delimited size     
                   01T40-DTM-DATAORARIF  delimited size
+                  separatore            delimited size
+                  01T41-DTM-QFMTDAT     delimited size
                   01T-filler4           delimited size
                   01T78-RFF-NUMRIF      delimited low-value
                   separatore            delimited size
