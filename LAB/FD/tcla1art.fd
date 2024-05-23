@@ -4,9 +4,7 @@
                10 cl1-codice       PIC  9(4).
            05 cl1-dati.
                10 cl1-descrizione  PIC  x(30).
-      *(( XFD NAME = cl1-descrizione_1 ))
                10 cl1-descrizione-eng          PIC  x(100).
-      *(( XFD NAME = cl1-descrizione_2 ))
                10 cl1-descrizione-spa          PIC  x(100).
                10 cl1-dati-comuni.
                    15 cl1-data-creazione           PIC  9(8).

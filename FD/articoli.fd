@@ -24,7 +24,7 @@
                10 art-peso-non-utf PIC  9(5)v9(3).
                10 art-peso-standard            PIC  9(5)v9(3).
                10 art-imballo-standard         PIC  X(3).
-               10 art-udm-imballo  PIC  x(5).
+               10 art-udm-imballo-old          PIC  x(5).
                10 art-codice-iva   PIC  x(3).
                10 art-prezzo-vendita           PIC  9(9)v9(2).
                10 art-perce-sconto-agente      PIC  9(2)v9(2).
@@ -152,5 +152,6 @@
                    15 art-note2        PIC  X(300).
                    15 art-des-ing      PIC  X(60).
                    15 art-des-spa      PIC  X(60).
+                   15 art-udm-imballo  PIC  x(9).
       *(( XFD NAME = art-alfa-vuoto_1_2 ))
-                   15 art-alfa-vuoto   PIC  X(80).
+                   15 art-alfa-vuoto   PIC  x(71).

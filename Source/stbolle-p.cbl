@@ -373,7 +373,7 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
            05 filler               pic x(2).
            05 st-colli             pic z(5).
            05 filler               pic x(4).
-           05 st-imb               pic x(14).
+           05 st-imb               pic x(18).
            05 filler               pic x(6).
            05 st-des-art           pic x(30).
            05 filler               pic x.
@@ -395,7 +395,7 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
            05 filler               pic x(4).
            05 st-colli-s2          pic z(5).
            05 filler               pic x(3).
-           05 st-imb-s2            pic x(14).
+           05 st-imb-s2            pic x(18).
            05 filler               pic x(5).
            05 st-des-art-s2        pic x(30).
            05 filler               pic x.

@@ -35,7 +35,7 @@
            88 RecLocked          value 1 false 0.
 
       * VARIABILI
-       77  r-art-udm-imballo     pic x(5).
+       77  r-art-udm-imballo     pic x(7).
        77  num-rec               pic 9(6)   value 0.
        77  num-rec-ko            pic 9(6)   value 0.
        77  num-rec-ok            pic 9(6)   value 0.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 22 aprile 2024 11:42:02.
+       DATE-WRITTEN.        giovedì 23 maggio 2024 14:21:16.
        REMARKS.
       *{TOTEM}END
 
@@ -181,7 +181,7 @@
       * Data.Entry-Field
               10 ef-imballo-BUF PIC X(3).
       * Data.Entry-Field
-              10 ef-udm-imballo-BUF PIC X(5).
+              10 ef-udm-imballo-BUF PIC x(9).
       * Data.Entry-Field
               10 ef-dogana-BUF PIC 9(8).
       * Data.Entry-Field

@@ -145,7 +145,7 @@
          05 r-imballo                  pic x(16).
          05 filler                     pic x(1).
          05 filler                     pic x(11) value "Udm x imb".
-         05 r-art-udm-imballo          pic x(5).
+         05 r-art-udm-imballo          pic x(7).
          05 filler                     pic x(2).
          05 filler                     pic x(6) value "Scorta".
          05 r-art-scorta               pic ---.--9.

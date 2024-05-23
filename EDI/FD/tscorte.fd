@@ -154,6 +154,11 @@
                    15 sco-perce-confronto          PIC  s9(3).
                    15 sco-trasp-f      PIC  9(6)v999.
                    15 sco-trasp-c      PIC  9(6)v999.
-                   15 sco-alfa-vuoto-1 PIC  X(15).
+                   15 sco-permetti-sost-2          PIC  9(1).
+                       88 sco-permetti-sost-2-si VALUE IS 1    WHEN SET 
+           TO FALSE  0. 
+                       88 sco-permetti-sost-2-no VALUE IS 0    WHEN SET 
+           TO FALSE  0. 
+                   15 sco-alfa-vuoto-1 PIC  X(14).
                    15 sco-alfa-vuoto-2 PIC  X(20).
                    15 sco-alfa-vuoto-3 PIC  X(20).

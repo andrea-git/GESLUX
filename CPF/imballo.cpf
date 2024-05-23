@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen1
-PROGRAM_UNIQUE_CODE=TOTEM-7E84D225651-208-3102623002
+PROGRAM_UNIQUE_CODE=TOTEM-7E8517103321-415-2278210426
 
 {{@DESCRIPTION:
 
@@ -183,8 +183,8 @@ m_bFixed=1
 @}}
 [FDITEM16_WK]
 m_strName=lab-udm-buf
-m_strRawPic=X(20)
-m_strPic=X(20)
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -255,8 +255,8 @@ m_nCopyFileLevel=1
 @}}
 [FDITEM3_LK]
 m_strName=link-udm
-m_strRawPic=x(5)
-m_strPic=X(5)
+m_strRawPic=x(9)
+m_strPic=x(9)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -585,10 +585,10 @@ Begin Screen Screen1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 20,00
+      Size              = 22,00
       Size Unit         = Default
       Tab Order         = 5
-      Title Picture     = X(20)
+      Title Picture     = X(30)
       Title Variable    = lab-udm-buf
       Transparent       = TRUE
       Visible           = NONE
@@ -854,7 +854,7 @@ BEGIN-TEXT
            if not link-blister
               string "per "   delimited by size
                      link-udm delimited by size
-                     into lab-udm-buf
+                into lab-udm-buf
               end-string
            else
               move "Solo per prima riga" to lab-udm-buf

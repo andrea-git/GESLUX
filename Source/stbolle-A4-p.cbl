@@ -365,7 +365,7 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
            05 st-cod-art           pic z(6).
            05 st-cod-dog           pic x(8).
            05 st-colli             pic z(5).
-           05 st-imb               pic x(14).
+           05 st-imb               pic x(18).
            05 st-des-art           pic x(30).
            05 st-codart-cli        pic x(10).
            05 st-peso-utf          pic zzz9,999 blank zero.

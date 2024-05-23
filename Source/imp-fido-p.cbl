@@ -427,8 +427,8 @@
            end-if.          
 
            initialize como-riga.
-           string "CONTROLLO PATH-IMPORT: "
-                  path-import
+           string "CONTROLLO PATH-IMPORT: " delimited size
+                  path-import               delimited size
              into como-riga
            end-string. 
            perform SCRIVI-RIGA-LOG.
@@ -519,10 +519,10 @@
            open input lineseq.
            if status-lineseq not = "00"
               initialize como-riga
-              string "ELABORAZIONE FILE: "  delimited size
+              string "ELABORAZIONE FILE: " delimited size
                      nome-file             delimited low-value
                      " NON RIUSCITA ERR: " delimited size
-                     status-lineseq
+                     status-lineseq        delimited size
                 into como-riga
               end-string
               perform SCRIVI-RIGA-LOG
@@ -551,8 +551,8 @@
            perform SCRIVI-RIGA-LOG.
 
            initialize como-riga.
-           string "CONTROLLO SPOSTAMENTO FILES SCARTATI "
-                  path-import
+           string "CONTROLLO SPOSTAMENTO FILES SCARTATI " delimited size
+                  path-import                             delimited size
              into como-riga
            end-string. 
            perform SCRIVI-RIGA-LOG.

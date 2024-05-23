@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          imballo.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:16:56.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 23 maggio 2024 12:34:06.
        REMARKS.
       *{TOTEM}END
 
@@ -41,9 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -85,7 +83,7 @@
        77 ris  PIC  9(5).
        77 des-imballo      PIC  x(50).
        77 qta-imballo      PIC  9(5).
-       77 lab-udm-buf      PIC  X(20).
+       77 lab-udm-buf      PIC  X(30).
        77 lab1-buf         PIC  X(5)
                   VALUE IS "Colli".
 
@@ -198,7 +196,7 @@
            COL 21,25, 
            LINE 4,00,
            LINES 1,31 ,
-           SIZE 20,00 ,
+           SIZE 22,00 ,
            ID IS 81,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -597,7 +595,7 @@
            if not link-blister
               string "per "   delimited by size
                      link-udm delimited by size
-                     into lab-udm-buf
+                into lab-udm-buf
               end-string
            else
               move "Solo per prima riga" to lab-udm-buf

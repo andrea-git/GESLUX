@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E8516134511-649-2342714428
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E8517101241-676-735826062
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -238,7 +238,7 @@ m_bFixed=1
 
 @}}
 [FDITEM23_]
-m_strName=art-udm-imballo
+m_strName=art-udm-imballo-old
 m_strRawPic=x(5)
 m_strPic=X(5)
 m_nItemLevel=10
@@ -1466,14 +1466,24 @@ m_bFixed=1
 
 @}}
 [FDITEM151_]
+m_strName=art-udm-imballo
+m_strRawPic=x(9)
+m_strPic=x(9)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM151_
+
+@}}
+[FDITEM152_]
 m_strName=art-alfa-vuoto
-m_strRawPic=X(80)
-m_strPic=X(80)
+m_strRawPic=x(71)
+m_strPic=x(71)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=art-alfa-vuoto_1_2
-{{@DataItem_m_strDescriptionFDITEM151_
+{{@DataItem_m_strDescriptionFDITEM152_
 
 @}}
 [CStoAcucobolSL_]

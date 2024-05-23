@@ -327,7 +327,7 @@
                10 old-art-peso-non-utf         PIC  9(5)v9(3).
                10 old-art-peso-standard        PIC  9(5)v9(3).
                10 old-art-imballo-standard     PIC  X(3).
-               10 old-art-udm-imballo          PIC  x(5).
+               10 old-art-udm-imballo-old      PIC  x(5).
                10 old-art-codice-iva           PIC  x(3).
                10 old-art-prezzo-vendita       PIC  9(9)v9(2).
                10 old-art-perce-sconto-agente  PIC  9(2)v9(2).
@@ -457,6 +457,7 @@
                    15 old-art-note2    PIC  X(300).
                    15 old-art-des-ing  pic x(60).
                    15 old-art-des-spa  pic x(60).
+                   15 old-art-udm-imballo  PIC  x(9).
        77 form3-Handle
                   USAGE IS HANDLE OF WINDOW.
        77 Verdana12BI-Occidentale
