@@ -60,7 +60,7 @@
                      until charUdm > totCharUdm
               if not ( como-udm(charUdm:1) = "1" or "2" or "3" or "4" or
                                              "5" or "6" or "7" or "8" or
-                                             "9" or "." or "," )
+                                             "9" or "0" or "." or "," )
                  move -1 to statusPgm
                  exit perform
               end-if
