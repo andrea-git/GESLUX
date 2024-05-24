@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8517101243-984-1842112211
+PROGRAM_UNIQUE_CODE=TOTEM-7E85187235-57-2290228862
 
 {{@DESCRIPTION:
 
@@ -8505,7 +8505,7 @@ Begin Screen Form1
             After Procedure   = ef-imballo-AfterProcedure
          End
          Begin Data.Entry-Field ef-udm-imballo
-            SCREEN-COL        = 157,00
+            SCREEN-COL        = 155,17
             SCREEN-LINE       = 20,46
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
@@ -8517,7 +8517,7 @@ Begin Screen Form1
             Clines            = 0
             Clines Unit       = Default
             Color             = 513
-            Column            = 155,33
+            Column            = 153,50
             Csize             = 0
             Csize Unit        = Default
             Cursor            = 0
@@ -8527,8 +8527,8 @@ Begin Screen Form1
             Enable            = NONE
             Enable Variable   = mod-campi
             Field Edited (Style) = 0
-            Field Edited Format = X(5)
-            Field Picture     = X(5)
+            Field Edited Format = x(9)
+            Field Picture     = x(9)
             Field Variable    = art-udm-imballo of articoli
             File              = articoli
             Font              = Small Font
@@ -8543,18 +8543,18 @@ Begin Screen Form1
             Lines             = 1,31
             Lines Unit        = Default
             Max Lines         = 0
-            Max Text          = 5
+            Max Text          = 9
             Max Value         = 0
             Min Value         = 0
             No AutoSel        = FALSE
             No Tab            = FALSE
             Notify Change     = FALSE
-            Numeric           = FALSE
+            Numeric           = TRUE
             Occurs            = 0
             Read Only         = FALSE
             Required          = FALSE
             Secure            = FALSE
-            Size              = 8,00
+            Size              = 10,00
             Size Unit         = Default
             Style             = Singleline
             Tab Order         = 17
@@ -8747,7 +8747,7 @@ Begin Screen Form1
          Begin Data.Entry-Field ef-peso-non-utf
             SCREEN-COL        = 155,17
             SCREEN-LINE       = 22,46
-            LOCK-CONTROL      = TRUE
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = ef-peso-non-utf
             Auto              = FALSE
@@ -12493,7 +12493,7 @@ Begin Screen Form1
             Size              = 15,00
             Size Unit         = Default
             Tab Order         = 99
-            Title             = "U.d.m. per imballo"
+            Title             = "UDM per imballo"
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE

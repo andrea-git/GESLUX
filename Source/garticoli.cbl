@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 23 maggio 2024 14:21:16.
+       DATE-WRITTEN.        venerdì 24 maggio 2024 09:37:03.
        REMARKS.
       *{TOTEM}END
 
@@ -1171,10 +1171,10 @@
        10
            ef-udm-imballo, 
            Entry-Field, 
-           COL 157,00, 
+           COL 155,17, 
            LINE 20,46,
            LINES 1,31 ,
-           SIZE 8,00 ,
+           SIZE 10,00 ,
            BOXED,
            COLOR IS 513,
            ENABLED mod-campi,
@@ -1182,7 +1182,8 @@
            ID IS 78-ID-ef-udm-imballo,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 5,
+           MAX-TEXT 9,
+           NUMERIC,
            VALUE ef-udm-imballo-BUF,
            .
 
@@ -2695,7 +2696,7 @@
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "U.d.m. per imballo",
+           TITLE "UDM per imballo",
            .
 
       * LABEL
