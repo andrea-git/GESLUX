@@ -24,7 +24,7 @@
        77  nDot                    pic 99.
 
        LINKAGE SECTION.                     
-       77  udm-old                 pic x(5).
+       77  udm-old                 pic x(9).
        77  udm-new                 pic x(9).
 
       ******************************************************************
@@ -48,7 +48,9 @@
                    replacing trailing low-value by spaces
                                  
            perform CONTROLLO-UDM.
-           perform CONVERSIONE-UDM.
+           if statusPgm = 0
+              perform CONVERSIONE-UDM
+           end-if.
 
            goback statusPgm.
                      
@@ -56,6 +58,12 @@
        CONTROLLO-UDM.                             
            perform varying charUdm from 1 by 1 
                      until charUdm > totCharUdm
+              if not ( como-udm(charUdm:1) = "1" or "2" or "3" or "4" or
+                                             "5" or "6" or "7" or "8" or
+                                             "9" or "." or "," )
+                 move -1 to statusPgm
+                 exit perform
+              end-if
               if como-udm(charUdm:1) = ","
                  add 1 to nComma
                  move charUdm to charSep
@@ -65,6 +73,10 @@
                  move charUdm to charSep
               end-if
            end-perform.
+           if ( nComma > 1 or nDot > 1 ) or
+              ( nComma = 1 and nDot = 1 )
+              move -1 to statusPgm
+           end-if.
 
       ***---
        CONVERSIONE-UDM.                   

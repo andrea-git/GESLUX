@@ -859,9 +859,24 @@
                 if ef-udm-imballo-buf = spaces
                    set errori to true
                    move 78-ID-ef-udm-imballo to CONTROL-ID
-                   display message "U.d.m. per imballo obbligatoria"
+                   display message "UDM per imballo obbligatoria"
                            title = tit-err
                            icon MB-WARNING-ICON
+                else
+                   move ef-udm-imballo-buf to udm-old
+                   call   "check-udm" using udm-old udm-new
+                                     giving statusPgm
+                   cancel "check-udm"
+                   if statusPgm not = 0        
+                      set errori to true
+                      move 78-ID-ef-udm-imballo to CONTROL-ID
+                      display message "Formato errato"
+                                title tit-err
+                                 icon MB-WARNING-ICON
+                   else
+                      move udm-new to ef-udm-imballo-buf
+                      display ef-udm-imballo
+                   end-if
                 end-if
 
            |78-ID-ef-dogana è l'ID del control ef-dogana

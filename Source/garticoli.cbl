@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 24 maggio 2024 09:37:03.
+       DATE-WRITTEN.        venerdì 24 maggio 2024 10:22:36.
        REMARKS.
       *{TOTEM}END
 
@@ -136,6 +136,10 @@
        77 como-des2        PIC  x(50).
        77 v-copiada        PIC  9
                   VALUE IS 0.
+       77 udm-old          PIC  x(9).
+       77 udm-new          PIC  x(9).
+       77 statusPgm
+                  USAGE IS SIGNED-SHORT.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
