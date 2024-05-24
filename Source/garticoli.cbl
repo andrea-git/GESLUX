@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 24 maggio 2024 10:22:36.
+       DATE-WRITTEN.        venerdì 24 maggio 2024 16:38:22.
        REMARKS.
       *{TOTEM}END
 
@@ -1186,7 +1186,7 @@
            ID IS 78-ID-ef-udm-imballo,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 9,
+           MAX-TEXT 8,
            NUMERIC,
            VALUE ef-udm-imballo-BUF,
            .

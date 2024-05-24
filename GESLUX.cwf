@@ -45429,7 +45429,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\conv-art-udm.cbl]
-COPY_DEPENDENCE=FD\articoli.sl;FD\articoli.fd;EDI\Copylib\tratta-numerico.def;EDI\Copylib\tratta-numerico.cpy
+COPY_DEPENDENCE=FD\articoli.sl;FD\articoli.fd
 ADDITIONAL_OPTIONS=-x -Fxa -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options

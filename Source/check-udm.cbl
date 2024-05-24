@@ -22,6 +22,10 @@
                                           
        77  nComma                  pic 99.
        77  nDot                    pic 99.
+                                             
+       77  udm-int                 pic 9(9).
+       77  udm-dec                 pic 9(9).
+       77  como-x                  pic x(9).
 
        LINKAGE SECTION.                     
        77  udm-old                 pic x(9).
@@ -55,7 +59,7 @@
            goback statusPgm.
                      
       ***---
-       CONTROLLO-UDM.                             
+       CONTROLLO-UDM.
            perform varying charUdm from 1 by 1 
                      until charUdm > totCharUdm
               if not ( como-udm(charUdm:1) = "1" or "2" or "3" or "4" or
@@ -76,34 +80,72 @@
            if ( nComma > 1 or nDot > 1 ) or
               ( nComma = 1 and nDot = 1 )
               move -1 to statusPgm
+           end-if.      
+           if statusPgm not = 0 exit paragraph end-if.
+           if charSep = 0
+              move como-udm to como-x
+              call "C$JUSTIFY" using como-x, "R"
+              inspect como-x replacing leading x"20" by x"30"
+              move como-x to udm-int
+              if udm-int > 9999
+                 move -2 to statusPgm
+              end-if
+           else
+              subtract 1 from charSep
+              move como-udm(1:charSep) to como-x
+              add 1 to charSep
+              call "C$JUSTIFY" using como-x, "R"
+              inspect como-x replacing leading x"20" by x"30"
+              move como-x to udm-int
+              if udm-int > 9999
+                 move -2 to statusPgm
+              else
+                 add 1 to charSep    
+                 move como-udm(charSep:) to como-x
+                 subtract 1 from charSep
+                 call "C$JUSTIFY" using como-x, "R"
+                 inspect como-x replacing leading x"20" by x"30"
+                 move como-x to udm-dec
+                 if udm-dec > 999
+                    move -3 to statusPgm
+                 end-if
+              end-if
            end-if.
 
       ***---
-       CONVERSIONE-UDM.                   
-           if charSep = 0 
-              add 1 to totCharUdm giving charSep |Lo simulo 
+       CONVERSIONE-UDM.            
+           if charSep > 0 and nDot = 1          
+              move "," to como-udm(charSep:1)
            end-if.
-                                       
+           move como-udm to udm-new.
            if charSep = 1
-              move "0" to como-int     
-              subtract 1 from charSep
-           else                      
-              subtract 1 from charSep
-              move como-udm(1:charSep) to como-int
-              if not (como-int = "0" or "00" or "000")
-                 call "C$JUSTIFY" using como-int, "L"
-                 inspect como-int replacing leading x"30" by x"20"
-                 call "C$JUSTIFY" using como-int, "L"
-              end-if
+              move udm-new to udm-new(2:)
+              move "0" to udm-new(1:1)
            end-if.
-           inspect como-int replacing trailing spaces by low-value.
-
-           add 2 to charSep.
-           move como-udm(charSep:) to como-dec.
-           inspect como-dec replacing trailing x"20" by x"30".
-                                                     
-           string como-int delimited low-value
-                  ","      delimited size
-                  como-dec delimited size
-             into udm-new
-           end-string.           
+      *     if charSep = 0 
+      *        add 1 to totCharUdm giving charSep |Lo simulo 
+      *     end-if.
+      *                                 
+      *     if charSep = 1
+      *        move "0" to como-int     
+      *        subtract 1 from charSep
+      *     else                      
+      *        subtract 1 from charSep
+      *        move como-udm(1:charSep) to como-int
+      *        if not (como-int = "0" or "00" or "000")
+      *           call "C$JUSTIFY" using como-int, "L"
+      *           inspect como-int replacing leading x"30" by x"20"
+      *           call "C$JUSTIFY" using como-int, "L"
+      *        end-if
+      *     end-if.
+      *     inspect como-int replacing trailing spaces by low-value.
+      *
+      *     add 2 to charSep.
+      *     move como-udm(charSep:) to como-dec.
+      *     inspect como-dec replacing trailing x"20" by x"30".
+      *                                               
+      *     string como-int delimited low-value
+      *            ","      delimited size
+      *            como-dec delimited size
+      *       into udm-new
+      *     end-string.           

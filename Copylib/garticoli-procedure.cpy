@@ -867,16 +867,29 @@
                    call   "check-udm" using udm-old udm-new
                                      giving statusPgm
                    cancel "check-udm"
-                   if statusPgm not = 0        
-                      set errori to true
-                      move 78-ID-ef-udm-imballo to CONTROL-ID
-                      display message "Formato errato"
-                                title tit-err
-                                 icon MB-WARNING-ICON
-                   else
-                      move udm-new to ef-udm-imballo-buf
-                      display ef-udm-imballo
-                   end-if
+                   evaluate statusPgm
+                   when 0
+                        move udm-new to ef-udm-imballo-buf
+                        display ef-udm-imballo
+                   when -1 
+                        set errori to true
+                        move 78-ID-ef-udm-imballo to CONTROL-ID
+                        display message "Formato errato"
+                                  title tit-err
+                                   icon MB-WARNING-ICON
+                   when -2                             
+                        set errori to true
+                        move 78-ID-ef-udm-imballo to CONTROL-ID
+                        display message "Massimo 4 cifre intere"
+                                  title tit-err
+                                   icon MB-WARNING-ICON
+                   when -3                             
+                        set errori to true
+                        move 78-ID-ef-udm-imballo to CONTROL-ID
+                        display message "Massimo 3 cifre decimali"
+                                  title tit-err
+                                   icon MB-WARNING-ICON
+                   end-evaluate
                 end-if
 
            |78-ID-ef-dogana è l'ID del control ef-dogana
