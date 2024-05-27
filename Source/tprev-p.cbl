@@ -216,8 +216,8 @@
               perform ELABORAZIONE
               perform ELIMINA-FITTIZIE-EVASE-CHIUSE
               perform CLOSE-FILES
-              perform EXIT-PGM
-           end-if.
+           end-if.               
+           perform EXIT-PGM.
 
       ***---
        INIT.
@@ -243,8 +243,6 @@
               open i-o rpromo allowing all
               open input tpromo progmag tmagaz blister articoli
                          mrordini tparamge param tgrupgdo mtordini
-           else
-              goback
            end-if.
 
       ***---

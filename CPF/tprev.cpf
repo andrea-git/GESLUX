@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E8517104230-444-327304023
+PROGRAM_UNIQUE_CODE=TOTEM-7E851B17818-366-2395112655
 
 {{@DESCRIPTION:
 
@@ -3084,16 +3084,7 @@ BEGIN-TEXT
            call   "tprev-p"  using tprev-linkage.
            cancel "tprev-p".
            move 27 to key-status.
-           open input promoeva.
-           
-           move 2 to chiave.
-           perform LOAD-RECORD.
-
-           move 2  to event-data-2.
-           perform SPOSTAMENTO.
-
-           perform INIT.
-           set CambioQta to false.
+           open input promoeva. 
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3306,7 +3297,7 @@ BEGIN-DATA
 BEGIN-TEXT
            move low-value to pev-rec.
            start promoeva key >= pev-chiave
-                 invalid  perform SCR-ELAB-OPEN-ROUTINE
+                 invalid  continue
            end-start.
 
            move 0   to save-articolo.
@@ -3875,7 +3866,7 @@ BEGIN-TEXT
            move corr-chiave to pev-chiave.
            read promoeva no lock.
            move pev-rec  to corr-rec.
-           delete promoeva record.
+           delete promoeva record.                    
 
            move corr-chiave to pev-chiave
            move prec-dati   to pev-dati.
@@ -3899,7 +3890,14 @@ BEGIN-TEXT
            
            perform SCR-ELAB-OPEN-ROUTINE.
 
+           move 2 to chiave.
            perform LOAD-RECORD.
+
+           move 2  to event-data-2.
+           perform SPOSTAMENTO.
+
+           perform INIT.
+           set CambioQta to false.
                                             
            modify form1-gd-1, mass-update = 0.
            subtract 1 from store-riga.
@@ -3962,9 +3960,16 @@ BEGIN-TEXT
            move store-riga to event-data-2.
            perform SPOSTAMENTO.
            
-           perform SCR-ELAB-OPEN-ROUTINE.
+           perform SCR-ELAB-OPEN-ROUTINE. 
 
+           move 2 to chiave.
            perform LOAD-RECORD.
+
+           move 2  to event-data-2.
+           perform SPOSTAMENTO.
+
+           perform INIT.
+           set CambioQta to false.
                                             
            modify form1-gd-1, mass-update = 0.
            add 1 to store-riga.
@@ -3979,7 +3984,16 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = pb-reset-LinkTo
 BEGIN-TEXT
-           perform SCR-ELAB-OPEN-ROUTINE.
+           perform SCR-ELAB-OPEN-ROUTINE.    
+
+           move 2 to chiave.
+           perform LOAD-RECORD.
+
+           move 2  to event-data-2.
+           perform SPOSTAMENTO.
+
+           perform INIT.
+           set CambioQta to false.
 END-TEXT
 END-DATA
 BEGIN-DATA

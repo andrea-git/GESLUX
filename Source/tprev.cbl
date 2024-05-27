@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tprev.
        AUTHOR.              andre.
-       DATE-WRITTEN.        domenica 28 novembre 2021 00:54:57.
+       DATE-WRITTEN.        lunedì 27 maggio 2024 19:15:43.
        REMARKS.
       *{TOTEM}END
 
@@ -4169,15 +4169,6 @@
            cancel "tprev-p".
            move 27 to key-status.
            open input promoeva.
-           
-           move 2 to chiave.
-           perform LOAD-RECORD.
-
-           move 2  to event-data-2.
-           perform SPOSTAMENTO.
-
-           perform INIT.
-           set CambioQta to false.
 
            .
       * <TOTEM:END>
@@ -4417,7 +4408,7 @@
       * <TOTEM:PARA. LOAD-RECORD>
            move low-value to pev-rec.
            start promoeva key >= pev-chiave
-                 invalid  perform SCR-ELAB-OPEN-ROUTINE
+                 invalid  continue
            end-start.
 
            move 0   to save-articolo.
@@ -4967,7 +4958,7 @@
            move corr-chiave to pev-chiave.
            read promoeva no lock.
            move pev-rec  to corr-rec.
-           delete promoeva record.
+           delete promoeva record.                    
 
            move corr-chiave to pev-chiave
            move prec-dati   to pev-dati.
@@ -4991,7 +4982,14 @@
            
            perform SCR-ELAB-OPEN-ROUTINE.
 
+           move 2 to chiave.
            perform LOAD-RECORD.
+
+           move 2  to event-data-2.
+           perform SPOSTAMENTO.
+
+           perform INIT.
+           set CambioQta to false.
                                             
            modify form1-gd-1, mass-update = 0.
            subtract 1 from store-riga.
@@ -5052,9 +5050,16 @@
            move store-riga to event-data-2.
            perform SPOSTAMENTO.
            
-           perform SCR-ELAB-OPEN-ROUTINE.
+           perform SCR-ELAB-OPEN-ROUTINE. 
 
+           move 2 to chiave.
            perform LOAD-RECORD.
+
+           move 2  to event-data-2.
+           perform SPOSTAMENTO.
+
+           perform INIT.
+           set CambioQta to false.
                                             
            modify form1-gd-1, mass-update = 0.
            add 1 to store-riga.
@@ -5067,7 +5072,16 @@
       * <TOTEM:END>
        pb-reset-LinkTo.
       * <TOTEM:PARA. pb-reset-LinkTo>
-           perform SCR-ELAB-OPEN-ROUTINE 
+           perform SCR-ELAB-OPEN-ROUTINE.    
+
+           move 2 to chiave.
+           perform LOAD-RECORD.
+
+           move 2  to event-data-2.
+           perform SPOSTAMENTO.
+
+           perform INIT.
+           set CambioQta to false 
            .
       * <TOTEM:END>
        pb-stampa-LinkTo.
