@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          notacr.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 16 dicembre 2023 01:08:30.
+       DATE-WRITTEN.        martedì 28 maggio 2024 11:09:58.
        REMARKS.
       *{TOTEM}END
 
@@ -11855,6 +11855,7 @@ LUBEXX        end-if
                  read tvettori no lock invalid continue end-read
                  move vet-descrizione to lab-corriere-des-buf
               end-if
+              move btno-motivo-cont to ef-note-buf
            else
               move tor-data-bolla  to como-data
               perform DATE-TO-SCREEN

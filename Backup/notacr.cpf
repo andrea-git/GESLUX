@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E7CF235435-219-423719067
+PROGRAM_UNIQUE_CODE=TOTEM-7E851C9423-379-966425099
 
 {{@DESCRIPTION:
 
@@ -13326,6 +13326,7 @@ BEGIN-TEXT
                  read tvettori no lock invalid continue end-read
                  move vet-descrizione to lab-corriere-des-buf
               end-if
+              move btno-motivo-cont to ef-note-buf
            else
               move tor-data-bolla  to como-data
               perform DATE-TO-SCREEN
