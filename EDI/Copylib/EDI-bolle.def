@@ -14,10 +14,10 @@
          05 01Tfiller1               pic x(8)   value all separatore.
          05 01T19-NAD-CODNAD-BY      pic x(17). |destini EDI
          05 01T20-NAD-QCODNAD-BY     pic x(3). |destini EDI
-         05 01Tfiller2               pic x(7)   value all separatore.
+         05 01Tfiller2               pic x(8)   value all separatore.
          05 01T29-NAD-CODNAD-DP      pic x(17). |destini EDI
          05 01T30-NAD-QCODNAD-DP     pic x(3). |destini EDI
-         05 01T-filler3              pic x(10) value all separatore.
+         05 01T-filler3              pic x(9) value all separatore.
          05 01T40-DTM-DATAORARIF     pic 9(8). |Data consegna
          05 01T41-DTM-QFMTDAT        pic x(3)  value "102".
          05 01T-filler4              pic x(37)  value all separatore.
