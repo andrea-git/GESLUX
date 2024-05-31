@@ -251,7 +251,19 @@
            if tutto-ok     
               if RichiamoSchedulato
                  move 0 to batch-status
-              end-if
+              end-if  
+      *****        move low-value to tor-num-bolla tor-bolla-prenotata
+      *****        move 2024      to tor-anno-bolla
+      *****        move 20240522  to tor-data-bolla
+      *****        start tordini key >= k3
+      *****              invalid continue
+      *****          not invalid
+      *****              perform until 1 = 2
+      *****                 read tordini next at end exit perform end-read
+      *****                 perform EXPORT-BOLLA
+      *****              end-perform
+      *****        end-start
+      *****        perform EXIT-PGM
               call "C$CALLEDBY" using CallingPgm
               if CallingPgm = "edi-stdoc"
                  move batch-log      to tor-bolla
@@ -423,7 +435,8 @@
                       read tcaumag no lock
                            invalid continue
                        not invalid
-                           if tca-causale-EDI not = spaces
+                           if tca-causale-EDI not = spaces and 
+                              cli-gdo = "MAXID"
                               set record-ok to true
                            end-if
                       end-read
