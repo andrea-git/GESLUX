@@ -5137,7 +5137,7 @@
       *     05 st-dec-qta           pic x(8). 
               
                 call "WIN$PRINTER"  using winprint-set-data-columns,
-                                  7, 15, 20, 34, 64, 74, 82, 84, 94, 102
+                                  7, 15, 20, 38, 68, 78, 86, 88, 98, 106
                                    giving return-code
                                    
                 move wprtalign-right   to winprint-col-alignment  
