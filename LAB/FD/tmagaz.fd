@@ -71,3 +71,5 @@
                        88 mag-scorta-si VALUE IS "S". 
                        88 mag-scorta-no VALUE IS "N", " ". 
                    15 mag-alfa-vuoto-3 PIC  x.
+                   15 mag-indirizzo    PIC  x(100).
+                   15 FILLER           PIC  x(300).

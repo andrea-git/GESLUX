@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8517104146-248-282621635
+PROGRAM_UNIQUE_CODE=TOTEM-7E866125219-689-675319647
 
 {{@DESCRIPTION:
 
@@ -2080,6 +2080,35 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM187_WK
 
 @}}
+[FDITEM188_WK]
+m_strName=lab-mag-buf
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM188_WK
+
+@}}
+[FDITEM189_WK]
+m_strName=STATUS-tmagaz
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM189_WK
+
+@}}
+[FDITEM190_WK]
+m_strName=Valid-STATUS-tmagaz
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM190_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -2592,6 +2621,69 @@ Begin Screen Form1
       Before Procedure  = ef-nome-BeforeProcedure
       After Procedure   = ef-nome-AfterProcedure
    End
+   Begin Data.Entry-Field ef-mag
+      SCREEN-COL        = 113,67
+      SCREEN-LINE       = 10,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-mag
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Upper
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 113,67
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Field Edited (Style) = 1
+      Field Edited Format = x(3)
+      Field Picture     = x(3)
+      Field Variable    = tlis-mag OF tlistini
+      File              = tlistini
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      Hint              = Digitare il Destino
+      ID                = 5
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 10,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 3
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 10,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 5
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      My Property       = "CONTROLLO=;ZOOM=;CONTROLLO-OLD="
+      Before Procedure  = ef-gdo-BeforeProcedure
+      After Procedure   = ef-gdo-AfterProcedure
+   End
    Begin Data.Entry-Field ef-ini-val
       SCREEN-COL        = 17,00
       SCREEN-LINE       = 12,00
@@ -2645,7 +2737,7 @@ Begin Screen Form1
       Size              = 11,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 5
+      Tab Order         = 6
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2708,7 +2800,7 @@ Begin Screen Form1
       Size              = 11,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 6
+      Tab Order         = 7
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -2757,7 +2849,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 7
+      Tab Order         = 8
       Termination Value = 0
       Title             = "Trasporto incluso"
       Value             = 0:FALSE
@@ -2807,7 +2899,7 @@ Begin Screen Form1
       Self Act          = TRUE
       Size              = 3,00
       Size Unit         = Default
-      Tab Order         = 8
+      Tab Order         = 9
       Termination Value = 0
       Title             = "Trasporto incluso"
       Value             = 0:FALSE
@@ -2852,7 +2944,7 @@ Begin Screen Form1
       Size              = 13,00
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 9
+      Tab Order         = 10
       Termination Value = 0
       Title             = "Note"
       Visible           = NONE
@@ -2983,7 +3075,7 @@ Begin Screen Form1
       Row Headings      = FALSE
       Size              = 191,33
       Size Unit         = Default
-      Tab Order         = 10
+      Tab Order         = 11
       Tiled Headings    = TRUE
       Use Tab           = FALSE
       Virtual Width     = 188
@@ -3040,7 +3132,7 @@ Begin Screen Form1
       Size in Pixels    = 73
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 11
+      Tab Order         = 12
       Termination Value = 0
       Title             = "&Elimina la riga selezionata"
       Visible           = TRUE
@@ -3078,7 +3170,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 11,00
       Size Unit         = Default
-      Tab Order         = 12
+      Tab Order         = 13
       Title             = "ID Volantino"
       Transparent       = TRUE
       Visible           = NONE
@@ -3110,7 +3202,7 @@ Begin Screen Form1
       Size (Lines)      = 194,50
       Size (Lines) in Pixels = 1167
       Size (Lines) Unit = Default
-      Tab Order         = 13
+      Tab Order         = 14
       Visible           = NONE
       Width             = 2
       Width in Cells    = TRUE
@@ -3148,7 +3240,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 80,00
       Size Unit         = Default
-      Tab Order         = 14
+      Tab Order         = 15
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3181,7 +3273,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 15
+      Tab Order         = 16
       Title             = "Fornitore"
       Transparent       = TRUE
       Visible           = NONE
@@ -3215,7 +3307,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 16
+      Tab Order         = 17
       Title             = "Inizio Validità"
       Transparent       = TRUE
       Visible           = NONE
@@ -3249,7 +3341,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 12,00
       Size Unit         = Default
-      Tab Order         = 17
+      Tab Order         = 18
       Title             = "Fine Validità"
       Transparent       = TRUE
       Visible           = NONE
@@ -3283,7 +3375,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 18
+      Tab Order         = 19
       Title             = "Descrizione"
       Transparent       = TRUE
       Visible           = NONE
@@ -3317,7 +3409,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 19
+      Tab Order         = 20
       Title Picture     = X(50)
       Title Variable    = lab-forn-buf
       Transparent       = TRUE
@@ -3353,7 +3445,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 4,83
       Size Unit         = Default
-      Tab Order         = 20
+      Tab Order         = 21
       Title             = "BlockPgm"
       Transparent       = TRUE
       Visible           = NONE
@@ -3391,7 +3483,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 6,67
       Size Unit         = Default
-      Tab Order         = 21
+      Tab Order         = 22
       Title             = "CUSTOM CONTROL"
       Transparent       = TRUE
       Visible           = NONE
@@ -3436,7 +3528,7 @@ Begin Screen Form1
       Size in Pixels    = 99
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 22
+      Tab Order         = 23
       Termination Value = 0
       Title             = "Copia da..."
       Visible           = NONE
@@ -3484,7 +3576,7 @@ Begin Screen Form1
       Size in Pixels    = 28
       Size Unit         = Default
       Style             = Other
-      Tab Order         = 23
+      Tab Order         = 24
       Termination Value = 0
       Title             = "Esporta il Listino in CSV"
       Visible           = NONE
@@ -3521,7 +3613,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 13,00
       Size Unit         = Default
-      Tab Order         = 24
+      Tab Order         = 25
       Title             = "Destino"
       Transparent       = TRUE
       Visible           = NONE
@@ -3555,7 +3647,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 50,00
       Size Unit         = Default
-      Tab Order         = 25
+      Tab Order         = 26
       Title Picture     = X(50)
       Title Variable    = lab-dest-buf
       Transparent       = TRUE
@@ -3590,7 +3682,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 16,00
       Size Unit         = Default
-      Tab Order         = 26
+      Tab Order         = 27
       Title             = "Trasporto fornitore"
       Transparent       = TRUE
       Visible           = NONE
@@ -3648,7 +3740,7 @@ Begin Screen Form1
       Size              = 80,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 27
+      Tab Order         = 28
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3710,7 +3802,7 @@ Begin Screen Form1
       Size              = 80,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 28
+      Tab Order         = 29
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3772,7 +3864,7 @@ Begin Screen Form1
       Size              = 80,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 29
+      Tab Order         = 30
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3834,7 +3926,7 @@ Begin Screen Form1
       Size              = 80,00
       Size Unit         = Default
       Style             = Singleline
-      Tab Order         = 30
+      Tab Order         = 31
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
@@ -3872,7 +3964,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 17,00
       Size Unit         = Default
-      Tab Order         = 31
+      Tab Order         = 32
       Title             = "Note"
       Transparent       = TRUE
       Visible           = NONE
@@ -3906,7 +3998,7 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 51,00
       Size Unit         = Default
-      Tab Order         = 32
+      Tab Order         = 33
       Title             = "(Inserire il codice del Volantino o la Ragione Sociale del fornitore)"
       Transparent       = TRUE
       Visible           = NONE
@@ -3940,8 +4032,77 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 16,00
       Size Unit         = Default
-      Tab Order         = 33
+      Tab Order         = 34
       Title             = "Trasporto al cliente"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen1-La-2aa
+      SCREEN-COL        = 99,67
+      SCREEN-LINE       = 10,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen1-La-2aa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 99,67
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 16
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 10,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 13,00
+      Size Unit         = Default
+      Tab Order         = 35
+      Title             = "Magazzino"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label lab-mag
+      SCREEN-COL        = 124,67
+      SCREEN-LINE       = 10,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = lab-mag
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 124,67
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Small Font
+      Font Variable     = Small-Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 17
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 10,00
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 50,00
+      Size Unit         = Default
+      Tab Order         = 36
+      Title Picture     = X(50)
+      Title Variable    = lab-mag-buf
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -3957,7 +4118,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 34
+      Tab Order         = 37
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,15
@@ -4587,7 +4748,7 @@ Begin Screen Form1
       Handle Variable   = Form1-St-1-Handle
       PANEL-WIDTHS      = ( 135, 25, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 35
+      Tab Order         = 38
    End
 End
 
@@ -5109,9 +5270,10 @@ BEGIN-TEXT
                        88 old-tlis-trasp-c-incluso VALUE 1 FALSE  0. 
                        88 old-tlis-trasp-c-escluso VALUE 0 FALSE  1. 
                    15 old-tlis-num-vuoto-1 PIC  9(16).
-                   15 old-tlis-num-vuoto-2 PIC  9(18).
+                   15 old-tlis-num-vuoto-2 PIC  9(18).     
                    15 old-tlis-num-vuoto-3 PIC  9(18).
-                   15 old-tlis-alfa-vuoto-1            PIC  X(20).
+                   15 old-tlis-mag         PIC  X(3).
+                   15 old-tlis-alfa-vuoto-1            PIC  X(17).
                    15 old-tlis-alfa-vuoto-2            PIC  X(20).
                    15 old-tlis-alfa-vuoto-3            PIC  X(20).
 
@@ -5428,6 +5590,13 @@ BEGIN-TEXT
            end-read.
            move cli-ragsoc-1 to lab-forn-buf.
 
+           move tlis-mag of tlistini to mag-codice.
+           read tmagaz no lock
+              invalid 
+                 move spaces to mag-descrizione
+           end-read.
+           move mag-descrizione to lab-mag-buf.
+
            move tlis-fornitore of tlistini to desf-codice.
            move tlis-destino of tlistini to desf-prog
            read destinif no lock
@@ -5667,7 +5836,7 @@ BEGIN-TEXT
                    move cli-ragsoc-1     to lab-forn-buf
                    display ef-forn lab-forn
                    move 4 to accept-control
-                end-if
+                end-if 
            when 78-ID-ef-destino
                 inquire ef-forn, value in desf-codice
                 inquire ef-destino, VALUE desf-prog
@@ -5679,6 +5848,18 @@ BEGIN-TEXT
                    move desf-prog        to ef-destino-buf
                    move desf-ragsoc-1    to lab-dest-buf
                    display ef-destino lab-dest
+                   move 4 to accept-control
+                end-if
+           when 78-ID-ef-mag
+                inquire ef-mag, value in mag-codice
+                move "tmagaz"  to Como-File
+                call   "zoom-gt" using como-file, mag-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move mag-codice      to ef-mag-buf
+                   move mag-descrizione to lab-mag-buf
+                   display ef-mag lab-mag
                    move 4 to accept-control
                 end-if
       *
@@ -5915,7 +6096,25 @@ BEGIN-TEXT
                    display message box MSG-record-inesistente
                            title = tit-err
                            icon mb-warning-icon
+                end-if      
+
+           when 78-ID-ef-mag
+                inquire ef-mag value in mag-codice
+                if mag-codice = spaces
+                   move spaces to mag-descrizione
+                else
+                   read tmagaz no lock
+                      invalid
+                         move spaces to mag-descrizione
+                         set errori to true
+                         display message "Magazzino non valido"
+                                 title tit-err
+                                 icon 2
+                   end-read
                 end-if
+                move mag-descrizione to lab-mag-buf
+                display lab-mag
+
            when 78-ID-ef-forn
                 inquire ef-forn value in cli-codice
                 set cli-tipo-F  to true
@@ -8878,8 +9077,8 @@ PROP_DOCU_RULER_EBL=0
 PROP_DOCU_GRID_EBL=0
 PROP_DOCU_GRID=20
 PROP_DOCU_ALIGN=0
-REL_SYM_SIZE=106
-REL_SYM_INFO_L=17
+REL_SYM_SIZE=112
+REL_SYM_INFO_L=18
 REL_SYM_INFO_X0=2301
 REL_SYM_INFO_Y0=1184080362
 REL_SYM_INFO_X1=2301
@@ -8914,6 +9113,8 @@ REL_SYM_INFO_X15=2301
 REL_SYM_INFO_Y15=1789721402
 REL_SYM_INFO_X16=2301
 REL_SYM_INFO_Y16=601986738
+REL_SYM_INFO_X17=2301
+REL_SYM_INFO_Y17=966477694
 
 [DRAW_BASESYMBOL_2301_1184080362]
 OBJ_NAME=2301
@@ -9731,6 +9932,54 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
+[DRAW_BASESYMBOL_2301_966477694]
+OBJ_NAME=2301
+OBJ_ID=966477694
+KIND=1
+{{@LABEL_2301_966477694
+tmagaz
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2433
+TOP=702
+RIGHT=2833
+BOTTOM=924
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
 [DMD_DOCUMENT_0_1760106106]
 OBJ_NAME=0
 OBJ_ID=1760106106
@@ -10259,6 +10508,37 @@ DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
 {{@DSN_INFO_CONDITION_601986738
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_966477694]
+OBJ_NAME=0
+OBJ_ID=966477694
+REL_M_OBJ_ID=0
+ENTITY=tmagaz
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mag-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_966477694
 
 @}}
 DSN_INFO_PRIMARY=0

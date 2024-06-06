@@ -23,6 +23,7 @@
            copy "progmag.sl".
            copy "param.sl".
            copy "tscorte.sl".  
+           copy "tmagaz.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -41,7 +42,8 @@
            copy "distinteb.fd".
            copy "progmag.fd".
            copy "param.fd".
-           copy "tscorte.fd".
+           copy "tscorte.fd". 
+           copy "tmagaz.fd".
 
        WORKING-STORAGE SECTION. 
            copy "acucobol.def".
@@ -73,8 +75,9 @@
        77  status-tparamge    pic xx.
        77  status-distinteb   pic xx.
        77  status-progmag     pic xx.  
-       77  status-param       pic xx.
+       77  status-param       pic xx.   
        77  status-tscorte     pic xx.
+       77  status-tmagaz      pic xx.
 
        77  dir-Handle         handle.
        77  idx                pic 9(5).
@@ -356,6 +359,7 @@
            open input progmag.
            open input param.
            open input tscorte.
+           open input tmagaz.
 
       ***---
        ELABORAZIONE.
@@ -492,7 +496,7 @@
                  move "Trasporto fornitore escluso"  to spl-riga-stampa
            end-evaluate.
            call "spooler" using spooler-link.
-
+                                    
            add 0,3  to spl-riga
 
            evaluate true
@@ -502,6 +506,20 @@
                  move "Trasporto a ccliente escluso" to spl-riga-stampa
            end-evaluate.
            call "spooler" using spooler-link.
+
+           if tlis-mag not = spaces   
+              move tlis-mag to mag-codice
+              read tmagaz no lock invalid continue end-read
+              add 0,33 to spl-riga
+              initialize spl-riga-stampa
+              string "MAGAZZINO: " delimited size
+                     tlis-mag      delimited size
+                     " - "         delimited size
+                     mag-descrizione
+                into spl-riga-stampa
+              end-string
+              call "spooler" using spooler-link
+           end-if.
 
            move 18,9  to spl-riga
 
@@ -1147,7 +1165,8 @@ quii       call "spooler"       using spooler-link.
                  distinteb
                  progmag
                  param
-                 tscorte.
+                 tscorte
+                 tmagaz.
 
       ***---
        EXIT-PGM.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          glistini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 5 marzo 2024 17:56:24.
+       DATE-WRITTEN.        giovedì 6 giugno 2024 15:24:11.
        REMARKS.
       *{TOTEM}END
 
@@ -47,6 +47,7 @@
            COPY "catart.sl".
            COPY "param.sl".
            COPY "tscorte.sl".
+           COPY "tmagaz.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -71,6 +72,7 @@
            COPY "catart.fd".
            COPY "param.fd".
            COPY "tscorte.fd".
+           COPY "tmagaz.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -282,6 +284,9 @@
            88 Valid-STATUS-param VALUE IS "00" THRU "09". 
        77 STATUS-tscorte   PIC  X(2).
            88 Valid-STATUS-tscorte VALUE IS "00" THRU "09". 
+       77 lab-mag-buf      PIC  X(50).
+       77 STATUS-tmagaz    PIC  X(2).
+           88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -298,6 +303,8 @@
               05 ef-destino-BUF PIC z(5).
       * Data.Entry-Field
               05 ef-note-BUF PIC X(50).
+      * Data.Entry-Field
+              05 ef-mag-BUF PIC x(3).
       * Data.Entry-Field
               05 ef-ini-val-BUF PIC 99/99/9999.
       * Data.Entry-Field
@@ -340,6 +347,7 @@
        77 TMP-DataSet1-catart-BUF     PIC X(6622).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -430,6 +438,11 @@
        77 DataSet1-tscorte-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tscorte-KEY-Asc  VALUE "A".
           88 DataSet1-tscorte-KEY-Desc VALUE "D".
+       77 DataSet1-tmagaz-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tmagaz-LOCK  VALUE "Y".
+       77 DataSet1-tmagaz-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tmagaz-KEY-Asc  VALUE "A".
+          88 DataSet1-tmagaz-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -534,9 +547,10 @@
                        88 old-tlis-trasp-c-incluso VALUE 1 FALSE  0. 
                        88 old-tlis-trasp-c-escluso VALUE 0 FALSE  1. 
                    15 old-tlis-num-vuoto-1 PIC  9(16).
-                   15 old-tlis-num-vuoto-2 PIC  9(18).
+                   15 old-tlis-num-vuoto-2 PIC  9(18).     
                    15 old-tlis-num-vuoto-3 PIC  9(18).
-                   15 old-tlis-alfa-vuoto-1            PIC  X(20).
+                   15 old-tlis-mag         PIC  X(3).
+                   15 old-tlis-alfa-vuoto-1            PIC  X(17).
                    15 old-tlis-alfa-vuoto-2            PIC  X(20).
                    15 old-tlis-alfa-vuoto-3            PIC  X(20).
 
@@ -606,9 +620,10 @@
        78  78-ID-ef-forn VALUE 5002.
        78  78-ID-ef-destino VALUE 5003.
        78  78-ID-ef-note VALUE 5004.
-       78  78-ID-ef-ini-val VALUE 5005.
-       78  78-ID-ef-fine-val VALUE 5006.
-       78  78-ID-gd1 VALUE 5007.
+       78  78-ID-ef-mag VALUE 5005.
+       78  78-ID-ef-ini-val VALUE 5006.
+       78  78-ID-ef-fine-val VALUE 5007.
+       78  78-ID-gd1 VALUE 5008.
        78  78-ID-EF-cli-copia VALUE 5001.
       ***** Fine ID Logici *****
       *{TOTEM}END
@@ -708,6 +723,26 @@
            WIDTH-IN-CELLS,
            MAX-TEXT 50,
            VALUE ef-note-BUF,
+           .
+
+      * ENTRY FIELD
+       05
+           ef-mag, 
+           Entry-Field, 
+           COL 113,67, 
+           LINE 10,00,
+           LINES 1,31 ,
+           SIZE 10,00 ,
+           BOXED,
+           UPPER,
+           COLOR IS 513,
+           ENABLED mod,
+           FONT IS Small-Font,
+           ID IS 78-ID-ef-mag,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 3,
+           VALUE ef-mag-BUF,
            .
 
       * ENTRY FIELD
@@ -1242,6 +1277,39 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Trasporto al cliente",
+           .
+
+      * LABEL
+       05
+           Screen1-La-2aa, 
+           Label, 
+           COL 99,67, 
+           LINE 10,00,
+           LINES 1,31 ,
+           SIZE 13,00 ,
+           FONT IS Small-Font,
+           ID IS 16,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Magazzino",
+           .
+
+      * LABEL
+       05
+           lab-mag, 
+           Label, 
+           COL 124,67, 
+           LINE 10,00,
+           LINES 1,31 ,
+           SIZE 50,00 ,
+           COLOR IS 5,
+           FONT IS Small-Font,
+           ID IS 17,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE lab-mag-buf,
            .
 
       * TOOLBAR
@@ -1992,6 +2060,7 @@
            PERFORM OPEN-catart
            PERFORM OPEN-param
            PERFORM OPEN-tscorte
+           PERFORM OPEN-tmagaz
       *    After Open
            .
 
@@ -2227,6 +2296,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tmagaz.
+      * <TOTEM:EPT. INIT:glistini, FD:tmagaz, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tmagaz
+           IF NOT Valid-STATUS-tmagaz
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:glistini, FD:tmagaz, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-articoli
@@ -2246,6 +2327,7 @@
            PERFORM CLOSE-catart
            PERFORM CLOSE-param
            PERFORM CLOSE-tscorte
+           PERFORM CLOSE-tmagaz
       *    After Close
            .
 
@@ -2349,6 +2431,12 @@
       * <TOTEM:EPT. INIT:glistini, FD:tscorte, BeforeClose>
       * <TOTEM:END>
            CLOSE tscorte
+           .
+
+       CLOSE-tmagaz.
+      * <TOTEM:EPT. INIT:glistini, FD:tmagaz, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tmagaz
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -5163,6 +5251,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tmagaz-INITSTART.
+           IF DataSet1-tmagaz-KEY-Asc
+              MOVE Low-Value TO mag-chiave
+           ELSE
+              MOVE High-Value TO mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-INITEND.
+           IF DataSet1-tmagaz-KEY-Asc
+              MOVE High-Value TO mag-chiave
+           ELSE
+              MOVE Low-Value TO mag-chiave
+           END-IF
+           .
+
+      * tmagaz
+       DataSet1-tmagaz-START.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY >= mag-chiave
+           ELSE
+              START tmagaz KEY <= mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-START-NOTGREATER.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY <= mag-chiave
+           ELSE
+              START tmagaz KEY >= mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-START-GREATER.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY > mag-chiave
+           ELSE
+              START tmagaz KEY < mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-START-LESS.
+           IF DataSet1-tmagaz-KEY-Asc
+              START tmagaz KEY < mag-chiave
+           ELSE
+              START tmagaz KEY > mag-chiave
+           END-IF
+           .
+
+       DataSet1-tmagaz-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tmagaz-LOCK
+              READ tmagaz WITH LOCK 
+              KEY mag-chiave
+           ELSE
+              READ tmagaz WITH NO LOCK 
+              KEY mag-chiave
+           END-IF
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT 
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tmagaz-KEY-Asc
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz NEXT WITH LOCK
+              ELSE
+                 READ tmagaz NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz PREVIOUS WITH LOCK
+              ELSE
+                 READ tmagaz PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tmagaz-KEY-Asc
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz PREVIOUS WITH LOCK
+              ELSE
+                 READ tmagaz PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tmagaz-LOCK
+                 READ tmagaz NEXT WITH LOCK
+              ELSE
+                 READ tmagaz NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmagaz-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tmagaz TO TOTEM-ERR-STAT
+           MOVE "tmagaz" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmagaz, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE rlis-rec OF rlistini
@@ -5181,6 +5423,7 @@
            INITIALIZE cat-rec OF catart
            INITIALIZE prm-rec OF param
            INITIALIZE sco-rec OF tscorte
+           INITIALIZE mag-rec OF tmagaz
            .
 
 
@@ -5376,6 +5619,14 @@
       * FD's Initialize Paragraph
        DataSet1-tscorte-INITREC.
            INITIALIZE sco-rec OF tscorte
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tmagaz-INITREC.
+           INITIALIZE mag-rec OF tmagaz
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -5938,12 +6189,20 @@
                MOVE 5004 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
+      * ef-mag's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-mag-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5005 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
       * ef-ini-val's Validation
            SET TOTEM-CHECK-OK TO FALSE
            PERFORM ef-ini-val-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5005 TO CONTROL-ID
+               MOVE 5006 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-fine-val's Validation
@@ -5951,7 +6210,7 @@
            PERFORM ef-fine-val-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 5006 TO CONTROL-ID
+               MOVE 5007 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-1's Validation
@@ -5959,7 +6218,7 @@
            PERFORM ef-note-1-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 14 TO CONTROL-ID
+               MOVE 15 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-2's Validation
@@ -5967,7 +6226,7 @@
            PERFORM ef-note-2-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 15 TO CONTROL-ID
+               MOVE 16 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-3's Validation
@@ -5975,7 +6234,7 @@
            PERFORM ef-note-3-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 16 TO CONTROL-ID
+               MOVE 17 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
       * ef-note-4's Validation
@@ -5983,7 +6242,7 @@
            PERFORM ef-note-4-VALIDATION
            IF NOT TOTEM-CHECK-OK
                MOVE 4 TO ACCEPT-CONTROL
-               MOVE 17 TO CONTROL-ID
+               MOVE 18 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -6054,6 +6313,23 @@
            PERFORM ef-note-BEFORE-VALIDATION
            SET TOTEM-CHECK-OK TO TRUE
            PERFORM ef-note-AFTER-VALIDATION
+           .
+
+       ef-mag-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-mag, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-mag-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-mag, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-mag's Validation
+       ef-mag-VALIDATION.
+           PERFORM ef-mag-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-mag-AFTER-VALIDATION
            .
 
        ef-ini-val-BEFORE-VALIDATION.
@@ -6170,6 +6446,8 @@
            MOVE ef-destino-BUF TO tlis-destino OF tlistini
       * DB_Entry-Field : ef-note
            MOVE ef-note-BUF TO tlis-descrizione OF tlistini
+      * DB_Entry-Field : ef-mag
+           MOVE ef-mag-BUF TO tlis-mag OF tlistini
       * DB_Entry-Field : ef-ini-val
            MOVE ef-ini-val-BUF TO tlis-ini-val OF tlistini
       * DB_Entry-Field : ef-fine-val
@@ -6221,6 +6499,8 @@
            MOVE tlis-destino OF tlistini TO ef-destino-BUF
       * DB_Entry-Field : ef-note
            MOVE tlis-descrizione OF tlistini TO ef-note-BUF
+      * DB_Entry-Field : ef-mag
+           MOVE tlis-mag OF tlistini TO ef-mag-BUF
       * DB_Entry-Field : ef-ini-val
            MOVE tlis-ini-val OF tlistini TO ef-ini-val-BUF
       * DB_Entry-Field : ef-fine-val
@@ -6262,6 +6542,13 @@
                  move spaces to cli-ragsoc-1
            end-read.
            move cli-ragsoc-1 to lab-forn-buf.
+
+           move tlis-mag of tlistini to mag-codice.
+           read tmagaz no lock
+              invalid 
+                 move spaces to mag-descrizione
+           end-read.
+           move mag-descrizione to lab-mag-buf.
 
            move tlis-fornitore of tlistini to desf-codice.
            move tlis-destino of tlistini to desf-prog
@@ -6316,6 +6603,14 @@
            end-if
 
 
+           if tlis-mag OF tlistini not = old-tlis-mag
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-mag è l'ID del campo ef-mag
+              move 78-ID-ef-mag to store-id 
+           end-if
+
+
            if tlis-ini-val OF tlistini not = old-tlis-ini-val
               and SiSalvato
               set NoSalvato to true
@@ -6350,29 +6645,29 @@
            if como-note(1) not = old-como-note(1)
               and SiSalvato
               set NoSalvato to true
-              |14 è l'ID del campo ef-note-1
-              move 14 to store-id
+              |15 è l'ID del campo ef-note-1
+              move 15 to store-id
            end-if
 
            if como-note(2) not = old-como-note(2)
               and SiSalvato
               set NoSalvato to true
-              |15 è l'ID del campo ef-note-2
-              move 15 to store-id
+              |16 è l'ID del campo ef-note-2
+              move 16 to store-id
            end-if
 
            if como-note(3) not = old-como-note(3)
               and SiSalvato
               set NoSalvato to true
-              |16 è l'ID del campo ef-note-3
-              move 16 to store-id
+              |17 è l'ID del campo ef-note-3
+              move 17 to store-id
            end-if
 
            if como-note(4) not = old-como-note(4)
               and SiSalvato
               set NoSalvato to true
-              |17 è l'ID del campo ef-note-4
-              move 17 to store-id
+              |18 è l'ID del campo ef-note-4
+              move 18 to store-id
            end-if
 
            .
@@ -6436,6 +6731,10 @@
            when 78-ID-ef-destino
                 move 1 to StatusHelp
                 perform STATUS-HELP
+           |78-ID-ef-mag è l'ID del campo ef-mag
+           when 78-ID-ef-mag
+                move 1 to StatusHelp
+                perform STATUS-HELP
            |99999 è un valore fittizio, che non sarà MAI usato,
            |ma mi serve per non riscontrare errori di compilazione
            |in caso non avessi generato nulla nella BEFORE della screen
@@ -6456,6 +6755,11 @@
 
            |78-ID-ef-destino è l'ID del campo ef-destino
            when 78-ID-ef-destino
+                move 0 to StatusHelp
+                perform STATUS-HELP
+
+           |78-ID-ef-mag è l'ID del campo ef-mag
+           when 78-ID-ef-mag
                 move 0 to StatusHelp
                 perform STATUS-HELP
 
@@ -6481,6 +6785,9 @@
                 perform CONTROLLO
            |78-ID-ef-note è l'ID del campo ef-note
            when 78-ID-ef-note
+                perform CONTROLLO
+           |78-ID-ef-mag è l'ID del campo ef-mag
+           when 78-ID-ef-mag
                 perform CONTROLLO
            |78-ID-ef-ini-val è l'ID del campo ef-ini-val
            when 78-ID-ef-ini-val
@@ -6723,16 +7030,17 @@
            WHEN 5003 MOVE "Digitare il Destino" to TOTEM-HINT-TEXT
            WHEN 5004 MOVE "Digitare il nome del volantino" to 
            TOTEM-HINT-TEXT
-           WHEN 5005 MOVE "Digitare la data d'inizio DPO" to 
+           WHEN 5005 MOVE "Digitare il Destino" to TOTEM-HINT-TEXT
+           WHEN 5006 MOVE "Digitare la data d'inizio DPO" to 
            TOTEM-HINT-TEXT
-           WHEN 5006 MOVE "Digitare la data di fine DPO" to 
+           WHEN 5007 MOVE "Digitare la data di fine DPO" to 
            TOTEM-HINT-TEXT
-           WHEN 14 MOVE "Digitare i dati di consegna" to TOTEM-HINT-TEXT
-           WHEN 15 MOVE "Digitare le note di destinazione" to 
-           TOTEM-HINT-TEXT
+           WHEN 15 MOVE "Digitare i dati di consegna" to TOTEM-HINT-TEXT
            WHEN 16 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN 17 MOVE "Digitare le note di destinazione" to 
+           TOTEM-HINT-TEXT
+           WHEN 18 MOVE "Digitare le note di destinazione" to 
            TOTEM-HINT-TEXT
            WHEN OTHER MOVE SPACES TO TOTEM-HINT-TEXT
            END-EVALUATE
@@ -6741,12 +7049,13 @@
            When 5002 PERFORM ef-forn-BeforeProcedure
            When 5003 PERFORM ef-gdo-BeforeProcedure
            When 5004 PERFORM ef-nome-BeforeProcedure
-           When 5005 PERFORM ef-ini-dpo-BeforeProcedure
-           When 5006 PERFORM ef-fine-dpo-BeforeProcedure
-           When 14 PERFORM ef-note-1-BeforeProcedure
-           When 15 PERFORM ef-note-2-BeforeProcedure
-           When 16 PERFORM ef-note-3-BeforeProcedure
-           When 17 PERFORM ef-note-4-BeforeProcedure
+           When 5005 PERFORM ef-gdo-BeforeProcedure
+           When 5006 PERFORM ef-ini-dpo-BeforeProcedure
+           When 5007 PERFORM ef-fine-dpo-BeforeProcedure
+           When 15 PERFORM ef-note-1-BeforeProcedure
+           When 16 PERFORM ef-note-2-BeforeProcedure
+           When 17 PERFORM ef-note-3-BeforeProcedure
+           When 18 PERFORM ef-note-4-BeforeProcedure
            END-EVALUATE
            PERFORM Form1-DISPLAY-STATUS-MSG
            perform Form1-BEFORE-SCREEN
@@ -6758,14 +7067,15 @@
            When 5002 PERFORM ef-gdo-AfterProcedure
            When 5003 PERFORM ef-gdo-AfterProcedure
            When 5004 PERFORM ef-nome-AfterProcedure
-           When 5005 PERFORM ef-ini-dpo-AfterProcedure
-           When 5006 PERFORM ef-fine-dpo-AfterProcedure
+           When 5005 PERFORM ef-gdo-AfterProcedure
+           When 5006 PERFORM ef-ini-dpo-AfterProcedure
+           When 5007 PERFORM ef-fine-dpo-AfterProcedure
            When 2 PERFORM Screen1-DaCb-1-AfterProcedure
            When 3 PERFORM Screen1-DaCb-1-AfterProcedure
-           When 14 PERFORM ef-note-1-AfterProcedure
-           When 15 PERFORM ef-note-2-AfterProcedure
-           When 16 PERFORM ef-note-3-AfterProcedure
-           When 17 PERFORM ef-note-4-AfterProcedure
+           When 15 PERFORM ef-note-1-AfterProcedure
+           When 16 PERFORM ef-note-2-AfterProcedure
+           When 17 PERFORM ef-note-3-AfterProcedure
+           When 18 PERFORM ef-note-4-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -6776,28 +7086,28 @@
        Screen1-Gd-1-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5007 ALSO
+           WHEN Msg-Begin-Drag ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5007 ALSO
+           WHEN Msg-Begin-Entry ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5007 ALSO
+           WHEN Msg-End-Drag ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5007 ALSO
+           WHEN Msg-Finish-Entry ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5007 ALSO
+           WHEN Msg-Goto-Cell ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5007 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5007 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Goto-Cell-Mouse
-           WHEN Msg-Heading-Clicked ALSO 5007 ALSO
+           WHEN Msg-Heading-Clicked ALSO 5008 ALSO
                     form1-Handle 
               PERFORM gd1-Ev-Msg-Heading-Clicked
            END-EVALUATE
@@ -6948,7 +7258,7 @@
                    move cli-ragsoc-1     to lab-forn-buf
                    display ef-forn lab-forn
                    move 4 to accept-control
-                end-if
+                end-if 
            when 78-ID-ef-destino
                 inquire ef-forn, value in desf-codice
                 inquire ef-destino, VALUE desf-prog
@@ -6960,6 +7270,18 @@
                    move desf-prog        to ef-destino-buf
                    move desf-ragsoc-1    to lab-dest-buf
                    display ef-destino lab-dest
+                   move 4 to accept-control
+                end-if
+           when 78-ID-ef-mag
+                inquire ef-mag, value in mag-codice
+                move "tmagaz"  to Como-File
+                call   "zoom-gt" using como-file, mag-rec
+                                giving stato-zoom
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move mag-codice      to ef-mag-buf
+                   move mag-descrizione to lab-mag-buf
+                   display ef-mag lab-mag
                    move 4 to accept-control
                 end-if
       *
@@ -7190,7 +7512,25 @@
                    display message box MSG-record-inesistente
                            title = tit-err
                            icon mb-warning-icon
+                end-if      
+
+           when 78-ID-ef-mag
+                inquire ef-mag value in mag-codice
+                if mag-codice = spaces
+                   move spaces to mag-descrizione
+                else
+                   read tmagaz no lock
+                      invalid
+                         move spaces to mag-descrizione
+                         set errori to true
+                         display message "Magazzino non valido"
+                                 title tit-err
+                                 icon 2
+                   end-read
                 end-if
+                move mag-descrizione to lab-mag-buf
+                display lab-mag
+
            when 78-ID-ef-forn
                 inquire ef-forn value in cli-codice
                 set cli-tipo-F  to true
@@ -9225,6 +9565,12 @@
               INQUIRE ef-destino, VALUE IN tlis-destino OF tlistini
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-destino-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-mag, VALUE IN tlis-mag OF tlistini
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-mag-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

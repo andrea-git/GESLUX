@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tmagaz.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 14 giugno 2023 16:26:36.
+       DATE-WRITTEN.        giovedì 6 giugno 2024 16:49:31.
        REMARKS.
       *{TOTEM}END
 
@@ -229,6 +229,10 @@
                        88 old-mag-gen-auto-si VALUE IS "S". 
                        88 old-mag-gen-auto-no VALUE IS "N", " ". 
                    15 old-mag-scorta   PIC  x.
+                       88 old-mag-scorta-si VALUE IS "S". 
+                       88 old-mag-scorta-no VALUE IS "N", " ". 
+                   15 old-mag-alfa-vuoto-3         PIC  x.
+                   15 old-mag-indirizzo            PIC  x(100).
        77 FILLER           PIC  XX.
            88 trovato-uno VALUE IS "SI"    WHEN SET TO FALSE  "NO". 
            88 trovato-nessuno VALUE IS "NO". 
@@ -261,13 +265,18 @@
       ***********************************************************
        77 STATUS-Form1-FLAG-REFRESH PIC  9.
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
+      * DATA CONTROL BUFFER
+       01 Form1-BUF.
+      * Data.Entry-Field
+              05 ef-ind-BUF PIC x(100).
+
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-tmagaz-RESTOREBUF  PIC X(212).
+       77 TMP-Form1-tmagaz-RESTOREBUF  PIC X(612).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(212).
+       77 Form1-MULKEY-TMPBUF   PIC X(612).
        77 STATUS-SCREEN-SEARCH-FLAG-REFRESH PIC  9.
           88 SCREEN-SEARCH-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
@@ -305,7 +314,8 @@
       *{TOTEM}ID-LOGICI
       ***** Elenco ID Logici *****
        78  78-ID-form1-gd-1 VALUE 5001.
-       78  78-ID-gd-scorte VALUE 5002.
+       78  78-ID-ef-ind VALUE 5002.
+       78  78-ID-gd-scorte VALUE 5003.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -320,6 +330,7 @@
       * FORM
        01 
            Form1, 
+           AFTER PROCEDURE Form1-AfterProcedure,
            .
 
       * LABEL
@@ -344,7 +355,7 @@
            Grid, 
            COL 2,00, 
            LINE 1,62,
-           LINES 29,00 ,
+           LINES 28,92 ,
            SIZE 261,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
@@ -378,6 +389,24 @@
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
            .
 
+      * ENTRY FIELD
+       05
+           ef-ind, 
+           Entry-Field, 
+           COL 10,17, 
+           LINE 31,46,
+           LINES 1,31 ,
+           SIZE 80,00 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod,
+           ID IS 78-ID-ef-ind,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 100,
+           VALUE ef-ind-BUF,
+           BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
+           .
       * GRID
        05
            gd-scorte, 
@@ -422,6 +451,21 @@
            CENTER,
            TRANSPARENT,
            TITLE "SCORTE",
+           .
+
+      * LABEL
+       05
+           Form1-La-2, 
+           Label, 
+           COL 2,00, 
+           LINE 31,46,
+           LINES 1,31 ,
+           SIZE 7,00 ,
+           ID IS 14,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           TRANSPARENT,
+           TITLE "Indirizzo",
            .
 
       * TOOLBAR
@@ -2336,6 +2380,7 @@
 
        Form1-Init-Value.
            MOVE titolo TO TOTEM-MSG-TITLE
+           INITIALIZE Form1-BUF
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, SetDefault>
@@ -2350,12 +2395,39 @@
       * for Form's Validation
        Form1-VALIDATION-ROUTINE.
            SET TOTEM-CHECK-OK TO TRUE
+      * ef-ind's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-ind-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5002 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+           .
+
+       ef-ind-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-ind, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-ind-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-ind, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-ind's Validation
+       ef-ind-VALIDATION.
+           PERFORM ef-ind-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-ind-AFTER-VALIDATION
            .
 
 
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
       * <TOTEM:END>
+      * DB_Entry-Field : ef-ind
+           MOVE ef-ind-BUF TO mag-indirizzo
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
            initialize mag-tab-scorte.
            move 1 to idx.
@@ -2367,6 +2439,8 @@
               add 1 to idx
            end-perform.
 
+           move ef-ind-buf to mag-indirizzo.
+
            .
       * <TOTEM:END>
            .
@@ -2377,6 +2451,8 @@
 
            .
       * <TOTEM:END>
+      * DB_Entry-Field : ef-ind
+           MOVE mag-indirizzo TO ef-ind-BUF
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterFldToBuf>
            perform VALORIZZA-SCORTE.
 
@@ -2619,6 +2695,12 @@
 
 
 
+       Form1-AfterProcedure.
+           EVALUATE Control-Id
+           When 5002 PERFORM Form1-DaEf-1-AfterProcedure
+           END-EVALUATE
+           .
+
        Form1-Event-Proc.
            .
 
@@ -2652,25 +2734,25 @@
        Form1-Gd-2-Event-Proc.
            EVALUATE Event-Type ALSO Event-Control-Id ALSO
                                     Event-Window-Handle
-           WHEN Msg-Begin-Drag ALSO 5002 ALSO
+           WHEN Msg-Begin-Drag ALSO 5003 ALSO
                     Form1-Handle 
               PERFORM gd-scorte-Ev-Msg-Begin-Drag
-           WHEN Msg-Begin-Entry ALSO 5002 ALSO
+           WHEN Msg-Begin-Entry ALSO 5003 ALSO
                     Form1-Handle 
               PERFORM gd-scorte-Ev-Msg-Begin-Entry
-           WHEN Msg-End-Drag ALSO 5002 ALSO
+           WHEN Msg-End-Drag ALSO 5003 ALSO
                     Form1-Handle 
               PERFORM gd-scorte-Ev-Msg-End-Drag
-           WHEN Msg-Finish-Entry ALSO 5002 ALSO
+           WHEN Msg-Finish-Entry ALSO 5003 ALSO
                     Form1-Handle 
               PERFORM gd-scorte-Ev-Msg-Finish-Entry
-           WHEN Msg-Goto-Cell ALSO 5002 ALSO
+           WHEN Msg-Goto-Cell ALSO 5003 ALSO
                     Form1-Handle 
               PERFORM gd-scorte-Ev-Msg-Goto-Cell
-           WHEN Msg-Goto-Cell-Drag ALSO 5002 ALSO
+           WHEN Msg-Goto-Cell-Drag ALSO 5003 ALSO
                     Form1-Handle 
               PERFORM gd-scorte-Ev-Msg-Goto-Cell-Drag
-           WHEN Msg-Goto-Cell-Mouse ALSO 5002 ALSO
+           WHEN Msg-Goto-Cell-Mouse ALSO 5003 ALSO
                     Form1-Handle 
               PERFORM gd-scorte-Ev-Msg-Goto-Cell-Mouse
            END-EVALUATE
@@ -3643,6 +3725,8 @@
               end-if
            end-if.
 
+           modify ef-ind, enabled mod.
+
            perform ABILITAZIONI.
 
            modify tool-modifica, value mod 
@@ -3809,7 +3893,7 @@
       * <TOTEM:PARA. SPOSTAMENTO>
            inquire form1-gd-1, cursor-x = colonna, cursor-y = riga.
 
-           if event-data-2 not = riga
+           if event-data-2 not = riga   
               perform VALORE-RIGA
               if mag-codice = spaces or zero
                  modify form1-gd-1, record-to-delete riga
@@ -3821,7 +3905,9 @@
                     move colonna to event-data-1
                     set event-action to event-action-fail
                  end-if
-              end-if
+              end-if  
+
+              perform FORM1-FLD-TO-BUF
            else
               if colonna not = event-data-1
                  perform CONTROLLO
@@ -3830,7 +3916,7 @@
                  end-if
               end-if
            end-if.
-
+                                      
       *    valorizzo l'old della riga su cui sono andato
            move event-data-2 to riga.
            move event-data-1 to colonna.
@@ -3839,9 +3925,7 @@
       * colorazione riga in grid
            perform COLORE-RIGA.
 
-           perform GRID-HELP.
-
-           perform FORM1-FLD-TO-BUF 
+           perform GRID-HELP           
            .
       * <TOTEM:END>
 
@@ -3913,7 +3997,9 @@
               inquire form1-gd-1(riga, 1) cell-data old-mag-codice
               move old-mag-codice         to mag-codice
               read tmagaz                 no lock
-              move mag-rec                to old-mag-rec
+              move mag-rec                to old-mag-rec  
+              move mag-indirizzo to ef-ind-buf old-mag-indirizzo
+              display ef-ind
            else
               initialize old-mag-rec replacing numeric data by zeroes
                                           alphanumeric data by spaces
@@ -4323,6 +4409,24 @@
            modify gd-scorte(event-data-2, 2), cell-data sco-descrizione 
            .
       * <TOTEM:END>
+       Form1-DaEf-1-BeforeProcedure.
+      * <TOTEM:PARA. Form1-DaEf-1-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       Form1-DaEf-1-AfterProcedure.
+      * <TOTEM:PARA. Form1-DaEf-1-AfterProcedure>
+              INQUIRE ef-ind, VALUE IN mag-indirizzo
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-ind-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+
+           .
+      * <TOTEM:END>
+
 
       *{TOTEM}END
 

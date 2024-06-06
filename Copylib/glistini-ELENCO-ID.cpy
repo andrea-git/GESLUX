@@ -16,6 +16,10 @@
            when 78-ID-ef-note
                 inquire ef-note, value in ef-note-buf
 
+           |78-ID-ef-mag è l'ID del control ef-mag
+           when 78-ID-ef-mag
+                inquire ef-mag, value in ef-mag-buf
+
            |78-ID-ef-ini-val è l'ID del control ef-ini-val
            when 78-ID-ef-ini-val
                 inquire ef-ini-val, value in ef-ini-val-buf

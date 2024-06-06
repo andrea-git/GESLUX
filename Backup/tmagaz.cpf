@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E76E14226-123-298488984
+PROGRAM_UNIQUE_CODE=TOTEM-7E866141232-152-1552820075
 
 {{@DESCRIPTION:
 
@@ -1382,50 +1382,47 @@ m_bFixed=1
 
 @}}
 [FDITEM140_WK]
-m_strName=FILLER
-m_strRawPic=XX
-m_strPic=XX
-m_nItemLevel=77
+m_strName=old-mag-scorta-si
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="S"
 {{@DataItem_m_strDescriptionFDITEM140_WK
 
 @}}
 [FDITEM141_WK]
-m_strName=trovato-uno
+m_strName=old-mag-scorta-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="SI"
-m_strFalse="NO"
+m_strTrue="N", " "
 {{@DataItem_m_strDescriptionFDITEM141_WK
 
 @}}
 [FDITEM142_WK]
-m_strName=trovato-nessuno
-m_nItemLevel=88
+m_strName=old-mag-alfa-vuoto-3
+m_strRawPic=x
+m_strPic=x
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-m_strTrue="NO"
 {{@DataItem_m_strDescriptionFDITEM142_WK
 
 @}}
 [FDITEM143_WK]
-m_strName=totale-righe
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_strDefaultValue=ZERO
-m_nItemLevel=77
+m_strName=old-mag-indirizzo
+m_strRawPic=x(100)
+m_strPic=x(100)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM143_WK
 
 @}}
 [FDITEM144_WK]
-m_strName=cont
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_strDefaultValue=ZERO
+m_strName=FILLER
+m_strRawPic=XX
+m_strPic=XX
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1433,28 +1430,29 @@ m_bFixed=1
 
 @}}
 [FDITEM145_WK]
-m_strName=old-riga
-m_strRawPic=9(5)
-m_strPic=9(5)
-m_strDefaultValue=ZERO
-m_nItemLevel=77
+m_strName=trovato-uno
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="SI"
+m_strFalse="NO"
 {{@DataItem_m_strDescriptionFDITEM145_WK
 
 @}}
 [FDITEM146_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
-m_nItemLevel=77
+m_strName=trovato-nessuno
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="NO"
 {{@DataItem_m_strDescriptionFDITEM146_WK
 
 @}}
 [FDITEM147_WK]
-m_strName=Screen1-St-1-Handle
-m_nUsage=51
+m_strName=totale-righe
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=ZERO
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1462,9 +1460,10 @@ m_bFixed=1
 
 @}}
 [FDITEM148_WK]
-m_strName=STATUS-tcaumag
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=cont
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=ZERO
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1472,85 +1471,84 @@ m_bFixed=1
 
 @}}
 [FDITEM149_WK]
-m_strName=Valid-STATUS-tcaumag
-m_nItemLevel=88
+m_strName=old-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_strDefaultValue=ZERO
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM149_WK
 
 @}}
 [FDITEM150_WK]
-m_strName=gd-scorte-rec
-m_nItemLevel=1
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM150_WK
 
 @}}
 [FDITEM151_WK]
-m_strName=col-codice
-m_strRawPic=xx
-m_strPic=xx
-m_nItemLevel=5
+m_strName=Screen1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM151_WK
 
 @}}
 [FDITEM152_WK]
-m_strName=col-descrizione
-m_strRawPic=x(50)
-m_strPic=x(50)
-m_nItemLevel=5
+m_strName=STATUS-tcaumag
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM152_WK
 
 @}}
 [FDITEM153_WK]
-m_strName=Large-Font
-m_nUsage=35
-m_nItemLevel=77
+m_strName=Valid-STATUS-tcaumag
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM153_WK
 
 @}}
 [FDITEM154_WK]
-m_strName=STATUS-tscorte
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
+m_strName=gd-scorte-rec
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM154_WK
 
 @}}
 [FDITEM155_WK]
-m_strName=Valid-STATUS-tscorte
-m_nItemLevel=88
+m_strName=col-codice
+m_strRawPic=xx
+m_strPic=xx
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM155_WK
 
 @}}
 [FDITEM156_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=4
-m_nItemLevel=77
+m_strName=col-descrizione
+m_strRawPic=x(50)
+m_strPic=x(50)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM156_WK
 
 @}}
 [FDITEM157_WK]
-m_strName=STATUS-tvettori
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Large-Font
+m_nUsage=35
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1558,12 +1556,52 @@ m_bFixed=1
 
 @}}
 [FDITEM158_WK]
+m_strName=STATUS-tscorte
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM158_WK
+
+@}}
+[FDITEM159_WK]
+m_strName=Valid-STATUS-tscorte
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM159_WK
+
+@}}
+[FDITEM160_WK]
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=4
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM160_WK
+
+@}}
+[FDITEM161_WK]
+m_strName=STATUS-tvettori
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM161_WK
+
+@}}
+[FDITEM162_WK]
 m_strName=Valid-STATUS-tvettori
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM158_WK
+{{@DataItem_m_strDescriptionFDITEM162_WK
 
 @}}
 
@@ -1983,7 +2021,7 @@ Begin Screen Form1
       ID Variable       = AUTO-ID
       Last Row          = 0
       Line              = 1,62
-      Lines             = 29,00
+      Lines             = 28,92
       Lines Unit        = Default
       No Tab            = FALSE
       Num Col Headings  = 1
@@ -2012,6 +2050,66 @@ Begin Screen Form1
       Msg-Goto-Cell     = form1-gd-1-Ev-Msg-Goto-Cell
       Msg-Goto-Cell-Drag = form1-gd-1-Ev-Msg-Goto-Cell-Drag
       Msg-Goto-Cell-Mouse = form1-gd-1-Ev-Msg-Goto-Cell-Mouse
+   End
+   Begin Data.Entry-Field ef-ind
+      SCREEN-COL        = 10,17
+      SCREEN-LINE       = 31,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = ef-ind
+      Auto              = FALSE
+      Auto Decimal      = 0
+      Border            = Boxed
+      Case              = Mixed
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 513
+      Column            = 10,17
+      Csize             = 0
+      Csize Unit        = Default
+      Cursor            = 0
+      Cursor Col        = 0
+      Cursor Row        = 0
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Enable Variable   = mod
+      Field Edited (Style) = 0
+      Field Edited Format = x(100)
+      Field Picture     = x(100)
+      Field Variable    = mag-indirizzo
+      File              = tmagaz
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 15
+      ID Variable       = AUTO-ID
+      Justification     = Unaligned
+      Line              = 31,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      Max Lines         = 0
+      Max Text          = 100
+      Max Value         = 0
+      Min Value         = 0
+      No AutoSel        = FALSE
+      No Tab            = FALSE
+      Notify Change     = FALSE
+      Numeric           = FALSE
+      Occurs            = 0
+      Read Only         = FALSE
+      Required          = FALSE
+      Secure            = FALSE
+      Size              = 80,00
+      Size Unit         = Default
+      Style             = Singleline
+      Tab Order         = 3
+      Use Return        = FALSE
+      Use Tab           = FALSE
+      Value Multiple    = FALSE
+      Visible           = NONE
+      Width in Cells    = TRUE
+      Before Procedure  = Form1-DaEf-1-BeforeProcedure
+      After Procedure   = Form1-DaEf-1-AfterProcedure
    End
    Begin Grid gd-scorte
       SCREEN-COL        = 106,00
@@ -2066,7 +2164,7 @@ Begin Screen Form1
       Row Headings      = FALSE
       Size              = 53,17
       Size Unit         = Default
-      Tab Order         = 3
+      Tab Order         = 4
       Tiled Headings    = TRUE
       Use Tab           = FALSE
       Virtual Width     = 50
@@ -2111,8 +2209,41 @@ Begin Screen Form1
       Occurs            = 0
       Size              = 53,17
       Size Unit         = Default
-      Tab Order         = 4
+      Tab Order         = 5
       Title             = "SCORTE"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Form1-La-2
+      SCREEN-COL        = 2,00
+      SCREEN-LINE       = 31,46
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Form1-La-2
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 14
+      Justification     = Unaligned
+      Label Offset      = 20
+      Line              = 31,46
+      Lines             = 1,31
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 7,00
+      Size Unit         = Default
+      Tab Order         = 6
+      Title             = "Indirizzo"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -2128,7 +2259,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-1-Handle
       Help ID           = 0
       Lines             = 2,69
-      Tab Order         = 5
+      Tab Order         = 7
       Begin Push-Button TOOL-ESCI
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,08
@@ -2570,7 +2701,7 @@ Begin Screen Form1
       Handle Variable   = Screen1-St-1-Handle
       PANEL-WIDTHS      = ( 145, 25, 999 )
       PANEL-STYLE       = ( 1, 1, 1 )
-      Tab Order         = 6
+      Tab Order         = 8
    End
 End
 
@@ -3293,6 +3424,8 @@ BEGIN-TEXT
               move col-codice to mag-sco-codice(idx)
               add 1 to idx
            end-perform.
+
+           move ef-ind-buf to mag-indirizzo.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3303,7 +3436,7 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = AfterFldToBuf
 BEGIN-TEXT
-           perform VALORIZZA-SCORTE.
+           perform VALORIZZA-SCORTE. 
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4232,6 +4365,8 @@ BEGIN-TEXT
               end-if
            end-if.
 
+           modify ef-ind, enabled mod.
+
            perform ABILITAZIONI.
 
            modify tool-modifica, value mod.
@@ -4405,7 +4540,7 @@ BEGIN-DATA
 BEGIN-TEXT
            inquire form1-gd-1, cursor-x = colonna, cursor-y = riga.
 
-           if event-data-2 not = riga
+           if event-data-2 not = riga   
               perform VALORE-RIGA
               if mag-codice = spaces or zero
                  modify form1-gd-1, record-to-delete riga
@@ -4417,7 +4552,9 @@ BEGIN-TEXT
                     move colonna to event-data-1
                     set event-action to event-action-fail
                  end-if
-              end-if
+              end-if  
+
+              perform FORM1-FLD-TO-BUF
            else
               if colonna not = event-data-1
                  perform CONTROLLO
@@ -4426,7 +4563,7 @@ BEGIN-TEXT
                  end-if
               end-if
            end-if.
-
+                                      
       *    valorizzo l'old della riga su cui sono andato
            move event-data-2 to riga.
            move event-data-1 to colonna.
@@ -4435,9 +4572,7 @@ BEGIN-TEXT
       * colorazione riga in grid
            perform COLORE-RIGA.
 
-           perform GRID-HELP.
-
-           perform FORM1-FLD-TO-BUF.
+           perform GRID-HELP.          
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4513,7 +4648,9 @@ BEGIN-TEXT
               inquire form1-gd-1(riga, 1) cell-data old-mag-codice
               move old-mag-codice         to mag-codice
               read tmagaz                 no lock
-              move mag-rec                to old-mag-rec
+              move mag-rec                to old-mag-rec  
+              move mag-indirizzo to ef-ind-buf old-mag-indirizzo
+              display ef-ind
            else
               initialize old-mag-rec replacing numeric data by zeroes
                                           alphanumeric data by spaces
@@ -5002,6 +5139,21 @@ BEGIN-TEXT
               set event-action to event-action-fail
            end-if.
            modify gd-scorte(event-data-2, 2), cell-data sco-descrizione.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-1-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = Form1-DaEf-1-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Form2-Custom1-1 **>>
 END-TEXT
 END-DATA
 
