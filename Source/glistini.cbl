@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          glistini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 6 giugno 2024 15:24:11.
+       DATE-WRITTEN.        giovedì 6 giugno 2024 17:45:48.
        REMARKS.
       *{TOTEM}END
 
@@ -347,7 +347,7 @@
        77 TMP-DataSet1-catart-BUF     PIC X(6622).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -729,10 +729,10 @@
        05
            ef-mag, 
            Entry-Field, 
-           COL 113,67, 
+           COL 120,33, 
            LINE 10,00,
            LINES 1,31 ,
-           SIZE 10,00 ,
+           SIZE 6,00 ,
            BOXED,
            UPPER,
            COLOR IS 513,
@@ -1100,7 +1100,7 @@
            EXCEPTION-VALUE 1000,
            FLAT,
            FONT IS Small-Font,
-           ID IS 15,
+           ID IS 11,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            SELF-ACT,
@@ -1286,26 +1286,26 @@
            COL 99,67, 
            LINE 10,00,
            LINES 1,31 ,
-           SIZE 13,00 ,
+           SIZE 19,50 ,
            FONT IS Small-Font,
-           ID IS 16,
+           ID IS 30,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,
-           TITLE "Magazzino",
+           TITLE "Magazzino di consegna",
            .
 
       * LABEL
        05
            lab-mag, 
            Label, 
-           COL 124,67, 
+           COL 128,00, 
            LINE 10,00,
            LINES 1,31 ,
            SIZE 50,00 ,
            COLOR IS 5,
            FONT IS Small-Font,
-           ID IS 17,
+           ID IS 31,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            TRANSPARENT,

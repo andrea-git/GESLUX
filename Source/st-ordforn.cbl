@@ -28,7 +28,8 @@
            copy "tpromo.sl".
            copy "tgrupgdo.sl".
            copy "tparamge.sl".
-           copy "lineseq.sl".
+           copy "lineseq.sl". 
+           copy "tlistini.sl".
 
        SELECT fileCSV
            ASSIGN       TO path-fileCSV
@@ -61,6 +62,7 @@
            copy "tgrupgdo.fd".
            copy "tparamge.fd".
            copy "lineseq.fd".
+           copy "tlistini.fd".
 
        FD  fileCSV.
        01 csv-riga        PIC  x(1000).
@@ -169,7 +171,26 @@
        77  como-pic-93v92 pic zzz,zz.
 
        77  como-pic-94v92 pic --.--9,99.
-       77  como-pic-94v94 pic --.--9,9999.
+       77  como-pic-94v94 pic --.--9,9999.   
+       77 numRighe                 pic 9(2) value 0.
+       77 resto                    pic 9(2) value 0.
+       77 totChar                  pic 9(3) value 0. 
+       77 startWord                pic 9(3).
+       77 iWord                    pic 9(3).
+       77 totWord                  pic 9(3).
+       77 idxChar                  pic 9(3).
+       77 rowToWrite               pic x(60).
+       77 sumChar                  pic 9(3).
+       77 numChar                  pic 9(3).
+       01 tab-word.
+          03                       occurs 999.
+             05 el-wordValue       pic x(60).
+             05 el-wordEnd         pic 9(3).
+       77 iRow                     pic 9(2).
+       77 startChar                pic 9(3).
+       01 tab-rows.
+          03                       occurs 2.
+              05 el-rowToWrite     pic x(100).
 
        01  filler         pic 9 value 0.
          88 testata-csv-fatta   value 1, false 0.
@@ -232,8 +253,9 @@
        77  status-user           pic xx.
        77  status-tpromo         pic xx. 
        77  status-tgrupgdo       pic xx. 
-       77  status-tparamge       pic xx. 
+       77  status-tparamge       pic xx.   
        77  status-lineseq        pic xx.
+       77  status-tlistini       pic xx.
        77  status-fileCSV        pic xx.    
        77  wstampa               pic x(256).
        77  path-fileCSV          pic x(256).
@@ -707,6 +729,7 @@
            open input tpromo.
            open input tgrupgdo.
            open input tparamge.
+           open input tlistini.
 
            move space  to tge-codice
            read tparamge
@@ -796,7 +819,33 @@
                           if spl-sta-annu
                              exit perform
                           end-if
-                       end-if
+                       end-if        
+
+                       |Cerco il primo listino fornitore
+                       move spaces to mag-indirizzo
+                       move low-value  to rof-rec
+                       move tof-chiave to rof-chiave
+                       start rordforn key >= rof-chiave
+                             invalid continue
+                         not invalid
+                             perform until 1 = 2
+                                read rordforn next 
+                                  at end exit perform 
+                                end-read
+                                if rof-cod-listino not = 0
+                                   move rof-cod-listino to tlis-codice
+                                   read tlistini no lock
+                                        invalid continue
+                                    not invalid
+                                        move tlis-mag to mag-codice
+                                        read tmagaz no lock
+                                             invalid continue 
+                                        end-read
+                                   end-read
+                                   exit perform
+                                end-if
+                             end-perform
+                       end-start
                                         
                        if prima-volta
                           set prima-volta to false
@@ -1545,10 +1594,27 @@
       *****        move "DESTINO CLIENTE FINALE - VEDI NOTE" 
       *****                                               to spl-riga-stampa
       *****     end-if
-           move "VEDI NOTE"  to spl-riga-stampa.
-           call "spooler" using spooler-link.
+           if mag-indirizzo = spaces
+              move spaces       to spl-riga-stampa
+              call "spooler" using spooler-link
+              add 0,3           to spl-riga
 
-           add 0,3           to spl-riga.
+              move spaces       to spl-riga-stampa
+              call "spooler" using spooler-link
+              add 0,3           to spl-riga
+           else
+
+              perform SPLIT-RIGA
+           
+              move el-rowToWrite(1) to spl-riga-stampa
+              call "spooler" using spooler-link
+              add 0,3           to spl-riga
+                                                      
+              move el-rowToWrite(2) to spl-riga-stampa
+              call "spooler" using spooler-link
+              add 0,3           to spl-riga
+           end-if.
+
            move tof-cod-pagamento  to tblpa-codice2
            move "PA"       to tblpa-codice1
            read tcodpag
@@ -1585,10 +1651,10 @@
            move como-consegna to spl-riga-stampa
            call "spooler" using spooler-link.
 
-           add 0,3                    to spl-riga.
-           accept spl-riga-stampa from environment "ORDINI_FORN_SCARICO"
-           call "spooler" using spooler-link.
-           move spl-riga-stampa to como-scarico.
+      *     add 0,3                    to spl-riga.
+      *     accept spl-riga-stampa from environment "ORDINI_FORN_SCARICO"
+      *     call "spooler" using spooler-link.
+      *     move spl-riga-stampa to como-scarico.
 
            move 18,9  to spl-riga
            move 9,9   to spl-colonna
@@ -1622,9 +1688,9 @@
                      separatore        delimited size
                      como-dati-ordine  delimited size
                      separatore        delimited size
-                     "Franco"          delimited size
+                     "Mag. consegna"   delimited size
                      separatore        delimited size
-                     "VEDI NOTE"       delimited size
+                     mag-indirizzo     delimited size
                      separatore        delimited size
                 into csv-riga
               end-string
@@ -1674,6 +1740,7 @@
                      separatore           delimited size
                      "Info promo"         delimited size
                      separatore           delimited size
+
                      como-promo           delimited size
                      separatore           delimited size
                      "Scarico"            delimited size       
@@ -2053,6 +2120,7 @@
            close tpromo.
            close tgrupgdo.
            close tparamge.
+           close tlistini.
            if stampa-csv
               close fileCSV
            end-if.
@@ -2348,12 +2416,17 @@ quii       call "spooler"       using spooler-link.
            set spl-stringa   to true.
            move arial6       to spl-hfont.
            subtract 1,15      from spl-riga.
-           subtract 0,8      from spl-colonna.
-           move "Franco:"  to spl-riga-stampa
+           subtract 1,1      from spl-colonna.
+           move "Magazzino"  to spl-riga-stampa
+           call "spooler" using spooler-link. 
+
+           add 0,3              to spl-riga.
+           subtract 0,15        from  spl-colonna.
+           move "di consegna:"  to spl-riga-stampa
            call "spooler" using spooler-link.
 
            add 0,3              to spl-riga.
-           subtract 0,4         from  spl-colonna.
+           add 0,1              to spl-colonna.
            move "Pagamento:"    to spl-riga-stampa
            call "spooler" using spooler-link.
 
@@ -2362,11 +2435,11 @@ quii       call "spooler"       using spooler-link.
            move "Consegna:"  to spl-riga-stampa
            call "spooler" using spooler-link.
 
-           add 0,3              to spl-riga.
-
-           add 0,25              to spl-colonna.
-           move "Scarico:"      to spl-riga-stampa
-           call "spooler" using spooler-link.
+      *     add 0,3              to spl-riga.
+      *
+      *     add 0,25              to spl-colonna.
+      *     move "Scarico:"      to spl-riga-stampa
+      *     call "spooler" using spooler-link.
 
       ***---
        GRIGLIA-RIGHE.
@@ -4398,3 +4471,76 @@ quii       call "spooler"       using spooler-link.
       *     call "spooler" using spooler-link.
            perform STAMPA-TESTA-ARTICOLI
            move 0 to riga.  
+                  
+
+E5190 ***---
+       SPLIT-RIGA. 
+           move  0 to numRighe resto totChar
+           inspect mag-indirizzo replacing trailing spaces by low-value
+           inspect mag-indirizzo tallying totChar 
+               for characters before low-value
+           inspect mag-indirizzo replacing trailing low-value by spaces
+           initialize tab-word 
+                      tab-rows replacing numeric data by zeroes
+                                    alphanumeric data by spaces
+           if totChar > 50
+              move 0 to startWord
+              move 1 to iWord
+              move 0 to numChar
+              perform varying idxChar from 1 by 1 
+                        until idxChar > totChar
+                 add 1 to numChar
+                 if mag-indirizzo(idxChar:1) = space 
+                    move 0 to startWord numChar
+                    add  1 to iWord
+                    exit perform cycle 
+                 end-if
+                 if numChar > 50
+                    move 0 to startWord numChar
+                    add  1 to iWord
+                    subtract 1 from idxChar
+                    exit perform cycle 
+                 end-if
+                 add 1 to startWord
+                 move mag-indirizzo(idxChar:1)
+                   to el-wordValue(iWord)(startWord:1)
+                 move idxChar to el-wordEnd(iWord)
+              end-perform
+              move iWord to totWord
+              move 1 to rowToWrite iRow
+              move 1 to startChar 
+              move 0 to sumChar
+              perform varying iWord from 1 by 1 
+                        until iWord > totWord
+                 move 0 to totChar
+                 inspect el-wordValue(iWord) tallying totChar 
+                         for characters before spaces
+
+                 if sumChar = 0
+                    move totChar to sumChar
+                 else  
+                    compute sumChar = sumChar + totChar + 1
+                 end-if
+
+                 if sumChar  > 53
+                    if el-rowToWrite(iRow) = spaces
+                       move el-wordValue(iWord) to el-rowToWrite(iRow) 
+                    else
+                       subtract 1 from iWord
+                    end-if
+                    add 1 to iRow
+                    move 1 to startChar
+                    move 0 to sumChar
+                 else  
+                    move el-wordValue(iWord) 
+                      to el-rowToWrite(iRow) 
+                        (startChar : totChar)
+                    compute startChar = startChar + totChar + 1
+                 end-if
+              end-perform
+
+              move iRow to numRighe
+
+           else  
+              move 1 to numRighe
+           end-if.

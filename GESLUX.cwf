@@ -8,7 +8,7 @@
 WORKSPACE_UNIQUE_CODE=TOTEM-7DE41144432-337-117565976
 PROJECT_LIST=GESLUX,LAB,EDI,GET,SHI,STORICO,AndamentoClienti
 CONFIGURATION_LIST=Debug Mode,RELEASE
-CURRENT_CONFIGURATION=Debug Mode
+CURRENT_CONFIGURATION=RELEASE
 
 [FILE_DEFINITION_CONTENT]
 VERSION=1
@@ -34410,7 +34410,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\st-ordforn.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\destinif.sl;FD\destini.sl;FD\tordforn.sl;FD\rordforn.sl;FD\nordforn.sl;FD\articoli.sl;FD\art-ordforn.sl;FD\timballi.sl;FD\timbalqta.sl;FD\progmag.sl;FD\rlistini.sl;FD\tcodpag.sl;FD\tivaese.sl;FD\tmagaz.sl;FD\tcaumag.sl;FD\impforn.sl;FD\USER.sl;FD\tpromo.sl;FD\tgrupgdo.sl;FD\tparamge.sl;FD\lineseq.sl;FD\clienti.fd;FD\destinif.fd;FD\destini.fd;FD\tordforn.fd;FD\rordforn.fd;FD\nordforn.fd;FD\articoli.fd;FD\art-ordforn.fd;FD\timballi.fd;FD\timbalqta.fd;FD\progmag.fd;FD\rlistini.fd;FD\tcodpag.fd;FD\tivaese.fd;FD\tmagaz.fd;FD\tcaumag.fd;FD\impforn.fd;FD\USER.fd;FD\tpromo.fd;FD\tgrupgdo.fd;FD\tparamge.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-settaPDF.def;Copylib\link-readutente.def;Copylib\link-st-ordforn.def;Resource\logo-st.bmp
+COPY_DEPENDENCE=FD\clienti.sl;FD\destinif.sl;FD\destini.sl;FD\tordforn.sl;FD\rordforn.sl;FD\nordforn.sl;FD\articoli.sl;FD\art-ordforn.sl;FD\timballi.sl;FD\timbalqta.sl;FD\progmag.sl;FD\rlistini.sl;FD\tcodpag.sl;FD\tivaese.sl;FD\tmagaz.sl;FD\tcaumag.sl;FD\impforn.sl;FD\USER.sl;FD\tpromo.sl;FD\tgrupgdo.sl;FD\tparamge.sl;FD\lineseq.sl;FD\tlistini.sl;FD\clienti.fd;FD\destinif.fd;FD\destini.fd;FD\tordforn.fd;FD\rordforn.fd;FD\nordforn.fd;FD\articoli.fd;FD\art-ordforn.fd;FD\timballi.fd;FD\timbalqta.fd;FD\progmag.fd;FD\rlistini.fd;FD\tcodpag.fd;FD\tivaese.fd;FD\tmagaz.fd;FD\tcaumag.fd;FD\impforn.fd;FD\USER.fd;FD\tpromo.fd;FD\tgrupgdo.fd;FD\tparamge.fd;FD\lineseq.fd;FD\tlistini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-settaPDF.def;Copylib\link-readutente.def;Copylib\link-st-ordforn.def;Resource\logo-st.bmp
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -58257,7 +58257,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\st-ordforn.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\destinif.sl;FD\destini.sl;FD\tordforn.sl;FD\rordforn.sl;FD\nordforn.sl;FD\articoli.sl;FD\art-ordforn.sl;FD\timballi.sl;FD\timbalqta.sl;FD\progmag.sl;FD\rlistini.sl;FD\tcodpag.sl;FD\tivaese.sl;FD\tmagaz.sl;FD\tcaumag.sl;FD\impforn.sl;FD\USER.sl;FD\tpromo.sl;FD\tgrupgdo.sl;FD\tparamge.sl;FD\lineseq.sl;FD\clienti.fd;FD\destinif.fd;FD\destini.fd;FD\tordforn.fd;FD\rordforn.fd;FD\nordforn.fd;FD\articoli.fd;FD\art-ordforn.fd;FD\timballi.fd;FD\timbalqta.fd;FD\progmag.fd;FD\rlistini.fd;FD\tcodpag.fd;FD\tivaese.fd;FD\tmagaz.fd;FD\tcaumag.fd;FD\impforn.fd;FD\USER.fd;FD\tpromo.fd;FD\tgrupgdo.fd;FD\tparamge.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-settaPDF.def;Copylib\link-readutente.def;Copylib\link-st-ordforn.def;Resource\logo-st.bmp
+COPY_DEPENDENCE=FD\clienti.sl;FD\destinif.sl;FD\destini.sl;FD\tordforn.sl;FD\rordforn.sl;FD\nordforn.sl;FD\articoli.sl;FD\art-ordforn.sl;FD\timballi.sl;FD\timbalqta.sl;FD\progmag.sl;FD\rlistini.sl;FD\tcodpag.sl;FD\tivaese.sl;FD\tmagaz.sl;FD\tcaumag.sl;FD\impforn.sl;FD\USER.sl;FD\tpromo.sl;FD\tgrupgdo.sl;FD\tparamge.sl;FD\lineseq.sl;FD\tlistini.sl;FD\clienti.fd;FD\destinif.fd;FD\destini.fd;FD\tordforn.fd;FD\rordforn.fd;FD\nordforn.fd;FD\articoli.fd;FD\art-ordforn.fd;FD\timballi.fd;FD\timbalqta.fd;FD\progmag.fd;FD\rlistini.fd;FD\tcodpag.fd;FD\tivaese.fd;FD\tmagaz.fd;FD\tcaumag.fd;FD\impforn.fd;FD\USER.fd;FD\tpromo.fd;FD\tgrupgdo.fd;FD\tparamge.fd;FD\lineseq.fd;FD\tlistini.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\spooler.def;Copylib\selprint.lks;Copylib\link-settaPDF.def;Copylib\link-readutente.def;Copylib\link-st-ordforn.def;Resource\logo-st.bmp
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E866125219-689-675319647
+PROGRAM_UNIQUE_CODE=TOTEM-7E86771550-96-46919250
 
 {{@DESCRIPTION:
 
@@ -2622,7 +2622,7 @@ Begin Screen Form1
       After Procedure   = ef-nome-AfterProcedure
    End
    Begin Data.Entry-Field ef-mag
-      SCREEN-COL        = 113,67
+      SCREEN-COL        = 120,33
       SCREEN-LINE       = 10,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -2634,7 +2634,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 513
-      Column            = 113,67
+      Column            = 120,33
       Csize             = 0
       Csize Unit        = Default
       Cursor            = 0
@@ -2653,7 +2653,7 @@ Begin Screen Form1
       Height in Cells   = TRUE
       Help ID           = 0
       Hint              = Digitare il Destino
-      ID                = 5
+      ID                = 15
       ID Variable       = AUTO-ID
       Justification     = Unaligned
       Line              = 10,00
@@ -2671,7 +2671,7 @@ Begin Screen Form1
       Read Only         = FALSE
       Required          = FALSE
       Secure            = FALSE
-      Size              = 10,00
+      Size              = 6,00
       Size Unit         = Default
       Style             = Singleline
       Tab Order         = 5
@@ -3563,7 +3563,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 15
+      ID                = 11
       Line              = 7,00
       Lines             = 2,69
       Lines in Pixels   = 28
@@ -4056,7 +4056,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 16
+      ID                = 30
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 10,00
@@ -4064,16 +4064,16 @@ Begin Screen Form1
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
-      Size              = 13,00
+      Size              = 19,50
       Size Unit         = Default
       Tab Order         = 35
-      Title             = "Magazzino"
+      Title             = "Magazzino di consegna"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label lab-mag
-      SCREEN-COL        = 124,67
+      SCREEN-COL        = 128,00
       SCREEN-LINE       = 10,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
@@ -4081,7 +4081,7 @@ Begin Screen Form1
       Clines            = 0
       Clines Unit       = Default
       Color             = 5
-      Column            = 124,67
+      Column            = 128,00
       Csize             = 0
       Csize Unit        = Default
       Destroy Type      = Automatic
@@ -4090,7 +4090,7 @@ Begin Screen Form1
       Font Variable     = Small-Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 17
+      ID                = 31
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 10,00
