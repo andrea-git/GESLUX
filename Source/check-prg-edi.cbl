@@ -151,7 +151,9 @@
                              exit perform
                           end-if
                        end-if
-                       if mro-cod-articolo not = mro-prg-cod-articolo   
+                       if mro-cod-articolo not = mro-prg-cod-articolo
+                          and not mro-si-blister and 
+                          mro-prg-cod-articolo > 0
                           move mro-anno   to mto-anno
                           move mro-numero to mto-numero
                           read mtordini no lock invalid continue 
@@ -206,7 +208,7 @@
                        end-if
                     end-if
                     if emro-cod-articolo not = emro-prg-cod-articolo and
-                       not emro-si-blister
+                       not emro-si-blister and emro-prg-cod-articolo > 0
                        move emro-anno   to emto-anno
                        move emro-numero to emto-numero
                        read edi-mtordini no lock 

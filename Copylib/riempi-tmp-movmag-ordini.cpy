@@ -433,7 +433,7 @@ LUBEXX     move ror-prg-peso              to tmp-mov-peso.
            end-read.
            move age-ragsoc-1 to tmp-mov-age-ragsoc.
 
-           move vet-sigla to tmp-mov-vet-sigla.
+           move vet-sigla to tmp-mov-vet-sigla.  
 
            write tmp-mov-rec invalid continue end-write.
 
@@ -859,7 +859,43 @@ LUBEXX             end-if
               move como-numero to r-cons-tot
 
               compute como-numero = tmp-mov-coubat * tmp-mov-qta
-              move como-numero to r-cou-tot
+              move como-numero to r-cou-tot   
+
+              if art-classe-1 > 0
+                 move art-classe-1 to cl1-codice
+                 move cl1-codice to r-cl1-codice
+                 read tcla1art no lock 
+                      invalid move spaces to cl1-descrizione
+                 end-read
+                 move cl1-descrizione to r-cl1-descrizione
+              end-if
+           
+              if art-classe-2 > 0
+                 move art-classe-2 to cl1-codice
+                 move cl1-codice to r-cl2-codice
+                 read tcla1art no lock 
+                      invalid move spaces to cl1-descrizione
+                 end-read
+                 move cl1-descrizione to r-cl2-descrizione
+              end-if
+           
+              if art-classe-3 > 0
+                 move art-classe-3 to cl1-codice
+                 move cl1-codice to r-cl3-codice
+                 read tcla1art no lock 
+                      invalid move spaces to cl1-descrizione
+                 end-read
+                 move cl1-descrizione to r-cl3-descrizione
+              end-if                    
+           
+              if art-classe-4 > 0
+                 move art-classe-4 to cl1-codice
+                 move cl1-codice to r-cl1-codice
+                 read tcla1art no lock 
+                      invalid move spaces to cl1-descrizione
+                 end-read
+                 move cl1-descrizione to r-cl4-descrizione
+              end-if
 
               if prima-volta
       *****           if Save-C
@@ -957,99 +993,131 @@ LUBEXX             end-if
                         "COU/Cobat TOT"        delimited size
                         separatore             delimited size
                         "Cod. Art. Frn."       delimited size
+                        separatore             delimited size
+                        "Classe 1"             delimited size
+                        separatore             delimited size
+                        "Descrizione"          delimited size
+                        separatore             delimited size
+                        "Classe 2"             delimited size
+                        separatore             delimited size
+                        "Descrizione"          delimited size
+                        separatore             delimited size
+                        "Classe 3"             delimited size
+                        separatore             delimited size
+                        "Descrizione"          delimited size
+                        separatore             delimited size
+                        "Classe 4"             delimited size
+                        separatore             delimited size
+                        "Descrizione"          delimited size
                         into line-riga         
                  end-string                    
                  write line-riga
                  set prima-volta to false
               end-if
               initialize line-riga
-              string r-causale        delimited size
-                     separatore       delimited size
-                     r-codice         delimited size
-                     separatore       delimited size
-                     r-gdo            delimited size
-                     separatore       delimited size
-                     gdo-intestazione delimited size
-                     separatore       delimited size
-                     tcl-descrizione  delimited size
-                     separatore       delimited size
-                     r-ragsoc         delimited size
-                     separatore       delimited size
-                     r-destino        delimited size
-                     separatore       delimited size
-                     r-localita       delimited size
-                     separatore       delimited size
-                     r-prov           delimited size
-                     separatore       delimited size
-                     r-prov-d         delimited size
-                     separatore       delimited size
-                     r-regione        delimited size
-                     separatore       delimited size
-                     r-numero         delimited size
-                     separatore       delimited size
-                     r-data-mov       delimited size
-                     separatore       delimited size
-                     r-num-bolla      delimited size
-                     separatore       delimited size
-                     r-data-bolla     delimited size
-                     separatore       delimited size
-                     r-numdoc         delimited size
-                     separatore       delimited size
-                     r-datadoc        delimited size
-                     separatore       delimited size
-                     r-marca          delimited size
-                     separatore       delimited size
-                     r-mag            delimited size
-                     separatore       delimited size
-                     r-articolo       delimited size
-                     separatore       delimited size
-                     r-desart         delimited size
-                     separatore       delimited size
-                     r-imballo        delimited size
-                     separatore       delimited size
-                     r-colli          delimited size
-                     separatore       delimited size
-                     r-imp-merce      delimited size
-                     separatore       delimited size
-                     r-add-pb         delimited size
-                     separatore       delimited size
-                     r-cons           delimited size
-                     separatore       delimited size
-                     r-coubat         delimited size
-                     separatore       delimited size
-                     r-qta            delimited size
-                     separatore       delimited size
-                     r-prezzo         delimited size
-                     separatore       delimited size
-                     r-tot            delimited size
-                     separatore       delimited size
-                     r-peso           delimited size
-                     separatore       delimited size
-                     r-utf            delimited size
-                     separatore       delimited size
-                     r-promo          delimited size
-                     separatore       delimited size
-                     r-anno-m         delimited size
-                     separatore       delimited size
-                     r-numero-m       delimited size
-                     separatore       delimited size
-                     r-riga-m         delimited size
-                     separatore       delimited size
-                     r-age-codice     delimited size
-                     separatore       delimited size
-                     r-age-ragsoc     delimited size
-                     separatore       delimited size
-                     r-vet-sigla      delimited size
-                     separatore       delimited size
-                     r-imp-tot        delimited size
-                     separatore       delimited size
-                     r-add-tot        delimited size
-                     separatore       delimited size
-                     r-cons-tot       delimited size
-                     separatore       delimited size
-                     r-cou-tot        delimited size
-                     separatore       delimited size
-                     r-cod-art-frn    delimited size
+              string r-causale               delimited size
+                     separatore              delimited size
+                     r-codice                delimited size
+                     separatore              delimited size
+                     r-gdo                   delimited size
+                     separatore              delimited size
+                     gdo-intestazione        delimited size
+                     separatore              delimited size
+                     tcl-descrizione         delimited size
+                     separatore              delimited size
+                     r-ragsoc                delimited size
+                     separatore              delimited size
+                     r-destino               delimited size
+                     separatore              delimited size
+                     r-localita              delimited size
+                     separatore              delimited size
+                     r-prov                  delimited size
+                     separatore              delimited size
+                     r-prov-d                delimited size
+                     separatore              delimited size
+                     r-regione               delimited size
+                     separatore              delimited size
+                     r-numero                delimited size
+                     separatore              delimited size
+                     r-data-mov              delimited size
+                     separatore              delimited size
+                     r-num-bolla             delimited size
+                     separatore              delimited size
+                     r-data-bolla            delimited size
+                     separatore              delimited size
+                     r-numdoc                delimited size
+                     separatore              delimited size
+                     r-datadoc               delimited size
+                     separatore              delimited size
+                     r-marca                 delimited size
+                     separatore              delimited size
+                     r-mag                   delimited size
+                     separatore              delimited size
+                     r-articolo              delimited size
+                     separatore              delimited size
+                     r-desart                delimited size
+                     separatore              delimited size
+                     r-imballo               delimited size
+                     separatore              delimited size
+                     r-colli                 delimited size
+                     separatore              delimited size
+                     r-imp-merce             delimited size
+                     separatore              delimited size
+                     r-add-pb                delimited size
+                     separatore              delimited size
+                     r-cons                  delimited size
+                     separatore              delimited size
+                     r-coubat                delimited size
+                     separatore              delimited size
+                     r-qta                   delimited size
+                     separatore              delimited size
+                     r-prezzo                delimited size
+                     separatore              delimited size
+                     r-tot                   delimited size
+                     separatore              delimited size
+                     r-peso                  delimited size
+                     separatore              delimited size
+                     r-utf                   delimited size
+                     separatore              delimited size
+                     r-promo                 delimited size
+                     separatore              delimited size
+                     r-anno-m                delimited size
+                     separatore              delimited size
+                     r-numero-m              delimited size
+                     separatore              delimited size
+                     r-riga-m                delimited size
+                     separatore              delimited size
+                     r-age-codice            delimited size
+                     separatore              delimited size
+                     r-age-ragsoc            delimited size
+                     separatore              delimited size
+                     r-vet-sigla             delimited size
+                     separatore              delimited size
+                     r-imp-tot               delimited size
+                     separatore              delimited size
+                     r-add-tot               delimited size
+                     separatore              delimited size
+                     r-cons-tot              delimited size
+                     separatore              delimited size
+                     r-cou-tot               delimited size     
+                     separatore              delimited size
+                     r-cod-art-frn           delimited size
+                     separatore              delimited size
+                     r-cl1-codice            delimited size
+                     separatore              delimited size
+                     r-cl1-descrizione       delimited size
+                     separatore              delimited size
+                     r-cl2-codice            delimited size
+                     separatore              delimited size
+                     r-cl2-descrizione       delimited size
+                     separatore              delimited size
+                     r-cl3-codice            delimited size
+                     separatore              delimited size
+                     r-cl3-descrizione       delimited size
+                     separatore              delimited size
+                     r-cl4-codice            delimited size
+                     separatore              delimited size
+                     r-cl4-descrizione       delimited size
 
                 into line-riga
               end-string

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vmovord.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 10 giugno 2022 17:33:37.
+       DATE-WRITTEN.        lunedì 10 giugno 2024 17:27:56.
        REMARKS.
       *{TOTEM}END
 
@@ -48,6 +48,7 @@
            COPY "tregioni.sl".
            COPY "rnotacr.sl".
            COPY "tnotacr.sl".
+           COPY "tcla1art.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -73,6 +74,7 @@
            COPY "tregioni.fd".
            COPY "rnotacr.fd".
            COPY "tnotacr.fd".
+           COPY "tcla1art.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -357,6 +359,14 @@
            05 r-cons-tot       PIC  ----.---.---.--9,99.
            05 r-cou-tot        PIC  ----.---.---.--9,99.
            05 r-cod-art-frn    PIC  x(15).
+           05 r-cl1-codice     PIC  9(4).
+           05 r-cl1-descrizione            PIC  x(30).
+           05 r-cl2-codice     PIC  9(4).
+           05 r-cl2-descrizione            PIC  x(30).
+           05 r-cl3-codice     PIC  9(4).
+           05 r-cl3-descrizione            PIC  x(30).
+           05 r-cl4-codice     PIC  9(4).
+           05 r-cl4-descrizione            PIC  x(30).
        77 lab-tot-coubat-buf           PIC  ----.---.--9,99.
        77 lab-tot-add-buf  PIC  ----.---.--9,99.
        77 lab-tot-cons-buf PIC  ----.---.--9,99.
@@ -422,6 +432,8 @@
            88 Valid-STATUS-rnotacr VALUE IS "00" THRU "09". 
        77 STATUS-tnotacr   PIC  X(2).
            88 Valid-STATUS-tnotacr VALUE IS "00" THRU "09". 
+       77 STATUS-tcla1art  PIC  X(2).
+           88 Valid-STATUS-tcla1art VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -523,7 +535,7 @@
        77 TMP-DataSet1-destinif-BUF     PIC X(1322).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
@@ -533,6 +545,7 @@
        77 TMP-DataSet1-tregioni-BUF     PIC X(190).
        77 TMP-DataSet1-rnotacr-BUF     PIC X(545).
        77 TMP-DataSet1-tnotacr-BUF     PIC X(752).
+       77 TMP-DataSet1-tcla1art-BUF     PIC X(591).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -643,6 +656,11 @@
        77 DataSet1-tnotacr-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tnotacr-KEY-Asc  VALUE "A".
           88 DataSet1-tnotacr-KEY-Desc VALUE "D".
+       77 DataSet1-tcla1art-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tcla1art-LOCK  VALUE "Y".
+       77 DataSet1-tcla1art-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tcla1art-KEY-Asc  VALUE "A".
+          88 DataSet1-tcla1art-KEY-Desc VALUE "D".
 
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
@@ -3003,6 +3021,7 @@
            PERFORM OPEN-tregioni
            PERFORM OPEN-rnotacr
            PERFORM OPEN-tnotacr
+           PERFORM OPEN-tcla1art
       *    After Open
            .
 
@@ -3258,6 +3277,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tcla1art.
+      * <TOTEM:EPT. INIT:vmovord, FD:tcla1art, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tcla1art
+           IF NOT Valid-STATUS-tcla1art
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:vmovord, FD:tcla1art, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-articoli
@@ -3283,6 +3314,7 @@
            PERFORM CLOSE-tregioni
            PERFORM CLOSE-rnotacr
            PERFORM CLOSE-tnotacr
+           PERFORM CLOSE-tcla1art
       *    After Close
            .
 
@@ -3408,6 +3440,12 @@
       * <TOTEM:EPT. INIT:vmovord, FD:tnotacr, BeforeClose>
       * <TOTEM:END>
            CLOSE tnotacr
+           .
+
+       CLOSE-tcla1art.
+      * <TOTEM:EPT. INIT:vmovord, FD:tcla1art, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tcla1art
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -7125,6 +7163,160 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tcla1art-INITSTART.
+           IF DataSet1-tcla1art-KEY-Asc
+              MOVE Low-Value TO cl1-chiave
+           ELSE
+              MOVE High-Value TO cl1-chiave
+           END-IF
+           .
+
+       DataSet1-tcla1art-INITEND.
+           IF DataSet1-tcla1art-KEY-Asc
+              MOVE High-Value TO cl1-chiave
+           ELSE
+              MOVE Low-Value TO cl1-chiave
+           END-IF
+           .
+
+      * tcla1art
+       DataSet1-tcla1art-START.
+           IF DataSet1-tcla1art-KEY-Asc
+              START tcla1art KEY >= cl1-chiave
+           ELSE
+              START tcla1art KEY <= cl1-chiave
+           END-IF
+           .
+
+       DataSet1-tcla1art-START-NOTGREATER.
+           IF DataSet1-tcla1art-KEY-Asc
+              START tcla1art KEY <= cl1-chiave
+           ELSE
+              START tcla1art KEY >= cl1-chiave
+           END-IF
+           .
+
+       DataSet1-tcla1art-START-GREATER.
+           IF DataSet1-tcla1art-KEY-Asc
+              START tcla1art KEY > cl1-chiave
+           ELSE
+              START tcla1art KEY < cl1-chiave
+           END-IF
+           .
+
+       DataSet1-tcla1art-START-LESS.
+           IF DataSet1-tcla1art-KEY-Asc
+              START tcla1art KEY < cl1-chiave
+           ELSE
+              START tcla1art KEY > cl1-chiave
+           END-IF
+           .
+
+       DataSet1-tcla1art-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tcla1art-LOCK
+              READ tcla1art WITH LOCK 
+              KEY cl1-chiave
+           ELSE
+              READ tcla1art WITH NO LOCK 
+              KEY cl1-chiave
+           END-IF
+           MOVE STATUS-tcla1art TO TOTEM-ERR-STAT 
+           MOVE "tcla1art" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcla1art-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tcla1art-KEY-Asc
+              IF DataSet1-tcla1art-LOCK
+                 READ tcla1art NEXT WITH LOCK
+              ELSE
+                 READ tcla1art NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tcla1art-LOCK
+                 READ tcla1art PREVIOUS WITH LOCK
+              ELSE
+                 READ tcla1art PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tcla1art TO TOTEM-ERR-STAT
+           MOVE "tcla1art" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcla1art-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tcla1art-KEY-Asc
+              IF DataSet1-tcla1art-LOCK
+                 READ tcla1art PREVIOUS WITH LOCK
+              ELSE
+                 READ tcla1art PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tcla1art-LOCK
+                 READ tcla1art NEXT WITH LOCK
+              ELSE
+                 READ tcla1art NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-tcla1art TO TOTEM-ERR-STAT
+           MOVE "tcla1art" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcla1art-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tcla1art TO TOTEM-ERR-STAT
+           MOVE "tcla1art" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcla1art-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tcla1art TO TOTEM-ERR-STAT
+           MOVE "tcla1art" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tcla1art-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tcla1art TO TOTEM-ERR-STAT
+           MOVE "tcla1art" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tcla1art, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE art-rec OF articoli
            INITIALIZE mar-rec OF tmarche
@@ -7147,6 +7339,7 @@
            INITIALIZE reg-rec OF tregioni
            INITIALIZE rno-rec OF rnotacr
            INITIALIZE tno-rec OF tnotacr
+           INITIALIZE cl1-rec OF tcla1art
            .
 
 
@@ -7381,6 +7574,14 @@
       * FD's Initialize Paragraph
        DataSet1-tnotacr-INITREC.
            INITIALIZE tno-rec OF tnotacr
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tcla1art-INITREC.
+           INITIALIZE cl1-rec OF tcla1art
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
