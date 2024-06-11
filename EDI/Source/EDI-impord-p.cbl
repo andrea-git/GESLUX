@@ -1608,8 +1608,33 @@
        AGGIUNGI-DESTINO.  
            if emto-01T30-NAD-RAGSOCD = spaces      
               set emto-destino-non-valido to true
-              exit paragraph 
+              exit paragraph                                   
+           end-if.                                             
+
+           initialize des-rec replacing numeric data by zeroes
+                                   alphanumeric data by spaces.
+
+           |CERCO LO STESSO DESTINO EVENTUALMENTE GIA' CREATO
+           move cli-codice to des-codice.
+           move 0 to sav-vettore.
+           start destini key >= des-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read destini next at end exit perform end-read
+                    if des-codice   not = cli-codice
+                       exit perform
+                    end-if
+                    if des-ragsoc-1 = emto-01T30-NAD-RAGSOCD
+                       move 1 to sav-vettore
+                       exit perform
+                    end-if
+                 end-perform
+           end-start.
+           if sav-vettore = 1
+              exit paragraph
            end-if.
+
            initialize des-rec replacing numeric data by zeroes
                                    alphanumeric data by spaces.
 
