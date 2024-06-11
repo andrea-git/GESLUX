@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E866141232-152-1552820075
+PROGRAM_UNIQUE_CODE=TOTEM-7E86B144657-219-2718516847
 
 {{@DESCRIPTION:
 
@@ -4553,8 +4553,7 @@ BEGIN-TEXT
                     set event-action to event-action-fail
                  end-if
               end-if  
-
-              perform FORM1-FLD-TO-BUF
+                                         
            else
               if colonna not = event-data-1
                  perform CONTROLLO
@@ -4570,7 +4569,8 @@ BEGIN-TEXT
            perform VALORE-OLD-RIGA.
 
       * colorazione riga in grid
-           perform COLORE-RIGA.
+           perform COLORE-RIGA.          
+           perform FORM1-FLD-TO-BUF.
 
            perform GRID-HELP.          
 END-TEXT

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tmagaz.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 6 giugno 2024 16:49:31.
+       DATE-WRITTEN.        martedì 11 giugno 2024 16:47:22.
        REMARKS.
       *{TOTEM}END
 
@@ -3906,8 +3906,7 @@
                     set event-action to event-action-fail
                  end-if
               end-if  
-
-              perform FORM1-FLD-TO-BUF
+                                         
            else
               if colonna not = event-data-1
                  perform CONTROLLO
@@ -3923,7 +3922,8 @@
            perform VALORE-OLD-RIGA.
 
       * colorazione riga in grid
-           perform COLORE-RIGA.
+           perform COLORE-RIGA.          
+           perform FORM1-FLD-TO-BUF.
 
            perform GRID-HELP           
            .
