@@ -4542,5 +4542,6 @@ E5190 ***---
               move iRow to numRighe
 
            else  
+              move mag-indirizzo to el-rowToWrite(1)
               move 1 to numRighe
            end-if.
