@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          rical-cou.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 25 gennaio 2016 09:32:26.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 13 giugno 2024 09:33:52.
        REMARKS.
       *{TOTEM}END
 
@@ -41,7 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -109,7 +109,7 @@
            pb-sib, 
            Push-Button, 
            COL 14,50, 
-           LINE 11,40,
+           LINE 20,40,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-OK-BMP,
@@ -129,7 +129,7 @@
            pb-noa, 
            Push-Button, 
            COL 22,50, 
-           LINE 11,40,
+           LINE 20,40,
            LINES 30,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE BOTTONE-CANCEL-BMP,
@@ -151,7 +151,7 @@
            Screen4-Br-1aaa, 
            Bar,
            COL 1,00, 
-           LINE 11,00,
+           LINE 20,00,
            SIZE 29,60 CELLS,
            ID IS 12,
            HEIGHT-IN-CELLS,
@@ -167,15 +167,14 @@
            Label, 
            COL 2,20, 
            LINE 2,80,
-           LINES 3,80 CELLS,
+           LINES 2,00 CELLS,
            SIZE 27,20 CELLS,
            ID IS 100,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           CENTER,
+           LEFT,
            TRANSPARENT,
-           TITLE "Ricalcolo COU su ordini master non ancora in stato chi
-      -    "uso.",
+           TITLE "Ricalcolo COU su:",
            .
 
       * LABEL
@@ -183,7 +182,7 @@
            scr-elab-Custom1-1, 
            Label, 
            COL 7,90, 
-           LINE 12,20,
+           LINE 21,20,
            LINES 1,60 CELLS,
            SIZE 2,60 CELLS,
            FONT IS Default-Font,
@@ -198,15 +197,63 @@
            Screen3-La-1aa, 
            Label, 
            COL 2,30, 
-           LINE 7,50,
-           LINES 2,10 CELLS,
+           LINE 15,50,
+           LINES 2,00 CELLS,
            SIZE 27,00 CELLS,
            ID IS 8,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           CENTER,
+           LEFT,
            TRANSPARENT,
            TITLE "Procedere?",
+           .
+
+      * LABEL
+       05
+           Screen3-La-1ab, 
+           Label, 
+           COL 2,20, 
+           LINE 5,80,
+           LINES 2,00 CELLS,
+           SIZE 27,20 CELLS,
+           ID IS 100,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "- Master non chiusi",
+           .
+
+      * LABEL
+       05
+           Screen3-La-1aba, 
+           Label, 
+           COL 2,20, 
+           LINE 8,80,
+           LINES 2,00 CELLS,
+           SIZE 27,20 CELLS,
+           ID IS 100,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "- Evasioni non fatturate",
+           .
+
+      * LABEL
+       05
+           Screen3-La-1abaa, 
+           Label, 
+           COL 2,20, 
+           LINE 11,80,
+           LINES 2,00 CELLS,
+           SIZE 27,20 CELLS,
+           ID IS 100,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           LEFT,
+           TRANSPARENT,
+           TITLE "- Ordini fornitori inseriti",
            .
 
       *{TOTEM}END
@@ -309,7 +356,7 @@
 
        form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 14,10,
+              LINES 23,10,
               SIZE 29,60,
               CELL HEIGHT 10,
               CELL WIDTH 10,

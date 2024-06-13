@@ -2,11 +2,10 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
-PROGRAM_UNIQUE_CODE=TOTEM-7E011982618-280-553015575
+PROGRAM_UNIQUE_CODE=TOTEM-7E86C145828-499-141909043
 
 {{@DESCRIPTION:
 
@@ -182,7 +181,7 @@ Begin Screen form1
    Height in Cells   = TRUE
    Help ID           = 1
    Label Offset      = 0
-   Lines             = 14,10
+   Lines             = 23,10
    Link To Thread    = TRUE
    Max Lines         = 0,00
    Max Size          = 0,00
@@ -206,7 +205,7 @@ Begin Screen form1
    Wrap              = FALSE
    Begin Push-Button pb-sib
       SCREEN-COL        = 14,50
-      SCREEN-LINE       = 11,40
+      SCREEN-LINE       = 20,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-sib
@@ -230,7 +229,7 @@ Begin Screen form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 5
-      Line              = 11,40
+      Line              = 20,40
       Lines             = 3,70
       Lines in Pixels   = 30
       Lines Unit        = Default
@@ -252,7 +251,7 @@ Begin Screen form1
    End
    Begin Push-Button pb-noa
       SCREEN-COL        = 22,50
-      SCREEN-LINE       = 11,40
+      SCREEN-LINE       = 20,40
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = pb-noa
@@ -276,7 +275,7 @@ Begin Screen form1
       Height in Cells   = FALSE
       Help ID           = 0
       ID                = 11
-      Line              = 11,40
+      Line              = 20,40
       Lines             = 3,70
       Lines in Pixels   = 30
       Lines Unit        = Default
@@ -297,7 +296,7 @@ Begin Screen form1
    End
    Begin Bar Screen4-Br-1aaa
       SCREEN-COL        = 1,00
-      SCREEN-LINE       = 11,00
+      SCREEN-LINE       = 20,00
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen4-Br-1aaa
@@ -312,7 +311,7 @@ Begin Screen form1
       Help ID           = 0
       ID                = 12
       Kind              = Horizontal
-      Line              = 11,00
+      Line              = 20,00
       Line Styles       = Solid
       Occurs            = 0
       Position Shift    = 0
@@ -344,17 +343,17 @@ Begin Screen form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 100
-      Justification     = Center
+      Justification     = Left
       Label Offset      = 20
       Line              = 2,80
-      Lines             = 3,80
+      Lines             = 2,00
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 27,20
       Size Unit         = Default
       Tab Order         = 4
-      Title             = "Ricalcolo COU su ordini master non ancora in stato chiuso."
+      Title             = "Ricalcolo COU su:"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
@@ -363,8 +362,8 @@ Begin Screen form1
       CUST-SYMBOL       = Custom1
       CUST-MODIFYFLAG   = 000000000000000000000000000000000000000000000000000
       SCREEN-COL        = 7,90
-      SCREEN-LINE       = 12,20
-      LOCK-CONTROL      = FALSE
+      SCREEN-LINE       = 21,20
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = scr-elab-Custom1-1
       Ccol              = 0
@@ -384,7 +383,7 @@ Begin Screen form1
       ID                = 7
       Justification     = Unaligned
       Label Offset      = 20
-      Line              = 12,20
+      Line              = 21,20
       Lines             = 1,60
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -400,7 +399,7 @@ Begin Screen form1
    End
    Begin Label Screen3-La-1aa
       SCREEN-COL        = 2,30
-      SCREEN-LINE       = 7,50
+      SCREEN-LINE       = 15,50
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen3-La-1aa
@@ -416,10 +415,10 @@ Begin Screen form1
       Height in Cells   = TRUE
       Help ID           = 0
       ID                = 8
-      Justification     = Center
+      Justification     = Left
       Label Offset      = 20
-      Line              = 7,50
-      Lines             = 2,10
+      Line              = 15,50
+      Lines             = 2,00
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
@@ -427,6 +426,105 @@ Begin Screen form1
       Size Unit         = Default
       Tab Order         = 6
       Title             = "Procedere?"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen3-La-1ab
+      SCREEN-COL        = 2,20
+      SCREEN-LINE       = 5,80
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen3-La-1ab
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,20
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 100
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 5,80
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 27,20
+      Size Unit         = Default
+      Tab Order         = 7
+      Title             = "- Master non chiusi"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen3-La-1aba
+      SCREEN-COL        = 2,20
+      SCREEN-LINE       = 8,80
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen3-La-1aba
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,20
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 100
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 8,80
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 27,20
+      Size Unit         = Default
+      Tab Order         = 8
+      Title             = "- Evasioni non fatturate"
+      Transparent       = TRUE
+      Visible           = NONE
+      Width in Cells    = TRUE
+   End
+   Begin Label Screen3-La-1abaa
+      SCREEN-COL        = 2,20
+      SCREEN-LINE       = 11,80
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = Screen3-La-1abaa
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 0
+      Column            = 2,20
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Enable            = NONE
+      Font              = Default Font
+      Height in Cells   = TRUE
+      Help ID           = 0
+      ID                = 100
+      Justification     = Left
+      Label Offset      = 20
+      Line              = 11,80
+      Lines             = 2,00
+      Lines Unit        = Default
+      No Key Letter     = FALSE
+      Occurs            = 0
+      Size              = 27,20
+      Size Unit         = Default
+      Tab Order         = 9
+      Title             = "- Ordini fornitori inseriti"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE
