@@ -25,7 +25,10 @@
            copy "tordini.sl".
            copy "rordini.sl".
            copy "tordforn.sl".
-           copy "rordforn.sl".
+           copy "rordforn.sl".  
+           copy "rlistini.sl".
+           copy "impforn.sl".
+           copy "tpiombo.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -42,9 +45,15 @@
            copy "rordini.fd".
            copy "tordforn.fd".
            copy "rordforn.fd".
+           copy "rlistini.fd".
+           copy "impforn.fd".
+           copy "tpiombo.fd".
 
        WORKING-STORAGE SECTION.
-           copy "imposte.def".
+           copy "imposte.def".            
+       77 imposta-cou-f      pic  9(10)v9999.
+       77 imposta-cobat-f    pic  9(10)v9999.
+       77 como-imp           pic  9(10)v9999.
 
       *    COSTANTI
        78  titolo            value "Ricalcolo COU".
@@ -62,6 +71,9 @@
        77  status-rordini        pic xx.
        77  status-tordforn       pic xx.
        77  status-rordforn       pic xx.
+       77  status-rlistini       pic xx.
+       77  status-impforn        pic xx.
+       77  status-tpiombo        pic xx.
 
       * VARIABILI
        77  counter               pic 9(10).
@@ -100,6 +112,28 @@
                 set errori to true
            when "98"
                 display message "[MTORDINI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+
+      ***---
+       TPIOMBO-ERR SECTION.
+           use after error procedure on tpiombo.
+           set tutto-ok  to true.
+           evaluate status-tpiombo
+           when "35"
+                display message "File [TPIOMBO] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TPIOMBO] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TPIOMBO] Indexed file corrupt!"
                            title titolo
                             icon 3
                 set errori to true
@@ -235,6 +269,50 @@
                            title titolo
                             icon 3
                 set errori to true
+           end-evaluate. 
+ 
+      ***---
+       RLISTINI-ERR SECTION.
+           use after error procedure on rlistini.
+           set tutto-ok  to true.
+           evaluate status-rlistini
+           when "35"
+                display message "File [RLISTINI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [RLISTINI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[RLISTINI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       IMPFORN-ERR SECTION.
+           use after error procedure on impforn.
+           set tutto-ok  to true.
+           evaluate status-impforn
+           when "35"
+                display message "File [IMPFORN] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [IMPFORN] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[IMPFORN] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
            end-evaluate.
  
       ***---
@@ -280,7 +358,8 @@
       ***---
        OPEN-FILES.
            open input mtordini articoli timposte clienti ttipocli 
-                      tmarche progmag tordini tordforn.
+                      tmarche progmag tordini tordforn rlistini impforn
+                      tpiombo.
            open i-o   mrordini rordini rordforn.
       
       ***---
@@ -296,7 +375,7 @@
 
            perform ELABORAZIONE-MASTER-NON-CHIUSI.
            perform ELABORAZIONE-EVASIONI-NON-FATTURATE.
-           perform ELABORAZIONE-ORDINIF-INSERITI.
+           perform ELABORAZIONE-ORDINIF-COLLEGATI-NON-CHIUSI.
 
            display "                               "
               upon link-handle  at column 0 line 22.
@@ -342,8 +421,94 @@
                     if ttipocli-gdo set TrattamentoGDO to true
                     else            set TrattamentoGDO to false
                     end-if
+                    
+                    move mto-chiave to mro-chiave-testa
+                    move low-value  to mro-riga
+                    start mrordini key >= mro-chiave
+                          invalid continue
+                      not invalid
+                          perform until 1 = 2
+                             read mrordini next 
+                               at end exit perform 
+                             end-read
+                             if mro-chiave-testa not = mto-chiave
+                                exit perform
+                             end-if
+                   
+                             if mro-chiuso
+                                continue
+                             else
+                                if mro-no-omaggio and 
+                                   mro-imponib-merce not = 0
+                                   move mro-prg-chiave to prg-chiave
+                                   read progmag no lock
+                                   move mro-cod-articolo to art-codice
+                                   read articoli no lock
+                                        invalid continue
+                                    not invalid 
+                                        move art-marca-prodotto 
+                                          to mar-codice
+                                        read tmarche no lock
+                                        perform CALCOLA-IMPOSTE
+                   
+                                        if ImpostaCou
+                                           move imposta-cou to como-imp
+                                           if como-imp not = 
+                                              mro-imp-cou-cobat
+                                              stop "K"
+                                           end-if
+                                           move imposta-cou 
+                                             to mro-imp-cou-cobat
+                   
+                                           if TrattamentoGDO
+                                             compute mro-imponib-merce = 
+                                                     mro-prz-unitario  -
+                                                     mro-imp-consumo   -
+                                                     mro-imp-cou-cobat -
+                                                     mro-add-piombo
+                                           end-if
+                   
+                                           rewrite mro-rec
+                                                   invalid continue
+                                               not invalid 
+                                                   add 1 to righe-mro
+                                           end-rewrite
+                                        end-if
+                   
+                                        if ImpostaCouCobat       
+                                           compute como-imp =
+                                                   imposta-cou +
+                                                   imposta-cobat 
+                                           if como-imp not = 
+                                              mro-imp-cou-cobat
+                                              stop "K"
+                                           end-if
 
-                    perform LOOP-RIGHE
+                                           compute mro-imp-cou-cobat =
+                                                   imposta-cou +
+                                                   imposta-cobat 
+                   
+                                           if TrattamentoGDO
+                                             compute mro-imponib-merce = 
+                                                     mro-prz-unitario  -
+                                                     mro-imp-consumo   -
+                                                     mro-imp-cou-cobat -
+                                                     mro-add-piombo
+                                           end-if
+                   
+                                           rewrite mro-rec
+                                                   invalid continue
+                                               not invalid 
+                                                   add 1 to righe-mro
+                                           end-rewrite
+                                        end-if
+                   
+                                   end-read
+                                end-if
+                             end-if
+                   
+                          end-perform
+                    end-start
 
                  end-perform
            end-start.
@@ -414,28 +579,63 @@
                                      move art-marca-prodotto 
                                        to mar-codice
                                      read tmarche no lock
-                                     perform CALCOLA-IMPOSTE
+                                     perform CALCOLA-IMPOSTE 
                              
-                                     evaluate true   
-                                     when ImpostaCou
-                                          move imposta-cou 
-                                            to ror-imp-cou-cobat
+                                     if ImpostaCou  
+                                        move imposta-cou to como-imp
+
+                                        if como-imp not = 
+                                           mro-imp-cou-cobat
+                                           stop "K"
+                                        end-if
+
+                                        move imposta-cou 
+                                          to ror-imp-cou-cobat
                              
-                                          if TrattamentoGDO
+                                        if TrattamentoGDO
                              
-                                             compute ror-imponib-merce = 
-                                                     ror-prz-unitario  -
-                                                     ror-imp-consumo   -
-                                                     ror-imp-cou-cobat -
-                                                     ror-add-piombo
-                                          end-if
+                                           compute ror-imponib-merce = 
+                                                   ror-prz-unitario  -
+                                                   ror-imp-consumo   -
+                                                   ror-imp-cou-cobat -
+                                                   ror-add-piombo
+                                        end-if
                              
-                                          rewrite ror-rec
-                                                  invalid continue
-                                              not invalid 
-                                                  add 1 to righe-ror
-                                          end-rewrite
-                                     end-evaluate
+                                        rewrite ror-rec
+                                                invalid continue
+                                            not invalid 
+                                                add 1 to righe-ror
+                                        end-rewrite
+                                     end-if
+                             
+                                     if ImpostaCouCobat      
+                                        compute como-imp =
+                                                imposta-cou +
+                                                imposta-cobat
+
+                                        if como-imp not = 
+                                           ror-imp-cou-cobat
+                                           stop "K"
+                                        end-if
+                                        compute ror-imp-cou-cobat =
+                                                imposta-cou +
+                                                imposta-cobat
+                             
+                                        if TrattamentoGDO
+                             
+                                           compute ror-imponib-merce = 
+                                                   ror-prz-unitario  -
+                                                   ror-imp-consumo   -
+                                                   ror-imp-cou-cobat -
+                                                   ror-add-piombo
+                                        end-if
+                             
+                                        rewrite ror-rec
+                                                invalid continue
+                                            not invalid 
+                                                add 1 to righe-ror
+                                        end-rewrite
+                                     end-if
                              
                                 end-read
                              end-if
@@ -445,15 +645,15 @@
            end-start.
         
       ***---
-       ELABORAZIONE-ORDINIF-INSERITI.   
+       ELABORAZIONE-ORDINIF-COLLEGATI-NON-CHIUSI.
            move low-value to tof-rec.
-           set tof-inserito to true.
+           set tof-inserito to true.    
            start tordforn key >= tof-k-stato
                  invalid continue
              not invalid
                  perform until 1 = 2
                     read tordforn next at end exit perform end-read
-                    if tof-inviato or tof-in-lavorazione or tof-chiuso 
+                    if tof-chiuso 
                        exit perform
                     end-if   
 
@@ -464,21 +664,7 @@
                        display counter-edit
                           upon link-handle at column 0 line 22
                        move 0 to counter2
-                    end-if 
-
-                    set  cli-tipo-C  to true
-                    move tor-cod-cli to cli-codice
-                    read clienti no lock
-                         invalid continue
-                     not invalid
-                         move cli-tipo to tcl-codice
-                         read ttipocli no lock
-                              invalid continue
-                         end-read
-                    end-read  
-                    if ttipocli-gdo set TrattamentoGDO to true
-                    else            set TrattamentoGDO to false
-                    end-if
+                    end-if                  
 
                     move low-value  to rof-rec
                     move tof-anno   to rof-anno
@@ -494,108 +680,147 @@
                                 rof-numero not = tof-numero
                                 exit perform
                              end-if
-                             if rof-imponib-merce > 0
-                                move rof-prg-chiave to prg-chiave
-                                read progmag no lock
-                                move rof-cod-articolo to art-codice
-                                read articoli no lock
-                                     invalid continue
-                                 not invalid 
-                                     move art-marca-prodotto 
-                                       to mar-codice
-                                     read tmarche no lock
-                                     perform CALCOLA-IMPOSTE
-                             
-                                     evaluate true   
-                                     when ImpostaCou
-                                          move imposta-cou 
-                                            to rof-imp-cou-cobat
-                             
-                                          compute rof-imponib-merce = 
-                                                  rof-prz-unitario  -
-                                                  rof-imp-consumo   -
-                                                  rof-imp-cou-cobat -
-                                                  rof-add-piombo
-                                          
-                                          rewrite rof-rec
-                                                  invalid continue
-                                              not invalid 
-                                                  add 1 to righe-rof
-                                          end-rewrite
-                                     end-evaluate
-                             
-                                end-read
+                             if rof-imponib-merce = 0
+                                exit perform cycle
                              end-if
+                             move rof-cod-listino  to rlis-codice
+                             move rof-cod-articolo to rlis-articolo
+                             read rlistini no lock
+                                  invalid exit perform cycle
+                              not invalid
+                                  if not ( rof-imf-codice = 3 or = 4 )
+                                     exit perform cycle
+                                  end-if
+                             end-read
+                             move rof-prg-chiave to prg-chiave
+                             read progmag no lock
+                             move rof-cod-articolo to art-codice
+                             read articoli no lock
+                                  invalid continue
+                              not invalid 
+                                  if art-si-imposte 
+                                     perform CALCOLO-IMPOSTA-COU-F
+                                  end-if
+                                  if art-si-cobat
+                                     perform CALCOLA-COBAT-F
+                                  end-if   
+     
+                                  compute como-imp =
+                                          imposta-cou-f +
+                                          imposta-cobat-f
+
+                                  if como-imp not = 
+                                     rof-imp-cou-cobat
+                                     stop "K"
+                                  end-if
+                             
+                                  compute rof-imp-cou-cobat =
+                                          imposta-cou-f +
+                                          imposta-cobat-f
+                             
+                                  compute rof-imponib-merce = 
+                                          rof-prz-unitario  -
+                                          rof-imp-consumo   -
+                                          rof-imp-cou-cobat -
+                                          rof-add-piombo
+                                     
+                                  rewrite rof-rec
+                                          invalid continue
+                                      not invalid 
+                                          add 1 to righe-rof
+                                  end-rewrite
+                             
+                             end-read
                           end-perform
                     end-start
                  end-perform
            end-start.
-           
-
-
-      ***---
-       LOOP-RIGHE.
-           move mto-chiave to mro-chiave-testa.
-           move low-value  to mro-riga.
-           start mrordini key >= mro-chiave
-                 invalid continue
-             not invalid
-                 perform until 1 = 2
-                    read mrordini next at end exit perform end-read
-                    if mro-chiave-testa not = mto-chiave
-                       exit perform
-                    end-if
-
-                    if mro-chiuso
-                       continue
-                    else
-                       if mro-no-omaggio and mro-imponib-merce not = 0
-                          move mro-prg-chiave to prg-chiave
-                          read progmag no lock
-                          move mro-cod-articolo to art-codice
-                          read articoli no lock
-                               invalid continue
-                           not invalid 
-                               move art-marca-prodotto to mar-codice
-                               read tmarche no lock
-                               perform CALCOLA-IMPOSTE
-
-                               evaluate true   
-                               when ImpostaCou
-                                    move imposta-cou 
-                                      to mro-imp-cou-cobat
-
-                                    if TrattamentoGDO
-           
-                                       compute mro-imponib-merce = 
-                                               mro-prz-unitario  -
-                                               mro-imp-consumo   -
-                                               mro-imp-cou-cobat -
-                                               mro-add-piombo
-                                    end-if
-
-                                    rewrite mro-rec
-                                            invalid continue
-                                        not invalid add 1 to righe-mro
-                                    end-rewrite
-                               end-evaluate
-
-                          end-read
-                       end-if
-                    end-if
-
-                 end-perform
-           end-start.              
 
       ***---
        CLOSE-FILES.
            close mtordini mrordini articoli timposte tmarche clienti
-                 ttipocli progmag tordini rordini.
+                 ttipocli progmag tordini rordini rlistini tpiombo.
 
       ***---
        EXIT-PGM.  
            goback.
 
       ***---
-       PARAGRAFO-COPY.
+       ADDIZIONALE-PIOMBO.
+
+      ***---
+       PARAGRAFO-COPY.        
            copy "imposte.cpy".
+           
+
+      ***---
+       CALCOLO-IMPOSTA-COU-F.
+           move 0 to imposta-cou-f.
+           evaluate true
+           when art-misto  of articoli
+           when art-si-utf of articoli
+                compute como-imposta = 
+                     (( prg-peso-utf * imp-cou ) 
+                                     * art-perce-cou of articoli ) / 100
+           when art-no-utf of articoli
+                compute como-imposta =
+                 (( prg-peso-non-utf * imp-cou )
+                                     * art-perce-cou of articoli ) / 100
+           end-evaluate.
+           add 0,00005       to como-imposta.
+           move como-imposta to imposta-cou-f.
+
+      ***---
+       CALCOLA-COBAT-F.
+           move 0 to imposta-cobat-f.
+           evaluate true
+           when art-auto-cobat of articoli
+                evaluate true
+                when art-amperaggio of articoli >= imp-cb-auto-sca-1-da 
+                and  art-amperaggio of articoli <= imp-cb-auto-sca-1-a
+                     move imp-cb-auto-sca-1-euro 
+                       to Imposta-Cobat-f
+                when art-amperaggio of articoli >= imp-cb-auto-sca-2-da 
+                and  art-amperaggio of articoli <= imp-cb-auto-sca-2-a
+                     move imp-cb-auto-sca-2-euro 
+                       to Imposta-Cobat-f
+                when art-amperaggio of articoli >= imp-cb-auto-sca-3-da 
+                and  art-amperaggio of articoli <= imp-cb-auto-sca-3-a
+                     move imp-cb-auto-sca-3-euro 
+                       to Imposta-Cobat
+                when art-amperaggio of articoli >= imp-cb-auto-sca-4-da 
+                and  art-amperaggio of articoli <= imp-cb-auto-sca-4-a
+                     move imp-cb-auto-sca-4-euro 
+                       to Imposta-Cobat-f
+                when art-amperaggio of articoli >= imp-cb-auto-sca-5-da
+                and  art-amperaggio of articoli <= imp-cb-auto-sca-5-a
+                     move imp-cb-auto-sca-5-euro 
+                       to Imposta-Cobat-f
+                end-evaluate
+           
+           when art-moto-cobat of articoli
+                evaluate true
+                when art-amperaggio of articoli >= 
+                     imp-cb-scooter-sca-1-da 
+                 and art-amperaggio of articoli <= 
+                     imp-cb-scooter-sca-1-a
+                     move imp-cb-scooter-sca-1-euro 
+                       to Imposta-Cobat-f
+                when art-amperaggio of articoli >= 
+                     imp-cb-scooter-sca-2-da 
+                 and art-amperaggio of articoli <= 
+                     imp-cb-scooter-sca-2-a
+                     move imp-cb-scooter-sca-2-euro 
+                       to Imposta-Cobat-f
+                when art-amperaggio of articoli >= 
+                     imp-cb-scooter-sca-3-da 
+                 and art-amperaggio of articoli <= 
+                     imp-cb-scooter-sca-3-a
+                     move imp-cb-scooter-sca-3-euro 
+                       to Imposta-Cobat-f
+                end-evaluate
+           end-evaluate.
+           
+           move imposta-cobat-f to como-imposta.
+           add 0,00005          to como-imposta.
+           move como-imposta    to imposta-cobat-f.

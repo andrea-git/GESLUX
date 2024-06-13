@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=form1
-PROGRAM_UNIQUE_CODE=TOTEM-7E86C145828-499-141909043
+PROGRAM_UNIQUE_CODE=TOTEM-7E86D133827-54-417122568
 
 {{@DESCRIPTION:
 
@@ -402,7 +402,7 @@ Begin Screen form1
    End
    Begin Label Screen3-La-1aa
       SCREEN-COL        = 2,30
-      SCREEN-LINE       = 15,50
+      SCREEN-LINE       = 16,50
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen3-La-1aa
@@ -420,7 +420,7 @@ Begin Screen form1
       ID                = 8
       Justification     = Left
       Label Offset      = 20
-      Line              = 15,50
+      Line              = 16,50
       Lines             = 2,00
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -450,7 +450,7 @@ Begin Screen form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 100
+      ID                = 9
       Justification     = Left
       Label Offset      = 20
       Line              = 5,80
@@ -483,7 +483,7 @@ Begin Screen form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 100
+      ID                = 10
       Justification     = Left
       Label Offset      = 20
       Line              = 8,80
@@ -516,18 +516,18 @@ Begin Screen form1
       Font              = Default Font
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 100
+      ID                = 13
       Justification     = Left
       Label Offset      = 20
       Line              = 11,80
-      Lines             = 2,00
+      Lines             = 4,00
       Lines Unit        = Default
       No Key Letter     = FALSE
       Occurs            = 0
       Size              = 27,20
       Size Unit         = Default
       Tab Order         = 9
-      Title             = "- Ordini fornitori inseriti"
+      Title             = "- Ordini fornitori non chiusi con listino +IMPOSTE o + COU"
       Transparent       = TRUE
       Visible           = NONE
       Width in Cells    = TRUE

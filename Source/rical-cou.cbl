@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          rical-cou.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 13 giugno 2024 09:33:52.
+       DATE-WRITTEN.        giovedì 13 giugno 2024 16:31:11.
        REMARKS.
       *{TOTEM}END
 
@@ -197,7 +197,7 @@
            Screen3-La-1aa, 
            Label, 
            COL 2,30, 
-           LINE 15,50,
+           LINE 16,50,
            LINES 2,00 CELLS,
            SIZE 27,00 CELLS,
            ID IS 8,
@@ -216,7 +216,7 @@
            LINE 5,80,
            LINES 2,00 CELLS,
            SIZE 27,20 CELLS,
-           ID IS 100,
+           ID IS 9,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -232,7 +232,7 @@
            LINE 8,80,
            LINES 2,00 CELLS,
            SIZE 27,20 CELLS,
-           ID IS 100,
+           ID IS 10,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
@@ -246,14 +246,15 @@
            Label, 
            COL 2,20, 
            LINE 11,80,
-           LINES 2,00 CELLS,
+           LINES 4,00 CELLS,
            SIZE 27,20 CELLS,
-           ID IS 100,
+           ID IS 13,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
            LEFT,
            TRANSPARENT,
-           TITLE "- Ordini fornitori inseriti",
+           TITLE "- Ordini fornitori non chiusi con listino +IMPOSTE o +
+      -    " COU",
            .
 
       *{TOTEM}END
