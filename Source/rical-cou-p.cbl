@@ -29,6 +29,8 @@
            copy "rlistini.sl".
            copy "impforn.sl".
            copy "tpiombo.sl".
+           copy "tnazioni.sl".
+           copy "destini.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -47,7 +49,9 @@
            copy "rordforn.fd".
            copy "rlistini.fd".
            copy "impforn.fd".
-           copy "tpiombo.fd".
+           copy "tpiombo.fd". 
+           copy "tnazioni.fd".
+           copy "destini.fd".
 
        WORKING-STORAGE SECTION.
            copy "imposte.def".            
@@ -74,6 +78,8 @@
        77  status-rlistini       pic xx.
        77  status-impforn        pic xx.
        77  status-tpiombo        pic xx.
+       77  status-tnazioni       pic xx.
+       77  status-destini        pic xx.
 
       * VARIABILI
        77  counter               pic 9(10).
@@ -313,7 +319,7 @@
                            title titolo
                             icon 3
                 set errori to true
-           end-evaluate.
+           end-evaluate.   
  
       ***---
        TIMPOSTE-ERR SECTION.
@@ -332,6 +338,50 @@
                 set errori to true
            when "98"
                 display message "[TIMPOSTE] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TNAZIONI-ERR SECTION.
+           use after error procedure on tnazioni.
+           set tutto-ok  to true.
+           evaluate status-tnazioni
+           when "35"
+                display message "File [TNAZIONI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TNAZIONI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TNAZIONI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       DESTINI-ERR SECTION.
+           use after error procedure on destini.
+           set tutto-ok  to true.
+           evaluate status-tnazioni
+           when "35"
+                display message "File [DESTINI] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [DESTINI] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[DESTINI] Indexed file corrupt!"
                            title titolo
                             icon 3
                 set errori to true
@@ -359,7 +409,7 @@
        OPEN-FILES.
            open input mtordini articoli timposte clienti ttipocli 
                       tmarche progmag tordini tordforn rlistini impforn
-                      tpiombo.
+                      tpiombo tnazioni destini.
            open i-o   mrordini rordini rordforn.
       
       ***---
@@ -412,7 +462,22 @@
                     move mto-cod-cli to cli-codice
                     read clienti no lock
                          invalid continue
-                     not invalid
+                     not invalid  
+
+                         if mto-prg-destino = 0
+                            move cli-codice      to des-codice
+                            move mto-prg-destino to des-prog
+                            read destini no lock
+                            move des-nazione to naz-codice
+                         else
+                            move cli-nazione to naz-codice
+                         end-if
+                         read tnazioni no lock
+
+                         if naz-imp-esenti-si
+                            exit perform cycle
+                         end-if
+
                          move cli-tipo to tcl-codice
                          read ttipocli no lock
                               invalid continue
@@ -544,7 +609,22 @@
                     move tor-cod-cli to cli-codice
                     read clienti no lock
                          invalid continue
-                     not invalid
+                     not invalid  
+
+                         if tor-prg-destino = 0
+                            move cli-codice      to des-codice
+                            move tor-prg-destino to des-prog
+                            read destini no lock
+                            move des-nazione to naz-codice
+                         else
+                            move cli-nazione to naz-codice
+                         end-if
+                         read tnazioni no lock
+
+                         if naz-imp-esenti-si
+                            exit perform cycle
+                         end-if
+
                          move cli-tipo to tcl-codice
                          read ttipocli no lock
                               invalid continue
@@ -585,7 +665,7 @@
                                         move imposta-cou to como-imp
 
                                         if como-imp not = 
-                                           mro-imp-cou-cobat
+                                           ror-imp-cou-cobat
                                            stop "K"
                                         end-if
 
@@ -739,7 +819,8 @@
       ***---
        CLOSE-FILES.
            close mtordini mrordini articoli timposte tmarche clienti
-                 ttipocli progmag tordini rordini rlistini tpiombo.
+                 ttipocli progmag tordini rordini rlistini tpiombo
+                 tnazioni destini.
 
       ***---
        EXIT-PGM.  
@@ -751,7 +832,6 @@
       ***---
        PARAGRAFO-COPY.        
            copy "imposte.cpy".
-           
 
       ***---
        CALCOLO-IMPOSTA-COU-F.

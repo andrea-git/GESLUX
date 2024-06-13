@@ -31532,7 +31532,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:Source\rical-cou-p.cbl]
-COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\articoli.sl;FD\timposte.sl;FD\tmarche.sl;FD\clienti.sl;FD\ttipocli.sl;FD\progmag.sl;FD\mtordini.fd;FD\mrordini.fd;FD\articoli.fd;FD\timposte.fd;FD\tmarche.fd;FD\clienti.fd;FD\ttipocli.fd;FD\progmag.fd;Copylib\imposte.def;Copylib\imposte.cpy
+COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\articoli.sl;FD\timposte.sl;FD\tmarche.sl;FD\clienti.sl;FD\ttipocli.sl;FD\progmag.sl;FD\tordini.sl;FD\rordini.sl;FD\tordforn.sl;FD\rordforn.sl;FD\rlistini.sl;FD\impforn.sl;FD\tpiombo.sl;FD\tnazioni.sl;FD\destini.sl;FD\mtordini.fd;FD\mrordini.fd;FD\articoli.fd;FD\timposte.fd;FD\tmarche.fd;FD\clienti.fd;FD\ttipocli.fd;FD\progmag.fd;FD\tordini.fd;FD\rordini.fd;FD\tordforn.fd;FD\rordforn.fd;FD\rlistini.fd;FD\impforn.fd;FD\tpiombo.fd;FD\tnazioni.fd;FD\destini.fd;Copylib\imposte.def;Copylib\imposte.cpy
 ADDITIONAL_OPTIONS=-x -Fxa -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
