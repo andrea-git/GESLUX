@@ -31,6 +31,7 @@
            copy "tpiombo.sl".
            copy "tnazioni.sl".
            copy "destini.sl".
+           copy "tcaumag.sl".
 
       *****************************************************************
        DATA DIVISION.
@@ -51,12 +52,14 @@
            copy "impforn.fd".
            copy "tpiombo.fd". 
            copy "tnazioni.fd".
-           copy "destini.fd".
+           copy "destini.fd". 
+           copy "tcaumag.fd".
 
        WORKING-STORAGE SECTION.
            copy "imposte.def".            
-       77 imposta-cou-f      pic  9(10)v9999.
+       77 imposta-cou-f      pic  9(10)v9999. 
        77 imposta-cobat-f    pic  9(10)v9999.
+       77 como-imposta-f     pic  9(10)v99999.
        77 como-imp           pic  9(10)v9999.
 
       *    COSTANTI
@@ -78,8 +81,9 @@
        77  status-rlistini       pic xx.
        77  status-impforn        pic xx.
        77  status-tpiombo        pic xx.
-       77  status-tnazioni       pic xx.
+       77  status-tnazioni       pic xx.  
        77  status-destini        pic xx.
+       77  status-tcaumag        pic xx.
 
       * VARIABILI
        77  counter               pic 9(10).
@@ -363,7 +367,7 @@
                            title titolo
                             icon 3
                 set errori to true
-           end-evaluate.
+           end-evaluate. 
  
       ***---
        DESTINI-ERR SECTION.
@@ -382,6 +386,28 @@
                 set errori to true
            when "98"
                 display message "[DESTINI] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                set errori to true
+           end-evaluate.
+ 
+      ***---
+       TCAUMAG-ERR SECTION.
+           use after error procedure on tcaumag.
+           set tutto-ok  to true.
+           evaluate status-tcaumag
+           when "35"
+                display message "File [TCAUMAG] not found!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "39"
+                display message "File [TCAUMAG] Mismatch size!"
+                           title titolo
+                            icon 3
+                set errori to true
+           when "98"
+                display message "[TCAUMAG] Indexed file corrupt!"
                            title titolo
                             icon 3
                 set errori to true
@@ -409,7 +435,7 @@
        OPEN-FILES.
            open input mtordini articoli timposte clienti ttipocli 
                       tmarche progmag tordini tordforn rlistini impforn
-                      tpiombo tnazioni destini.
+                      tpiombo tnazioni destini tcaumag.
            open i-o   mrordini rordini rordforn.
       
       ***---
@@ -457,6 +483,12 @@
                           upon link-handle at column 0 line 22
                        move 0 to counter2
                     end-if 
+
+                    move mto-causale to tca-codice
+                    read tcaumag no lock
+                    if tca-no-stampa
+                       exit perform cycle
+                    end-if
 
                     set  cli-tipo-C  to true
                     move mto-cod-cli to cli-codice
@@ -518,10 +550,10 @@
                    
                                         if ImpostaCou
                                            move imposta-cou to como-imp
-                                           if como-imp not = 
-                                              mro-imp-cou-cobat
-                                              stop "K"
-                                           end-if
+      *                                     if como-imp not = 
+      *                                        mro-imp-cou-cobat
+      *                                        stop "K"
+      *                                     end-if
                                            move imposta-cou 
                                              to mro-imp-cou-cobat
                    
@@ -544,10 +576,10 @@
                                            compute como-imp =
                                                    imposta-cou +
                                                    imposta-cobat 
-                                           if como-imp not = 
-                                              mro-imp-cou-cobat
-                                              stop "K"
-                                           end-if
+      *                                     if como-imp not = 
+      *                                        mro-imp-cou-cobat
+      *                                        stop "K"
+      *                                     end-if
 
                                            compute mro-imp-cou-cobat =
                                                    imposta-cou +
@@ -598,6 +630,12 @@
                        display counter-edit
                           upon link-handle at column 0 line 22
                        move 0 to counter2
+                    end-if 
+
+                    move tor-causale to tca-codice
+                    read tcaumag no lock
+                    if tca-no-stampa
+                       exit perform cycle
                     end-if
 
                     if tor-data-fattura > 0 or
@@ -664,10 +702,13 @@
                                      if ImpostaCou  
                                         move imposta-cou to como-imp
 
-                                        if como-imp not = 
-                                           ror-imp-cou-cobat
-                                           stop "K"
-                                        end-if
+      *                                  if como-imp not = 
+      *                                     ror-imp-cou-cobat
+      *                                     display message
+      *                                     "ARTICOLO: " ror-cod-articolo
+      *                              x"0d0a""EVASIONE: " ror-anno
+      *                                     " - "        ror-num-ordine
+      *                                  end-if
 
                                         move imposta-cou 
                                           to ror-imp-cou-cobat
@@ -693,10 +734,10 @@
                                                 imposta-cou +
                                                 imposta-cobat
 
-                                        if como-imp not = 
-                                           ror-imp-cou-cobat
-                                           stop "K"
-                                        end-if
+      *                                  if como-imp not = 
+      *                                     ror-imp-cou-cobat
+      *                                     stop "K"
+      *                                  end-if
                                         compute ror-imp-cou-cobat =
                                                 imposta-cou +
                                                 imposta-cobat
@@ -789,10 +830,13 @@
                                           imposta-cou-f +
                                           imposta-cobat-f
 
-                                  if como-imp not = 
-                                     rof-imp-cou-cobat
-                                     stop "K"
-                                  end-if
+      *                            if como-imp not = rof-imp-cou-cobat   
+      *                                     display message
+      *                                     "ARTICOLO: " rof-cod-articolo
+      *                              x"0d0a""ORDINE F: " rof-anno
+      *                                     " - "        rof-numero
+      *                               stop "K"
+      *                            end-if
                              
                                   compute rof-imp-cou-cobat =
                                           imposta-cou-f +
@@ -820,7 +864,7 @@
        CLOSE-FILES.
            close mtordini mrordini articoli timposte tmarche clienti
                  ttipocli progmag tordini rordini rlistini tpiombo
-                 tnazioni destini.
+                 tnazioni destini tcaumag.
 
       ***---
        EXIT-PGM.  
@@ -839,16 +883,16 @@
            evaluate true
            when art-misto  of articoli
            when art-si-utf of articoli
-                compute como-imposta = 
+                compute como-imposta-f = 
                      (( prg-peso-utf * imp-cou ) 
                                      * art-perce-cou of articoli ) / 100
            when art-no-utf of articoli
-                compute como-imposta =
+                compute como-imposta-f =
                  (( prg-peso-non-utf * imp-cou )
                                      * art-perce-cou of articoli ) / 100
            end-evaluate.
-           add 0,00005       to como-imposta.
-           move como-imposta to imposta-cou-f.
+           add 0,00005         to como-imposta-f.
+           move como-imposta-f to imposta-cou-f.
 
       ***---
        CALCOLA-COBAT-F.
@@ -901,6 +945,6 @@
                 end-evaluate
            end-evaluate.
            
-           move imposta-cobat-f to como-imposta.
-           add 0,00005          to como-imposta.
-           move como-imposta    to imposta-cobat-f.
+           move imposta-cobat-f to como-imposta-f.
+           add 0,00005          to como-imposta-f.
+           move como-imposta-f  to imposta-cobat-f.
