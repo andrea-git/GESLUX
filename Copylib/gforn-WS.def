@@ -6,9 +6,9 @@
            COPY  "COMBO-STATO.DEF".
            COPY  "COMBO-INVIO.DEF".
            COPY  "COMBO-UFFICIO-D.DEF".
-           COPY  "LINK-GNOTE-DESTF.DEF".   
+           COPY  "LINK-GNOTE-DESTF.DEF".
            COPY  "LINK-STAMPA.DEF".
-           COPY  "link-passwd.def". 
+           COPY  "link-passwd.def".
            COPY  "SPLCRT2GRAF.LKS".
        78 TITOLO VALUE IS "Geslux - Gestione Fornitori". 
        01 file-info.
@@ -200,7 +200,7 @@
                10 old-desf-telef-1 PIC  x(15).
                10 old-desf-telef-2 PIC  x(15).
                10 old-desf-fax     PIC  X(15).
-               10 old-desf-mail    PIC  X(100).
+               10 old-desf-mail    PIC  X(500).
                10 old-desf-referente           PIC  x(30).
                10 old-desf-vettore PIC  9(5).
                10 old-desf-depostio-UTF        PIC  x.
@@ -274,7 +274,7 @@
                10 hidden-telef-1   PIC  x(15).
                10 hidden-telef-2   PIC  x(15).
                10 hidden-fax       PIC  X(15).
-               10 hidden-mail      PIC  X(100).
+               10 hidden-mail      PIC  X(500).
                10 hidden-referente PIC  x(30).
                10 hidden-vettore   PIC  9(5).
                10 hidden-stato     PIC  x.
@@ -361,7 +361,7 @@
                10 old-cli-tel-1    PIC  x(15).
                10 old-cli-tel-2    PIC  x(15).
                10 old-cli-fax      PIC  x(15).
-               10 old-cli-email    PIC  x(100).
+               10 old-cli-email    PIC  x(500).
                10 old-cli-web      PIC  x(100).
       *(( XFD NAME = old-cli-tipo_1 ))
                10 old-cli-tipo     PIC  x(2).
@@ -398,6 +398,7 @@
                10 old-cli-tel-dir-ref-ord      PIC  x(20).
                10 old-cli-mail-ref-ord         PIC  x(100).
       *(( XFD NAME = old-cli-blocco-24000_1 ))
+      *
       *
                10 old-cli-blocco-24000         PIC  9.
                    88 old-cli-si-blocco VALUE IS 1. 

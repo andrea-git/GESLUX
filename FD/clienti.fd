@@ -18,7 +18,7 @@
                10 cli-tel-1        PIC  x(15).
                10 cli-tel-2        PIC  x(15).
                10 cli-fax          PIC  x(15).
-               10 cli-email        PIC  x(100).
+               10 cli-email        PIC  x(500).
                10 cli-web          PIC  x(100).
       *(( XFD NAME = cli-tipo_1 ))
                10 cli-tipo         PIC  x(2).
@@ -102,7 +102,7 @@
       *(( XFD NAME = cli-agente-2 ))
                    15 cli-agente2      PIC  9(5).
                    15 cli-codice-SDI   PIC  X(10).
-                   15 cli-pec          PIC  X(100).
+                   15 cli-pec          PIC  X(500).
                    15 cli-esigibilita-iva          PIC  X.
                        88 cli-esigibilita-iva-immediata VALUE IS "I". 
                        88 cli-esigibilita-iva-differita VALUE IS "D". 

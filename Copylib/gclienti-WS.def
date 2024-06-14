@@ -222,6 +222,7 @@
       *                                               
       *
       *
+      *
                    88 old-rec-invio-EDI VALUE IS "E". 
                    88 old-rec-invio-nessuno VALUE IS "N". 
       *             88 old-rec-invio-postel VALUE IS "P". 
@@ -245,7 +246,7 @@
                    88 old-rec-dett-dest-SDI-no VALUE IS "N" " ". 
                10 old-rec-escludi-int          PIC  x.
                    88 old-rec-escludi-int-si VALUE IS "S". 
-                   88 old-rec-escludi-int-no VALUE IS "N"," ". 
+                   88 old-rec-escludi-int-no VALUE IS "N" " ". 
        77 Form1-Pg-3-Visible           PIC  9
                   VALUE IS 0.
        01 old-not-rec.
@@ -279,7 +280,7 @@
                10 hidden-telef-1   PIC  x(15).
                10 hidden-telef-2   PIC  x(15).
                10 hidden-fax       PIC  X(15).
-               10 hidden-mail      PIC  X(135).
+               10 hidden-mail      PIC  X(500).
                10 hidden-cod-ditta PIC  x(15).
                10 hidden-saldi-banco           PIC  9.
                10 hidden-saldi-promo           PIC  9.

@@ -21812,7 +21812,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\convcli.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\clienti.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\DECLXER1;Copylib\DECLXER2
+COPY_DEPENDENCE=FD\clienti.sl;FD\destini.sl;FD\destinif.sl;FD\clienti.fd;FD\destini.fd;FD\destinif.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\DECLXER1;Copylib\DECLXER2
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -45761,7 +45761,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\convcli.cbl]
-COPY_DEPENDENCE=FD\clienti.sl;FD\clienti.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\DECLXER1;Copylib\DECLXER2
+COPY_DEPENDENCE=FD\clienti.sl;FD\destini.sl;FD\destinif.sl;FD\clienti.fd;FD\destini.fd;FD\destinif.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\DECLXER1;Copylib\DECLXER2
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -55391,7 +55391,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\rical-cou-p.cbl]
-COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\articoli.sl;FD\timposte.sl;FD\tmarche.sl;FD\clienti.sl;FD\ttipocli.sl;FD\progmag.sl;FD\mtordini.fd;FD\mrordini.fd;FD\articoli.fd;FD\timposte.fd;FD\tmarche.fd;FD\clienti.fd;FD\ttipocli.fd;FD\progmag.fd;Copylib\imposte.def;Copylib\imposte.cpy
+COPY_DEPENDENCE=FD\mtordini.sl;FD\mrordini.sl;FD\articoli.sl;FD\timposte.sl;FD\tmarche.sl;FD\clienti.sl;FD\ttipocli.sl;FD\progmag.sl;FD\tordini.sl;FD\rordini.sl;FD\tordforn.sl;FD\rordforn.sl;FD\rlistini.sl;FD\impforn.sl;FD\tpiombo.sl;FD\tnazioni.sl;FD\destini.sl;FD\tcaumag.sl;FD\mtordini.fd;FD\mrordini.fd;FD\articoli.fd;FD\timposte.fd;FD\tmarche.fd;FD\clienti.fd;FD\ttipocli.fd;FD\progmag.fd;FD\tordini.fd;FD\rordini.fd;FD\tordforn.fd;FD\rordforn.fd;FD\rlistini.fd;FD\impforn.fd;FD\tpiombo.fd;FD\tnazioni.fd;FD\destini.fd;FD\tcaumag.fd;Copylib\imposte.def;Copylib\imposte.cpy
 ADDITIONAL_OPTIONS=-x -Fxa -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options
@@ -55426,7 +55426,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:Source\rical-cou.cbl]
-COPY_DEPENDENCE=c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;Copylib\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp
+COPY_DEPENDENCE=c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;Copylib\UTYDATA.DEF;Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;Copylib\comune.def;Copylib\messaggi.def;Resource\bottone-ok.bmp;Resource\bottone-cancel.bmp
 ADDITIONAL_OPTIONS=-x -Fxa -Di -Ga -Zd -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options

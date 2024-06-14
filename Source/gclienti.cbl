@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 25 ottobre 2023 18:42:32.
+       DATE-WRITTEN.        venerdì 14 giugno 2024 17:33:16.
        REMARKS.
       *{TOTEM}END
 
@@ -184,9 +184,9 @@
       * Data.Entry-Field
               10 ef-fax-BUF PIC X(15).
       * Data.Entry-Field
-              10 ef-mail-BUF PIC X(100).
+              10 ef-mail-BUF PIC x(500).
       * Data.Entry-Field
-              10 ef-maila-BUF PIC X(100).
+              10 ef-maila-BUF PIC X(500).
       * Data.Entry-Field
               10 ef-url-BUF PIC X(100).
       * Data.Entry-Field
@@ -308,7 +308,7 @@
       * Data.Entry-Field
               10 ef-fax-d-BUF PIC X(15).
       * Data.Entry-Field
-              10 ef-mail-d-BUF PIC X(200).
+              10 ef-mail-d-BUF PIC X(500).
       * Data.Entry-Field
               10 ef-referente-d-BUF PIC X(30).
       * Data.Entry-Field
@@ -442,9 +442,9 @@
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-KEY2-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-clienti-RESTOREBUF  PIC X(3610).
+       77 TMP-Form1-clienti-RESTOREBUF  PIC X(4410).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(3610).
+       77 Form1-MULKEY-TMPBUF   PIC X(4410).
        77 Form1-KEYISTMP2   PIC X(40).
       * Form1 : PKEY & AKEY'S TEMP BUFFER
        77 Form1-PKEYTMP   PIC X(6).
@@ -458,7 +458,7 @@
           88 scr-ricerca-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-recapiti-BUF     PIC X(328).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
@@ -476,13 +476,13 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-pagbloc-BUF     PIC X(609).
        77 TMP-DataSet1-EDI-clides-BUF     PIC X(840).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-note-BUF     PIC X(284).
        77 TMP-DataSet1-note1-BUF     PIC X(284).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
 
 
        77 TMP-DataSet1-grade-BUF     PIC X(754).
@@ -678,7 +678,7 @@
                10 old-cli-tel-1        PIC  x(15).
                10 old-cli-tel-2        PIC  x(15).
                10 old-cli-fax          PIC  x(15).
-               10 old-cli-email        PIC  x(100).
+               10 old-cli-email        PIC  x(500).
                10 old-cli-web          PIC  x(100).
       *(( XFD NAME = old-cli-tipo_1 ))
                10 old-cli-tipo         PIC  x(2).
@@ -762,7 +762,7 @@
       *(( XFD NAME = old-cli-agente-2 ))
                    15 old-cli-agente2      PIC  9(5).
                    15 old-cli-codice-SDI   PIC  X(10).
-                   15 old-cli-pec          PIC  X(100).
+                   15 old-cli-pec          PIC  X(500).
                    15 old-cli-esigibilita-iva          PIC  X.
                        88 old-cli-esigibilita-iva-immediata VALUE IS "I"
            . 
@@ -799,7 +799,7 @@
                10 old-des-telef-1      PIC  x(15).
                10 old-des-telef-2      PIC  x(15).
                10 old-des-fax          PIC  X(15).
-               10 old-des-mail         PIC  X(200).
+               10 old-des-mail         PIC  X(500).
                10 old-des-referente    PIC  x(30).
                10 old-des-vettore      PIC  9(5).
                10 old-des-deposito-UTF PIC  x.
@@ -1027,7 +1027,7 @@
            Tab-Control, 
            COL 2,50, 
            LINE 5,08,
-           LINES 51,46 ,
+           LINES 53,31 ,
            SIZE 155,00 ,
            ID IS 5000,
            HEIGHT-IN-CELLS,
@@ -1260,8 +1260,8 @@
            ef-mail, 
            Entry-Field, 
            COL 21,17, 
-           LINE 16,77,
-           LINES 1,31 ,
+           LINE 17,23,
+           LINES 2,38 ,
            SIZE 58,00 ,
            BOXED,
            COLOR IS 513,
@@ -1270,7 +1270,9 @@
            ID IS 78-ID-ef-mail,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 100,
+           MAX-TEXT 500,
+           VSCROLL-BAR,
+           USE-RETURN,
            VALUE ef-mail-BUF,
            .
 
@@ -1279,8 +1281,8 @@
            ef-maila, 
            Entry-Field, 
            COL 21,17, 
-           LINE 18,31,
-           LINES 1,31 ,
+           LINE 20,08,
+           LINES 2,38 ,
            SIZE 58,00 ,
            BOXED,
            COLOR IS 513,
@@ -1288,7 +1290,9 @@
            FONT IS Small-Font,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 100,
+           MAX-TEXT 500,
+           VSCROLL-BAR,
+           USE-RETURN,
            VALUE ef-maila-BUF,
            .
 
@@ -1316,7 +1320,7 @@
            ef-tipo, 
            Entry-Field, 
            COL 21,17, 
-           LINE 20,00,
+           LINE 22,92,
            LINES 1,31 ,
            SIZE 4,00 ,
            BOXED,
@@ -1335,7 +1339,7 @@
            ef-gdo, 
            Entry-Field, 
            COL 96,17, 
-           LINE 19,54,
+           LINE 22,46,
            LINES 1,31 ,
            SIZE 9,00 ,
            BOXED,
@@ -1355,7 +1359,7 @@
            chk-utf, 
            Check-Box, 
            COL 151,17, 
-           LINE 19,54,
+           LINE 22,08,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1373,7 +1377,7 @@
            ef-referente, 
            Entry-Field, 
            COL 21,17, 
-           LINE 21,62,
+           LINE 24,54,
            LINES 1,31 ,
            SIZE 58,00 ,
            BOXED,
@@ -1392,7 +1396,7 @@
            ef-vettore, 
            Entry-Field, 
            COL 96,17, 
-           LINE 21,54,
+           LINE 24,46,
            LINES 1,31 ,
            SIZE 9,00 ,
            BOXED,
@@ -1412,7 +1416,7 @@
            chk-inoltro, 
            Check-Box, 
            COL 151,17, 
-           LINE 21,54,
+           LINE 24,08,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1431,7 +1435,7 @@
            ef-agente, 
            Entry-Field, 
            COL 21,17, 
-           LINE 23,46,
+           LINE 26,38,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -1451,7 +1455,7 @@
            cbo-stato, 
            Combo-Box, 
            COL 96,17, 
-           LINE 23,54,
+           LINE 26,46,
            LINES 5,00 ,
            SIZE 16,00 ,
            3-D,
@@ -1475,7 +1479,7 @@
            cbo-cau-blocco, 
            Combo-Box, 
            COL 127,50, 
-           LINE 23,54,
+           LINE 26,46,
            LINES 7,00 ,
            SIZE 27,00 ,
            3-D,
@@ -1498,7 +1502,7 @@
            ef-agente2, 
            Entry-Field, 
            COL 21,17, 
-           LINE 25,15,
+           LINE 28,08,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -1518,7 +1522,7 @@
            chk-superamento, 
            Check-Box, 
            COL 35,17, 
-           LINE 26,92,
+           LINE 29,85,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1537,7 +1541,7 @@
            chk-24000, 
            Check-Box, 
            COL 76,17, 
-           LINE 26,92,
+           LINE 29,85,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1555,7 +1559,7 @@
            ef-cod-ditta, 
            Entry-Field, 
            COL 96,17, 
-           LINE 26,15,
+           LINE 29,08,
            LINES 1,31 ,
            SIZE 42,00 ,
            BOXED,
@@ -1574,7 +1578,7 @@
            ef-PFA-perce, 
            Entry-Field, 
            COL 146,17, 
-           LINE 26,15,
+           LINE 29,08,
            LINES 1,31 ,
            SIZE 8,00 ,
            BOXED,
@@ -1594,7 +1598,7 @@
            ef-note, 
            Entry-Field, 
            COL 21,17, 
-           LINE 28,46,
+           LINE 31,38,
            LINES 8,50 ,
            SIZE 133,00 ,
            BOXED,
@@ -1615,7 +1619,7 @@
            ef-note-agg, 
            Entry-Field, 
            COL 21,17, 
-           LINE 37,69,
+           LINE 40,62,
            LINES 1,31 ,
            SIZE 130,00 ,
            BOXED,
@@ -1634,7 +1638,7 @@
            pb-note, 
            Push-Button, 
            COL 151,17, 
-           LINE 37,69,
+           LINE 40,23,
            LINES 1,31 ,
            SIZE 3,00 ,
            EXCEPTION-VALUE 1001,
@@ -1650,7 +1654,7 @@
            cbo-sost-art, 
            Combo-Box, 
            COL 21,17, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 5,00 ,
            SIZE 16,00 ,
            3-D,
@@ -1673,7 +1677,7 @@
            cbo-tipo-art, 
            Combo-Box, 
            COL 47,84, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 5,00 ,
            SIZE 16,00 ,
            3-D,
@@ -1696,7 +1700,7 @@
            chk-invio-bolle-EDI, 
            Check-Box, 
            COL 78,67, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1713,7 +1717,7 @@
            chk-destino-auto, 
            Check-Box, 
            COL 110,34, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1730,7 +1734,7 @@
            chk-escludi-fido, 
            Check-Box, 
            COL 125,34, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1747,7 +1751,7 @@
            chk-contrassegno, 
            Check-Box, 
            COL 143,67, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1764,7 +1768,7 @@
            rb-pers, 
            Radio-Button, 
            COL 21,17, 
-           LINE 43,15,
+           LINE 46,08,
            LINES 1,15 ,
            SIZE 2,50 ,
            ENABLED mod-campi,
@@ -1784,7 +1788,7 @@
            rb-soc, 
            Radio-Button, 
            COL 39,17, 
-           LINE 43,15,
+           LINE 46,08,
            LINES 1,15 ,
            SIZE 2,50 ,
            ENABLED mod-campi,
@@ -1804,7 +1808,7 @@
            ef-gg, 
            Entry-Field, 
            COL 96,17, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1824,7 +1828,7 @@
            chk-fido, 
            Check-Box, 
            COL 121,17, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1843,7 +1847,7 @@
            ef-esi, 
            Entry-Field, 
            COL 142,84, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,31 ,
            SIZE 3,50 ,
            BOXED,
@@ -1862,7 +1866,7 @@
            ef-codfis, 
            Entry-Field, 
            COL 21,17, 
-           LINE 44,85,
+           LINE 47,77,
            LINES 1,31 ,
            SIZE 24,00 ,
            BOXED,
@@ -1882,7 +1886,7 @@
            ef-piva, 
            Entry-Field, 
            COL 59,17, 
-           LINE 44,85,
+           LINE 47,77,
            LINES 1,31 ,
            SIZE 20,00 ,
            BOXED,
@@ -1902,7 +1906,7 @@
            ef-iva-ese, 
            Entry-Field, 
            COL 96,17, 
-           LINE 44,85,
+           LINE 47,77,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1921,7 +1925,7 @@
            ef-pag, 
            Entry-Field, 
            COL 21,17, 
-           LINE 46,85,
+           LINE 49,77,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1940,7 +1944,7 @@
            ef-cod-iva, 
            Entry-Field, 
            COL 96,17, 
-           LINE 46,85,
+           LINE 49,77,
            LINES 1,31 ,
            SIZE 7,00 ,
            BOXED,
@@ -1959,7 +1963,7 @@
            chk-spost-ago, 
            Check-Box, 
            COL 124,50, 
-           LINE 48,62,
+           LINE 51,54,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1977,7 +1981,7 @@
            chk-spost-dic, 
            Check-Box, 
            COL 149,50, 
-           LINE 48,62,
+           LINE 51,15,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-campi,
@@ -1994,7 +1998,7 @@
            ef-fido, 
            Entry-Field, 
            COL 21,17, 
-           LINE 48,85,
+           LINE 51,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            BOXED,
@@ -2014,7 +2018,7 @@
            ef-fido-data, 
            Entry-Field, 
            COL 57,50, 
-           LINE 48,85,
+           LINE 51,77,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2034,7 +2038,7 @@
            ef-fido-extra, 
            Entry-Field, 
            COL 96,17, 
-           LINE 48,85,
+           LINE 51,77,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
@@ -2054,7 +2058,7 @@
            ef-fide, 
            Entry-Field, 
            COL 21,17, 
-           LINE 50,85,
+           LINE 53,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            BOXED,
@@ -2074,7 +2078,7 @@
            ef-PFA, 
            Entry-Field, 
            COL 57,50, 
-           LINE 50,85,
+           LINE 53,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            BOXED,
@@ -2094,7 +2098,7 @@
            ef-data-fido-extra, 
            Entry-Field, 
            COL 82,50, 
-           LINE 50,77,
+           LINE 53,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            BOXED,
@@ -2114,7 +2118,7 @@
            ef-grade, 
            Entry-Field, 
            COL 104,17, 
-           LINE 50,77,
+           LINE 53,69,
            LINES 1,31 ,
            SIZE 5,00 ,
            BOXED,
@@ -2135,7 +2139,7 @@
            pb-espo, 
            Push-Button, 
            COL 121,84, 
-           LINE 50,39,
+           LINE 53,31,
            LINES 23,00 ,
            SIZE 91,00 ,
            BITMAP-HANDLE ESPOSIZIONE_91X21-BMP,
@@ -2156,7 +2160,7 @@
            pb-finanz, 
            Push-Button, 
            COL 138,17, 
-           LINE 50,39,
+           LINE 53,31,
            LINES 23,00 ,
            SIZE 91,00 ,
            BITMAP-HANDLE SITFIN_91X21-BMP,
@@ -2178,7 +2182,7 @@
            ef-abi, 
            Entry-Field, 
            COL 21,17, 
-           LINE 52,77,
+           LINE 55,69,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2198,7 +2202,7 @@
            ef-cab, 
            Entry-Field, 
            COL 57,50, 
-           LINE 52,77,
+           LINE 55,69,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -2218,7 +2222,7 @@
            pb-nota-pie, 
            Push-Button, 
            COL 135,17, 
-           LINE 52,77,
+           LINE 55,46,
            LINES 21,00 ,
            SIZE 109,00 ,
            BITMAP-HANDLE NOTE_109X23-BMP,
@@ -2269,7 +2273,7 @@
            Form1-La-1abbbaa, 
            Label, 
            COL 4,17, 
-           LINE 41,62,
+           LINE 44,54,
            LINES 1,31 ,
            SIZE 16,83 ,
            COLOR IS 80,
@@ -2285,7 +2289,7 @@
            Form1-Br-2acaa, 
            Bar,
            COL 21,84, 
-           LINE 42,08,
+           LINE 45,00,
            SIZE 135,00 ,
            ID IS 562,
            HEIGHT-IN-CELLS,
@@ -2411,7 +2415,7 @@
            Form1-La-9, 
            Label, 
            COL 5,17, 
-           LINE 44,85,
+           LINE 47,77,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2427,7 +2431,7 @@
            Form1-La-10, 
            Label, 
            COL 47,17, 
-           LINE 44,85,
+           LINE 47,77,
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Small-Font,
@@ -2492,7 +2496,7 @@
            Form1-La-14, 
            Label, 
            COL 5,17, 
-           LINE 16,77,
+           LINE 17,23,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2507,7 +2511,7 @@
        10
            Form1-La-15, 
            Label, 
-           COL 83,34, 
+           COL 83,33, 
            LINE 17,23,
            LINES 1,31 ,
            SIZE 9,00 ,
@@ -2524,7 +2528,7 @@
            Form1-La-16, 
            Label, 
            COL 5,17, 
-           LINE 21,62,
+           LINE 24,54,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2540,7 +2544,7 @@
            Form1-La-17, 
            Label, 
            COL 83,34, 
-           LINE 21,54,
+           LINE 24,46,
            LINES 1,31 ,
            SIZE 9,00 ,
            FONT IS Small-Font,
@@ -2556,7 +2560,7 @@
            Form1-La-18, 
            Label, 
            COL 138,17, 
-           LINE 21,46,
+           LINE 24,38,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2574,7 +2578,7 @@
            Form1-La-19, 
            Label, 
            COL 5,17, 
-           LINE 23,46,
+           LINE 26,38,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2590,7 +2594,7 @@
            Form1-La-21, 
            Label, 
            COL 82,17, 
-           LINE 44,85,
+           LINE 47,77,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -2606,7 +2610,7 @@
            Form1-La-22, 
            Label, 
            COL 5,17, 
-           LINE 46,85,
+           LINE 49,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2623,7 +2627,7 @@
            Form1-La-23, 
            Label, 
            COL 110,50, 
-           LINE 48,31,
+           LINE 51,23,
            LINES 2,00 ,
            SIZE 12,50 ,
            FONT IS Small-Font,
@@ -2640,7 +2644,7 @@
            Form1-La-24, 
            Label, 
            COL 133,84, 
-           LINE 48,31,
+           LINE 51,23,
            LINES 2,00 ,
            SIZE 14,33 ,
            FONT IS Small-Font,
@@ -2656,7 +2660,7 @@
            Form1-La-25, 
            Label, 
            COL 5,17, 
-           LINE 48,85,
+           LINE 51,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -2673,7 +2677,7 @@
            Form1-La-26, 
            Label, 
            COL 40,50, 
-           LINE 48,85,
+           LINE 51,77,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -2690,7 +2694,7 @@
            Form1-La-27, 
            Label, 
            COL 40,50, 
-           LINE 52,77,
+           LINE 55,69,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -2706,7 +2710,7 @@
            Form1-La-28, 
            Label, 
            COL 5,17, 
-           LINE 52,77,
+           LINE 55,69,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -2723,7 +2727,7 @@
            Form1-La-29, 
            Label, 
            COL 83,34, 
-           LINE 23,54,
+           LINE 26,46,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -2739,7 +2743,7 @@
            Form1-La-30, 
            Label, 
            COL 5,17, 
-           LINE 20,00,
+           LINE 22,92,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2755,7 +2759,7 @@
            Form1-La-31, 
            Label, 
            COL 83,34, 
-           LINE 19,54,
+           LINE 22,46,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2771,7 +2775,7 @@
            Form1-La-32, 
            Label, 
            COL 138,17, 
-           LINE 19,54,
+           LINE 22,46,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2788,7 +2792,7 @@
            Form1-La-33, 
            Label, 
            COL 5,17, 
-           LINE 28,46,
+           LINE 31,38,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2804,7 +2808,7 @@
            Form1-La-34, 
            Label, 
            COL 5,17, 
-           LINE 37,69,
+           LINE 40,62,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2820,7 +2824,7 @@
            lab-agente, 
            Label, 
            COL 28,17, 
-           LINE 23,46,
+           LINE 26,38,
            LINES 1,31 ,
            SIZE 51,00 ,
            COLOR IS 5,
@@ -2838,7 +2842,7 @@
            lab-vettore, 
            Label, 
            COL 106,17, 
-           LINE 21,54,
+           LINE 24,46,
            LINES 1,31 ,
            SIZE 38,00 ,
            COLOR IS 5,
@@ -2856,7 +2860,7 @@
            lab-tipo, 
            Label, 
            COL 28,17, 
-           LINE 20,00,
+           LINE 22,92,
            LINES 1,15 ,
            SIZE 51,00 ,
            COLOR IS 5,
@@ -2874,7 +2878,7 @@
            lab-gdo, 
            Label, 
            COL 106,17, 
-           LINE 19,54,
+           LINE 22,46,
            LINES 1,31 ,
            SIZE 31,00 ,
            COLOR IS 5,
@@ -2946,7 +2950,7 @@
            Form1-La-60, 
            Label, 
            COL 5,00, 
-           LINE 26,92,
+           LINE 29,85,
            LINES 1,31 ,
            SIZE 29,00 ,
            FONT IS Small-Font,
@@ -2964,7 +2968,7 @@
            lab-banca, 
            Label, 
            COL 72,17, 
-           LINE 52,77,
+           LINE 55,08,
            LINES 2,54 ,
            SIZE 62,00 ,
            COLOR IS 5,
@@ -2981,7 +2985,7 @@
            lab-iva-ese, 
            Label, 
            COL 106,17, 
-           LINE 44,85,
+           LINE 47,77,
            LINES 1,31 ,
            SIZE 44,00 ,
            COLOR IS 5,
@@ -2998,7 +3002,7 @@
            lab-pag, 
            Label, 
            COL 29,17, 
-           LINE 46,85,
+           LINE 49,77,
            LINES 1,50 ,
            SIZE 50,00 ,
            COLOR IS 5,
@@ -3015,7 +3019,7 @@
            Form1-La-66, 
            Label, 
            COL 25,17, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,15 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -3031,7 +3035,7 @@
            Form1-La-67, 
            Label, 
            COL 43,17, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,15 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -3047,7 +3051,7 @@
            Form1-La-26a, 
            Label, 
            COL 76,00, 
-           LINE 48,85,
+           LINE 51,77,
            LINES 1,31 ,
            SIZE 19,00 ,
            FONT IS Small-Font,
@@ -3064,7 +3068,7 @@
            Form1-La-60b, 
            Label, 
            COL 46,17, 
-           LINE 26,92,
+           LINE 29,85,
            LINES 1,31 ,
            SIZE 29,00 ,
            FONT IS Small-Font,
@@ -3082,7 +3086,7 @@
            Form1-La-15a, 
            Label, 
            COL 83,34, 
-           LINE 25,77,
+           LINE 28,69,
            LINES 2,08 ,
            SIZE 12,50 ,
            FONT IS Small-Font,
@@ -3098,7 +3102,7 @@
            Form1-La-21a, 
            Label, 
            COL 82,17, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -3114,7 +3118,7 @@
            Form1-La-23a, 
            Label, 
            COL 105,50, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,31 ,
            SIZE 12,50 ,
            FONT IS Small-Font,
@@ -3132,7 +3136,7 @@
            Form1-La-29a, 
            Label, 
            COL 113,50, 
-           LINE 23,54,
+           LINE 26,46,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -3148,7 +3152,7 @@
            Form1-La-25a, 
            Label, 
            COL 5,17, 
-           LINE 50,85,
+           LINE 53,77,
            LINES 1,31 ,
            SIZE 14,00 ,
            FONT IS Small-Font,
@@ -3165,7 +3169,7 @@
            Form1-La-26b, 
            Label, 
            COL 40,50, 
-           LINE 50,85,
+           LINE 53,77,
            LINES 1,31 ,
            SIZE 16,00 ,
            FONT IS Small-Font,
@@ -3182,7 +3186,7 @@
            Form1-La-26ba, 
            Label, 
            COL 139,17, 
-           LINE 26,15,
+           LINE 29,08,
            LINES 1,31 ,
            SIZE 5,50 ,
            FONT IS Small-Font,
@@ -3199,7 +3203,7 @@
            Form1-La-29aa, 
            Label, 
            COL 5,17, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -3215,7 +3219,7 @@
            Form1-La-29aaa, 
            Label, 
            COL 38,50, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 8,00 ,
            FONT IS Small-Font,
@@ -3231,7 +3235,7 @@
            Form1-La-21b, 
            Label, 
            COL 82,17, 
-           LINE 46,85,
+           LINE 49,77,
            LINES 1,31 ,
            SIZE 13,00 ,
            FONT IS Small-Font,
@@ -3247,7 +3251,7 @@
            lab-cod-iva, 
            Label, 
            COL 106,17, 
-           LINE 46,85,
+           LINE 49,77,
            LINES 1,31 ,
            SIZE 44,00 ,
            COLOR IS 5,
@@ -3264,7 +3268,7 @@
            Form1-La-26aa, 
            Label, 
            COL 76,17, 
-           LINE 50,85,
+           LINE 53,77,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -3281,7 +3285,7 @@
            Form1-La-29b, 
            Label, 
            COL 65,50, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -3297,7 +3301,7 @@
            Form1-La-29ba, 
            Label, 
            COL 84,67, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 25,00 ,
            FONT IS Small-Font,
@@ -3313,7 +3317,7 @@
            Form1-La-19a, 
            Label, 
            COL 5,17, 
-           LINE 25,15,
+           LINE 28,08,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -3329,7 +3333,7 @@
            lab-agente2, 
            Label, 
            COL 28,17, 
-           LINE 25,15,
+           LINE 28,08,
            LINES 1,31 ,
            SIZE 51,00 ,
            COLOR IS 5,
@@ -3363,7 +3367,7 @@
            Form1-La-14a, 
            Label, 
            COL 5,17, 
-           LINE 18,31,
+           LINE 20,08,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -3379,7 +3383,7 @@
            Form1-La-81, 
            Label, 
            COL 129,00, 
-           LINE 42,92,
+           LINE 45,85,
            LINES 1,31 ,
            SIZE 12,17 ,
            ID IS 289,
@@ -3394,7 +3398,7 @@
            Form1-La-26aaa, 
            Label, 
            COL 96,17, 
-           LINE 50,85,
+           LINE 53,77,
            LINES 1,31 ,
            SIZE 6,00 ,
            FONT IS Small-Font,
@@ -3411,7 +3415,7 @@
            Form1-La-29baa, 
            Label, 
            COL 114,67, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -3427,7 +3431,7 @@
            Form1-La-29baaa, 
            Label, 
            COL 131,34, 
-           LINE 39,77,
+           LINE 42,69,
            LINES 1,31 ,
            SIZE 11,00 ,
            FONT IS Small-Font,
@@ -3689,7 +3693,7 @@
            Entry-Field, 
            COL 18,17, 
            LINE 34,77,
-           LINES 1,31 ,
+           LINES 3,50 ,
            SIZE 57,00 ,
            BOXED,
            COLOR IS 513,
@@ -3698,7 +3702,9 @@
            ID IS 78-ID-ef-mail-d,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 135,
+           MAX-TEXT 500,
+           VSCROLL-BAR,
+           USE-RETURN,
            VALUE ef-mail-d-BUF,
            .
       * ENTRY FIELD
@@ -3743,7 +3749,7 @@
            ef-vettore-d, 
            Entry-Field, 
            COL 18,17, 
-           LINE 36,77,
+           LINE 39,08,
            LINES 1,31 ,
            SIZE 8,00 ,
            BOXED,
@@ -3763,7 +3769,7 @@
            chk-deposito-utf, 
            Check-Box, 
            COL 93,17, 
-           LINE 36,77,
+           LINE 39,08,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-destini,
@@ -3780,7 +3786,7 @@
            chk-superamento-d, 
            Check-Box, 
            COL 118,17, 
-           LINE 36,77,
+           LINE 39,08,
            LINES 1,31 ,
            SIZE 3,00 ,
            ENABLED mod-destini,
@@ -3798,7 +3804,7 @@
            cbo-stato-d, 
            Combo-Box, 
            COL 133,17, 
-           LINE 36,92,
+           LINE 39,23,
            LINES 5,00 ,
            SIZE 17,00 ,
            3-D,
@@ -3820,7 +3826,7 @@
            cbo-tipo-art-d, 
            Combo-Box, 
            COL 18,50, 
-           LINE 39,31,
+           LINE 41,62,
            LINES 5,00 ,
            SIZE 15,00 ,
            3-D,
@@ -3842,7 +3848,7 @@
            ef-cod-ditta-d, 
            Entry-Field, 
            COL 92,84, 
-           LINE 39,31,
+           LINE 41,62,
            LINES 1,31 ,
            SIZE 58,00 ,
            BOXED,
@@ -3861,7 +3867,7 @@
            ef-CIG-d, 
            Entry-Field, 
            COL 93,17, 
-           LINE 41,69,
+           LINE 44,00,
            LINES 1,31 ,
            SIZE 15,00 ,
            BOXED,
@@ -3879,7 +3885,7 @@
            ef-note-1, 
            Entry-Field, 
            COL 18,17, 
-           LINE 45,15,
+           LINE 47,46,
            LINES 1,31 ,
            SIZE 38,00 ,
            BOXED,
@@ -3897,7 +3903,7 @@
            ef-note-data, 
            Entry-Field, 
            COL 64,17, 
-           LINE 45,15,
+           LINE 47,46,
            LINES 1,31 ,
            SIZE 11,00 ,
            BOXED,
@@ -3917,7 +3923,7 @@
            ef-note-2, 
            Entry-Field, 
            COL 93,17, 
-           LINE 45,15,
+           LINE 47,46,
            LINES 1,31 ,
            SIZE 57,00 ,
            BOXED,
@@ -3935,7 +3941,7 @@
            ef-note-3, 
            Entry-Field, 
            COL 18,17, 
-           LINE 47,15,
+           LINE 49,46,
            LINES 1,31 ,
            SIZE 57,00 ,
            BOXED,
@@ -3953,7 +3959,7 @@
            ef-note-4, 
            Entry-Field, 
            COL 93,17, 
-           LINE 47,15,
+           LINE 49,46,
            LINES 1,31 ,
            SIZE 57,00 ,
            BOXED,
@@ -3971,7 +3977,7 @@
            pb-note-bolla, 
            Push-Button, 
            COL 151,50, 
-           LINE 47,15,
+           LINE 49,46,
            LINES 1,31 ,
            SIZE 4,00 ,
            EXCEPTION-VALUE 75,
@@ -4193,7 +4199,7 @@
            Form1-La-47, 
            Label, 
            COL 5,00, 
-           LINE 36,77,
+           LINE 39,08,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -4209,7 +4215,7 @@
            Form1-La-48, 
            Label, 
            COL 79,17, 
-           LINE 36,77,
+           LINE 39,08,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -4225,7 +4231,7 @@
            Form1-La-49, 
            Label, 
            COL 5,00, 
-           LINE 44,69,
+           LINE 47,00,
            LINES 2,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -4241,7 +4247,7 @@
            Form1-La-50, 
            Label, 
            COL 79,17, 
-           LINE 45,15,
+           LINE 47,46,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -4257,7 +4263,7 @@
            Form1-La-51, 
            Label, 
            COL 5,00, 
-           LINE 47,15,
+           LINE 49,46,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -4273,7 +4279,7 @@
            Form1-La-52, 
            Label, 
            COL 79,17, 
-           LINE 47,15,
+           LINE 49,46,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -4289,7 +4295,7 @@
            Form1-La-1abbbaaa, 
            Label, 
            COL 4,17, 
-           LINE 43,00,
+           LINE 45,31,
            LINES 1,31 ,
            SIZE 16,83 ,
            COLOR IS 80,
@@ -4305,7 +4311,7 @@
            Form1-Br-3, 
            Bar,
            COL 21,34, 
-           LINE 43,54,
+           LINE 45,85,
            SIZE 135,00 ,
            ID IS 137,
            HEIGHT-IN-CELLS,
@@ -4319,7 +4325,7 @@
            lab-vettore-d, 
            Label, 
            COL 28,17, 
-           LINE 36,77,
+           LINE 39,08,
            LINES 1,31 ,
            SIZE 47,00 ,
            COLOR IS 5,
@@ -4391,7 +4397,7 @@
            Form1-La-53, 
            Label, 
            COL 58,17, 
-           LINE 45,15,
+           LINE 47,46,
            LINES 1,31 ,
            SIZE 5,00 ,
            FONT IS Small-Font,
@@ -4483,7 +4489,7 @@
            Form1-La-54, 
            Label, 
            COL 125,17, 
-           LINE 36,92,
+           LINE 39,23,
            LINES 1,31 ,
            SIZE 6,00 ,
            FONT IS Small-Font,
@@ -4515,7 +4521,7 @@
            Form1-La-60a, 
            Label, 
            COL 101,17, 
-           LINE 36,92,
+           LINE 39,23,
            LINES 2,00 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -4548,7 +4554,7 @@
            Form1-La-15aa, 
            Label, 
            COL 78,84, 
-           LINE 38,77,
+           LINE 41,08,
            LINES 2,08 ,
            SIZE 12,50 ,
            FONT IS Small-Font,
@@ -4564,7 +4570,7 @@
            Form1-La-54a, 
            Label, 
            COL 5,00, 
-           LINE 39,31,
+           LINE 41,62,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -4580,7 +4586,7 @@
            Form1-La-46b, 
            Label, 
            COL 79,17, 
-           LINE 41,69,
+           LINE 44,00,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -7214,6 +7220,8 @@
            FLAT,
            ID IS 20,
            VALUE e-st-cli,
+           AFTER PROCEDURE chk-st-cli-AfterProcedure,
+           BEFORE PROCEDURE chk-st-cli-BeforeProcedure, 
            .
       * ENTRY FIELD
        05
@@ -7288,6 +7296,8 @@
            FLAT,
            ID IS 8,
            VALUE e-st-des,
+           AFTER PROCEDURE chk-st-des-AfterProcedure,
+           BEFORE PROCEDURE chk-st-des-BeforeProcedure, 
            .
       * ENTRY FIELD
        05
@@ -7367,6 +7377,8 @@
            FLAT,
            ID IS 22,
            VALUE e-st-note,
+           AFTER PROCEDURE chk-st-note-AfterProcedure,
+           BEFORE PROCEDURE chk-st-note-BeforeProcedure, 
            .
       * CHECK BOX
        05
@@ -15040,7 +15052,7 @@
            Display Independent GRAPHICAL WINDOW
               SCREEN LINE 1,
               SCREEN COLUMN 0,
-              LINES 57,92,
+              LINES 59,46,
               SIZE 158,00,
               COLOR 65793,
               CONTROL FONT Small-Font,
@@ -24385,6 +24397,48 @@
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            modify chk-excel-3, bitmap-number = 1 
+           .
+      * <TOTEM:END>
+       chk-st-cli-BeforeProcedure.
+      * <TOTEM:PARA. chk-st-cli-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-st-des-BeforeProcedure.
+      * <TOTEM:PARA. chk-st-des-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-st-note-BeforeProcedure.
+      * <TOTEM:PARA. chk-st-note-BeforeProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           MODIFY CONTROL-HANDLE COLOR = COLORE-NU
+           .
+      * <TOTEM:END>
+       chk-st-cli-AfterProcedure.
+      * <TOTEM:PARA. chk-st-cli-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-st-des-AfterProcedure.
+      * <TOTEM:PARA. chk-st-des-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           .
+      * <TOTEM:END>
+       chk-st-note-AfterProcedure.
+      * <TOTEM:PARA. chk-st-note-AfterProcedure>
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
+           MODIFY CONTROL-HANDLE COLOR = COLORE-OR
            .
       * <TOTEM:END>
 
