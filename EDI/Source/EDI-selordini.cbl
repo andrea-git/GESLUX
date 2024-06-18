@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 marzo 2024 18:14:42.
+       DATE-WRITTEN.        martedì 18 giugno 2024 17:45:11.
        REMARKS.
       *{TOTEM}END
 
@@ -949,8 +949,8 @@
           88 scr-fine-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-form-attesa-FLAG-REFRESH PIC  9.
           88 form-attesa-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-EDI-mtordini-BUF     PIC X(8412).
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
@@ -958,7 +958,7 @@
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-pagbloc-BUF     PIC X(609).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-note-BUF     PIC X(284).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-recapiti-BUF     PIC X(328).
@@ -15843,13 +15843,13 @@
                     move prg-chiave to HiddenKey
                     move prg-peso   to col-peso
                     set hid-emro-progressivo-valido to true
+                    set hid-emro-articolo-valido    to true
                     modify form1-gd-1(riga, 1), 
                            hidden-data gruppo-hidden  
                     modify form1-gd-1(riga, 78-col-imb), 
                            cell-data prg-tipo-imballo
                     modify form1-gd-1(riga, 78-col-peso), 
-                           cell-data col-peso
-                    set hid-emro-progressivo-valido to true
+                           cell-data col-peso              
                     perform STATO-RIGA
                  end-if
 

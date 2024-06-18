@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8314171359-477-2071131004
+PROGRAM_UNIQUE_CODE=TOTEM-7E86129261-890-73710266
 
 {{@DESCRIPTION:
 
@@ -17013,13 +17013,13 @@ BEGIN-TEXT
                     move prg-chiave to HiddenKey
                     move prg-peso   to col-peso
                     set hid-emro-progressivo-valido to true
+                    set hid-emro-articolo-valido    to true
                     modify form1-gd-1(riga, 1), 
                            hidden-data gruppo-hidden  
                     modify form1-gd-1(riga, 78-col-imb), 
                            cell-data prg-tipo-imballo
                     modify form1-gd-1(riga, 78-col-peso), 
-                           cell-data col-peso
-                    set hid-emro-progressivo-valido to true
+                           cell-data col-peso              
                     perform STATO-RIGA
                  end-if
 

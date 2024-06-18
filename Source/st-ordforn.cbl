@@ -832,6 +832,9 @@
                                 read rordforn next 
                                   at end exit perform 
                                 end-read
+                                if rof-chiave not = tof-chiave
+                                   exit perform
+                                end-if
                                 if rof-cod-listino not = 0
                                    move rof-cod-listino to tlis-codice
                                    read tlistini no lock
