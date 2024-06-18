@@ -1125,16 +1125,16 @@
       *    tutti i record indipendentemente dallo status
            if not TuttiIRec
               |FILTRO SU RECORD ATTIVI
-              move "A" to como-record(2788:1)
+              move "A" to como-record(3188:1)
 
               set xzoom-when-true(2)    to true
               set xzoom-begin-with(2)   to true
               set xzoom-ignore-case(2)  to true
                                  
-              move como-record(2788:1)   to xzoom-wild-value(2)
+              move como-record(3188:1)   to xzoom-wild-value(2)
               move 1                    to xzoom-wild-value-length(2)
               move 1                    to xzoom-wild-length(2)
-              move 2788                 to xzoom-wild-offset(2)
+              move 3188                 to xzoom-wild-offset(2)
            end-if
 
            move  -1                     to xzoom-delimiter-offset.
@@ -1233,16 +1233,16 @@
            if not TuttiIRec
 
               |FILTRO SU RECORD ATTIVI
-              move "A" to como-record(2788:1)
+              move "A" to como-record(3188:1)
 
               set xzoom-when-true(2)    to true
               set xzoom-begin-with(2)   to true 
               set xzoom-ignore-case(2)  to true
                                  
-              move como-record(2788:1)  to xzoom-wild-value(2)
+              move como-record(3188:1)  to xzoom-wild-value(2)
               move 1                    to xzoom-wild-value-length(2)
               move 1                    to xzoom-wild-length(2)
-              move 2788                 to xzoom-wild-offset(2)
+              move 3188                 to xzoom-wild-offset(2)
 
            end-if.
 
@@ -2329,16 +2329,16 @@
            |FILTRO SU RECORD ATTIVI
            if not TuttiIRec
               add 1 to idx
-              move "A" to como-record(2788:1)
+              move "A" to como-record(3188:1)
       
               set xzoom-when-true(idx)    to true
               set xzoom-begin-with(idx)   to true
               set xzoom-ignore-case(idx)  to true
                                  
-              move como-record(2788:1)  to xzoom-wild-value(idx)
+              move como-record(3188:1)  to xzoom-wild-value(idx)
               move 1                    to xzoom-wild-value-length(idx)
               move 1                    to xzoom-wild-length(idx)
-              move 2788                 to xzoom-wild-offset(idx)
+              move 3188                 to xzoom-wild-offset(idx)
            end-if.
 
       ***---
@@ -2446,16 +2446,16 @@
            |FILTRO SU RECORD ATTIVI
            if not TuttiIRec
               add 1 to idx
-              move "A" to como-record(2788:1)
+              move "A" to como-record(3188:1)
       
               set xzoom-when-true(idx)    to true
               set xzoom-begin-with(idx)   to true
               set xzoom-ignore-case(idx)  to true
                                  
-              move como-record(2788:1)   to xzoom-wild-value(idx)
+              move como-record(3188:1)   to xzoom-wild-value(idx)
               move 1                    to xzoom-wild-value-length(idx)
               move 1                    to xzoom-wild-length(idx)
-              move 2788                 to xzoom-wild-offset(idx)
+              move 3188                 to xzoom-wild-offset(idx)
            end-if.
 
 
@@ -2567,16 +2567,16 @@
            |FILTRO SU RECORD ATTIVI
            if not TuttiIRec
               add 1 to idx
-              move "A" to como-record(2788:1)
+              move "A" to como-record(3188:1)
 
               set xzoom-when-true(idx)    to true
               set xzoom-begin-with(idx)   to true
               set xzoom-ignore-case(idx)  to true
                                  
-              move como-record(2788:1)   to xzoom-wild-value(idx)
+              move como-record(3188:1)   to xzoom-wild-value(idx)
               move 1                    to xzoom-wild-value-length(idx)
               move 1                    to xzoom-wild-length(idx)
-              move 2788                 to xzoom-wild-offset(idx)
+              move 3188                 to xzoom-wild-offset(idx)
            end-if.
 
       ***---                 
@@ -2598,7 +2598,7 @@
                 move "A" to xzoom-wild-value(idx)
                 move 1   to xzoom-wild-value-length(idx)
                 move 1   to xzoom-wild-length(idx)
-                move 577 to xzoom-wild-offset(idx)
+                move 877 to xzoom-wild-offset(idx)
 
            end-evaluate.
 
