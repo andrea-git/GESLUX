@@ -1614,6 +1614,7 @@
            initialize des-rec replacing numeric data by zeroes
                                    alphanumeric data by spaces.
 
+
            |CERCO LO STESSO DESTINO EVENTUALMENTE GIA' CREATO
            move cli-codice to des-codice.
            move 0 to sav-vettore.
@@ -1625,7 +1626,8 @@
                     if des-codice   not = cli-codice
                        exit perform
                     end-if
-                    if des-ragsoc-1 = emto-01T30-NAD-RAGSOCD
+                    if des-ragsoc-1 = emto-01T30-NAD-RAGSOCD and
+                       des-localita = emto-01T32-NAD-CITTAD
                        move 1 to sav-vettore
                        exit perform
                     end-if

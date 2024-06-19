@@ -823,6 +823,7 @@
 
                        |Cerco il primo listino fornitore
                        move spaces to mag-indirizzo
+                       move 0      to tlis-codice
                        move low-value  to rof-rec
                        move tof-chiave to rof-chiave
                        start rordforn key >= rof-chiave
@@ -832,7 +833,8 @@
                                 read rordforn next 
                                   at end exit perform 
                                 end-read
-                                if rof-chiave not = tof-chiave
+                                if rof-anno   not = tof-anno or
+                                   rof-numero not = tof-numero
                                    exit perform
                                 end-if
                                 if rof-cod-listino not = 0
@@ -849,6 +851,16 @@
                                 end-if
                              end-perform
                        end-start
+                       if tlis-codice = 0
+                          move tof-causale  to tca-codice
+                          read tcaumag 
+                               invalid move spaces to tca-cod-magaz
+                          end-read
+                          move tca-cod-magaz  to mag-codice
+                          read tmagaz 
+                               invalid move space  to mag-indirizzo
+                          end-read
+                       end-if
                                         
                        if prima-volta
                           set prima-volta to false
