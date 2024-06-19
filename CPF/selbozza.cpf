@@ -2,17 +2,15 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=169.254.227.129
 
 
 [PROGRAM_CONTENT]
-DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-nota
 BEFORE_PROGRAM=selnota-Ev-Before-Program
 AFTER_PROGRAM=selnota-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E861310122-105-3134216369
+PROGRAM_UNIQUE_CODE=TOTEM-7E8613154945-770-595032583
 
 {{@DESCRIPTION:
 
@@ -2600,29 +2598,25 @@ BEGIN-TEXT
                       display message "Documento non valido"
                               title tit-err
                                icon mb-warning-icon
-                   else          
-
-
-                      move tor-data-fattura to btno-data-fatt
-                      move tor-anno-fattura to btno-anno-fatt
-                      move tor-num-fattura  to btno-num-fatt
-                      read btnotacr key k-fattura
-                           invalid continue
-                       not invalid
-                           move btno-numero to numero-edit
-                           display message
-                          "ATTENZIONE!!"
-                   x"0d0a""Esiste già la bozza n. " numero-edit " anno " btno-anno
-                   x"0d0a""che fa riferimento alla fattura indicata."
-                   x"0d0a""Procedere comunque?"
-                                     title titolo
-                                      type mb-yes-no
-                                      icon 2
-                                    giving scelta
-                           if scelta = mb-no
-                              set errori to true
-                           end-if
-                      end-read
+                   else             
+                      perform ELENCO-FATTURE
+      *                read btnotacr key k-fattura
+      *                     invalid continue
+      *                 not invalid
+      *                     move btno-numero to numero-edit
+      *                     display message
+      *                    "ATTENZIONE!!"
+      *             x"0d0a""Esiste già la bozza n. " numero-edit " anno " btno-anno
+      *             x"0d0a""che fa riferimento alla fattura indicata."
+      *             x"0d0a""Procedere comunque?"
+      *                               title titolo
+      *                                type mb-yes-no
+      *                                icon 2
+      *                              giving scelta
+      *                     if scelta = mb-no
+      *                        set errori to true
+      *                     end-if
+      *                end-read
                    end-if
                 end-if
            end-read
@@ -2639,31 +2633,25 @@ BEGIN-DATA
 BEGIN-TEXT
            set trovata-bolla to false
 
-           start tordini key not < k-bolla
-              invalid
+           start tordini key >= k-bolla
+                 invalid
                  set errori to true
                  display message "Bolla non caricata"
-                         title = tit-err
-                         icon mb-warning-icon
-              not invalid
+                           title tit-err
+                            icon mb-warning-icon
+             not invalid
                  perform until 1 = 2
                     read tordini next
-                       at end
-                          exit perform
+                       at end exit perform
                     end-read
-                    if anno not = tor-anno-bolla
-                       exit perform
-                    end-if
-                    if numero-b not = tor-num-bolla
+                    if anno not = tor-anno-bolla or
+                       numero-b not = tor-num-bolla
                        exit perform
                     end-if
                     set trovata-bolla to true
 
                     move tor-causale     to tca-codice
-                    read tcaumag
-                       invalid
-                          continue
-                    end-read
+                    read tcaumag invalid continue end-read
 
                     if tca-cod-magaz = save-mag
                        set bolla-ok   to true
@@ -2706,25 +2694,26 @@ BEGIN-TEXT
                             title tit-err
                              icon mb-warning-icon
                  else
-                    move tor-anno-fattura to btno-anno-fatt
-                    move tor-num-fattura  to btno-num-fatt
-                    read btnotacr key k-fattura
-                         invalid continue
-                     not invalid
-                         move btno-numero to numero-edit
-                         display message
-                        "ATTENZIONE!!"
-                 x"0d0a""Esiste già la bozza n. " numero-edit " anno " btno-anno
-                 x"0d0a""che fa riferimento alla fattura indicata."
-                 x"0d0a""Procedere comunque?"
-                                   title titolo
-                                    type mb-yes-no
-                                    icon 2
-                                  giving scelta
-                         if scelta = mb-no
-                            set errori to true
-                         end-if
-                    end-read
+                    perform ELENCO-FATTURE
+      *              move tor-anno-bolla to btno-anno-fattura
+      *              move tor-num-bolla  to btno-num-fattura
+      *              read btnotacr key k-fattura
+      *                   invalid continue
+      *               not invalid
+      *                   move btno-numero to numero-edit
+      *                   display message
+      *                  "ATTENZIONE!!"
+      *           x"0d0a""Esiste già la bozza n. " numero-edit " anno " btno-anno
+      *           x"0d0a""che fa riferimento alla fattura indicata."
+      *           x"0d0a""Procedere comunque?"
+      *                             title titolo
+      *                              type mb-yes-no
+      *                              icon 2
+      *                            giving scelta
+      *                   if scelta = mb-no
+      *                      set errori to true
+      *                   end-if
+      *              end-read
                  end-if
               end-if
            end-if
@@ -2820,6 +2809,79 @@ BEGIN-TEXT
       *****                     icon 2
       *****     end-read.
 
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 3
+   PARAGRAPH         = ELENCO-FATTURE
+BEGIN-TEXT
+           set trovato to false                   
+           move tor-anno-fattura to btno-anno-fatt
+           move tor-num-fattura  to btno-num-fatt
+           start btnotacr key >= k-fattura
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read btnotacr next 
+                      at end exit perform 
+                    end-read
+                    if btno-anno-fatt not = tor-anno-fattura or
+                       btno-num-fatt  not = tor-num-fattura 
+                       exit perform 
+                    end-if     
+                    if not trovato                       
+                       accept como-data from century-date
+                       accept como-ora  from time
+                       initialize path-tmp-btnotacr
+                       accept  path-tmp-btnotacr from environment "PATH_ST"
+                       inspect path-tmp-btnotacr replacing trailing spaces by low-value
+                       string  path-tmp-btnotacr delimited low-value
+                               "TMP-BTNOTACR_"   delimited size
+                               como-data         delimited size
+                               "_"               delimited size
+                               como-ora          delimited size
+                          into path-tmp-btnotacr
+                       end-string
+                       open output tmp-btnotacr
+                       set trovato to true
+                    end-if
+                    move btno-anno    to tbtno-anno     
+                    move btno-numero  to tbtno-numero   
+                    move btno-data    to tbtno-data     
+                    move btno-cod-cli to tbtno-cliente  
+                                         des-codice
+                    move btno-prg-destino to des-prog 
+                                             tbtno-destino  
+                    read destini no lock
+                         invalid move spaces to des-localita
+                    end-read
+                    move des-localita to tbtno-destinazione
+                    move btno-causale to tbtno-tca-codice 
+                                         tca-codice
+                    read tcaumag no lock
+                         invalid 
+                         move spaces to tca-descrizione
+                    end-read
+                    move tca-descrizione 
+                      to tbtno-tca-descrizione
+                    write tbtno-rec
+                 end-perform
+           end-start.
+
+           if trovato     
+              close tmp-btnotacr      
+              move "tmp-btnotacr"    to como-file
+              move path-tmp-btnotacr to ext-file
+              call   "zoom-gt"   using como-file, 
+                                       tbtno-rec
+                                 giving stato-zoom
+
+              cancel "zoom-gt"
+              delete file tmp-btnotacr
+              if stato-zoom = -1
+                 set errori to true
+              end-if
+           end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA

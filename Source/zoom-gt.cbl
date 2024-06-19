@@ -254,6 +254,8 @@
                 perform PREPARA-TORDINI-FATTURE-SI-FAT-ORD
            when "tnotacr"
                 perform PREPARA-TNOTACR             |CERCA 
+           when "tmp-btnotacr"
+                perform PREPARA-TMP-BTNOTACR            |CERCA
            when "btnotacr"
                 perform PREPARA-BTNOTACR            |CERCA
            when "tno-fat-no-pren"
@@ -8750,7 +8752,112 @@
            move  61                         to xzoom-field-offset(idx).
            move  6                          to xzoom-field-column(idx).
            move "Cod. IVA"                  to xzoom-field-name(idx).
-           move 3                           to xzoom-field-digits(Idx).
+           move 3                           to xzoom-field-digits(Idx). 
+
+      ***---
+       PREPARA-TMP-BTNOTACR.
+           initialize xzoom-linkage xzoom-ext-info(1).
+
+           move  zero to idx.
+           move  zero                       to xzoom-row.
+           move  zero                       to xzoom-cln.
+           move  16                         to xzoom-lw.
+           move  145                        to xzoom-sw.       
+           move  ext-file                   to xzoom-file-name(1).
+           move  8                          to xzoom-fields.
+
+      * CAMPO 1
+           add   1                          to idx.
+           move  4                          to xzoom-field-length(idx).
+           move  0                          to xzoom-field-offset(idx).
+           move  7                          to xzoom-field-column(idx).
+           move "Anno"                      to xzoom-field-name(idx).  
+           move 4                           to xzoom-field-digits(Idx).
+           move 0                           to xzoom-field-dec(Idx).
+           move "###0"                      to xzoom-field-fmt(Idx).
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
+
+      * CAMPO 2
+           add   1                          to idx.
+           move  8                          to xzoom-field-length(idx).
+           move  4                          to xzoom-field-offset(idx).
+           move  7                          to xzoom-field-column(idx).
+           move "Numero"                    to xzoom-field-name(idx).  
+           move 8                           to xzoom-field-digits(Idx).
+           move 0                           to xzoom-field-dec(Idx).
+           move "#######0"                  to xzoom-field-fmt(Idx).
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
+
+      * CAMPO 3
+           add  1                           to Idx.
+           move 8                           to xzoom-field-length(idx).
+           move 12                          to xzoom-field-offset(idx).
+           move "Data"                      to xzoom-field-name(idx).
+           set xzoom-field-unsigned(Idx)    to true.
+           set xzoom-ft-display(Idx)        to true.
+           move 10                          to xzoom-field-digits(Idx).
+           move   0                         to xzoom-field-dec(Idx).
+           move "AAAAMMGG-GG/MM/AAAA (GGG)" to xzoom-field-fmt(Idx).
+           move 13                          to xzoom-field-column(Idx).
+
+      * CAMPO 4
+           add  1                           to idx.
+           move 5                           to xzoom-field-length(idx).
+           move 8                           to xzoom-field-column(idx).
+           move 20                          to xzoom-field-offset(idx).
+           move "Cliente"                   to xzoom-field-name(idx).  
+           move 5                           to xzoom-field-digits(Idx).
+           move 0                           to xzoom-field-dec(Idx).
+           move "####0"                     to xzoom-field-fmt(Idx).
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
+
+      * CAMPO 5
+           add  1                           to idx.
+           move 5                           to xzoom-field-length(idx).
+           move 8                           to xzoom-field-column(idx).
+           move 25                          to xzoom-field-offset(idx).
+           move "Destino"                   to xzoom-field-name(idx).  
+           move 5                           to xzoom-field-digits(Idx).
+           move 0                           to xzoom-field-dec(Idx).
+           move "#####"                     to xzoom-field-fmt(Idx).
+           set xzoom-al-right(Idx)          to true.
+           set xzoom-field-unsigned(Idx )   to true.
+           set xzoom-ft-display(Idx)        to true.
+
+      * CAMPO 6
+           add  1                           to idx.
+           move 100                         to xzoom-field-length(idx).
+           move 30                          to xzoom-field-column(idx).
+           move 30                          to xzoom-field-offset(idx).
+           move "Destinazione"              to xzoom-field-name(idx).  
+           set xzoom-ft-alpha(idx)          to true.
+
+      * CAMPO 7
+           add  1                           to idx.
+           move 4                           to xzoom-field-length(idx).
+           move 6                           to xzoom-field-column(idx).
+           move 130                         to xzoom-field-offset(idx).
+           move "Causale"                   to xzoom-field-name(idx).
+           set xzoom-ft-alpha(idx)          to true.
+
+      * CAMPO 8
+           add  1                           to idx.
+           move 100                         to xzoom-field-length(idx).
+           move 30                          to xzoom-field-column(idx).
+           move 134                         to xzoom-field-offset(idx).
+           move "Descrizione"               to xzoom-field-name(idx).  
+           set xzoom-ft-alpha(idx)          to true.
+
+           move  -1                         to xzoom-delimiter-offset.
+           move  5                          to xzoom-delimiter-length.
+           move "000"                       to xzoom-from-value.
+           move "000"                       to xzoom-to-value.
            set  xzoom-ft-alpha (Idx)        to true.                                     
 
       ***---

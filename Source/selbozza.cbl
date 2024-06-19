@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          selbozza.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:18:32.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 19 giugno 2024 18:12:26.
        REMARKS.
       *{TOTEM}END
 
@@ -34,6 +34,7 @@
            COPY "clienti.sl".
            COPY "btnotacr.sl".
            COPY "tmagaz.sl".
+           COPY "tmp-btnotacr.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -45,6 +46,7 @@
            COPY "clienti.fd".
            COPY "btnotacr.fd".
            COPY "tmagaz.fd".
+           COPY "tmp-btnotacr.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -55,9 +57,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -144,6 +144,9 @@
                   USAGE IS HANDLE OF WINDOW.
        77 STATUS-tmagaz    PIC  X(2).
            88 Valid-STATUS-tmagaz VALUE IS "00" THRU "09". 
+       77 path-tmp-btnotacr            PIC  X(256).
+       77 STATUS-tmp-btnotacr          PIC  X(2).
+           88 Valid-STATUS-tmp-btnotacr VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -152,13 +155,14 @@
           88 Form2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-nota-FLAG-REFRESH PIC  9.
           88 scr-nota-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tordini-BUF     PIC X(907).
+       77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-zoom-tordini-BUF     PIC X(141).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
-       77 TMP-DataSet1-destini-BUF     PIC X(445).
-       77 TMP-DataSet1-clienti-BUF     PIC X(1910).
-       77 TMP-DataSet1-btnotacr-BUF     PIC X(781).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-btnotacr-BUF     PIC X(912).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
+       77 TMP-DataSet1-tmp-btnotacr-BUF     PIC X(234).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -199,6 +203,11 @@
        77 DataSet1-tmagaz-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tmagaz-KEY-Asc  VALUE "A".
           88 DataSet1-tmagaz-KEY-Desc VALUE "D".
+       77 DataSet1-tmp-btnotacr-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tmp-btnotacr-LOCK  VALUE "Y".
+       77 DataSet1-tmp-btnotacr-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tmp-btnotacr-KEY-Asc  VALUE "A".
+          88 DataSet1-tmp-btnotacr-KEY-Desc VALUE "D".
 
        77 tordini-k-causale-SPLITBUF  PIC X(17).
        77 tordini-k1-SPLITBUF  PIC X(23).
@@ -216,12 +225,14 @@
        77 tordini-k-andamento-cliente-SPLITBUF  PIC X(15).
        77 tordini-k-andamento-clides-SPLITBUF  PIC X(20).
        77 tordini-k-promo-SPLITBUF  PIC X(29).
-       77 tordini-k-or-SPLITBUF  PIC X(21).
+       77 tordini-k-or-SPLITBUF  PIC X(61).
        77 tordini-k-tor-inviare-SPLITBUF  PIC X(14).
+       77 tordini-k-tor-tipocli-SPLITBUF  PIC X(25).
+       77 tordini-k-tor-gdo-SPLITBUF  PIC X(28).
        77 zoom-tordini-zoom-tor-key01-SPLITBUF  PIC X(13).
        77 zoom-tordini-k-clidest-SPLITBUF  PIC X(11).
        77 tcaumag-k-mag-SPLITBUF  PIC X(5).
-       77 destini-K1-SPLITBUF  PIC X(51).
+       77 destini-K1-SPLITBUF  PIC X(111).
        77 destini-k-localita-SPLITBUF  PIC X(36).
        77 clienti-cli-K1-SPLITBUF  PIC X(47).
        77 clienti-cli-K3-SPLITBUF  PIC X(12).
@@ -230,7 +241,7 @@
        77 btnotacr-k-data-SPLITBUF  PIC X(17).
        77 btnotacr-k-fattura-SPLITBUF  PIC X(13).
        77 btnotacr-k-reso-SPLITBUF  PIC X(13).
-       77 btnotacr-k-bolla-SPLITBUF  PIC X(13).
+       77 btnotacr-k-bolla-SPLITBUF  PIC X(25).
        77 btnotacr-k-vettore-SPLITBUF  PIC X(18).
        77 btnotacr-k-nota-SPLITBUF  PIC X(13).
        77 btnotacr-k-fatman-SPLITBUF  PIC X(13).
@@ -904,6 +915,8 @@
            PERFORM OPEN-clienti
            PERFORM OPEN-btnotacr
            PERFORM OPEN-tmagaz
+      *    tmp-btnotacr OPEN MODE IS FALSE
+      *    PERFORM OPEN-tmp-btnotacr
       *    After Open
            .
 
@@ -991,6 +1004,18 @@
       * <TOTEM:END>
            .
 
+       OPEN-tmp-btnotacr.
+      * <TOTEM:EPT. INIT:selbozza, FD:tmp-btnotacr, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  OUTPUT tmp-btnotacr
+           IF NOT Valid-STATUS-tmp-btnotacr
+              PERFORM  scr-nota-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:selbozza, FD:tmp-btnotacr, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tordini
@@ -1001,6 +1026,8 @@
            PERFORM CLOSE-clienti
            PERFORM CLOSE-btnotacr
            PERFORM CLOSE-tmagaz
+      *    tmp-btnotacr CLOSE MODE IS FALSE
+      *    PERFORM CLOSE-tmp-btnotacr
       *    After Close
            .
 
@@ -1043,6 +1070,11 @@
       * <TOTEM:EPT. INIT:selbozza, FD:tmagaz, BeforeClose>
       * <TOTEM:END>
            CLOSE tmagaz
+           .
+
+       CLOSE-tmp-btnotacr.
+      * <TOTEM:EPT. INIT:selbozza, FD:tmp-btnotacr, BeforeClose>
+      * <TOTEM:END>
            .
 
        tordini-k-causale-MERGE-SPLITBUF.
@@ -1181,7 +1213,7 @@
            INITIALIZE tordini-k-or-SPLITBUF
            MOVE tor-cod-cli(1:5) TO tordini-k-or-SPLITBUF(1:5)
            MOVE tor-prg-destino(1:5) TO tordini-k-or-SPLITBUF(6:5)
-           MOVE tor-num-ord-cli(1:10) TO tordini-k-or-SPLITBUF(11:10)
+           MOVE tor-num-ord-cli(1:50) TO tordini-k-or-SPLITBUF(11:50)
            .
 
        tordini-k-tor-inviare-MERGE-SPLITBUF.
@@ -1190,6 +1222,30 @@
            tordini-k-tor-inviare-SPLITBUF(1:1)
            MOVE tor-chiave OF tordini(1:12) TO 
            tordini-k-tor-inviare-SPLITBUF(2:12)
+           .
+
+       tordini-k-tor-tipocli-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-tipocli-SPLITBUF
+           MOVE tor-tipocli OF tordini(1:2) TO 
+           tordini-k-tor-tipocli-SPLITBUF(1:2)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(3:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-tipocli-SPLITBUF(8:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-tipocli-SPLITBUF(13:12)
+           .
+
+       tordini-k-tor-gdo-MERGE-SPLITBUF.
+           INITIALIZE tordini-k-tor-gdo-SPLITBUF
+           MOVE tor-gdo OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(1:5)
+           MOVE tor-cod-cli OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(6:5)
+           MOVE tor-prg-destino OF tordini(1:5) TO 
+           tordini-k-tor-gdo-SPLITBUF(11:5)
+           MOVE tor-chiave OF tordini(1:12) TO 
+           tordini-k-tor-gdo-SPLITBUF(16:12)
            .
 
        DataSet1-tordini-INITSTART.
@@ -1310,6 +1366,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT 
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ" TO TOTEM-ERR-MODE
@@ -1358,6 +1416,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ NEXT" TO TOTEM-ERR-MODE
@@ -1406,6 +1466,8 @@
            PERFORM tordini-k-promo-MERGE-SPLITBUF
            PERFORM tordini-k-or-MERGE-SPLITBUF
            PERFORM tordini-k-tor-inviare-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-tipocli-MERGE-SPLITBUF
+           PERFORM tordini-k-tor-gdo-MERGE-SPLITBUF
            MOVE STATUS-tordini TO TOTEM-ERR-STAT
            MOVE "tordini" TO TOTEM-ERR-FILE
            MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
@@ -1752,9 +1814,9 @@
 
        destini-K1-MERGE-SPLITBUF.
            INITIALIZE destini-K1-SPLITBUF
-           MOVE des-ragsoc-1(1:40) TO destini-K1-SPLITBUF(1:40)
-           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(41:5)
-           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(46:5)
+           MOVE des-ragsoc-1(1:100) TO destini-K1-SPLITBUF(1:100)
+           MOVE des-codice(1:5) TO destini-K1-SPLITBUF(101:5)
+           MOVE des-prog(1:5) TO destini-K1-SPLITBUF(106:5)
            .
 
        destini-k-localita-MERGE-SPLITBUF.
@@ -2138,7 +2200,7 @@
        btnotacr-k-bolla-MERGE-SPLITBUF.
            INITIALIZE btnotacr-k-bolla-SPLITBUF
            MOVE btno-anno-bolla(1:4) TO btnotacr-k-bolla-SPLITBUF(1:4)
-           MOVE btno-num-bolla(1:8) TO btnotacr-k-bolla-SPLITBUF(5:8)
+           MOVE btno-num-bolla(1:20) TO btnotacr-k-bolla-SPLITBUF(5:20)
            .
 
        btnotacr-k-vettore-MERGE-SPLITBUF.
@@ -2492,6 +2554,76 @@
       * <TOTEM:END>
            .
 
+       DataSet1-tmp-btnotacr-INITSTART.
+           .
+
+       DataSet1-tmp-btnotacr-INITEND.
+           .
+
+       DataSet1-tmp-btnotacr-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeReadRecord>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-btnotacr-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeReadNext>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-btnotacr-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeReadPrev>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-btnotacr-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeWrite>
+      * <TOTEM:END>
+           WRITE tbtno-rec OF tmp-btnotacr.
+           MOVE STATUS-tmp-btnotacr TO TOTEM-ERR-STAT
+           MOVE "tmp-btnotacr" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-btnotacr-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tmp-btnotacr TO TOTEM-ERR-STAT
+           MOVE "tmp-btnotacr" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tmp-btnotacr-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tmp-btnotacr TO TOTEM-ERR-STAT
+           MOVE "tmp-btnotacr" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tmp-btnotacr, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE tor-rec OF tordini
            INITIALIZE zoom-tor-rec OF zoom-tordini
@@ -2500,6 +2632,7 @@
            INITIALIZE cli-rec OF clienti
            INITIALIZE btno-rec OF btnotacr
            INITIALIZE mag-rec OF tmagaz
+           INITIALIZE tbtno-rec OF tmp-btnotacr
            .
 
 
@@ -2554,6 +2687,14 @@
       * FD's Initialize Paragraph
        DataSet1-tmagaz-INITREC.
            INITIALIZE mag-rec OF tmagaz
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tmp-btnotacr-INITREC.
+           INITIALIZE tbtno-rec OF tmp-btnotacr
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -3281,28 +3422,25 @@
                       display message "Documento non valido"
                               title tit-err
                                icon mb-warning-icon
-                   else
-                      move tor-data-fattura to btno-data-fatt
-                      move tor-anno-fattura to btno-anno-fatt
-                      move tor-num-fattura  to btno-num-fatt
-                      read btnotacr key k-fattura
-                           invalid continue
-                       not invalid
-                           move btno-numero to numero-edit
-                           display message
-                          "ATTENZIONE!!"
-                   x"0d0a""Esiste già la bozza n. " numero-edit " anno "
-            btno-anno
-                   x"0d0a""che fa riferimento alla fattura indicata."
-                   x"0d0a""Procedere comunque?"
-                                     title titolo
-                                      type mb-yes-no
-                                      icon 2
-                                    giving scelta
-                           if scelta = mb-no
-                              set errori to true
-                           end-if
-                      end-read
+                   else             
+                      perform ELENCO-FATTURE
+      *                read btnotacr key k-fattura
+      *                     invalid continue
+      *                 not invalid
+      *                     move btno-numero to numero-edit
+      *                     display message
+      *                    "ATTENZIONE!!"
+      *             x"0d0a""Esiste già la bozza n. " numero-edit " anno " btno-anno
+      *             x"0d0a""che fa riferimento alla fattura indicata."
+      *             x"0d0a""Procedere comunque?"
+      *                               title titolo
+      *                                type mb-yes-no
+      *                                icon 2
+      *                              giving scelta
+      *                     if scelta = mb-no
+      *                        set errori to true
+      *                     end-if
+      *                end-read
                    end-if
                 end-if
            end-read
@@ -3317,31 +3455,25 @@
       * <TOTEM:PARA. CONTROLLO-BOLLA>
            set trovata-bolla to false
 
-           start tordini key not < k-bolla
-              invalid
+           start tordini key >= k-bolla
+                 invalid
                  set errori to true
                  display message "Bolla non caricata"
-                         title = tit-err
-                         icon mb-warning-icon
-              not invalid
+                           title tit-err
+                            icon mb-warning-icon
+             not invalid
                  perform until 1 = 2
                     read tordini next
-                       at end
-                          exit perform
+                       at end exit perform
                     end-read
-                    if anno not = tor-anno-bolla
-                       exit perform
-                    end-if
-                    if numero-b not = tor-num-bolla
+                    if anno not = tor-anno-bolla or
+                       numero-b not = tor-num-bolla
                        exit perform
                     end-if
                     set trovata-bolla to true
 
                     move tor-causale     to tca-codice
-                    read tcaumag
-                       invalid
-                          continue
-                    end-read
+                    read tcaumag invalid continue end-read
 
                     if tca-cod-magaz = save-mag
                        set bolla-ok   to true
@@ -3384,26 +3516,26 @@
                             title tit-err
                              icon mb-warning-icon
                  else
-                    move tor-anno-fattura to btno-anno-fatt
-                    move tor-num-fattura  to btno-num-fatt
-                    read btnotacr key k-fattura
-                         invalid continue
-                     not invalid
-                         move btno-numero to numero-edit
-                         display message
-                        "ATTENZIONE!!"
-                 x"0d0a""Esiste già la bozza n. " numero-edit " anno " 
-           btno-anno
-                 x"0d0a""che fa riferimento alla fattura indicata."
-                 x"0d0a""Procedere comunque?"
-                                   title titolo
-                                    type mb-yes-no
-                                    icon 2
-                                  giving scelta
-                         if scelta = mb-no
-                            set errori to true
-                         end-if
-                    end-read
+                    perform ELENCO-FATTURE
+      *              move tor-anno-bolla to btno-anno-fattura
+      *              move tor-num-bolla  to btno-num-fattura
+      *              read btnotacr key k-fattura
+      *                   invalid continue
+      *               not invalid
+      *                   move btno-numero to numero-edit
+      *                   display message
+      *                  "ATTENZIONE!!"
+      *           x"0d0a""Esiste già la bozza n. " numero-edit " anno " btno-anno
+      *           x"0d0a""che fa riferimento alla fattura indicata."
+      *           x"0d0a""Procedere comunque?"
+      *                             title titolo
+      *                              type mb-yes-no
+      *                              icon 2
+      *                            giving scelta
+      *                   if scelta = mb-no
+      *                      set errori to true
+      *                   end-if
+      *              end-read
                  end-if
               end-if
            end-if
@@ -3495,6 +3627,80 @@
       *****                    title tit-err
       *****                     icon 2
       *****     end-read 
+           .
+      * <TOTEM:END>
+
+       ELENCO-FATTURE.
+      * <TOTEM:PARA. ELENCO-FATTURE>
+           set trovato to false                   
+           move tor-anno-fattura to btno-anno-fatt
+           move tor-num-fattura  to btno-num-fatt
+           start btnotacr key >= k-fattura
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read btnotacr next 
+                      at end exit perform 
+                    end-read
+                    if btno-anno-fatt not = tor-anno-fattura or
+                       btno-num-fatt  not = tor-num-fattura 
+                       exit perform 
+                    end-if     
+                    if not trovato                       
+                       accept como-data from century-date
+                       accept como-ora  from time
+                       initialize path-tmp-btnotacr
+                       accept  path-tmp-btnotacr from environment "PATH_
+      -    "ST"
+                       inspect path-tmp-btnotacr replacing trailing 
+           spaces by low-value
+                       string  path-tmp-btnotacr delimited low-value
+                               "TMP-BTNOTACR_"   delimited size
+                               como-data         delimited size
+                               "_"               delimited size
+                               como-ora          delimited size
+                          into path-tmp-btnotacr
+                       end-string
+                       open output tmp-btnotacr
+                       set trovato to true
+                    end-if
+                    move btno-anno    to tbtno-anno     
+                    move btno-numero  to tbtno-numero   
+                    move btno-data    to tbtno-data     
+                    move btno-cod-cli to tbtno-cliente  
+                                         des-codice
+                    move btno-prg-destino to des-prog 
+                                             tbtno-destino  
+                    read destini no lock
+                         invalid move spaces to des-localita
+                    end-read
+                    move des-localita to tbtno-destinazione
+                    move btno-causale to tbtno-tca-codice 
+                                         tca-codice
+                    read tcaumag no lock
+                         invalid 
+                         move spaces to tca-descrizione
+                    end-read
+                    move tca-descrizione 
+                      to tbtno-tca-descrizione
+                    write tbtno-rec
+                 end-perform
+           end-start.
+
+           if trovato     
+              close tmp-btnotacr      
+              move "tmp-btnotacr"    to como-file
+              move path-tmp-btnotacr to ext-file
+              call   "zoom-gt"   using como-file, 
+                                       tbtno-rec
+                                 giving stato-zoom
+
+              cancel "zoom-gt"
+              delete file tmp-btnotacr
+              if stato-zoom = -1
+                 set errori to true
+              end-if
+           end-if 
            .
       * <TOTEM:END>
 
