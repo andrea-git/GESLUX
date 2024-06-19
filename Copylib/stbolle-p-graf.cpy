@@ -671,8 +671,19 @@
               call "C$JUSTIFY" using st-dec-qta, "R"
 
               initialize line-riga
-              move courier-7 to spl-hfont
-              move struttura-stampa to line-riga
+              move courier-7     to spl-hfont
+              move st-cod-art    to st-cod-art-v2    
+              move st-cod-dog    to st-cod-dog-v2    
+              move st-colli      to st-colli-v2      
+              move st-imb        to st-imb-v2        
+              move st-des-art    to st-des-art-v2    
+              move st-codart-cli to st-codart-cli-v2 
+              move st-peso-utf   to st-peso-utf-v2   
+              move st-udm        to st-udm-v2        
+              move st-qta        to st-qta-v2        
+              move st-dec-qta    to st-dec-qta-v2   
+
+              move struttura-stampa-v2 to line-riga
               move 5   to spl-tipo-colonna
               perform STAMPA-RIGA-GRAF
               add 1 to WrittenRows

@@ -8751,7 +8751,7 @@
            move  6                          to xzoom-field-column(idx).
            move "Cod. IVA"                  to xzoom-field-name(idx).
            move 3                           to xzoom-field-digits(Idx).
-           set  xzoom-ft-alpha (Idx)        to true. 
+           set  xzoom-ft-alpha (Idx)        to true.                                     
 
       ***---
        PREPARA-BTNOTACR.

@@ -364,28 +364,40 @@ LUBEXX     88 si-stampante-bolle-default value "S", "s".
          03 st-causale             pic x(18).
          03 filler                 pic x(1).
          03 st-collegate           pic x(35).
-
+                              
        01  struttura-stampa.
          03 st-dati.
-           05 st-cod-art           pic z(5).
-           05 filler               pic x.
+           05 st-cod-art           pic z(5).   |6
+           05 filler               pic x.      |7
            05 st-cod-dog           pic x(8).
-           05 filler               pic x(2).
+           05 filler               pic x(2).   |17
            05 st-colli             pic z(5).
            05 filler               pic x(4).
            05 st-imb               pic x(18).
            05 filler               pic x(6).
            05 st-des-art           pic x(30).
-           05 filler               pic x.
+           05 filler               pic x.      |79
            05 st-codart-cli        pic x(10).
-           05 filler               pic x.
-           05 st-peso-utf          pic zzz9,999 blank zero.
-           05 filler               pic x(3).
+           05 filler               pic x.      |90
+           05 st-peso-utf          pic zzz9,999 blank zero. |98
+           05 filler               pic x(3). |101
            05 st-udm               pic xx.
-           05 filler               pic x(6).
-           05 st-qta               pic zz.zzz.zzz.
-           05 filler               pic x(7).
+           05 filler               pic x(6). |109
+           05 st-qta               pic zz.zzz.zzz. |119
+           05 filler               pic x(7).       |126
            05 st-dec-qta           pic x(8). 
+
+       01  struttura-stampa-v2.
+         05 st-cod-art-v2           pic z(5).   |1
+         05 st-cod-dog-v2           pic x(8).   |2
+         05 st-colli-v2             pic z(5).   |3
+         05 st-imb-v2               pic x(18).  |4
+         05 st-des-art-v2           pic x(30).  |5
+         05 st-codart-cli-v2        pic x(10).  |6
+         05 st-peso-utf-v2          pic zzz9,999 blank zero. |7
+         05 st-udm-v2               pic xx.|8
+         05 st-qta-v2               pic zz.zzz.zzz. |9
+         05 st-dec-qta-v2           pic x(8). |10
 
        01  struttura-stampa-serie2.
          03 st-dati-s2.

@@ -1,0 +1,13 @@
+      *(( XFD FILE = tmp-btnotacr ))
+       FD  tmp-btnotacr.
+       01 tbtno-rec.
+           05 tbtno-chiave.
+               10 tbtno-anno       PIC  9(4).
+               10 tbtno-numero     PIC  9(8).
+           05 tbtno-dati.
+               10 tbtno--data      PIC  9(8).
+               10 tbtno--cliente   PIC  x(100).
+               10 tbtno-destino    PIC  x(100).
+               10 tbtno-destinazione           PIC  x(100).
+               10 tbtno-tca-codice PIC  x(4).
+               10 tbtno-tca-descrizione        PIC  x(100).

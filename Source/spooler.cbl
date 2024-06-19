@@ -4854,86 +4854,70 @@
 
            when 5
                 call "WIN$PRINTER"  using winprint-set-data-columns,
-                                         6, 7, 17, 25, 26, 46, 76, 87, 
-                                         96, 97, 106, 123, 131
+                                         6, 14, 19, 37, 67, 77, 85, 87, 
+                                         97, 106
+      *                                   6, 7, 17, 25, 26, 46, 76, 87, 
+      *                                   96, 97, 106, 123, 131
                                    giving return-code
                                    
                 move wprtalign-right   to winprint-col-alignment
-
+               |1
                 move 0,8               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
                                    
                 move wprtalign-left        to winprint-col-alignment
-
+                |2                     
                 move 1,8               to winprint-col-start
+                move 0,1               to winprint-col-indent
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-                                   
-                move 1,9               to winprint-col-start
-                call "WIN$PRINTER"  using winprint-set-page-column, 
-                                          winprint-column             
-                                   giving return-code
-                                   
-
+                |3
                 move wprtalign-right        to winprint-col-alignment
                 move 3,4               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-
-                move wprtalign-left        to winprint-col-alignment
+                |4
+                move wprtalign-left     to winprint-col-alignment
+                move 0,15               to winprint-col-indent
                 move 4,00               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-
-                move wprtalign-left        to winprint-col-alignment
-                move 4,2               to winprint-col-start
+                |5
+                move 6,4               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-
-                move 6,55              to winprint-col-start
-                call "WIN$PRINTER"  using winprint-set-page-column, 
-                                          winprint-column             
-                                   giving return-code
-
+                |6
                 move 11,5              to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-
-                move 13,00               to winprint-col-start
+                |7
+                move 12,50               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-
-                move 14,2               to winprint-col-start
+                |8
+                move 14,1               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-                move 14,35               to winprint-col-start
+                |9
+                move wprtalign-right    to winprint-col-alignment
+                move 16,0               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
                                    giving return-code
-
-                move wprtalign-right        to winprint-col-alignment
-                move 15,6               to winprint-col-start
+                |10                                              
+                move wprtalign-left     to winprint-col-alignment
+                move 17,1               to winprint-col-start
                 call "WIN$PRINTER"  using winprint-set-page-column, 
                                           winprint-column             
-                                   giving return-code
-                move 16,5               to winprint-col-start
-                call "WIN$PRINTER"  using winprint-set-page-column, 
-                                          winprint-column             
-                                   giving return-code
-
-
-                move 17,95              to winprint-col-start
-                call "WIN$PRINTER"  using winprint-set-page-column, 
-                                          winprint-column
                                    giving return-code
 
            when 6
