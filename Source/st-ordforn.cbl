@@ -821,7 +821,7 @@
                           end-if
                        end-if        
 
-                       |Cerco il primo listino fornitore
+                       |Cerco il primo listino fornitore    
                        move spaces to mag-indirizzo
                        move 0      to tlis-codice
                        move low-value  to rof-rec
@@ -851,7 +851,7 @@
                                 end-if
                              end-perform
                        end-start
-                       if tlis-codice = 0
+                       if mag-indirizzo = spaces
                           move tof-causale  to tca-codice
                           read tcaumag 
                                invalid move spaces to tca-cod-magaz
