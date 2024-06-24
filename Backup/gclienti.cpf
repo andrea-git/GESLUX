@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E86E145020-122-988727361
+PROGRAM_UNIQUE_CODE=TOTEM-7E861815254-70-2304223015
 
 {{@DESCRIPTION:
 
@@ -8019,7 +8019,7 @@ Begin Screen Form1
             Size Unit         = Default
             Style             = Vscroll Bar
             Tab Order         = 12
-            Use Return        = TRUE
+            Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
             Visible           = NONE
@@ -8081,7 +8081,7 @@ Begin Screen Form1
             Size Unit         = Default
             Style             = Vscroll Bar
             Tab Order         = 13
-            Use Return        = TRUE
+            Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
             Visible           = NONE
@@ -8509,7 +8509,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-agente
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 26,38
+            SCREEN-LINE       = 26,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-agente
@@ -8962,7 +8962,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-note
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 31,38
+            SCREEN-LINE       = 31,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-note
@@ -11396,7 +11396,7 @@ Begin Screen Form1
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-15
-            SCREEN-COL        = 83,33
+            SCREEN-COL        = 83,34
             SCREEN-LINE       = 17,23
             LOCK-CONTROL      = FALSE
             LEVEL             = 10
@@ -11499,7 +11499,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18
             SCREEN-COL        = 138,17
-            SCREEN-LINE       = 24,38
+            SCREEN-LINE       = 24,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18
@@ -11533,7 +11533,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-19
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 26,38
+            SCREEN-LINE       = 26,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-19
@@ -11975,7 +11975,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-33
             SCREEN-COL        = 5,17
-            SCREEN-LINE       = 31,38
+            SCREEN-LINE       = 31,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-33
@@ -12043,7 +12043,7 @@ Begin Screen Form1
          End
          Begin Data.Label lab-agente
             SCREEN-COL        = 28,17
-            SCREEN-LINE       = 26,38
+            SCREEN-LINE       = 26,39
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = lab-agente
@@ -14161,7 +14161,7 @@ Begin Screen Form1
             Size Unit         = Default
             Style             = Vscroll Bar
             Tab Order         = 13
-            Use Return        = TRUE
+            Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
             Visible           = NONE

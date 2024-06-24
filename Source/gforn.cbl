@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 14 giugno 2024 17:06:55.
+       DATE-WRITTEN.        lunedì 24 giugno 2024 17:38:34.
        REMARKS.
       *{TOTEM}END
 
@@ -310,9 +310,9 @@
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-KEY2-ORDER  PIC X VALUE "A".
-       77 TMP-Form1-clienti-RESTOREBUF  PIC X(4010).
+       77 TMP-Form1-clienti-RESTOREBUF  PIC X(4410).
        77 TMP-Form1-KEYIS  PIC 9(3) VALUE 1.
-       77 Form1-MULKEY-TMPBUF   PIC X(4010).
+       77 Form1-MULKEY-TMPBUF   PIC X(4410).
        77 Form1-KEYISTMP2   PIC X(46).
       * Form1 : PKEY & AKEY'S TEMP BUFFER
        77 Form1-PKEYTMP   PIC X(6).
@@ -334,7 +334,7 @@
        77 TMP-DataSet1-ABI-BUF     PIC X(167).
        77 TMP-DataSet1-tmp-nforn-BUF     PIC X(375).
        77 TMP-DataSet1-nforn-BUF     PIC X(375).
-       77 TMP-DataSet1-clienti-BUF     PIC X(4010).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
 
        77 TMP-DataSet1-tmp-nforn-dest-BUF     PIC X(379).
        77 TMP-DataSet1-nforn-dest-BUF     PIC X(379).
@@ -806,7 +806,6 @@
            WIDTH-IN-CELLS,
            MAX-TEXT 500,
            VSCROLL-BAR,
-           USE-RETURN,
            VALUE ef-mail-BUF,
            .
 
@@ -1231,7 +1230,7 @@
            Form1-Br-2acaa, 
            Bar,
            COL 21,17, 
-           LINE 34,77,
+           LINE 34,76,
            SIZE 135,00 ,
            ID IS 562,
            HEIGHT-IN-CELLS,
@@ -2119,7 +2118,6 @@
            WIDTH-IN-CELLS,
            MAX-TEXT 500,
            VSCROLL-BAR,
-           USE-RETURN,
            VALUE ef-mail-d-BUF,
            .
       * ENTRY FIELD
@@ -2355,7 +2353,7 @@
            ef-mail-ord-d, 
            Entry-Field, 
            COL 17,50, 
-           LINE 39,77,
+           LINE 39,76,
            LINES 1,31 ,
            SIZE 57,00 ,
            BOXED,
@@ -2373,7 +2371,7 @@
            ef-mail-ord-cc, 
            Entry-Field, 
            COL 92,50, 
-           LINE 40,00,
+           LINE 39,99,
            LINES 1,31 ,
            SIZE 57,00 ,
            BOXED,
@@ -2391,7 +2389,7 @@
            pb-nota-ord-d, 
            Push-Button, 
            COL 130,67, 
-           LINE 37,23,
+           LINE 37,22,
            LINES 23,00 ,
            SIZE 109,00 ,
            BITMAP-HANDLE NOTE_O-BMP,
@@ -2727,7 +2725,7 @@
            Form1-La-49, 
            Label, 
            COL 4,33, 
-           LINE 43,23,
+           LINE 43,22,
            LINES 2,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -2807,7 +2805,7 @@
            Form1-Br-3, 
            Bar,
            COL 20,67, 
-           LINE 42,23,
+           LINE 42,22,
            SIZE 135,00 ,
            ID IS 131,
            HEIGHT-IN-CELLS,
@@ -3080,7 +3078,7 @@
            Form1-La-14aa, 
            Label, 
            COL 4,50, 
-           LINE 39,77,
+           LINE 39,76,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,
@@ -3112,7 +3110,7 @@
            Form1-La-14aaa, 
            Label, 
            COL 78,50, 
-           LINE 40,00,
+           LINE 39,99,
            LINES 1,31 ,
            SIZE 10,00 ,
            FONT IS Small-Font,

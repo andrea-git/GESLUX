@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E86E145023-981-116626992
+PROGRAM_UNIQUE_CODE=TOTEM-7E8618153755-860-2025511578
 
 {{@DESCRIPTION:
 
@@ -8450,7 +8450,7 @@ Begin Screen Form1
             Size Unit         = Default
             Style             = Vscroll Bar
             Tab Order         = 12
-            Use Return        = TRUE
+            Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
             Visible           = NONE
@@ -9655,7 +9655,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-2acaa
             SCREEN-COL        = 21,17
-            SCREEN-LINE       = 34,77
+            SCREEN-LINE       = 34,76
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-2acaa
@@ -11786,7 +11786,7 @@ Begin Screen Form1
             Size Unit         = Default
             Style             = Vscroll Bar
             Tab Order         = 13
-            Use Return        = TRUE
+            Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
             Visible           = NONE
@@ -12475,7 +12475,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-mail-ord-d
             SCREEN-COL        = 17,50
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 39,76
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-mail-ord-d
@@ -12537,7 +12537,7 @@ Begin Screen Form1
          End
          Begin Data.Entry-Field ef-mail-ord-cc
             SCREEN-COL        = 92,50
-            SCREEN-LINE       = 40,00
+            SCREEN-LINE       = 39,99
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = ef-mail-ord-cc
@@ -12599,7 +12599,7 @@ Begin Screen Form1
          End
          Begin Push-Button pb-nota-ord-d
             SCREEN-COL        = 130,67
-            SCREEN-LINE       = 37,23
+            SCREEN-LINE       = 37,22
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = pb-nota-ord-d
@@ -13430,7 +13430,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-49
             SCREEN-COL        = 4,33
-            SCREEN-LINE       = 43,23
+            SCREEN-LINE       = 43,22
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-49
@@ -13599,7 +13599,7 @@ Begin Screen Form1
          End
          Begin Bar Form1-Br-3
             SCREEN-COL        = 20,67
-            SCREEN-LINE       = 42,23
+            SCREEN-LINE       = 42,22
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-Br-3
@@ -14160,7 +14160,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-14aa
             SCREEN-COL        = 4,50
-            SCREEN-LINE       = 39,77
+            SCREEN-LINE       = 39,76
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-14aa
@@ -14228,7 +14228,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-14aaa
             SCREEN-COL        = 78,50
-            SCREEN-LINE       = 40,00
+            SCREEN-LINE       = 39,99
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-14aaa

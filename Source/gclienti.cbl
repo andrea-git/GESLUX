@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 14 giugno 2024 17:33:16.
+       DATE-WRITTEN.        lunedì 24 giugno 2024 17:04:34.
        REMARKS.
       *{TOTEM}END
 
@@ -1272,7 +1272,6 @@
            WIDTH-IN-CELLS,
            MAX-TEXT 500,
            VSCROLL-BAR,
-           USE-RETURN,
            VALUE ef-mail-BUF,
            .
 
@@ -1292,7 +1291,6 @@
            WIDTH-IN-CELLS,
            MAX-TEXT 500,
            VSCROLL-BAR,
-           USE-RETURN,
            VALUE ef-maila-BUF,
            .
 
@@ -1435,7 +1433,7 @@
            ef-agente, 
            Entry-Field, 
            COL 21,17, 
-           LINE 26,38,
+           LINE 26,39,
            LINES 1,31 ,
            SIZE 6,00 ,
            BOXED,
@@ -1598,7 +1596,7 @@
            ef-note, 
            Entry-Field, 
            COL 21,17, 
-           LINE 31,38,
+           LINE 31,39,
            LINES 8,50 ,
            SIZE 133,00 ,
            BOXED,
@@ -2511,7 +2509,7 @@
        10
            Form1-La-15, 
            Label, 
-           COL 83,33, 
+           COL 83,34, 
            LINE 17,23,
            LINES 1,31 ,
            SIZE 9,00 ,
@@ -2560,7 +2558,7 @@
            Form1-La-18, 
            Label, 
            COL 138,17, 
-           LINE 24,38,
+           LINE 24,39,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2578,7 +2576,7 @@
            Form1-La-19, 
            Label, 
            COL 5,17, 
-           LINE 26,38,
+           LINE 26,39,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2792,7 +2790,7 @@
            Form1-La-33, 
            Label, 
            COL 5,17, 
-           LINE 31,38,
+           LINE 31,39,
            LINES 1,31 ,
            SIZE 15,00 ,
            FONT IS Small-Font,
@@ -2824,7 +2822,7 @@
            lab-agente, 
            Label, 
            COL 28,17, 
-           LINE 26,38,
+           LINE 26,39,
            LINES 1,31 ,
            SIZE 51,00 ,
            COLOR IS 5,
@@ -3704,7 +3702,6 @@
            WIDTH-IN-CELLS,
            MAX-TEXT 500,
            VSCROLL-BAR,
-           USE-RETURN,
            VALUE ef-mail-d-BUF,
            .
       * ENTRY FIELD
