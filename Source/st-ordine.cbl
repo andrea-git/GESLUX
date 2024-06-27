@@ -45,7 +45,7 @@
            copy "trova-parametro.def".
        
        78  titolo                value "Stampa Ordine".
-       78  MaxRighe              value 57.
+       78  MaxRighe              value 56.
                                  
        77  status-check-rordini  pic xx.
        77  status-check-rordini2 pic xx.
@@ -876,10 +876,23 @@
                 move "STAMPA MANUALE ORDINE" to spl-riga-stampa
            end-evaluate.
            call "spooler" using spooler-link.
-           move 0 to spl-tipo-colonna.
+
+           move CourierNew12B to spl-hfont.  
+           move 1,5           to spl-riga.
+           move "LUBEX SPA"   to spl-riga-stampa.
+           perform SCRIVI.                   
 
            move CourierNew10 to spl-hfont.
-           move 2            to spl-riga.
+           move "Via G. Di Vittorio 13" to spl-riga-stampa
+           perform SCRIVI.
+           move "20090 Vimodrone(MI)"   to spl-riga-stampa.
+           perform SCRIVI.
+           move "PIVA: IT00785630963"   to spl-riga-stampa.
+           perform SCRIVI.
+           
+           move CourierNew10 to spl-hfont.
+           move 4            to spl-riga.
+           move 0            to spl-tipo-colonna.
            
            set  cli-tipo-C  to true.
            move tor-cod-cli to cli-codice.

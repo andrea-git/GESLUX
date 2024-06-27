@@ -2756,6 +2756,11 @@ PATCH         commit transaction
 
               perform AGGIORNA-STATO-ORDF
 
+              if tof-automatico
+                 call   "ordf-ord" using tof-anno tof-numero tof-numero
+                 cancel "ordf-ord"
+              end-if
+
               move tof-chiave   to stof-tof-chiave
               if PrezzoCambiato   
                  set stof-normale  to true
