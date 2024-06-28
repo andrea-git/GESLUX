@@ -578,7 +578,7 @@
 
            call "WIN$PRINTER" using winprint-graph-brush, 
                                     winprint-data
-                             giving result.
+                             giving result.    
 
 
 
@@ -1513,7 +1513,7 @@
                                            47
                                     giving return-code
                                       
-                move 0,7               to winprint-col-start                
+                move 0                 to winprint-col-start                
                 move wprtalign-center  to winprint-col-alignment
                 call "WIN$PRINTER"  using winprint-set-page-column,
                                           winprint-column
