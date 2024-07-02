@@ -435,8 +435,7 @@
                       read tcaumag no lock
                            invalid continue
                        not invalid
-                           if tca-causale-EDI not = spaces and 
-                              cli-gdo = "MAXID"
+                           if tca-causale-EDI not = spaces 
                               set record-ok to true
                            end-if
                       end-read
