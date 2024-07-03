@@ -10,30 +10,14 @@
        FILE-CONTROL.
            copy "rordforn.sl".
            copy "articoli.sl".
-
-       SELECT des-rordforn
-           ASSIGN       TO path-des-rordforn
-           ORGANIZATION IS INDEXED
-           ACCESS MODE  IS DYNAMIC
-           FILE STATUS  IS STATUS-des-rordforn
-           RECORD KEY   IS drof-chiave.
+           copy "tmp-des-rordforn.sl".
 
       *****************************************************************
        DATA DIVISION.
        FILE SECTION.
            copy "rordforn.fd".
            copy "articoli.fd".
-
-       FD  des-rordforn.
-       01 drof-rec.
-          05 drof-chiave.    
-             10 drof-chiave-testa.
-                15 drof-anno           pic  9(4).
-                15 drof-numero         pic  9(8).
-             10 drof-art-descrizione   pic x(100).
-             10 drof-cod-articolo      pic 9(6).
-             10 drof-prog              pic 9(6).
-          05 drof-rof-dati             pic x(2000).
+           copy "tmp-des-rordforn.fd".
 
        WORKING-STORAGE SECTION.
 
@@ -56,12 +40,10 @@
            88  errori            value "ER".
 
        LINKAGE SECTION.    
-       77  link-anno            pic 9(4).        
-       77  link-primo           pic 9(8).
-       77  link-ultimo          pic 9(8).
+       copy "link-ordf-ord.def".
 
       ******************************************************************
-       PROCEDURE DIVISION USING link-anno link-primo link-ultimo.
+       PROCEDURE DIVISION USING link-ordf-ord.
 
       ***---
        MAIN-PRG.
@@ -95,21 +77,21 @@
        OPEN-FILES.               
            open i-o    rordforn.
            open input  articoli.
-           open output des-rordforn.
-           close       des-rordforn.
-           open i-o    des-rordforn.
+           open output tmp-des-rordforn.
+           close       tmp-des-rordforn.
+           open i-o    tmp-des-rordforn.
 
       ***---
        ELABORAZIONE.
-           move low-value  to rof-rec.
-           move link-anno  to rof-anno.
-           move link-primo to rof-numero.
+           move low-value to rof-rec.
+           move loo-anno  to rof-anno.
+           move loo-primo to rof-numero.
            start rordforn key >= rof-chiave
                  invalid continue
              not invalid
                  perform until 1 = 2
                     read rordforn next at end exit perform end-read
-                    if rof-numero > link-ultimo
+                    if rof-numero > loo-ultimo
                        exit perform
                     end-if
                     move rof-dati to drof-rof-dati
@@ -120,6 +102,7 @@
                     move rof-chiave-testa to drof-chiave-testa
                     move art-descrizione  to drof-art-descrizione
                     move rof-cod-articolo to drof-cod-articolo
+                    move rof-riga         to drof-rof-riga
                     move 0 to drof-prog
                     perform until 1 = 2
                        add 1 to drof-prog
@@ -128,31 +111,40 @@
                          not invalid exit perform
                        end-write
                     end-perform
-                    delete rordforn record
-                 end-perform
-           end-start.
-
-           move low-value to drof-chiave.
-           start des-rordforn key >= drof-chiave
-                 invalid continue
-             not invalid
-                 perform until 1 = 2
-                    read des-rordforn next at end exit perform end-read
-                    if s-numero = 0 or drof-numero not = s-numero  
-                       move drof-numero to s-numero
-                       move 0 to rof-riga
+                    if loo-funzione = "S"
+                       delete rordforn record
                     end-if
-                    add 1 to rof-riga
-                    move drof-chiave-testa to rof-chiave-testa
-                    move drof-rof-dati to rof-dati
-                    write rof-rec
                  end-perform
            end-start.
+           if loo-funzione = "O"
+              move path-des-rordforn to loo-path
+           else
+              move low-value to drof-chiave
+              start tmp-des-rordforn key >= drof-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read tmp-des-rordforn next 
+                         at end exit perform 
+                       end-read
+                       if s-numero = 0 or drof-numero not = s-numero  
+                          move drof-numero to s-numero
+                          move 0 to rof-riga
+                       end-if
+                       add 1 to rof-riga
+                       move drof-chiave-testa to rof-chiave-testa
+                       move drof-rof-dati     to rof-dati
+                       write rof-rec
+                    end-perform
+              end-start
+           end-if.
 
       ***---
        CLOSE-FILES.
-           close rordforn articoli des-rordforn.
-           delete file des-rordforn.
+           close rordforn articoli tmp-des-rordforn.
+           if loo-funzione = "S"
+              delete file tmp-des-rordforn
+           end-if.
 
       ***---
        EXIT-PGM.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordfornvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 26 ottobre 2022 11:14:31.
+       DATE-WRITTEN.        mercoledì 3 luglio 2024 15:36:46.
        REMARKS.
       *{TOTEM}END
 
@@ -144,6 +144,7 @@
            COPY  "LINK-ELMOVCD.DEF".
            COPY  "LINK-GSORDFORN.DEF".
            COPY  "LINK-PASSWD.DEF".
+           COPY  "LINK-ORDF-ORD.DEF".
        77 path-lineseq-mail            PIC  X(256).
        77 STATUS-lineseq-mail          PIC  X(2).
            88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
@@ -339,15 +340,15 @@
        77 TMP-DataSet1-tmp-nordforn-BUF     PIC X(381).
        77 TMP-DataSet1-tlistini-BUF     PIC X(257).
        77 TMP-DataSet1-zoom-tcaumag-BUF     PIC X(87).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-clienti1-BUF     PIC X(3610).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-clienti1-BUF     PIC X(4410).
        77 TMP-DataSet1-lockfile-BUF     PIC X(183).
        77 TMP-DataSet1-art-ordforn-BUF     PIC X(302).
-       77 TMP-DataSet1-destinif-BUF     PIC X(1322).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-destinif-BUF     PIC X(1722).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-sordforn-BUF     PIC X(1139).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
        77 TMP-DataSet1-tmp-tpromo-zoom-BUF     PIC X(86).

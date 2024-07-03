@@ -78,6 +78,7 @@
        copy "utydata.def".
        copy "costo-medio.def".
        copy "trova-parametro.def".
+       copy "link-ordf-ord.def".
 
        77  status-coperfab       pic xx.
        77  status-coperfab-mag   pic xx.
@@ -3040,9 +3041,12 @@
               end-perform
 
               if linkAuto = 1
-                 call   "ordf-ord" using tge-anno
-                                         LinkFirst
-                                         LinkLast
+                 initialize link-ordf-ord
+                 move tge-anno  to loo-anno
+                 move linkFirst to loo-primo
+                 move linkLast  to loo-ultimo
+                 move "S"       to loo-funzione
+                 call   "ordf-ord" using link-ordf-ord
                  cancel "ordf-sol"
               end-if
 

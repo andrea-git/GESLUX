@@ -5,19 +5,19 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E8739140-746-146713053
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E873133946-125-1326719482
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
 m_bBlockRecords=1
 m_bRecordFixed=1
 m_bStandard=1
-m_strPrefix=tmp-btno
+m_strPrefix=tdrof
 {{@FD_m_strDescription
 
 @}}
 [FDITEM0_]
-m_strName=tbtno-rec
+m_strName=drof-rec
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
@@ -25,7 +25,7 @@ m_bFixed=1
 
 @}}
 [FDITEM1_]
-m_strName=tbtno-chiave
+m_strName=drof-chiave
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -33,9 +33,7 @@ m_bFixed=1
 
 @}}
 [FDITEM2_]
-m_strName=tbtno-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=drof-chiave-testa
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -43,98 +41,95 @@ m_bFixed=1
 
 @}}
 [FDITEM3_]
-m_strName=tbtno-numero
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=10
+m_strName=drof-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM3_
 
 @}}
 [FDITEM4_]
-m_strName=tbtno-dati
-m_nItemLevel=5
+m_strName=drof-numero
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM4_
 
 @}}
 [FDITEM5_]
-m_strName=tbtno-data
-m_strRawPic=9(8)
-m_strPic=9(8)
+m_strName=drof-art-descrizione
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=drof-numero_1
 {{@DataItem_m_strDescriptionFDITEM5_
 
 @}}
 [FDITEM6_]
-m_strName=tbtno-cliente
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=drof-cod-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=drof-numero_1_1
 {{@DataItem_m_strDescriptionFDITEM6_
 
 @}}
 [FDITEM7_]
-m_strName=tbtno-destino
-m_strRawPic=9(5)
-m_strPic=9(5)
+m_strName=drof-prog
+m_strRawPic=9(6)
+m_strPic=9(6)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=drof-numero_1_2
 {{@DataItem_m_strDescriptionFDITEM7_
 
 @}}
 [FDITEM8_]
-m_strName=tbtno-destinazione
-m_strRawPic=x(100)
-m_strPic=x(100)
-m_nItemLevel=10
+m_strName=drof-rof-riga
+m_strRawPic=9(5)
+m_strPic=9(5)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM8_
 
 @}}
 [FDITEM9_]
-m_strName=tbtno-tca-codice
-m_strRawPic=x(4)
-m_strPic=x(4)
-m_nItemLevel=10
+m_strName=drof-rof-dati
+m_strRawPic=x(2000)
+m_strPic=x(2000)
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
+m_strName_Xfd=drof-numero_1_3
 {{@DataItem_m_strDescriptionFDITEM9_
-
-@}}
-[FDITEM10_]
-m_strName=tbtno-tca-descrizione
-m_strRawPic=x(100)
-m_strPic=x(100)
-m_nItemLevel=10
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM10_
 
 @}}
 [CStoAcucobolSL_]
 m_nType=1
-m_strAssignToName=path-tmp-btnotacr
+m_strAssignToName=path-des-rordforn
 m_nFormat=3
-m_strFileStatus=STATUS-tmp-btnotacr
+m_nAccessMode=3
+m_strFileStatus=STATUS-des-rordforn
 m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 
 @}}
 [SLPKEY_]
-m_strName=tbtno-chiave
+m_strName=drof-chiave
 m_bUnique=1
 {{@Key_m_strDescription
 
 @}}
 [SLKEYATOM0_]
-m_strName=tbtno-chiave
+m_strName=drof-chiave

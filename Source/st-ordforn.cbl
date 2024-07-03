@@ -30,12 +30,13 @@
            copy "tparamge.sl".
            copy "lineseq.sl". 
            copy "tlistini.sl".
+           copy "tmp-des-rordforn.sl".
 
        SELECT fileCSV
            ASSIGN       TO path-fileCSV
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
-           FILE STATUS  IS STATUS-fileCSV.
+           FILE STATUS  IS STATUS-fileCSV.   
 
       *****************************************************************
        DATA DIVISION.
@@ -62,7 +63,8 @@
            copy "tgrupgdo.fd".
            copy "tparamge.fd".
            copy "lineseq.fd".
-           copy "tlistini.fd".
+           copy "tlistini.fd".    
+           copy "tmp-des-rordforn.fd".
 
        FD  fileCSV.
        01 csv-riga        PIC  x(1000).
@@ -75,6 +77,7 @@
            copy "selprint.lks".            
            copy "link-settaPDF.def".
            copy "link-readutente.def".     
+           copy "link-ordf-ord.def".     
    
        01  r-stof-riga.
            05 r-stof-art          pic z(6).
@@ -259,6 +262,8 @@
        77  status-fileCSV        pic xx.    
        77  wstampa               pic x(256).
        77  path-fileCSV          pic x(256).
+       77  status-des-rordforn   pic xx.
+       77  path-des-rordforn     pic x(256).
 
 
        77  Arial14BI             handle of font.
@@ -368,6 +373,7 @@
 
        77  z4                pic z(4).
        77  z2                pic z(2).
+       77  batch-notturno    pic x.
 
        LINKAGE SECTION.
            copy "link-st-ordforn.def".
@@ -867,49 +873,109 @@
                           perform STAMPA-TESTA
                        else
                           perform SALTO-PAGINA
-                       end-if       
-                       
-      *                 perform STAMPA-TESTA
-                       move low-value  to rof-rec
-                       move tof-chiave to rof-chiave
-                       start rordforn key >= rof-chiave
-                             invalid continue
-                         not invalid
-                             move  0 to tot-qta
-      *                               tot-qta-eva
-                                        tot-peso
-                                        tot-peso-utf
-                                        totale 
-                                        tot-iva
-                                        tot-imposta
-                                        tot-cou
-                                        tot-piombo
-                             initialize tab-iva
-                             move zero   to riga
-                             perform until 1 = 2
-                                read rordforn next 
-                                  at end exit perform 
-                                end-read
-         
-                                if rof-anno   not = tof-anno   or
-                                   rof-numero not = tof-numero
-                                   exit perform
-                                end-if
-                                move rof-prg-chiave to prg-chiave
-                                perform TROVA-PROGRESSIVO-ATTIVO
-                                |ATTENZIONE!! Questo comando interrompe
-                                |l'esecuzione del notturno, sostituire
-                                |coi log in caso si verifichi lo stop
-                                if not trovato-prg-attivo
-                                   display message
-                                   "PRG: " prg-chiave
-                            X"0d0a""PROGRESSIVO ATTIVO NON TROVATO"
-                                              title titolo
-                                               icon 3
-                                end-if
-                                perform SCRIVI-RIGA
-                             end-perform
-                       end-start
+                       end-if  
+
+                       if tof-automatico
+                          initialize link-ordf-ord
+                          move tof-anno   to loo-anno
+                          move tof-numero to loo-primo loo-ultimo
+                          move "O"        to loo-funzione
+                          call   "ordf-ord" using link-ordf-ord
+                          cancel "ordf-ord"
+                          move loo-path to path-des-rordforn
+                          open input tmp-des-rordforn
+                          move low-value to drof-chiave
+                          start tmp-des-rordforn key >= drof-chiave
+                                invalid continue
+                            not invalid     
+                                move  0 to tot-qta
+      *                                  tot-qta-eva
+                                           tot-peso
+                                           tot-peso-utf
+                                           totale 
+                                           tot-iva
+                                           tot-imposta
+                                           tot-cou
+                                           tot-piombo
+                                initialize tab-iva
+                                move zero   to riga
+                                perform until 1 = 2
+                                   read tmp-des-rordforn next 
+                                     at end exit perform 
+                                   end-read
+                                   move drof-anno     to rof-anno
+                                   move drof-numero   to rof-numero
+                                   move drof-rof-riga to rof-riga
+                                   read rordforn 
+                          
+                                   if rof-anno   not = tof-anno   or
+                                      rof-numero not = tof-numero
+                                      exit perform
+                                   end-if
+                                   move rof-prg-chiave to prg-chiave
+                                   perform TROVA-PROGRESSIVO-ATTIVO
+                                   |ATTENZIONE!! Questo comando interrompe
+                                   |l'esecuzione del notturno, sostituire
+                                   |coi log in caso si verifichi lo stop
+                                   if batch_notturno not = "S"
+                                      if not trovato-prg-attivo
+                                         display message
+                                         "PRG: " prg-chiave
+                                  X"0d0a""PROGRESS. ATTIVO NON TROVATO"
+                                                    title titolo
+                                                     icon 3
+                                      end-if
+                                   end-if
+                                   perform SCRIVI-RIGA
+                                end-perform
+                          end-start
+                                             
+                          close       tmp-des-rordforn
+                          delete file tmp-des-rordforn
+                       else  
+                          move low-value  to rof-rec
+                          move tof-chiave to rof-chiave
+                          start rordforn key >= rof-chiave
+                                invalid continue
+                            not invalid     
+                                move  0 to tot-qta
+      *                            tot-qta-eva
+                                     tot-peso
+                                     tot-peso-utf
+                                     totale 
+                                     tot-iva
+                                     tot-imposta
+                                     tot-cou
+                                     tot-piombo
+                                initialize tab-iva
+                                move zero   to riga
+                                perform until 1 = 2
+                                   read rordforn next 
+                                     at end exit perform 
+                                   end-read
+                          
+                                   if rof-anno   not = tof-anno   or
+                                      rof-numero not = tof-numero
+                                      exit perform
+                                   end-if
+                                   move rof-prg-chiave to prg-chiave
+                                   perform TROVA-PROGRESSIVO-ATTIVO
+                                   |ATTENZIONE!! Questo comando interrompe
+                                   |l'esecuzione del notturno, sostituire
+                                   |coi log in caso si verifichi lo stop
+                                   if batch_notturno not = "S"
+                                      if not trovato-prg-attivo
+                                         display message
+                                         "PRG: " prg-chiave
+                                  X"0d0a""PROGRESS. ATTIVO NON TROVATO"
+                                                    title titolo
+                                                     icon 3
+                                      end-if
+                                   end-if
+                                   perform SCRIVI-RIGA
+                                end-perform
+                          end-start
+                       end-if
 
                        if tof-da-confermare-si
                           perform ART-DA-CONF

@@ -1,0 +1,6 @@
+       01  link-ordf-ord.
+         03 loo-anno            pic 9(4).        
+         03 loo-primo           pic 9(8).
+         03 loo-ultimo          pic 9(8).
+         03 loo-funzione        pic x. |"S" Scrittura "O" Ordinamento
+         03 loo-path            pic x(256). |Solo per "O"

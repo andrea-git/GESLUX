@@ -1,0 +1,16 @@
+      *(( XFD FILE = tmp-des-rordforn ))
+       FD  tmp-des-rordforn.
+       01 drof-rec.
+           05 drof-chiave.
+               10 drof-chiave-testa.
+                   15 drof-anno        PIC  9(4).
+                   15 drof-numero      PIC  9(8).
+      *(( XFD NAME = drof-numero_1 ))
+               10 drof-art-descrizione         PIC  x(100).
+      *(( XFD NAME = drof-numero_1_1 ))
+               10 drof-cod-articolo            PIC  9(6).
+      *(( XFD NAME = drof-numero_1_2 ))
+               10 drof-prog        PIC  9(6).
+           05 drof-rof-riga    PIC  9(5).
+      *(( XFD NAME = drof-numero_1_3 ))
+           05 drof-rof-dati    PIC  x(2000).

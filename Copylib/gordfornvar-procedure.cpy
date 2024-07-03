@@ -2757,8 +2757,14 @@ PATCH         commit transaction
               perform AGGIORNA-STATO-ORDF
 
               if tof-automatico
-                 call   "ordf-ord" using tof-anno tof-numero tof-numero
-                 cancel "ordf-ord"
+                 if tof-inviato or tof-inserito              
+                    initialize link-ordf-ord
+                    move tof-anno   to loo-anno
+                    move tof-numero to loo-primo loo-ultimo
+                    move "S"        to loo-funzione
+                    call   "ordf-ord" using link-ordf-ord
+                    cancel "ordf-ord"
+                 end-if
               end-if
 
               move tof-chiave   to stof-tof-chiave
