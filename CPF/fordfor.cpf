@@ -1010,7 +1010,7 @@ Begin Screen scr-data
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1a-Fr-1
-      3D Style          = Lowered
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1135,7 +1135,7 @@ Begin Screen scr-data
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1a-Fr-2
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1157,7 +1157,7 @@ Begin Screen scr-data
       Size              = 21,40
       Size Unit         = Default
       Tab Order         = 2
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title             = "Periodo di riferimento"
       Title Position    = 2:Top center
       Visible           = NONE

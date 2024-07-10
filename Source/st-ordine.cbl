@@ -45,7 +45,7 @@
            copy "trova-parametro.def".
        
        78  titolo                value "Stampa Ordine".
-       78  MaxRighe              value 56.
+       78  MaxRighe              value 53.
                                  
        77  status-check-rordini  pic xx.
        77  status-check-rordini2 pic xx.

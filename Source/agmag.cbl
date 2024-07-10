@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          agmag.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 1 aprile 2014 19:13:10.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        mercoledì 10 luglio 2024 09:42:06.
        REMARKS.
       *{TOTEM}END
 
@@ -41,9 +41,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\Lubex\GESLUX\Copylib\UTYDATA.DEF".
-               COPY "F:\Lubex\GESLUX\Copylib\comune.def".
-               COPY "F:\Lubex\GESLUX\Copylib\custom.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -292,11 +290,9 @@
            LINE 1,30,
            LINES 17,00 CELLS,
            SIZE 26,50 CELLS,
-           RAISED,
            ID IS 3,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            .
 
       * LABEL

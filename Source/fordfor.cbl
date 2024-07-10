@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          fordfor.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        lunedì 29 febbraio 2016 16:22:10.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        martedì 9 luglio 2024 10:15:07.
        REMARKS.
       *{TOTEM}END
 
@@ -45,7 +45,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -134,7 +134,7 @@
        77 STATUS-Screen1-FLAG-REFRESH PIC  9.
           88 Screen1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -307,7 +307,6 @@
            LINE 11,06,
            LINES 2,78 ,
            SIZE 23,00 ,
-           LOWERED,
            ID IS 2,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
@@ -361,11 +360,9 @@
            LINE 1,33,
            LINES 9,44 ,
            SIZE 21,40 ,
-           RAISED,
            ID IS 1,
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           VERY-HEAVY,
            TITLE "Periodo di riferimento",
            TITLE-POSITION 2,
            .

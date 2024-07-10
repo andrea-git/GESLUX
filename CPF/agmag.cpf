@@ -8,7 +8,7 @@
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=scr-elab
-PROGRAM_UNIQUE_CODE=TOTEM-7E86E144959-655-36016172
+PROGRAM_UNIQUE_CODE=TOTEM-7E87A152812-705-81465318
 
 {{@DESCRIPTION:
 
@@ -1003,7 +1003,7 @@ Begin Screen scr-fine
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Screen1-Fr-1a
-      3D Style          = Raised
+      3D Style          = Normal
       Alternate         = FALSE
       Clines            = 0
       Clines Unit       = Default
@@ -1025,7 +1025,7 @@ Begin Screen scr-fine
       Size              = 26,50
       Size Unit         = Default
       Tab Order         = 1
-      Thickness         = Very Heavy
+      Thickness         = Default
       Title Position    = 0:Unaligned
       Visible           = NONE
       Width in Cells    = TRUE
