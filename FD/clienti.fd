@@ -20,7 +20,7 @@
                10 cli-fax          PIC  x(15).
                10 cli-email        PIC  x(500).
                10 cli-web          PIC  x(100).
-      *(( XFD NAME = cli-tipo_q ))
+      *(( XFD NAME = cli-tipo_1 ))
                10 cli-tipo         PIC  x(2).
                10 cli-gdo          PIC  x(5).
                10 cli-utf          PIC  x.

@@ -770,6 +770,17 @@
                       ".log"             delimited size
                  into path-genlog
               end-string
+           else
+              accept  path-genlog from environment "PORDINI_PATH_LOG"
+              inspect path-genlog replacing trailing spaces by low-value
+              string  path-genlog        delimited low-value
+                      "LOG-CREA-ORDFOR_" delimited size
+                      como-data          delimited size
+                      "-"                delimited size
+                      como-ora           delimited size
+                      ".log"             delimited size
+                 into path-genlog
+              end-string
            end-if.
 
       ***---
@@ -791,9 +802,10 @@
                              ordfor2 tnumordf
               end-if
            end-if.
-           if linkAuto = 1
+      *****     if linkAuto = 1
               open output genlog
-           end-if.
+      *****     end-if.
+           .
 
       ***---
        OPEN-TCONTAT-LOCK.
@@ -872,6 +884,7 @@
            start coperfab key >= k-forn 
                  invalid set errori to true
            end-start.
+
            if tutto-ok
               move 0 to save-fornitore save-destino
               perform until 1 = 2
@@ -1296,13 +1309,13 @@
                        end-string
                        perform SCRIVI-RIGA-LOG
 
-                       if LinkAuto = 1             
+      *****                 if LinkAuto = 1             
                           move cpfm-articolo to art-codice     
                           read articoli no lock
                           move art-scorta to sco-codice
                           read tscorte no lock
                           perform RICALCOLA-SCORTA-PROGRAMMAZIONE
-                       end-if
+      *****                 end-if
 
                        if cpfm-causale not = save-causale
                           move cpfm-causale to save-causale
@@ -1475,6 +1488,7 @@
                                    
            initialize como-riga
            string "TOT QTA MOQ: " tot-qta-moq  
+                  " - MOQ: "      art-moq
                   " - MESE 2: "   tot-qta-mese2
                   " - MESE 3: "   tot-qta-mese3
                   " - MESE 4: "   tot-qta-mese4
@@ -1580,36 +1594,88 @@
            initialize como-riga
            string "MESE: " idx-mese " - QTA IMPOSTATA: " 
                   cpfm-qta-m(idx-mese)
+                  " - QTA-RICAL: " como-qta-rical
              into como-riga
            end-string.
            perform SCRIVI-RIGA-LOG.
 
-           if cpfm-qta-m(idx-mese) <= art-moq
+
+           if como-qta-rical <= art-moq     
+                                                          
+              move "IMPOSTO IL MOQ SULLA QTA" to como-riga
+              perform SCRIVI-RIGA-LOG
+
               move art-moq to cpfm-qta-m(idx-mese)
            else                            
               move 0 to resto
-              divide cpfm-qta-m(idx-mese) by art-moq 
+              divide como-qta-rical by art-moq 
               giving num-bancali
               remainder resto
               if resto not = 0
                  add 1 to num-bancali
-              end-if                          
+              end-if
+
+              initialize como-riga
+              string "NUM BANCALI: " num-bancali 
+                     " :como-qta-rical / art-moq"
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+  
               compute cpfm-qta-m(idx-mese) = 
                       art-moq * num-bancali
+
+              initialize como-riga
+              string "QTA MESE: " cpfm-qta-m(idx-mese) 
+                     " : (art-moq * num-bancali)"
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
            end-if.                                                    
                    
            compute ris2 =
                  ( art-qta-epal * 
                    tge-perce-arrot-bancale / 100 )
 
+           initialize como-riga
+           string "RIS2: " ris2
+                  " : ( art-qta-epal * tge-perce-arrot-bancale / 100 )"
+             into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG
+
            divide cpfm-qta-m(idx-mese) by art-qta-epal 
            giving num-bancali  
-           compute ris = art-qta-epal * num-bancali.
+           compute ris = art-qta-epal * num-bancali.  
+
+           initialize como-riga
+           string "QTA PER BANCALI (RIS): " ris 
+                  " : cpfm-qta-m(idx-mese) / art-qta-epal "
+             into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG
+
            compute resto = cpfm-qta-m(idx-mese) - ris.
+
+           initialize como-riga
+           string "RESTO: " resto " :cpfm-qta-m(idx-mese) - ris"
+             into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG
+
            if resto > ris2
               add 1 to num-bancali
               compute cpfm-qta-m(idx-mese) = num-bancali * art-qta-epal
+   
+              initialize como-riga
+              string "QTA MESE: " cpfm-qta-m(idx-mese)
+                     " : num-bancali * art-qta-epal"
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
            end-if.       
+
            initialize como-riga
            string "MESE: " idx-mese " - QTA RICALCOLATA: " 
                   cpfm-qta-m(idx-mese)
@@ -2295,9 +2361,9 @@
 
                  move cpfm-qta-m(idx) to rof-qta-ord
 
-                 if LinkAuto = 0 |ho già arrotondato al successivo
-                    perform QTA-BANCALE-EPAL
-                 end-if
+      *****           if LinkAuto = 0 |ho già arrotondato al successivo
+      *****              perform QTA-BANCALE-EPAL
+      *****           end-if
 
                  if cli-iva-ese = spaces
                     move art-codice-iva to rof-cod-iva
@@ -2616,7 +2682,7 @@
    
       ***---
        CHECK-MOQ.
-           if LinkAuto = 1
+      *****     if LinkAuto = 1
               if rof-qta-ord < art-moq      
                                     
                  initialize como-riga
@@ -2629,7 +2695,8 @@
 
                  move art-moq to rof-qta-ord
               end-if
-           end-if.
+      *****     end-if.
+           .
 
       ***---
        CHECK-IMBALLO.
@@ -3008,13 +3075,14 @@
 
            delete file coperfab-mag tmp-tof-auto tmp-rof-auto.
 
-           if linkAuto = 1
+      *****     if linkAuto = 1
               close genlog
-           end-if.
+      *****     end-if.
+           .
 
       ***---
        SCRIVI-RIGA-LOG.
-           if linkAuto not = 1 exit paragraph end-if.
+      *****     if linkAuto not = 1 exit paragraph end-if.
            inspect como-riga replacing trailing spaces by low-value.
            perform SETTA-INIZIO-RIGA.
            initialize gl-riga.
