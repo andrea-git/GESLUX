@@ -1537,23 +1537,71 @@
                  |Totale richiesta - qta ordinata prima
                  evaluate idx-mese
                  when 1 
-                      move cpfm-qta-m(1) to como-qta-rical
+                      move cpfm-qta-m(1) to como-qta-rical  
+                      initialize como-riga
+                      string "MESE 1: "
+                             "como-qta-rical: " como-qta-rical
+                             " = cpfm-qta-m(1) (" cpfm-qta-m(1) ")"
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
+                      
                  when 2
                       compute como-qta-rical = 
-                              tot-qta-mese2 - como-qta-ordinata
+                              tot-qta-mese2 - como-qta-ordinata   
+                      initialize como-riga
+                      string "MESE 2: "
+                             "como-qta-rical: " como-qta-rical
+                             " = tot-qta-mese2 (" tot-qta-mese2 ") "
+                             " - como-qta-rical (" como-qta-rical ")"
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
                  when 3
                       compute como-qta-rical = 
-                              tot-qta-mese3 - como-qta-ordinata
+                              tot-qta-mese3 - como-qta-ordinata   
+                      initialize como-riga
+                      string "MESE 3: "
+                             "como-qta-rical: " como-qta-rical
+                             " = tot-qta-mese3 (" tot-qta-mese3 ") "
+                             " - como-qta-rical (" como-qta-rical ")"
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
                  when 4
                       compute como-qta-rical = 
                               tot-qta-mese4 - como-qta-ordinata
+                      initialize como-riga
+                      string "MESE 4: "
+                             "como-qta-rical: " como-qta-rical
+                             " = tot-qta-mese4 (" tot-qta-mese4 ") "
+                             " - como-qta-rical (" como-qta-rical ")"
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
                  when 5
                       compute como-qta-rical = 
                               tot-qta-mese5 - como-qta-ordinata
+                      initialize como-riga
+                      string "MESE 5: "
+                             "como-qta-rical: " como-qta-rical
+                             " = tot-qta-mese5 (" tot-qta-mese5 ") "
+                             " - como-qta-rical (" como-qta-rical ")"
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
                  when 6
                       compute como-qta-rical = 
                               tot-qta-mese6 - como-qta-ordinata
-                 end-evaluate
+                      initialize como-riga
+                      string "MESE 6: "
+                             "como-qta-rical: " como-qta-rical
+                             " = tot-qta-mese6 (" tot-qta-mese6 ") "
+                             " - como-qta-rical (" como-qta-rical ")"
+                        into como-riga
+                      end-string
+                      perform SCRIVI-RIGA-LOG
+                 end-evaluate                               
                  if como-qta-rical > 0                      
       *              perform ARROTONDA-BANCALE-PROGRAMMAZIONE
                     perform ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE
@@ -1617,7 +1665,12 @@
 
               initialize como-riga
               string "NUM BANCALI: " num-bancali 
-                     " :como-qta-rical / art-moq"
+                     " : como-qta-rical ("
+                     como-qta-rical
+                     ") /" 
+                     "art-moq ("
+                     art-moq
+                     ")"
                 into como-riga
               end-string
               perform SCRIVI-RIGA-LOG
@@ -1627,7 +1680,11 @@
 
               initialize como-riga
               string "QTA MESE: " cpfm-qta-m(idx-mese) 
-                     " : (art-moq * num-bancali)"
+                     " : art-moq ("
+                     art-moq
+                     ") * num-bancali("
+                     num-bancali
+                     ")"
                 into como-riga
               end-string
               perform SCRIVI-RIGA-LOG
@@ -1639,18 +1696,38 @@
 
            initialize como-riga
            string "RIS2: " ris2
-                  " : ( art-qta-epal * tge-perce-arrot-bancale / 100 )"
+                  " : art-qta-epal ("
+                  art-qta-epal
+                  ") * tge-perce-arrot-bancale ("
+                  tge-perce-arrot-bancale
+                  ") / 100 "
              into como-riga
            end-string
            perform SCRIVI-RIGA-LOG
 
            divide cpfm-qta-m(idx-mese) by art-qta-epal 
-           giving num-bancali  
+           giving num-bancali                         
+
+           initialize como-riga
+           string "NUM BANCALI: " num-bancali 
+                  " : cpfm-qta-m(idx-mese) ("
+                  cpfm-qta-m(idx-mese)
+                  ") / art-qta-epal ("
+                  art-qta-epal
+                  ")"
+             into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG
+
            compute ris = art-qta-epal * num-bancali.  
 
            initialize como-riga
            string "QTA PER BANCALI (RIS): " ris 
-                  " : cpfm-qta-m(idx-mese) / art-qta-epal "
+                  " : art-qta-epal ("
+                  art-qta-epal
+                  ") * num-bancali ("
+                  num-bancali
+                  ")"
              into como-riga
            end-string
            perform SCRIVI-RIGA-LOG
@@ -1658,7 +1735,11 @@
            compute resto = cpfm-qta-m(idx-mese) - ris.
 
            initialize como-riga
-           string "RESTO: " resto " :cpfm-qta-m(idx-mese) - ris"
+           string "RESTO: " resto " : cpfm-qta-m(idx-mese) ("
+                  cpfm-qta-m(idx-mese)
+                  ") - ris ("
+                  ris
+                  ")"
              into como-riga
            end-string
            perform SCRIVI-RIGA-LOG
@@ -1669,7 +1750,11 @@
    
               initialize como-riga
               string "QTA MESE: " cpfm-qta-m(idx-mese)
-                     " : num-bancali * art-qta-epal"
+                     " : num-bancali ("
+                     num-bancali
+                     ") * art-qta-epal ("
+                     art-qta-epal
+                     ")"
                 into como-riga
               end-string
               perform SCRIVI-RIGA-LOG
@@ -1974,6 +2059,12 @@
                   tof-anno
                   " - "
                   tof-numero
+                  " - DATA CONSEGNA: "
+                  tof-data-consegna(7:2)
+                  "/"
+                  tof-data-consegna(5:2)
+                  "/"
+                  tof-data-consegna(1:4)
              into como-riga
            end-string.
            perform SCRIVI-RIGA-LOG.
@@ -2196,7 +2287,13 @@
            string "SCRITTA TESTATA PROGRAMMAZIONE: "
                   tof-anno
                   " - "
-                  tof-numero
+                  tof-numero  
+                  " - DATA CONSEGNA: "
+                  tof-data-consegna(7:2)
+                  "/"
+                  tof-data-consegna(5:2)
+                  "/"
+                  tof-data-consegna(1:4)
              into como-riga
            end-string.
            perform SCRIVI-RIGA-LOG.
@@ -2266,6 +2363,15 @@
            
               |Mese [primo] = sempre un pallet
               if cpfm-qta-m(primo-mese) > art-qta-epal
+                                   
+                 initialize como-riga
+                 string "if cpfm-qta-m(primo-mese) ("
+                        cpfm-qta-m(primo-mese) ") > art-qta-epal("
+                        art-qta-epal")"
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+    
                  move 0 to resto
                  divide cpfm-qta-m(primo-mese) by art-qta-epal 
                            giving ris
@@ -2273,9 +2379,36 @@
                  if resto > 0
                     add 1 to ris
                  end-if
-                 compute cpfm-qta-m(primo-mese) = art-qta-epal * ris
+                 compute cpfm-qta-m(primo-mese) = art-qta-epal * ris 
+                                   
+                 initialize como-riga
+                 string "ris ("
+                         ris") = cpfm-qta-m(primo-mese) ("
+                         cpfm-qta-m(primo-mese) ") / art-qta-epal("
+                         art-qta-epal")"
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+                                   
+                 initialize como-riga
+                 string "QTA MESE("
+                         cpfm-qta-m(primo-mese)") = art-qta-epal ("
+                         art-qta-epal ") * ris("
+                         ris")"
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+
               else
-                 move art-qta-epal to cpfm-qta-m(primo-mese)                       
+                 move art-qta-epal to cpfm-qta-m(primo-mese)   
+                                   
+                 initialize como-riga
+                 string "QTA MESE("
+                         cpfm-qta-m(primo-mese)") = art-qta-epal ("
+                         art-qta-epal ")"
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG                    
               end-if                              
                                    
               initialize como-riga
@@ -2295,7 +2428,15 @@
                         until como-mese > sco-m-rif
                  if cpfm-qta-m(como-mese) = 0
                     exit perform cycle
-                 end-if
+                 end-if                 
+                 initialize como-riga               
+                 string "ELABORO MESE " 
+                        como-mese ": "
+                        " QTA MESE " cpfm-qta-m(como-mese)
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG   
+
                  perform CALCOLA-QTA
                  perform CALCOLA-QTA-ORD
               end-perform                   
@@ -2415,26 +2556,81 @@
                      until idx = como-mese
               add cpfm-qta-m(idx) to qta-ordinata
            end-perform.
+                                  
+           initialize como-riga
+           string "qta-ordinata: "
+                  qta-ordinata
+              into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
+
            perform varying idx from 1 by 1 
                      until idx > como-mese
               add s-cpfm-qta-m(idx) to qta-da-ordinare
-           end-perform.
+           end-perform.           
+                                  
+           initialize como-riga
+           string "qta-da-ordinare: "
+                  qta-da-ordinare
+              into como-riga
+           end-string.
+           perform SCRIVI-RIGA-LOG.
       
-      ***---
-       CALCOLA-QTA-ORD. 
+      ***---                                
+       CALCOLA-QTA-ORD.                                 
+           initialize como-riga
+           string "if qta-ordinata("
+                  qta-ordinata") > qta-da-ordinare("
+                  qta-da-ordinare") or qta-da-ordinare("
+                  qta-da-ordinare
+                  ") < art-qta-epal("
+                  art-qta-epal
+                  ") QTA-MESE = 0"            
+              into como-riga
+           end-string
+           perform SCRIVI-RIGA-LOG          
+
            if qta-ordinata    > qta-da-ordinare or
               qta-da-ordinare < art-qta-epal
-              move 0 to cpfm-qta-m(como-mese)
-           else                      
-              compute qta-eccesso = 
-                      qta-da-ordinare - qta-ordinata
+              move 0 to cpfm-qta-m(como-mese)           
+
+           else                                     
+              compute qta-eccesso =                 
+                      qta-da-ordinare - qta-ordinata    
+                                  
+              initialize como-riga
+              string "ELSE "
+                     "qta-eccesso ("
+                     qta-eccesso"): qta-da-ordinare("
+                     qta-da-ordinare") - qta-ordinata(" qta-ordinata")"
+                 into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
               move 0 to resto
               divide qta-eccesso by art-qta-epal giving ris
                      remainder resto
               if resto > 0
                  add 1 to ris
-              end-if
+              end-if                 
+              
+              initialize como-riga
+              string "RIS ("
+                     ris "): qta-eccesso("
+                     qta-eccesso") / art-qta-epal(" art-qta-epal")"
+                 into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+
               compute cpfm-qta-m(como-mese) = art-qta-epal * ris        
+              
+              initialize como-riga
+              string "QTA-MESE ("
+                     cpfm-qta-m(como-mese) "): art-qta-epal("
+                     art-qta-epal") * ris(" ris")"
+                 into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
            end-if.
 
       ***---
@@ -2779,6 +2975,17 @@
                  move primo-numero to rof-numero tof-numero
                  start rordforn key >= rof-chiave
                        invalid 
+                    
+                       initialize como-riga
+                       string "CANCELLO TESTATA: " 
+                              tof-anno
+                              "-"
+                              tof-numero
+                              ". MANCANZA DI RIGHE"
+                         into como-riga
+                       end-string
+                       perform SCRIVI-RIGA-LOG
+
                        delete tordforn record 
                               invalid continue 
                        end-delete
