@@ -395,6 +395,19 @@
                    display ef-vettore-d lab-vettore-d
                 end-if
 
+           when 78-ID-ef-agente-d                    
+                move "agenti"  to como-file         
+                inquire ef-agente-d, value in age-codice
+                call "zoom-gt"   using como-file, age-rec
+                                giving stato-zoom
+                end-call
+                cancel "zoom-gt"
+                if stato-zoom = 0
+                   move age-codice   to ef-agente-d-buf
+                   move age-ragsoc-1 to lab-agente-d-buf
+                   display ef-agente-d lab-agente-d
+                end-if
+
            when 78-ID-ef-prov-r
                 move "tprov"     to como-file
                 inquire ef-prov-r,  value in prv-codice
@@ -1470,6 +1483,20 @@ LUBEXX          end-if
                               title = tit-err
                               icon mb-warning-icon
                    end-if
+                end-if
+                      
+           when 78-ID-ef-agente-d
+                if tot-righe > 1 or riga-nuova = 1
+                   move "agenti" to nome-file
+
+                   perform RELAZIONI-DESTINI
+                   if not trovato
+                      set errori to true  
+                      move 78-ID-ef-agente-d to control-id
+                      display message box "Agente destino NON valido"
+                              title = tit-err
+                              icon mb-warning-icon
+                   end-if
                 end-if    
                    
            |78-ID-cbo-stato-d è l'ID del campo cbo-stato-d
@@ -1736,6 +1763,12 @@ LUBEXX          end-if
               move 78-ID-ef-vettore-d to store-id 
            end-if.
 
+           if des-age-codice not = old-des-age-codice and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-vettore-d è l'ID del campo ef-vettore-d
+              move 78-ID-ef-agente-d to store-id 
+           end-if.
+
            if des-deposito-utf not = old-des-deposito-utf and SiSalvato
               set NoSalvato to true
               |78-ID-chk-deposito-utf è l'ID del campo chk-deposito-utf
@@ -1871,7 +1904,7 @@ LUBEXX          end-if
                    ef-nazione-d   ef-telef-1-d
                    ef-telef-2-d   ef-fax-d ef-cod-ditta-d
                    ef-mail-d      ef-referente-d  ef-piva-d ef-cig-d
-                   ef-vettore-d   chk-deposito-utf
+                   ef-vettore-d   ef-agente-d chk-deposito-utf
                    chk-superamento-d chk-invio-d
                    cbo-tipo-art-d.
 
@@ -2139,6 +2172,7 @@ LUBEXX          end-if
                     move des-cig             to hidden-cig
                     move des-piva            to hidden-piva
                     move des-vettore         to hidden-vettore  
+                    move des-age-codice      to hidden-age-codice
                     move des-deposito-utf    to hidden-deposito-utf
                     move des-superamento-500 to hidden-superamento
                     move des-invio-fatt      to hidden-invio
@@ -2199,7 +2233,9 @@ LUBEXX          end-if
                     modify form1-gd-1(riga, 30)  
                            hidden-data hidden-note-bolla-2
                     modify form1-gd-1(riga, 31) 
-                           hidden-data hidden-cig
+                           hidden-data hidden-cig   
+                    modify form1-gd-1(riga, 32) 
+                           hidden-data hidden-age-codice
           
               end-perform   
              
@@ -2422,8 +2458,9 @@ LUBEXX          end-if
            move ef-cod-ditta-d-buf to hidden-cod-ditta.
            move ef-referente-d-buf to hidden-referente.
            move ef-cig-d-buf       to hidden-cig.
-           move ef-piva-d-buf      to hidden-piva.
+           move ef-piva-d-buf      to hidden-piva.  
            move ef-vettore-d-buf   to hidden-vettore.
+           move ef-agente-d-buf    to hidden-age-codice.
 
            if riga-nuova = 1
               add 1         to LastPrg
@@ -2504,27 +2541,29 @@ LUBEXX          end-if
            modify form1-gd-1(riga, 29) hidden-data hidden-note-bolla-1.
            modify form1-gd-1(riga, 30) hidden-data hidden-note-bolla-2.
            modify form1-gd-1(riga, 31) hidden-data hidden-cig.
+           modify form1-gd-1(riga, 32) hidden-data hidden-age-codice.
 
            move 0 to riga-nuova.
 
       ***---
        MOVE-DATI.
-           move col-ragsoc       to ef-ragsoc-1-d-buf.
-           move hidden-ragsoc-2  to ef-ragsoc-2-d-buf.
-           move col-indirizzo    to ef-indirizzo-d-buf.
-           move col-cap          to ef-cap-d-buf.
-           move col-localita     to ef-localita-d-buf.
-           move col-prov         to ef-prov-d-buf.
-           move hidden-nazione   to ef-nazione-d-buf.
-           move hidden-telef-1   to ef-telef-1-d-buf.
-           move hidden-telef-2   to ef-telef-2-d-buf.
-           move hidden-fax       to ef-fax-d-buf.
-           move hidden-mail      to ef-mail-d-buf.
-           move hidden-cod-ditta to ef-cod-ditta-d-buf.
-           move hidden-referente to ef-referente-d-buf.
-           move hidden-cig       to ef-cig-d-buf.
-           move hidden-piva      to ef-piva-d-buf.
-           move hidden-vettore   to ef-vettore-d-buf.
+           move col-ragsoc        to ef-ragsoc-1-d-buf.
+           move hidden-ragsoc-2   to ef-ragsoc-2-d-buf.
+           move col-indirizzo     to ef-indirizzo-d-buf.
+           move col-cap           to ef-cap-d-buf.
+           move col-localita      to ef-localita-d-buf.
+           move col-prov          to ef-prov-d-buf.
+           move hidden-nazione    to ef-nazione-d-buf.
+           move hidden-telef-1    to ef-telef-1-d-buf.
+           move hidden-telef-2    to ef-telef-2-d-buf.
+           move hidden-fax        to ef-fax-d-buf.
+           move hidden-mail       to ef-mail-d-buf.
+           move hidden-cod-ditta  to ef-cod-ditta-d-buf.
+           move hidden-referente  to ef-referente-d-buf.
+           move hidden-cig        to ef-cig-d-buf.
+           move hidden-piva       to ef-piva-d-buf.
+           move hidden-vettore    to ef-vettore-d-buf.
+           move hidden-age-codice to ef-agente-d-buf.
 
            move col-prog         to des-prog.
            
@@ -2585,8 +2624,10 @@ LUBEXX          end-if
            move "tprov"    to nome-file.
            perform RELAZIONI-DESTINI.
            move "tnazioni" to nome-file.
-           perform RELAZIONI-DESTINI.
+           perform RELAZIONI-DESTINI.   
            move "tvettori" to nome-file.
+           perform RELAZIONI-DESTINI.
+           move "agenti" to nome-file.
            perform RELAZIONI-DESTINI.
 
       ***---
@@ -2698,6 +2739,7 @@ LUBEXX        end-if
            move ef-cig-d-buf        to des-cig.
            move ef-piva-d-buf       to des-piva.
            move ef-vettore-d-buf    to des-vettore.
+           move ef-agente-d-buf     to des-age-codice.
            move ef-cod-ditta-d-buf  to des-cod-ditta.
            
            if chk-deposito-utf-buf = 1
@@ -2741,9 +2783,10 @@ LUBEXX        end-if
       ***---
        PAGE-2-CLEAR.
            move spaces to lab-citta-d-buf   lab-regione-d-buf
-                          lab-nazione-d-buf lab-vettore-d-buf.
+                          lab-nazione-d-buf lab-vettore-d-buf
+                          lab-agente-d-buf.
            display lab-citta-d   lab-regione-d
-                   lab-nazione-d lab-vettore-d.
+                   lab-nazione-d lab-vettore-d lab-agente-d.
            move 0 to riga-nuova.
            move 0 to ef-note-data-buf.
            initialize ef-ragsoc-1-d-buf  ef-ragsoc-2-d-buf
@@ -2753,6 +2796,7 @@ LUBEXX        end-if
                       ef-telef-2-d-buf   ef-fax-d-buf
                       ef-mail-d-buf      ef-referente-d-buf,
                       ef-piva-d-buf,     ef-vettore-d-buf,
+                      ef-agente-d-buf,
                       ef-cod-ditta-d-buf, ef-cig-d-buf,
                       chk-deposito-utf-buf 
                       chk-superamento-d-buf, chk-invio-d-buf,
@@ -3082,7 +3126,18 @@ LUBEXX        end-if
            evaluate nome-file
            when "anacap" 
                 move ef-cap-d-buf to anc-cap
-                perform RELATIONS
+                perform RELATIONS 
+           when "agenti" 
+                move spaces to lab-agente-d-buf 
+                move ef-agente-d-buf to age-codice
+                if age-codice not = 0
+                   perform RELATIONS
+                   move age-ragsoc-1 to lab-agente-d-buf
+                else                                  
+                   set trovato to true
+                   move spaces to lab-agente-d-buf
+                end-if    
+                display lab-agente-d
            when "tvettori" 
                 move spaces to lab-vettore-d-buf 
                 move ef-vettore-d-buf to vet-codice
@@ -4016,6 +4071,7 @@ LUBEXX        perform DELETE-LOCKFILE
            inquire form1-gd-1(riga, 29) hidden-data hidden-note-bolla-1.
            inquire form1-gd-1(riga, 30) hidden-data hidden-note-bolla-2.
            inquire form1-gd-1(riga, 31) hidden-data hidden-cig.
+           inquire form1-gd-1(riga, 32) hidden-data hidden-age-codice.
 
       ***---
        VALORIZZA-ENABLE-VARIABLE.
@@ -4135,6 +4191,7 @@ LUBEXX        perform DELETE-LOCKFILE
            when 78-ID-ef-prov-d
            when 78-ID-ef-nazione-d
            when 78-ID-ef-vettore-d
+           when 78-ID-ef-agente-d
            when 78-ID-ef-prov-r
            when 78-ID-ef-nazione-r
                 move 1 to StatusHelp
@@ -4533,16 +4590,19 @@ LUBEXX     perform DELETE-LOCKFILE.
 
       * CLIENTI-VETTORI
            move "tvettori" to nome-file.
-           perform RELAZIONI-DESTINI.
+           perform RELAZIONI-DESTINI.  
+
+           move "agenti" to nome-file.
+           perform RELAZIONI-DESTINI.  
 
       * Relazioni per il file dei RECAPITI
       * RECAPITI-PROVINCIE           
            move "tprov" to nome-file.
            perform RELAZIONI-RECAPITI.
 
-      * RECAPITI-NAZIONI
+      * RECAPITI-NAZIONI            
            move "tnazioni" to nome-file.
-           perform RELAZIONI-RECAPITI.  
+           perform RELAZIONI-RECAPITI. 
 
            perform ABILITAZIONI.
 

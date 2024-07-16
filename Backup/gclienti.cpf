@@ -2,12 +2,13 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
+DIRTY_AFTER_GEN=1
 QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E861815254-70-2304223015
+PROGRAM_UNIQUE_CODE=TOTEM-7E871017219-69-18016093
 
 {{@DESCRIPTION:
 
@@ -14294,6 +14295,68 @@ Begin Screen Form1
             Before Procedure  = ef-referente-d-BeforeProcedure
             After Procedure   = ef-referente-d-AfterProcedure
          End
+         Begin Data.Entry-Field ef-agente-d
+            SCREEN-COL        = 93,17
+            SCREEN-LINE       = 36,92
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = ef-agente-d
+            Auto              = FALSE
+            Auto Decimal      = 0
+            Border            = Boxed
+            Case              = Upper
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 513
+            Column            = 91,00
+            Csize             = 0
+            Csize Unit        = Default
+            Cursor            = 0
+            Cursor Col        = 0
+            Cursor Row        = 0
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-destini
+            Field Edited (Style) = 1
+            Field Edited Format = z(5)
+            Field Picture     = 9(5)
+            Field Variable    = des-age-codice
+            File              = destini
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 162
+            ID Variable       = AUTO-ID
+            Justification     = Right
+            Line              = 31,15
+            Lines             = 1,31
+            Lines Unit        = Default
+            Max Lines         = 0
+            Max Text          = 5
+            Max Value         = 0
+            Min Value         = 0
+            No AutoSel        = FALSE
+            No Tab            = FALSE
+            Notify Change     = FALSE
+            Numeric           = FALSE
+            Occurs            = 0
+            Read Only         = FALSE
+            Required          = FALSE
+            Secure            = FALSE
+            Size              = 5,83
+            Size Unit         = Default
+            Style             = Singleline
+            Tab Order         = 16
+            Use Return        = FALSE
+            Use Tab           = FALSE
+            Value Multiple    = FALSE
+            Visible           = NONE
+            Width in Cells    = TRUE
+            My Property       = "ZOOM=;CONTROLLO="
+            Before Procedure  = ef-agente-d-BeforeProcedure
+            After Procedure   = ef-agente-d-AfterProcedure
+         End
          Begin Data.Entry-Field ef-vettore-d
             SCREEN-COL        = 18,17
             SCREEN-LINE       = 39,08
@@ -14347,7 +14410,7 @@ Begin Screen Form1
             Size              = 8,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 16
+            Tab Order         = 17
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14398,7 +14461,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 17
+            Tab Order         = 18
             Termination Value = 0
             Title             = "Check Box"
             Value             = 0:FALSE
@@ -14448,7 +14511,7 @@ Begin Screen Form1
             Self Act          = TRUE
             Size              = 3,00
             Size Unit         = Default
-            Tab Order         = 18
+            Tab Order         = 19
             Termination Value = 0
             Title             = "cli-superamento-500"
             Value             = 0:FALSE
@@ -14494,7 +14557,7 @@ Begin Screen Form1
             Size              = 17,00
             Size Unit         = Default
             Style             = Drop List
-            Tab Order         = 19
+            Tab Order         = 20
             Termination Value = 0
             Unsorted          = TRUE
             Value Container   = des-stato
@@ -14542,7 +14605,7 @@ Begin Screen Form1
             Size              = 15,00
             Size Unit         = Default
             Style             = Drop List
-            Tab Order         = 20
+            Tab Order         = 21
             Termination Value = 0
             Unsorted          = TRUE
             Value Container   = des-tipo-art
@@ -14606,7 +14669,7 @@ Begin Screen Form1
             Size              = 58,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 21
+            Tab Order         = 22
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14669,7 +14732,7 @@ Begin Screen Form1
             Size              = 15,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 22
+            Tab Order         = 23
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14731,7 +14794,7 @@ Begin Screen Form1
             Size              = 38,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 23
+            Tab Order         = 24
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14793,7 +14856,7 @@ Begin Screen Form1
             Size              = 11,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 24
+            Tab Order         = 25
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14856,7 +14919,7 @@ Begin Screen Form1
             Size              = 57,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 25
+            Tab Order         = 26
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14918,7 +14981,7 @@ Begin Screen Form1
             Size              = 57,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 26
+            Tab Order         = 27
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -14980,7 +15043,7 @@ Begin Screen Form1
             Size              = 57,00
             Size Unit         = Default
             Style             = Singleline
-            Tab Order         = 27
+            Tab Order         = 28
             Use Return        = FALSE
             Use Tab           = FALSE
             Value Multiple    = FALSE
@@ -15023,7 +15086,7 @@ Begin Screen Form1
             Size              = 4,00
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 28
+            Tab Order         = 29
             Termination Value = 0
             Title             = "..."
             Visible           = NONE
@@ -15055,7 +15118,7 @@ Begin Screen Form1
             Size (Lines)      = 153,67
             Size (Lines) in Pixels = 922
             Size (Lines) Unit = Default
-            Tab Order         = 29
+            Tab Order         = 30
             Visible           = NONE
             Width             = 1
             Width in Cells    = TRUE
@@ -15088,7 +15151,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 30
+            Tab Order         = 31
             Title             = "Rag. Sociale I"
             Transparent       = TRUE
             Visible           = NONE
@@ -15122,7 +15185,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 31
+            Tab Order         = 32
             Title             = "Rag. Sociale II"
             Transparent       = TRUE
             Visible           = NONE
@@ -15156,7 +15219,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 32
+            Tab Order         = 33
             Title             = "Indirizzo"
             Transparent       = TRUE
             Visible           = NONE
@@ -15190,7 +15253,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 33
+            Tab Order         = 34
             Title             = "CAP"
             Transparent       = TRUE
             Visible           = NONE
@@ -15224,7 +15287,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 7,00
             Size Unit         = Default
-            Tab Order         = 34
+            Tab Order         = 35
             Title             = "Località"
             Transparent       = TRUE
             Visible           = NONE
@@ -15258,7 +15321,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 35
+            Tab Order         = 36
             Title             = "Provincia"
             Transparent       = TRUE
             Visible           = NONE
@@ -15292,7 +15355,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 7,00
             Size Unit         = Default
-            Tab Order         = 36
+            Tab Order         = 37
             Title             = "Nazione"
             Transparent       = TRUE
             Visible           = NONE
@@ -15326,7 +15389,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 9,00
             Size Unit         = Default
-            Tab Order         = 37
+            Tab Order         = 38
             Title             = "Telefono 1"
             Transparent       = TRUE
             Visible           = NONE
@@ -15360,7 +15423,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 38
+            Tab Order         = 39
             Title             = "Tel. 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -15394,7 +15457,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 4,00
             Size Unit         = Default
-            Tab Order         = 39
+            Tab Order         = 40
             Title             = "Fax"
             Transparent       = TRUE
             Visible           = NONE
@@ -15428,7 +15491,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 40
+            Tab Order         = 41
             Title             = "E-mail"
             Transparent       = TRUE
             Visible           = NONE
@@ -15462,7 +15525,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 41
+            Tab Order         = 42
             Title             = "Referente"
             Transparent       = TRUE
             Visible           = NONE
@@ -15496,7 +15559,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 42
+            Tab Order         = 43
             Title             = "Vettore"
             Transparent       = TRUE
             Visible           = NONE
@@ -15530,7 +15593,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 43
+            Tab Order         = 44
             Title             = "Deposito UTF"
             Transparent       = TRUE
             Visible           = NONE
@@ -15564,7 +15627,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 44
+            Tab Order         = 45
             Title             = "Dati di consegna"
             Transparent       = TRUE
             Visible           = NONE
@@ -15598,7 +15661,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 45
+            Tab Order         = 46
             Title             = "Note 2"
             Transparent       = TRUE
             Visible           = NONE
@@ -15632,7 +15695,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 46
+            Tab Order         = 47
             Title             = "Note 3"
             Transparent       = TRUE
             Visible           = NONE
@@ -15666,7 +15729,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 47
+            Tab Order         = 48
             Title             = "Note 4"
             Transparent       = TRUE
             Visible           = NONE
@@ -15699,7 +15762,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 16,83
             Size Unit         = Default
-            Tab Order         = 48
+            Tab Order         = 49
             Title             = "Note a pié bolla"
             Transparent       = FALSE
             Visible           = NONE
@@ -15730,7 +15793,7 @@ Begin Screen Form1
             Size (Lines)      = 135,00
             Size (Lines) in Pixels = 810
             Size (Lines) Unit = Default
-            Tab Order         = 49
+            Tab Order         = 50
             Visible           = NONE
             Width             = 1
             Width in Cells    = TRUE
@@ -15768,7 +15831,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 47,00
             Size Unit         = Default
-            Tab Order         = 50
+            Tab Order         = 51
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -15806,7 +15869,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 31,00
             Size Unit         = Default
-            Tab Order         = 51
+            Tab Order         = 52
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -15844,7 +15907,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 23,00
             Size Unit         = Default
-            Tab Order         = 52
+            Tab Order         = 53
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -15882,7 +15945,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 23,00
             Size Unit         = Default
-            Tab Order         = 53
+            Tab Order         = 54
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -15915,7 +15978,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 54
+            Tab Order         = 55
             Title             = "Data"
             Transparent       = TRUE
             Visible           = NONE
@@ -15960,7 +16023,7 @@ Begin Screen Form1
             Size in Pixels    = 73
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 55
+            Tab Order         = 56
             Termination Value = 0
             Title             = "&Salva la riga appena inserita o quella modificata"
             Visible           = NONE
@@ -16008,7 +16071,7 @@ Begin Screen Form1
             Size in Pixels    = 73
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 56
+            Tab Order         = 57
             Termination Value = 0
             Title             = "Aggiunge una riga n&uova alla griglia"
             Visible           = NONE
@@ -16056,7 +16119,7 @@ Begin Screen Form1
             Size in Pixels    = 73
             Size Unit         = Default
             Style             = Other
-            Tab Order         = 57
+            Tab Order         = 58
             Termination Value = 0
             Title             = "&Elimina la riga selezionata"
             Visible           = FALSE
@@ -16093,7 +16156,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 6,00
             Size Unit         = Default
-            Tab Order         = 58
+            Tab Order         = 59
             Title             = "Stato"
             Transparent       = TRUE
             Visible           = NONE
@@ -16127,7 +16190,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 11,00
             Size Unit         = Default
-            Tab Order         = 59
+            Tab Order         = 60
             Title             = "Invio Fatture"
             Transparent       = TRUE
             Visible           = NONE
@@ -16161,7 +16224,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 15,00
             Size Unit         = Default
-            Tab Order         = 60
+            Tab Order         = 61
             Title             = "Blocco bolle superiori a 500 Kg. UTF"
             Transparent       = TRUE
             Visible           = FALSE
@@ -16185,7 +16248,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 162
+            ID                = 163
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 29,00
@@ -16195,7 +16258,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 5,00
             Size Unit         = Default
-            Tab Order         = 61
+            Tab Order         = 62
             Title             = "P.IVA"
             Transparent       = TRUE
             Visible           = NONE
@@ -16219,7 +16282,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 163
+            ID                = 164
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 35,31
@@ -16229,7 +16292,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,50
             Size Unit         = Default
-            Tab Order         = 62
+            Tab Order         = 63
             Title             = "Codice Ditta/Registro"
             Transparent       = TRUE
             Visible           = NONE
@@ -16263,7 +16326,7 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 10,00
             Size Unit         = Default
-            Tab Order         = 63
+            Tab Order         = 64
             Title             = "Tipologia"
             Transparent       = TRUE
             Visible           = NONE
@@ -16297,8 +16360,80 @@ Begin Screen Form1
             Occurs            = 0
             Size              = 12,00
             Size Unit         = Default
-            Tab Order         = 64
+            Tab Order         = 65
             Title             = "CIG"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Label Form1-La-41a
+            SCREEN-COL        = 79,17
+            SCREEN-LINE       = 36,92
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = Form1-La-41a
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 0
+            Column            = 77,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 177
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 31,15
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = FALSE
+            Occurs            = 0
+            Size              = 7,00
+            Size Unit         = Default
+            Tab Order         = 66
+            Title             = "Agente"
+            Transparent       = TRUE
+            Visible           = NONE
+            Width in Cells    = TRUE
+         End
+         Begin Data.Label lab-agente-d
+            SCREEN-COL        = 102,17
+            SCREEN-LINE       = 36,92
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = lab-agente-d
+            Clines            = 0
+            Clines Unit       = Default
+            Color             = 5
+            Column            = 100,00
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Field Edited (Style) = 0
+            Field Edited Format = X(40)
+            Field Picture     = X(40)
+            Field Variable    = age-ragsoc-1
+            File              = agenti
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = TRUE
+            Help ID           = 0
+            ID                = 187
+            Justification     = Unaligned
+            Label Offset      = 20
+            Line              = 31,15
+            Lines             = 1,31
+            Lines Unit        = Default
+            No Key Letter     = TRUE
+            Occurs            = 0
+            Size              = 31,00
+            Size Unit         = Default
+            Tab Order         = 67
             Transparent       = TRUE
             Visible           = NONE
             Width in Cells    = TRUE
@@ -16346,7 +16481,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la Ragione Sociale I per il recapito
-            ID                = 177
+            ID                = 206
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 4,00
@@ -16409,7 +16544,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la Ragione Sociale II per il recapito
-            ID                = 206
+            ID                = 207
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 4,00
@@ -16472,7 +16607,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare l'indirizzo per il recapito
-            ID                = 207
+            ID                = 208
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 6,00
@@ -16535,7 +16670,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare la località per il recapito
-            ID                = 208
+            ID                = 209
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 6,00
@@ -16598,7 +16733,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             Hint              = Digitare il CAP per il recapito
-            ID                = 209
+            ID                = 210
             ID Variable       = AUTO-ID
             Justification     = Unaligned
             Line              = 8,00
@@ -17242,7 +17377,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 210
+            ID                = 165
             Justification     = Unaligned
             Label Offset      = 20
             Line              = 6,00
@@ -18416,7 +18551,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 164
+            ID                = 166
             Line              = 40,77
             Lines             = 2,15
             Lines in Pixels   = 21
@@ -18455,7 +18590,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 187
+            ID                = 168
             Justification     = Left
             Label Offset      = 20
             Line              = 32,00
@@ -18893,7 +19028,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 165
+            ID                = 234
             Line              = 39,31
             Lines             = 2,15
             Lines in Pixels   = 21
@@ -18940,7 +19075,7 @@ Begin Screen Form1
             Font Variable     = Small-Font
             Height in Cells   = TRUE
             Help ID           = 0
-            ID                = 166
+            ID                = 235
             Line              = 39,31
             Lines             = 2,15
             Lines in Pixels   = 21
@@ -18993,7 +19128,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             High Color        = 0
-            ID                = 168
+            ID                = 236
             Line              = 1,54
             Lines             = 11,00
             Lines Unit        = Default
@@ -19083,7 +19218,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 234
+               ID                = 237
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,08
@@ -19129,7 +19264,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 235
+               ID                = 238
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 3,08
@@ -19176,7 +19311,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 236
+               ID                = 239
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 4,69
@@ -19222,7 +19357,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 237
+               ID                = 240
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 4,69
@@ -19269,7 +19404,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 238
+               ID                = 241
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 6,31
@@ -19315,7 +19450,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 239
+               ID                = 242
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 4,77
@@ -19362,7 +19497,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 240
+               ID                = 243
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 6,31
@@ -19408,7 +19543,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 241
+               ID                = 244
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 6,31
@@ -19468,7 +19603,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 242
+               ID                = 245
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 6,31
@@ -19515,7 +19650,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 243
+               ID                = 246
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19561,7 +19696,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 244
+               ID                = 247
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19608,7 +19743,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 245
+               ID                = 248
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19654,7 +19789,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 246
+               ID                = 249
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19701,7 +19836,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 247
+               ID                = 250
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19747,7 +19882,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 248
+               ID                = 251
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19794,7 +19929,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 249
+               ID                = 252
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 8,00
@@ -19840,7 +19975,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 250
+               ID                = 253
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 8,00
@@ -19887,7 +20022,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 251
+               ID                = 254
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -19933,7 +20068,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 252
+               ID                = 255
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 9,69
@@ -19993,7 +20128,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 253
+               ID                = 256
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 9,69
@@ -20040,7 +20175,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 254
+               ID                = 257
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,23
@@ -20073,7 +20208,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 255
+               ID                = 258
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 4,77
@@ -20106,7 +20241,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 256
+               ID                = 259
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -20139,7 +20274,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 257
+               ID                = 260
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -20172,7 +20307,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 258
+               ID                = 261
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,23
@@ -20205,7 +20340,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 259
+               ID                = 262
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 4,77
@@ -20238,7 +20373,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 260
+               ID                = 263
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 9,69
@@ -20271,7 +20406,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 261
+               ID                = 264
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 1,85
@@ -20304,7 +20439,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 262
+               ID                = 265
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 1,85
@@ -20337,7 +20472,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 263
+               ID                = 266
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 1,85
@@ -20374,7 +20509,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             High Color        = 0
-            ID                = 264
+            ID                = 267
             Line              = 19,92
             Lines             = 23,50
             Lines Unit        = Default
@@ -20404,7 +20539,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 265
+               ID                = 268
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -20450,7 +20585,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 266
+               ID                = 269
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 19,00
@@ -20510,7 +20645,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 267
+               ID                = 270
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 19,00
@@ -20557,7 +20692,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 268
+               ID                = 271
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 20,62
@@ -20603,7 +20738,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 269
+               ID                = 272
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 20,62
@@ -20650,7 +20785,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 270
+               ID                = 273
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 20,62
@@ -20696,7 +20831,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 271
+               ID                = 274
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 20,62
@@ -20743,7 +20878,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 272
+               ID                = 275
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 22,31
@@ -20789,7 +20924,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 273
+               ID                = 276
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 22,31
@@ -20836,7 +20971,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 274
+               ID                = 277
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 22,31
@@ -20882,7 +21017,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 275
+               ID                = 279
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 22,31
@@ -20929,7 +21064,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 276
+               ID                = 280
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 22,31
@@ -20975,7 +21110,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 277
+               ID                = 281
                ID Variable       = AUTO-ID
                Justification     = Unaligned
                Line              = 22,31
@@ -21058,7 +21193,7 @@ Begin Screen Form1
                Height in Cells   = TRUE
                Help ID           = 0
                Hscroll           = TRUE
-               ID                = 279
+               ID                = 282
                Last Row          = 0
                Line              = 2,62
                Lines             = 15,31
@@ -21115,7 +21250,7 @@ Begin Screen Form1
                Font Variable     = Small-Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 280
+               ID                = 283
                Line              = 18,23
                Lines             = 2,15
                Lines in Pixels   = 21
@@ -21154,7 +21289,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 281
+               ID                = 284
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -21187,7 +21322,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 282
+               ID                = 285
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -21220,7 +21355,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 283
+               ID                = 286
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 19,00
@@ -21257,7 +21392,7 @@ Begin Screen Form1
             Height in Cells   = TRUE
             Help ID           = 0
             High Color        = 0
-            ID                = 284
+            ID                = 287
             Line              = 12,85
             Lines             = 6,69
             Lines Unit        = Default
@@ -21298,7 +21433,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 285
+               ID                = 288
                ID Variable       = AUTO-ID
                Left Text         = FALSE
                Line              = 2,38
@@ -21347,7 +21482,7 @@ Begin Screen Form1
                Height in Cells   = TRUE
                Help ID           = 0
                Hint              = Se spuntato considera il campo in qta pezzi (17) SENZA moltiplicare pergli imballi (22)
-               ID                = 286
+               ID                = 295
                ID Variable       = AUTO-ID
                Left Text         = FALSE
                Line              = 3,85
@@ -21395,7 +21530,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 287
+               ID                = 296
                ID Variable       = AUTO-ID
                Left Text         = FALSE
                Line              = 2,38
@@ -21432,7 +21567,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 288
+               ID                = 297
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21465,7 +21600,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 295
+               ID                = 298
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21496,7 +21631,7 @@ Begin Screen Form1
                Destroy Type      = Automatic
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 296
+               ID                = 299
                Kind              = Vertical
                Line              = 1,54
                Line Styles       = Solid
@@ -21527,7 +21662,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 297
+               ID                = 300
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21560,7 +21695,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 298
+               ID                = 301
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 3,85
@@ -21593,7 +21728,7 @@ Begin Screen Form1
                Font              = Default Font
                Height in Cells   = TRUE
                Help ID           = 0
-               ID                = 299
+               ID                = 302
                Justification     = Unaligned
                Label Offset      = 20
                Line              = 2,38
@@ -21627,7 +21762,7 @@ Begin Screen Form1
       Destroy Type      = Automatic
       Height in Cells   = TRUE
       Help ID           = 0
-      ID                = 300
+      ID                = 303
       Kind              = Horizontal
       Line              = 3,69
       Line Styles       = Solid
@@ -25832,7 +25967,8 @@ BEGIN-TEXT
                    15 old-des-accorpa-master           PIC  9(1).
                        88 old-des-accorpa-master-si VALUE IS 1. 
                        88 old-des-accorpa-master-no VALUE IS 0. 
-                   15 old-des-num-vuoto-3  PIC  9(12).
+                   15 old-des-age-codice   PIC  9(5).
+                   15 old-des-num-vuoto-3  PIC  9(7).
                    15 old-des-invio-fatt   PIC  x.
                        88 old-des-si-invio VALUE IS "S". 
                        88 old-des-no-invio VALUE IS "N". 
@@ -29385,6 +29521,25 @@ BEGIN-TEXT
       *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
       *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-agente-d-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = ef-agente-d-AfterProcedure
+BEGIN-TEXT
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Form1-Custom1-1 **>>
+      *<<** Customized_Default, SP-G, scr-stampa-Custom1-2 **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>   
 END-TEXT
 END-DATA
 

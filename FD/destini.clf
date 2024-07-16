@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E87F13938-156-934413776
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E8710173352-616-302402628
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -567,9 +567,9 @@ m_strTrue=0
 
 @}}
 [FDITEM58_]
-m_strName=des-num-vuoto-3
-m_strRawPic=9(12)
-m_strPic=9(12)
+m_strName=des-age-codice
+m_strRawPic=9(5)
+m_strPic=9(5)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -577,9 +577,9 @@ m_bFixed=1
 
 @}}
 [FDITEM59_]
-m_strName=des-invio-fatt
-m_strRawPic=x
-m_strPic=X
+m_strName=des-num-vuoto-3
+m_strRawPic=9(7)
+m_strPic=9(7)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -587,35 +587,35 @@ m_bFixed=1
 
 @}}
 [FDITEM60_]
+m_strName=des-invio-fatt
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_
+
+@}}
+[FDITEM61_]
 m_strName=des-si-invio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="S"
-{{@DataItem_m_strDescriptionFDITEM60_
+{{@DataItem_m_strDescriptionFDITEM61_
 
 @}}
-[FDITEM61_]
+[FDITEM62_]
 m_strName=des-no-invio
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="N"
-{{@DataItem_m_strDescriptionFDITEM61_
-
-@}}
-[FDITEM62_]
-m_strName=des-note-bolla-1
-m_strRawPic=X(500)
-m_strPic=X(500)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM62_
 
 @}}
 [FDITEM63_]
-m_strName=des-note-bolla-2
+m_strName=des-note-bolla-1
 m_strRawPic=X(500)
 m_strPic=X(500)
 m_nItemLevel=15
@@ -625,9 +625,9 @@ m_bFixed=1
 
 @}}
 [FDITEM64_]
-m_strName=des-CIG
-m_strRawPic=X(15)
-m_strPic=X(15)
+m_strName=des-note-bolla-2
+m_strRawPic=X(500)
+m_strPic=X(500)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -635,6 +635,16 @@ m_bFixed=1
 
 @}}
 [FDITEM65_]
+m_strName=des-CIG
+m_strRawPic=X(15)
+m_strPic=X(15)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM65_
+
+@}}
+[FDITEM66_]
 m_strName=FILLER
 m_strRawPic=X(1985)
 m_strPic=X(1985)
@@ -642,7 +652,7 @@ m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
 m_strName_Xfd=des-mail2_1_2
-{{@DataItem_m_strDescriptionFDITEM65_
+{{@DataItem_m_strDescriptionFDITEM66_
 
 @}}
 [CStoAcucobolSL_]

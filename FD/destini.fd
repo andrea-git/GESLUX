@@ -57,7 +57,8 @@
                    15 des-accorpa-master           PIC  9(1).
                        88 des-accorpa-master-si VALUE IS 1. 
                        88 des-accorpa-master-no VALUE IS 0. 
-                   15 des-num-vuoto-3  PIC  9(12).
+                   15 des-age-codice   PIC  9(5).
+                   15 des-num-vuoto-3  PIC  9(7).
                    15 des-invio-fatt   PIC  x.
                        88 des-si-invio VALUE IS "S". 
                        88 des-no-invio VALUE IS "N". 

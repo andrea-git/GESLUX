@@ -145,6 +145,10 @@
            when 78-ID-ef-piva-d
                 inquire ef-piva-d, value in ef-piva-d-buf
 
+           |78-ID-ef-agente-d è l'ID del control ef-agente-d
+           when 78-ID-ef-agente-d
+                inquire ef-agente-d, value in ef-agente-d-buf
+
            |78-ID-ef-vettore-d è l'ID del control ef-vettore-d
            when 78-ID-ef-vettore-d
                 inquire ef-vettore-d, value in ef-vettore-d-buf
