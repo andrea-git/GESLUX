@@ -1,0 +1,15 @@
+       FD  notec.
+       01 notc-rec.
+           05 notc-chiave.
+               10 notc-codice      PIC  9(5).
+               10 notc-prog        PIC  9(5).
+           05 notc-dati.
+               10 notc-note        PIC  x(3000).
+               10 FILLER           PIC  x(3000).
+           05 notc-dati-comuni.
+               10 notc-data-creazione          PIC  9(8).
+               10 notc-ora-creazione           PIC  9(8).
+               10 notc-utente-creazione        PIC  X(10).
+               10 notc-data-ultima-modifica    PIC  9(8).
+               10 notc-ora-ultima-modifica     PIC  9(8).
+               10 notc-utente-ultima-modifica  PIC  X(10).

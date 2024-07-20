@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          garticoli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 24 maggio 2024 16:38:22.
+       DATE-WRITTEN.        sabato 20 luglio 2024 16:58:13.
        REMARKS.
       *{TOTEM}END
 
@@ -462,7 +462,7 @@
        77 TMP-DataSet1-tsetmerc-BUF     PIC X(191).
        77 TMP-DataSet1-tudm-BUF     PIC X(189).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
        77 TMP-DataSet1-distinteb-BUF     PIC X(672).
        77 TMP-DataSet1-rmovmag-BUF     PIC X(446).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
@@ -470,7 +470,7 @@
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
        77 TMP-DataSet1-tscorte-BUF     PIC X(205).
        77 TMP-DataSet1-rlistini-BUF     PIC X(448).
-       77 TMP-DataSet1-destinif-BUF     PIC X(1322).
+       77 TMP-DataSet1-destinif-BUF     PIC X(1722).
        77 TMP-DataSet1-articoli1-BUF     PIC X(3669).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-reva-BUF     PIC X(260).
@@ -484,7 +484,7 @@
        77 TMP-DataSet1-catart-BUF     PIC X(6622).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-impforn-BUF     PIC X(220).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
       * VARIABLES FOR RECORD LENGTH.

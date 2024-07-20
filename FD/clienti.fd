@@ -108,7 +108,7 @@
                        88 cli-esigibilita-iva-scissione VALUE IS "S". 
                    15 cli-contrassegno PIC  x.
                        88 cli-contrassegno-si VALUE IS "S". 
-                       88 cli-contrassegno-no VALUE IS "N", " ". 
+                       88 cli-contrassegno-no VALUE IS "N" " ". 
       *(( XFD NAME = cli-alfa-vuoto ))
                    15 FILLER           PIC  X(376).
                    15 cli-fidejussione PIC  s9(8)v9(4).

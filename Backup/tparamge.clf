@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E691413405-673-2564211741
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E8714143822-177-327718265
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -141,12 +141,13 @@ m_bFixed=1
 [FDITEM13_]
 m_strName=tge-perce-prog
 m_strRawPic=9(2)v99
-m_strPic=9(2)v99
+m_strPic=9(2)V99
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM13_
 Ultimo ricalcolo programma ordini
+
 @}}
 [FDITEM14_]
 m_strName=FILLER
@@ -329,7 +330,7 @@ m_bFixed=1
 [FDITEM32_]
 m_strName=tge-reg-PILE
 m_strRawPic=x(20)
-m_strPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -380,7 +381,7 @@ m_bFixed=1
 [FDITEM37_]
 m_strName=tge-gg-scadenza-vol-old
 m_strRawPic=s9(3)
-m_strPic=s9(3)
+m_strPic=S9(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -489,6 +490,7 @@ m_strName_Xfd=tge-utente-ultima
 [FDITEM48_]
 m_strName=tge-vuoti
 m_nItemLevel=10
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM48_
 
 @}}
@@ -505,7 +507,7 @@ m_bFixed=1
 [FDITEM50_]
 m_strName=tge-divisore-lstgdo
 m_strRawPic=s9(5)v999
-m_strPic=s9(5)v999
+m_strPic=S9(5)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -545,7 +547,7 @@ m_bFixed=1
 [FDITEM54_]
 m_strName=tge-gg-inizio-vol-pren-old
 m_strRawPic=s9(3)
-m_strPic=s9(3)
+m_strPic=S9(3)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -576,7 +578,7 @@ m_bFixed=1
 [FDITEM57_]
 m_strName=tge-ditta-comunicazione-utf
 m_strRawPic=x(20)
-m_strPic=x(20)
+m_strPic=X(20)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -637,7 +639,7 @@ m_bFixed=1
 [FDITEM63_]
 m_strName=tge-blocco-fido
 m_strRawPic=s9(10)v99
-m_strPic=s9(10)v99
+m_strPic=S9(10)V99
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -657,7 +659,7 @@ m_bFixed=1
 [FDITEM65_]
 m_strName=FILLER
 m_strRawPic=x(428)
-m_strPic=x(428)
+m_strPic=X(428)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -670,7 +672,6 @@ m_strAssignToName="tparamge"
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-tparamge
-m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 

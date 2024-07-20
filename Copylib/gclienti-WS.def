@@ -102,7 +102,7 @@
            05 WrkNote-2        PIC  x(30).
            05 WrkNote-3        PIC  x(30).
            05 WrkNote-4        PIC  x(30).
-       78 MAX-PAGE VALUE IS 6. 
+       78 MAX-PAGE VALUE IS 7. 
        01 TabID
                   OCCURS MAX-PAGE TIMES.
            05 min-id           PIC  9(9).

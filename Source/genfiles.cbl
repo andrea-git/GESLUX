@@ -141,6 +141,7 @@ LABLAB     copy "blister.sl".
            copy "coperfab.sl".
            copy "teva.sl".
            copy "reva.sl".
+           copy "notec.sl".
            copy "notef.sl".
            copy "art-ordforn.sl".
            copy "qta-vend.sl".
@@ -319,6 +320,7 @@ LABLAB     copy "blister.fd".
            copy "teva.fd".
            copy "reva.fd".
            copy "notef.fd".
+           copy "notec.fd".
            copy "art-ordforn.fd".
            copy "qta-vend.fd".
            copy "mtordini.fd".
@@ -499,6 +501,7 @@ LABLAB     copy "blister.fd".
        77  status-reva          pic x(2).
        77  status-art-ordforn   pic x(2).
        77  status-notef         pic x(2).
+       77  status-notec         pic x(2).
        77  status-qta-vend      pic x(2).
        77  status-mtordini      pic x(2).
        77  status-mrordini      pic x(2).
@@ -650,6 +653,23 @@ LABLAB     copy "blister.fd".
                 
            when "98"
                 display message "[NOTEF] Indexed file corrupt!"
+                           title titolo
+                            icon 3
+                
+           end-evaluate.
+ 
+      ***---
+       NOTEC-ERR SECTION.
+           use after error procedure on notec.
+           evaluate status-NOTEC
+           when "35" continue
+           when "39"
+                display message "File [NOTEC] Mismatch size!"
+                           title titolo
+                            icon 3
+                
+           when "98"
+                display message "[NOTEC] Indexed file corrupt!"
                            title titolo
                             icon 3
                 
@@ -3877,7 +3897,7 @@ LABLAB     copy "blister.fd".
            if status-multigest = "35"
               open output multigest
               move spaces to mul-rec
-              write mul-rec
+              write mul-rec   
            end-if.
            close multigest.
 
@@ -3904,6 +3924,12 @@ LABLAB     copy "blister.fd".
               open output notef
            end-if.
            close notef.
+
+           open input notec.
+           if status-notec = "35"
+              open output notec
+           end-if.
+           close notec.
 
            open input qta-vend.
            if status-qta-vend = "35"

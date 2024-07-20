@@ -83,6 +83,13 @@
               when elimina   initialize G2Agg-linkage
                              move cli-codice to G2Agg-codice
                              perform FORM1-DELETE
+                             
+                             move cli-codice to notc-codice
+                             move 1          to notc-prog
+                             delete notec record
+                                    invalid continue 
+                             end-delete
+
                              if totem-msg-return-value = 1
                                 perform CANCELLA-EVACLIDES
                                 perform CANCELLA-CLI-PRG
@@ -1992,6 +1999,8 @@ LUBEXX          end-if
            move 78-ID-gd-prg            to max-id(5).
            move 78-ID-ef-id-edi         to min-id(6).
            move 78-ID-ef-cap-d-edi      to max-id(6).
+           move 78-ID-ef-note-cli       to min-id(7).
+           move 78-ID-ef-note-cli       to max-id(7).
            |*******
 
            perform RIEMPI-COMBO-STATO.
@@ -2087,7 +2096,7 @@ LUBEXX          end-if
            modify gd-destini-e(2), 
                   row-font  = Large-Font,
                   row-color = 5.
-
+                                             
            move 0 to LastPrg.
            set tutto-ok to true.
            start destini key is >= des-chiave 
@@ -3465,6 +3474,26 @@ LUBEXX     if tutto-ok perform SALVA-RIGA end-if.
 
            end-if.
 
+           if tutto-ok
+              initialize notc-rec
+              move cli-codice to notc-codice
+              move 1          to notc-prog
+              read notec no lock
+                   invalid                              
+                   inquire ef-note-cli, value in notc-note
+                   move user-codi to notc-utente-creazione
+                   accept notc-data-creazione   from century-date
+                   accept notc-utente-creazione from time
+                   write notc-rec end-write
+               not invalid
+                   move user-codi to notc-utente-ultima-modifica
+                   accept notc-data-ultima-modifica   from century-date
+                   accept notc-utente-ultima-modifica from time
+                   inquire ef-note-cli, value in notc-note
+                   rewrite notc-rec end-rewrite
+              end-read 
+           end-if.
+
            if errori
       *        perform ABILITAZIONI
               |controllo che l'errore sia sulla pagina corrente
@@ -4204,6 +4233,8 @@ LUBEXX        perform DELETE-LOCKFILE
            set DestinoCambiato to false .
            set PrgCambiato to false.
 
+           move notc-note to old-notc-note.
+
             
       ***---
        VALORIZZA-OLD-PAGE-2.
@@ -4438,7 +4469,15 @@ LUBEXX     perform DELETE-LOCKFILE.
 
       ***---
        GCLIENTI-AFTER-FLD-TO-BUF.
-           perform LEGGI-EDI.
+           perform LEGGI-EDI.   
+
+           move cli-codice to notc-codice.
+           move 1          to notc-prog.
+           read notec no lock 
+                invalid move spaces to notc-note 
+           end-read.
+           move notc-note to ef-note-cli-buf.
+
            modify gd-destini-e, visible false.
            move cli-stato        to stato.
            perform CARICA-COMBO-STATO.

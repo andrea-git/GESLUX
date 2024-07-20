@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 16 luglio 2024 19:29:38.
+       DATE-WRITTEN.        sabato 20 luglio 2024 16:53:51.
        REMARKS.
       *{TOTEM}END
 
@@ -59,6 +59,7 @@
            COPY "clienti.sl".
            COPY "grade.sl".
            COPY "anacap.sl".
+           COPY "notec.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
@@ -95,6 +96,7 @@
            COPY "clienti.fd".
            COPY "grade.fd".
            COPY "anacap.fd".
+           COPY "notec.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -118,16 +120,11 @@
           88 Event-Occurred VALUE 96.
           88 Screen-No-Input-Field VALUE 97.
       * Properties & User defined Working Stoarge
-       77 ecd-import-cod-fisso-valore  PIC  x(15).
            COPY  "LINK-RICE-CLIENTI.DEF".
            COPY  "GCLIENTI-WS.DEF".
-       77 ecd-import-cod-fisso         PIC  9
-                  VALUE IS 0.
        77 fido-tmp         PIC  s9(13)v99
                   VALUE IS 0.
        77 Sum  PIC  s9(13)v99
-                  VALUE IS 0.
-       77 ecd-import-cod-fisso         PIC  9
                   VALUE IS 0.
        77 scr-note-bolla-Handle
                   USAGE IS HANDLE OF WINDOW.
@@ -146,6 +143,10 @@
        77 ef-ricerca-piva-buf          PIC  X(11).
        77 STATUS-anacap    PIC  X(2).
            88 Valid-STATUS-anacap VALUE IS "00" THRU "09". 
+       77 Form1-Pg-7-Visible           PIC  9
+                  VALUE IS 0.
+       77 STATUS-notec     PIC  X(2).
+           88 Valid-STATUS-notec VALUE IS "00" THRU "09". 
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -184,7 +185,7 @@
       * Data.Entry-Field
               10 ef-fax-BUF PIC X(15).
       * Data.Entry-Field
-              10 ef-mail-BUF PIC x(500).
+              10 ef-mail-BUF PIC X(500).
       * Data.Entry-Field
               10 ef-maila-BUF PIC X(500).
       * Data.Entry-Field
@@ -216,7 +217,7 @@
       * Data.Entry-Field
               10 ef-PFA-perce-BUF PIC zz9,999.
       * Data.Entry-Field
-              10 ef-note-BUF PIC x(2000).
+              10 ef-note-BUF PIC X(2000).
       * Data.Entry-Field
               10 ef-note-agg-BUF PIC X(256).
       * Data.Check-Box
@@ -439,6 +440,10 @@
               10 chk-imp-a-BUF PIC 9 VALUE ZERO.
       * Data.Check-Box
               10 chk-exp-i-BUF PIC 9 VALUE ZERO.
+      * Page
+              05 Form1-Pg-7-BUF.
+      * Data.Entry-Field
+              10 ef-note-cli-BUF PIC x(3000).
       * Data.Label
               05 lab-data-BUF PIC 99/99/9999.
       * Data.Label
@@ -491,6 +496,7 @@
 
        77 TMP-DataSet1-grade-BUF     PIC X(754).
        77 TMP-DataSet1-anacap-BUF     PIC X(1209).
+       77 TMP-DataSet1-notec-BUF     PIC X(6062).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -644,6 +650,11 @@
        77 DataSet1-anacap-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-anacap-KEY-Asc  VALUE "A".
           88 DataSet1-anacap-KEY-Desc VALUE "D".
+       77 DataSet1-notec-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-notec-LOCK  VALUE "Y".
+       77 DataSet1-notec-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-notec-KEY-Asc  VALUE "A".
+          88 DataSet1-notec-KEY-Desc VALUE "D".
 
        77 tvettori-k-des-SPLITBUF  PIC X(41).
        77 destini-K1-SPLITBUF  PIC X(111).
@@ -855,6 +866,21 @@
                    15 old-des-note-bolla-2 PIC  X(500).
                    15 old-des-CIG pic x(15).
                    15 FILLER           PIC  X(1985).
+
+       01 old-notc-rec.
+           05 old-notc-chiave.
+               10 old-notc-codice      PIC  9(5).
+               10 old-notc-prog        PIC  9(5).
+           05 old-notc-dati.
+               10 old-notc-note        PIC  x(3000).
+               10 FILLER           PIC  x(3000).
+           05 old-notc-dati-comuni.
+               10 old-notc-data-creazione          PIC  9(8).
+               10 old-notc-ora-creazione           PIC  9(8).
+               10 old-notc-utente-creazione        PIC  X(10).
+               10 old-notc-data-ultima-modifica    PIC  9(8).
+               10 old-notc-ora-ultima-modifica     PIC  9(8).
+               10 old-notc-utente-ultima-modifica  PIC  X(10).
       *{TOTEM}END
 
       *{TOTEM}ID-LOGICI
@@ -989,6 +1015,7 @@
        78  78-ID-chk-imp-i VALUE 5128.
        78  78-ID-chk-imp-a VALUE 5129.
        78  78-ID-chk-exp-i VALUE 5130.
+       78  78-ID-ef-note-cli VALUE 5131.
       ***** Fine ID Logici *****
       *{TOTEM}END
 
@@ -6757,6 +6784,36 @@
            TITLE "Esposizione imposte",
            .
 
+      * PAGE
+       05
+           Form1-Pg-7, 
+           VISIBLE Form1-Pg-7-Visible,
+           COL 4, 
+           LINE 7,
+           .
+
+      * ENTRY FIELD
+       10
+           ef-note-cli, 
+           Entry-Field, 
+           COL 5,67, 
+           LINE 8,15,
+           LINES 48,46 ,
+           SIZE 148,50 ,
+           BOXED,
+           COLOR IS 513,
+           ENABLED mod-campi,
+           ID IS 78-ID-ef-note-cli,                
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           MAX-TEXT 3000,
+           VSCROLL-BAR,
+           USE-RETURN,
+           USE-TAB,
+           VALUE ef-note-cli-BUF,
+           BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
+           .
+
       * BAR
        05
            Form1-Br-2, 
@@ -9022,6 +9079,7 @@
            PERFORM OPEN-clienti
            PERFORM OPEN-grade
            PERFORM OPEN-anacap
+           PERFORM OPEN-notec
       *    After Open
            .
 
@@ -9436,6 +9494,25 @@
       * <TOTEM:END>
            .
 
+       OPEN-notec.
+      * <TOTEM:EPT. INIT:gclienti, FD:notec, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  I-O notec
+           IF STATUS-notec = "35"
+              OPEN OUTPUT notec
+                IF Valid-STATUS-notec
+                   CLOSE notec
+                   OPEN I-O notec
+                END-IF
+           END-IF
+           IF NOT Valid-STATUS-notec
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:gclienti, FD:notec, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
            PERFORM CLOSE-tvettori
@@ -9468,6 +9545,7 @@
            PERFORM CLOSE-clienti
            PERFORM CLOSE-grade
            PERFORM CLOSE-anacap
+           PERFORM CLOSE-notec
       *    After Close
            .
 
@@ -9642,6 +9720,12 @@
       * <TOTEM:EPT. INIT:gclienti, FD:anacap, BeforeClose>
       * <TOTEM:END>
            CLOSE anacap
+           .
+
+       CLOSE-notec.
+      * <TOTEM:EPT. INIT:gclienti, FD:notec, BeforeClose>
+      * <TOTEM:END>
+           CLOSE notec
            .
 
        tvettori-k-des-MERGE-SPLITBUF.
@@ -14552,6 +14636,163 @@
       * <TOTEM:END>
            .
 
+       DataSet1-notec-INITSTART.
+           IF DataSet1-notec-KEY-Asc
+              MOVE Low-Value TO notc-chiave
+           ELSE
+              MOVE High-Value TO notc-chiave
+           END-IF
+           .
+
+       DataSet1-notec-INITEND.
+           IF DataSet1-notec-KEY-Asc
+              MOVE High-Value TO notc-chiave
+           ELSE
+              MOVE Low-Value TO notc-chiave
+           END-IF
+           .
+
+      * notec
+       DataSet1-notec-START.
+           IF DataSet1-notec-KEY-Asc
+              START notec KEY >= notc-chiave
+           ELSE
+              START notec KEY <= notc-chiave
+           END-IF
+           .
+
+       DataSet1-notec-START-NOTGREATER.
+           IF DataSet1-notec-KEY-Asc
+              START notec KEY <= notc-chiave
+           ELSE
+              START notec KEY >= notc-chiave
+           END-IF
+           .
+
+       DataSet1-notec-START-GREATER.
+           IF DataSet1-notec-KEY-Asc
+              START notec KEY > notc-chiave
+           ELSE
+              START notec KEY < notc-chiave
+           END-IF
+           .
+
+       DataSet1-notec-START-LESS.
+           IF DataSet1-notec-KEY-Asc
+              START notec KEY < notc-chiave
+           ELSE
+              START notec KEY > notc-chiave
+           END-IF
+           .
+
+       DataSet1-notec-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-notec-LOCK
+              READ notec WITH LOCK 
+              KEY notc-chiave
+           ELSE
+              READ notec WITH NO LOCK 
+              KEY notc-chiave
+           END-IF
+           MOVE STATUS-notec TO TOTEM-ERR-STAT 
+           MOVE "notec" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-notec-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-notec-KEY-Asc
+              IF DataSet1-notec-LOCK
+                 READ notec NEXT WITH LOCK
+              ELSE
+                 READ notec NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-notec-LOCK
+                 READ notec PREVIOUS WITH LOCK
+              ELSE
+                 READ notec PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-notec TO TOTEM-ERR-STAT
+           MOVE "notec" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-notec-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-notec-KEY-Asc
+              IF DataSet1-notec-LOCK
+                 READ notec PREVIOUS WITH LOCK
+              ELSE
+                 READ notec PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-notec-LOCK
+                 READ notec NEXT WITH LOCK
+              ELSE
+                 READ notec NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           MOVE STATUS-notec TO TOTEM-ERR-STAT
+           MOVE "notec" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-notec-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeWrite>
+      * <TOTEM:END>
+           WRITE notc-rec OF notec.
+           MOVE STATUS-notec TO TOTEM-ERR-STAT
+           MOVE "notec" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-notec-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeRewrite>
+      * <TOTEM:END>
+           REWRITE notc-rec OF notec.
+           MOVE STATUS-notec TO TOTEM-ERR-STAT
+           MOVE "notec" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-notec-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, BeforeDelete>
+      * <TOTEM:END>
+           DELETE notec.
+           MOVE STATUS-notec TO TOTEM-ERR-STAT
+           MOVE "notec" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:notec, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
            INITIALIZE vet-rec OF tvettori
            INITIALIZE naz-rec OF tnazioni
@@ -14582,6 +14823,7 @@
            INITIALIZE cli-rec OF clienti
            INITIALIZE gra-rec OF grade
            INITIALIZE anc-rec OF anacap
+           INITIALIZE notc-rec OF notec
            .
 
 
@@ -14711,6 +14953,39 @@
                 CELL-DATA = "Provincia",
            .
 
+       DataSet1-clienti-REF-recapiti-KEY.
+           MOVE cli-codice TO rec-codice
+           .
+
+       DataSet1-clienti-REF-recapiti.
+           PERFORM DataSet1-recapiti-INITREC
+           PERFORM DataSet1-clienti-REF-recapiti-KEY
+           PERFORM DataSet1-Relation2-EXPRESSION
+           PERFORM DataSet1-recapiti-READ
+           IF NOT Valid-STATUS-recapiti
+              PERFORM DataSet1-recapiti-INITREC
+           END-IF
+           .
+
+      * RI TYPE : Restricted
+       DataSet1-clienti-REF-recapiti-INS.
+           .
+
+      * RI TYPE : Restricted
+       DataSet1-clienti-REF-recapiti-UPD.
+           .
+
+      * RI TYPE : Cascade
+       DataSet1-clienti-REF-recapiti-DEL.
+      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, BeforeCascadeDelete>
+      * <TOTEM:END>
+           PERFORM DataSet1-clienti-REF-recapiti-KEY
+           PERFORM DataSet1-Relation2-EXPRESSION
+           PERFORM DataSet1-recapiti-Rec-Delete
+      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, AfterCascadeDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-clienti-REF-destini-KEY.
            MOVE cli-codice TO des-codice
            .
@@ -14798,39 +15073,6 @@
            ELSE
               PERFORM DataSet1-destini-Rec-Write
            END-IF
-           .
-
-       DataSet1-clienti-REF-recapiti-KEY.
-           MOVE cli-codice TO rec-codice
-           .
-
-       DataSet1-clienti-REF-recapiti.
-           PERFORM DataSet1-recapiti-INITREC
-           PERFORM DataSet1-clienti-REF-recapiti-KEY
-           PERFORM DataSet1-Relation2-EXPRESSION
-           PERFORM DataSet1-recapiti-READ
-           IF NOT Valid-STATUS-recapiti
-              PERFORM DataSet1-recapiti-INITREC
-           END-IF
-           .
-
-      * RI TYPE : Restricted
-       DataSet1-clienti-REF-recapiti-INS.
-           .
-
-      * RI TYPE : Restricted
-       DataSet1-clienti-REF-recapiti-UPD.
-           .
-
-      * RI TYPE : Cascade
-       DataSet1-clienti-REF-recapiti-DEL.
-      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, BeforeCascadeDelete>
-      * <TOTEM:END>
-           PERFORM DataSet1-clienti-REF-recapiti-KEY
-           PERFORM DataSet1-Relation2-EXPRESSION
-           PERFORM DataSet1-recapiti-Rec-Delete
-      * <TOTEM:EPT. RELATION:DataSet1, RELATION:Relation2, AfterCascadeDelete>
-      * <TOTEM:END>
            .
 
       * FD's Initialize Paragraph
@@ -15047,8 +15289,8 @@
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
-           PERFORM DataSet1-destini-INITREC
            PERFORM DataSet1-recapiti-INITREC
+           PERFORM DataSet1-destini-INITREC
            .
 
       * FD's Initialize Paragraph
@@ -15067,6 +15309,14 @@
                          ALPHABETIC    DATA BY SPACES
            .
 
+      * FD's Initialize Paragraph
+       DataSet1-notec-INITREC.
+           INITIALIZE notc-rec OF notec
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
       *
        DataSet1-DISPATCH-BUFTOFLD.
            EVALUATE TOTEM-Form-Index ALSO TOTEM-Frame-Index
@@ -15075,10 +15325,10 @@
            END-EVALUATE
            .
 
-       DataSet1-Relation1-EXPRESSION.
+       DataSet1-Relation2-EXPRESSION.
            .
 
-       DataSet1-Relation2-EXPRESSION.
+       DataSet1-Relation1-EXPRESSION.
            .
 
        Form1-DISPLAY-STATUS-MSG.
@@ -15331,6 +15581,7 @@
                  "&Evasione",
                  "&Progressivi forzati",
                  "EDI",
+                 "Note",
                         )
            MOVE 0 TO 
                    Form1-Pg-1-Visible,
@@ -15339,6 +15590,7 @@
                    Form1-Pg-4-Visible,
                    Form1-Pg-5-Visible,
                    Form1-Pg-6-Visible,
+                   Form1-Pg-7-Visible,
            MOVE 1 TO Form1-Pg-1-Visible
            PERFORM Screen1-Ta-1-TABCHANGE
       * COMBO-BOX
@@ -15655,8 +15907,8 @@
            PERFORM Form1-Buf-To-Fld
            PERFORM DataSet1-clienti-Rec-Delete
            IF Valid-STATUS-clienti
-              PERFORM DataSet1-clienti-REF-destini-DEL
               PERFORM DataSet1-clienti-REF-recapiti-DEL
+              PERFORM DataSet1-clienti-REF-destini-DEL
               PERFORM Form1-CLEAR
               PERFORM Form1-DUMMY-DELETE-INIT
               MOVE "303" TO TOTEM-MSG-ID
@@ -16718,6 +16970,16 @@
                PERFORM Screen1-Ta-1-TABCHANGE
                MOVE 4 TO ACCEPT-CONTROL
                MOVE 5127 TO CONTROL-ID
+               EXIT PARAGRAPH
+           END-IF
+      * ef-note-cli's Validation
+           SET TOTEM-CHECK-OK TO FALSE
+           PERFORM ef-note-cli-VALIDATION
+           IF NOT TOTEM-CHECK-OK
+               MOVE 7 TO Screen1-Ta-1-TAB-VALUE
+               PERFORM Screen1-Ta-1-TABCHANGE
+               MOVE 4 TO ACCEPT-CONTROL
+               MOVE 5131 TO CONTROL-ID
                EXIT PARAGRAPH
            END-IF
            .
@@ -18320,6 +18582,23 @@
            PERFORM ef-cap-d-edi-AFTER-VALIDATION
            .
 
+       ef-note-cli-BEFORE-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-note-cli, BeforeValidation>
+      * <TOTEM:END>
+           .
+
+       ef-note-cli-AFTER-VALIDATION.
+      * <TOTEM:EPT. FORM:Form1, Data.Entry-Field:ef-note-cli, AfterValidation>
+      * <TOTEM:END>
+           .
+
+      * ef-note-cli's Validation
+       ef-note-cli-VALIDATION.
+           PERFORM ef-note-cli-BEFORE-VALIDATION
+           SET TOTEM-CHECK-OK TO TRUE
+           PERFORM ef-note-cli-AFTER-VALIDATION
+           .
+
 
        Form1-Buf-To-Fld.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeBufToFld>
@@ -18665,6 +18944,8 @@
               ELSE
                  MOVE 0 TO ecd-export-imposte
               END-IF
+      * DB_Entry-Field : ef-note-cli
+           MOVE ef-note-cli-BUF TO notc-note
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, AfterBufToFld>
            perform GCLIENTI-AFTER-BUF-TO-FLD.
 
@@ -19048,6 +19329,8 @@
               ELSE
                  MOVE 0 TO chk-exp-i-BUF
               END-IF
+      * DB_Entry-Field : ef-note-cli
+           MOVE notc-note TO ef-note-cli-BUF
       * DB_LABEL : lab-data
               MOVE cli-data-creazione  TO lab-data-BUF
       * DB_LABEL : lab-des
@@ -19566,6 +19849,13 @@
               set NoSalvato to true
               |78-ID-ef-reg-n è l'ID del campo ef-reg-n
               move 78-ID-ef-reg-n to store-id 
+           end-if
+
+           if notc-note not = old-notc-note
+              and SiSalvato
+              set NoSalvato to true
+              |78-ID-ef-note-cli è l'ID del campo ef-note-cli
+              move 78-ID-ef-note-cli to store-id 
            end-if
 
            .
@@ -21113,6 +21403,7 @@
                    Form1-Pg-4-Visible,
                    Form1-Pg-5-Visible,
                    Form1-Pg-6-Visible,
+                   Form1-Pg-7-Visible,
            EVALUATE Screen1-Ta-1-TAB-VALUE
            WHEN 1
                   MOVE 1 TO Form1-Pg-1-Visible
@@ -21132,6 +21423,9 @@
            WHEN 6
                   MOVE 1 TO Form1-Pg-6-Visible
                   MODIFY Screen1-Ta-1, VALUE = 6
+           WHEN 7
+                  MOVE 1 TO Form1-Pg-7-Visible
+                  MODIFY Screen1-Ta-1, VALUE = 7
            END-EVALUATE
            MOVE 5000 TO CONTROL-ID
            DISPLAY Form1
@@ -21546,6 +21840,7 @@
            When 5128 PERFORM Form1-DaCb-1-AfterProcedure
            When 5129 PERFORM Form1-DaCb-1-AfterProcedure
            When 5130 PERFORM Form1-DaCb-1-AfterProcedure
+           When 5131 PERFORM Form1-DaEf-1-AfterProcedure
            END-EVALUATE
            perform Form1-AFTER-SCREEN
            .
@@ -23245,6 +23540,12 @@
               INQUIRE ef-id-edi, VALUE IN ecd-id-edi
               SET TOTEM-CHECK-OK TO FALSE
               PERFORM ef-id-edi-VALIDATION
+              IF NOT TOTEM-CHECK-OK
+                 MOVE 1 TO ACCEPT-CONTROL
+              END-IF
+              INQUIRE ef-note-cli, VALUE IN notc-note
+              SET TOTEM-CHECK-OK TO FALSE
+              PERFORM ef-note-cli-VALIDATION
               IF NOT TOTEM-CHECK-OK
                  MOVE 1 TO ACCEPT-CONTROL
               END-IF

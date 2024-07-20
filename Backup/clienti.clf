@@ -2,7 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E87B9363-112-1314830253
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E8713173819-171-2240422684
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -198,7 +198,7 @@ m_bFixed=1
 [FDITEM19_]
 m_strName=cli-email
 m_strRawPic=x(500)
-m_strPic=x(500)
+m_strPic=X(500)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -259,7 +259,7 @@ m_bFixed=1
 [FDITEM25_]
 m_strName=cli-note
 m_strRawPic=x(2000)
-m_strPic=x(2000)
+m_strPic=X(2000)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -349,7 +349,7 @@ m_bFixed=1
 [FDITEM34_]
 m_strName=cli-fido
 m_strRawPic=9(11)v9(2)
-m_strPic=9(11)v9(2)
+m_strPic=9(11)V9(2)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -779,7 +779,7 @@ m_bFixed=1
 [FDITEM79_]
 m_strName=cli-sost
 m_strRawPic=x
-m_strPic=x
+m_strPic=X
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -899,7 +899,7 @@ m_bFixed=1
 [FDITEM92_]
 m_strName=cli-invio-bolle-EDI
 m_strRawPic=x
-m_strPic=x
+m_strPic=X
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -927,7 +927,7 @@ m_strTrue="N" " "
 [FDITEM95_]
 m_strName=cli-destino-auto-EDI
 m_strRawPic=x
-m_strPic=x
+m_strPic=X
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1023,7 +1023,7 @@ m_strTrue="S"
 [FDITEM105_]
 m_strName=cli-contrassegno
 m_strRawPic=x
-m_strPic=x
+m_strPic=X
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1044,7 +1044,7 @@ m_strName=cli-contrassegno-no
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
-m_strTrue="N", " "
+m_strTrue="N" " "
 {{@DataItem_m_strDescriptionFDITEM107_
 
 @}}
@@ -1062,7 +1062,7 @@ m_strName_Xfd=cli-alfa-vuoto
 [FDITEM109_]
 m_strName=cli-fidejussione
 m_strRawPic=s9(8)v9(4)
-m_strPic=s9(8)v9(4)
+m_strPic=S9(8)V9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1072,7 +1072,7 @@ m_bFixed=1
 [FDITEM110_]
 m_strName=cli-pfa
 m_strRawPic=s9(8)v9(4)
-m_strPic=s9(8)v9(4)
+m_strPic=S9(8)V9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1082,7 +1082,7 @@ m_bFixed=1
 [FDITEM111_]
 m_strName=cli-pfa-perce
 m_strRawPic=9(3)v999
-m_strPic=9(3)v999
+m_strPic=9(3)V999
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
@@ -1154,7 +1154,6 @@ m_strAssignToName="clienti"
 m_nFormat=3
 m_nAccessMode=3
 m_strFileStatus=STATUS-clienti
-m_nNumber=1
 m_nCompression=70
 {{@SL_m_strDescription
 
