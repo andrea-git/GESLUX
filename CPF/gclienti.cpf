@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E87141505-540-31403757
+PROGRAM_UNIQUE_CODE=TOTEM-7E8716145838-619-50044900
 
 {{@DESCRIPTION:
 
@@ -21783,7 +21783,8 @@ Begin Screen Form1
             Field Picture     = x(3000)
             Field Variable    = notc-note
             File              = notec
-            Font              = Default Font
+            Font              = Verdana/12/C0/@Occidentale
+            Font Variable     = Verdana12-Occidentale
             Height in Cells   = TRUE
             Help ID           = 0
             ID                = 16

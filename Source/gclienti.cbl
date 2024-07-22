@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 20 luglio 2024 16:53:51.
+       DATE-WRITTEN.        lunedì 22 luglio 2024 16:59:51.
        REMARKS.
       *{TOTEM}END
 
@@ -6803,6 +6803,7 @@
            BOXED,
            COLOR IS 513,
            ENABLED mod-campi,
+           FONT IS Verdana12-Occidentale,
            ID IS 78-ID-ef-note-cli,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
