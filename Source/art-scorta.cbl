@@ -128,6 +128,8 @@
            start articoli key >= art-chiave.
            perform until 1 = 2
               read articoli next at end exit perform end-read
+              |Per sicurezza, è successo
+              if art-codice = 0 exit perform cycle end-if
               if art-bloccato or art-disattivo
                  move 0 to art-scorta
               else
@@ -164,7 +166,19 @@
                           end-perform
                     end-start
                     move art-imballo-standard to imq-codice
-                    read timbalqta no lock      
+                    read timbalqta no lock
+                         invalid
+                         string "ARTICOLO: "              delimited size
+                                art-codice                delimited size
+                                " - SCARTATO, IMBALLO: "  delimited size
+                                imq-codice                delimited size
+                                " NON VALIDO."            delimited size
+                           into como-riga 
+                         end-string        
+                         perform SETTA-RIGA-STAMPA    
+                         move 1 to batch-status
+                         exit perform cycle
+                    end-read               
 
                     initialize como-riga
                     compute somma = giacenza + ordinato
