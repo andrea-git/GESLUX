@@ -17,8 +17,11 @@
       *Ultimo ricalcolo programma ordini
       *
                10 tge-perce-prog   PIC  9(2)v99.
+      *(( XFD NAME = tge-cod-pag-ant-2 ))
       *Ultimo ricalcolo programma ordini
-               10 FILLER           PIC  9(4).
+               10 tge-cod-pag-anticipato-2     PIC  x(3).
+      *Ultimo ricalcolo programma ordini
+               10 FILLER           PIC  9.
                10 tge-altre-date.
                    15 tge-data-1       PIC  9(8).
                    15 tge-data-2       PIC  9(8).
@@ -63,6 +66,7 @@
                    15 tge-num-vuoto-3  PIC  9(18).
       *(( XFD NAME = tge-gg-inizio-vol ))
                    15 tge-gg-inizio-vol-pren-old   PIC  s9(3).
+      *(( XFD NAME = tge-cod-pag-ant ))
                    15 tge-cod-pag-anticipato       PIC  X(3).
                    15 tge-gg-master-chiuso         PIC  9(3).
                    15 tge-ditta-comunicazione-utf  PIC  x(20).

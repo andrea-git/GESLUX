@@ -40,6 +40,10 @@
            when 78-ID-ef-pag-ant
                 inquire ef-pag-ant, value in ef-pag-ant-buf
 
+           |78-ID-ef-pag-ant-2 è l'ID del control ef-pag-ant-2
+           when 78-ID-ef-pag-ant-2
+                inquire ef-pag-ant-2, value in ef-pag-ant-2-buf
+
            |78-ID-ef-cli è l'ID del control ef-cli
            when 78-ID-ef-cli
                 inquire ef-cli, value in ef-cli-buf
@@ -92,8 +96,8 @@
            when 78-ID-ef-perce-arrot
                 inquire ef-perce-arrot, value in ef-perce-arrot-buf
 
-           |24 è l'ID del control ef-gg-part
-           when 24
+           |25 è l'ID del control ef-gg-part
+           when 25
                 inquire ef-gg-part, value in ef-gg-part-buf
 
            |78-ID-ef-perce-prog è l'ID del control ef-perce-prog
@@ -104,8 +108,8 @@
            when 78-ID-ef-pile
                 inquire ef-pile, value in ef-pile-buf
 
-           |30 è l'ID del control ef-gg-chiuso
-           when 30
+           |31 è l'ID del control ef-gg-chiuso
+           when 31
                 inquire ef-gg-chiuso, value in ef-gg-chiuso-buf
 
            |78-ID-ef-vet è l'ID del control ef-vet
@@ -132,8 +136,8 @@
            when 78-ID-ef-gg-max
                 inquire ef-gg-max, value in ef-gg-max-buf
 
-           |38 è l'ID del control ef-gg-cons
-           when 38
+           |39 è l'ID del control ef-gg-cons
+           when 39
                 inquire ef-gg-cons, value in ef-gg-cons-buf
 
            |78-ID-ef-vetaaa è l'ID del control ef-vetaaa

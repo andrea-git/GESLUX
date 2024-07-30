@@ -976,12 +976,13 @@
            move t5           to spl-riga-stampa.
            perform SCRIVI.
 
-           if tor-cod-pagamento = tge-cod-pag-anticipato
+           if tor-cod-pagamento = tge-cod-pag-anticipato or
+              tor-cod-pagamento = tge-cod-pag-anticipato-2 
               subtract 0,1 from spl-riga
               move CourierNew10B        to spl-hfont
 
               move "PA"                   to tblpa-codice1
-              move tge-cod-pag-anticipato to tblpa-codice2
+              move tor-cod-pagamento      to tblpa-codice2
               move spaces                 to tblpa-descrizione1
               move spaces                 to tblpa-descrizione2
               read tcodpag invalid continue end-read
