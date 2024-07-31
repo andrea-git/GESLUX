@@ -7,6 +7,7 @@
                10 tmod-imballo     PIC  x(3).
                10 tmod-peso        PIC  9(5)v999.
            05 tmod-dati.
+               10 tmod-cod-art-frn PIC  x(15).
                10 tmod-marca       PIC  z(4).
                10 tmod-des-marca   PIC  x(50).
                10 tmod-art-descrizione         PIC  x(50).

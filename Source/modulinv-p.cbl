@@ -537,7 +537,9 @@
                      tmod-des-marca
                      separatore
                      tmod-articolo
-                     separatore            
+                     separatore       
+                     tmod-cod-art-frn
+                     separatore   
                      tmod-art-descrizione
                      separatore            
                      tmod-imballo
@@ -587,6 +589,8 @@ LUBEXX               separatore
                      separatore
                      "Cod. Articolo"
                      separatore
+                     "Cod. art. frn."
+                     separatore
                      "Descrizione Articolo"
                      separatore
                      "Cod."                                
@@ -633,7 +637,8 @@ LUBEXX               separatore
            move prg-peso            to tmod-peso.
 
            read tmp-modulinv no lock
-                invalid                                     
+                invalid                    
+                move art-cod-art-frn    to tmod-cod-art-frn 
                 move art-codice-ean-1   to tmod-codice-ean-1
                 move art-codice-ean-2   to tmod-codice-ean-2
                 move art-codice-ean-3   to tmod-codice-ean-3

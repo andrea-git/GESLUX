@@ -5,7 +5,7 @@
 
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E8713174318-759-2741826503
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E871F124115-137-111473044
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -82,9 +82,9 @@ m_bFixed=1
 
 @}}
 [FDITEM7_]
-m_strName=tmod-marca
-m_strRawPic=z(4)
-m_strPic=Z(4)
+m_strName=tmod-cod-art-frn
+m_strRawPic=x(15)
+m_strPic=x(15)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -92,9 +92,9 @@ m_bFixed=1
 
 @}}
 [FDITEM8_]
-m_strName=tmod-des-marca
-m_strRawPic=x(50)
-m_strPic=X(50)
+m_strName=tmod-marca
+m_strRawPic=z(4)
+m_strPic=Z(4)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -102,7 +102,7 @@ m_bFixed=1
 
 @}}
 [FDITEM9_]
-m_strName=tmod-art-descrizione
+m_strName=tmod-des-marca
 m_strRawPic=x(50)
 m_strPic=X(50)
 m_nItemLevel=10
@@ -112,7 +112,7 @@ m_bFixed=1
 
 @}}
 [FDITEM10_]
-m_strName=tmod-des-imballo
+m_strName=tmod-art-descrizione
 m_strRawPic=x(50)
 m_strPic=X(50)
 m_nItemLevel=10
@@ -122,9 +122,9 @@ m_bFixed=1
 
 @}}
 [FDITEM11_]
-m_strName=tmod-qta-imballi
-m_strRawPic=z.zz9
-m_strPic=Z.ZZ9
+m_strName=tmod-des-imballo
+m_strRawPic=x(50)
+m_strPic=X(50)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -132,9 +132,9 @@ m_bFixed=1
 
 @}}
 [FDITEM12_]
-m_strName=tmod-utf
-m_strRawPic=x
-m_strPic=X
+m_strName=tmod-qta-imballi
+m_strRawPic=z.zz9
+m_strPic=Z.ZZ9
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -142,9 +142,9 @@ m_bFixed=1
 
 @}}
 [FDITEM13_]
-m_strName=tmod-giacenza
-m_strRawPic=s9(8)
-m_strPic=S9(8)
+m_strName=tmod-utf
+m_strRawPic=x
+m_strPic=X
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -152,9 +152,9 @@ m_bFixed=1
 
 @}}
 [FDITEM14_]
-m_strName=tmod-prezzo
-m_strRawPic=----.---.---.--9,99
-m_strPic=----.---.---.--9,99
+m_strName=tmod-giacenza
+m_strRawPic=s9(8)
+m_strPic=S9(8)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -162,9 +162,9 @@ m_bFixed=1
 
 @}}
 [FDITEM15_]
-m_strName=tmod-mag-std
-m_strRawPic=x(3)
-m_strPic=x(3)
+m_strName=tmod-prezzo
+m_strRawPic=----.---.---.--9,99
+m_strPic=----.---.---.--9,99
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -172,9 +172,9 @@ m_bFixed=1
 
 @}}
 [FDITEM16_]
-m_strName=tmod-codice-ean-1
-m_strRawPic=9(13)
-m_strPic=9(13)
+m_strName=tmod-mag-std
+m_strRawPic=x(3)
+m_strPic=x(3)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -182,7 +182,7 @@ m_bFixed=1
 
 @}}
 [FDITEM17_]
-m_strName=tmod-codice-ean-2
+m_strName=tmod-codice-ean-1
 m_strRawPic=9(13)
 m_strPic=9(13)
 m_nItemLevel=10
@@ -192,7 +192,7 @@ m_bFixed=1
 
 @}}
 [FDITEM18_]
-m_strName=tmod-codice-ean-3
+m_strName=tmod-codice-ean-2
 m_strRawPic=9(13)
 m_strPic=9(13)
 m_nItemLevel=10
@@ -202,7 +202,7 @@ m_bFixed=1
 
 @}}
 [FDITEM19_]
-m_strName=tmod-codice-ean-4
+m_strName=tmod-codice-ean-3
 m_strRawPic=9(13)
 m_strPic=9(13)
 m_nItemLevel=10
@@ -212,13 +212,23 @@ m_bFixed=1
 
 @}}
 [FDITEM20_]
-m_strName=tmod-codice-ean-5
+m_strName=tmod-codice-ean-4
 m_strRawPic=9(13)
 m_strPic=9(13)
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM20_
+
+@}}
+[FDITEM21_]
+m_strName=tmod-codice-ean-5
+m_strRawPic=9(13)
+m_strPic=9(13)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM21_
 
 @}}
 [CStoAcucobolSL_]
