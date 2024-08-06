@@ -670,7 +670,8 @@
                               pnt-codice-co = "IN4" or
                               pnt-codice-co = "INC" or
                               pnt-codice-co = "PP"  or
-                              pnt-codice-co = "PAG")
+                              pnt-codice-co = "PAG" or
+                              pnt-codice-co = "AFC")
                               subtract par-importo 
                                   from importo-insoluto
                            end-if
