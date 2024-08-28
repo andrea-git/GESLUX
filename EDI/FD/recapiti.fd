@@ -28,10 +28,10 @@
                    15 rec-num-vuoto-3  PIC  9(15).
                    15 rec-dett-dest-SDI            PIC  x.
                        88 rec-dett-dest-SDI-si VALUE IS "S". 
-                       88 rec-dett-dest-SDI-no VALUE IS "N"," ". 
+                       88 rec-dett-dest-SDI-no VALUE IS "N" " ". 
                    15 rec-escludi-int  PIC  x.
                        88 rec-escludi-int-si VALUE IS "S". 
-                       88 rec-escludi-int-no VALUE IS "N"," ". 
+                       88 rec-escludi-int-no VALUE IS "N" " ". 
       *(( XFD NAME = rec-alfa-vuoto-1_1 ))
                    15 rec-alfa-vuoto-1 PIC  X(18).
                    15 rec-alfa-vuoto-2 PIC  X(20).

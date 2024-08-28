@@ -90,6 +90,7 @@
                10 tbliv-codice1    PIC  x(02).
       *$GEN zmm=on,zmm_title=Codice,zmm_datatype=x,zmm_key=1,zmm_size=20,zmm_align=L,zmm_pos=1,zmm_entity=tbliv
       *
+      *
                10 tbliv-codice2    PIC  x(20).
            05 resto-record-tbliv.
       *$GEN zmm=on,zmm_title=Descrizione 1,zmm_datatype=x,zmm_key=2,zmm_size=30,zmm_align=L,zmm_pos=2
@@ -100,21 +101,26 @@
                10 tbliv-descrizione2           PIC  x(30).
       *$GEN type=num,dec=02,size=07,zmm=on,zmm_title=Perc.,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=4
       *
+      *
                10 tbliv-percentuale            PIC  9(03)v9(02).
       *$GEN type=num,dec=00,size=04,zmm=on,zmm_title=Detraibilità,zmm_datatype=n,zmm_size=10,zmm_align=R,zmm_pos=5
                10 tbliv-detraibilita           PIC  9(03).
       *$GEN zmm=on,zmm_title=Telem.clienti,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=7
+      *
       *
                10 tbliv-gruppo-ac  PIC  9(01).
                    88 tbliv-gruppo-ac-88 VALUE IS 0 THRU 4. 
       *$GEN zmm=on,zmm_title=Telem.forn.,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=8
                10 tbliv-gruppo-af  PIC  9(01).
       *            88  tbliv-gruppo-af-88  value 0 thru 4.                                                |pm 05/03/2007 12.33
+      *
                    88 tbliv-gruppo-af-88 VALUE IS 0 THRU 5. 
+      *
       *
       *
                10 tbliv-gruppo-101 PIC  9(01).
                    88 tbliv-gruppo-101-88 VALUE IS 0 2. 
+      *
       *
       *
                10 tbliv-gruppo-102 PIC  9(01).
@@ -124,15 +130,18 @@
                    88 tbliv-recupero-anno-88 VALUE IS "S" " ". 
                    88 tbliv-recupero-anno-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
                10 tbliv-plafond    PIC  x(01).
                    88 tbliv-plafond-88 VALUE IS "S" " ". 
                    88 tbliv-plafond-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
       *
+      *
                10 tbliv-esenzione  PIC  x(01).
                    88 tbliv-esenzione-88 VALUE IS "S" " ". 
                    88 tbliv-esenzione-si VALUE IS "S". 
       *$GEN type=combobox,comboclass=tbliv_ritenuta
+      *
                10 tbliv-ritenuta   PIC  x(01).
                    88 tbliv-ritenuta-88 VALUE IS "S" " " "F". 
                    88 tbliv-ritenuta-soggetto VALUE IS "S". 
@@ -141,12 +150,15 @@
       *
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
       *
+      *
                10 TBLIV-VENTILAZIONE           PIC  X(01).
                    88 TBLIV-VENTILAZIONE-88 VALUE IS "S" " ". 
                    88 tbliv-ventilazione-si VALUE IS "S". 
       *$GEN type=combobox,comboclass=tbliv_pro_rata
+      *
                10 TBLIV-PRO-RATA   PIC  X(01).
       *            88  TBLIV-PRO-RATA-88   VALUE "S" " ".                         |DS 15/04/2005 9.18
+      *
                    88 TBLIV-PRO-RATA-88 VALUE IS "I" "E" "N" " ". 
                    88 tbliv-pro-rata-imponibile VALUE IS "I". 
                    88 tbliv-pro-rata-esente VALUE IS "E". 
@@ -154,6 +166,7 @@
                    88 tbliv-pro-rata-non-gestito VALUE IS " ". 
       *
       *$GEN type=combobox,comboclass=tbliv_agricoltura
+      *
                10 TBLIV-AGRICOLTURA            PIC  X(01).
                    88 TBLIV-AGRICOLTURA-88 VALUE IS "S" "M" " ". 
                    88 TBLIV-AGRICOLTURA-88-s VALUE IS "S". 
@@ -176,10 +189,12 @@
                    88 TBLIV-AGENZIE-VIAGGIO-88-g VALUE IS " " "C" "E". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
       *
+      *
                10 TBLIV-RIPARTIZIONE           PIC  X(01).
                    88 TBLIV-RIPARTIZIONE-88 VALUE IS " " "S". 
                    88 tbliv-ripartizione-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" "
+      *
       *
                10 TBLIV-INTRA-NON-SOGG         PIC  X(01).
                    88 TBLIV-INTRA-NON-SOGG-88 VALUE IS " " "S". 
@@ -187,25 +202,31 @@
                10 TBLIV-PERCE-COMPENSAZIONE-ALFA.
       *$GEN type=num,dec=02,size=07
       *
+      *
                    15 tbliv-perce-compensazione    PIC  9(03)V9(02).
+      *
       *
       *
                10 tbliv-codice-magix-collegato-old         PIC  x(03).
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Tot.op.attive,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=9
+      *
       *
                10 TBLIV-ATTIVE     PIC  X(01).
                    88 TBLIV-ATTIVE-88 VALUE IS "S" " ". 
                    88 tbliv-attive-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.attive intra,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=15
       *
+      *
                10 TBLIV-ATTIVE-INTRA           PIC  X(01).
                    88 TBLIV-ATTIVE-INTRA-88 VALUE IS "S" " ". 
                    88 tbliv-attive-intra-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Tot.op.passive,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=10
+      *
                10 TBLIV-PASSIVE    PIC  X(01).
                    88 TBLIV-PASSIVE-88 VALUE IS "S" " ". 
                    88 tbliv-passive-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.passive intra,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=16
+      *
       *
                10 TBLIV-PASSIVE-INTRA          PIC  X(01).
                    88 TBLIV-PASSIVE-INTRA-88 VALUE IS "S" " ". 
@@ -222,6 +243,7 @@
                    88 TBLIV-NON-IMPONIBILE-88 VALUE IS "S" " ". 
                    88 tbliv-non-imponibile-si VALUE IS "S". 
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Op.attive esenti,zmm_datatype=x,zmm_size=15,zmm_align=L,zmm_pos=13
+      *
                10 TBLIV-ESENTE     PIC  X(01).
                    88 TBLIV-ESENTE-88 VALUE IS "S" " ". 
                    88 tbliv-esente-si VALUE IS "S". 
@@ -252,6 +274,7 @@
       *
       *
       *$GEN type=checkbox,truevalue="S",falsevalue=" ",zmm=on,zmm_title=Rottami,zmm_datatype=x,zmm_size=10,zmm_align=L,zmm_pos=19
+      *
                10 TBLIV-IMPORTAZIONI-ROTTAMI   PIC  X(01).
                    88 TBLIV-IMPORTAZIONI-ROTTAMI-88 VALUE IS "S" " ". 
                    88 tbliv-importazioni-rottami-si VALUE IS "S". 
@@ -264,6 +287,7 @@
                    88 tbliv-subfornitura-S VALUE IS "S". 
       *        10  TBLIV-FILLER                    PIC  X(1208).                  |ds 29/10/2007 11.44
       *        10  TBLIV-FILLER                    PIC  X(1207).                  |DS 08/11/2007 10.59|ds 29/10/2007 11.44
+      *
       *
                10 tbliv-codice-magix-collegato PIC  x(30).
                10 tbliv-enasarco   PIC  9(01).
@@ -286,6 +310,7 @@
                    88 tbliv-beneservizio-ok VALUE IS "B" "S". 
       *$GEN type=combobox,comboclass=tbliv_tipo_operazione,
       *
+      *
                10 tbliv-tipo-operazione        PIC  x(02).
                    88 tbliv-tipo-operazione-imponibile VALUE IS "IM". 
                    88 tbliv-tipo-operazione-non-imponibile VALUE IS "NI"
@@ -298,18 +323,22 @@
       *r 09/07/2010 15:14:45
       *$GEN type=code,entity=tbliv
       *
+      *
                10 tbliv-tbliv-codice-split     PIC  x(03).
       *        10  TBLIV-FILLER                    PIC  X(1171).           | scamar 09/07/2010 12:25:16    | Suadal 26/02/2015
       *$GEN type=combobox,comboclass=tbliv_natura_iva,
+      *
                10 tbliv-natura-iva PIC  x(10).
                    88 tbliv-natura-iva-imp VALUE IS "IM". 
                    88 tbliv-natura-iva-escluse VALUE IS "N1" THRU "N1zzz
       -    "zzzzz". 
       *e 05/03/2020
       *
+      *
                    88 tbliv-natura-iva-non-sogg VALUE IS "N2" THRU "N2zz
       -    "zzzzzz". 
       *e 05/03/2020
+      *
       *
                    88 tbliv-natura-iva-non-imp VALUE IS "N3" THRU "N3zzz
       -    "zzzzz". 
@@ -321,13 +350,16 @@
                    88 tbliv-natura-iva-non-esposta VALUE IS "N5" THRU "N
       -    "5zzzzzzzz". 
       *e 05/03/2020
+      *
                    88 tbliv-natura-iva-reverse-charge VALUE IS "N6" 
            THRU "N6zzzzzzzz". 
       *e 05/03/2020
       *
+      *
                    88 tbliv-natura-iva-intra VALUE IS "N7" THRU "N7zzzzz
       -    "zzz". 
       *e 05/03/2020
+      *
                    88 tbliv-natura-iva-non-comunicare VALUE IS "NN". 
                10 tbliv-nso-taxID  PIC  x(02).
       *$GEN type=combobox,comboclass=11nsr_taxid,

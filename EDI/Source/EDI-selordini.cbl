@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 18 giugno 2024 17:45:11.
+       DATE-WRITTEN.        mercoledì 28 agosto 2024 17:49:10.
        REMARKS.
       *{TOTEM}END
 
@@ -402,6 +402,7 @@
            05 Col-anno         PIC  9(4).
            05 Col-numero       PIC  z(7)9.
            05 Col-ord-cli      PIC  X(50).
+           05 Col-tot          PIC  zz.zzz.zz9,99.
            05 Col-data         PIC  x(10).
            05 col-stato        PIC  x(50).
            05 Col-cliente      PIC  z(4)9.
@@ -1694,13 +1695,15 @@
            LINE 1,77,
            LINES 37,00 ,
            SIZE 195,17 ,
+           ADJUSTABLE-COLUMNS,
            BOXED,
-           DATA-COLUMNS (1, 2, 6, 14, 64, 74, 124, 129, 169, 209, 249),
-           ALIGNMENT ("C", "C", "R", "U", "C", "L", "R", "U", "U", "U", 
-           "U"),
-           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
-           DATA-TYPES ("X", "9(4)", "9(8)", "X(50)", "99/99/9999", "x(50
-      -    ")", "9(4)", "x(40)", "x(40)", "x(40)", "x(35)"),
+           DATA-COLUMNS (1, 2, 6, 14, 64, 77, 87, 137, 142, 182, 222, 
+           262),
+           ALIGNMENT ("C", "C", "R", "U", "R", "C", "L", "R", "U", "U", 
+           "U", "U"),
+           SEPARATION (5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5),
+           DATA-TYPES ("X", "9(4)", "9(8)", "X(50)", "X", "99/99/9999", 
+           "x(50)", "9(4)", "x(40)", "x(40)", "x(40)", "x(35)"),
            NUM-COL-HEADINGS 1,
            COLUMN-HEADINGS,
            CURSOR-FRAME-WIDTH 0,
@@ -1714,7 +1717,7 @@
            WIDTH-IN-CELLS,
            ROW-HEADINGS,
            TILED-HEADINGS,
-           VIRTUAL-WIDTH 192,
+           VIRTUAL-WIDTH 205,
            VPADDING 50,
            VSCROLL,
            EVENT PROCEDURE Screen1-Gd-1-Event-Proc,
@@ -14178,24 +14181,27 @@
                 CELL-DATA = "N.Ord.Cli.",
       * CELLS' SETTING
               MODIFY gd-ordini, X = 5, Y = 1,
-                CELL-DATA = "Data",
+                CELL-DATA = "Totale",
       * CELLS' SETTING
               MODIFY gd-ordini, X = 6, Y = 1,
-                CELL-DATA = "Stato",
+                CELL-DATA = "Data",
       * CELLS' SETTING
               MODIFY gd-ordini, X = 7, Y = 1,
-                CELL-DATA = "Cli",
+                CELL-DATA = "Stato",
       * CELLS' SETTING
               MODIFY gd-ordini, X = 8, Y = 1,
-                CELL-DATA = "Ragione Sociale",
+                CELL-DATA = "Cli",
       * CELLS' SETTING
               MODIFY gd-ordini, X = 9, Y = 1,
-                CELL-DATA = "Destino",
+                CELL-DATA = "Ragione Sociale",
       * CELLS' SETTING
               MODIFY gd-ordini, X = 10, Y = 1,
-                CELL-DATA = "Indirizzo",
+                CELL-DATA = "Destino",
       * CELLS' SETTING
               MODIFY gd-ordini, X = 11, Y = 1,
+                CELL-DATA = "Indirizzo",
+      * CELLS' SETTING
+              MODIFY gd-ordini, X = 12, Y = 1,
                 CELL-DATA = "Località",
            .
 
@@ -14693,7 +14699,7 @@
            DISPLAY Form2 UPON form2-Handle
       * DISPLAY-COLUMNS settings
               MODIFY gd-ordini, DISPLAY-COLUMNS (1, 4, 12, 23, 48, 61, 
-           73, 81, 110, 137, 164)
+           74, 86, 94, 123, 150, 177)
            .
 
        Form2-PROC.
@@ -19115,7 +19121,8 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                 move 78-colore-fatt-tot       to como-colore
                 move "Bloccato"               to col-stato
                 add 1 to tot-bloccati
-           end-evaluate.
+           end-evaluate.               
+           perform CALCOLA-TOTALE-GRID.
 
            modify gd-ordini, record-to-add Gd-ordini-Record.
 
@@ -19124,7 +19131,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
            modify gd-ordini(riga), row-color = como-colore.
 
            modify gd-ordini(riga, 1) hidden-data = emto-stato.
-           set trovato to true.         
+           set trovato to true.        
 
       ***---        
        VALIDA-RECORD.
@@ -19307,7 +19314,52 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                       end-if
                    end-perform
               end-read
-           end-if  
+           end-if.                     
+
+      ***---
+       CALCOLA-TOTALE-GRID.           
+           move 0 to tot-doc.
+           move emto-chiave to emro-chiave-testa.
+           start edi-mrordini key >= emro-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read edi-mrordini next at end exit perform end-read
+                    if emro-chiave-testa not = emto-chiave
+                       exit perform
+                    end-if  
+                    if emro-qta = 0
+                       move emro-qta-GESLUX to emro-qta
+                    end-if
+                    if emro-prezzo-non-valido   
+                       if emro-prz = 0 and
+                          emro-prz-EDI not = 0                          
+                       
+                          move emro-prz-GESLUX to emro-prz
+                       end-if
+                    end-if
+
+                    compute tot-doc = tot-doc + emro-qta * emro-prz
+                 end-perform
+           end-start.                           
+
+           if emto-cod-ese-iva = spaces 
+              if emto-causale = tge-causale-ordini-std
+                 move "IV"            to tbliv-codice1
+                 move tge-cod-iva-std to tbliv-codice2
+                 read tivaese no lock
+                 compute tot-doc rounded = 
+                         tot-doc * ( 1 + tbliv-percentuale / 100 )
+              end-if
+           else
+              move "IV"             to tbliv-codice1
+              move emto-cod-ese-iva to tbliv-codice2
+              read tivaese no lock
+              compute tot-doc rounded = 
+                      tot-doc * ( 1 + tbliv-percentuale / 100 )
+           end-if.
+                 
+           move tot-doc to col-tot 
            .
       * <TOTEM:END>
 

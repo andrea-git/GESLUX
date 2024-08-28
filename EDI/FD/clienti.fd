@@ -54,7 +54,6 @@
                10 cli-referente-ord            PIC  x(30).
                10 cli-tel-dir-ref-ord          PIC  x(20).
                10 cli-mail-ref-ord PIC  x(100).
-      *(( XFD NAME = cli-blocco-24000_1 ))
                10 cli-blocco-24000 PIC  9.
                    88 cli-si-blocco VALUE IS 1. 
                    88 cli-no-blocco VALUE IS 0. 
@@ -107,11 +106,10 @@
                        88 cli-esigibilita-iva-immediata VALUE IS "I". 
                        88 cli-esigibilita-iva-differita VALUE IS "D". 
                        88 cli-esigibilita-iva-scissione VALUE IS "S". 
-      *(( XFD NAME = cli-alfa-vuoto-1_8 ))
                    15 cli-contrassegno PIC  x.
                        88 cli-contrassegno-si VALUE IS "S". 
-                       88 cli-contrassegno-no VALUE IS "N", " ". 
-      *(( XFD NAME = cli-alfa-vuoto-1_8 ))
+                       88 cli-contrassegno-no VALUE IS "N" " ". 
+      *(( XFD NAME = cli-alfa-vuoto ))
                    15 FILLER           PIC  X(376).
                    15 cli-fidejussione PIC  s9(8)v9(4).
                    15 cli-pfa          PIC  s9(8)v9(4).
@@ -121,4 +119,5 @@
                    15 cli-escludi-fido PIC  9.
                        88 cli-escludi-fido-si VALUE IS 1. 
                        88 cli-escludi-fido-no VALUE IS 0. 
+      *(( XFD NAME = cli-num-vuoto ))
                    15 cli-num-vuoto-3  PIC  9(13).
