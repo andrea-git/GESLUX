@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E881C134248-898-20232
+PROGRAM_UNIQUE_CODE=TOTEM-7E881D10241-507-114086670
 
 {{@DESCRIPTION:
 
@@ -23563,6 +23563,8 @@ BEGIN-TEXT
                      ";"                delimited size
                      "N.Ord.Cli."       delimited size
                      ";"                delimited size
+                     "Totale"           delimited size
+                     ";"                delimited size
                      "Data"             delimited size
                      ";"                delimited size
                      "Stato"            delimited size
@@ -23585,18 +23587,21 @@ BEGIN-TEXT
                  inquire gd-ordini(riga,  2), cell-data Col-anno           
                  inquire gd-ordini(riga,  3), cell-data Col-numero         
                  inquire gd-ordini(riga,  4), cell-data Col-ord-cli        
-                 inquire gd-ordini(riga,  5), cell-data Col-data           
-                 inquire gd-ordini(riga,  6), cell-data col-stato          
-                 inquire gd-ordini(riga,  7), cell-data Col-cliente        
-                 inquire gd-ordini(riga,  8), cell-data Col-rag-soc-cli    
-                 inquire gd-ordini(riga,  9), cell-data Col-rag-soc-destini
-                 inquire gd-ordini(riga, 10), cell-data Col-indirizzo      
-                 inquire gd-ordini(riga, 11), cell-data Col-localita       
+                 inquire gd-ordini(riga,  5), cell-data Col-tot
+                 inquire gd-ordini(riga,  6), cell-data Col-data           
+                 inquire gd-ordini(riga,  7), cell-data col-stato          
+                 inquire gd-ordini(riga,  8), cell-data Col-cliente        
+                 inquire gd-ordini(riga,  9), cell-data Col-rag-soc-cli    
+                 inquire gd-ordini(riga, 10), cell-data Col-rag-soc-destini
+                 inquire gd-ordini(riga, 11), cell-data Col-indirizzo      
+                 inquire gd-ordini(riga, 12), cell-data Col-localita       
                  string Col-anno            delimited size
                         ";"                 delimited size
                         Col-numero          delimited size
                         ";"                 delimited size
                         Col-ord-cli         delimited size
+                        ";"                 delimited size
+                        Col-tot             delimited size
                         ";"                 delimited size
                         Col-data            delimited size
                         ";"                 delimited size

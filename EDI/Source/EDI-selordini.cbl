@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 28 agosto 2024 17:49:10.
+       DATE-WRITTEN.        giovedì 29 agosto 2024 12:26:24.
        REMARKS.
       *{TOTEM}END
 
@@ -24304,6 +24304,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                      ";"                delimited size
                      "N.Ord.Cli."       delimited size
                      ";"                delimited size
+                     "Totale"           delimited size
+                     ";"                delimited size
                      "Data"             delimited size
                      ";"                delimited size
                      "Stato"            delimited size
@@ -24329,25 +24331,28 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               
                  inquire gd-ordini(riga,  4), cell-data Col-ord-cli     
               
-                 inquire gd-ordini(riga,  5), cell-data Col-data        
+                 inquire gd-ordini(riga,  5), cell-data Col-tot
+                 inquire gd-ordini(riga,  6), cell-data Col-data        
               
-                 inquire gd-ordini(riga,  6), cell-data col-stato       
+                 inquire gd-ordini(riga,  7), cell-data col-stato       
               
-                 inquire gd-ordini(riga,  7), cell-data Col-cliente     
+                 inquire gd-ordini(riga,  8), cell-data Col-cliente     
               
-                 inquire gd-ordini(riga,  8), cell-data Col-rag-soc-cli 
+                 inquire gd-ordini(riga,  9), cell-data Col-rag-soc-cli 
               
-                 inquire gd-ordini(riga,  9), cell-data 
+                 inquire gd-ordini(riga, 10), cell-data 
            Col-rag-soc-destini
-                 inquire gd-ordini(riga, 10), cell-data Col-indirizzo   
+                 inquire gd-ordini(riga, 11), cell-data Col-indirizzo   
               
-                 inquire gd-ordini(riga, 11), cell-data Col-localita    
+                 inquire gd-ordini(riga, 12), cell-data Col-localita    
               
                  string Col-anno            delimited size
                         ";"                 delimited size
                         Col-numero          delimited size
                         ";"                 delimited size
                         Col-ord-cli         delimited size
+                        ";"                 delimited size
+                        Col-tot             delimited size
                         ";"                 delimited size
                         Col-data            delimited size
                         ";"                 delimited size
