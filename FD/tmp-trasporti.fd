@@ -34,6 +34,11 @@
                10 ttrs-tipocli-d   PIC  x(100).
                10 ttrs-cau         PIC  x(4).
                10 ttrs-mag         PIC  xxx.
+               10 ttrs-tor-contrassegno        PIC  x.
+      *(( XFD NAME = ttrs-tor-contrasse ))
+               10 ttrs-tor-note-bolla-1        PIC  x(500).
+      *(( XFD NAME = ttrs-tor-contrasse ))
+               10 ttrs-tor-note-bolla-2        PIC  x(500).
                10 ttrs-tmo-chiave.
                    15 ttrs-tmo-anno    PIC  9(4).
                    15 ttrs-tmo-numero  PIC  z(8).

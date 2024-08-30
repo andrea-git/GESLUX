@@ -37323,7 +37323,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:SOURCE\stt-mese-p.cbl]
-COPY_DEPENDENCE=FD\lineseq.sl;FD\trasporti.sl;FD\tvettori.sl;FD\clienti.sl;FD\destini.sl;FD\tregioni.sl;FD\eordini.sl;FD\tordini.sl;FD\btnotacr.sl;FD\tescons.sl;FD\tmp-trasporti.sl;FD\tcaumag.sl;FD\ttipocli.sl;FD\lineseq.fd;FD\trasporti.fd;FD\tvettori.fd;FD\clienti.fd;FD\destini.fd;FD\tregioni.fd;FD\eordini.fd;FD\tordini.fd;FD\btnotacr.fd;FD\tescons.fd;FD\tmp-trasporti.fd;FD\tcaumag.fd;FD\ttipocli.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\link-geslock.def;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-stt-mese.def;Copylib\common-excel.cpy
+COPY_DEPENDENCE=FD\trasporti.sl;FD\tvettori.sl;FD\clienti.sl;FD\destini.sl;FD\tregioni.sl;FD\eordini.sl;FD\tordini.sl;FD\btnotacr.sl;FD\tescons.sl;FD\tmp-trasporti.sl;FD\tcaumag.sl;FD\ttipocli.sl;FD\tmovmag.sl;FD\trasporti.fd;FD\tvettori.fd;FD\clienti.fd;FD\destini.fd;FD\tregioni.fd;FD\eordini.fd;FD\tordini.fd;FD\btnotacr.fd;FD\tescons.fd;FD\tmp-trasporti.fd;FD\tcaumag.fd;FD\ttipocli.fd;FD\tmovmag.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\link-geslock.def;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-stt-mese.def;Copylib\common-excel.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -61142,7 +61142,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:RELEASE:SOURCE\stt-mese-p.cbl]
-COPY_DEPENDENCE=FD\lineseq.sl;FD\trasporti.sl;FD\tvettori.sl;FD\clienti.sl;FD\destini.sl;FD\tregioni.sl;FD\eordini.sl;FD\tordini.sl;FD\btnotacr.sl;FD\tescons.sl;FD\tmp-trasporti.sl;FD\tcaumag.sl;FD\ttipocli.sl;FD\tmovmag.sl;FD\lineseq.fd;FD\trasporti.fd;FD\tvettori.fd;FD\clienti.fd;FD\destini.fd;FD\tregioni.fd;FD\eordini.fd;FD\tordini.fd;FD\btnotacr.fd;FD\tescons.fd;FD\tmp-trasporti.fd;FD\tcaumag.fd;FD\ttipocli.fd;FD\tmovmag.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\link-geslock.def;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-stt-mese.def;Copylib\common-excel.cpy
+COPY_DEPENDENCE=FD\trasporti.sl;FD\tvettori.sl;FD\clienti.sl;FD\destini.sl;FD\tregioni.sl;FD\eordini.sl;FD\tordini.sl;FD\btnotacr.sl;FD\tescons.sl;FD\tmp-trasporti.sl;FD\tcaumag.sl;FD\ttipocli.sl;FD\tmovmag.sl;FD\trasporti.fd;FD\tvettori.fd;FD\clienti.fd;FD\destini.fd;FD\tregioni.fd;FD\eordini.fd;FD\tordini.fd;FD\btnotacr.fd;FD\tescons.fd;FD\tmp-trasporti.fd;FD\tcaumag.fd;FD\ttipocli.fd;FD\tmovmag.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;Copylib\link-geslock.def;Copylib\common-excel.def;Copylib\link-readutente.def;Copylib\link-stt-mese.def;Copylib\common-excel.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu

@@ -2,7 +2,8 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [DATALAYOUT_CONTENT]
-DATALAYOUT_UNIQUE_CODE=TOTEM-7E7215135144-919-3108310068
+DIRTY_AFTER_GEN=1
+DATALAYOUT_UNIQUE_CODE=TOTEM-7E881E142448-899-1826931188
 [DSNENTITY_]
 [CStoAcucobolFileDefinition_]
 m_nType=1
@@ -349,7 +350,9 @@ m_bFixed=1
 
 @}}
 [FDITEM34_]
-m_strName=ttrs-tmo-chiave
+m_strName=ttrs-tor-contrassegno
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
@@ -357,23 +360,53 @@ m_bFixed=1
 
 @}}
 [FDITEM35_]
+m_strName=ttrs-tor-note-bolla-1
+m_strRawPic=x(500)
+m_strPic=x(500)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ttrs-tor-contrasse
+{{@DataItem_m_strDescriptionFDITEM35_
+
+@}}
+[FDITEM36_]
+m_strName=ttrs-tor-note-bolla-2
+m_strRawPic=x(500)
+m_strPic=x(500)
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+m_strName_Xfd=ttrs-tor-contrasse
+{{@DataItem_m_strDescriptionFDITEM36_
+
+@}}
+[FDITEM37_]
+m_strName=ttrs-tmo-chiave
+m_nItemLevel=10
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM37_
+
+@}}
+[FDITEM38_]
 m_strName=ttrs-tmo-anno
 m_strRawPic=9(4)
 m_strPic=9(4)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM35_
+{{@DataItem_m_strDescriptionFDITEM38_
 
 @}}
-[FDITEM36_]
+[FDITEM39_]
 m_strName=ttrs-tmo-numero
 m_strRawPic=z(8)
 m_strPic=z(8)
 m_nItemLevel=15
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM36_
+{{@DataItem_m_strDescriptionFDITEM39_
 
 @}}
 [CStoAcucobolSL_]

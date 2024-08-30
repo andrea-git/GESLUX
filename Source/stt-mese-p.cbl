@@ -8,8 +8,14 @@
 
        SPECIAL-NAMES. decimal-point is comma.
        INPUT-OUTPUT SECTION.
-       FILE-CONTROL.
-           copy "lineseq.sl".
+       FILE-CONTROL.         
+       
+       SELECT lineseq
+           ASSIGN       TO  wstampa
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-lineseq.
+
            copy "trasporti.sl".
            copy "tvettori.sl".
            copy "clienti.sl".
@@ -26,8 +32,9 @@
 
       *****************************************************************
        DATA DIVISION.
-       FILE SECTION.
-           copy "lineseq.fd".
+       FILE SECTION.         
+       FD  lineseq.
+       01 line-riga        PIC  x(2000).
            copy "trasporti.fd".
            copy "tvettori.fd".
            copy "clienti.fd".
@@ -519,70 +526,76 @@
 
               inspect ttrs-note replacing trailing space by low-value
               initialize line-riga
-              string ttrs-data-bolla    delimited by size
-                     separatore         delimited by size
-                     ttrs-num-bolla     delimited by size
-                     separatore         delimited by size
-                     ttrs-vettore       delimited by size
-                     separatore         delimited by size
-                     ttrs-vet-desc      delimited by size
-                     separatore         delimited by size
-                     ttrs-cliente       delimited by size
-                     separatore         delimited by size
-                     ttrs-cli-desc      delimited by size
-                     separatore         delimited by size
-                     ttrs-destino       delimited by size
-                     separatore         delimited by size
-                     ttrs-dest-desc     delimited by size
-                     separatore         delimited by size
-                     ttrs-dest-citta    delimited by size
-                     separatore         delimited by size
-                     ttrs-regione       delimited by size
-                     separatore         delimited by size
-                     ttrs-provincia     delimited by size
-                     separatore         delimited by size
-                     ttrs-qta-kg-s1     delimited by size
-                     separatore         delimited by size
-                     ttrs-qta-arrot-s1  delimited by size
-                     separatore         delimited by size
-                     ttrs-tariffa-s1    delimited by size
-                     separatore         delimited by size
-                     ttrs-importo-s1    delimited by size
-                     separatore         delimited by size
-                     ttrs-qta-kg-S2     delimited by size
-                     separatore         delimited by size
-                     ttrs-qta-arrot-S2  delimited by size
-                     separatore         delimited by size
-                     ttrs-tariffa-S2    delimited by size
-                     separatore         delimited by size
-                     ttrs-importo-S2    delimited by size
-                     separatore         delimited by size
-                     ttrs-qta-kg-s3     delimited by size
-                     separatore         delimited by size
-                     ttrs-qta-arrot-s3  delimited by size
-                     separatore         delimited by size
-                     ttrs-tariffa-s3    delimited by size
-                     separatore         delimited by size
-                     ttrs-importo-s3    delimited by size
-                     separatore         delimited by size
-                     ttrs-note          delimited by low-value
-                     separatore         delimited by size
-                     ttrs-esito         delimited by size
-                     separatore         delimited by size
-                     ttrs-pod           delimited by size
-                     separatore         delimited by size
-                     ttrs-tipocli       delimited by size
-                     separatore         delimited by size
-                     ttrs-tipocli-d     delimited by size
-                     separatore         delimited by size
-                     ttrs-cau           delimited by size
-                     separatore         delimited by size
-                     ttrs-mag           delimited by size
-                     separatore         delimited by size
-                     ttrs-tmo-anno      delimited by size
-                     separatore         delimited by size
-                     ttrs-tmo-numero    delimited by size
-                     separatore         delimited by size
+              string ttrs-data-bolla        delimited by size
+                     separatore             delimited by size
+                     ttrs-num-bolla         delimited by size
+                     separatore             delimited by size
+                     ttrs-vettore           delimited by size
+                     separatore             delimited by size
+                     ttrs-vet-desc          delimited by size
+                     separatore             delimited by size
+                     ttrs-cliente           delimited by size
+                     separatore             delimited by size
+                     ttrs-cli-desc          delimited by size
+                     separatore             delimited by size
+                     ttrs-destino           delimited by size
+                     separatore             delimited by size
+                     ttrs-dest-desc         delimited by size
+                     separatore             delimited by size
+                     ttrs-dest-citta        delimited by size
+                     separatore             delimited by size
+                     ttrs-regione           delimited by size
+                     separatore             delimited by size
+                     ttrs-provincia         delimited by size
+                     separatore             delimited by size
+                     ttrs-qta-kg-s1         delimited by size
+                     separatore             delimited by size
+                     ttrs-qta-arrot-s1      delimited by size
+                     separatore             delimited by size
+                     ttrs-tariffa-s1        delimited by size
+                     separatore             delimited by size
+                     ttrs-importo-s1        delimited by size
+                     separatore             delimited by size
+                     ttrs-qta-kg-S2         delimited by size
+                     separatore             delimited by size
+                     ttrs-qta-arrot-S2      delimited by size
+                     separatore             delimited by size
+                     ttrs-tariffa-S2        delimited by size
+                     separatore             delimited by size
+                     ttrs-importo-S2        delimited by size
+                     separatore             delimited by size
+                     ttrs-qta-kg-s3         delimited by size
+                     separatore             delimited by size
+                     ttrs-qta-arrot-s3      delimited by size
+                     separatore             delimited by size
+                     ttrs-tariffa-s3        delimited by size
+                     separatore             delimited by size
+                     ttrs-importo-s3        delimited by size
+                     separatore             delimited by size
+                     ttrs-note              delimited by low-value
+                     separatore             delimited by size
+                     ttrs-esito             delimited by size
+                     separatore             delimited by size
+                     ttrs-pod               delimited by size
+                     separatore             delimited by size
+                     ttrs-tipocli           delimited by size
+                     separatore             delimited by size
+                     ttrs-tipocli-d         delimited by size
+                     separatore             delimited by size
+                     ttrs-cau               delimited by size
+                     separatore             delimited by size
+                     ttrs-mag               delimited by size
+                     separatore             delimited by size
+                     ttrs-tmo-anno          delimited by size
+                     separatore             delimited by size
+                     ttrs-tmo-numero        delimited by size
+                     separatore             delimited by size
+                     ttrs-tor-contrassegno  delimited by size
+                     separatore             delimited by size
+                     ttrs-tor-note-bolla-1  delimited by low-value
+                     separatore             delimited by size
+                     ttrs-tor-note-bolla-2  delimited by low-value
+                     separatore             delimited by size
                      into line-riga
               end-string
               write line-riga
@@ -651,12 +664,20 @@
                   "Tipol. cliente" 
                   separatore 
                   "Descrizione" 
-                  separatore 
+                  separatore    
                   "Causale"           
                   separatore 
-                  "Anno movimento"
+                  "Magazzino"           
+                  separatore 
+                  "Anno movimento"                   
                   separatore 
                   "N. movimento"          
+                  separatore 
+                  "Contrassegno"          
+                  separatore   
+                  "Note bolla 1"          
+                  separatore                      
+                  "Note bolla 2"          
                   separatore 
              into line-riga
            end-string
@@ -951,8 +972,14 @@
            move trs-num-bolla        to tor-num-bolla.
            move trs-data-bolla(1:4)  to tor-anno-bolla.
            read tordini key k-bolla
-                invalid continue
-            not invalid                           
+                invalid 
+                move "N" to ttrs-tor-contrassegno  
+                initialize ttrs-tor-note-bolla-1 ttrs-tor-note-bolla-2  
+            not invalid   
+                move tor-contrassegno to ttrs-tor-contrassegno  
+                move tor-note-bolla-1 to ttrs-tor-note-bolla-1 
+                move tor-note-bolla-2 to ttrs-tor-note-bolla-2  
+                        
                 |Cerco la bozza di reso prima tramite bolla, poi tramite fattura
                 move tor-anno-bolla to btno-anno-bolla
                 move tor-num-bolla  to btno-num-bolla
@@ -1025,7 +1052,15 @@
                 into ttrs-esito
               end-string
            end-if.
+                               
+           if ttrs-tor-contrassegno = space
+              move "N" to ttrs-tor-contrassegno
+           end-if.
 
+           inspect ttrs-tor-note-bolla-1 
+                   replacing trailing spaces by low-value.
+           inspect ttrs-tor-note-bolla-2
+                   replacing trailing spaces by low-value.
            write ttrs-rec invalid continue end-write.
 
       ***---
