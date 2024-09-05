@@ -182,8 +182,7 @@
        77  status-er-flusso        pic xx.
        77  status-ttipocli         pic xx.
 
-       77  como-prm-cliente        pic 9(5).
-       77  como-prm-destino        pic 9(5).
+       copy "trova-parametro.def".
        77  user-codi               pic x(20).
        77  nome-file               pic x(50).
 

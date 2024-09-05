@@ -8,7 +8,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-param.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 25 giugno 2019 16:01:11.
+       DATE-WRITTEN.        giovedì 5 settembre 2024 18:56:13.
        REMARKS.
       *{TOTEM}END
 
@@ -38,10 +38,10 @@
 
        WORKING-STORAGE      SECTION.
       *{TOTEM}ACU-DEF
-               COPY "ACUGUI.DEF".
-               COPY "ACUCOBOL.DEF".
-               COPY "CRTVARS.DEF".
-               COPY "SHOWMSG.DEF".
+               COPY "acugui.def".
+               COPY "acucobol.def".
+               COPY "crtvars.def".
+               COPY "showmsg.def".
                COPY "totem.def".
                COPY "standard.def".
       *{TOTEM}END

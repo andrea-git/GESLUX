@@ -50,7 +50,7 @@
       *(( XFD NAME = mag-principale_1_2 ))
                    15 mag-blocco-24000 PIC  X(1).
                        88 mag-blocco-24000-si VALUE IS "S". 
-                       88 mag-blocco-24000-no VALUE IS "N", " ". 
+                       88 mag-blocco-24000-no VALUE IS "N" " ". 
                    15 mag-blister      PIC  x.
                        88 mag-blister-si VALUE IS "S". 
                        88 mag-blister-no VALUE IS "N". 
@@ -63,13 +63,13 @@
                    15 mag-priorita-mag PIC  99.
                    15 mag-da-inviare   PIC  x.
                        88 mag-da-inviare-si VALUE IS "S". 
-                       88 mag-da-inviare-no VALUE IS "N", " ". 
+                       88 mag-da-inviare-no VALUE IS "N" " ". 
                    15 mag-gen-auto     PIC  x.
                        88 mag-gen-auto-si VALUE IS "S". 
-                       88 mag-gen-auto-no VALUE IS "N", " ". 
+                       88 mag-gen-auto-no VALUE IS "N" " ". 
                    15 mag-scorta       PIC  x.
                        88 mag-scorta-si VALUE IS "S". 
-                       88 mag-scorta-no VALUE IS "N", " ". 
+                       88 mag-scorta-no VALUE IS "N" " ". 
                    15 mag-alfa-vuoto-3 PIC  x.
                    15 mag-indirizzo    PIC  x(100).
                    15 FILLER           PIC  x(300).

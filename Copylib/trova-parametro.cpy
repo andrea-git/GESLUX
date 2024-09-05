@@ -1,26 +1,33 @@
       ***---
        TROVA-PARAMETRO.
            |1. LETTURA COMPLETA
-           set cli-tipo-C of clienti to true.
-           move como-prm-cliente to cli-codice of clienti.
-           read clienti no lock 
-                invalid initialize cli-rec of clienti 
-           end-read.
            initialize prm-chiave replacing numeric data by zeroes
                                       alphanumeric data by spaces.
            move como-prm-destino     to prm-destino.
            move como-prm-cliente     to prm-cliente.
-           move cli-gdo  of clienti  to prm-gdo.
-           move cli-tipo of clienti  to prm-tipocli.
 
-           read param no lock
-                invalid
-                perform LETTURA-CLIENTE
-            not invalid
-                if prm-gestisci-no
+           set cli-tipo-C of clienti to true.
+           |Dai listini non ho il cliente ma subito il gdo
+           if como-prm-cliente = 0        
+              move como-prm-gdo     to prm-gdo
+              move como-prm-tipocli to prm-tipocli
+              perform LETTURA-GDO
+           else
+              move como-prm-cliente to cli-codice of clienti
+              read clienti no lock 
+                   invalid initialize cli-rec of clienti 
+              end-read
+              move cli-gdo  of clienti  to prm-gdo
+              move cli-tipo of clienti  to prm-tipocli
+              read param no lock
+                   invalid
                    perform LETTURA-CLIENTE
-                end-if
-           end-read.
+               not invalid
+                   if prm-gestisci-no
+                      perform LETTURA-CLIENTE
+                   end-if
+              end-read
+           end-if.
 
       ***---
        LETTURA-CLIENTE.

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gparam.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 12 aprile 2024 23:17:18.
+       DATE-WRITTEN.        mercoledì 4 settembre 2024 14:16:54.
        REMARKS.
       *{TOTEM}END
 
@@ -592,10 +592,10 @@
           88 Form1-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-param1-BUF     PIC X(980).
       * VARIABLES FOR RECORD LENGTH.
@@ -4267,7 +4267,7 @@
            chk-layout-pers-2, 
            Check-Box, 
            COL 104,00, 
-           LINE 59,38,
+           LINE 60,92,
            LINES 1,54 ,
            SIZE 3,00 ,
            ENABLED e-gdo-dati,

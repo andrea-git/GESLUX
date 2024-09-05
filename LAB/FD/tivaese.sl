@@ -1,0 +1,9 @@
+       SELECT tivaese
+           ASSIGN       TO RANDOM "TBLIV"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE  IS DYNAMIC
+           FILE STATUS  IS STATUS-tivaese
+           RECORD KEY   IS TBLIV-CODICE
+           ALTERNATE RECORD KEY IS key01 = TBLIV-CODICE1, 
+           TBLIV-DESCRIZIONE1, TBLIV-CODICE2
+           WITH DUPLICATES .

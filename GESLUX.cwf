@@ -65441,6 +65441,46 @@ RELATIVE_PATH=FD\lineseq-mail.clf
 LINKED_FD=1
 LINKDMD_RELATIVE_PATH=GESLUX.dmd
 
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT271]
+RELATIVE_PATH=FD\clienti.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT272]
+RELATIVE_PATH=FD\recapiti.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT273]
+RELATIVE_PATH=FD\tgrupgdo.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT274]
+RELATIVE_PATH=FD\timballi.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT275]
+RELATIVE_PATH=FD\timbalqta.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT276]
+RELATIVE_PATH=FD\tmagaz.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT277]
+RELATIVE_PATH=FD\tivaese.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
+[DATALAYOUT_CONTENT-LAB:DATALAYOUT278]
+RELATIVE_PATH=FD\tparamge.clf
+LINKED_FD=1
+LINKDMD_RELATIVE_PATH=GESLUX.dmd
+
 [FOLDER_CONTENT-LAB:Source]
 ACCEPTED_FILE_EXTENSION=*.cbl;*.cob
 CREATED_TIME=16:48:32, martedì 1 aprile 2014
@@ -70535,7 +70575,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-LAB:Debug Mode:LAB\SOURCE\lab-listini.cbl]
-COPY_DEPENDENCE=FD\tgrupgdo.sl;FD\articoli.sl;FD\rpromo.sl;FD\tpromo.sl;FD\blister.sl;FD\timposte.sl;FD\tmp-listini.sl;FD\progmag.sl;FD\param.sl;FD\tpiombo.sl;FD\clienti.sl;FD\ttipocli.sl;FD\listini.sl;FD\tmarche.sl;FD\lineseq.sl;FD\tgrupgdo.fd;FD\articoli.fd;FD\rpromo.fd;FD\tpromo.fd;FD\blister.fd;FD\timposte.fd;FD\tmp-listini.fd;FD\progmag.fd;FD\param.fd;FD\tpiombo.fd;FD\clienti.fd;FD\ttipocli.fd;FD\listini.fd;FD\tmarche.fd;FD\lineseq.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\trova-parametro.def;Copylib\link-st-listini.def;\Lubex\GESLUX\Copylib\imposte.def;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\common-excel.def;\Lubex\GESLUX\Copylib\link-readutente.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-stampa.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Resource\bottone-elimina.bmp;\Lubex\GESLUX\Resource\excel.bmp;\Lubex\GESLUX\Resource\bottone-inserisci.bmp;\Lubex\GESLUX\Resource\bottone-exit.bmp;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\utydata.cpy;\Lubex\GESLUX\Copylib\imposte.cpy;\Lubex\GESLUX\Copylib\addizionale-piombo.cpy;\Lubex\GESLUX\Copylib\trova-parametro.cpy;\Lubex\GESLUX\Copylib\common-excel.cpy
+COPY_DEPENDENCE=FD\articoli.sl;FD\rpromo.sl;FD\tpromo.sl;FD\blister.sl;FD\timposte.sl;FD\tmp-listini.sl;FD\progmag.sl;FD\param.sl;FD\tpiombo.sl;FD\ttipocli.sl;FD\listini.sl;FD\tmarche.sl;FD\lineseq.sl;FD\tgrupgdo.sl;FD\clienti.sl;FD\articoli.fd;FD\rpromo.fd;FD\tpromo.fd;FD\blister.fd;FD\timposte.fd;FD\tmp-listini.fd;FD\progmag.fd;FD\param.fd;FD\tpiombo.fd;FD\ttipocli.fd;FD\listini.fd;FD\tmarche.fd;FD\lineseq.fd;FD\tgrupgdo.fd;FD\clienti.fd;c:\Acucorp\Acucbl610\AcuGT\sample\def\acugui.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\acucobol.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\fonts.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\crtvars.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\showmsg.def;C:\Totem61\Sample\TOTEM.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\standard.def;\Lubex\GESLUX\Copylib\UTYDATA.DEF;\Lubex\GESLUX\Copylib\custom.def;c:\Acucorp\Acucbl610\AcuGT\sample\def\controls.def;\Lubex\GESLUX\Copylib\comune.def;\Lubex\GESLUX\Copylib\messaggi.def;\Lubex\GESLUX\Copylib\trova-parametro.def;Copylib\link-st-listini.def;\Lubex\GESLUX\Copylib\imposte.def;\Lubex\GESLUX\Copylib\link-geslock.def;\Lubex\GESLUX\Copylib\common-excel.def;\Lubex\GESLUX\Copylib\link-readutente.def;\Lubex\GESLUX\Copylib\common-linkage.def;\Lubex\GESLUX\Copylib\blockpgm.lks;\Lubex\GESLUX\Resource\bottone-ok.bmp;\Lubex\GESLUX\Resource\bottone-stampa.bmp;\Lubex\GESLUX\Resource\bottone-cancel.bmp;\Lubex\GESLUX\Resource\toolbar.bmp;\Lubex\GESLUX\Resource\bottone-elimina.bmp;\Lubex\GESLUX\Resource\excel.bmp;\Lubex\GESLUX\Resource\bottone-inserisci.bmp;\Lubex\GESLUX\Resource\bottone-exit.bmp;\Lubex\GESLUX\Copylib\COLOR-CUSTOM.CPY;\Lubex\GESLUX\Copylib\utydata.cpy;\Lubex\GESLUX\Copylib\imposte.cpy;\Lubex\GESLUX\Copylib\addizionale-piombo.cpy;\Lubex\GESLUX\Copylib\trova-parametro.cpy;\Lubex\GESLUX\Copylib\common-excel.cpy
 FOLLOW_PROJECT=1
 ; Standard Options
 NAME_OBJECT_FILE=%objectdir%\@.acu
@@ -74801,6 +74841,18 @@ ATTRIBUTE=0
 RELATIVE_PATH=EDI\FD\lock-div.sl
 FOLDER_NAME=FD
 OWNER_PATH=EDI\FD\lock-div.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-EDI:FILE399]
+RELATIVE_PATH=EDI\FD\tgrupgdo.fd
+FOLDER_NAME=FD
+OWNER_PATH=FD\tgrupgdo.clf
+ATTRIBUTE=0
+
+[FILE_CONTENT-EDI:FILE400]
+RELATIVE_PATH=EDI\FD\tgrupgdo.sl
+FOLDER_NAME=FD
+OWNER_PATH=FD\tgrupgdo.clf
 ATTRIBUTE=0
 
 [PROJECT_COMPILE_SETTING-EDI:Debug Mode]

@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          lab-listini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 8 maggio 2024 13:59:57.
+       DATE-WRITTEN.        giovedì 5 settembre 2024 18:54:19.
        REMARKS.
       *{TOTEM}END
 
@@ -27,7 +27,6 @@
        INPUT-OUTPUT         SECTION.
        FILE-CONTROL.
       *{TOTEM}FILE-CONTROL
-           COPY "tgrupgdo.sl".
            COPY "articoli.sl".
            COPY "rpromo.sl".
            COPY "tpromo.sl".
@@ -37,7 +36,6 @@
            COPY "progmag.sl".
            COPY "param.sl".
            COPY "tpiombo.sl".
-           COPY "clienti.sl".
            COPY "ttipocli.sl".
            COPY "listini.sl".
            COPY "listini.sl"
@@ -46,11 +44,12 @@
                 .
            COPY "tmarche.sl".
            COPY "lineseq.sl".
+           COPY "tgrupgdo.sl".
+           COPY "clienti.sl".
       *{TOTEM}END
        DATA                 DIVISION.
        FILE                 SECTION.
       *{TOTEM}FILE
-           COPY "tgrupgdo.fd".
            COPY "articoli.fd".
            COPY "rpromo.fd".
            COPY "tpromo.fd".
@@ -60,7 +59,6 @@
            COPY "progmag.fd".
            COPY "param.fd".
            COPY "tpiombo.fd".
-           COPY "clienti.fd".
            COPY "ttipocli.fd".
            COPY "listini.fd".
            COPY "listini.fd"
@@ -69,6 +67,8 @@
                 .
            COPY "tmarche.fd".
            COPY "lineseq.fd".
+           COPY "tgrupgdo.fd".
+           COPY "clienti.fd".
       *{TOTEM}END
 
        WORKING-STORAGE      SECTION.
@@ -337,7 +337,6 @@
           88 form3-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-Form1a-FLAG-REFRESH PIC  9.
           88 Form1a-FLAG-REFRESH  VALUE 1 FALSE 0. 
-       77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-rpromo-BUF     PIC X(209).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
@@ -347,21 +346,17 @@
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tpiombo-BUF     PIC X(739).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
        77 TMP-DataSet1-ttipocli-BUF     PIC X(889).
        77 TMP-DataSet1-listini-BUF     PIC X(207).
        77 TMP-DataSet1-listini1-BUF     PIC X(207).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).
+       77 TMP-DataSet1-tgrupgdo-BUF     PIC X(1206).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
       * FILE'S LOCK MODE FLAG
-       77 DataSet1-tgrupgdo-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-tgrupgdo-LOCK  VALUE "Y".
-       77 DataSet1-tgrupgdo-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-tgrupgdo-KEY-Asc  VALUE "A".
-          88 DataSet1-tgrupgdo-KEY-Desc VALUE "D".
        77 DataSet1-articoli-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-articoli-LOCK  VALUE "Y".
        77 DataSet1-articoli-KEY-ORDER  PIC X VALUE "A".
@@ -407,11 +402,6 @@
        77 DataSet1-tpiombo-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-tpiombo-KEY-Asc  VALUE "A".
           88 DataSet1-tpiombo-KEY-Desc VALUE "D".
-       77 DataSet1-clienti-LOCK-FLAG   PIC X VALUE SPACE.
-           88 DataSet1-clienti-LOCK  VALUE "Y".
-       77 DataSet1-clienti-KEY-ORDER  PIC X VALUE "A".
-          88 DataSet1-clienti-KEY-Asc  VALUE "A".
-          88 DataSet1-clienti-KEY-Desc VALUE "D".
        77 DataSet1-ttipocli-LOCK-FLAG   PIC X VALUE SPACE.
            88 DataSet1-ttipocli-LOCK  VALUE "Y".
        77 DataSet1-ttipocli-KEY-ORDER  PIC X VALUE "A".
@@ -438,8 +428,17 @@
        77 DataSet1-lineseq-KEY-ORDER  PIC X VALUE "A".
           88 DataSet1-lineseq-KEY-Asc  VALUE "A".
           88 DataSet1-lineseq-KEY-Desc VALUE "D".
+       77 DataSet1-tgrupgdo-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-tgrupgdo-LOCK  VALUE "Y".
+       77 DataSet1-tgrupgdo-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-tgrupgdo-KEY-Asc  VALUE "A".
+          88 DataSet1-tgrupgdo-KEY-Desc VALUE "D".
+       77 DataSet1-clienti-LOCK-FLAG   PIC X VALUE SPACE.
+           88 DataSet1-clienti-LOCK  VALUE "Y".
+       77 DataSet1-clienti-KEY-ORDER  PIC X VALUE "A".
+          88 DataSet1-clienti-KEY-Asc  VALUE "A".
+          88 DataSet1-clienti-KEY-Desc VALUE "D".
 
-       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
        77 articoli-art-k1-SPLITBUF  PIC X(51).
        77 articoli-art-k-frn-SPLITBUF  PIC X(16).
        77 rpromo-k-stampa-SPLITBUF  PIC X(32).
@@ -455,9 +454,6 @@
        77 tmp-listini-tmp-k-articolo-SPLITBUF  PIC X(7).
        77 tmp-listini-tmp-k-art-gdo-SPLITBUF  PIC X(12).
        77 progmag-key01-SPLITBUF  PIC X(21).
-       77 clienti-cli-K1-SPLITBUF  PIC X(47).
-       77 clienti-cli-K3-SPLITBUF  PIC X(12).
-       77 clienti-cli-K4-SPLITBUF  PIC X(8).
        77 listini-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
        77 listini-lst-k-data-SPLITBUF  PIC X(29).
@@ -468,6 +464,10 @@
        77 listini1-lst-k-data-SPLITBUF  PIC X(29).
        77 listini1-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini1-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
+       77 tgrupgdo-gdo-k-g2-SPLITBUF  PIC X(9).
+       77 clienti-cli-K1-SPLITBUF  PIC X(47).
+       77 clienti-cli-K3-SPLITBUF  PIC X(12).
+       77 clienti-cli-K4-SPLITBUF  PIC X(8).
 
            copy "common-excel.def".
        77  como-peso      pic zz.zz9,999.
@@ -2081,7 +2081,6 @@
 
        OPEN-FILE-RTN.
       *    Before Open
-           PERFORM OPEN-tgrupgdo
            PERFORM OPEN-articoli
            PERFORM OPEN-rpromo
            PERFORM OPEN-tpromo
@@ -2092,26 +2091,15 @@
            PERFORM OPEN-progmag
            PERFORM OPEN-param
            PERFORM OPEN-tpiombo
-           PERFORM OPEN-clienti
            PERFORM OPEN-ttipocli
            PERFORM OPEN-listini
            PERFORM OPEN-listini1
            PERFORM OPEN-tmarche
       *    lineseq OPEN MODE IS FALSE
       *    PERFORM OPEN-lineseq
+           PERFORM OPEN-tgrupgdo
+           PERFORM OPEN-clienti
       *    After Open
-           .
-
-       OPEN-tgrupgdo.
-      * <TOTEM:EPT. INIT:lab-listini, FD:tgrupgdo, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT tgrupgdo
-           IF NOT Valid-STATUS-tgrupgdo
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:lab-listini, FD:tgrupgdo, AfterOpen>
-      * <TOTEM:END>
            .
 
        OPEN-articoli.
@@ -2222,18 +2210,6 @@
       * <TOTEM:END>
            .
 
-       OPEN-clienti.
-      * <TOTEM:EPT. INIT:lab-listini, FD:clienti, BeforeOpen>
-      * <TOTEM:END>
-           OPEN  INPUT clienti
-           IF NOT Valid-STATUS-clienti
-              PERFORM  Form1-EXTENDED-FILE-STATUS
-              GO TO EXIT-STOP-ROUTINE
-           END-IF
-      * <TOTEM:EPT. INIT:lab-listini, FD:clienti, AfterOpen>
-      * <TOTEM:END>
-           .
-
        OPEN-ttipocli.
       * <TOTEM:EPT. INIT:lab-listini, FD:ttipocli, BeforeOpen>
       * <TOTEM:END>
@@ -2301,9 +2277,32 @@
       * <TOTEM:END>
            .
 
+       OPEN-tgrupgdo.
+      * <TOTEM:EPT. INIT:lab-listini, FD:tgrupgdo, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT tgrupgdo
+           IF NOT Valid-STATUS-tgrupgdo
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-listini, FD:tgrupgdo, AfterOpen>
+      * <TOTEM:END>
+           .
+
+       OPEN-clienti.
+      * <TOTEM:EPT. INIT:lab-listini, FD:clienti, BeforeOpen>
+      * <TOTEM:END>
+           OPEN  INPUT clienti
+           IF NOT Valid-STATUS-clienti
+              PERFORM  Form1-EXTENDED-FILE-STATUS
+              GO TO EXIT-STOP-ROUTINE
+           END-IF
+      * <TOTEM:EPT. INIT:lab-listini, FD:clienti, AfterOpen>
+      * <TOTEM:END>
+           .
+
        CLOSE-FILE-RTN.
       *    Before Close
-           PERFORM CLOSE-tgrupgdo
            PERFORM CLOSE-articoli
            PERFORM CLOSE-rpromo
            PERFORM CLOSE-tpromo
@@ -2314,20 +2313,15 @@
            PERFORM CLOSE-progmag
            PERFORM CLOSE-param
            PERFORM CLOSE-tpiombo
-           PERFORM CLOSE-clienti
            PERFORM CLOSE-ttipocli
            PERFORM CLOSE-listini
            PERFORM CLOSE-listini1
            PERFORM CLOSE-tmarche
       *    lineseq CLOSE MODE IS FALSE
       *    PERFORM CLOSE-lineseq
+           PERFORM CLOSE-tgrupgdo
+           PERFORM CLOSE-clienti
       *    After Close
-           .
-
-       CLOSE-tgrupgdo.
-      * <TOTEM:EPT. INIT:lab-listini, FD:tgrupgdo, BeforeClose>
-      * <TOTEM:END>
-           CLOSE tgrupgdo
            .
 
        CLOSE-articoli.
@@ -2383,12 +2377,6 @@
            CLOSE tpiombo
            .
 
-       CLOSE-clienti.
-      * <TOTEM:EPT. INIT:lab-listini, FD:clienti, BeforeClose>
-      * <TOTEM:END>
-           CLOSE clienti
-           .
-
        CLOSE-ttipocli.
       * <TOTEM:EPT. INIT:lab-listini, FD:ttipocli, BeforeClose>
       * <TOTEM:END>
@@ -2418,169 +2406,16 @@
       * <TOTEM:END>
            .
 
-       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
-           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
-           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
-           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
-           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
-           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+       CLOSE-tgrupgdo.
+      * <TOTEM:EPT. INIT:lab-listini, FD:tgrupgdo, BeforeClose>
+      * <TOTEM:END>
+           CLOSE tgrupgdo
            .
 
-       DataSet1-tgrupgdo-INITSTART.
-           IF DataSet1-tgrupgdo-KEY-Asc
-              MOVE Low-Value TO gdo-chiave OF tgrupgdo
-           ELSE
-              MOVE High-Value TO gdo-chiave OF tgrupgdo
-           END-IF
-           .
-
-       DataSet1-tgrupgdo-INITEND.
-           IF DataSet1-tgrupgdo-KEY-Asc
-              MOVE High-Value TO gdo-chiave OF tgrupgdo
-           ELSE
-              MOVE Low-Value TO gdo-chiave OF tgrupgdo
-           END-IF
-           .
-
-      * tgrupgdo
-       DataSet1-tgrupgdo-START.
-           IF DataSet1-tgrupgdo-KEY-Asc
-              START tgrupgdo KEY >= gdo-chiave OF tgrupgdo
-           ELSE
-              START tgrupgdo KEY <= gdo-chiave OF tgrupgdo
-           END-IF
-           .
-
-       DataSet1-tgrupgdo-START-NOTGREATER.
-           IF DataSet1-tgrupgdo-KEY-Asc
-              START tgrupgdo KEY <= gdo-chiave OF tgrupgdo
-           ELSE
-              START tgrupgdo KEY >= gdo-chiave OF tgrupgdo
-           END-IF
-           .
-
-       DataSet1-tgrupgdo-START-GREATER.
-           IF DataSet1-tgrupgdo-KEY-Asc
-              START tgrupgdo KEY > gdo-chiave OF tgrupgdo
-           ELSE
-              START tgrupgdo KEY < gdo-chiave OF tgrupgdo
-           END-IF
-           .
-
-       DataSet1-tgrupgdo-START-LESS.
-           IF DataSet1-tgrupgdo-KEY-Asc
-              START tgrupgdo KEY < gdo-chiave OF tgrupgdo
-           ELSE
-              START tgrupgdo KEY > gdo-chiave OF tgrupgdo
-           END-IF
-           .
-
-       DataSet1-tgrupgdo-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
+       CLOSE-clienti.
+      * <TOTEM:EPT. INIT:lab-listini, FD:clienti, BeforeClose>
       * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-tgrupgdo-LOCK
-              READ tgrupgdo WITH LOCK 
-              KEY gdo-chiave OF tgrupgdo
-           ELSE
-              READ tgrupgdo WITH NO LOCK 
-              KEY gdo-chiave OF tgrupgdo
-           END-IF
-           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
-           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
-           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tgrupgdo-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-tgrupgdo-KEY-Asc
-              IF DataSet1-tgrupgdo-LOCK
-                 READ tgrupgdo NEXT WITH LOCK
-              ELSE
-                 READ tgrupgdo NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tgrupgdo-LOCK
-                 READ tgrupgdo PREVIOUS WITH LOCK
-              ELSE
-                 READ tgrupgdo PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
-           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
-           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tgrupgdo-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-tgrupgdo-KEY-Asc
-              IF DataSet1-tgrupgdo-LOCK
-                 READ tgrupgdo PREVIOUS WITH LOCK
-              ELSE
-                 READ tgrupgdo PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-tgrupgdo-LOCK
-                 READ tgrupgdo NEXT WITH LOCK
-              ELSE
-                 READ tgrupgdo NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
-           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
-           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tgrupgdo-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
-           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tgrupgdo-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
-           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-tgrupgdo-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
-           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterDelete>
-      * <TOTEM:END>
+           CLOSE clienti
            .
 
        articoli-art-k1-MERGE-SPLITBUF.
@@ -4088,193 +3923,6 @@
       * <TOTEM:END>
            .
 
-       clienti-cli-K1-MERGE-SPLITBUF.
-           INITIALIZE clienti-cli-K1-SPLITBUF
-           MOVE cli-tipo-CF OF clienti(1:1) TO 
-           clienti-cli-K1-SPLITBUF(1:1)
-           MOVE cli-ragsoc-1 OF clienti(1:40) TO 
-           clienti-cli-K1-SPLITBUF(2:40)
-           MOVE cli-codice OF clienti(1:5) TO 
-           clienti-cli-K1-SPLITBUF(42:5)
-           .
-
-       clienti-cli-K3-MERGE-SPLITBUF.
-           INITIALIZE clienti-cli-K3-SPLITBUF
-           MOVE cli-gdo OF clienti(1:5) TO clienti-cli-K3-SPLITBUF(1:5)
-           MOVE cli-chiave OF clienti(1:6) TO 
-           clienti-cli-K3-SPLITBUF(6:6)
-           .
-
-       clienti-cli-K4-MERGE-SPLITBUF.
-           INITIALIZE clienti-cli-K4-SPLITBUF
-           MOVE cli-utf OF clienti(1:1) TO clienti-cli-K4-SPLITBUF(1:1)
-           MOVE cli-chiave OF clienti(1:6) TO 
-           clienti-cli-K4-SPLITBUF(2:6)
-           .
-
-       DataSet1-clienti-INITSTART.
-           IF DataSet1-clienti-KEY-Asc
-              MOVE Low-Value TO cli-chiave OF clienti
-           ELSE
-              MOVE High-Value TO cli-chiave OF clienti
-           END-IF
-           .
-
-       DataSet1-clienti-INITEND.
-           IF DataSet1-clienti-KEY-Asc
-              MOVE High-Value TO cli-chiave OF clienti
-           ELSE
-              MOVE Low-Value TO cli-chiave OF clienti
-           END-IF
-           .
-
-      * clienti
-       DataSet1-clienti-START.
-           IF DataSet1-clienti-KEY-Asc
-              START clienti KEY >= cli-chiave OF clienti
-           ELSE
-              START clienti KEY <= cli-chiave OF clienti
-           END-IF
-           .
-
-       DataSet1-clienti-START-NOTGREATER.
-           IF DataSet1-clienti-KEY-Asc
-              START clienti KEY <= cli-chiave OF clienti
-           ELSE
-              START clienti KEY >= cli-chiave OF clienti
-           END-IF
-           .
-
-       DataSet1-clienti-START-GREATER.
-           IF DataSet1-clienti-KEY-Asc
-              START clienti KEY > cli-chiave OF clienti
-           ELSE
-              START clienti KEY < cli-chiave OF clienti
-           END-IF
-           .
-
-       DataSet1-clienti-START-LESS.
-           IF DataSet1-clienti-KEY-Asc
-              START clienti KEY < cli-chiave OF clienti
-           ELSE
-              START clienti KEY > cli-chiave OF clienti
-           END-IF
-           .
-
-       DataSet1-clienti-Read.
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadRecord>
-      * <TOTEM:END>
-           IF DataSet1-clienti-LOCK
-              READ clienti WITH LOCK 
-              KEY cli-chiave OF clienti
-           ELSE
-              READ clienti WITH NO LOCK 
-              KEY cli-chiave OF clienti
-           END-IF
-           PERFORM clienti-cli-K1-MERGE-SPLITBUF
-           PERFORM clienti-cli-K3-MERGE-SPLITBUF
-           PERFORM clienti-cli-K4-MERGE-SPLITBUF
-           MOVE STATUS-clienti TO TOTEM-ERR-STAT 
-           MOVE "clienti" TO TOTEM-ERR-FILE
-           MOVE "READ" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadRecord>
-      * <TOTEM:END>
-           .
-
-       DataSet1-clienti-Read-Next.
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadNext>
-      * <TOTEM:END>
-           IF DataSet1-clienti-KEY-Asc
-              IF DataSet1-clienti-LOCK
-                 READ clienti NEXT WITH LOCK
-              ELSE
-                 READ clienti NEXT WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-clienti-LOCK
-                 READ clienti PREVIOUS WITH LOCK
-              ELSE
-                 READ clienti PREVIOUS WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM clienti-cli-K1-MERGE-SPLITBUF
-           PERFORM clienti-cli-K3-MERGE-SPLITBUF
-           PERFORM clienti-cli-K4-MERGE-SPLITBUF
-           MOVE STATUS-clienti TO TOTEM-ERR-STAT
-           MOVE "clienti" TO TOTEM-ERR-FILE
-           MOVE "READ NEXT" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadNext>
-      * <TOTEM:END>
-           .
-
-       DataSet1-clienti-Read-Prev.
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadPrev>
-      * <TOTEM:END>
-           IF DataSet1-clienti-KEY-Asc
-              IF DataSet1-clienti-LOCK
-                 READ clienti PREVIOUS WITH LOCK
-              ELSE
-                 READ clienti PREVIOUS WITH NO LOCK
-              END-IF
-           ELSE
-              IF DataSet1-clienti-LOCK
-                 READ clienti NEXT WITH LOCK
-              ELSE
-                 READ clienti NEXT WITH NO LOCK
-              END-IF
-           END-IF
-           PERFORM clienti-cli-K1-MERGE-SPLITBUF
-           PERFORM clienti-cli-K3-MERGE-SPLITBUF
-           PERFORM clienti-cli-K4-MERGE-SPLITBUF
-           MOVE STATUS-clienti TO TOTEM-ERR-STAT
-           MOVE "clienti" TO TOTEM-ERR-FILE
-           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
-      * <TOTEM:END>
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadPrev>
-      * <TOTEM:END>
-           .
-
-       DataSet1-clienti-Rec-Write.
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeWrite>
-      * <TOTEM:END>
-           MOVE STATUS-clienti TO TOTEM-ERR-STAT
-           MOVE "clienti" TO TOTEM-ERR-FILE
-           MOVE "WRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterWrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-clienti-Rec-Rewrite.
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRewrite>
-      * <TOTEM:END>
-           MOVE STATUS-clienti TO TOTEM-ERR-STAT
-           MOVE "clienti" TO TOTEM-ERR-FILE
-           MOVE "REWRITE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRewrite>
-      * <TOTEM:END>
-           .
-
-       DataSet1-clienti-Rec-Delete.
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeDelete>
-      * <TOTEM:END>
-           MOVE STATUS-clienti TO TOTEM-ERR-STAT
-           MOVE "clienti" TO TOTEM-ERR-FILE
-           MOVE "DELETE" TO TOTEM-ERR-MODE
-      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterDelete>
-      * <TOTEM:END>
-           .
-
        DataSet1-ttipocli-INITSTART.
            IF DataSet1-ttipocli-KEY-Asc
               MOVE Low-Value TO tcl-chiave
@@ -5139,8 +4787,359 @@
       * <TOTEM:END>
            .
 
+       tgrupgdo-gdo-k-g2-MERGE-SPLITBUF.
+           INITIALIZE tgrupgdo-gdo-k-g2-SPLITBUF
+           MOVE gdo-codice-G2 OF tgrupgdo(1:3) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(1:3)
+           MOVE gdo-chiave OF tgrupgdo(1:5) TO 
+           tgrupgdo-gdo-k-g2-SPLITBUF(4:5)
+           .
+
+       DataSet1-tgrupgdo-INITSTART.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              MOVE Low-Value TO gdo-chiave OF tgrupgdo
+           ELSE
+              MOVE High-Value TO gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-INITEND.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              MOVE High-Value TO gdo-chiave OF tgrupgdo
+           ELSE
+              MOVE Low-Value TO gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+      * tgrupgdo
+       DataSet1-tgrupgdo-START.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY >= gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY <= gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-START-NOTGREATER.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY <= gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY >= gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-START-GREATER.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY > gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY < gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-START-LESS.
+           IF DataSet1-tgrupgdo-KEY-Asc
+              START tgrupgdo KEY < gdo-chiave OF tgrupgdo
+           ELSE
+              START tgrupgdo KEY > gdo-chiave OF tgrupgdo
+           END-IF
+           .
+
+       DataSet1-tgrupgdo-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-tgrupgdo-LOCK
+              READ tgrupgdo WITH LOCK 
+              KEY gdo-chiave OF tgrupgdo
+           ELSE
+              READ tgrupgdo WITH NO LOCK 
+              KEY gdo-chiave OF tgrupgdo
+           END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT 
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-tgrupgdo-KEY-Asc
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo NEXT WITH LOCK
+              ELSE
+                 READ tgrupgdo NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo PREVIOUS WITH LOCK
+              ELSE
+                 READ tgrupgdo PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-tgrupgdo-KEY-Asc
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo PREVIOUS WITH LOCK
+              ELSE
+                 READ tgrupgdo PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-tgrupgdo-LOCK
+                 READ tgrupgdo NEXT WITH LOCK
+              ELSE
+                 READ tgrupgdo NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM tgrupgdo-gdo-k-g2-MERGE-SPLITBUF
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-tgrupgdo-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-tgrupgdo TO TOTEM-ERR-STAT
+           MOVE "tgrupgdo" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:tgrupgdo, AfterDelete>
+      * <TOTEM:END>
+           .
+
+       clienti-cli-K1-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K1-SPLITBUF
+           MOVE cli-tipo-CF OF clienti(1:1) TO 
+           clienti-cli-K1-SPLITBUF(1:1)
+           MOVE cli-ragsoc-1 OF clienti(1:40) TO 
+           clienti-cli-K1-SPLITBUF(2:40)
+           MOVE cli-codice OF clienti(1:5) TO 
+           clienti-cli-K1-SPLITBUF(42:5)
+           .
+
+       clienti-cli-K3-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K3-SPLITBUF
+           MOVE cli-gdo OF clienti(1:5) TO clienti-cli-K3-SPLITBUF(1:5)
+           MOVE cli-chiave OF clienti(1:6) TO 
+           clienti-cli-K3-SPLITBUF(6:6)
+           .
+
+       clienti-cli-K4-MERGE-SPLITBUF.
+           INITIALIZE clienti-cli-K4-SPLITBUF
+           MOVE cli-utf OF clienti(1:1) TO clienti-cli-K4-SPLITBUF(1:1)
+           MOVE cli-chiave OF clienti(1:6) TO 
+           clienti-cli-K4-SPLITBUF(2:6)
+           .
+
+       DataSet1-clienti-INITSTART.
+           IF DataSet1-clienti-KEY-Asc
+              MOVE Low-Value TO cli-chiave OF clienti
+           ELSE
+              MOVE High-Value TO cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-INITEND.
+           IF DataSet1-clienti-KEY-Asc
+              MOVE High-Value TO cli-chiave OF clienti
+           ELSE
+              MOVE Low-Value TO cli-chiave OF clienti
+           END-IF
+           .
+
+      * clienti
+       DataSet1-clienti-START.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY >= cli-chiave OF clienti
+           ELSE
+              START clienti KEY <= cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-NOTGREATER.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY <= cli-chiave OF clienti
+           ELSE
+              START clienti KEY >= cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-GREATER.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY > cli-chiave OF clienti
+           ELSE
+              START clienti KEY < cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-START-LESS.
+           IF DataSet1-clienti-KEY-Asc
+              START clienti KEY < cli-chiave OF clienti
+           ELSE
+              START clienti KEY > cli-chiave OF clienti
+           END-IF
+           .
+
+       DataSet1-clienti-Read.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadRecord>
+      * <TOTEM:END>
+           IF DataSet1-clienti-LOCK
+              READ clienti WITH LOCK 
+              KEY cli-chiave OF clienti
+           ELSE
+              READ clienti WITH NO LOCK 
+              KEY cli-chiave OF clienti
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT 
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadRecord>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Read-Next.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadNext>
+      * <TOTEM:END>
+           IF DataSet1-clienti-KEY-Asc
+              IF DataSet1-clienti-LOCK
+                 READ clienti NEXT WITH LOCK
+              ELSE
+                 READ clienti NEXT WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-clienti-LOCK
+                 READ clienti PREVIOUS WITH LOCK
+              ELSE
+                 READ clienti PREVIOUS WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ NEXT" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadNext>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Read-Prev.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeReadPrev>
+      * <TOTEM:END>
+           IF DataSet1-clienti-KEY-Asc
+              IF DataSet1-clienti-LOCK
+                 READ clienti PREVIOUS WITH LOCK
+              ELSE
+                 READ clienti PREVIOUS WITH NO LOCK
+              END-IF
+           ELSE
+              IF DataSet1-clienti-LOCK
+                 READ clienti NEXT WITH LOCK
+              ELSE
+                 READ clienti NEXT WITH NO LOCK
+              END-IF
+           END-IF
+           PERFORM clienti-cli-K1-MERGE-SPLITBUF
+           PERFORM clienti-cli-K3-MERGE-SPLITBUF
+           PERFORM clienti-cli-K4-MERGE-SPLITBUF
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "READ PREVIOUS" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRead>
+      * <TOTEM:END>
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterReadPrev>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Write.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeWrite>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "WRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterWrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Rewrite.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeRewrite>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "REWRITE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterRewrite>
+      * <TOTEM:END>
+           .
+
+       DataSet1-clienti-Rec-Delete.
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, BeforeDelete>
+      * <TOTEM:END>
+           MOVE STATUS-clienti TO TOTEM-ERR-STAT
+           MOVE "clienti" TO TOTEM-ERR-FILE
+           MOVE "DELETE" TO TOTEM-ERR-MODE
+      * <TOTEM:EPT. FD:DataSet1, FD:clienti, AfterDelete>
+      * <TOTEM:END>
+           .
+
        DataSet1-INIT-RECORD.
-           INITIALIZE gdo-rec OF tgrupgdo
            INITIALIZE art-rec OF articoli
            INITIALIZE rpr-rec OF rpromo
            INITIALIZE tpr-rec OF tpromo
@@ -5150,12 +5149,13 @@
            INITIALIZE prg-rec OF progmag
            INITIALIZE prm-rec OF param
            INITIALIZE tpb-rec OF tpiombo
-           INITIALIZE cli-rec OF clienti
            INITIALIZE tcl-rec OF ttipocli
            INITIALIZE lst-rec OF listini
            INITIALIZE lst-rec OF listini1
            INITIALIZE mar-rec OF tmarche
            INITIALIZE line-riga OF lineseq
+           INITIALIZE gdo-rec OF tgrupgdo
+           INITIALIZE cli-rec OF clienti
            .
 
 
@@ -5214,14 +5214,6 @@
               MODIFY gd-listini, X = 14  
                 COLUMN-COLOR = 485,
                 COLUMN-FONT = Verdana10-Occidentale,
-           .
-
-      * FD's Initialize Paragraph
-       DataSet1-tgrupgdo-INITREC.
-           INITIALIZE gdo-rec OF tgrupgdo
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
            .
 
       * FD's Initialize Paragraph
@@ -5297,14 +5289,6 @@
            .
 
       * FD's Initialize Paragraph
-       DataSet1-clienti-INITREC.
-           INITIALIZE cli-rec OF clienti
-               REPLACING NUMERIC       DATA BY ZEROS
-                         ALPHANUMERIC  DATA BY SPACES
-                         ALPHABETIC    DATA BY SPACES
-           .
-
-      * FD's Initialize Paragraph
        DataSet1-ttipocli-INITREC.
            INITIALIZE tcl-rec OF ttipocli
                REPLACING NUMERIC       DATA BY ZEROS
@@ -5339,6 +5323,22 @@
       * FD's Initialize Paragraph
        DataSet1-lineseq-INITREC.
            INITIALIZE line-riga OF lineseq
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-tgrupgdo-INITREC.
+           INITIALIZE gdo-rec OF tgrupgdo
+               REPLACING NUMERIC       DATA BY ZEROS
+                         ALPHANUMERIC  DATA BY SPACES
+                         ALPHABETIC    DATA BY SPACES
+           .
+
+      * FD's Initialize Paragraph
+       DataSet1-clienti-INITREC.
+           INITIALIZE cli-rec OF clienti
                REPLACING NUMERIC       DATA BY ZEROS
                          ALPHANUMERIC  DATA BY SPACES
                          ALPHABETIC    DATA BY SPACES
@@ -7309,6 +7309,8 @@
                       move art-marca-prodotto to tpb-marca
                       move lst-prezzo of listini to como-prz-unitario
                       move 0 to como-prm-destino
+                      move gdo-codice  to como-prm-gdo
+                      move gdo-tipocli to como-prm-tipocli
                       perform ADDIZIONALE-PIOMBO 
                       move add-piombo         to tlst-add
                    end-if
