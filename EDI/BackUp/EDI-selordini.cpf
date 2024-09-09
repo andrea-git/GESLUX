@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form-ini
 BEFORE_PROGRAM=ginqui-Ev-Before-Program
 AFTER_PROGRAM=ginqui-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E895172623-534-2293321759
+PROGRAM_UNIQUE_CODE=TOTEM-7E899202239-126-1194532033
 
 {{@DESCRIPTION:
 
@@ -18166,6 +18166,8 @@ BEGIN-TEXT
 
               perform VALIDA-RECORD
 
+              if emto-numero = 226887 stop "N" end-if
+
               if record-ok 
                  perform METTI-IN-GRIGLIA 
               end-if
@@ -22671,7 +22673,7 @@ BEGIN-DATA
    PARAGRAPH         = pb-aggiorna-LinkTo
 BEGIN-TEXT
       *****     perform VERIFICA-ESEGUIBILITA.
-           if tutto-ok
+      *****     if tutto-ok
               if RichiamoBatch 
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"
@@ -22700,7 +22702,7 @@ BEGIN-TEXT
                  modify form2-Handle, visible true
               end-if
               perform DELETE-LOCKFILE
-           end-if.
+      *****     end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA

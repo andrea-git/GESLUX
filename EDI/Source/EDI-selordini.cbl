@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        giovedì 29 agosto 2024 12:26:24.
+       DATE-WRITTEN.        lunedì 9 settembre 2024 22:41:28.
        REMARKS.
       *{TOTEM}END
 
@@ -23442,7 +23442,7 @@ LABLAB        if tcl-si-recupero and
        pb-aggiorna-LinkTo.
       * <TOTEM:PARA. pb-aggiorna-LinkTo>
       *****     perform VERIFICA-ESEGUIBILITA.
-           if tutto-ok
+      *****     if tutto-ok
               if RichiamoBatch 
                  call   "set-ini-log" using r-output
                  cancel "set-ini-log"
@@ -23471,7 +23471,7 @@ LABLAB        if tcl-si-recupero and
                  modify form2-Handle, visible true
               end-if
               perform DELETE-LOCKFILE
-           end-if 
+      *****     end-if 
            .
       * <TOTEM:END>
        pb-cambia-BeforeProcedure.
