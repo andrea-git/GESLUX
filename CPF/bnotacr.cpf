@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=notacr-Ev-Before-Program
 AFTER_PROGRAM=notacr-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E895165931-858-1697532033
+PROGRAM_UNIQUE_CODE=TOTEM-7E89916466-866-136088045
 
 {{@DESCRIPTION:
 
@@ -5864,6 +5864,678 @@ m_nCopyFileLevel=1
 {{@DataItem_m_strDescriptionFDITEM419_WK
 
 @}}
+[FDITEM420_WK]
+m_strName=ALTERNATIVI-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM420_WK
+
+@}}
+[FDITEM421_WK]
+m_strName=link-wprogmag
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM421_WK
+
+@}}
+[FDITEM422_WK]
+m_strName=LinkFunction
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM422_WK
+
+@}}
+[FDITEM423_WK]
+m_strName=link-accept
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="A"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM423_WK
+
+@}}
+[FDITEM424_WK]
+m_strName=link-batch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="B"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM424_WK
+
+@}}
+[FDITEM425_WK]
+m_strName=link-update
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="U"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM425_WK
+
+@}}
+[FDITEM426_WK]
+m_strName=link-delete
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="D"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM426_WK
+
+@}}
+[FDITEM427_WK]
+m_strName=link-value-changed
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="V"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM427_WK
+
+@}}
+[FDITEM428_WK]
+m_strName=link-costo-ultimo
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="C"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM428_WK
+
+@}}
+[FDITEM429_WK]
+m_strName=link-close
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="K"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM429_WK
+
+@}}
+[FDITEM430_WK]
+m_strName=link-update-um-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM430_WK
+
+@}}
+[FDITEM431_WK]
+m_strName=link-update-um
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM431_WK
+
+@}}
+[FDITEM432_WK]
+m_strName=link-update-peso-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM432_WK
+
+@}}
+[FDITEM433_WK]
+m_strName=link-update-peso
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM433_WK
+
+@}}
+[FDITEM434_WK]
+m_strName=link-update-valore-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM434_WK
+
+@}}
+[FDITEM435_WK]
+m_strName=link-update-valore
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM435_WK
+
+@}}
+[FDITEM436_WK]
+m_strName=link-key
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM436_WK
+
+@}}
+[FDITEM437_WK]
+m_strName=link-articolo
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM437_WK
+
+@}}
+[FDITEM438_WK]
+m_strName=link-magazzino
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM438_WK
+
+@}}
+[FDITEM439_WK]
+m_strName=link-imballo
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM439_WK
+
+@}}
+[FDITEM440_WK]
+m_strName=link-peso
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM440_WK
+
+@}}
+[FDITEM441_WK]
+m_strName=link-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM441_WK
+
+@}}
+[FDITEM442_WK]
+m_strName=link-non-utf
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM442_WK
+
+@}}
+[FDITEM443_WK]
+m_strName=link-new-imballo
+m_strRawPic=x(3)
+m_strPic=X(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM443_WK
+
+@}}
+[FDITEM444_WK]
+m_strName=link-new-peso
+m_strRawPic=9(5)v9(3)
+m_strPic=9(5)V9(3)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM444_WK
+
+@}}
+[FDITEM445_WK]
+m_strName=link-des-articolo
+m_strRawPic=x(50)
+m_strPic=X(50)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM445_WK
+
+@}}
+[FDITEM446_WK]
+m_strName=link-causale
+m_strRawPic=x(4)
+m_strPic=X(4)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM446_WK
+
+@}}
+[FDITEM447_WK]
+m_strName=link-valore
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM447_WK
+
+@}}
+[FDITEM448_WK]
+m_strName=link-valore-peso
+m_strRawPic=s9(9)v999
+m_strPic=S9(9)V999
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM448_WK
+
+@}}
+[FDITEM449_WK]
+m_strName=link-valore-monetario
+m_strRawPic=s9(9)v99
+m_strPic=S9(9)V99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM449_WK
+
+@}}
+[FDITEM450_WK]
+m_strName=link-valore-costo
+m_strRawPic=s9(9)v9(2)
+m_strPic=S9(9)V9(2)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM450_WK
+
+@}}
+[FDITEM451_WK]
+m_strName=link-user
+m_strRawPic=x(20)
+m_strPic=X(20)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM451_WK
+
+@}}
+[FDITEM452_WK]
+m_strName=link-open-with-lock-flag
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM452_WK
+
+@}}
+[FDITEM453_WK]
+m_strName=link-open-with-lock
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM453_WK
+
+@}}
+[FDITEM454_WK]
+m_strName=link-array
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM454_WK
+
+@}}
+[FDITEM455_WK]
+m_strName=multiplyer
+m_strRawPic=s9
+m_strPic=S9
+m_nItemLevel=5
+m_nSync=-1
+m_bOccurs=1
+m_bFixed=1
+m_strRawSize=16
+m_nSize=16
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM455_WK
+
+@}}
+[FDITEM456_WK]
+m_strName=link-wprogmag-status
+m_nUsage=17
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM456_WK
+
+@}}
+[FDITEM457_WK]
+m_strName=link-tipo-chiamata
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM457_WK
+
+@}}
+[FDITEM458_WK]
+m_strName=link-chiamata-batch
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue=1,
+m_strFalse=0
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM458_WK
+
+@}}
+[FDITEM459_WK]
+m_strName=link-msg-err-ritorno
+m_strRawPic=x(60)
+m_strPic=X(60)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM459_WK
+
+@}}
+[FDITEM460_WK]
+m_strName=link-mese-rif
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM460_WK
+    mi serve per collocare/stornare l'ordinato dal mese corretto
+
+@}}
+[FDITEM461_WK]
+m_strName=link-master
+m_strRawPic=x
+m_strPic=X
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM461_WK
+
+@}}
+[FDITEM462_WK]
+m_strName=link-imp-master
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="M"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM462_WK
+
+@}}
+[FDITEM463_WK]
+m_strName=link-imp-trad
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="T"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM463_WK
+
+@}}
+[FDITEM464_WK]
+m_strName=link-imp-GDO
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="G"
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM464_WK
+
+@}}
+[FDITEM465_WK]
+m_strName=link-impegnato
+m_strRawPic=s9(8)
+m_strPic=S9(8)
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM465_WK
+
+@}}
+[FDITEM466_WK]
+m_strName=link-chiave-origine
+m_nItemLevel=3
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM466_WK
+    mi serve per leggere:
+    - l'ordine fornitore e sapere se l'ordine ha il flag di
+      aperto attivato e quindi non lavoro sull'ordinato
+
+@}}
+[FDITEM467_WK]
+m_strName=link-anno-origine
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM467_WK
+
+@}}
+[FDITEM468_WK]
+m_strName=link-numero-origine
+m_strRawPic=9(8)
+m_strPic=9(8)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+m_strCopyEntry=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_strCopyFile=link-wprogmag.def
+m_strCopyFilePathName=F:\LUBEX\GESLUX\COPYLIB\LINK-WPROGMAG.DEF
+m_nCopyFileLevel=1
+{{@DataItem_m_strDescriptionFDITEM468_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -9859,6 +10531,54 @@ Begin Screen Form1
             After Procedure   = pb-elimina-AfterProcedure
             Link To           = pb-elimina-LinkTo
          End
+         Begin Push-Button pb-codici
+            SCREEN-COL        = 141,14
+            SCREEN-LINE       = 41,54
+            LOCK-CONTROL      = TRUE
+            LEVEL             = 10
+            (Name)            = pb-codici
+            Bitmap            = "..\RESOURCE\ALTERNATIVI.BMP"
+            Bitmap Frame      = FALSE
+            Bitmap Handle     = ALTERNATIVI-BMP
+            Bitmap Number     = 1
+            Bitmap Square     = TRUE
+            Clines            = 0
+            Clines Unit       = Default
+            Column            = 140,33
+            Copy Resource     = TRUE
+            Csize             = 0
+            Csize Unit        = Default
+            Destroy Type      = Automatic
+            Enable            = NONE
+            Enable Variable   = mod-campi
+            Exception Value   = 222
+            Flat              = TRUE
+            Font              = Small Font
+            Font Variable     = Small-Font
+            Height in Cells   = FALSE
+            Help ID           = 0
+            ID                = 87
+            Line              = 39,08
+            Lines             = 2,27
+            Lines in Pixels   = 29
+            Lines Unit        = Default
+            No Auto Default   = FALSE
+            No Tab            = FALSE
+            Occurs            = 0
+            Self Act          = TRUE
+            Size              = 12,50
+            Size in Pixels    = 73
+            Size Unit         = Default
+            Style             = Other
+            Tab Order         = 25
+            Termination Value = 0
+            Title             = "Creazione Codici Alternativi"
+            Visible           = NONE
+            Width in Cells    = FALSE
+            Before Procedure  = pb-codici-BeforeProcedure
+            After Procedure   = pb-codici-AfterProcedure
+            Link To           = pb-codici-LinkTo
+         End
          Begin Bar Screen1-Br-1
             SCREEN-COL        = 3,81
             SCREEN-LINE       = 38,38
@@ -9885,7 +10605,7 @@ Begin Screen Form1
             Size (Lines)      = 151,00
             Size (Lines) in Pixels = 906
             Size (Lines) Unit = Default
-            Tab Order         = 25
+            Tab Order         = 26
             Visible           = NONE
             Visible Variable  = Screen1-Pg-2-Visible
             Width             = 2
@@ -12270,6 +12990,36 @@ BEGIN-DATA
    PARAGRAPH         = form1-gd-3-Ev-Msg-Finish-Entry
 BEGIN-TEXT
            perform FORM1-GD-3-FINISH-ENTRY.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-codici-BeforeProcedure
+BEGIN-TEXT
+           modify pb-codici, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-codici-AfterProcedure
+BEGIN-TEXT
+           modify pb-codici, bitmap-number 2.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = pb-codici-LinkTo
+BEGIN-TEXT
+           inquire ef-art, value in ef-art-buf.
+           move ef-art-buf to prg-cod-articolo.
+           initialize link-wprogmag replacing numeric data by zeroes
+                                         alphanumeric data by spaces.
+           move prg-cod-articolo to link-articolo.
+           set link-accept to true.
+           move tca-cod-magaz   to link-magazzino.
+           move user-codi       to link-user of link-wprogmag.
+           call   "wprogmag" using link-wprogmag.
+           cancel "wprogmag".
 END-TEXT
 END-DATA
 

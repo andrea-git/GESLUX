@@ -2,12 +2,11 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [PROGRAM_CONTENT]
-QUIT_CONFIRM=0
 ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Screen1
 BEFORE_PROGRAM=wprogmag-Ev-Before-Program
 AFTER_PROGRAM=wprogmag-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E4BE15119-892-26334464
+PROGRAM_UNIQUE_CODE=TOTEM-7E899171324-245-1595430960
 
 {{@DESCRIPTION:
 
@@ -425,9 +424,9 @@ m_bFixed=1
 
 @}}
 [FDITEM34_WK]
-m_strName=como-mess
-m_strRawPic=x(50)
-m_strPic=x(50)
+m_strName=tge-perce-prog-ed
+m_strRawPic=z9,99
+m_strPic=z9,99
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -435,9 +434,9 @@ m_bFixed=1
 
 @}}
 [FDITEM35_WK]
-m_strName=tge-perce-prog-ed
-m_strRawPic=z9,99
-m_strPic=z9,99
+m_strName=STATUS-timballi
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -445,25 +444,15 @@ m_bFixed=1
 
 @}}
 [FDITEM36_WK]
-m_strName=STATUS-timballi
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM36_WK
-
-@}}
-[FDITEM37_WK]
 m_strName=Valid-STATUS-timballi
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM37_WK
+{{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
-[FDITEM38_WK]
+[FDITEM37_WK]
 m_strName=AUTO-ID
 m_strRawPic=9(6)
 m_strPic=9(6)
@@ -471,19 +460,19 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM38_WK
+{{@DataItem_m_strDescriptionFDITEM37_WK
 
 @}}
-[FDITEM39_WK]
+[FDITEM38_WK]
 m_strName=Screen1-St-1-Handle
 m_nUsage=51
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM39_WK
+{{@DataItem_m_strDescriptionFDITEM38_WK
 
 @}}
-[FDITEM40_WK]
+[FDITEM39_WK]
 m_strName=E-CERCA
 m_strRawPic=9
 m_strPic=9
@@ -491,12 +480,22 @@ m_strDefaultValue=1
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM39_WK
+
+@}}
+[FDITEM40_WK]
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM40_WK
 
 @}}
 [FDITEM41_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
+m_strName=peso-ed
+m_strRawPic=zz9,999
+m_strPic=zz9,999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -504,9 +503,9 @@ m_bFixed=1
 
 @}}
 [FDITEM42_WK]
-m_strName=peso-ed
-m_strRawPic=zz9,999
-m_strPic=zz9,999
+m_strName=codice-ed
+m_strRawPic=z(5)
+m_strPic=z(5)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -514,9 +513,9 @@ m_bFixed=1
 
 @}}
 [FDITEM43_WK]
-m_strName=codice-ed
-m_strRawPic=z(5)
-m_strPic=z(5)
+m_strName=como-valore
+m_strRawPic=s9(15)v999
+m_strPic=s9(15)v999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -524,9 +523,9 @@ m_bFixed=1
 
 @}}
 [FDITEM44_WK]
-m_strName=como-valore
-m_strRawPic=s9(15)v999
-m_strPic=s9(15)v999
+m_strName=SaveCostoUltimo
+m_strRawPic=S9(12)V9(2)
+m_strPic=S9(12)V9(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -534,9 +533,9 @@ m_bFixed=1
 
 @}}
 [FDITEM45_WK]
-m_strName=SaveCostoUltimo
-m_strRawPic=S9(12)V9(2)
-m_strPic=S9(12)V9(2)
+m_strName=imb-qta-edit
+m_strRawPic=z.zzz
+m_strPic=z.zzz
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -544,9 +543,9 @@ m_bFixed=1
 
 @}}
 [FDITEM46_WK]
-m_strName=imb-qta-edit
-m_strRawPic=z.zzz
-m_strPic=z.zzz
+m_strName=nome-pgm
+m_strRawPic=x(20)
+m_strPic=x(20)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -554,9 +553,9 @@ m_bFixed=1
 
 @}}
 [FDITEM47_WK]
-m_strName=nome-pgm
-m_strRawPic=x(20)
-m_strPic=x(20)
+m_strName=como-mess
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -2349,7 +2348,7 @@ Begin Screen Screen1
    Unit              = Cells
    User Gray         = TRUE
    User White        = TRUE
-   Visible           = FALSE
+   Visible           = NONE
    Visible Variable  = v-screen
    Width in Cells    = TRUE
    Window Type       = Floating
@@ -2375,11 +2374,11 @@ Begin Screen Screen1
       Cursor Col        = 0
       Cursor Row        = 0
       Destroy Type      = Automatic
-      Enable            = TRUE
+      Enable            = NONE
       Field Edited (Style) = 1
-      Field Edited Format = zzzzz9
+      Field Edited Format = z(6)
       Field Picture     = 9(6)
-      Field Variable    = prg-cod-articolo OF progmag
+      Field Variable    = prg-cod-articolo of progmag
       File              = progmag
       Font              = Default Font
       Height in Cells   = TRUE
@@ -2410,7 +2409,7 @@ Begin Screen Screen1
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO=;ZOOM="
       Before Procedure  = EF-COD-ARTICOLO-BeforeProcedure
@@ -2436,7 +2435,7 @@ Begin Screen Screen1
       Cursor Col        = 0
       Cursor Row        = 0
       Destroy Type      = Automatic
-      Enable            = TRUE
+      Enable            = NONE
       Field Edited (Style) = 1
       Field Edited Format = X(3)
       Field Picture     = X(3)
@@ -2471,7 +2470,7 @@ Begin Screen Screen1
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO=;ZOOM="
       Before Procedure  = EF-COD-MAGAZZ-BeforeProcedure
@@ -2497,7 +2496,7 @@ Begin Screen Screen1
       Cursor Col        = 0
       Cursor Row        = 0
       Destroy Type      = Automatic
-      Enable            = TRUE
+      Enable            = NONE
       Field Edited (Style) = 1
       Field Edited Format = X(3)
       Field Picture     = X(3)
@@ -2532,7 +2531,7 @@ Begin Screen Screen1
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO=;ZOOM="
       Before Procedure  = EF-TIPO-IMBALLO-BeforeProcedure
@@ -2558,7 +2557,7 @@ Begin Screen Screen1
       Cursor Col        = 0
       Cursor Row        = 0
       Destroy Type      = Automatic
-      Enable            = TRUE
+      Enable            = NONE
       Field Edited (Style) = 1
       Field Edited Format = zz.zz9,999
       Field Picture     = 9(5)v9(3)
@@ -2575,7 +2574,7 @@ Begin Screen Screen1
       Lines             = 1,31
       Lines Unit        = Default
       Max Lines         = 0
-      Max Text          = 10
+      Max Text          = 9
       Max Value         = 0
       Min Value         = 0
       No AutoSel        = FALSE
@@ -2593,7 +2592,7 @@ Begin Screen Screen1
       Use Return        = FALSE
       Use Tab           = FALSE
       Value Multiple    = FALSE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
       My Property       = "CONTROLLO=;VIRGOLA="
       Before Procedure  = EF-PESO-BeforeProcedure
@@ -2652,12 +2651,12 @@ Begin Screen Screen1
          Cursor Col        = 0
          Cursor Row        = 0
          Destroy Type      = Automatic
-         Enable            = TRUE
+         Enable            = NONE
          Field Edited (Style) = 1
          Field Edited Format = zz.zz9,999
          Field Picture     = 9(5)v9(3)
          Field Variable    = prg-peso-utf OF PROGMAG
-         File              = progmag
+         File              = Working Storage
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
@@ -2714,12 +2713,12 @@ Begin Screen Screen1
          Cursor Col        = 0
          Cursor Row        = 0
          Destroy Type      = Automatic
-         Enable            = TRUE
+         Enable            = NONE
          Field Edited (Style) = 1
          Field Edited Format = zz.zz9,999
          Field Picture     = 9(5)v9(3)
          Field Variable    = prg-peso-non-utf OF PROGMAG
-         File              = progmag
+         File              = Working Storage
          Font              = Default Font
          Height in Cells   = TRUE
          Help ID           = 0
@@ -2857,7 +2856,7 @@ Begin Screen Screen1
       Tab Order         = 6
       Title             = "Codice Articolo"
       Transparent       = TRUE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5a
@@ -2890,7 +2889,7 @@ Begin Screen Screen1
       Tab Order         = 7
       Title             = "Codice Magazzino"
       Transparent       = TRUE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aa
@@ -2923,7 +2922,7 @@ Begin Screen Screen1
       Tab Order         = 8
       Title             = "Tipo Imballo"
       Transparent       = TRUE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Label Form1-La-5aaa
@@ -2956,7 +2955,7 @@ Begin Screen Screen1
       Tab Order         = 9
       Title             = "Peso (KG)"
       Transparent       = TRUE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Data.Label LBL-DES-ARTICOLO
@@ -2977,7 +2976,7 @@ Begin Screen Screen1
       Field Edited Format = X(50)
       Field Picture     = X(50)
       Field Variable    = art-descrizione
-      File              = articoli
+      File              = Working Storage
       Font              = Small Font
       Font Variable     = Small-Font
       Height in Cells   = TRUE
@@ -2994,7 +2993,7 @@ Begin Screen Screen1
       Size Unit         = Default
       Tab Order         = 10
       Transparent       = TRUE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin Data.Label LBL-DES-MAGAZZ
@@ -3015,7 +3014,7 @@ Begin Screen Screen1
       Field Edited Format = X(50)
       Field Picture     = X(50)
       Field Variable    = mag-descrizione
-      File              = tmagaz
+      File              = Working Storage
       Font              = Small Font
       Font Variable     = Small-Font
       Height in Cells   = TRUE
@@ -3032,7 +3031,7 @@ Begin Screen Screen1
       Size Unit         = Default
       Tab Order         = 11
       Transparent       = TRUE
-      Visible           = TRUE
+      Visible           = NONE
       Width in Cells    = TRUE
    End
    Begin CsCtrl.Custom1 Label Screen1-Custom1-1
@@ -3164,7 +3163,7 @@ Begin Screen Screen1
          Tab Order         = 1
          Termination Value = 0
          Title             = "Esci (Esc)"
-         Visible           = TRUE
+         Visible           = NONE
          Width in Cells    = FALSE
       End
       Begin Push-Button TOOL-SALVA
@@ -3210,7 +3209,7 @@ Begin Screen Screen1
          Tab Order         = 2
          Termination Value = 0
          Title             = "Salva (F3)"
-         Visible           = TRUE
+         Visible           = NONE
          Width in Cells    = FALSE
          Link To           = TOOL-SALVA-LinkTo
       End
@@ -3297,55 +3296,6 @@ BEGIN-DATA
    PARAGRAPH         = DeletedCode
 BEGIN-TEXT
 
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 1
-   NODESTYLE         = 2
-   PARENT            = Screen1
-   ACTOBJ            = Screen1
-   TEXTMODE          = 0
-   ENTRYPOINT        = BeforeAccept
-BEGIN-TEXT
-           move 0 to link-wprogmag-status.
-           if link-magazzino = spaces
-              move low-value to mag-rec
-              start tmagaz key is >= mag-chiave invalid continue end-start
-              perform until 1 = 2
-                 read tmagaz next at end exit perform end-read
-                 if si-mag-principale exit perform end-if
-              end-perform
-              move mag-codice     to prg-cod-magazzino
-           else
-              move link-magazzino to prg-cod-magazzino
-           end-if.
-
-           move link-articolo     to art-codice.
-           read articoli no lock invalid continue end-read.
-           if art-misto 
-              move 1 to v-misto
-              move art-peso-utf     to ef-peso-utf-buf
-              move art-peso-non-utf to ef-peso-non-utf-buf
-           else         
-              move 0 to v-misto
-           end-if.
-           move link-articolo     to ef-cod-articolo-buf.
-           move link-imballo      to ef-tipo-imballo-buf imq-codice.
-           move link-peso         to ef-peso-buf.
-           move prg-cod-magazzino to ef-cod-magazz-buf mag-codice.
-           perform QTA-IMBALLI.
-
-           read tmagaz invalid move spaces to mag-descrizione end-read.
-           move mag-descrizione to lbl-des-magazz-buf.
-           move 1 to v-screen.
-           modify Screen1-Handle, visible = v-screen.
-           display screen1.
-
-           call "C$CALLEDBY" using pgm-chiamante.
-
-LUBEXX     if pgm-chiamante = "garticoli"
-LUBEXX        modify ef-cod-articolo, read-only
-LUBEXX     end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -3594,6 +3544,55 @@ LUBEXX          end-if
            when "93"
            when "99" set RecLocked to true
            end-evaluate.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 1
+   NODESTYLE         = 2
+   PARENT            = Screen1
+   ACTOBJ            = Screen1
+   TEXTMODE          = 0
+   ENTRYPOINT        = BeforeAccept
+BEGIN-TEXT
+           move 0 to link-wprogmag-status.
+           if link-magazzino = spaces
+              move low-value to mag-rec
+              start tmagaz key is >= mag-chiave invalid continue end-start
+              perform until 1 = 2
+                 read tmagaz next at end exit perform end-read
+                 if si-mag-principale exit perform end-if
+              end-perform
+              move mag-codice     to prg-cod-magazzino
+           else
+              move link-magazzino to prg-cod-magazzino
+           end-if.
+
+           move link-articolo     to art-codice.
+           read articoli no lock invalid continue end-read.
+           if art-misto 
+              move 1 to v-misto
+              move art-peso-utf     to ef-peso-utf-buf
+              move art-peso-non-utf to ef-peso-non-utf-buf
+           else         
+              move 0 to v-misto
+           end-if.
+           move link-articolo     to ef-cod-articolo-buf.
+           move link-imballo      to ef-tipo-imballo-buf imq-codice.
+           move link-peso         to ef-peso-buf.
+           move prg-cod-magazzino to ef-cod-magazz-buf mag-codice.
+           perform QTA-IMBALLI.
+
+           read tmagaz invalid move spaces to mag-descrizione end-read.
+           move mag-descrizione to lbl-des-magazz-buf.
+           move 1 to v-screen.
+           modify Screen1-Handle, visible = v-screen.
+           display screen1.
+
+           call "C$CALLEDBY" using pgm-chiamante.
+
+LUBEXX     if pgm-chiamante = "garticoli"
+LUBEXX        modify ef-cod-articolo, read-only
+LUBEXX     end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4344,6 +4343,24 @@ BEGIN-TEXT
                                    icon 2
                         move spaces to art-descrizione
                     not invalid
+                        if pgm-chiamante = "bnotacr"
+                           move art-imballo-standard to prg-tipo-imballo of progmag
+                                                        imq-codice
+                           move art-peso-standard    to prg-peso of progmag 
+                           modify ef-tipo-imballo, value prg-tipo-imballo of progmag
+                           modify ef-peso,         value prg-peso of progmag
+
+                           
+                           move spaces to lab-imballo-buf
+                           read timbalqta
+                                invalid continue
+                            not invalid
+                                move imq-tipo   to imq-codice
+                                perform QTA-IMBALLI
+                           end-read
+                           display lab-imballo
+
+                        end-if
                         |Posso creare un figlio solo
                         |su un articolo confermato
                         if art-disattivo
@@ -4650,43 +4667,22 @@ END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
-   PARAGRAPH         = TOOL-SALVA-LinkTo
+   PARAGRAPH         = EF-COD-ARTICOLO-BeforeProcedure
 BEGIN-TEXT
-           perform SALVA.
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
-   PARAGRAPH         = TOOL-CERCA-LinkTo
+   PARAGRAPH         = EF-COD-ARTICOLO-AfterProcedure
 BEGIN-TEXT
-           inquire tool-cerca, enabled in e-cerca.
-           if e-cerca = 1 perform CERCA end-if.
+      *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = EF-COD-MAGAZZ-BeforeProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = EF-TIPO-IMBALLO-BeforeProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = EF-PESO-BeforeProcedure
-BEGIN-TEXT
-      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
-END-TEXT
-END-DATA
-BEGIN-DATA
-   BASETYPE          = 2
-   PARAGRAPH         = EF-COD-ARTICOLO-BeforeProcedure
 BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT
@@ -4701,9 +4697,23 @@ END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
+   PARAGRAPH         = EF-TIPO-IMBALLO-BeforeProcedure
+BEGIN-TEXT
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
    PARAGRAPH         = EF-TIPO-IMBALLO-AfterProcedure
 BEGIN-TEXT
       *<<** Default_Code **>>
+      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = EF-PESO-BeforeProcedure
+BEGIN-TEXT
       *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
 END-TEXT
 END-DATA
@@ -4717,10 +4727,17 @@ END-TEXT
 END-DATA
 BEGIN-DATA
    BASETYPE          = 2
-   PARAGRAPH         = EF-COD-ARTICOLO-AfterProcedure
+   PARAGRAPH         = TOOL-SALVA-LinkTo
 BEGIN-TEXT
-      *<<** Default_Code **>>
-      *<<** Customized_Default, SP-G, Screen1-Custom1-1 **>>
+           perform SALVA.
+END-TEXT
+END-DATA
+BEGIN-DATA
+   BASETYPE          = 2
+   PARAGRAPH         = TOOL-CERCA-LinkTo
+BEGIN-TEXT
+           inquire tool-cerca, enabled in e-cerca.
+           if e-cerca = 1 perform CERCA end-if.
 END-TEXT
 END-DATA
 BEGIN-DATA
@@ -4883,229 +4900,37 @@ PROP_DOCU_ALIGN=0
 REL_SYM_SIZE=52
 REL_SYM_INFO_L=8
 REL_SYM_INFO_X0=2301
-REL_SYM_INFO_Y0=1309082312
+REL_SYM_INFO_Y0=797326272
 REL_SYM_INFO_X1=2301
-REL_SYM_INFO_Y1=1556154020
+REL_SYM_INFO_Y1=783910490
 REL_SYM_INFO_X2=2301
-REL_SYM_INFO_Y2=1669332440
+REL_SYM_INFO_Y2=1067443280
 REL_SYM_INFO_X3=2301
-REL_SYM_INFO_Y3=1154318464
+REL_SYM_INFO_Y3=477784024
 REL_SYM_INFO_X4=2301
-REL_SYM_INFO_Y4=1976156817
+REL_SYM_INFO_Y4=1717642130
 REL_SYM_INFO_X5=2301
-REL_SYM_INFO_Y5=1744635898
+REL_SYM_INFO_Y5=1643677237
 REL_SYM_INFO_X6=2301
-REL_SYM_INFO_Y6=826543339
+REL_SYM_INFO_Y6=1627567672
 REL_SYM_INFO_X7=2301
-REL_SYM_INFO_Y7=924492512
+REL_SYM_INFO_Y7=1217192847
 
-[DRAW_BASESYMBOL_2301_1309082312]
+[DRAW_BASESYMBOL_2301_797326272]
 OBJ_NAME=2301
-OBJ_ID=1309082312
+OBJ_ID=797326272
 KIND=1
-{{@LABEL_2301_1309082312
-progmag
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=16
-TOP=16
-RIGHT=416
-BOTTOM=238
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
-[DRAW_BASESYMBOL_2301_1556154020]
-OBJ_NAME=2301
-OBJ_ID=1556154020
-KIND=1
-{{@LABEL_2301_1556154020
-tmagaz
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=1466
-TOP=16
-RIGHT=1866
-BOTTOM=238
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
-[DRAW_BASESYMBOL_2301_1669332440]
-OBJ_NAME=2301
-OBJ_ID=1669332440
-KIND=1
-{{@LABEL_2301_1669332440
-tcaumag
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=1068
-TOP=16
-RIGHT=1468
-BOTTOM=238
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
-[DRAW_BASESYMBOL_2301_1154318464]
-OBJ_NAME=2301
-OBJ_ID=1154318464
-KIND=1
-{{@LABEL_2301_1154318464
-timbalqta
-@}}
-WK_STEP=0
-BK_POINT=0
-CENTER_X=0
-CENTER_Y=0
-LEFT=616
-TOP=50
-RIGHT=1016
-BOTTOM=272
-PROP_OBJ_TYPE=
-PROP_OBJ_TYPE2=
-PROP_FILL_PT=0
-PROP_FILL_FG=0
-PROP_FILL_BG=16777215
-PROP_FONT_HEIGHT=-35
-PROP_FONT_WIDTH=0
-PROP_FONT_ESCAPE=0
-PROP_FONT_ORIENT=0
-PROP_FONT_WEIGHT=400
-PROP_FONT_ITALIC=0
-PROP_FONT_UDLINE=0
-PROP_FONT_SKOUT=0
-PROP_FONT_CHARSET=0
-PROP_FONT_OUTPREC=3
-PROP_FONT_CLIPPREC=2
-PROP_FONT_QUALITY=1
-PROP_FONT_PCH_FAM=18
-PROP_FONT_FACE_NAME=Times New Roman
-PROP_FONT_CR=0
-PROP_LINE_PT=0
-PROP_LINE_WG=1
-PROP_LINE_CR=0
-PROP_SHAD_PT=0
-PROP_SHAD_FG=12632256
-PROP_SHAD_BG=12632256
-PROP_SHAD_EBL=0
-PROP_SHAD_POS=4
-PROP_SHAD_POINT=0
-PROP_TRACK_COLOR=12632256
-REL_SYM_SIZE=4
-REL_SYM_INFO_L=0
-
-[DRAW_BASESYMBOL_2301_1976156817]
-OBJ_NAME=2301
-OBJ_ID=1976156817
-KIND=1
-{{@LABEL_2301_1976156817
+{{@LABEL_2301_797326272
 timballi
 @}}
 WK_STEP=0
 BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
-LEFT=566
-TOP=412
-RIGHT=966
-BOTTOM=634
+LEFT=2031
+TOP=1598
+RIGHT=2431
+BOTTOM=1820
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -5139,21 +4964,21 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_1744635898]
+[DRAW_BASESYMBOL_2301_783910490]
 OBJ_NAME=2301
-OBJ_ID=1744635898
+OBJ_ID=783910490
 KIND=1
-{{@LABEL_2301_1744635898
-articoli
+{{@LABEL_2301_783910490
+timbalqta
 @}}
 WK_STEP=0
 BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
-LEFT=1045
-TOP=376
-RIGHT=1445
-BOTTOM=598
+LEFT=2314
+TOP=1082
+RIGHT=2714
+BOTTOM=1304
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -5187,21 +5012,21 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_826543339]
+[DRAW_BASESYMBOL_2301_1067443280]
 OBJ_NAME=2301
-OBJ_ID=826543339
+OBJ_ID=1067443280
 KIND=1
-{{@LABEL_2301_826543339
+{{@LABEL_2301_1067443280
 tordforn
 @}}
 WK_STEP=0
 BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
-LEFT=1542
-TOP=409
-RIGHT=1942
-BOTTOM=631
+LEFT=2880
+TOP=566
+RIGHT=3280
+BOTTOM=788
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -5235,21 +5060,213 @@ PROP_TRACK_COLOR=12632256
 REL_SYM_SIZE=4
 REL_SYM_INFO_L=0
 
-[DRAW_BASESYMBOL_2301_924492512]
+[DRAW_BASESYMBOL_2301_477784024]
 OBJ_NAME=2301
-OBJ_ID=924492512
+OBJ_ID=477784024
 KIND=1
-{{@LABEL_2301_924492512
+{{@LABEL_2301_477784024
 tparamge
 @}}
 WK_STEP=0
 BK_POINT=0
 CENTER_X=0
 CENTER_Y=0
-LEFT=1182
+LEFT=3446
+TOP=566
+RIGHT=3846
+BOTTOM=788
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1717642130]
+OBJ_NAME=2301
+OBJ_ID=1717642130
+KIND=1
+{{@LABEL_2301_1717642130
+tmagaz
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2597
+TOP=1598
+RIGHT=2997
+BOTTOM=1820
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1643677237]
+OBJ_NAME=2301
+OBJ_ID=1643677237
+KIND=1
+{{@LABEL_2301_1643677237
+progmag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=270
+TOP=94
+RIGHT=670
+BOTTOM=316
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1627567672]
+OBJ_NAME=2301
+OBJ_ID=1627567672
+KIND=1
+{{@LABEL_2301_1627567672
+tcaumag
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=2880
 TOP=1082
-RIGHT=1582
+RIGHT=3280
 BOTTOM=1304
+PROP_OBJ_TYPE=
+PROP_OBJ_TYPE2=
+PROP_FILL_PT=0
+PROP_FILL_FG=0
+PROP_FILL_BG=16777215
+PROP_FONT_HEIGHT=-35
+PROP_FONT_WIDTH=0
+PROP_FONT_ESCAPE=0
+PROP_FONT_ORIENT=0
+PROP_FONT_WEIGHT=400
+PROP_FONT_ITALIC=0
+PROP_FONT_UDLINE=0
+PROP_FONT_SKOUT=0
+PROP_FONT_CHARSET=0
+PROP_FONT_OUTPREC=3
+PROP_FONT_CLIPPREC=2
+PROP_FONT_QUALITY=1
+PROP_FONT_PCH_FAM=18
+PROP_FONT_FACE_NAME=Times New Roman
+PROP_FONT_CR=0
+PROP_LINE_PT=0
+PROP_LINE_WG=1
+PROP_LINE_CR=0
+PROP_SHAD_PT=0
+PROP_SHAD_FG=12632256
+PROP_SHAD_BG=12632256
+PROP_SHAD_EBL=0
+PROP_SHAD_POS=4
+PROP_SHAD_POINT=0
+PROP_TRACK_COLOR=12632256
+REL_SYM_SIZE=4
+REL_SYM_INFO_L=0
+
+[DRAW_BASESYMBOL_2301_1217192847]
+OBJ_NAME=2301
+OBJ_ID=1217192847
+KIND=1
+{{@LABEL_2301_1217192847
+articoli
+@}}
+WK_STEP=0
+BK_POINT=0
+CENTER_X=0
+CENTER_Y=0
+LEFT=1748
+TOP=566
+RIGHT=2148
+BOTTOM=788
 PROP_OBJ_TYPE=
 PROP_OBJ_TYPE2=
 PROP_FILL_PT=0
@@ -5298,9 +5315,164 @@ FILE_SHOW_BMP=0
 FILE_SHOW_LINE=0
 FILE_SHOW_MINIZE=0
 
-[DMD_FILE_0_1309082312]
+[DMD_FILE_0_797326272]
 OBJ_NAME=0
-OBJ_ID=1309082312
+OBJ_ID=797326272
+REL_M_OBJ_ID=0
+ENTITY=timballi
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imb-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_797326272
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_783910490]
+OBJ_NAME=0
+OBJ_ID=783910490
+REL_M_OBJ_ID=0
+ENTITY=timbalqta
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=imq-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_783910490
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1067443280]
+OBJ_NAME=0
+OBJ_ID=1067443280
+REL_M_OBJ_ID=0
+ENTITY=tordforn
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tof-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1067443280
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=0
+DSN_INFO_CLOSE=0
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_477784024]
+OBJ_NAME=0
+OBJ_ID=477784024
+REL_M_OBJ_ID=0
+ENTITY=tparamge
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=tge-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_477784024
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1717642130]
+OBJ_NAME=0
+OBJ_ID=1717642130
+REL_M_OBJ_ID=0
+ENTITY=tmagaz
+LINK=0
+LINK_NAME=
+DSN_SIZE=42
+FD_SIZE=0
+SL_SIZE=0
+DSN_INFO_OPEN_MODE=0
+DSN_INFO_LOCK_OPTION=0
+DSN_INFO_KEY_IS=mag-chiave
+DSN_INFO_DATA_ORDER=0
+DSN_INFO_START_VALUE=
+DSN_INFO_END_VALUE=
+{{@DSN_INFO_CONDITION_1717642130
+
+@}}
+DSN_INFO_PRIMARY=0
+DSN_INFO_OPEN=1
+DSN_INFO_CLOSE=1
+DSN_INFO_EXCLUSIVE=0
+DSN_INFO_IS_LOGICAL=0
+DSN_INFO_LOGICAL_FDNAME=
+DSN_INFO_ORIGINAL_FDNAME=
+DSN_INFO_REPLACEBY_FILESTATUS=
+DSN_INFO_REPLACEBY_RELATIVEKEY=
+DSN_INFO_REPLACEBY_FDDATA=
+DSN_INFO_REPLACEBY_SLDATA=
+
+[DMD_FILE_0_1643677237]
+OBJ_NAME=0
+OBJ_ID=1643677237
 REL_M_OBJ_ID=0
 ENTITY=progmag
 LINK=0
@@ -5314,7 +5486,7 @@ DSN_INFO_KEY_IS=prg-chiave OF progmag
 DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1309082312
+{{@DSN_INFO_CONDITION_1643677237
 
 @}}
 DSN_INFO_PRIMARY=1
@@ -5329,40 +5501,9 @@ DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=
 
-[DMD_FILE_0_1556154020]
+[DMD_FILE_0_1627567672]
 OBJ_NAME=0
-OBJ_ID=1556154020
-REL_M_OBJ_ID=0
-ENTITY=tmagaz
-LINK=0
-LINK_NAME=
-DSN_SIZE=42
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=mag-chiave
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1556154020
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_1669332440]
-OBJ_NAME=0
-OBJ_ID=1669332440
+OBJ_ID=1627567672
 REL_M_OBJ_ID=0
 ENTITY=tcaumag
 LINK=0
@@ -5376,7 +5517,7 @@ DSN_INFO_KEY_IS=tca-chiave
 DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1669332440
+{{@DSN_INFO_CONDITION_1627567672
 
 @}}
 DSN_INFO_PRIMARY=0
@@ -5391,71 +5532,9 @@ DSN_INFO_REPLACEBY_RELATIVEKEY=
 DSN_INFO_REPLACEBY_FDDATA=
 DSN_INFO_REPLACEBY_SLDATA=
 
-[DMD_FILE_0_1154318464]
+[DMD_FILE_0_1217192847]
 OBJ_NAME=0
-OBJ_ID=1154318464
-REL_M_OBJ_ID=0
-ENTITY=timbalqta
-LINK=0
-LINK_NAME=
-DSN_SIZE=42
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=imq-chiave
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1154318464
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_1976156817]
-OBJ_NAME=0
-OBJ_ID=1976156817
-REL_M_OBJ_ID=0
-ENTITY=timballi
-LINK=0
-LINK_NAME=
-DSN_SIZE=42
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=imb-chiave
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1976156817
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_1744635898]
-OBJ_NAME=0
-OBJ_ID=1744635898
+OBJ_ID=1217192847
 REL_M_OBJ_ID=0
 ENTITY=articoli
 LINK=0
@@ -5463,75 +5542,13 @@ LINK_NAME=
 DSN_SIZE=54
 FD_SIZE=0
 SL_SIZE=0
-DSN_INFO_OPEN_MODE=2
+DSN_INFO_OPEN_MODE=0
 DSN_INFO_LOCK_OPTION=0
 DSN_INFO_KEY_IS=art-chiave OF articoli
 DSN_INFO_DATA_ORDER=0
 DSN_INFO_START_VALUE=
 DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_1744635898
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=1
-DSN_INFO_CLOSE=1
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_826543339]
-OBJ_NAME=0
-OBJ_ID=826543339
-REL_M_OBJ_ID=0
-ENTITY=tordforn
-LINK=0
-LINK_NAME=
-DSN_SIZE=42
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=tof-chiave
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_826543339
-
-@}}
-DSN_INFO_PRIMARY=0
-DSN_INFO_OPEN=0
-DSN_INFO_CLOSE=0
-DSN_INFO_EXCLUSIVE=0
-DSN_INFO_IS_LOGICAL=0
-DSN_INFO_LOGICAL_FDNAME=
-DSN_INFO_ORIGINAL_FDNAME=
-DSN_INFO_REPLACEBY_FILESTATUS=
-DSN_INFO_REPLACEBY_RELATIVEKEY=
-DSN_INFO_REPLACEBY_FDDATA=
-DSN_INFO_REPLACEBY_SLDATA=
-
-[DMD_FILE_0_924492512]
-OBJ_NAME=0
-OBJ_ID=924492512
-REL_M_OBJ_ID=0
-ENTITY=tparamge
-LINK=0
-LINK_NAME=
-DSN_SIZE=42
-FD_SIZE=0
-SL_SIZE=0
-DSN_INFO_OPEN_MODE=0
-DSN_INFO_LOCK_OPTION=0
-DSN_INFO_KEY_IS=tge-chiave
-DSN_INFO_DATA_ORDER=0
-DSN_INFO_START_VALUE=
-DSN_INFO_END_VALUE=
-{{@DSN_INFO_CONDITION_924492512
+{{@DSN_INFO_CONDITION_1217192847
 
 @}}
 DSN_INFO_PRIMARY=0

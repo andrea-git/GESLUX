@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          vscorte.
        AUTHOR.              andre.
-       DATE-WRITTEN.        sabato 16 dicembre 2023 15:43:01.
+       DATE-WRITTEN.        lunedì 9 settembre 2024 19:02:23.
        REMARKS.
       *{TOTEM}END
 
@@ -442,8 +442,8 @@
        77 form4-MULKEY-TMPBUF   PIC X(3938).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-lineseq-BUF     PIC X(1000).

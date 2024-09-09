@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          bnotacr.
        AUTHOR.              andre.
-       DATE-WRITTEN.        venerdì 11 agosto 2023 22:21:32.
+       DATE-WRITTEN.        lunedì 9 settembre 2024 18:51:02.
        REMARKS.
       *{TOTEM}END
 
@@ -105,6 +105,10 @@
           88 Screen-Time-Out VALUE 99.
       * Properties & User defined Working Stoarge
            COPY  "BOZZE-WS.DEF".
+       77 ALTERNATIVI-BMP  PIC  S9(9)
+                  USAGE IS COMP-4
+                  VALUE IS 0.
+           COPY  "LINK-WPROGMAG.DEF".
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -166,8 +170,8 @@
        77 TMP-DataSet1-btnotacr-BUF     PIC X(912).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
        77 TMP-DataSet1-brnotacr-BUF     PIC X(424).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-tordini-BUF     PIC X(3938).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
@@ -187,7 +191,7 @@
        77 TMP-DataSet1-param-BUF     PIC X(980).
        77 TMP-DataSet1-tcontat-BUF     PIC X(3270).
        77 TMP-DataSet1-tnazioni-BUF     PIC X(190).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
       * VARIABLES FOR RECORD LENGTH.
        77  TotemFdSlRecordClearOffset   PIC 9(5) COMP-4.
        77  TotemFdSlRecordLength        PIC 9(5) COMP-4.
@@ -1926,6 +1930,29 @@
            BEFORE PROCEDURE pb-elimina-BeforeProcedure, 
            .
 
+      * PUSH BUTTON
+       10
+           pb-codici, 
+           Push-Button, 
+           COL 141,14, 
+           LINE 41,54,
+           LINES 29,00 ,
+           SIZE 73,00 ,
+           BITMAP-HANDLE ALTERNATIVI-BMP,
+           BITMAP-NUMBER 1,
+           UNFRAMED,
+           SQUARE,
+           ENABLED mod-campi,
+           EXCEPTION-VALUE 222,
+           FLAT,
+           FONT IS Small-Font,
+           ID IS 87,
+           SELF-ACT,
+           TITLE "Creazione Codici Alternativi",
+           AFTER PROCEDURE pb-codici-AfterProcedure, 
+           BEFORE PROCEDURE pb-codici-BeforeProcedure, 
+           .
+
       * BAR
        10
            Screen1-Br-1, 
@@ -2749,6 +2776,7 @@
            CALL "w$bitmap" USING WBITMAP-DESTROY, GENERA-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, 
            STRIP_GRID_GCLIENTI-BMP
+           CALL "w$bitmap" USING WBITMAP-DESTROY, ALTERNATIVI-BMP
            CALL "w$bitmap" USING WBITMAP-DESTROY, TOOLBAR-BMP
       *    After-Program
            PERFORM notacr-Ev-After-Program
@@ -2821,6 +2849,10 @@
            CALL "w$bitmap" USING WBITMAP-LOAD "STRIP_GRID_GCLIENTI.BMP"
            , 
                    GIVING STRIP_GRID_GCLIENTI-BMP.
+      * pb-codici
+           COPY RESOURCE "ALTERNATIVI.BMP".
+           CALL "w$bitmap" USING WBITMAP-LOAD "ALTERNATIVI.BMP", 
+                   GIVING ALTERNATIVI-BMP.
       * TOOL-ESCI
            COPY RESOURCE "TOOLBAR.BMP".
            CALL "w$bitmap" USING WBITMAP-LOAD "TOOLBAR.BMP", 
@@ -8331,6 +8363,8 @@
                  PERFORM pb-nuovo-LinkTo
               WHEN Key-Status = 1004
                  PERFORM pb-elimina-LinkTo
+              WHEN Key-Status = 222
+                 PERFORM pb-codici-LinkTo
               WHEN Key-Status = 1005
                  PERFORM pb-sel-tutto-n-LinkTo
               WHEN Key-Status = 1006
@@ -10463,6 +10497,30 @@
        form1-gd-3-Ev-Msg-Finish-Entry.
       * <TOTEM:PARA. form1-gd-3-Ev-Msg-Finish-Entry>
            perform FORM1-GD-3-FINISH-ENTRY 
+           .
+      * <TOTEM:END>
+       pb-codici-BeforeProcedure.
+      * <TOTEM:PARA. pb-codici-BeforeProcedure>
+           modify pb-codici, bitmap-number 2 
+           .
+      * <TOTEM:END>
+       pb-codici-AfterProcedure.
+      * <TOTEM:PARA. pb-codici-AfterProcedure>
+           modify pb-codici, bitmap-number 2 
+           .
+      * <TOTEM:END>
+       pb-codici-LinkTo.
+      * <TOTEM:PARA. pb-codici-LinkTo>
+           inquire ef-art, value in ef-art-buf.
+           move ef-art-buf to prg-cod-articolo.
+           initialize link-wprogmag replacing numeric data by zeroes
+                                         alphanumeric data by spaces.
+           move prg-cod-articolo to link-articolo.
+           set link-accept to true.
+           move tca-cod-magaz   to link-magazzino.
+           move user-codi       to link-user of link-wprogmag.
+           call   "wprogmag" using link-wprogmag.
+           cancel "wprogmag" 
            .
       * <TOTEM:END>
 
