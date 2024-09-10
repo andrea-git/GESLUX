@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 9 settembre 2024 22:41:28.
+       DATE-WRITTEN.        martedì 10 settembre 2024 19:11:06.
        REMARKS.
       *{TOTEM}END
 
@@ -167,6 +167,9 @@
                   VALUE IS 0.
            88 TrovataScortaForzata VALUE IS 1    WHEN SET TO FALSE  0. 
        78 78-edi-impord VALUE IS "EDI-impord". 
+       01 FILLER           PIC  9
+                  VALUE IS 0.
+           88 calcolaTotale VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FILLER           PIC  9.
            88 errore-bloccante VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FILLER           PIC  x.
@@ -18698,6 +18701,14 @@ LUBEXX                      read clienti no lock invalid continue
 
        CALCOLA-TOTALE.
       * <TOTEM:PARA. CALCOLA-TOTALE>
+           set calcolaTotale to true.
+           perform CONTROLLA-TOTALE-MAN.
+           set calcolaTotale to false.
+           move sum to tot-doc.
+           move tot-doc to lab-tot-buf.
+           display lab-tot.
+
+           exit paragraph.
            move 0 to tot-doc.
            inquire form1-gd-1, last-row in tot-righe.
            perform varying riga from 2 by 1 
@@ -19317,7 +19328,15 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
            end-if.                     
 
       ***---
-       CALCOLA-TOTALE-GRID.           
+       CALCOLA-TOTALE-GRID. 
+           if not controllaCliente
+              set calcolaTotale to true
+              perform CONTROLLA-TOTALE-MAN
+              set calcolaTotale to false
+              move sum to tot-doc  
+              move tot-doc to col-tot
+           end-if.
+           exit paragraph .
            move 0 to tot-doc.
            move emto-chiave to emro-chiave-testa.
            start edi-mrordini key >= emro-chiave
@@ -20810,7 +20829,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            else            set TrattamentoGDO to true
            end-if.
            move 0 to Sum.
-           if ControllaCliente
+           if ControllaCliente or calcolaTotale
               move low-value   to emro-chiave
               move emto-chiave to emro-chiave
               start EDI-mrordini key >= emro-chiave

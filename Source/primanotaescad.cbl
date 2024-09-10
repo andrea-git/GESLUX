@@ -1100,7 +1100,7 @@ LUBEXX                                      alphanumeric data by spaces
        READ-DOCCN-PROTOCOLLO.
            move "CN" to doccn-codice1.
            move G2-codice-login to doccn-ditta.
-           evaluate aa of dvt-data-fattura(3:2)
+           evaluate aa of dvt-data-fattura(3:2) 
            when 00 move "A" to dec-esercizio
            when 01 move "B" to dec-esercizio
            when 02 move "C" to dec-esercizio
@@ -1125,6 +1125,30 @@ LUBEXX                                      alphanumeric data by spaces
            when 21 move "X" to dec-esercizio
            when 22 move "Y" to dec-esercizio
            when 23 move "Z" to dec-esercizio
+           when 24 move "a" to dec-esercizio
+           when 25 move "b" to dec-esercizio
+           when 26 move "c" to dec-esercizio
+           when 27 move "d" to dec-esercizio
+           when 28 move "e" to dec-esercizio
+           when 29 move "f" to dec-esercizio
+           when 30 move "g" to dec-esercizio
+           when 31 move "h" to dec-esercizio
+           when 32 move "i" to dec-esercizio
+           when 33 move "l" to dec-esercizio
+           when 34 move "m" to dec-esercizio
+           when 35 move "n" to dec-esercizio
+           when 36 move "o" to dec-esercizio
+           when 37 move "p" to dec-esercizio
+           when 38 move "q" to dec-esercizio
+           when 39 move "r" to dec-esercizio
+           when 40 move "s" to dec-esercizio
+           when 41 move "t" to dec-esercizio
+           when 42 move "u" to dec-esercizio
+           when 43 move "v" to dec-esercizio
+           when 44 move "w" to dec-esercizio
+           when 45 move "x" to dec-esercizio
+           when 46 move "y" to dec-esercizio
+           when 47 move "z" to dec-esercizio
            end-evaluate.
            move dec-esercizio to doccn-esercizio.
            move spaces to doccn-tipo.
