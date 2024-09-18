@@ -1477,6 +1477,12 @@ LABLAB          end-if
                              icon mb-warning-icon
                      move 78-ID-ef-cau to control-id
                  not invalid
+                     if tca-si-emissione
+                        move 1 to v-contras
+                     else
+                        move 0 to v-contras
+                     end-if
+                     display lab-contras chk-contrassegno
                      if tca-blocco-modeva-si
                         move 1 to v-inviato
                      end-if
@@ -3105,6 +3111,7 @@ LUBEXX*****                 set CambiatoTrattamento to true
                           panel-index  3,
                           panel-text  "MODIFICA"
               when StatusVisua
+
 
 
                    modify form1-st-1-handle, 

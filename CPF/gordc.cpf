@@ -11,7 +11,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=gordc-Ev-Before-Program
 AFTER_PROGRAM=gordc-Ev-After-Program
 BEFORE_OPEN=gordc-Ev-Before-DSD-Open
-PROGRAM_UNIQUE_CODE=TOTEM-7E8951703-530-2497522785
+PROGRAM_UNIQUE_CODE=TOTEM-7E8912153443-937-302409508
 
 {{@DESCRIPTION:
 
@@ -14429,6 +14429,17 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM1059_WK
 
 @}}
+[FDITEM1060_WK]
+m_strName=v-contras
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1060_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -15990,7 +16001,8 @@ Begin Screen Form1
             Termination Value = 0
             Title             = "Urgente"
             Value             = 0:FALSE
-            Visible           = NONE
+            Visible           = TRUE
+            Visible Variable  = v-contras
             Width in Cells    = TRUE
             My Property       = "CONTROLLO-OLD="
             Before Procedure  = chk-contrassegno-BeforeProcedure
@@ -17690,12 +17702,12 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
          End
-         Begin Label Form1-La-28aaaaa
+         Begin Label lab-contras
             SCREEN-COL        = 96,17
             SCREEN-LINE       = 22,92
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = Form1-La-28aaaaa
+            (Name)            = lab-contras
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
@@ -17722,6 +17734,7 @@ Begin Screen Form1
             Title             = "Contrassegno"
             Transparent       = TRUE
             Visible           = TRUE
+            Visible Variable  = v-contras
             Width in Cells    = TRUE
          End
       End

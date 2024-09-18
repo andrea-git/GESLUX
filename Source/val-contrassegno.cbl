@@ -2,7 +2,8 @@
        PROGRAM-ID.                      val-contrassegno.
        AUTHOR.                          Andrea.
        REMARKS.
-           Valorizza con "N" il valore del contrassegno delle fatture manuali presenti
+           Valorizza con "N" il valore del contrassegno 
+           per le evasioni senza emissione fattura
 
       ******************************************************************
 

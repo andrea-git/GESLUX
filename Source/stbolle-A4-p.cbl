@@ -2872,10 +2872,7 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
            perform STAMPA-RIGA.
 
 
-           if tor-contrassegno-no
-              move st-riga-segue to line-riga
-              perform STAMPA-RIGA
-           else 
+           if tor-contrassegno-si and tot-bolla-n > 0
               move st-num-page           to st-num-page-contras
               move st-riga-segue-contras to line-riga
               perform STAMPA-RIGA
@@ -2903,6 +2900,9 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
               perform STAMPA-RIGA     
               move "@>0007" to line-riga
               perform STAMPA-RIGA 
+           else
+              move st-riga-segue to line-riga
+              perform STAMPA-RIGA
            end-if.
 
            if esiste-note move 20 to n-vuote
@@ -2971,15 +2971,15 @@ BLISTR        inspect st-imb replacing trailing low-value by spaces
            if esiste-note      
               perform AGGIUNGI-GG-DATA-CONSEGNA
               move  tor-note1           to st-note-1
-      *        if tor-data-note1 not = 0
-      *           move  tor-data-note1(1:4) to st-note-data(7:4)
-      *           move  "/"                 to st-note-data(6:1)
-      *           move  tor-data-note1(5:2) to st-note-data(4:2)
-      *           move  "/"                 to st-note-data(3:1)
-      *           move  tor-data-note1(7:2) to st-note-data(1:2)
-      *        else
+              if tor-data-note1 not = 0
+                 move  tor-data-note1(1:4) to st-note-data(7:4)
+                 move  "/"                 to st-note-data(6:1)
+                 move  tor-data-note1(5:2) to st-note-data(4:2)
+                 move  "/"                 to st-note-data(3:1)
+                 move  tor-data-note1(7:2) to st-note-data(1:2)
+              else
                  move spaces to st-note-data
-      *        end-if
+              end-if
                                           
               move  tot-colli to st-tot-colli
               initialize line-riga

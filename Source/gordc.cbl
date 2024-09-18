@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordc.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 20 ottobre 2021 09:31:51.
+       DATE-WRITTEN.        mercoledì 18 settembre 2024 17:38:46.
        REMARKS.
       *{TOTEM}END
 
@@ -216,6 +216,8 @@
            88 Valid-STATUS-paramshi VALUE IS "00" THRU "09". 
        77 STATUS-grade     PIC  X(2).
            88 Valid-STATUS-grade VALUE IS "00" THRU "09". 
+       77 v-contras        PIC  9
+                  VALUE IS 1.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -339,8 +341,8 @@
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-note-BUF     PIC X(284).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
@@ -350,7 +352,7 @@
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
        77 TMP-DataSet1-tmp-assorcli-BUF     PIC X(245).
        77 TMP-DataSet1-tparamge-BUF     PIC X(815).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-tcaumag-BUF     PIC X(254).
        77 TMP-DataSet1-timbalqta-BUF     PIC X(167).
        77 TMP-DataSet1-timballi-BUF     PIC X(210).
@@ -680,6 +682,9 @@
        77 int-tordini-int-k-promo-SPLITBUF  PIC X(29).
        77 int-rordini-int-ror-k-promo-SPLITBUF  PIC X(16).
        77 int-rordini-int-ror-k-articolo-SPLITBUF  PIC X(24).
+       77 listini-lst-k-gdo-articolo-SPLITBUF  PIC X(20).
+       77 listini-lst-k-gdo-cod-art-cli-SPLITBUF  PIC X(29).
+       77 listini-lst-k-data-SPLITBUF  PIC X(29).
        77 listini-lst-k-articolo-SPLITBUF  PIC X(20).
        77 listini-lst-k-cod-art-cli-SPLITBUF  PIC X(29).
        77 tpromo-tpr-chiave-ricerca-SPLITBUF  PIC X(22).
@@ -1257,6 +1262,7 @@
            SELF-ACT,
            TITLE "Urgente",
            VALUE chk-contrassegno-BUF,
+           VISIBLE v-contras,
            BEFORE PROCEDURE chk-contrassegno-BeforeProcedure, 
             .
 
@@ -1963,7 +1969,7 @@
 
       * LABEL
        10
-           Form1-La-28aaaaa, 
+           lab-contras, 
            Label, 
            COL 96,17, 
            LINE 22,92,
@@ -1975,7 +1981,7 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Contrassegno",
-           VISIBLE 1,
+           VISIBLE v-contras,
            .
 
       * PAGE
@@ -9657,24 +9663,54 @@
       * <TOTEM:END>
            .
 
+       listini-lst-k-gdo-articolo-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-gdo-articolo-SPLITBUF
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-gdo-articolo-SPLITBUF(1:5)
+           MOVE lst-articolo OF listini(1:6) TO 
+           listini-lst-k-gdo-articolo-SPLITBUF(6:6)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-gdo-articolo-SPLITBUF(12:8)
+           .
+
+       listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-gdo-cod-art-cli-SPLITBUF
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(1:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(6:15)
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-gdo-cod-art-cli-SPLITBUF(21:8)
+           .
+
+       listini-lst-k-data-MERGE-SPLITBUF.
+           INITIALIZE listini-lst-k-data-SPLITBUF
+           MOVE lst-data OF listini(1:8) TO 
+           listini-lst-k-data-SPLITBUF(1:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-data-SPLITBUF(9:5)
+           MOVE lst-cod-art-cli OF listini(1:15) TO 
+           listini-lst-k-data-SPLITBUF(14:15)
+           .
+
        listini-lst-k-articolo-MERGE-SPLITBUF.
            INITIALIZE listini-lst-k-articolo-SPLITBUF
-           MOVE lst-gdo OF listini(1:5) TO 
-           listini-lst-k-articolo-SPLITBUF(1:5)
            MOVE lst-articolo OF listini(1:6) TO 
-           listini-lst-k-articolo-SPLITBUF(6:6)
+           listini-lst-k-articolo-SPLITBUF(1:6)
            MOVE lst-data OF listini(1:8) TO 
-           listini-lst-k-articolo-SPLITBUF(12:8)
+           listini-lst-k-articolo-SPLITBUF(7:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-articolo-SPLITBUF(15:5)
            .
 
        listini-lst-k-cod-art-cli-MERGE-SPLITBUF.
            INITIALIZE listini-lst-k-cod-art-cli-SPLITBUF
-           MOVE lst-gdo OF listini(1:5) TO 
-           listini-lst-k-cod-art-cli-SPLITBUF(1:5)
            MOVE lst-cod-art-cli OF listini(1:15) TO 
-           listini-lst-k-cod-art-cli-SPLITBUF(6:15)
+           listini-lst-k-cod-art-cli-SPLITBUF(1:15)
            MOVE lst-data OF listini(1:8) TO 
-           listini-lst-k-cod-art-cli-SPLITBUF(21:8)
+           listini-lst-k-cod-art-cli-SPLITBUF(16:8)
+           MOVE lst-gdo OF listini(1:5) TO 
+           listini-lst-k-cod-art-cli-SPLITBUF(24:5)
            .
 
        DataSet1-listini-INITSTART.
@@ -9738,6 +9774,9 @@
               READ listini WITH NO LOCK 
               KEY lst-chiave OF listini
            END-IF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT 
@@ -9767,6 +9806,9 @@
                  READ listini PREVIOUS WITH NO LOCK
               END-IF
            END-IF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
@@ -9796,6 +9838,9 @@
                  READ listini NEXT WITH NO LOCK
               END-IF
            END-IF
+           PERFORM listini-lst-k-gdo-articolo-MERGE-SPLITBUF
+           PERFORM listini-lst-k-gdo-cod-art-cli-MERGE-SPLITBUF
+           PERFORM listini-lst-k-data-MERGE-SPLITBUF
            PERFORM listini-lst-k-articolo-MERGE-SPLITBUF
            PERFORM listini-lst-k-cod-art-cli-MERGE-SPLITBUF
            MOVE STATUS-listini TO TOTEM-ERR-STAT
@@ -16912,16 +16957,6 @@ LABLAB     end-if
       *
       *     move 0 to riga-nuova.
       *     set DestinoCambiato to false 
-           .
-      * <TOTEM:END>
-
-       chk-urgente-BeforeProcedure.
-      * <TOTEM:PARA. chk-urgente-BeforeProcedure>
-           .
-      * <TOTEM:END>
-
-       chk-urgente-AfterProcedure.
-      * <TOTEM:PARA. chk-urgente-AfterProcedure>
            .
       * <TOTEM:END>
 

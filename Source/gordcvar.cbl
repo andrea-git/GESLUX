@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 aprile 2024 17:34:26.
+       DATE-WRITTEN.        mercoledì 18 settembre 2024 17:43:17.
        REMARKS.
       *{TOTEM}END
 
@@ -433,6 +433,8 @@
        77 path-lineseq-mail            PIC  X(256).
        77 STATUS-lineseq-mail          PIC  X(2).
            88 Valid-STATUS-lineseq-mail VALUE IS "00" THRU "09". 
+       77 v-contras        PIC  9
+                  VALUE IS 1.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -569,13 +571,13 @@
        77 TMP-DataSet1-agenti-BUF     PIC X(1233).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-tivaese-BUF     PIC X(1380).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
        77 TMP-DataSet1-note-BUF     PIC X(284).
        77 TMP-DataSet1-tcodpag-BUF     PIC X(1380).
        77 TMP-DataSet1-assorcli-BUF     PIC X(245).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
        77 TMP-DataSet1-progmag-BUF     PIC X(1090).
        77 TMP-DataSet1-timposte-BUF     PIC X(717).
        77 TMP-DataSet1-tmarche-BUF     PIC X(217).
@@ -1572,6 +1574,7 @@
            SELF-ACT,
            TITLE "contrassegno",
            VALUE chk-contrassegno-BUF,
+           VISIBLE v-contras,
            BEFORE PROCEDURE chk-contrassegno-BeforeProcedure, 
             .
 
@@ -2625,7 +2628,7 @@
 
       * LABEL
        10
-           Form1-La-28aaaaa, 
+           lab-contras, 
            Label, 
            COL 121,17, 
            LINE 23,23,
@@ -2637,7 +2640,7 @@
            WIDTH-IN-CELLS,
            TRANSPARENT,
            TITLE "Contrassegno",
-           VISIBLE 1,
+           VISIBLE v-contras,
            .
 
       * LABEL
@@ -16408,6 +16411,12 @@ PATCH      end-evaluate.
            move tor-causale to tca-codice.
            read tcaumag no lock.
            move tca-cod-magaz to StoreMagazzino.
+           if tca-si-emissione
+              move 1 to v-contras
+           else
+              move 0 to v-contras
+           end-if
+           display lab-contras chk-contrassegno
 
       *
            move 0 to e-nuovo.

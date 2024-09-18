@@ -1883,7 +1883,14 @@ LUBEXX        end-if
 
            move 4 to accept-control.
            move 0 to StatusHelp.
-           perform STATUS-HELP. 
+           perform STATUS-HELP.  
+
+           if tca-si-emissione
+              move 1 to v-contras
+           else
+              move 0 to v-contras
+           end-if.
+           display lab-contras chk-contrassegno.
 
       ***---
        QTA-EVASIONE-ORDINE.

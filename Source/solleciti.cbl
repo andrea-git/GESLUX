@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          solleciti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 31 gennaio 2024 16:14:31.
+       DATE-WRITTEN.        mercoledì 11 settembre 2024 16:54:49.
        REMARKS.
       *{TOTEM}END
 
@@ -593,9 +593,9 @@
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-articoli-BUF     PIC X(3669).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-tescons-BUF     PIC X(226).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
        77 TMP-DataSet1-tvettori-BUF     PIC X(1847).
        77 TMP-DataSet1-rordini-BUF     PIC X(667).
        77 TMP-DataSet1-tpromo-BUF     PIC X(263).
@@ -12550,6 +12550,8 @@
                                  set ActionGrid to true
                               end-if
                          when 16 
+                              inquire gd(riga, 16), hidden-data in 
+           col-invio
                               if col-invio >= 0
                                  set InvioSol to true
                               end-if

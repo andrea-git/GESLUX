@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=bprepb-Ev-Before-Program
 AFTER_PROGRAM=stdoc-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E811F151332-555-18081289
+PROGRAM_UNIQUE_CODE=TOTEM-7E89B144525-276-569712619
 
 {{@DESCRIPTION:
 
@@ -13700,6 +13700,7 @@ BEGIN-TEXT
                                  set ActionGrid to true
                               end-if
                          when 16 
+                              inquire gd(riga, 16), hidden-data in col-invio
                               if col-invio >= 0
                                  set InvioSol to true
                               end-if

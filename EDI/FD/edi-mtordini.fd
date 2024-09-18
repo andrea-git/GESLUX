@@ -279,4 +279,5 @@
                15 emto-contrassegno            PIC  x.
                    88 emto-contrassegno-no VALUE IS "N" , " ". 
                    88 emto-contrassegno-si VALUE IS "S". 
-               15 FILLER           PIC  x(173).
+               15 emto-totale      PIC  9(12)v999.
+               15 FILLER           PIC  x(158).

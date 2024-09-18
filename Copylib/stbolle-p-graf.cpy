@@ -842,7 +842,7 @@ OMAGGI        end-if
            move 55 to limite.
            move line-riga(1:21) to line-riga(limite:21).
                   
-           if tor-contrassegno-si                           
+           if tor-contrassegno-si and tot-bolla-n > 0                          
               inspect contras-note-bolla-pre
                       replacing trailing spaces by low-value
               inspect contras-note-bolla-post 

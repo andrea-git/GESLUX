@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8961450-757-180638968
+PROGRAM_UNIQUE_CODE=TOTEM-7E8912153946-109-7166169
 
 {{@DESCRIPTION:
 
@@ -15964,6 +15964,17 @@ m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM1209_WK
 
 @}}
+[FDITEM1210_WK]
+m_strName=v-contras
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=1
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM1210_WK
+
+@}}
 
 
 [LINKAGE_SECTION]
@@ -17676,6 +17687,7 @@ Begin Screen Form1
             Title             = "contrassegno"
             Value             = 0:FALSE
             Visible           = NONE
+            Visible Variable  = v-contras
             Width in Cells    = TRUE
             My Property       = "CONTROLLO-OLD="
             Before Procedure  = chk-contrassegno-BeforeProcedure
@@ -20163,12 +20175,12 @@ Begin Screen Form1
             Visible           = NONE
             Width in Cells    = TRUE
          End
-         Begin Label Form1-La-28aaaaa
+         Begin Label lab-contras
             SCREEN-COL        = 121,17
             SCREEN-LINE       = 23,23
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
-            (Name)            = Form1-La-28aaaaa
+            (Name)            = lab-contras
             Clines            = 0
             Clines Unit       = Default
             Color             = 0
@@ -20194,7 +20206,8 @@ Begin Screen Form1
             Tab Order         = 52
             Title             = "Contrassegno"
             Transparent       = TRUE
-            Visible           = TRUE
+            Visible           = NONE
+            Visible Variable  = v-contras
             Width in Cells    = TRUE
          End
          Begin Label Form1-La-5a
@@ -23852,6 +23865,12 @@ PATCH      end-evaluate.
            move tor-causale to tca-codice.
            read tcaumag no lock.
            move tca-cod-magaz to StoreMagazzino.
+           if tca-si-emissione
+              move 1 to v-contras
+           else
+              move 0 to v-contras
+           end-if
+           display lab-contras chk-contrassegno
 
       *
            move 0 to e-nuovo.

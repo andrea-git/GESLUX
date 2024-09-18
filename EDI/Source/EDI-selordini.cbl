@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 10 settembre 2024 19:11:06.
+       DATE-WRITTEN.        mercoledì 18 settembre 2024 17:00:01.
        REMARKS.
       *{TOTEM}END
 
@@ -167,9 +167,8 @@
                   VALUE IS 0.
            88 TrovataScortaForzata VALUE IS 1    WHEN SET TO FALSE  0. 
        78 78-edi-impord VALUE IS "EDI-impord". 
-       01 FILLER           PIC  9
-                  VALUE IS 0.
-           88 calcolaTotale VALUE IS 1    WHEN SET TO FALSE  0. 
+       01 FILLER           PIC  9.
+           88 eseguiRicalcolo VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FILLER           PIC  9.
            88 errore-bloccante VALUE IS 1    WHEN SET TO FALSE  0. 
        01 FILLER           PIC  x.
@@ -838,6 +837,9 @@
        77 wstampa          PIC  X(256).
        77 STATUS-lineseq   PIC  X(2).
            88 Valid-STATUS-lineseq VALUE IS "00" THRU "09". 
+       77 v-boss           PIC  9
+                  VALUE IS 0.
+       77 nome-file        PIC  X(300).
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -3941,9 +3943,9 @@
        05
            lab-stato, 
            Label, 
-           COL 132,33, 
-           LINE 1,56,
-           LINES 1,31 ,
+           COL 132,29, 
+           LINE 1,53,
+           LINES 1,33 ,
            SIZE 14,00 ,
            COLOR IS col-lab-stato,
            FONT IS Arial10B-Occidentale,
@@ -4031,8 +4033,8 @@
        05
            Screen2-Custom1-1, 
            Label, 
-           COL 72,38, 
-           LINE 1,81,
+           COL 46,71, 
+           LINE 1,13,
            LINES 1,22 ,
            SIZE 14,63 ,
            ID IS 3,
@@ -4505,6 +4507,26 @@
            WIDTH-IN-CELLS,
            TITLE "&Sconto %",
            VISIBLE 1,
+           .
+
+      * ENTRY FIELD
+       05
+           ef-nome-file, 
+           Entry-Field, 
+           COL 63,86, 
+           LINE 1,53,
+           LINES 1,33 ,
+           SIZE 65,29 ,
+           BOXED,
+           COLOR IS 513,
+           ID IS 33,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           READ-ONLY,
+           VALUE nome-file,
+           VISIBLE v-boss,
+           AFTER PROCEDURE Screen2-Ef-1-AfterProcedure, 
+           BEFORE PROCEDURE Screen2-Ef-1-BeforeProcedure, 
            .
 
       * TOOLBAR
@@ -14745,7 +14767,7 @@
                     perform PB-GENERA-LINKTO
                  end-if
                  move 27 to key-status
-              end-if
+              end-if 
            end-if.
 
            .
@@ -15796,7 +15818,15 @@
               move 1 to v-forza
            end-if.
            display pb-forza.        
-
+              
+           initialize nome-file.
+           accept  nome-file from environment "EDI_IMPORD_PATH".
+           inspect nome-file replacing trailing spaces by low-value
+           string  nome-file      delimited low-value
+                   emto-nome-file delimited size
+              into nome-file
+           end-string.
+           display ef-nome-file.
       *****     
       *****             15 emto-righe       PIC  9.
       *****                 88 emto-righe-presenti VALUE IS 0. 
@@ -18701,39 +18731,30 @@ LUBEXX                      read clienti no lock invalid continue
 
        CALCOLA-TOTALE.
       * <TOTEM:PARA. CALCOLA-TOTALE>
-           set calcolaTotale to true.
-           perform CONTROLLA-TOTALE-MAN.
-           set calcolaTotale to false.
-           move sum to tot-doc.
-           move tot-doc to lab-tot-buf.
-           display lab-tot.
-
-           exit paragraph.
-           move 0 to tot-doc.
-           inquire form1-gd-1, last-row in tot-righe.
-           perform varying riga from 2 by 1 
-                     until riga > tot-righe                      
-              inquire form1-gd-1(riga, 78-col-qta),  cell-data in 
-           como-qta
-              inquire form1-gd-1(riga, 78-col-prz), cell-data in 
-           como-prz
-              compute tot-doc = tot-doc + como-qta * como-prz
-           end-perform.
-           if emto-cod-ese-iva = spaces 
-              if emto-causale = tge-causale-ordini-std
-                 move "IV"            to tbliv-codice1
-                 move tge-cod-iva-std to tbliv-codice2
-                 read tivaese no lock
-                 compute tot-doc rounded = 
-                         tot-doc * ( 1 + tbliv-percentuale / 100 )
-              end-if
-           else
-              move "IV"             to tbliv-codice1
-              move emto-cod-ese-iva to tbliv-codice2
-              read tivaese no lock
-              compute tot-doc rounded = 
-                      tot-doc * ( 1 + tbliv-percentuale / 100 )
-           end-if.
+           perform CONTROLLA-TOTALE-MAN.   
+      *     move 0 to tot-doc.
+      *     inquire form1-gd-1, last-row in tot-righe.
+      *     perform varying riga from 2 by 1 
+      *               until riga > tot-righe                      
+      *        inquire form1-gd-1(riga, 78-col-qta), cell-data in como-qta
+      *        inquire form1-gd-1(riga, 78-col-prz), cell-data in como-prz
+      *        compute tot-doc = tot-doc + como-qta * como-prz
+      *     end-perform.
+      *     if emto-cod-ese-iva = spaces 
+      *        if emto-causale = tge-causale-ordini-std
+      *           move "IV"            to tbliv-codice1
+      *           move tge-cod-iva-std to tbliv-codice2
+      *           read tivaese no lock
+      *           compute tot-doc rounded = 
+      *                   tot-doc * ( 1 + tbliv-percentuale / 100 )
+      *        end-if
+      *     else
+      *        move "IV"             to tbliv-codice1
+      *        move emto-cod-ese-iva to tbliv-codice2
+      *        read tivaese no lock
+      *        compute tot-doc rounded = 
+      *                tot-doc * ( 1 + tbliv-percentuale / 100 )
+      *     end-if.
                  
            move tot-doc to lab-tot-buf.
            display lab-tot 
@@ -19064,6 +19085,7 @@ LUBEXX                      read clienti no lock invalid continue
            end-perform.
 
            modify gd-ordini, mass-update 0.     
+           set ricaricaGrid to false.
 
            close       tmp-fido.
            delete file tmp-fido.
@@ -19132,9 +19154,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                 move 78-colore-fatt-tot       to como-colore
                 move "Bloccato"               to col-stato
                 add 1 to tot-bloccati
-           end-evaluate.               
-           perform CALCOLA-TOTALE-GRID.
-
+           end-evaluate.              
            modify gd-ordini, record-to-add Gd-ordini-Record.
 
            inquire gd-ordini, last-row = riga.
@@ -19189,10 +19209,24 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
               end-if
               |||||
               set record-ok to false
-           end-if.
+           end-if.                      
                                           
            if ControllaCliente and record-ok
-              if emto-bloccato or emto-attivo     
+              set eseguiRicalcolo to false
+              if ricaricaGrid   
+                 if emto-anno   = como-anno and
+                    emto-numero = como-numero-ordine
+                    set eseguiRicalcolo to true
+                 else
+                    move emto-totale to col-tot
+                 end-if
+              else                                        
+                 if emto-bloccato or emto-attivo     
+                    set eseguiRicalcolo to true
+                 end-if
+              end-if            
+              if eseguiRicalcolo
+                 
                  |Leggo solo per avere il codice iva
                  set cli-tipo-C to true
                  move emto-cod-cli to cli-codice
@@ -19202,8 +19236,10 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
 
                  perform CONTROLLA-FUORI-FIDO
    
-                 move Sum to emto-Sum 
+                 move Sum     to emto-Sum   
+                 move tot-doc to emto-totale
                  rewrite emto-rec
+                 move tot-doc to col-tot
 
                  if tutto-ok
                     set emto-cliente-fido-ok    to true         
@@ -19325,60 +19361,7 @@ LUBEXX     move emto-data-ordine(7:2) to col-data(1:2).
                       end-if
                    end-perform
               end-read
-           end-if.                     
-
-      ***---
-       CALCOLA-TOTALE-GRID. 
-           if not controllaCliente
-              set calcolaTotale to true
-              perform CONTROLLA-TOTALE-MAN
-              set calcolaTotale to false
-              move sum to tot-doc  
-              move tot-doc to col-tot
-           end-if.
-           exit paragraph .
-           move 0 to tot-doc.
-           move emto-chiave to emro-chiave-testa.
-           start edi-mrordini key >= emro-chiave
-                 invalid continue
-             not invalid
-                 perform until 1 = 2
-                    read edi-mrordini next at end exit perform end-read
-                    if emro-chiave-testa not = emto-chiave
-                       exit perform
-                    end-if  
-                    if emro-qta = 0
-                       move emro-qta-GESLUX to emro-qta
-                    end-if
-                    if emro-prezzo-non-valido   
-                       if emro-prz = 0 and
-                          emro-prz-EDI not = 0                          
-                       
-                          move emro-prz-GESLUX to emro-prz
-                       end-if
-                    end-if
-
-                    compute tot-doc = tot-doc + emro-qta * emro-prz
-                 end-perform
-           end-start.                           
-
-           if emto-cod-ese-iva = spaces 
-              if emto-causale = tge-causale-ordini-std
-                 move "IV"            to tbliv-codice1
-                 move tge-cod-iva-std to tbliv-codice2
-                 read tivaese no lock
-                 compute tot-doc rounded = 
-                         tot-doc * ( 1 + tbliv-percentuale / 100 )
-              end-if
-           else
-              move "IV"             to tbliv-codice1
-              move emto-cod-ese-iva to tbliv-codice2
-              read tivaese no lock
-              compute tot-doc rounded = 
-                      tot-doc * ( 1 + tbliv-percentuale / 100 )
-           end-if.
-                 
-           move tot-doc to col-tot 
+           end-if         
            .
       * <TOTEM:END>
 
@@ -20028,9 +20011,395 @@ LABLAB          end-if
            .
       * <TOTEM:END>
 
+       CONTROLLA-FUORI-FIDO.
+      * <TOTEM:PARA. CONTROLLA-FUORI-FIDO>
+           perform CONTROLLA-TOTALE-MAN.
+           move cli-codice to tfid-cli-codice
+           read tmp-fido no lock
+                invalid
+                move 0 to tfid-Sum
+LUBEXX          initialize calfido-linkage 
+LUBEXX                     replacing numeric data by zeroes
+LUBEXX                          alphanumeric data by spaces
+LUBEXX          move cli-codice to link-cli-codice
+LUBEXX          call   "calfido" using calfido-linkage
+LUBEXX          cancel "calfido"           
+                move saldo            to tfid-saldo
+                move effetti-rischio  to tfid-effetti-rischio
+                move ordini-in-essere to tfid-ordini-in-essere
+                write tfid-rec end-write
+            not invalid
+                move tfid-saldo            to saldo            
+                move tfid-effetti-rischio  to effetti-rischio  
+                move tfid-ordini-in-essere to ordini-in-essere 
+           end-read
+           add Sum to tfid-Sum
+
+LUBEXX*****     initialize calfido-linkage 
+LUBEXX*****                replacing numeric data by zeroes
+LUBEXX*****                     alphanumeric data by spaces
+LUBEXX*****     move cli-codice to link-cli-codice
+LUBEXX*****     call   "calfido" using calfido-linkage
+LUBEXX*****     cancel "calfido"  
+LUBEXX     compute scoperto = saldo + tfid-Sum +
+LUBEXX                        effetti-rischio  + ordini-in-essere
+
+           if cli-gestione-fido-si
+      *****        move cli-piva to sf-piva
+      *****        read sitfin no lock                   
+      *****             invalid move 0 to sf-fido-max
+      *****        end-read                   
+              if tcl-fido-nuovo-si            
+                 compute fido-tmp = cli-fido |sf-lince
+              else
+                 compute tot-fido = cli-fido + cli-pfa|sf-lince
+              end-if
+           else
+              if tcl-fido-nuovo-si
+                 compute fido-tmp = cli-fido
+              else
+                 compute tot-fido = cli-fido + 
+                                    cli-pfa  + 
+                                    cli-fidejussione
+              end-if
+           end-if  
+   
+           if tcl-fido-nuovo-si
+              move 0 to fido-usato   
+              if cli-fidejussione > 0
+
+                 if cli-grade > 0
+                    move spaces to gra-codice
+                    read grade no lock
+                         invalid move 0 to Sum
+                     not invalid
+                         perform varying idx from 1 by 1 
+                                   until idx > 20
+                            if gra-da(idx) <= cli-grade and
+                               gra-a(idx)  >= cli-grade
+                               move gra-perce(idx) to Sum
+                               exit perform
+                            end-if
+                         end-perform
+                     end-read
+                     if Sum > 0
+                        compute cli-fidejussione = 
+                                cli-fidejussione * Sum / 100
+                     end-if
+                 end-if
+
+                 compute fido-usato = 
+                         cli-fidejussione +
+                         cli-fido-extra   +
+                         cli-pfa
+              else  
+                 if tge-blocco-fido < cli-fido
+                    compute fido-usato = tge-blocco-fido + cli-pfa +
+                                         cli-fido-extra
+                 else
+                    compute fido-usato = fido-tmp + cli-pfa +
+                                         cli-fido-extra
+                 end-if
+              end-if
+              if scoperto > fido-usato
+                 subtract fido-usato from scoperto giving como-numero
+                 set errori to true
+                 if not ControllaCliente                             
+LUBEXX              move como-numero to como-edit
+LUBEXX              display message
+LUBEXX                      "ATTENZIONE!!!!"
+LUBEXX               x"0d0a""CLIENTE FUORI FIDO DI:  " como-edit
+LUBEXX               x"0d0a""IMPOSSIBILE REGISTRARE L'ORDINE!"
+LUBEXX                        title tit-err
+LUBEXX                         icon 2
+                 end-if 
+              else
+                 |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
+      *****           add Sum to tfid-Sum
+                 rewrite tfid-rec
+LUBEXX        end-if
+           else
+LUBEXX        if scoperto > tot-fido
+                 if tfid-Sum <= cli-fido-extra
+                    move tfid-Sum to como-numero
+                    perform AGGIORNA-FIDO-RESIDUO-TMP
+                 else
+                    compute como-numero = scoperto - tot-fido
+                    if como-numero > cli-fido-extra 
+LUBEXX                 set errori to true
+                       if not ControllaCliente
+                          subtract cli-fido-extra from como-numero
+LUBEXX                    move como-numero to como-edit
+LUBEXX                    display message
+LUBEXX                         "ATTENZIONE!!!!"
+LUBEXX                  x"0d0a""CLIENTE FUORI FIDO DI:  " como-edit
+LUBEXX                  x"0d0a""IMPOSSIBILE REGISTRARE L'ORDINE!"
+LUBEXX                           title tit-err
+LUBEXX                            icon 2
+                       end-if
+LUBEXX              else
+                       perform AGGIORNA-FIDO-RESIDUO-TMP
+                    end-if
+LUBEXX           end-if
+              else
+                 |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
+      *****           add Sum to tfid-Sum            
+                 rewrite tfid-rec
+LUBEXX        end-if
+           end-if. 
+
+      ***---
+       AGGIORNA-FIDO-RESIDUO-TMP.
+LUBEXX*****     close    clienti.
+LUBEXX*****     open i-o clienti.
+LUBEXX*****     read clienti no lock invalid continue end-read.
+LUBEXX*****     subtract como-numero from cli-fido-extra.
+LUBEXX*****     rewrite cli-rec invalid continue end-rewrite.
+LUBEXX*****     close      clienti.
+LUBEXX*****     open input clienti.
+LUBEXX*****     read clienti no lock invalid continue end-read 
+                            
+           .
+      * <TOTEM:END>
+
+       CONTROLLA-TOTALE-MAN.
+      * <TOTEM:PARA. CONTROLLA-TOTALE-MAN>
+           move emto-anno to con-anno.
+           read tcontat no lock.
+           
+           evaluate tcl-serie-bolle
+           when 1 move con-ult-stampa-bolle-gdo to imp-data
+           when 2 move con-ult-stampa-bolle-mv  to imp-data
+           when 3 move con-ult-stampa-bolle-at  to imp-data
+           end-evaluate.
+           
+           start timposte key <= imp-chiave
+                 invalid continue
+             not invalid
+                 read timposte previous
+           end-start.
+
+LUBEXX*****Se è attiva la causale di movimento "speciale" non
+LUBEXX*****devo fare nessun controllo sul totale del documento
+LUBEXX     if tca-si-speciale exit paragraph end-if.
+           move cli-tipo to tcl-codice.
+           read ttipocli no lock invalid continue end-read. 
+
+           perform INVERTI-TIPOLOGIA.
+
+           if ttipocli-gdo set TrattamentoGDO to false
+           else            set TrattamentoGDO to true
+           end-if.
+           move 0 to Sum.
+           if ControllaCliente 
+              move low-value   to emro-chiave
+              move emto-chiave to emro-chiave
+              start EDI-mrordini key >= emro-chiave
+                    invalid continue
+                not invalid
+                    perform until 1 = 2
+                       read EDI-mrordini next at end exit perform 
+           end-read
+                       if emro-chiave-testa not = emto-chiave
+                          exit perform
+                       end-if                              
+                       if emro-qta = 0
+                          move emro-qta-GESLUX to emro-qta
+                       end-if
+                       if emro-prezzo-non-valido   
+                          if emro-prz = 0 and
+                             emro-prz-EDI not = 0                       
+                          
+                             move emro-prz-GESLUX to emro-prz
+                          end-if
+                       end-if
+                       move emro-qta          to como-qta
+                       move emro-prz          to SavePrezzo
+                       move emro-prg-chiave   to prg-chiave
+                       move emto-cod-cli      to mto-cod-cli
+                       move emro-cod-articolo to como-articolo
+                       move emto-prg-destino  to mto-prg-destino
+                       move emto-data-ordine  to mto-data-ordine
+                       perform AGGIUNGI-VALORI
+                    end-perform
+              end-start      
+           else
+              set cli-tipo-C to true
+              move ef-cli-buf to cli-codice mto-cod-cli
+              read clienti        
+              move cli-tipo to tcl-codice
+              read ttipocli
+
+              perform INVERTI-TIPOLOGIA
+
+              move ef-des-buf to emto-prg-destino  mto-prg-destino
+              move ef-data-buf to como-data
+              perform DATE-TO-FILE
+              move como-data to mto-data-ordine
+              if emto-prg-destino not = 0         
+                 move cli-codice       to des-codice    
+                 move emto-prg-destino to des-prog 
+                 read destini
+              else
+                 move cli-nazione to des-nazione
+              end-if
+
+              inquire form1-gd-1, last-row in tot-righe
+              perform varying store-riga from 2 by 1 
+                        until store-riga > tot-righe
+                 inquire form1-gd-1(store-riga, 78-col-prz), 
+                         cell-data in SavePrezzo            
+                 inquire form1-gd-1(store-riga, 78-col-qta), 
+                         cell-data in como-qta
+                 inquire form1-gd-1(store-riga, 78-col-art), 
+                         cell-data in como-articolo
+                 inquire form1-gd-1(store-riga, 1),
+                         hidden-data = gruppo-hidden
+                 move HiddenKey to prg-chiave
+                 perform AGGIUNGI-VALORI
+              end-perform
+           end-if.           
+           if tcl-fido-nuovo-si                 
+              if emto-cod-ese-iva = spaces 
+                 if emto-causale = tge-causale-ordini-std
+                    move "IV"            to tbliv-codice1
+                    move tge-cod-iva-std to tbliv-codice2
+                    read tivaese no lock
+                    compute sum rounded = 
+                            sum * ( 1 + tbliv-percentuale / 100 )
+                 end-if
+              else
+                 move "IV"             to tbliv-codice1
+                 move emto-cod-ese-iva to tbliv-codice2
+                 read tivaese no lock
+                 compute sum rounded = 
+                         sum * ( 1 + tbliv-percentuale / 100 )
+              end-if
+           end-if.  
+           move sum to tot-doc.
+
+      ***---
+       AGGIUNGI-VALORI.
+           move prg-cod-articolo to art-codice
+           if art-codice = 0 |BLISTER
+              move como-articolo to art-codice
+           end-if.
+           read articoli no lock
+                invalid
+                move art-codice to bli-codice
+                read blister no lock
+                     invalid continue
+                 not invalid    
+                     move SavePrezzo to TotPrzBlister
+                     move 0 to idx
+                     perform varying idx from 1 by 1
+                               until idx > 50
+                        if bli-el-articolo(idx) = 0
+                           exit perform
+                        end-if        
+                        set trovato  to false
+                        move bli-el-articolo(idx) to art-codice
+                        if tcl-gdo-si or tcl-gdo-opz
+                           perform TROVA-LISTINO
+                           if no-prg-listino
+                              perform TROVA-CLI-PRG
+                           end-if
+                           if tutto-ok
+                              if si-prg-listino
+                                 move como-prg-chiave to GiacenzaKey
+                                 set trovato to true
+                              else
+                                 perform VALORIZZA-MAGGIOR-GIACENZA
+                              end-if
+                           end-if
+                        else
+                           perform VALORIZZA-MAGGIOR-GIACENZA
+                        end-if
+
+                        if trovato             
+                           move bli-el-articolo(idx) to art-codice
+                           move bli-el-qta(idx)      to mro-bli-qta
+                           move bli-el-perce(idx)    to mro-bli-perce
+                           move GiacenzaKey          to prg-chiave
+                           read progmag  no lock invalid continue 
+           end-read
+                           read articoli no lock invalid continue 
+           end-read  
+                                                                  
+                           compute mro-qta = como-qta * bli-el-qta(idx)
+           
+                           if bli-el-perce(idx) not = 0
+           
+                              compute como-numero =
+                                      TotPrzBlister * 
+                                      bli-el-perce(idx) / 100 / 
+                                      bli-el-qta(idx) 
+      *                        perform ARROTONDA-PRZ-BLISTER
+                              move como-numero to SavePrezzo
+                              perform AGGIUNGI-VALORE
+                           end-if
+                        end-if
+                     end-perform
+                end-read
+            not invalid
+                perform AGGIUNGI-VALORE
+           end-read.
+
+      ***---
+       AGGIUNGI-VALORE.          
+           move art-marca-prodotto to mar-codice.
+           read tmarche.
+           read progmag no lock.
+           if SavePrezzo > 999999
+              perform CALCOLA-COSTO-MP-COMPLETO
+              |Altrimenti righe solo 999999,99 senza costo mp
+              |darebbero come risultato un master prezzo ZERO
+              if costo-mp = 0
+                 compute Sum = Sum + 0,01
+              else
+                 compute Sum = Sum + ( costo-mp * como-qta )
+              end-if
+           else                  
+              if SavePrezzo > 0 
+
+                 move SavePrezzo to como-prz-unitario mro-prz-unitario
+                 perform CALCOLA-IMPOSTE-ORDINE
+                 perform CALCOLA-IMPONIBILE    
+                 
+                 compute SavePrezzo =
+                         mro-imponib-merce + 
+                         mro-imp-cou-cobat + 
+                         mro-imp-consumo   +
+                         mro-add-piombo         
+
+      *           if tcl-fido-nuovo-si    
+      *                 
+      *              if cli-iva not = spaces
+      *                 move cli-iva to tbliv-codice2
+      *              else
+      *                 if cli-iva-ese not = spaces
+      *                    move cli-iva-ese to tbliv-codice2
+      *                 else
+      *                    move tge-cod-iva-std to tbliv-codice2
+      *                 end-if
+      *              end-if
+      *
+      *              move "IV"        to tbliv-codice1
+      *              read tivaese 
+      *              compute mult = 1 + tbliv-percentuale / 100
+      *              compute SavePrezzo =
+      *                      SavePrezzo * mult
+      *           end-if
+
+                 compute Sum = Sum + ( SavePrezzo * como-qta )
+              end-if
+           end-if            
+           .
+      * <TOTEM:END>
+
        CONTROLLO.
       * <TOTEM:PARA. CONTROLLO>
-           if mod   = 0 
+           if mod = 0 
               exit paragraph 
            end-if.
            set tutto-ok to true.
@@ -20648,362 +21017,7 @@ LUBEXX                        "trattamento imposte del cliente."
 LUBEXX                  title tit-err
 LUBEXX                   icon 2
 LUBEXX        set errori to true
-           end-if.
-
-      ***---
-       CONTROLLA-FUORI-FIDO.
-LUBEXX     if tutto-ok
-              perform CONTROLLA-TOTALE-MAN
-              move cli-codice to tfid-cli-codice
-              read tmp-fido no lock
-                   invalid
-                   move 0 to tfid-Sum
-LUBEXX             initialize calfido-linkage 
-LUBEXX                        replacing numeric data by zeroes
-LUBEXX                             alphanumeric data by spaces
-LUBEXX             move cli-codice to link-cli-codice
-LUBEXX             call   "calfido" using calfido-linkage
-LUBEXX             cancel "calfido"           
-                   move saldo            to tfid-saldo
-                   move effetti-rischio  to tfid-effetti-rischio
-                   move ordini-in-essere to tfid-ordini-in-essere
-                   write tfid-rec end-write
-               not invalid
-                   move tfid-saldo            to saldo            
-                   move tfid-effetti-rischio  to effetti-rischio  
-                   move tfid-ordini-in-essere to ordini-in-essere 
-              end-read
-              add Sum to tfid-Sum
-
-LUBEXX*****        initialize calfido-linkage 
-LUBEXX*****                   replacing numeric data by zeroes
-LUBEXX*****                        alphanumeric data by spaces
-LUBEXX*****        move cli-codice to link-cli-codice
-LUBEXX*****        call   "calfido" using calfido-linkage
-LUBEXX*****        cancel "calfido"  
-LUBEXX        compute scoperto = saldo + tfid-Sum +
-LUBEXX                           effetti-rischio  + ordini-in-essere
-
-              if cli-gestione-fido-si
-      *****           move cli-piva to sf-piva
-      *****           read sitfin no lock                   
-      *****                invalid move 0 to sf-fido-max
-      *****           end-read                   
-                 if tcl-fido-nuovo-si            
-                    compute fido-tmp = cli-fido |sf-lince
-                 else
-                    compute tot-fido = cli-fido + cli-pfa|sf-lince
-                 end-if
-              else
-                 if tcl-fido-nuovo-si
-                    compute fido-tmp = cli-fido
-                 else
-                    compute tot-fido = cli-fido + 
-                                       cli-pfa  + 
-                                       cli-fidejussione
-                 end-if
-              end-if  
-   
-              if tcl-fido-nuovo-si
-                 move 0 to fido-usato   
-                 if cli-fidejussione > 0
-
-                    if cli-grade > 0
-                       move spaces to gra-codice
-                       read grade no lock
-                            invalid move 0 to Sum
-                        not invalid
-                            perform varying idx from 1 by 1 
-                                      until idx > 20
-                               if gra-da(idx) <= cli-grade and
-                                  gra-a(idx)  >= cli-grade
-                                  move gra-perce(idx) to Sum
-                                  exit perform
-                               end-if
-                            end-perform
-                        end-read
-                        if Sum > 0
-                           compute cli-fidejussione = 
-                                   cli-fidejussione * Sum / 100
-                        end-if
-                    end-if
-
-                    compute fido-usato = 
-                            cli-fidejussione +
-                            cli-fido-extra   +
-                            cli-pfa
-                 else  
-                    if tge-blocco-fido < cli-fido
-                       compute fido-usato = tge-blocco-fido + cli-pfa +
-                                            cli-fido-extra
-                    else
-                       compute fido-usato = fido-tmp + cli-pfa +
-                                            cli-fido-extra
-                    end-if
-                 end-if
-                 if scoperto > fido-usato
-                    subtract fido-usato from scoperto giving como-numero
-                    set errori to true
-                    if not ControllaCliente                             
-LUBEXX                 move como-numero to como-edit
-LUBEXX                 display message
-LUBEXX                         "ATTENZIONE!!!!"
-LUBEXX                  x"0d0a""CLIENTE FUORI FIDO DI:  " como-edit
-LUBEXX                  x"0d0a""IMPOSSIBILE REGISTRARE L'ORDINE!"
-LUBEXX                           title tit-err
-LUBEXX                            icon 2
-                    end-if 
-                 else
-                    |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-      *****              add Sum to tfid-Sum
-                    rewrite tfid-rec
-LUBEXX           end-if
-              else
-LUBEXX           if scoperto > tot-fido
-                    if tfid-Sum <= cli-fido-extra
-                       move tfid-Sum to como-numero
-                       perform AGGIORNA-FIDO-RESIDUO-TMP
-                    else
-                       compute como-numero = scoperto - tot-fido
-                       if como-numero > cli-fido-extra 
-LUBEXX                    set errori to true
-                          if not ControllaCliente
-                             subtract cli-fido-extra from como-numero
-LUBEXX                       move como-numero to como-edit
-LUBEXX                       display message
-LUBEXX                            "ATTENZIONE!!!!"
-LUBEXX                     x"0d0a""CLIENTE FUORI FIDO DI:  " como-edit
-LUBEXX                     x"0d0a""IMPOSSIBILE REGISTRARE L'ORDINE!"
-LUBEXX                              title tit-err
-LUBEXX                               icon 2
-                          end-if
-LUBEXX                 else
-                          perform AGGIORNA-FIDO-RESIDUO-TMP
-                       end-if
-LUBEXX              end-if
-                 else
-                    |Aggiorno il totale con solo quelli che possono attivarsi non con tutti
-      *****              add Sum to tfid-Sum            
-                    rewrite tfid-rec
-LUBEXX           end-if
-              end-if
-LUBEXX     end-if.   
-
-      ***---
-       AGGIORNA-FIDO-RESIDUO-TMP.
-LUBEXX*****     close    clienti.
-LUBEXX*****     open i-o clienti.
-LUBEXX*****     read clienti no lock invalid continue end-read.
-LUBEXX*****     subtract como-numero from cli-fido-extra.
-LUBEXX*****     rewrite cli-rec invalid continue end-rewrite.
-LUBEXX*****     close      clienti.
-LUBEXX*****     open input clienti.
-LUBEXX*****     read clienti no lock invalid continue end-read.
-
-      ***---
-       CONTROLLA-TOTALE-MAN.   
-           move emto-anno to con-anno.
-           read tcontat no lock.
-           
-           evaluate tcl-serie-bolle
-           when 1 move con-ult-stampa-bolle-gdo to imp-data
-           when 2 move con-ult-stampa-bolle-mv  to imp-data
-           when 3 move con-ult-stampa-bolle-at  to imp-data
-           end-evaluate.
-           
-           start timposte key <= imp-chiave
-                 invalid continue
-             not invalid
-                 read timposte previous
-           end-start.
-
-LUBEXX*****Se è attiva la causale di movimento "speciale" non
-LUBEXX*****devo fare nessun controllo sul totale del documento
-LUBEXX     if tca-si-speciale exit paragraph end-if.
-           move cli-tipo to tcl-codice.
-           read ttipocli no lock invalid continue end-read. 
-
-           perform INVERTI-TIPOLOGIA.
-
-           if ttipocli-gdo set TrattamentoGDO to false
-           else            set TrattamentoGDO to true
-           end-if.
-           move 0 to Sum.
-           if ControllaCliente or calcolaTotale
-              move low-value   to emro-chiave
-              move emto-chiave to emro-chiave
-              start EDI-mrordini key >= emro-chiave
-                    invalid continue
-                not invalid
-                    perform until 1 = 2
-                       read EDI-mrordini next at end exit perform 
-           end-read
-                       if emro-chiave-testa not = emto-chiave
-                          exit perform
-                       end-if
-                       move emro-qta          to como-qta
-                       move emro-prz          to SavePrezzo
-                       move emro-prg-chiave   to prg-chiave
-                       move emto-cod-cli      to mto-cod-cli
-                       move emro-cod-articolo to como-articolo
-                       move emto-prg-destino  to mto-prg-destino
-                       move emto-data-ordine  to mto-data-ordine
-                       perform AGGIUNGI-VALORI
-                    end-perform
-              end-start
-           else
-              set cli-tipo-C to true
-              move ef-cli-buf to cli-codice mto-cod-cli
-              read clienti        
-              move cli-tipo to tcl-codice
-              read ttipocli
-
-              perform INVERTI-TIPOLOGIA
-
-              move ef-des-buf to emto-prg-destino  mto-prg-destino
-              move ef-data-buf to como-data
-              perform DATE-TO-FILE
-              move como-data to mto-data-ordine
-              if emto-prg-destino not = 0         
-                 move cli-codice       to des-codice    
-                 move emto-prg-destino to des-prog 
-                 read destini
-              else
-                 move cli-nazione to des-nazione
-              end-if
-
-              inquire form1-gd-1, last-row in tot-righe
-              perform varying store-riga from 2 by 1 
-                        until store-riga > tot-righe
-                 inquire form1-gd-1(store-riga, 78-col-prz), 
-                         cell-data in SavePrezzo            
-                 inquire form1-gd-1(store-riga, 78-col-qta), 
-                         cell-data in como-qta
-                 inquire form1-gd-1(store-riga, 78-col-art), 
-                         cell-data in como-articolo
-                 inquire form1-gd-1(store-riga, 1),
-                         hidden-data = gruppo-hidden
-                 move HiddenKey to prg-chiave
-                 perform AGGIUNGI-VALORI
-              end-perform
-           end-if.
-
-      ***---
-       AGGIUNGI-VALORI.
-           move prg-cod-articolo to art-codice
-           if art-codice = 0 |BLISTER
-              move como-articolo to art-codice
-           end-if.
-           read articoli no lock
-                invalid
-                move art-codice to bli-codice
-                read blister no lock
-                     invalid continue
-                 not invalid    
-                     move SavePrezzo to TotPrzBlister
-                     move 0 to idx
-                     perform varying idx from 1 by 1
-                               until idx > 50
-                        if bli-el-articolo(idx) = 0
-                           exit perform
-                        end-if        
-                        set trovato  to false
-                        move bli-el-articolo(idx) to art-codice
-                        if tcl-gdo-si or tcl-gdo-opz
-                           perform TROVA-LISTINO
-                           if no-prg-listino
-                              perform TROVA-CLI-PRG
-                           end-if
-                           if tutto-ok
-                              if si-prg-listino
-                                 move como-prg-chiave to GiacenzaKey
-                                 set trovato to true
-                              else
-                                 perform VALORIZZA-MAGGIOR-GIACENZA
-                              end-if
-                           end-if
-                        else
-                           perform VALORIZZA-MAGGIOR-GIACENZA
-                        end-if
-
-                        if trovato             
-                           move bli-el-articolo(idx) to art-codice
-                           move bli-el-qta(idx)      to mro-bli-qta
-                           move bli-el-perce(idx)    to mro-bli-perce
-                           move GiacenzaKey          to prg-chiave
-                           read progmag  no lock invalid continue 
-           end-read
-                           read articoli no lock invalid continue 
-           end-read  
-                                                                  
-                           compute mro-qta = como-qta * bli-el-qta(idx)
-           
-                           if bli-el-perce(idx) not = 0
-           
-                              compute como-numero =
-                                      TotPrzBlister * 
-                                      bli-el-perce(idx) / 100 / 
-                                      bli-el-qta(idx) 
-      *                        perform ARROTONDA-PRZ-BLISTER
-                              move como-numero to SavePrezzo
-                              perform AGGIUNGI-VALORE
-                           end-if
-                        end-if
-                     end-perform
-                end-read
-            not invalid
-                perform AGGIUNGI-VALORE
-           end-read.
-
-      ***---
-       AGGIUNGI-VALORE.          
-           move art-marca-prodotto to mar-codice.
-           read tmarche.
-           read progmag no lock.
-           if SavePrezzo > 999999    
-              perform CALCOLA-COSTO-MP-COMPLETO
-              |Altrimenti righe solo 999999,99 senza costo mp
-              |darebbero come risultato un master prezzo ZERO
-              if costo-mp = 0
-                 compute Sum = Sum + 0,01
-              else
-                 compute Sum = Sum + ( costo-mp * como-qta )
-              end-if
-           else                  
-              if SavePrezzo > 0 
-
-                 move SavePrezzo to como-prz-unitario mro-prz-unitario
-                 perform CALCOLA-IMPOSTE-ORDINE
-                 perform CALCOLA-IMPONIBILE    
-                 
-                 compute SavePrezzo =
-                         mro-imponib-merce + 
-                         mro-imp-cou-cobat + 
-                         mro-imp-consumo   +
-                         mro-add-piombo         
-
-                 if tcl-fido-nuovo-si    
-                       
-                    if cli-iva not = spaces
-                       move cli-iva to tbliv-codice2
-                    else
-                       if cli-iva-ese not = spaces
-                          move cli-iva-ese to tbliv-codice2
-                       else
-                          move tge-cod-iva-std to tbliv-codice2
-                       end-if
-                    end-if
-
-                    move "IV"        to tbliv-codice1
-                    read tivaese 
-                    compute mult = 1 + tbliv-percentuale / 100
-                    compute SavePrezzo =
-                            SavePrezzo * mult
-                 end-if
-
-                 compute Sum = Sum + ( SavePrezzo * como-qta )
-              end-if
-           end-if            
+           end-if              
            .
       * <TOTEM:END>
 
@@ -21386,10 +21400,12 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
            perform CHIAMA-MANUTENZIONE.
            move old-riga to riga event-data-2.
            
-           if RicaricaGrid       
+           if RicaricaGrid    
+              set controllaCliente to true      
               move 0 to tot-attivi tot-bloccati
               move riga to save-riga
-              perform RIEMPI-GRID
+              perform FORM3-OPEN-ROUTINE        
+              set controllaCliente to false
               inquire gd-ordini, last-row in tot-righe
               if save-riga > tot-righe
                  move tot-righe to save-riga event-data-2
@@ -21714,13 +21730,7 @@ LUBEXX     if tca-si-speciale exit paragraph end-if.
                            title tit-err
                             icon 2
               end-if
-           end-if.
-
-      *****     if tutto-ok
-      *****        if tcl-si-gestione-fido or cli-gestione-fido-si
-      *****           perform CONTROLLA-FUORI-FIDO
-      *****        end-if
-      *****     end-if.
+           end-if.       
 
            if errori
               perform CANCELLA-COLORE
@@ -22195,6 +22205,8 @@ LABLAB        if tcl-si-recupero and
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
                                Arial10B, WFONT-DATA
+
+           if user-codi = "BOSS" move 1 to v-boss end-if 
            .
       * <TOTEM:END>
        ginqui-Ev-After-Program.
@@ -23366,8 +23378,10 @@ LABLAB        if tcl-si-recupero and
                 end-if
 
            end-evaluate.
-
-           perform CALCOLA-TOTALE 
+           
+           if RigaCambiata                 
+              perform CALCOLA-TOTALE
+           end-if 
            .
       * <TOTEM:END>
        pb-sia-BeforeProcedure.
@@ -23412,7 +23426,8 @@ LABLAB        if tcl-si-recupero and
               delete EDI-mrordini record 
                      invalid continue
                      |display message "?"
-              end-delete             
+              end-delete          
+              set ricaricaGrid to true
               modify pb-elimina, bitmap-number = 1
 
               modify form1-gd-1, record-to-delete = riga
@@ -23432,10 +23447,10 @@ LABLAB        if tcl-si-recupero and
                  modify form1-gd-1, cursor-y riga
                  perform SPOSTAMENTO
                  set RigaCambiata to true
-              end-if
+              end-if              
+              perform CALCOLA-TOTALE
 
-           end-if.      
-           perform CALCOLA-TOTALE 
+           end-if                 
            .
       * <TOTEM:END>
        pb-elimina-BeforeProcedure.
@@ -23517,7 +23532,7 @@ LABLAB        if tcl-si-recupero and
            if hid-emro-si-blister
               continue
            else
-              perform ZOOM-SU-PROGMAG
+              perform ZOOM-SU-PROGMAG   
            end-if.
            move 4 to ACCEPT-CONTROL.
            
@@ -23584,8 +23599,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                  move 1 to stato-zoom
               end-if
               delete file tmp-progmag-zoom
-           end-if.       
-           perform CALCOLA-TOTALE.
+           end-if.                
 
       ***---
        COMPONI-TMP.
@@ -24041,8 +24055,7 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                                  cursor-x 78-col-art
               move 78-ID-form1-gd-1 to control-id
               move 4                to accept-control
-           end-if.           
-           perform CALCOLA-TOTALE 
+           end-if                
            .
       * <TOTEM:END>
        ef-prov-d-BeforeProcedure.
@@ -24172,11 +24185,13 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
                        inquire Form1-Gd-1, last-row in tot-righe
                        perform varying riga from 2 by 1 
                                  until riga > tot-righe               
-                          inquire form1-gd-1(riga, 78-col-art), 
-           cell-data in rpr-articolo
+                          inquire form1-gd-1(riga, 78-col-art),  
+                                  cell-data in rpr-articolo
+                          inquire form1-gd-1(riga, 1), 
+                                  hidden-data in gruppo-hidden
                           read rpromo no lock invalid exit perform 
            cycle end-read
-                          move rpr-prz-ven to col-prz 
+                          move rpr-prz-acq to col-prz 
                           modify form1-gd-1(riga, 78-col-prz-GESLUX), 
            cell-data col-prz
                           move riga to event-data-2
@@ -24219,7 +24234,8 @@ LUBEXX*****                 perform POSITION-ON-FIRST-RECORD
               set RigaCambiata to true
               perform DATE-TO-SCREEN
               move como-data to ef-evadi-dal-buf
-              display ef-evadi-dal
+              display ef-evadi-dal                           
+              perform CALCOLA-TOTALE
            end-if 
            .
       * <TOTEM:END>
