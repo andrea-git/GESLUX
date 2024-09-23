@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E895165951-868-159206420
+PROGRAM_UNIQUE_CODE=TOTEM-7E891795336-575-305221713
 
 {{@DESCRIPTION:
 
@@ -8788,7 +8788,7 @@ Begin Screen Form1
          Begin Data.Check-Box chk-24000
             SCREEN-COL        = 76,17
             SCREEN-LINE       = 29,85
-            LOCK-CONTROL      = TRUE
+            LOCK-CONTROL      = FALSE
             LEVEL             = 10
             (Name)            = chk-24000
             Bitmap Frame      = FALSE
@@ -11500,7 +11500,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-18
             SCREEN-COL        = 138,17
-            SCREEN-LINE       = 24,39
+            SCREEN-LINE       = 24,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-18
@@ -11519,7 +11519,7 @@ Begin Screen Form1
             ID                = 34
             Justification     = Right
             Label Offset      = 20
-            Line              = 18,62
+            Line              = 18,31
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE
@@ -11942,7 +11942,7 @@ Begin Screen Form1
          End
          Begin Label Form1-La-32
             SCREEN-COL        = 138,17
-            SCREEN-LINE       = 22,46
+            SCREEN-LINE       = 22,08
             LOCK-CONTROL      = TRUE
             LEVEL             = 10
             (Name)            = Form1-La-32
@@ -11961,7 +11961,7 @@ Begin Screen Form1
             ID                = 78
             Justification     = Right
             Label Offset      = 20
-            Line              = 16,69
+            Line              = 16,31
             Lines             = 1,31
             Lines Unit        = Default
             No Key Letter     = FALSE

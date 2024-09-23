@@ -835,9 +835,9 @@
                                    ","                 
                                    saldo-scaduto(14:2) 
                                    " CLI-FIDO-EXTRA: " 
-                                   saldo-scaduto(1:8) 
+                                   cli-fido-extra(1:8) 
                                    ","                 
-                                   saldo-scaduto(9:2) 
+                                   cli-fido-extra(9:2) 
                               into como-riga
                             end-string            
                             perform SETTA-RIGA-LOG

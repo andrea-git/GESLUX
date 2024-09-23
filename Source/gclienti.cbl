@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gclienti.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 22 luglio 2024 16:59:51.
+       DATE-WRITTEN.        venerdì 20 settembre 2024 15:22:28.
        REMARKS.
       *{TOTEM}END
 
@@ -2591,7 +2591,7 @@
            Form1-La-18, 
            Label, 
            COL 138,17, 
-           LINE 24,39,
+           LINE 24,08,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
@@ -2806,7 +2806,7 @@
            Form1-La-32, 
            Label, 
            COL 138,17, 
-           LINE 22,46,
+           LINE 22,08,
            LINES 1,31 ,
            SIZE 12,00 ,
            FONT IS Small-Font,
