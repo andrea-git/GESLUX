@@ -1415,7 +1415,7 @@
                  move idx to ultimo-mese-moq
               end-if
            end-perform.                    
-           |Sto ordinando di più rispetto al MOQ
+           |Sto ordinando di meno rispetto al MOQ
            if tot-qta-moq < art-moq
               move art-moq to tot-qta-moq    
 
@@ -1514,8 +1514,11 @@
                          como-qta-ordinata |Differenza con ordinata precedentemente
 
                  if como-qta-rical > 0  
-      *              perform ARROTONDA-BANCALE-PROGRAMMAZIONE
-                    perform ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE
+                    if art-moq = 0
+                       perform ARROTONDA-BANCALE-PROGRAMMAZIONE
+                    else
+                       perform ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE
+                    end-if
 
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
                     perform CHECK-IMBALLO  
@@ -1602,9 +1605,12 @@
                       end-string
                       perform SCRIVI-RIGA-LOG
                  end-evaluate                               
-                 if como-qta-rical > 0                      
-      *              perform ARROTONDA-BANCALE-PROGRAMMAZIONE
-                    perform ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE
+                 if como-qta-rical > 0                         
+                    if art-moq = 0
+                       perform ARROTONDA-BANCALE-PROGRAMMAZIONE
+                    else
+                       perform ARROTONDA-MOQ-BANCALI-PROGRAMMAZIONE
+                    end-if
                     
                     move cpfm-qta-m(idx-mese) to rof-qta-ord
                     perform CHECK-IMBALLO         
@@ -2813,7 +2819,11 @@
             not invalid
                 if not sco-immediato-si
                    if art-qta-epal not = 0
-                      if rof-qta-ord > art-qta-epal
+                      if rof-qta-ord > art-qta-epal   
+
+                         move "ARROTONDO PER BANCALE" to como-riga
+                         perform SCRIVI-RIGA-LOG 
+
                          |resto diventa una variabile di comodo
                          move 0 to resto
                          divide rof-qta-ord by art-qta-epal
@@ -2851,7 +2861,11 @@
                             compute rof-qta-ord  =
                                     art-qta-epal * num-bancali
                          end-if
-                      else
+                      else                    
+                         move 
+                         "ARROTONDO PER BANCALE CON TGE-PERCE-ARROT" 
+                           to como-riga
+                         perform SCRIVI-RIGA-LOG 
       *****                   if cpfm-cod-magazzino = "LBX"
                             compute ris = art-qta-epal -
                                   ( art-qta-epal * 
@@ -2890,6 +2904,30 @@
                  perform SCRIVI-RIGA-LOG
 
                  move art-moq to rof-qta-ord
+              else
+                 if art-moq > 0
+                    move "ARROTONDO PER MOQ" to como-riga
+                    perform SCRIVI-RIGA-LOG 
+
+                    divide rof-qta-ord by art-moq giving ris 
+                           remainder resto
+                    if resto > 0
+                       add 1 to ris
+                    end-if
+                    compute rof-qta-ord = ris * art-moq
+                                    
+                    initialize como-riga
+                    string "QTA ORD : rof-qta-ord ("
+                           rof-qta-ord
+                           ") / art-moq ("
+                           art-moq
+                           "), resto = "
+                           resto
+                       into como-riga
+                    end-string
+                    perform SCRIVI-RIGA-LOG
+
+                 end-if
               end-if
       *****     end-if.
            .
@@ -2924,7 +2962,21 @@
               perform SCRIVI-RIGA-LOG
 
               move rof-qta-imballi to rof-qta-ord
-           else
+           else                                  
+                                             
+              initialize como-riga
+              string "ris = rof-qta-imballi("
+                     rof-qta-imballi
+                     ") / rof-qta-ord (" 
+                     rof-qta-ord
+                     ") + 1"
+                 into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG  
+
+              move "ARROTONDO PER IMBALLO" to como-riga
+              perform SCRIVI-RIGA-LOG 
+
               divide rof-qta-ord by rof-qta-imballi giving ris
                                                  remainder resto
               if resto not = 0                   

@@ -15,6 +15,12 @@
            ORGANIZATION IS LINE SEQUENTIAL
            ACCESS MODE  IS SEQUENTIAL
            FILE STATUS  IS STATUS-csvFile.
+           
+       SELECT csvFile2
+           ASSIGN       TO path-csvFile2
+           ORGANIZATION IS LINE SEQUENTIAL
+           ACCESS MODE  IS SEQUENTIAL
+           FILE STATUS  IS STATUS-csvFile2.
 
       *****************************************************************
        DATA DIVISION.
@@ -25,6 +31,9 @@
            
        FD  csvFile.
        01 line-csvFile        PIC  x(1000).
+           
+       FD  csvFile2.
+       01 line-csvFile2       PIC  x(1000).
 
        WORKING-STORAGE SECTION.
        copy "comune.def".
@@ -35,6 +44,8 @@
        77  status-ttipocli         pic x(2).
        77  path-csvFile            pic x(256).
        77  STATUS-csvFile          pic x(2).
+       77  path-csvFile2           pic x(256).
+       77  STATUS-csvFile2         pic x(2).
        77  wstampa                 pic x(256).
        77  status-lineseq          pic xx.
 
@@ -65,6 +76,9 @@
       ***---
        CSVFILE-ERR SECTION.
            use after error procedure on csvFile.
+      ***---
+       CSVFILE2-ERR SECTION.
+           use after error procedure on csvFile2.
 
        END DECLARATIVES.
 
@@ -116,6 +130,12 @@
            if path-csvFile = spaces
               goback 
            end-if.
+                                          
+           initialize path-csvFile2.
+           accept path-csvFile2 from environment "IMP_FIDO_EXTRA_FILE2".
+           if path-csvFile2 = spaces
+              goback 
+           end-if.
 
       ***---
        OPEN-FILES.     
@@ -134,8 +154,25 @@
               end-if
               set errori to true
               close lineseq
-           end-if.
+           end-if.   
               
+           if tutto-ok
+              open input  csvFile2
+              if status-csvFile2 not = "00"
+                 initialize como-riga
+                 string "Errore: " status-csvFile2 " - file: " 
+                        path-csvFile2
+                   into como-riga
+                 end-string
+                 perform SCRIVI-RIGA-LOG
+                 if RichiamoSchedulato
+                    move -1 to batch-status
+                 end-if
+                 set errori to true
+                 close lineseq
+              end-if
+           end-if.
+
            if tutto-ok
               open i-o clienti
            end-if.                        
@@ -163,7 +200,8 @@
            move "CANCELLAZIONE ESEGUITA" to como-riga.
            perform SCRIVI-RIGA-LOG.    
           
-           move "IMPORTAZIONE FIDO EXTRA SUI CLIENTI" to como-riga.
+           move "IMPORTAZIONE FIDO EXTRA SUI CLIENTI SENZA BLOCCAGGIO" 
+             to como-riga.
            perform SCRIVI-RIGA-LOG.
 
            move 0 to n-riga
@@ -197,34 +235,47 @@
                         perform SCRIVI-RIGA-LOG
                     not invalid
                         if tcl-imp-fido-extra-si
-                           move 0      to idx2 fido-int
-                           move spaces to fido-int-x
-                           perform varying idx from 1 by 1 
-                                     until idx > 18
-                              if r-fido-extra(idx:1) = "," 
-                                 exit perform cycle 
-                              end-if
-                              if r-fido-extra(idx:1) = " " 
-                                 exit perform 
-                              end-if
-                              add 1 to idx2
-                              move r-fido-extra(idx:1) 
-                                to fido-int-x(idx2:1)
-                           end-perform
-                           call "C$JUSTIFY" using fido-int-x, "R"
-                           inspect fido-int-x 
-                                   replacing leading x"20" by x"30"
-                           move fido-int-x to fido-int
-                           compute cli-fido-extra = fido-int / 100
-                           rewrite cli-rec 
-                        
-                           initialize como-riga
-                           string "Riga: " n-riga " - cliente: " 
-                                  cli-codice " aggiornato fido extra: " 
-                                  r-fido-extra
-                             into como-riga
-                           end-string
-                           perform SCRIVI-RIGA-LOG
+                           if tcl-bloc-auto-no
+                              move 0      to idx2 fido-int
+                              move spaces to fido-int-x
+                              perform varying idx from 1 by 1 
+                                        until idx > 18
+                                 if r-fido-extra(idx:1) = "," 
+                                    exit perform cycle 
+                                 end-if
+                                 if r-fido-extra(idx:1) = " " 
+                                    exit perform 
+                                 end-if
+                                 add 1 to idx2
+                                 move r-fido-extra(idx:1) 
+                                   to fido-int-x(idx2:1)
+                              end-perform
+                              call "C$JUSTIFY" using fido-int-x, "R"
+                              inspect fido-int-x 
+                                      replacing leading x"20" by x"30"
+                              move fido-int-x to fido-int
+                              compute cli-fido-extra = fido-int / 100
+                              rewrite cli-rec 
+                           
+                              initialize como-riga
+                              string "Riga: " n-riga " - cliente: " 
+                                     cli-codice 
+                                     " aggiornato fido extra: " 
+                                     r-fido-extra
+                                into como-riga
+                              end-string
+                              perform SCRIVI-RIGA-LOG
+                           else                      
+                              initialize como-riga
+                              string "Riga: " n-riga " - tipologia: " 
+                                     tcl-codice "-" tcl-descrizione 
+                                     " NON IMPORTA FIDO SENZA - "
+                                     "cliente: "
+                                     cli-codice
+                                into como-riga
+                              end-string
+                              perform SCRIVI-RIGA-LOG
+                           end-if
                         else                      
                            initialize como-riga
                            string "Riga: " n-riga " - tipologia: " 
@@ -240,7 +291,101 @@
               end-read
            end-perform.
        
-           move "FINE IMPORTAZIONE" to como-riga.
+           move "FINE IMPORTAZIONE SENZA BLOCCAGGIO" to como-riga.
+           perform SCRIVI-RIGA-LOG.
+          
+           move "IMPORTAZIONE FIDO EXTRA SUI CLIENTI CON BLOCCAGGIO" 
+             to como-riga.
+           perform SCRIVI-RIGA-LOG.
+
+           move 0 to n-riga
+           perform until 1 = 2
+              add 1 to n-riga
+              initialize line-csvFile2
+              read csvFile2 next at end exit perform end-read
+              unstring line-csvFile2 delimited by separatore
+                                     into r-cliente r-fido-extra 
+
+              move r-cliente to cli-codice
+              set cli-tipo-C to true
+              read clienti no lock
+                   invalid
+                   initialize como-riga
+                   string "Riga: " n-riga " - cliente: " 
+                          cli-codice " NON TROVATO"
+                     into como-riga
+                   end-string
+                   perform SCRIVI-RIGA-LOG
+               not invalid   
+                   move cli-tipo to tcl-codice
+                   read ttipocli no lock
+                        invalid           
+                        initialize como-riga
+                        string "Riga: " n-riga " - tipologia: " 
+                               tcl-codice " NON TROVATA - cliente: "
+                               cli-codice
+                          into como-riga
+                        end-string
+                        perform SCRIVI-RIGA-LOG
+                    not invalid
+                        if tcl-imp-fido-extra-si
+                           if tcl-bloc-auto-si
+                              move 0      to idx2 fido-int
+                              move spaces to fido-int-x
+                              perform varying idx from 1 by 1 
+                                        until idx > 18
+                                 if r-fido-extra(idx:1) = "," 
+                                    exit perform cycle 
+                                 end-if
+                                 if r-fido-extra(idx:1) = " " 
+                                    exit perform 
+                                 end-if
+                                 add 1 to idx2
+                                 move r-fido-extra(idx:1) 
+                                   to fido-int-x(idx2:1)
+                              end-perform
+                              call "C$JUSTIFY" using fido-int-x, "R"
+                              inspect fido-int-x 
+                                      replacing leading x"20" by x"30"
+                              move fido-int-x to fido-int
+                              compute cli-fido-extra = fido-int / 100
+                              rewrite cli-rec 
+                           
+                              initialize como-riga
+                              string "Riga: " n-riga " - cliente: " 
+                                     cli-codice 
+                                     " aggiornato fido extra: " 
+                                     r-fido-extra
+                                into como-riga
+                              end-string
+                              perform SCRIVI-RIGA-LOG
+                           else                      
+                              initialize como-riga
+                              string "Riga: " n-riga " - tipologia: " 
+                                     tcl-codice "-" tcl-descrizione 
+                                     " NON IMPORTA FIDO CON - "
+                                     "cliente: "
+                                     cli-codice
+                                into como-riga
+                              end-string
+                              perform SCRIVI-RIGA-LOG
+                           end-if
+                        else                      
+                           initialize como-riga
+                           string "Riga: " n-riga " - tipologia: " 
+                                  tcl-codice "-" tcl-descrizione 
+                                  " NON IMPORTA FIDO - "
+                                  "cliente: "
+                                  cli-codice
+                             into como-riga
+                           end-string
+                           perform SCRIVI-RIGA-LOG
+                        end-if
+                   end-read
+              end-read
+           end-perform.
+                                                                 
+           move "FINE IMPORTAZIONE CON BLOCCAGGIO" to como-riga.
            perform SCRIVI-RIGA-LOG.
 
            move "FINE ELABORAZIONE" to como-riga.
@@ -248,7 +393,7 @@
 
       ***---
        CLOSE-FILES.
-           close lineseq clienti csvFile ttipocli.
+           close lineseq clienti csvFile csvFile2 ttipocli.
 
       ***---
        SCRIVI-RIGA-LOG.
