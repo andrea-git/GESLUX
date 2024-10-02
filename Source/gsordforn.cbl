@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gsordforn.
        AUTHOR.              andre.
-       DATE-WRITTEN.        domenica 11 giugno 2023 23:37:42.
+       DATE-WRITTEN.        mercoledì 2 ottobre 2024 16:31:03.
        REMARKS.
       *{TOTEM}END
 
@@ -260,7 +260,7 @@
            ID IS 78-ID-ef-note,                
            HEIGHT-IN-CELLS,
            WIDTH-IN-CELLS,
-           MAX-TEXT 30,
+           MAX-TEXT 500,
            VSCROLL-BAR,
            USE-RETURN,
            VALUE ef-note-BUF,

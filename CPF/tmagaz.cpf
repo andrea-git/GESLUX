@@ -10,7 +10,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=PAS004P-Ev-Before-Program
 AFTER_PROGRAM=I-O-BLOCCO
-PROGRAM_UNIQUE_CODE=TOTEM-7E89517059-456-456624842
+PROGRAM_UNIQUE_CODE=TOTEM-7E8A2143136-211-12688649
 
 {{@DESCRIPTION:
 
@@ -1808,7 +1808,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Form1
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = FALSE
+   LOCK-CONTROL      = TRUE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -1845,7 +1845,7 @@ Begin Screen Form1
    Operation Mode    = Interactive Mode
    Resizable         = FALSE
    Scroll            = FALSE
-   Size              = 263,17
+   Size              = 234,50
    System Menu       = TRUE
    Title Bar         = TRUE
    Title Variable    = titolo
@@ -1904,11 +1904,11 @@ Begin Screen Form1
       Border            = Boxed
       Cells' Setting    = ( X = 1, Y = 1, Data = "Codice" )
       Cells' Setting    = ( X = 2, Y = 1, Data = "Descrizione" )
-      Cells' Setting    = ( X = 3, Y = 1, Data = "Principale" )
+      Cells' Setting    = ( X = 3, Y = 1, Data = "Prin." )
       Cells' Setting    = ( X = 4, Y = 1, Data = "Scr.Aus." )
       Cells' Setting    = ( X = 5, Y = 1, Data = "UTF" )
       Cells' Setting    = ( X = 6, Y = 1, Data = "% + riordino" )
-      Cells' Setting    = ( X = 7, Y = 1, Data = "Pren Promo" )
+      Cells' Setting    = ( X = 7, Y = 1, Data = "Promo" )
       Cells' Setting    = ( X = 8, Y = 1, Data = "Vendita" )
       Cells' Setting    = ( X = 9, Y = 1, Data = "Omaggio" )
       Cells' Setting    = ( X = 10, Y = 1, Data = "SOST" )
@@ -1937,43 +1937,43 @@ Begin Screen Form1
       Columns' Setting  = ( X = 2, Name = col-des, READONLY = 0 )
       Columns' Setting  = ( Font = Small Font, Font Variable = Small-Font )
       Columns' Setting  = ( PIC = "X(50)", TYPE = "X(50)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "U" )
-      Columns' Setting  = ( DISP = 46, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 41, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 3, Name = col-princ, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 4, Name = col-scritt, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 5, Name = col-utf, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 5, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 6, Name = col-perce, READONLY = 0 )
       Columns' Setting  = ( PIC = "zz9,999", TYPE = "9(7)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 11, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 7, Name = col-promo, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 6, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 8, Name = col-causale, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(4)", TYPE = "U(4)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 9, Name = col-causale-oma, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(4)", TYPE = "U(4)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 10, Name = col-sostituzione, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 9, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 11, Name = col-blister, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 7, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 12, Name = col-ritira, READONLY = 0 )
       Columns' Setting  = ( PIC = "X", TYPE = "U(1)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 13, Name = col-cau-s, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(4)", TYPE = "U(4)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 14, Name = col-cau-c, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(4)", TYPE = "U(4)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
-      Columns' Setting  = ( DISP = 10, SEPA = 5, DIVI = 1 )
+      Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
       Columns' Setting  = ( X = 15, Name = col-reso, READONLY = 0 )
       Columns' Setting  = ( PIC = "x(4)", TYPE = "U(4)", EDITEDSTYLE = "F", FMT = "X(08)", ALIGN = "C" )
       Columns' Setting  = ( DISP = 8, SEPA = 5, DIVI = 1 )
@@ -2035,12 +2035,12 @@ Begin Screen Form1
       Record Data       = rec-grid
       Row Dividers      = 1
       Row Headings      = FALSE
-      Size              = 261,17
+      Size              = 232,17
       Size Unit         = Default
       Tab Order         = 2
       Tiled Headings    = TRUE
       Use Tab           = TRUE
-      Virtual Width     = 258
+      Virtual Width     = 229
       Visible           = NONE
       Vpadding          = 30
       Vscroll           = TRUE
@@ -2077,8 +2077,8 @@ Begin Screen Form1
       Enable            = NONE
       Enable Variable   = mod
       Field Edited (Style) = 0
-      Field Edited Format = x(100)
-      Field Picture     = x(100)
+      Field Edited Format = X(100)
+      Field Picture     = X(100)
       Field Variable    = mag-indirizzo
       File              = tmagaz
       Font              = Default Font

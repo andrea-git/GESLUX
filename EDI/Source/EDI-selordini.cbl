@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          EDI-selordini.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 18 settembre 2024 17:00:01.
+       DATE-WRITTEN.        martedì 1 ottobre 2024 17:30:55.
        REMARKS.
       *{TOTEM}END
 
@@ -3943,8 +3943,8 @@
        05
            lab-stato, 
            Label, 
-           COL 132,29, 
-           LINE 1,53,
+           COL 132,33, 
+           LINE 1,56,
            LINES 1,33 ,
            SIZE 14,00 ,
            COLOR IS col-lab-stato,
@@ -15621,7 +15621,21 @@
               modify form3-handle, visible = video-on
            end-if.
            call "w$mouse" using set-mouse-shape, wait-pointer.
-           perform RIEMPI-GRID
+           if ricaricaGrid       
+              display message "Aggiornare gli importi del fido?"
+                        title titolo
+                         icon 2
+                         type mb-yes-no
+                        giving scelta
+                       default mb-no
+              if scelta = mb-no
+                 perform REFRESH-GRID
+              else               
+                 perform RIEMPI-GRID
+              end-if
+           else
+              perform RIEMPI-GRID
+           end-if.
            call "w$mouse" using set-mouse-shape, arrow-pointer.
 
            perform FORM3-EXIT.
@@ -21494,6 +21508,61 @@ LUBEXX        set errori to true
                   des-ragsoc-2 delimited size
                   into lab-destino-buf
            end-string 
+           .
+      * <TOTEM:END>
+
+       REFRESH-GRID.
+      * <TOTEM:PARA. REFRESH-GRID>
+           move 0 to tot-attivi tot-bloccati
+           inquire gd-ordini, last-row in tot-righe.
+           perform varying store-riga from 1 by 1 
+                     until store-riga > tot-righe
+              inquire gd-ordini(store-riga, 7), cell-data in col-stato
+              inquire gd-ordini(store-riga, 2), cell-data in emto-anno
+              inquire gd-ordini(store-riga, 3), cell-data in emto-numero
+              if emto-anno   = como-anno and
+                 emto-numero = como-numero-ordine
+                 set eseguiRicalcolo to true
+                 read edi-mtordini no lock
+                      invalid
+                      modify gd-ordini, record-to-delete = store-riga
+                  not invalid
+                      if emto-attivo
+                         move "Attivo"   to col-stato
+                         move 78-colore-chiuso         to como-colore
+                      else                         
+                         move "Bloccato" to col-stato
+                         move 78-colore-fatt-tot       to como-colore
+                      end-if 
+                      modify gd-ordini(store-riga, 7), cell-data 
+           col-stato
+                                                       row-color = 
+           como-colore
+                 
+                      |Leggo solo per avere il codice iva
+                      set cli-tipo-C to true
+                      move emto-cod-cli to cli-codice
+                      read clienti no lock
+
+                      set tutto-ok to true
+
+                      perform CONTROLLA-TOTALE-MAN
+   
+                      move tot-doc to col-tot
+                      modify gd-ordini(store-riga, 5), cell-data col-tot
+                 end-read
+              end-if     
+              if col-stato = "Attivo"
+                 add 1 to tot-attivi
+              else
+                 add 1 to tot-bloccati
+              end-if                    
+                              
+           end-perform.
+           move tot-attivi   to lab-attivi-buf.
+           move tot-bloccati to lab-bloccati-buf.
+           display lab-attivi lab-bloccati.
+           set ricaricaGrid to false 
            .
       * <TOTEM:END>
 

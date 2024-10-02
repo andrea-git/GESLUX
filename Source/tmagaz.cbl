@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          tmagaz.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 11 giugno 2024 16:47:22.
+       DATE-WRITTEN.        mercoledì 2 ottobre 2024 16:40:31.
        REMARKS.
       *{TOTEM}END
 
@@ -268,7 +268,7 @@
       * DATA CONTROL BUFFER
        01 Form1-BUF.
       * Data.Entry-Field
-              05 ef-ind-BUF PIC x(100).
+              05 ef-ind-BUF PIC X(100).
 
        77 TMP-Form1-KEY1-ORDER  PIC X VALUE "A".
        77 TMP-Form1-tmagaz-RESTOREBUF  PIC X(612).
@@ -356,7 +356,7 @@
            COL 2,00, 
            LINE 1,62,
            LINES 28,92 ,
-           SIZE 261,17 ,
+           SIZE 232,17 ,
            ADJUSTABLE-COLUMNS,
            BOXED,
            DATA-COLUMNS (1, 4, 54, 55, 56, 57, 64, 65, 69, 73, 74, 75, 
@@ -383,7 +383,7 @@
            RECORD-DATA rec-grid,
            TILED-HEADINGS,
            USE-TAB,
-           VIRTUAL-WIDTH 258,
+           VIRTUAL-WIDTH 229,
            VPADDING 30,
            VSCROLL,
            EVENT PROCEDURE Form1-Gd-1-Event-Proc,
@@ -1771,7 +1771,7 @@
                 CELL-DATA = "Descrizione",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 3, Y = 1,
-                CELL-DATA = "Principale",
+                CELL-DATA = "Prin.",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 4, Y = 1,
                 CELL-DATA = "Scr.Aus.",
@@ -1783,7 +1783,7 @@
                 CELL-DATA = "% + riordino",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 7, Y = 1,
-                CELL-DATA = "Pren Promo",
+                CELL-DATA = "Promo",
       * CELLS' SETTING
               MODIFY form1-gd-1, X = 8, Y = 1,
                 CELL-DATA = "Vendita",
@@ -1922,7 +1922,7 @@
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
               LINES 46,15,
-              SIZE 263,17,
+              SIZE 234,50,
               COLOR 65793,
               CONTROL FONT Small-Font,
               LINK TO THREAD,
@@ -1956,9 +1956,9 @@
               HANDLE IS Screen1-St-1-Handle
            DISPLAY Form1 UPON Form1-Handle
       * DISPLAY-COLUMNS settings
-              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 9, 55, 65, 75, 85, 
-           96, 106, 116, 126, 135, 143, 153, 163, 173, 181, 189, 197, 
-           201, 211, 221, 235, 243, 251)
+              MODIFY form1-gd-1, DISPLAY-COLUMNS (1, 9, 50, 55, 65, 70, 
+           81, 87, 95, 103, 111, 118, 128, 136, 144, 152, 160, 168, 
+           172, 182, 192, 206, 214, 222)
               MODIFY gd-scorte, DISPLAY-COLUMNS (1, 7)
            .
 
