@@ -7,7 +7,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=anagr01-Ev-Before-Program
 AFTER_PROGRAM=anagr01-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8912153946-109-7166169
+PROGRAM_UNIQUE_CODE=TOTEM-7E8A971359-130-340429103
 
 {{@DESCRIPTION:
 
@@ -24187,6 +24187,11 @@ PATCH      end-evaluate.
               when 1 move 3 to BmpInvioNumber
               end-evaluate
               modify pb-invio-sol, bitmap-number BmpInvioNumber
+           end-if.
+
+           if tor-num-fattura = 0
+              move 0 to v-stfatt
+              display pb-stfatt
            end-if.
 END-TEXT
 END-DATA

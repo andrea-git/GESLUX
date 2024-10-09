@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          gordcvar.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 18 settembre 2024 17:43:17.
+       DATE-WRITTEN.        mercoledì 9 ottobre 2024 17:11:31.
        REMARKS.
       *{TOTEM}END
 
@@ -16743,6 +16743,11 @@ PATCH      end-evaluate.
               when 1 move 3 to BmpInvioNumber
               end-evaluate
               modify pb-invio-sol, bitmap-number BmpInvioNumber
+           end-if.
+
+           if tor-num-fattura = 0
+              move 0 to v-stfatt
+              display pb-stfatt
            end-if.
 
            .

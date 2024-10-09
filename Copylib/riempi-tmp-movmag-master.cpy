@@ -470,7 +470,16 @@ LUBEXX     move mro-prg-peso              to tmp-mov-peso.
                           cli-ragsoc-2 delimited size
                           into r-ragsoc
                    end-string
-                   move cli-localita to r-localita
+                   if tmp-mov-destino > 0
+                      move cli-codice to des-codice
+                      move tmp-mov-destino to des-prog
+                      read destini no lock
+                           invalid move spaces to des-localita
+                      end-read                       
+                      move des-localita to r-localita
+                   else
+                      move cli-localita to r-localita
+                   end-if
               end-read
 
               if tmp-mov-destino not = 0

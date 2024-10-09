@@ -2,7 +2,6 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=172.23.80.1
 
 
 [PROGRAM_CONTENT]
@@ -24191,6 +24190,11 @@ PATCH      end-evaluate.
               when 1 move 3 to BmpInvioNumber
               end-evaluate
               modify pb-invio-sol, bitmap-number BmpInvioNumber
+           end-if.
+
+           if tor-num-fattura = 0
+              move 0 to v-stfatt
+              display pb-stfatt
            end-if.
 END-TEXT
 END-DATA
