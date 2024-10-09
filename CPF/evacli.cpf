@@ -2,6 +2,7 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
+Adesk-andre=172.23.80.1
 
 
 [PROGRAM_CONTENT]
@@ -10,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=aggmese-Ev-Before-Program
 AFTER_PROGRAM=evacli-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8A2142922-931-1314321722
+PROGRAM_UNIQUE_CODE=TOTEM-7E8A971456-912-400214404
 
 {{@DESCRIPTION:
 
@@ -13324,6 +13325,15 @@ BEGIN-TEXT
            end-if.
 
            if tipo-evasione = 1
+      *       come prima cosa verifico che non ci siano blocchi al lancio 
+      *       dei programmi, attualmente solamente EVACLI
+              move LK-BL-PROG-ID   to pgme-pgm
+              move user-codi       to pgme-utente
+              set pgme-ingresso    to true
+           
+              call   "gpgmexe" using gpgmexe-linkage
+              cancel "gpgmexe"
+
               move user-codi    to pgme-utente
               if not RichiamoBatch
                  set pgme-evasione to true

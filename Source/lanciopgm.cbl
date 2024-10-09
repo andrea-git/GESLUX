@@ -7,8 +7,9 @@
        WORKING-STORAGE SECTION.
            copy "link-gpgmexe.def".
        78 titolo1 VALUE IS "Geslux - Menu Principale". 
+       77  pgmChiamante pic x(10).
 
-       LINKAGE SECTION.
+       LINKAGE SECTION.        
        77  session-id  pic x(50).
            copy "common-linkage.def".
 
@@ -18,14 +19,20 @@
                                 LIVELLO-ABIL.
        
        Main Section.
+           call "C$CALLEDBY" using pgmChiamante.
       *    come prima cosa verifico che non ci siano blocchi al lancio 
       *    dei programmi, attualmente solamente EVACLI
            move LK-BL-PROG-ID   to pgme-pgm
            move user-codi       to pgme-utente
            set pgme-ingresso    to true
 
-           call   "gpgmexe" using gpgmexe-linkage
-           cancel "gpgmexe"
+           |Verrà deciso dopo non in ingresso, in base all'evasione scelta
+           if pgme-pgm = "evacli" and pgmChiamante not = "evacli" 
+              set pgme-ok to true
+           else
+              call   "gpgmexe" using gpgmexe-linkage
+              cancel "gpgmexe"
+           end-if
 
       *    se è tutto ok lancio il pgm
            if pgme-ok

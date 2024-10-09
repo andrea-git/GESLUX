@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          evacli.
        AUTHOR.              andre.
-       DATE-WRITTEN.        lunedì 5 febbraio 2024 11:51:24.
+       DATE-WRITTEN.        venerdì 4 ottobre 2024 17:51:22.
        REMARKS.
       *{TOTEM}END
 
@@ -643,9 +643,9 @@
        77 STATUS-Screen2-FLAG-REFRESH PIC  9.
           88 Screen2-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-Screen2-KEY1-ORDER  PIC X VALUE "A".
-       77 TMP-Screen2-tmagaz-RESTOREBUF  PIC X(212).
+       77 TMP-Screen2-tmagaz-RESTOREBUF  PIC X(612).
        77 TMP-Screen2-KEYIS  PIC 9(3) VALUE 1.
-       77 Screen2-MULKEY-TMPBUF   PIC X(212).
+       77 Screen2-MULKEY-TMPBUF   PIC X(612).
        77 STATUS-scr-elab-FLAG-REFRESH PIC  9.
           88 scr-elab-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 STATUS-scr-elab-evasioni-FLAG-REFRESH PIC  9.
@@ -655,9 +655,9 @@
        77 STATUS-scr-elab-tprev-FLAG-REFRESH PIC  9.
           88 scr-elab-tprev-FLAG-REFRESH  VALUE 1 FALSE 0. 
        77 TMP-DataSet1-tparameva-BUF     PIC X(810).
-       77 TMP-DataSet1-tmagaz-BUF     PIC X(212).
-       77 TMP-DataSet1-clienti-BUF     PIC X(3610).
-       77 TMP-DataSet1-destini-BUF     PIC X(3676).
+       77 TMP-DataSet1-tmagaz-BUF     PIC X(612).
+       77 TMP-DataSet1-clienti-BUF     PIC X(4410).
+       77 TMP-DataSet1-destini-BUF     PIC X(3976).
        77 TMP-DataSet1-mrordini-BUF     PIC X(891).
        77 TMP-DataSet1-mtordini-BUF     PIC X(2122).
        77 TMP-DataSet1-tmp-k-mtordini-BUF     PIC X(31).
@@ -16554,6 +16554,15 @@
            end-if.
 
            if tipo-evasione = 1
+      *       come prima cosa verifico che non ci siano blocchi al lancio 
+      *       dei programmi, attualmente solamente EVACLI
+              move LK-BL-PROG-ID   to pgme-pgm
+              move user-codi       to pgme-utente
+              set pgme-ingresso    to true
+           
+              call   "gpgmexe" using gpgmexe-linkage
+              cancel "gpgmexe"
+
               move user-codi    to pgme-utente
               if not RichiamoBatch
                  set pgme-evasione to true
