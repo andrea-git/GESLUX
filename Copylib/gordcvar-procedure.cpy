@@ -2747,7 +2747,7 @@ PATCH      end-if.
 
            end-if.
                      
-           if NoSalvato
+           if NoSalvato and PgmChiamante not = "del-evasioni"
               display message box MSG-Salvare-le-modifiche
                             title titolo
                             type mb-yes-no-cancel
