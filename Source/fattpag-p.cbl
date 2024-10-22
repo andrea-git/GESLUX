@@ -737,6 +737,8 @@
                      separatore         delimited size
                      "INSOLUTO"         delimited size
                      separatore         delimited size
+                     "Contrassegno"     delimited size
+                     separatore         delimited size
                 into line-riga
               end-string
               write line-riga
@@ -785,6 +787,8 @@
                   ultima-data-inc(1:4)  delimited size
                   separatore            delimited size
                   importo-insoluto-ed   delimited size
+                  separatore            delimited size
+                  tor-contrassegno      delimited size
                   separatore            delimited size
              into line-riga
            end-string.
