@@ -372,7 +372,10 @@
 
       ***---
        CLOSE-FILES.
-           close articoli tmovmag rmovmag tcaumag lineseq.
+           close articoli tmovmag rmovmag tcaumag.
+           if RichiamoSchedulato
+              close lineseq
+           end-if.
 
       ***---
        RIGA-LOG.
