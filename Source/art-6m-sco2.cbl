@@ -1,15 +1,19 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.                      art-6m-sco2.
        AUTHOR.                          Andrea.
-       REMARKS. se il codice è creato da almeno 6 mesi e non ha nessuno 
-                venduto negli ultimi 6 mesi viene messo automaticamente 
-                in scorta 2.
+       REMARKS. tutti i prodotti:
+                - MODIFICATI da almeno 6 mesi
+                - CON GIACENZA POSITIVA
+                - non in scorta 0
+                - SENZA VENDUTI negli ultimi 6 mesi 
+                passano in scorta 2
       ******************************************************************
 
        SPECIAL-NAMES. decimal-point is comma.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.        
            copy "articoli.sl".
+           copy "progmag.sl".
            copy "tmovmag.sl".
            copy "rmovmag.sl".
            copy "tcaumag.sl".
@@ -19,6 +23,7 @@
        DATA DIVISION.
        FILE SECTION.
            copy "articoli.fd".
+           copy "progmag.fd".
            copy "tmovmag.fd".
            copy "rmovmag.fd".
            copy "tcaumag.fd".
@@ -35,11 +40,12 @@
        77  status-tmovmag        pic xx.    
        77  status-tcaumag        pic xx.
        77  status-lineseq        pic xx.
+       77  status-progmag        pic xx.
                                                 
        77  data-oggi             pic 9(8).
        77  como-ora              pic 9(8).
        77  como-data             pic 9(8).
-       77  como-riga             pic x(110).  
+       77  como-riga             pic x(170).  
        77  r-inizio              pic x(25).    
        77  nargs                 pic 99  comp-1 value 0.
                                               
@@ -68,7 +74,47 @@
        copy "link-batch.def".
       ******************************************************************
        PROCEDURE DIVISION USING batch-linkage. 
-       DECLARATIVES.   
+       DECLARATIVES.               
+
+      ***---
+       PROGMAG-ERR SECTION.
+           use after error procedure on progmag.
+           set RecLocked to false.
+           set tutto-ok  to true.
+           evaluate status-progmag
+           when "35"
+                initialize como-riga
+                perform SETTA-INIZIO-RIGA
+                string r-inizio                      delimited size
+                       "File [PROGMAG] inesistente!" delimited size
+                       into como-riga
+                end-string
+                perform RIGA-LOG
+                set errori to true
+                set nessun-errore to false
+           when "39"
+                initialize como-riga
+                perform SETTA-INIZIO-RIGA
+                string r-inizio                        delimited size
+                       "File [PROGMAG] mismatch size!" delimited size
+                       into como-riga
+                end-string
+                perform RIGA-LOG
+                set errori to true
+                set nessun-errore to false
+           when "98"
+                initialize como-riga
+                perform SETTA-INIZIO-RIGA
+                string r-inizio                          delimited size
+                       "[PROGMAG] indexed file corrupt!" delimited size
+                       into como-riga
+                end-string
+                perform RIGA-LOG
+                set errori to true
+                set nessun-errore to false
+           when "93"
+           when "99" set RecLocked to true
+           end-evaluate. 
 
       ***---
        ARTICOLI-ERR SECTION.
@@ -305,7 +351,7 @@
       ***---
        OPEN-FILES.
            open i-o   articoli.
-           open input tmovmag rmovmag tcaumag.
+           open input tmovmag rmovmag tcaumag progmag.
 
       ***---
        ELABORAZIONE.        
@@ -315,6 +361,19 @@
            end-start.
            perform until 1 = 2
               read articoli next at end exit perform end-read
+              if art-data-ultima-modifica > como-data-6m or
+                 art-scorta = 0
+                 exit perform cycle
+              end-if
+              initialize prg-chiave replacing numeric data by zeroes
+                                         alphanumeric data by spaces
+              move art-codice to prg-cod-articolo
+              read progmag no lock
+                   invalid move 0 to prg-giacenza
+              end-read
+              if prg-giacenza <= 0
+                 exit perform cycle
+              end-if
               move como-data-6m  to rmo-data-movim
               move art-codice to rmo-articolo 
               set scorta2 to true
@@ -365,6 +424,26 @@
                     end-perform
               end-start
               if scorta2  
+                 initialize como-riga        
+                 perform SETTA-INIZIO-RIGA
+                 string r-inizio
+                        "ARTICOLO: " 
+                        art-codice 
+                        ", NESSUN MOVIMENTO TROVATO. "
+                        "SCORTA ATTUALE: "
+                        art-scorta
+                        ". DATA ULTIMA MODIFICA: "         
+                        art-data-ultima-modifica(7:2)
+                        "/"
+                        art-data-ultima-modifica(5:2)
+                        "/"
+                        art-data-ultima-modifica(1:4)
+                        ". GIACENZA PADRE: "
+                        prg-giacenza
+                        " ---> SCORTA 2."
+                   into como-riga
+                 end-string
+                 perform RIGA-LOG
                  move 2 to art-scorta
                  rewrite art-rec
               end-if
@@ -372,7 +451,7 @@
 
       ***---
        CLOSE-FILES.
-           close articoli tmovmag rmovmag tcaumag.
+           close articoli tmovmag rmovmag tcaumag progmag.
            if RichiamoSchedulato
               close lineseq
            end-if.
