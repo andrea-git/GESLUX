@@ -63,6 +63,11 @@
          03 como-anno-6m         pic 9(4).
          03 como-mese-6m         pic 9(2).
          03 como-giorno-6m       pic 9(2).
+
+       01  como-data-12m.
+         03 como-anno-12m        pic 9(4).
+         03 como-mese-12m        pic 9(2).
+         03 como-giorno-12m      pic 9(2).
        
       * FLAGS
        77  controllo             pic xx.
@@ -299,8 +304,14 @@
 
            set tutto-ok to true.
            accept data-oggi from century-date.
-           move data-oggi(5:2) to como-mese-6m.
+                                                
+           move data-oggi(1:4) to como-anno-12m.
+           move data-oggi(5:2) to como-mese-12m.
+           move data-oggi(7:2) to como-giorno-12m.
+           subtract 1 from como-anno-12m.
+                                                
            move data-oggi(1:4) to como-anno-6m.
+           move data-oggi(5:2) to como-mese-6m. 
            move data-oggi(7:2) to como-giorno-6m.
            evaluate como-mese-6m
            when 1 move  7 to como-mese-6m
@@ -316,34 +327,45 @@
            when 6 move 12 to como-mese-6m
                   subtract 1 from como-anno-6m
            when other subtract 6 from como-mese-6m
-           end-evaluate.  
-           if RichiamoSchedulato
-              initialize wstampa
-              accept como-data from century-date
-              accept como-ora  from time
+           end-evaluate.        
+           initialize wstampa
+           if RichiamoSchedulato        
               accept  wstampa from environment "SCHEDULER_PATH_LOG"
-              inspect wstampa replacing trailing spaces by low-value
-              string  wstampa         delimited low-value
-                      "ART-6M-SCO2_"  delimited size
-                      como-data       delimited size
-                      "_"             delimited size
-                      como-ora        delimited size
-                      ".log"          delimited size
-                      into wstampa
-              end-string
-              set RichiamoSchedulato to true
-              move wstampa to batch-log
-              open output lineseq
+           else                                                    
+              accept  wstampa from environment "PATH_ST"
            end-if.
+                                
+           accept como-data from century-date
+           accept como-ora  from time
+           inspect wstampa replacing trailing spaces by low-value
+           string  wstampa         delimited low-value
+                   "ART-6M-SCO2_"  delimited size
+                   como-data       delimited size
+                   "_"             delimited size
+                   como-ora        delimited size
+                   ".log"          delimited size
+                   into wstampa
+           end-string
+           if RichiamoSchedulato
+              move wstampa to batch-log
+           end-if
+           open output lineseq
+           
            initialize como-riga.      
            perform SETTA-INIZIO-RIGA.
-           string r-inizio
-                  "DATA INIZIO RICERCA: " 
+           string r-inizio            
+                  "DATA RICERCA MOVIMENTI: " 
                   como-data-6m(7:2)
                   "/"
                   como-data-6m(5:2)
                   "/"
                   como-data-6m(1:4)
+                  " - DATA ARTICOLO: " 
+                  como-data-12m(7:2)
+                  "/"
+                  como-data-12m(5:2)
+                  "/"
+                  como-data-12m(1:4)
              into como-riga
            end-string.
            perform RIGA-LOG.
@@ -354,15 +376,28 @@
            open input tmovmag rmovmag tcaumag progmag.
 
       ***---
-       ELABORAZIONE.        
+       ELABORAZIONE.     
+           initialize como-riga        
+           perform SETTA-INIZIO-RIGA
+           string r-inizio
+                  "INIZIO ELABORAZIONE"
+             into como-riga
+           end-string
+           perform RIGA-LOG
+
            move low-value to art-rec.
            start articoli key >= art-chiave
                  invalid continue
            end-start.
            perform until 1 = 2
               read articoli next at end exit perform end-read
-              if art-data-ultima-modifica > como-data-6m or
-                 art-scorta = 0
+              if art-data-ultima-modifica <= 0
+                 move art-data-creazione to como-data 
+              else                       
+                 move art-data-ultima-modifica to como-data 
+              end-if
+              if como-data > como-data-12m or
+                 art-scorta = 0 or art-scorta = 2
                  exit perform cycle
               end-if
               initialize prg-chiave replacing numeric data by zeroes
@@ -433,11 +468,11 @@
                         "SCORTA ATTUALE: "
                         art-scorta
                         ". DATA ULTIMA MODIFICA: "         
-                        art-data-ultima-modifica(7:2)
+                        como-data(7:2)
                         "/"
-                        art-data-ultima-modifica(5:2)
+                        como-data(5:2)
                         "/"
-                        art-data-ultima-modifica(1:4)
+                        como-data(1:4)
                         ". GIACENZA PADRE: "
                         prg-giacenza
                         " ---> SCORTA 2."
@@ -447,24 +482,25 @@
                  move 2 to art-scorta
                  rewrite art-rec
               end-if
-           end-perform.     
+           end-perform.           
+           
+           initialize como-riga.
+           perform SETTA-INIZIO-RIGA
+           string r-inizio
+                  "FINE ELABORAZIONE"
+             into como-riga
+           end-string.
+           perform RIGA-LOG.
 
       ***---
        CLOSE-FILES.
-           close articoli tmovmag rmovmag tcaumag progmag.
-           if RichiamoSchedulato
-              close lineseq
-           end-if.
+           close articoli tmovmag rmovmag tcaumag progmag lineseq.
 
       ***---
        RIGA-LOG.
-           if RichiamoSchedulato
-              initialize line-riga of lineseq
-              write line-riga of lineseq from como-riga
-           else
-              display como-riga upon syserr
-           end-if.
-
+           initialize line-riga of lineseq.
+           write line-riga of lineseq from como-riga.
+           
       ***---
        EXIT-PGM. 
            goback.
