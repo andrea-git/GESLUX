@@ -190,7 +190,8 @@
                        move tlis-trasp-f to como-trasporto-f
                        move tlis-trasp-c to como-trasporto-c
                        perform CALCOLA-PRZ-FINITO
-                       move prz-reale to rlis-prz-reale
+                       move prz-reale     to rlis-prz-reale
+                       move prz-confronto to rlis-prz-conf
                        set RecLocked to false
                        rewrite rlis-rec
                        if RecLocked    
