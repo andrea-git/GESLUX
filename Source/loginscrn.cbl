@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          loginscrn IS INITIAL PROGRAM.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 8 febbraio 2022 09:26:02.
+       DATE-WRITTEN.        giovedì 7 novembre 2024 19:35:32.
        REMARKS.
       *{TOTEM}END
 
@@ -71,6 +71,7 @@
            88 stop-splash VALUE IS "s". 
        77 path-archivi-sto PIC  x(256).
        77 path-archivi     PIC  x(256).
+       77 gesluxnew        PIC  x(256).
        77 path-archivi-completo        PIC  x(256).
        77 h-splash
                   USAGE IS HANDLE OF WINDOW.
@@ -112,7 +113,9 @@
        77 lubex-colori-bmp PIC  S9(9)
                   USAGE IS COMP-4
                   VALUE IS 0.
-       78 titolo VALUE IS "Geslux - Login". 
+       77 titolo           PIC  x(50).
+       78 titolo1 VALUE IS "Geslux - Login". 
+       78 titolo2 VALUE IS "Geslux NEW - Login". 
        77 Verdana12-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 bottone-ok-bmp   PIC  S9(9)
@@ -151,6 +154,8 @@
                   VALUE IS "Storico fino al 2014".
        77 STATUS-tparamge  PIC  X(2).
            88 Valid-STATUS-tparamge VALUE IS "00" THRU "09". 
+       77 Comic-Sans-MS16I-Occidentale
+                  USAGE IS HANDLE OF FONT.
 
       ***********************************************************
       *   Code Gen's Buffer                                     *
@@ -384,19 +389,19 @@
 
       * LABEL
        05
-           Form1-La-4, 
+           lab-new, 
            Label, 
-           COL 1,40, 
-           LINE 13,72,
-           LINES 0,78 ,
-           SIZE 21,40 ,
-           COLOR IS 2,
-           FONT IS Verdana8-Occidentale,
-           ID IS 13,
-           HEIGHT-IN-CELLS,
-           WIDTH-IN-CELLS,
+           COL 7,50, 
+           LINE 12,61,
+           LINES 0,90 ,
+           SIZE 11,98 ,
+           COLOR IS 128,
+           FONT IS Comic-Sans-MS16I-Occidentale,
+           ID IS 7,
+           LEFT,
            TRANSPARENT,
-           TITLE "Release 2.7.1 del 13/10/2011",
+           TITLE "GESLUX NEW",
+           VISIBLE 0,
            .
 
       * LABEL
@@ -436,12 +441,12 @@
            Form1-La-3, 
            Label, 
            COL 6,80, 
-           LINE 1,38,
+           LINE 1,94,
            LINES 0,88 ,
            SIZE 18,00 ,
-           COLOR IS 1,
+           COLOR IS 128,
            FONT IS Comic-Sans-MS22I,
-           ID IS 7,
+           ID IS 9,
            CENTER,
            TRANSPARENT,
            TITLE "Gestione Commerciale",
@@ -488,10 +493,26 @@
            LINES 0,94 ,
            SIZE 1,50 ,
            FONT IS Default-Font,
-           ID IS 9,
+           ID IS 13,
            TRANSPARENT,
            TITLE "CUSTOM CONTROL",
            VISIBLE v-custom,
+           .
+
+      * FRAME
+       05
+           fr-new, 
+           Frame, 
+           COL 1,00, 
+           LINE 1,00,
+           LINES 13,61 ,
+           SIZE 43,10 ,
+           COLOR IS 5,
+           ID IS 15,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VERY-HEAVY,
+           VISIBLE 0,
            .
 
       *{TOTEM}END
@@ -581,7 +602,7 @@
            PERFORM CLOSE-FILE-RTN
       * <TOTEM:EPT. INIT:loginscrn, INIT:loginscrn, BeforeDestroyResource>
       * <TOTEM:END>
-           DESTROY Verdana8-Occidentale
+           DESTROY Comic-Sans-MS16I-Occidentale
            DESTROY Comic-Sans-MS22I
            DESTROY Verdana12-Occidentale
            CALL "w$bitmap" USING WBITMAP-DESTROY, BOTTONE-OK-BMP
@@ -614,19 +635,19 @@
            .
     
        INIT-FONT.
-      * Verdana8-Occidentale
-           INITIALIZE WFONT-DATA Verdana8-Occidentale
-           MOVE 8 TO WFONT-SIZE
-           MOVE "Verdana" TO WFONT-NAME
+      * Comic-Sans-MS16I-Occidentale
+           INITIALIZE WFONT-DATA Comic-Sans-MS16I-Occidentale
+           MOVE 16 TO WFONT-SIZE
+           MOVE "Comic Sans MS" TO WFONT-NAME
            SET WFCHARSET-DONT-CARE TO TRUE
            SET WFONT-BOLD TO FALSE
-           SET WFONT-ITALIC TO FALSE
+           SET WFONT-ITALIC TO TRUE
            SET WFONT-UNDERLINE TO FALSE
            SET WFONT-STRIKEOUT TO FALSE
            SET WFONT-FIXED-PITCH TO FALSE
            MOVE 0 TO WFONT-CHAR-SET
            CALL "W$FONT" USING WFONT-GET-FONT, 
-                     Verdana8-Occidentale, WFONT-DATA
+                     Comic-Sans-MS16I-Occidentale, WFONT-DATA
       * Comic-Sans-MS22I
            INITIALIZE WFONT-DATA Comic-Sans-MS22I
            MOVE 22 TO WFONT-SIZE
@@ -1894,7 +1915,7 @@
               TITLE titolo,
               WITH SYSTEM MENU,
               USER-GRAY,
-           VISIBLE 0,
+           VISIBLE 1,
               USER-WHITE,
               No WRAP,
               EVENT PROCEDURE Form1-Event,
@@ -1911,6 +1932,10 @@
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           if gesluxnew = "S"             
+              modify fr-new,  visible true
+              modify lab-new, visible true
+           end-if.
            accept path-archivi-sto from environment "PATH_ARCHIVI_STO".
            if path-archivi-sto not = spaces
               inspect path-archivi-sto replacing trailing spaces by 
@@ -2704,6 +2729,14 @@
 
        loginscrn-Ev-Before-Program.
       * <TOTEM:PARA. loginscrn-Ev-Before-Program>
+           accept gesluxnew from environment "GESLUXNEW".
+
+           if gesluxnew = "S"
+              move titolo2 to titolo
+           else
+              move titolo1 to titolo
+           end-if.
+
            display spaces upon syserr.
            display "*** STARTING GESLUX... ***" upon syserr.
       ***     set environment "keystroke" to "data=44   46".

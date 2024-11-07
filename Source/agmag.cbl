@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          agmag.
        AUTHOR.              andre.
-       DATE-WRITTEN.        mercoledì 10 luglio 2024 09:42:06.
+       DATE-WRITTEN.        mercoledì 6 novembre 2024 11:19:52.
        REMARKS.
       *{TOTEM}END
 

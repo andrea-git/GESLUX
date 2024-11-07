@@ -3230,10 +3230,6 @@ LABLAB     copy "blister.fd".
            open input USER.
            if status-USER = "35"
               open output user
-              close       user
-              call   "conv-user"
-              cancel "conv-user"
-              open input user
            end-if.
            close USER.       
            

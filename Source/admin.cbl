@@ -7,7 +7,7 @@
       *{TOTEM}PRGID
        PROGRAM-ID.          admin.
        AUTHOR.              andre.
-       DATE-WRITTEN.        martedì 7 settembre 2021 10:20:13.
+       DATE-WRITTEN.        giovedì 7 novembre 2024 16:43:20.
        REMARKS.
       *{TOTEM}END
 

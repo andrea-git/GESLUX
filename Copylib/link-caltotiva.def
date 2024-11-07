@@ -1,0 +1,8 @@
+      *
+       01 caltotiva-linkage.
+           03 caltotiva-tipo   pic x. |"F" "N"
+           03 caltotiva-doc.             
+              05 caltotiva-anno pic 9(4).
+              05 caltotiva-num  pic 9(8).
+           03 caltotiva-tot    pic 9(10)v99.
+           03 filler           pic x(100).

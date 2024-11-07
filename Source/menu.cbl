@@ -6,8 +6,8 @@
        IDENTIFICATION       DIVISION.
       *{TOTEM}PRGID
        PROGRAM-ID.          "menu" IS INITIAL PROGRAM.
-       AUTHOR.              ANDREA EVENTI.
-       DATE-WRITTEN.        martedì 3 luglio 2018 13:30:24.
+       AUTHOR.              andre.
+       DATE-WRITTEN.        giovedì 7 novembre 2024 19:33:31.
        REMARKS.
       *{TOTEM}END
 
@@ -59,7 +59,7 @@
                COPY "crtvars.def".
                COPY "showmsg.def".
                COPY "totem.def".
-               COPY "F:\lubex\geslux\Copylib\standard.def".
+               COPY "standard.def".
       *{TOTEM}END
 
       *{TOTEM}COPY-WORKING
@@ -102,6 +102,7 @@
                10 STACK-MENU-LEVEL PIC  X(10).
        77 Small-Font
                   USAGE IS HANDLE OF FONT SMALL-FONT.
+       77 gesluxnew        PIC  x.
        77 cmd  PIC  x(200).
        77 Form1-St-1-Handle
                   USAGE IS HANDLE OF STATUS-BAR.
@@ -197,6 +198,7 @@
                   VALUE IS 0.
        77 TITOLO           PIC  X(50).
        78 titolo1 VALUE IS "Geslux - Menu Principale". 
+       78 titolo2 VALUE IS "Geslux NEW - Menu Principale". 
        77 Verdana12-Occidentale
                   USAGE IS HANDLE OF FONT.
        77 bottone-ok-bmp   PIC  S9(9)
@@ -346,7 +348,7 @@
            Form1-Fr-1, 
            Frame, 
            COL 2,00, 
-           LINE 1,38,
+           LINE 1,77,
            LINES 32,62 ,
            SIZE 54,00 ,
            ENGRAVED,
@@ -359,7 +361,7 @@
            Form1-Menu-Tree, 
            Tree-View, 
            COL 2,00, 
-           LINE 3,46,
+           LINE 3,85,
            LINES 30,23 ,
            SIZE 40,50 ,
            BITMAP-HANDLE TREE-BMP,
@@ -380,7 +382,7 @@
            Form1-Bt-2, 
            Bitmap, 
            COL 2,33, 
-           LINE 1,53,
+           LINE 1,92,
            LINES 24,00 ,
            SIZE 319,00 ,
            BITMAP-HANDLE sx-bmp,
@@ -393,7 +395,7 @@
            Form1-Fr-2, 
            Frame, 
            COL 57,17, 
-           LINE 1,38,
+           LINE 1,77,
            LINES 14,92 ,
            SIZE 61,50 ,
            ENGRAVED,
@@ -406,7 +408,7 @@
            ef-descr, 
            Entry-Field, 
            COL 57,50, 
-           LINE 3,46,
+           LINE 3,85,
            LINES 12,62 ,
            SIZE 60,50 ,
            NO-BOX,
@@ -427,7 +429,7 @@
            Form1-Bt-3, 
            Bitmap, 
            COL 57,50, 
-           LINE 1,53,
+           LINE 1,92,
            LINES 24,00 ,
            SIZE 363,00 ,
            BITMAP-HANDLE DX-BMP,
@@ -440,7 +442,7 @@
            Form1-Fr-3, 
            Frame, 
            COL 57,17, 
-           LINE 16,23,
+           LINE 16,62,
            LINES 17,77 ,
            SIZE 61,50 ,
            ENGRAVED,
@@ -452,7 +454,7 @@
            Form1-Bt-1, 
            Bitmap, 
            COL 57,50, 
-           LINE 16,92,
+           LINE 17,31,
            LINES 218,00 ,
            SIZE 365,00 ,
            BITMAP-HANDLE SFONDO-JPG,
@@ -465,7 +467,7 @@
            Form1-Pb-Run-Prg, 
            Push-Button, 
            COL 104,50, 
-           LINE 31,61,
+           LINE 32,00,
            LINES 21,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE ESEGUI_73X21-BMP,
@@ -485,7 +487,7 @@
            Form1-Pb-2, 
            Push-Button, 
            COL 90,84, 
-           LINE 31,61,
+           LINE 32,00,
            LINES 21,00 ,
            SIZE 73,00 ,
            BITMAP-HANDLE ESCI_73X21-BMP,
@@ -504,7 +506,7 @@
            ef-messaggio, 
            Entry-Field, 
            COL 57,50, 
-           LINE 16,77,
+           LINE 17,16,
            LINES 14,15 ,
            SIZE 60,50 ,
            BOXED,
@@ -520,6 +522,22 @@
            VISIBLE v-messaggio,
            BEFORE PROCEDURE Form1-DaEf-1-BeforeProcedure, 
            .
+      * FRAME
+       05
+           fr-new, 
+           Frame, 
+           COL 1,00, 
+           LINE 1,00,
+           LINES 33,77 ,
+           SIZE 118,83 ,
+           COLOR IS 5,
+           ID IS 4,
+           HEIGHT-IN-CELLS,
+           WIDTH-IN-CELLS,
+           VERY-HEAVY,
+           VISIBLE 0,
+           .
+
       * TOOLBAR
        01
            Form1-Tb-2,
@@ -2316,7 +2334,7 @@
 
        Form1-Create-Win.
            Display Independent GRAPHICAL WINDOW
-              LINES 34,77,
+              LINES 35,54,
               SIZE 118,83,
               COLOR WindowColor,
               CONTROL FONT Small-Font,
@@ -2324,7 +2342,7 @@
               LINK TO THREAD,
               NO SCROLL,
               TITLE-BAR,
-              TITLE titolo1,
+              TITLE titolo,
               AUTO-MINIMIZE,
               WITH SYSTEM MENU,
               USER-GRAY,
@@ -2362,6 +2380,9 @@
 
        Form1-PROC.
       * <TOTEM:EPT. FORM:Form1, FORM:Form1, BeforeAccept>
+           if gesluxnew = "S"
+              modify fr-new, visible true
+           end-if.
            modify Form1-St-1-Handle, panel-index = 3
                                      panel-style = 2
                                      panel-text  = lab-anno-buf.
@@ -2751,7 +2772,7 @@
            .
 
        Form1-Init-Value.
-           MOVE titolo1 TO TOTEM-MSG-TITLE
+           MOVE titolo TO TOTEM-MSG-TITLE
            INITIALIZE Form1-BUF
       * FORM : Form1
            PERFORM DataSet1-INIT-RECORD
@@ -3197,16 +3218,6 @@
                    end-if
                    move 3 to h-livello-abil
                    perform CHIAMATA-EFFETTIVA
-      *             call thread "Gest-Pwd" using lk-blockpgm
-      *                                          user-cod
-      *                                          h-livello-abil
-      *                  on overflow
-      *                  display message "Il programma non esiste!"
-      *                            title titolo1
-      *                  set lk-bl-cancellazione to true
-      *                  perform I-O-BLOCCO
-      *             end-call
-      *             cancel "Gest-Pwd"
                 else 
                    move lk-hnd-win    to hnd-win-attiva
                    set i-o window     to hnd-win-attiva
@@ -3225,16 +3236,6 @@
                        move 0 to sw-call
                     end-if
                     perform CHIAMATA-EFFETTIVA
-      *              call thread "gestmenu" using lk-blockpgm 
-      *                                           user-cod
-      *                                           h-livello-abil
-      *                   on overflow
-      *                   display message "Il programma non esiste!"
-      *                             title titolo1
-      *                   set lk-bl-cancellazione to true
-      *                   perform I-O-BLOCCO
-      *              end-call
-      *              cancel "gestmenu"
                  else 
                     move lk-hnd-win    to hnd-win-attiva
                     set i-o window     to hnd-win-attiva
@@ -3295,7 +3296,7 @@
                    end-if
                 else
                    display message box "Funzione non abilitata!"
-                           title titolo1
+                           title titolo
                 end-if
            end-evaluate 
            .
@@ -3597,17 +3598,6 @@
 
        CHIAMATA-EFFETTIVA.
       * <TOTEM:PARA. CHIAMATA-EFFETTIVA>
-      *                call thread prog-id OF PROG using lk-blockpgm
-      *                                                  user-cod
-      *                                                  h-livello-abil 
-      *                     on overflow
-      *                     display message "Il programma non esiste!"
-      *                               title Titolo1
-      *                     set lk-bl-cancellazione to true
-      *                     perform I-O-BLOCCO
-      *                end-call
-      *                cancel prog-id of PROG
-
            call thread "lanciopgm" using lk-blockpgm
                                          link-user
                                          h-livello-abil 
@@ -3935,7 +3925,7 @@
                      invalid
                      set errori to true
                      display message box "il programma non esiste!"
-                             title titolo1
+                             title titolo
                 end-read  
            end-evaluate.
 
@@ -4014,6 +4004,7 @@
       * <TOTEM:END>
        menu-Ev-Before-Program.
       * <TOTEM:PARA. menu-Ev-Before-Program>
+           accept gesluxnew       from environment "GESLUXNEW".
            accept versione-geslux from environment "VERSIONE_GESLUX".
            accept storico         from environment "STORICO".
            accept esercizio-x     from environment "ESERCIZIO".
@@ -4032,7 +4023,13 @@
                      ")"          delimited size
                      into lab-anno-buf
               end-string
-           end-if                    
+           end-if.     
+           
+           if gesluxnew = "S"       
+              move titolo2 to titolo
+           else
+              move titolo1 to titolo
+           end-if 
            .
       * <TOTEM:END>
 

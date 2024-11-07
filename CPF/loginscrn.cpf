@@ -2,7 +2,6 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=172.23.80.1
 
 
 [PROGRAM_CONTENT]
@@ -12,7 +11,7 @@ ANSI_FORMAT=1
 MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=loginscrn-Ev-Before-Program
 AFTER_PROGRAM=loginscrn-Ev-After-Program
-PROGRAM_UNIQUE_CODE=TOTEM-7E8A971411-364-67099389
+PROGRAM_UNIQUE_CODE=TOTEM-7E8B7183414-21-1496876
 
 {{@DESCRIPTION:
 
@@ -547,7 +546,7 @@ m_bFixed=1
 
 @}}
 [FDITEM39_WK]
-m_strName=path-archivi-completo
+m_strName=gesluxnew
 m_strRawPic=x(256)
 m_strPic=x(256)
 m_nItemLevel=77
@@ -557,8 +556,9 @@ m_bFixed=1
 
 @}}
 [FDITEM40_WK]
-m_strName=h-splash
-m_nUsage=24
+m_strName=path-archivi-completo
+m_strRawPic=x(256)
+m_strPic=x(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -566,9 +566,8 @@ m_bFixed=1
 
 @}}
 [FDITEM41_WK]
-m_strName=link-status
-m_strRawPic=s9
-m_strPic=s9
+m_strName=h-splash
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -576,8 +575,9 @@ m_bFixed=1
 
 @}}
 [FDITEM42_WK]
-m_strName=trd-splash
-m_nUsage=47
+m_strName=link-status
+m_strRawPic=s9
+m_strPic=s9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -585,9 +585,8 @@ m_bFixed=1
 
 @}}
 [FDITEM43_WK]
-m_strName=como-anno
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=trd-splash
+m_nUsage=47
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -595,9 +594,9 @@ m_bFixed=1
 
 @}}
 [FDITEM44_WK]
-m_strName=anno-x
-m_strRawPic=x(4)
-m_strPic=x(4)
+m_strName=como-anno
+m_strRawPic=9(4)
+m_strPic=9(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -605,9 +604,9 @@ m_bFixed=1
 
 @}}
 [FDITEM45_WK]
-m_strName=anno-sto
-m_strRawPic=9(4)
-m_strPic=9(4)
+m_strName=anno-x
+m_strRawPic=x(4)
+m_strPic=x(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -615,47 +614,47 @@ m_bFixed=1
 
 @}}
 [FDITEM46_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=anno-sto
+m_strRawPic=9(4)
+m_strPic=9(4)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM46_WK
 
 @}}
 [FDITEM47_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM47_WK
+
+@}}
+[FDITEM48_WK]
 m_strName=bisestile
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM47_WK
-
-@}}
-[FDITEM48_WK]
-m_strName=data-validita
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM48_WK
 
 @}}
 [FDITEM49_WK]
-m_strName=anno
-m_strRawPic=9999
-m_strPic=9999
-m_nItemLevel=5
+m_strName=data-validita
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM49_WK
 
 @}}
 [FDITEM50_WK]
-m_strName=mese
-m_strRawPic=99
-m_strPic=99
+m_strName=anno
+m_strRawPic=9999
+m_strPic=9999
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -663,7 +662,7 @@ m_bFixed=1
 
 @}}
 [FDITEM51_WK]
-m_strName=giorno
+m_strName=mese
 m_strRawPic=99
 m_strPic=99
 m_nItemLevel=5
@@ -673,18 +672,19 @@ m_bFixed=1
 
 @}}
 [FDITEM52_WK]
-m_strName=data-oggi
-m_strRawPic=9(8)
-m_strPic=9(8)
-m_nItemLevel=77
+m_strName=giorno
+m_strRawPic=99
+m_strPic=99
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM52_WK
 
 @}}
 [FDITEM53_WK]
-m_strName=Small-Font
-m_nUsage=37
+m_strName=data-oggi
+m_strRawPic=9(8)
+m_strPic=9(8)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -692,9 +692,8 @@ m_bFixed=1
 
 @}}
 [FDITEM54_WK]
-m_strName=STATUS-USER
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Small-Font
+m_nUsage=37
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -702,27 +701,27 @@ m_bFixed=1
 
 @}}
 [FDITEM55_WK]
+m_strName=STATUS-USER
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM55_WK
+
+@}}
+[FDITEM56_WK]
 m_strName=VALID-STATUS-USER
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM55_WK
-
-@}}
-[FDITEM56_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM56_WK
 
 @}}
 [FDITEM57_WK]
-m_strName=E-USER-CODICE
-m_strRawPic=X(10)
-m_strPic=X(10)
+m_strName=Form1-St-1-Handle
+m_nUsage=51
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -730,8 +729,9 @@ m_bFixed=1
 
 @}}
 [FDITEM58_WK]
-m_strName=Comic-Sans-MS22I
-m_nUsage=26
+m_strName=E-USER-CODICE
+m_strRawPic=X(10)
+m_strPic=X(10)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -739,9 +739,8 @@ m_bFixed=1
 
 @}}
 [FDITEM59_WK]
-m_strName=STATUS-user-pgm
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Comic-Sans-MS22I
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -749,15 +748,25 @@ m_bFixed=1
 
 @}}
 [FDITEM60_WK]
+m_strName=STATUS-user-pgm
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM60_WK
+
+@}}
+[FDITEM61_WK]
 m_strName=Valid-STATUS-user-pgm
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM60_WK
+{{@DataItem_m_strDescriptionFDITEM61_WK
 
 @}}
-[FDITEM61_WK]
+[FDITEM62_WK]
 m_strName=Default-bmp
 m_strRawPic=S9(6)
 m_strPic=S9(6)
@@ -766,24 +775,12 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM61_WK
-
-@}}
-[FDITEM62_WK]
-m_strName=Default-Font
-m_nUsage=38
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM62_WK
 
 @}}
 [FDITEM63_WK]
-m_strName=Form1-Bt-1-Handle
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -791,7 +788,7 @@ m_bFixed=1
 
 @}}
 [FDITEM64_WK]
-m_strName=lubex-bmp
+m_strName=Form1-Bt-1-Handle
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -803,7 +800,7 @@ m_bFixed=1
 
 @}}
 [FDITEM65_WK]
-m_strName=lubex-colori-bmp
+m_strName=lubex-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -815,17 +812,21 @@ m_bFixed=1
 
 @}}
 [FDITEM66_WK]
-m_strName=titolo
-m_strDefaultValue="Geslux - Login"
-m_nItemLevel=78
+m_strName=lubex-colori-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM66_WK
 
 @}}
 [FDITEM67_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
+m_strName=titolo
+m_strRawPic=x(50)
+m_strPic=x(50)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -833,35 +834,26 @@ m_bFixed=1
 
 @}}
 [FDITEM68_WK]
-m_strName=bottone-ok-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
+m_strName=titolo1
+m_strDefaultValue="Geslux - Login"
+m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM68_WK
 
 @}}
 [FDITEM69_WK]
-m_strName=bottone-cancel-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
-m_nItemLevel=77
+m_strName=titolo2
+m_strDefaultValue="Geslux NEW - Login"
+m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM69_WK
 
 @}}
 [FDITEM70_WK]
-m_strName=bottone-exit-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Verdana12-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -869,7 +861,7 @@ m_bFixed=1
 
 @}}
 [FDITEM71_WK]
-m_strName=esci-73x21-bmp
+m_strName=bottone-ok-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -881,10 +873,11 @@ m_bFixed=1
 
 @}}
 [FDITEM72_WK]
-m_strName=AUTO-ID
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=11
+m_strName=bottone-cancel-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -892,9 +885,11 @@ m_bFixed=1
 
 @}}
 [FDITEM73_WK]
-m_strName=como-riga
-m_strRawPic=x(100)
-m_strPic=x(100)
+m_strName=bottone-exit-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -902,9 +897,11 @@ m_bFixed=1
 
 @}}
 [FDITEM74_WK]
-m_strName=STATUS-destini
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=esci-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -912,18 +909,20 @@ m_bFixed=1
 
 @}}
 [FDITEM75_WK]
-m_strName=Valid-STATUS-destini
-m_nItemLevel=88
+m_strName=AUTO-ID
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=11
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM75_WK
 
 @}}
 [FDITEM76_WK]
-m_strName=ef-anno-buf
-m_strRawPic=z(4)
-m_strPic=z(4)
+m_strName=como-riga
+m_strRawPic=x(100)
+m_strPic=x(100)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -931,7 +930,7 @@ m_bFixed=1
 
 @}}
 [FDITEM77_WK]
-m_strName=STATUS-tconvanno
+m_strName=STATUS-destini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -941,7 +940,7 @@ m_bFixed=1
 
 @}}
 [FDITEM78_WK]
-m_strName=Valid-STATUS-tconvanno
+m_strName=Valid-STATUS-destini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -950,8 +949,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM79_WK]
-m_strName=Verdana10-Occidentale
-m_nUsage=26
+m_strName=ef-anno-buf
+m_strRawPic=z(4)
+m_strPic=z(4)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -959,8 +959,9 @@ m_bFixed=1
 
 @}}
 [FDITEM80_WK]
-m_strName=Verdana8-Occidentale
-m_nUsage=26
+m_strName=STATUS-tconvanno
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -968,19 +969,17 @@ m_bFixed=1
 
 @}}
 [FDITEM81_WK]
-m_strName=path-txt
-m_strRawPic=X(256)
-m_strPic=X(256)
-m_nItemLevel=77
+m_strName=Valid-STATUS-tconvanno
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
 [FDITEM82_WK]
-m_strName=STATUS-pass
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana10-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -988,19 +987,18 @@ m_bFixed=1
 
 @}}
 [FDITEM83_WK]
-m_strName=Valid-STATUS-pass
-m_nItemLevel=88
+m_strName=Verdana8-Occidentale
+m_nUsage=26
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM83_WK
 
 @}}
 [FDITEM84_WK]
-m_strName=chk-storico-buf
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=path-txt
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1008,9 +1006,9 @@ m_bFixed=1
 
 @}}
 [FDITEM85_WK]
-m_strName=PATH-STO-TORDINI
-m_strRawPic=X(256)
-m_strPic=X(256)
+m_strName=STATUS-pass
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1018,29 +1016,29 @@ m_bFixed=1
 
 @}}
 [FDITEM86_WK]
-m_strName=STATUS-sto-tordini
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM86_WK
-
-@}}
-[FDITEM87_WK]
-m_strName=Valid-STATUS-sto-tordini
+m_strName=Valid-STATUS-pass
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM86_WK
+
+@}}
+[FDITEM87_WK]
+m_strName=chk-storico-buf
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
 [FDITEM88_WK]
-m_strName=tit-storico
-m_strRawPic=X(20)
-m_strPic=X(20)
-m_strDefaultValue="Storico fino al 2014"
+m_strName=PATH-STO-TORDINI
+m_strRawPic=X(256)
+m_strPic=X(256)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1048,7 +1046,7 @@ m_bFixed=1
 
 @}}
 [FDITEM89_WK]
-m_strName=STATUS-tparamge
+m_strName=STATUS-sto-tordini
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1058,12 +1056,51 @@ m_bFixed=1
 
 @}}
 [FDITEM90_WK]
-m_strName=Valid-STATUS-tparamge
+m_strName=Valid-STATUS-sto-tordini
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM90_WK
+
+@}}
+[FDITEM91_WK]
+m_strName=tit-storico
+m_strRawPic=X(20)
+m_strPic=X(20)
+m_strDefaultValue="Storico fino al 2014"
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM91_WK
+
+@}}
+[FDITEM92_WK]
+m_strName=STATUS-tparamge
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM92_WK
+
+@}}
+[FDITEM93_WK]
+m_strName=Valid-STATUS-tparamge
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM93_WK
+
+@}}
+[FDITEM94_WK]
+m_strName=Comic-Sans-MS16I-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
 
@@ -1134,7 +1171,7 @@ Begin Screen Form1
    Unit              = Cells
    User Gray         = TRUE
    User White        = TRUE
-   Visible           = FALSE
+   Visible           = TRUE
    Width in Cells    = FALSE
    Window Type       = Standard
    Wrap              = FALSE
@@ -1493,39 +1530,41 @@ Begin Screen Form1
          Before Procedure  = PB-CANCEL-BeforeProcedure
          After Procedure   = PB-CANCEL-AfterProcedure
       End
-      Begin Label Form1-La-4
-         SCREEN-COL        = 1,40
-         SCREEN-LINE       = 13,72
+      Begin Label lab-new
+         SCREEN-COL        = 7,50
+         SCREEN-LINE       = 12,61
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
-         (Name)            = Form1-La-4
+         (Name)            = lab-new
+         Ccol              = 0
+         Cline             = 0
          Clines            = 0
          Clines Unit       = Default
-         Color             = 2
-         Column            = 1,40
+         Color             = 128
+         Column            = 7,50
          Csize             = 0
          Csize Unit        = Default
          Destroy Type      = Automatic
          Enable            = NONE
-         Font              = Verdana/8/C0/@Occidentale
-         Font Variable     = Verdana8-Occidentale
-         Height in Cells   = TRUE
+         Font              = Comic Sans MS/16/I/C0/@Occidentale
+         Font Variable     = Comic-Sans-MS16I-Occidentale
+         Height in Cells   = FALSE
          Help ID           = 0
-         ID                = 13
-         Justification     = Unaligned
+         ID                = 7
+         Justification     = Left
          Label Offset      = 20
-         Line              = 2,89
-         Lines             = 0,78
+         Line              = 1,78
+         Lines             = 0,90
          Lines Unit        = Default
          No Key Letter     = FALSE
          Occurs            = 0
-         Size              = 21,40
+         Size              = 11,98
          Size Unit         = Default
          Tab Order         = 3
-         Title             = "Release 2.7.1 del 13/10/2011"
+         Title             = "GESLUX NEW"
          Transparent       = TRUE
-         Visible           = NONE
-         Width in Cells    = TRUE
+         Visible           = FALSE
+         Width in Cells    = FALSE
       End
    End
    Begin Label Form1-La-1
@@ -1600,7 +1639,7 @@ Begin Screen Form1
    End
    Begin Label Form1-La-3
       SCREEN-COL        = 6,80
-      SCREEN-LINE       = 1,38
+      SCREEN-LINE       = 1,94
       LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-La-3
@@ -1608,7 +1647,7 @@ Begin Screen Form1
       Cline             = 0
       Clines            = 0
       Clines Unit       = Default
-      Color             = 1
+      Color             = 128
       Column            = 6,80
       Csize             = 0
       Csize Unit        = Default
@@ -1618,10 +1657,10 @@ Begin Screen Form1
       Font Variable     = Comic-Sans-MS22I
       Height in Cells   = FALSE
       Help ID           = 0
-      ID                = 7
+      ID                = 9
       Justification     = Center
       Label Offset      = 20
-      Line              = 1,38
+      Line              = 1,94
       Lines             = 0,88
       Lines Unit        = Default
       No Key Letter     = FALSE
@@ -1723,7 +1762,7 @@ Begin Screen Form1
       Font Variable     = Default-Font
       Height in Cells   = FALSE
       Help ID           = 0
-      ID                = 9
+      ID                = 13
       Justification     = Unaligned
       Label Offset      = 20
       Line              = 2,28
@@ -1739,6 +1778,39 @@ Begin Screen Form1
       Visible           = NONE
       Visible Variable  = v-custom
       Width in Cells    = FALSE
+   End
+   Begin Frame fr-new
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = fr-new
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 15
+      Line              = 1,00
+      Lines             = 13,61
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 43,10
+      Size Unit         = Default
+      Tab Order         = 12
+      Thickness         = Very Heavy
+      Title Position    = 0:Unaligned
+      Visible           = FALSE
+      Width in Cells    = TRUE
    End
 End
 
@@ -1854,6 +1926,10 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
+           if gesluxnew = "S"             
+              modify fr-new,  visible true
+              modify lab-new, visible true
+           end-if.
            accept path-archivi-sto from environment "PATH_ARCHIVI_STO".
            if path-archivi-sto not = spaces
               inspect path-archivi-sto replacing trailing spaces by low-value
@@ -2079,6 +2155,14 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = loginscrn-Ev-Before-Program
 BEGIN-TEXT
+           accept gesluxnew from environment "GESLUXNEW".
+
+           if gesluxnew = "S"
+              move titolo2 to titolo
+           else
+              move titolo1 to titolo
+           end-if.
+
            display spaces upon syserr.
            display "*** STARTING GESLUX... ***" upon syserr.
       ***     set environment "keystroke" to "data=44   46".

@@ -2,7 +2,6 @@
 ; WARNING: DO NOT MODIFY THIS FILE!
 
 [MONITOR_FILE]
-Adesk-andre=172.23.80.1
 
 
 [PROGRAM_CONTENT]
@@ -12,7 +11,7 @@ MAIN_SCREEN_NAME=Form1
 BEFORE_PROGRAM=menu-Ev-Before-Program
 AFTER_PROGRAM=menu-Ev-After-Program
 BEFORE_INIT=ACCETTA-DATA-ORA
-PROGRAM_UNIQUE_CODE=TOTEM-7E8A971411-693-1980025712
+PROGRAM_UNIQUE_CODE=TOTEM-7E8B718291-594-331324010
 
 {{@DESCRIPTION:
 
@@ -252,9 +251,9 @@ m_bFixed=1
 
 @}}
 [FDITEM23_WK]
-m_strName=cmd
-m_strRawPic=x(200)
-m_strPic=x(200)
+m_strName=gesluxnew
+m_strRawPic=x
+m_strPic=x
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -262,8 +261,9 @@ m_bFixed=1
 
 @}}
 [FDITEM24_WK]
-m_strName=Form1-St-1-Handle
-m_nUsage=51
+m_strName=cmd
+m_strRawPic=x(200)
+m_strPic=x(200)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -271,38 +271,38 @@ m_bFixed=1
 
 @}}
 [FDITEM25_WK]
-m_strName=FILLER
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=1
+m_strName=Form1-St-1-Handle
+m_nUsage=51
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM25_WK
 
 @}}
 [FDITEM26_WK]
+m_strName=FILLER
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=1
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM26_WK
+
+@}}
+[FDITEM27_WK]
 m_strName=CallProgramFlag
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
 m_strFalse=0
-{{@DataItem_m_strDescriptionFDITEM26_WK
-
-@}}
-[FDITEM27_WK]
-m_strName=Tree-bmp
-m_nUsage=45
-m_strDefaultValue=0
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM27_WK
 
 @}}
 [FDITEM28_WK]
-m_strName=CurrentItem
-m_nUsage=14
+m_strName=Tree-bmp
+m_nUsage=45
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -310,10 +310,8 @@ m_bFixed=1
 
 @}}
 [FDITEM29_WK]
-m_strName=LAST-PROG-TYPE
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
+m_strName=CurrentItem
+m_nUsage=14
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -321,9 +319,10 @@ m_bFixed=1
 
 @}}
 [FDITEM30_WK]
-m_strName=MENU-PAR-CALL
-m_strRawPic=9999
-m_strPic=9999
+m_strName=LAST-PROG-TYPE
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -331,9 +330,9 @@ m_bFixed=1
 
 @}}
 [FDITEM31_WK]
-m_strName=STATUS-user-pgm
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=MENU-PAR-CALL
+m_strRawPic=9999
+m_strPic=9999
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -341,36 +340,36 @@ m_bFixed=1
 
 @}}
 [FDITEM32_WK]
+m_strName=STATUS-user-pgm
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM32_WK
+
+@}}
+[FDITEM33_WK]
 m_strName=VALID-STATUS-user-pgm
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
-{{@DataItem_m_strDescriptionFDITEM32_WK
-
-@}}
-[FDITEM33_WK]
-m_strName=HIDDEN-TREE
-m_nItemLevel=1
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM33_WK
 
 @}}
 [FDITEM34_WK]
-m_strName=H-PROG-MENU-LEVEL
-m_strRawPic=9(10)
-m_strPic=9(10)
-m_nItemLevel=5
+m_strName=HIDDEN-TREE
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM34_WK
 
 @}}
 [FDITEM35_WK]
-m_strName=H-LIVELLO-ABIL
-m_strRawPic=9
-m_strPic=9
+m_strName=H-PROG-MENU-LEVEL
+m_strRawPic=9(10)
+m_strPic=9(10)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
@@ -378,16 +377,17 @@ m_bFixed=1
 
 @}}
 [FDITEM36_WK]
-m_strName=Form1-Tb-2-Handle
-m_nUsage=24
-m_nItemLevel=77
+m_strName=H-LIVELLO-ABIL
+m_strRawPic=9
+m_strPic=9
+m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM36_WK
 
 @}}
 [FDITEM37_WK]
-m_strName=HND-WIN-ATTIVA
+m_strName=Form1-Tb-2-Handle
 m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
@@ -396,9 +396,8 @@ m_bFixed=1
 
 @}}
 [FDITEM38_WK]
-m_strName=VALORE
-m_strRawPic=X(500)
-m_strPic=X(500)
+m_strName=HND-WIN-ATTIVA
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -406,8 +405,9 @@ m_bFixed=1
 
 @}}
 [FDITEM39_WK]
-m_strName=POINT-UTIL
-m_nUsage=14
+m_strName=VALORE
+m_strRawPic=X(500)
+m_strPic=X(500)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -415,9 +415,8 @@ m_bFixed=1
 
 @}}
 [FDITEM40_WK]
-m_strName=calendr3-bmp
-m_nUsage=45
-m_strDefaultValue=0
+m_strName=POINT-UTIL
+m_nUsage=14
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -425,25 +424,25 @@ m_bFixed=1
 
 @}}
 [FDITEM41_WK]
-m_strName=Variabili-About
-m_nItemLevel=1
+m_strName=calendr3-bmp
+m_nUsage=45
+m_strDefaultValue=0
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM41_WK
 
 @}}
 [FDITEM42_WK]
-m_strName=Win-Nome
-m_strRawPic=x(30)
-m_strPic=x(30)
-m_nItemLevel=5
+m_strName=Variabili-About
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM42_WK
 
 @}}
 [FDITEM43_WK]
-m_strName=Host-System
+m_strName=Win-Nome
 m_strRawPic=x(30)
 m_strPic=x(30)
 m_nItemLevel=5
@@ -453,6 +452,16 @@ m_bFixed=1
 
 @}}
 [FDITEM44_WK]
+m_strName=Host-System
+m_strRawPic=x(30)
+m_strPic=x(30)
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM44_WK
+
+@}}
+[FDITEM45_WK]
 m_strName=CALLP
 m_strRawPic=x(10)
 m_strPic=x(10)
@@ -460,22 +469,12 @@ m_strDefaultValue=spaces
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM44_WK
-
-@}}
-[FDITEM45_WK]
-m_strName=FORM-CALL-HANDLE
-m_nUsage=24
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM45_WK
 
 @}}
 [FDITEM46_WK]
-m_strName=sfondo-jpg
-m_nUsage=45
-m_strDefaultValue=0
+m_strName=FORM-CALL-HANDLE
+m_nUsage=24
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -483,8 +482,9 @@ m_bFixed=1
 
 @}}
 [FDITEM47_WK]
-m_strName=Form1-Mn-1-Handle
-m_nUsage=48
+m_strName=sfondo-jpg
+m_nUsage=45
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -492,22 +492,31 @@ m_bFixed=1
 
 @}}
 [FDITEM48_WK]
-m_strName=OLD-PROG-R
-m_nItemLevel=1
+m_strName=Form1-Mn-1-Handle
+m_nUsage=48
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM48_WK
 
 @}}
 [FDITEM49_WK]
-m_strName=OLD-PROG-KEY
-m_nItemLevel=5
+m_strName=OLD-PROG-R
+m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM49_WK
 
 @}}
 [FDITEM50_WK]
+m_strName=OLD-PROG-KEY
+m_nItemLevel=5
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM50_WK
+
+@}}
+[FDITEM51_WK]
 m_strName=OLD-PROG-MENU-LEVEL
 m_strRawPic=X(10)
 m_strPic=X(10)
@@ -515,20 +524,20 @@ m_nItemLevel=10
 m_nSync=-1
 m_bFixed=1
 m_strPrompt=Menu Level
-{{@DataItem_m_strDescriptionFDITEM50_WK
+{{@DataItem_m_strDescriptionFDITEM51_WK
 
 @}}
-[FDITEM51_WK]
+[FDITEM52_WK]
 m_strName=OLD-PROG-MENU-LEVEL-G
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=OLD-PROG-MENU-LEVEL
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM51_WK
+{{@DataItem_m_strDescriptionFDITEM52_WK
 
 @}}
-[FDITEM52_WK]
+[FDITEM53_WK]
 m_strName=OLD-PROG-LEVEL
 m_strRawPic=9(02)
 m_strPic=9(02)
@@ -538,33 +547,21 @@ m_bOccurs=1
 m_bFixed=1
 m_strRawSize=5
 m_nSize=5
-{{@DataItem_m_strDescriptionFDITEM52_WK
+{{@DataItem_m_strDescriptionFDITEM53_WK
 
 @}}
-[FDITEM53_WK]
+[FDITEM54_WK]
 m_strName=OLD-FILLER
 m_nItemLevel=10
 m_bRedefines=1
 m_strRedefines=OLD-PROG-MENU-LEVEL
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM53_WK
-
-@}}
-[FDITEM54_WK]
-m_strName=OLD-PROG-LEVEL-1
-m_strRawPic=9(02)
-m_strPic=9(02)
-m_nItemLevel=15
-m_nSync=-1
-m_bFixed=1
-m_strRawSize=5
-m_nSize=5
 {{@DataItem_m_strDescriptionFDITEM54_WK
 
 @}}
 [FDITEM55_WK]
-m_strName=OLD-PROG-LEVEL-2
+m_strName=OLD-PROG-LEVEL-1
 m_strRawPic=9(02)
 m_strPic=9(02)
 m_nItemLevel=15
@@ -576,7 +573,7 @@ m_nSize=5
 
 @}}
 [FDITEM56_WK]
-m_strName=OLD-PROG-LEVEL-3
+m_strName=OLD-PROG-LEVEL-2
 m_strRawPic=9(02)
 m_strPic=9(02)
 m_nItemLevel=15
@@ -588,7 +585,7 @@ m_nSize=5
 
 @}}
 [FDITEM57_WK]
-m_strName=OLD-PROG-LEVEL-4
+m_strName=OLD-PROG-LEVEL-3
 m_strRawPic=9(02)
 m_strPic=9(02)
 m_nItemLevel=15
@@ -600,7 +597,7 @@ m_nSize=5
 
 @}}
 [FDITEM58_WK]
-m_strName=OLD-PROG-LEVEL-5
+m_strName=OLD-PROG-LEVEL-4
 m_strRawPic=9(02)
 m_strPic=9(02)
 m_nItemLevel=15
@@ -612,6 +609,18 @@ m_nSize=5
 
 @}}
 [FDITEM59_WK]
+m_strName=OLD-PROG-LEVEL-5
+m_strRawPic=9(02)
+m_strPic=9(02)
+m_nItemLevel=15
+m_nSync=-1
+m_bFixed=1
+m_strRawSize=5
+m_nSize=5
+{{@DataItem_m_strDescriptionFDITEM59_WK
+
+@}}
+[FDITEM60_WK]
 m_strName=OLD-PROG-ID
 m_strRawPic=X(15)
 m_strPic=X(15)
@@ -619,10 +628,10 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strPrompt=Program ID
-{{@DataItem_m_strDescriptionFDITEM59_WK
+{{@DataItem_m_strDescriptionFDITEM60_WK
 
 @}}
-[FDITEM60_WK]
+[FDITEM61_WK]
 m_strName=OLD-PROG-S-DESC
 m_strRawPic=X(30)
 m_strPic=X(30)
@@ -630,10 +639,10 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strPrompt=Short Description
-{{@DataItem_m_strDescriptionFDITEM60_WK
+{{@DataItem_m_strDescriptionFDITEM61_WK
 
 @}}
-[FDITEM61_WK]
+[FDITEM62_WK]
 m_strName=OLD-PROG-TYPE
 m_strRawPic=9(01)
 m_strPic=9(01)
@@ -641,58 +650,58 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strPrompt=Program Type
-{{@DataItem_m_strDescriptionFDITEM61_WK
+{{@DataItem_m_strDescriptionFDITEM62_WK
 0:Program (Executable)
 1:Classification (Non-executable)
 
 @}}
-[FDITEM62_WK]
+[FDITEM63_WK]
 m_strName=OLD-PROG-TYPE-2
 m_strRawPic=X(20)
 m_strPic=X(20)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM62_WK
+{{@DataItem_m_strDescriptionFDITEM63_WK
 
 @}}
-[FDITEM63_WK]
+[FDITEM64_WK]
 m_strName=OLD-PROG-T-ELABORAZIONE
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="Elaborazione"
-{{@DataItem_m_strDescriptionFDITEM63_WK
+{{@DataItem_m_strDescriptionFDITEM64_WK
 
 @}}
-[FDITEM64_WK]
+[FDITEM65_WK]
 m_strName=OLD-PROG-T-ARCHIVIO
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="Gestione archivio"
-{{@DataItem_m_strDescriptionFDITEM64_WK
+{{@DataItem_m_strDescriptionFDITEM65_WK
 
 @}}
-[FDITEM65_WK]
+[FDITEM66_WK]
 m_strName=OLD-PROG-T-STAMPA
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="Stampa"
-{{@DataItem_m_strDescriptionFDITEM65_WK
+{{@DataItem_m_strDescriptionFDITEM66_WK
 
 @}}
-[FDITEM66_WK]
+[FDITEM67_WK]
 m_strName=OLD-PROG-T-NON-ESEGU
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=SPACES
-{{@DataItem_m_strDescriptionFDITEM66_WK
+{{@DataItem_m_strDescriptionFDITEM67_WK
 
 @}}
-[FDITEM67_WK]
+[FDITEM68_WK]
 m_strName=OLD-PROG-L-DESC
 m_strRawPic=X(500)
 m_strPic=X(500)
@@ -700,33 +709,23 @@ m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
 m_strPrompt=Long Description
-{{@DataItem_m_strDescriptionFDITEM67_WK
+{{@DataItem_m_strDescriptionFDITEM68_WK
 
 @}}
-[FDITEM68_WK]
+[FDITEM69_WK]
 m_strName=OLD-PROG-FILLER
 m_strRawPic=X(100)
 m_strPic=X(100)
 m_nItemLevel=5
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM68_WK
-
-@}}
-[FDITEM69_WK]
-m_strName=num-bitmap
-m_strRawPic=9
-m_strPic=9
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM69_WK
 
 @}}
 [FDITEM70_WK]
-m_strName=VALORE2
-m_strRawPic=X(500)
-m_strPic=X(500)
+m_strName=num-bitmap
+m_strRawPic=9
+m_strPic=9
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -734,9 +733,9 @@ m_bFixed=1
 
 @}}
 [FDITEM71_WK]
-m_strName=tool-menu-bmp
-m_nUsage=45
-m_strDefaultValue=0
+m_strName=VALORE2
+m_strRawPic=X(500)
+m_strPic=X(500)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -744,8 +743,9 @@ m_bFixed=1
 
 @}}
 [FDITEM72_WK]
-m_strName=Times-New-Roman9B
-m_nUsage=26
+m_strName=tool-menu-bmp
+m_nUsage=45
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -753,8 +753,8 @@ m_bFixed=1
 
 @}}
 [FDITEM73_WK]
-m_strName=Default-Font
-m_nUsage=38
+m_strName=Times-New-Roman9B
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -762,11 +762,8 @@ m_bFixed=1
 
 @}}
 [FDITEM74_WK]
-m_strName=exit-73x21-bmp
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
-m_strDefaultValue=0
+m_strName=Default-Font
+m_nUsage=38
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -774,7 +771,7 @@ m_bFixed=1
 
 @}}
 [FDITEM75_WK]
-m_strName=esci-73x21-bmp
+m_strName=exit-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -786,7 +783,7 @@ m_bFixed=1
 
 @}}
 [FDITEM76_WK]
-m_strName=esegui-73x21-bmp
+m_strName=esci-73x21-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
 m_nUsage=5
@@ -798,9 +795,10 @@ m_bFixed=1
 
 @}}
 [FDITEM77_WK]
-m_strName=e-esegui
-m_strRawPic=9
-m_strPic=9
+m_strName=esegui-73x21-bmp
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
 m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
@@ -809,10 +807,9 @@ m_bFixed=1
 
 @}}
 [FDITEM78_WK]
-m_strName=ESEGUI73X21-BMP
-m_strRawPic=S9(9)
-m_strPic=S9(9)
-m_nUsage=5
+m_strName=e-esegui
+m_strRawPic=9
+m_strPic=9
 m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
@@ -821,9 +818,11 @@ m_bFixed=1
 
 @}}
 [FDITEM79_WK]
-m_strName=TITOLO
-m_strRawPic=X(50)
-m_strPic=X(50)
+m_strName=ESEGUI73X21-BMP
+m_strRawPic=S9(9)
+m_strPic=S9(9)
+m_nUsage=5
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -831,24 +830,43 @@ m_bFixed=1
 
 @}}
 [FDITEM80_WK]
-m_strName=titolo1
-m_strDefaultValue="Geslux - Menu Principale"
-m_nItemLevel=78
+m_strName=TITOLO
+m_strRawPic=X(50)
+m_strPic=X(50)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM80_WK
 
 @}}
 [FDITEM81_WK]
-m_strName=Verdana12-Occidentale
-m_nUsage=26
-m_nItemLevel=77
+m_strName=titolo1
+m_strDefaultValue="Geslux - Menu Principale"
+m_nItemLevel=78
 m_nSync=-1
 m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM81_WK
 
 @}}
 [FDITEM82_WK]
+m_strName=titolo2
+m_strDefaultValue="Geslux NEW - Menu Principale"
+m_nItemLevel=78
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM82_WK
+
+@}}
+[FDITEM83_WK]
+m_strName=Verdana12-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM83_WK
+
+@}}
+[FDITEM84_WK]
 m_strName=bottone-ok-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -857,10 +875,10 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM82_WK
+{{@DataItem_m_strDescriptionFDITEM84_WK
 
 @}}
-[FDITEM83_WK]
+[FDITEM85_WK]
 m_strName=bottone-annulla-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -869,84 +887,84 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM83_WK
+{{@DataItem_m_strDescriptionFDITEM85_WK
 
 @}}
-[FDITEM84_WK]
+[FDITEM86_WK]
 m_strName=como-offset
 m_strRawPic=9(2)
 m_strPic=9(2)
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM84_WK
+{{@DataItem_m_strDescriptionFDITEM86_WK
 
 @}}
-[FDITEM85_WK]
+[FDITEM87_WK]
 m_strName=FILLER
 m_strRawPic=9
 m_strPic=9
 m_nItemLevel=1
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM85_WK
+{{@DataItem_m_strDescriptionFDITEM87_WK
 
 @}}
-[FDITEM86_WK]
+[FDITEM88_WK]
 m_strName=livello-0
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=0
-{{@DataItem_m_strDescriptionFDITEM86_WK
+{{@DataItem_m_strDescriptionFDITEM88_WK
 
 @}}
-[FDITEM87_WK]
+[FDITEM89_WK]
 m_strName=livello-1
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=1
-{{@DataItem_m_strDescriptionFDITEM87_WK
+{{@DataItem_m_strDescriptionFDITEM89_WK
 
 @}}
-[FDITEM88_WK]
+[FDITEM90_WK]
 m_strName=livello-2
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=2
-{{@DataItem_m_strDescriptionFDITEM88_WK
+{{@DataItem_m_strDescriptionFDITEM90_WK
 
 @}}
-[FDITEM89_WK]
+[FDITEM91_WK]
 m_strName=livello-3
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=3
-{{@DataItem_m_strDescriptionFDITEM89_WK
+{{@DataItem_m_strDescriptionFDITEM91_WK
 
 @}}
-[FDITEM90_WK]
+[FDITEM92_WK]
 m_strName=livello-4
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=4
-{{@DataItem_m_strDescriptionFDITEM90_WK
+{{@DataItem_m_strDescriptionFDITEM92_WK
 
 @}}
-[FDITEM91_WK]
+[FDITEM93_WK]
 m_strName=livello-5
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue=5
-{{@DataItem_m_strDescriptionFDITEM91_WK
+{{@DataItem_m_strDescriptionFDITEM93_WK
 
 @}}
-[FDITEM92_WK]
+[FDITEM94_WK]
 m_strName=bottone_sfoglia-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -955,32 +973,13 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM92_WK
-
-@}}
-[FDITEM93_WK]
-m_strName=STAT-PROG1
-m_strRawPic=X(2)
-m_strPic=X(2)
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM93_WK
-
-@}}
-[FDITEM94_WK]
-m_strName=VALID-STAT-PROG1
-m_nItemLevel=88
-m_nSync=-1
-m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM94_WK
 
 @}}
 [FDITEM95_WK]
-m_strName=lab-anno-buf
-m_strRawPic=X(30)
-m_strPic=X(30)
+m_strName=STAT-PROG1
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -988,20 +987,18 @@ m_bFixed=1
 
 @}}
 [FDITEM96_WK]
-m_strName=v-messaggio
-m_strRawPic=9
-m_strPic=9
-m_strDefaultValue=0
-m_nItemLevel=77
+m_strName=VALID-STAT-PROG1
+m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
+m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM96_WK
 
 @}}
 [FDITEM97_WK]
-m_strName=messaggio
-m_strRawPic=X(500)
-m_strPic=X(500)
+m_strName=lab-anno-buf
+m_strRawPic=X(30)
+m_strPic=X(30)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1009,9 +1006,10 @@ m_bFixed=1
 
 @}}
 [FDITEM98_WK]
-m_strName=STATUS-useravv
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=v-messaggio
+m_strRawPic=9
+m_strPic=9
+m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1019,16 +1017,17 @@ m_bFixed=1
 
 @}}
 [FDITEM99_WK]
-m_strName=Valid-STATUS-useravv
-m_nItemLevel=88
+m_strName=messaggio
+m_strRawPic=X(500)
+m_strPic=X(500)
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM99_WK
 
 @}}
 [FDITEM100_WK]
-m_strName=STATUS-ttipoavv
+m_strName=STATUS-useravv
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1038,7 +1037,7 @@ m_bFixed=1
 
 @}}
 [FDITEM101_WK]
-m_strName=Valid-STATUS-ttipoavv
+m_strName=Valid-STATUS-useravv
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
@@ -1047,8 +1046,9 @@ m_strTrue="00" THRU "09"
 
 @}}
 [FDITEM102_WK]
-m_strName=Verdana9B-Occidentale
-m_nUsage=26
+m_strName=STATUS-ttipoavv
+m_strRawPic=X(2)
+m_strPic=X(2)
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1056,15 +1056,33 @@ m_bFixed=1
 
 @}}
 [FDITEM103_WK]
+m_strName=Valid-STATUS-ttipoavv
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM103_WK
+
+@}}
+[FDITEM104_WK]
+m_strName=Verdana9B-Occidentale
+m_nUsage=26
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM104_WK
+
+@}}
+[FDITEM105_WK]
 m_strName=Verdana10B-Occidentale
 m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM103_WK
+{{@DataItem_m_strDescriptionFDITEM105_WK
 
 @}}
-[FDITEM104_WK]
+[FDITEM106_WK]
 m_strName=sx-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -1073,10 +1091,10 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM104_WK
+{{@DataItem_m_strDescriptionFDITEM106_WK
 
 @}}
-[FDITEM105_WK]
+[FDITEM107_WK]
 m_strName=dx-bmp
 m_strRawPic=S9(9)
 m_strPic=S9(9)
@@ -1085,33 +1103,12 @@ m_strDefaultValue=0
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM105_WK
-
-@}}
-[FDITEM106_WK]
-m_strName=Verdana10-Occidentale
-m_nUsage=26
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
-{{@DataItem_m_strDescriptionFDITEM106_WK
-
-@}}
-[FDITEM107_WK]
-m_strName=WindowColor
-m_strRawPic=9(6)
-m_strPic=9(6)
-m_strDefaultValue=65793
-m_nItemLevel=77
-m_nSync=-1
-m_bFixed=1
 {{@DataItem_m_strDescriptionFDITEM107_WK
 
 @}}
 [FDITEM108_WK]
-m_strName=STATUS-USER
-m_strRawPic=X(2)
-m_strPic=X(2)
+m_strName=Verdana10-Occidentale
+m_nUsage=26
 m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
@@ -1119,16 +1116,18 @@ m_bFixed=1
 
 @}}
 [FDITEM109_WK]
-m_strName=Valid-STATUS-USER
-m_nItemLevel=88
+m_strName=WindowColor
+m_strRawPic=9(6)
+m_strPic=9(6)
+m_strDefaultValue=65793
+m_nItemLevel=77
 m_nSync=-1
 m_bFixed=1
-m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM109_WK
 
 @}}
 [FDITEM110_WK]
-m_strName=STATUS-pgmmenu
+m_strName=STATUS-USER
 m_strRawPic=X(2)
 m_strPic=X(2)
 m_nItemLevel=77
@@ -1138,12 +1137,31 @@ m_bFixed=1
 
 @}}
 [FDITEM111_WK]
-m_strName=Valid-STATUS-pgmmenu
+m_strName=Valid-STATUS-USER
 m_nItemLevel=88
 m_nSync=-1
 m_bFixed=1
 m_strTrue="00" THRU "09"
 {{@DataItem_m_strDescriptionFDITEM111_WK
+
+@}}
+[FDITEM112_WK]
+m_strName=STATUS-pgmmenu
+m_strRawPic=X(2)
+m_strPic=X(2)
+m_nItemLevel=77
+m_nSync=-1
+m_bFixed=1
+{{@DataItem_m_strDescriptionFDITEM112_WK
+
+@}}
+[FDITEM113_WK]
+m_strName=Valid-STATUS-pgmmenu
+m_nItemLevel=88
+m_nSync=-1
+m_bFixed=1
+m_strTrue="00" THRU "09"
+{{@DataItem_m_strDescriptionFDITEM113_WK
 
 @}}
 
@@ -1180,7 +1198,7 @@ GRAPHICAL-SCREEN
 Begin Screen Form1
    PREFIX            = Form1
    IMPORTED-SCREEN   = FALSE
-   LOCK-CONTROL      = TRUE
+   LOCK-CONTROL      = FALSE
    LEVEL             = 1
    (Name)            = Form1
    Absolute Column   = 0
@@ -1207,7 +1225,7 @@ Begin Screen Form1
    Height in Cells   = FALSE
    Help ID           = 0
    Label Offset      = 0
-   Lines             = 34,77
+   Lines             = 35,54
    Link To Thread    = TRUE
    Main Menu         = Form1-Mn-1-Handle
    Max Lines         = 0,00
@@ -1222,7 +1240,8 @@ Begin Screen Form1
    Size              = 118,83
    System Menu       = TRUE
    Title Bar         = TRUE
-   Title Variable    = titolo1
+   Title Picture     = X(50)
+   Title Variable    = titolo
    Unit              = Cells
    User Gray         = TRUE
    User White        = TRUE
@@ -1234,8 +1253,8 @@ Begin Screen Form1
    After Initdata    = Form1-AfterInitData
    Begin Frame Form1-Fr-1
       SCREEN-COL        = 2,00
-      SCREEN-LINE       = 1,38
-      LOCK-CONTROL      = FALSE
+      SCREEN-LINE       = 1,77
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Fr-1
       3D Style          = Engraved
@@ -1255,7 +1274,7 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 2
-      Line              = 1,38
+      Line              = 1,77
       Lines             = 32,62
       Lines Unit        = Default
       Low Color         = 0
@@ -1268,7 +1287,7 @@ Begin Screen Form1
       Width in Cells    = FALSE
       Begin Tree-View Form1-Menu-Tree
          SCREEN-COL        = 2,00
-         SCREEN-LINE       = 3,46
+         SCREEN-LINE       = 3,85
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Form1-Menu-Tree
@@ -1314,7 +1333,7 @@ Begin Screen Form1
       End
       Begin Bitmap Form1-Bt-2
          SCREEN-COL        = 2,33
-         SCREEN-LINE       = 1,53
+         SCREEN-LINE       = 1,92
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Form1-Bt-2
@@ -1347,8 +1366,8 @@ Begin Screen Form1
    End
    Begin Frame Form1-Fr-2
       SCREEN-COL        = 57,17
-      SCREEN-LINE       = 1,38
-      LOCK-CONTROL      = FALSE
+      SCREEN-LINE       = 1,77
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Fr-2
       3D Style          = Engraved
@@ -1368,7 +1387,7 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 5
-      Line              = 1,38
+      Line              = 1,77
       Lines             = 14,92
       Lines Unit        = Default
       Low Color         = 0
@@ -1381,7 +1400,7 @@ Begin Screen Form1
       Width in Cells    = FALSE
       Begin Data.Entry-Field ef-descr
          SCREEN-COL        = 57,50
-         SCREEN-LINE       = 3,46
+         SCREEN-LINE       = 3,85
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-descr
@@ -1442,7 +1461,7 @@ Begin Screen Form1
       End
       Begin Bitmap Form1-Bt-3
          SCREEN-COL        = 57,50
-         SCREEN-LINE       = 1,53
+         SCREEN-LINE       = 1,92
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Form1-Bt-3
@@ -1475,8 +1494,8 @@ Begin Screen Form1
    End
    Begin Frame Form1-Fr-3
       SCREEN-COL        = 57,17
-      SCREEN-LINE       = 16,23
-      LOCK-CONTROL      = FALSE
+      SCREEN-LINE       = 16,62
+      LOCK-CONTROL      = TRUE
       LEVEL             = 5
       (Name)            = Form1-Fr-3
       3D Style          = Engraved
@@ -1496,7 +1515,7 @@ Begin Screen Form1
       Help ID           = 0
       High Color        = 0
       ID                = 1
-      Line              = 16,23
+      Line              = 16,62
       Lines             = 17,77
       Lines Unit        = Default
       Low Color         = 0
@@ -1509,7 +1528,7 @@ Begin Screen Form1
       Width in Cells    = FALSE
       Begin Bitmap Form1-Bt-1
          SCREEN-COL        = 57,50
-         SCREEN-LINE       = 16,92
+         SCREEN-LINE       = 17,31
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Form1-Bt-1
@@ -1541,7 +1560,7 @@ Begin Screen Form1
       End
       Begin Push-Button Form1-Pb-Run-Prg
          SCREEN-COL        = 104,50
-         SCREEN-LINE       = 31,61
+         SCREEN-LINE       = 32,00
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Form1-Pb-Run-Prg
@@ -1588,7 +1607,7 @@ Begin Screen Form1
       End
       Begin Push-Button Form1-Pb-2
          SCREEN-COL        = 90,84
-         SCREEN-LINE       = 31,61
+         SCREEN-LINE       = 32,00
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = Form1-Pb-2
@@ -1633,7 +1652,7 @@ Begin Screen Form1
       End
       Begin Data.Entry-Field ef-messaggio
          SCREEN-COL        = 57,50
-         SCREEN-LINE       = 16,77
+         SCREEN-LINE       = 17,16
          LOCK-CONTROL      = TRUE
          LEVEL             = 5
          (Name)            = ef-messaggio
@@ -1816,6 +1835,39 @@ Begin Screen Form1
          End
       End
    End
+   Begin Frame fr-new
+      SCREEN-COL        = 1,00
+      SCREEN-LINE       = 1,00
+      LOCK-CONTROL      = TRUE
+      LEVEL             = 5
+      (Name)            = fr-new
+      3D Style          = Normal
+      Alternate         = FALSE
+      Clines            = 0
+      Clines Unit       = Default
+      Color             = 5
+      Column            = 1,00
+      Csize             = 0
+      Csize Unit        = Default
+      Destroy Type      = Automatic
+      Font              = Default Font
+      Full Height       = FALSE
+      Height in Cells   = TRUE
+      Help ID           = 0
+      High Color        = 0
+      ID                = 4
+      Line              = 1,00
+      Lines             = 33,77
+      Lines Unit        = Default
+      Low Color         = 0
+      Size              = 118,83
+      Size Unit         = Default
+      Tab Order         = 5
+      Thickness         = Very Heavy
+      Title Position    = 0:Unaligned
+      Visible           = FALSE
+      Width in Cells    = TRUE
+   End
    Begin Toolbar Form1-Tb-2
       SCREEN-LINE       = 1,00
       LOCK-CONTROL      = TRUE
@@ -1827,7 +1879,7 @@ Begin Screen Form1
       Handle Variable   = Form1-Tb-2-Handle
       Help ID           = 0
       Lines             = 5,00
-      Tab Order         = 5
+      Tab Order         = 6
       Begin Push-Button Form1-Pb-1
          SCREEN-COL        = 1,00
          SCREEN-LINE       = 1,23
@@ -2347,7 +2399,7 @@ Begin Screen Form1
       PANEL-TEXT        = ( , "PROG-ID", , "99/99/9999" )
       PANEL-VARIABLE    = ( PROG-S-DESC OF Prog, PROG-ID OF Prog, , ef-data-buf )
       PANEL-PICTURE     = ( "X(30)", "X(10)", "X(30)", "99/99/9999" )
-      Tab Order         = 6
+      Tab Order         = 7
    End
 End
 
@@ -2842,6 +2894,9 @@ BEGIN-DATA
    TEXTMODE          = 0
    ENTRYPOINT        = BeforeAccept
 BEGIN-TEXT
+           if gesluxnew = "S"
+              modify fr-new, visible true
+           end-if.
            modify Form1-St-1-Handle, panel-index = 3
                                      panel-style = 2
                                      panel-text  = lab-anno-buf.
@@ -2880,16 +2935,6 @@ BEGIN-TEXT
                    end-if
                    move 3 to h-livello-abil
                    perform CHIAMATA-EFFETTIVA
-      *             call thread "Gest-Pwd" using lk-blockpgm
-      *                                          user-cod
-      *                                          h-livello-abil
-      *                  on overflow
-      *                  display message "Il programma non esiste!"
-      *                            title titolo1
-      *                  set lk-bl-cancellazione to true
-      *                  perform I-O-BLOCCO
-      *             end-call
-      *             cancel "Gest-Pwd"
                 else 
                    move lk-hnd-win    to hnd-win-attiva
                    set i-o window     to hnd-win-attiva
@@ -2908,16 +2953,6 @@ BEGIN-TEXT
                        move 0 to sw-call
                     end-if
                     perform CHIAMATA-EFFETTIVA
-      *              call thread "gestmenu" using lk-blockpgm 
-      *                                           user-cod
-      *                                           h-livello-abil
-      *                   on overflow
-      *                   display message "Il programma non esiste!"
-      *                             title titolo1
-      *                   set lk-bl-cancellazione to true
-      *                   perform I-O-BLOCCO
-      *              end-call
-      *              cancel "gestmenu"
                  else 
                     move lk-hnd-win    to hnd-win-attiva
                     set i-o window     to hnd-win-attiva
@@ -2971,7 +3006,7 @@ BEGIN-TEXT
                    end-if
                 else
                    display message box "Funzione non abilitata!"
-                           title titolo1
+                           title titolo
                 end-if
            end-evaluate.
 END-TEXT
@@ -3282,17 +3317,6 @@ BEGIN-DATA
    BASETYPE          = 3
    PARAGRAPH         = CHIAMATA-EFFETTIVA
 BEGIN-TEXT
-      *                call thread prog-id OF PROG using lk-blockpgm
-      *                                                  user-cod
-      *                                                  h-livello-abil 
-      *                     on overflow
-      *                     display message "Il programma non esiste!"
-      *                               title Titolo1
-      *                     set lk-bl-cancellazione to true
-      *                     perform I-O-BLOCCO
-      *                end-call
-      *                cancel prog-id of PROG
-
            call thread "lanciopgm" using lk-blockpgm
                                          link-user
                                          h-livello-abil 
@@ -3637,7 +3661,7 @@ BEGIN-TEXT
                      invalid
                      set errori to true
                      display message box "il programma non esiste!"
-                             title titolo1
+                             title titolo
                 end-read  
            end-evaluate.
 
@@ -3739,6 +3763,7 @@ BEGIN-DATA
    BASETYPE          = 2
    PARAGRAPH         = menu-Ev-Before-Program
 BEGIN-TEXT
+           accept gesluxnew       from environment "GESLUXNEW".
            accept versione-geslux from environment "VERSIONE_GESLUX".
            accept storico         from environment "STORICO".
            accept esercizio-x     from environment "ESERCIZIO".
@@ -3757,7 +3782,13 @@ BEGIN-TEXT
                      ")"          delimited size
                      into lab-anno-buf
               end-string
-           end-if.                   
+           end-if.     
+           
+           if gesluxnew = "S"       
+              move titolo2 to titolo
+           else
+              move titolo1 to titolo
+           end-if.
 END-TEXT
 END-DATA
 

@@ -54,7 +54,8 @@
        WORKING-STORAGE SECTION.
            copy "common-excel.def".
            copy "link-geslock.def".
-           copy "acugui.def". 
+           copy "acugui.def".         
+           copy "link-caltotiva.def".
 
        78  titolo    value "GESLUX - Sitauzione pagamento fatture".
        78  78-clear  value 
@@ -93,6 +94,7 @@
        77  counter           pic 9(10) value 0.
        77  counter2          pic 9(10) value 0.
        77  counter-edit      pic z(10).
+       77  caltotiva-tot-ed  pic zzz.zzz.zz9,99.
                              
        77  idx               pic 9(3). 
        77  como-numero-rif   pic x(12).
@@ -739,6 +741,8 @@
                      separatore         delimited size
                      "Contrassegno"     delimited size
                      separatore         delimited size
+                     "Importo ivato"    delimited size
+                     separatore         delimited size
                 into line-riga
               end-string
               write line-riga
@@ -753,6 +757,12 @@
               end-if
            end-if.
            move importo-insoluto to importo-insoluto-ed.
+
+           move "F" to caltotiva-tipo.
+           move tor-chiave to caltotiva-doc.             
+           call   "caltotiva" using caltotiva-linkage.
+           cancel "caltotiva".       
+           move caltotiva-tot to caltotiva-tot-ed.
 
            initialize line-riga.                      
            string tor-data-fattura(7:2) delimited size
@@ -790,6 +800,8 @@
                   separatore            delimited size
                   tor-contrassegno      delimited size
                   separatore            delimited size
+                  caltotiva-tot-ed      delimited size
+                  separatore            delimited size
              into line-riga
            end-string.
            write line-riga.
@@ -818,12 +830,20 @@
                      separatore         delimited size
                      "Ultimo incasso"   delimited size
                      separatore         delimited size
+                     "Importo ivato"    delimited size
+                     separatore         delimited size
       *****               "INSOLUTO"         delimited size
       *****               separatore         delimited size
                 into line-riga
               end-string
               write line-riga
-           end-if.  
+           end-if.     
+
+           move "N" to caltotiva-tipo.
+           move tno-chiave to caltotiva-doc.             
+           call   "caltotiva" using caltotiva-linkage.
+           cancel "caltotiva".
+           move caltotiva-tot to caltotiva-tot-ed.
 
       *****     move importo-insoluto to importo-insoluto-ed.
            if importo-insoluto not = 0
@@ -860,6 +880,8 @@
                   ultima-data-inc(5:2)  delimited size
                   "/"                   delimited size
                   ultima-data-inc(1:4)  delimited size
+                  separatore            delimited size 
+                  caltotiva-tot-ed      delimited size
                   separatore            delimited size
       *****            importo-insoluto-ed   delimited size
       *****            separatore            delimited size
