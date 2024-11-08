@@ -233,6 +233,10 @@
               move "APERURA FILES" to como-riga
               perform SCRIVI-RIGA-LOG
            end-if.
+
+           move 1 to caltotiva-ope.
+           call   "caltotiva" using caltotiva-linkage.
+
            open input tordini tnotacr pat pas par tblco pnt
                       tcodpag tbldo G2 clienti.
 
@@ -306,8 +310,18 @@
            end-if.
            set trovato  to false.
            perform COMPONI-NOME-FATTURE.
+
            open output lineseq.
            if termina exit paragraph end-if.
+           
+           if RichiamoSchedulato
+              initialize como-riga
+              string "CREATO FILE FATTURE: "
+                     wstampa
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+           end-if.
 
            move spaces to G2-chiave.
            read G2 no lock invalid continue end-read.
@@ -416,8 +430,18 @@
            end-if.
            set trovato  to false.
            perform COMPONI-NOME-NOTECR.
-           open output lineseq.
+           open output lineseq.  
+
            if termina exit paragraph end-if.
+           
+           if RichiamoSchedulato
+              initialize como-riga
+              string "CREATO FILE NOTE CR: "
+                     wstampa
+                into como-riga
+              end-string
+              perform SCRIVI-RIGA-LOG
+           end-if.
 
            move spaces to G2-chiave.
            read G2 no lock invalid continue end-read.
@@ -758,10 +782,10 @@
            end-if.
            move importo-insoluto to importo-insoluto-ed.
 
+           move 2 to caltotiva-ope.
            move "F" to caltotiva-tipo.
            move tor-chiave to caltotiva-doc.             
            call   "caltotiva" using caltotiva-linkage.
-           cancel "caltotiva".       
            move caltotiva-tot to caltotiva-tot-ed.
 
            initialize line-riga.                      
@@ -838,11 +862,11 @@
               end-string
               write line-riga
            end-if.     
-
+                                
+           move 2 to caltotiva-ope.
            move "N" to caltotiva-tipo.
            move tno-chiave to caltotiva-doc.             
            call   "caltotiva" using caltotiva-linkage.
-           cancel "caltotiva".
            move caltotiva-tot to caltotiva-tot-ed.
 
       *****     move importo-insoluto to importo-insoluto-ed.
@@ -922,6 +946,10 @@
               move "CHIUSURA FILES" to como-riga
               perform SCRIVI-RIGA-LOG
            end-if.
+
+           move 3 to caltotiva-ope.
+           call   "caltotiva" using caltotiva-linkage.
+
            close tordini tnotacr pas tblco tbldo pnt
                  G2 clienti tcodpag pat par.
 
@@ -959,7 +987,8 @@
 
               close logfile
            end-if.
-
+                
+           cancel "caltotiva".       
            goback.                 
 
       ***---

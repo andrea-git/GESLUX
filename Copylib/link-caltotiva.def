@@ -4,5 +4,6 @@
            03 caltotiva-doc.             
               05 caltotiva-anno pic 9(4).
               05 caltotiva-num  pic 9(8).
-           03 caltotiva-tot    pic 9(10)v99.
-           03 filler           pic x(100).
+           03 caltotiva-tot     pic 9(10)v99.
+           03 caltotiva-ope     pic 9. |1 OPEN 2 ELABORA 3 CLOSE 4 COMPLETA
+           03 filler            pic x(100).

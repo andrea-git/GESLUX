@@ -19703,7 +19703,7 @@ DEBUGGING=1
 CODE_VERSION_NUMBER=16
 
 [FILE_COMPILE_OPTION-GESLUX:Debug Mode:Source\caltotiva.cbl]
-COPY_DEPENDENCE=FD\tordini.sl;FD\tnotacr.sl;FD\rordini.sl;FD\rnotacr.sl;FD\tivaese.sl;FD\tordini.fd;FD\tnotacr.fd;FD\rordini.fd;FD\rnotacr.fd;FD\tivaese.fd;Copylib\link-caltotiva.def
+COPY_DEPENDENCE=FD\rordini.sl;FD\rnotacr.sl;FD\tivaese.sl;FD\rordini.fd;FD\rnotacr.fd;FD\tivaese.fd;Copylib\link-caltotiva.def
 ADDITIONAL_OPTIONS=-Di -Za -Zn -Zz
 FOLLOW_PROJECT=1
 ; Standard Options

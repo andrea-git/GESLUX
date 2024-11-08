@@ -2,29 +2,29 @@
        PROGRAM-ID.                      caltotiva.
        AUTHOR.                          Andrea.
        REMARKS. Restituisce il totale ivato di fattura e nota credito
+                Questo programma può essere eseguito in maniera massiva 
+                oppure a chiamata singola.
+                - Nel primo caso non va fatta la cancel e dev'essere 
+                  chiamato a step, aprendo prima il file, poi elaborando
+                  poi chiudendo i files
+                - Nel secondo caso esegue tutto e si puo eseguire la cancel
       ******************************************************************
 
        SPECIAL-NAMES. decimal-point is comma.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-           copy "tordini.sl".
-           copy "tnotacr.sl". 
            copy "rordini.sl".
            copy "rnotacr.sl".
            copy "tivaese.sl".
 
       *****************************************************************
        DATA DIVISION.
-       FILE SECTION.
-           copy "tordini.fd".
-           copy "tnotacr.fd". 
+       FILE SECTION.    
            copy "rordini.fd".
            copy "rnotacr.fd".
            copy "tivaese.fd". 
 
        WORKING-STORAGE SECTION.
-       77  status-tordini    pic xx.
-       77  status-tnotacr    pic xx.  
        77  status-rordini    pic xx.
        77  status-rnotacr    pic xx.
        77  status-tivaese    pic xx.  
@@ -46,81 +46,98 @@
 
        MAIN-PRG.
            perform INIT.
-           perform OPEN-FILES.            
-           if caltotiva-tipo = "F"
-              perform ELABORAZIONE-F
-           else
-              perform ELABORAZIONE-N
-           end-if.
-           perform CALCOLO-TOTALE.
-           perform CLOSE-FILES.   
+           evaluate caltotiva-ope 
+           when 1 perform OPEN-FILES
+           when 2 
+                if caltotiva-tipo = "F"
+                   perform ELABORAZIONE-F
+                else
+                   perform ELABORAZIONE-N
+                end-if
+                perform CALCOLO-TOTALE
+           when 3 perform CLOSE-FILES
+           when 4
+                perform OPEN-FILES
+                if caltotiva-tipo = "F"
+                   perform ELABORAZIONE-F
+                else
+                   perform ELABORAZIONE-N
+                end-if
+                perform CALCOLO-TOTALE
+                perform CLOSE-FILES
+           end-evaluate.
            perform EXIT-PGM.
 
       ***---
        INIT.
-           move 0 to caltotiva-tot.
+           move 0      to caltotiva-tot idx.  
+           move spaces to como-iva. 
+           move spaces to el-cod-iva(1) 
+                          el-cod-iva(2) 
+                          el-cod-iva(3).  
+           move 0      to el-perce-iva(1) 
+                          el-perce-iva(2) 
+                          el-perce-iva(3).
+           move 0      to el-impon(1)
+                          el-impon(2)
+                          el-impon(3).
+           move 0      to el-iva(1)
+                          el-iva(2)
+                          el-iva(3).  
 
       ***---
        OPEN-FILES.   
-           open input tordini tnotacr rordini rnotacr tivaese.
+           open input rordini rnotacr tivaese.
                       
       ***---
        ELABORAZIONE-F.
-           move caltotiva-doc to tor-chiave.
-           read tordini no lock
-                invalid continue
-            not invalid
-                move low-value  to ror-rec
-                move tor-chiave to ror-chiave
-                start rordini key >= ror-chiave
-                      invalid continue
-                  not invalid
-                      perform until 1 = 2
-                         read rordini next at end exit perform end-read
-                         if ror-anno       not = tor-anno or
-                            ror-num-ordine not = tor-numero
-                            exit perform
-                         end-if 
-                         move ror-cod-iva to como-iva
-                         perform VALORIZZA-IVA        
-                         compute el-impon(idx) =
-                                 el-impon(idx) +
-                               ( ror-qta * ( ror-imponib-merce + 
-                                             ror-imp-consumo   +
-                                             ror-imp-cou-cobat +
-                                             ror-add-piombo ) )
-                      end-perform
-                end-start
-           end-read.
+           move caltotiva-anno to ror-anno.
+           move caltotiva-num  to ror-num-ordine.
+           move low-value      to ror-num-riga.
+           start rordini key >= ror-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rordini next at end exit perform end-read
+                    if ror-anno       not = caltotiva-anno or
+                       ror-num-ordine not = caltotiva-num
+                       exit perform
+                    end-if 
+                    move ror-cod-iva to como-iva
+                    perform VALORIZZA-IVA        
+                    compute el-impon(idx) =
+                            el-impon(idx) +
+                          ( ror-qta * ( ror-imponib-merce + 
+                                        ror-imp-consumo   +
+                                        ror-imp-cou-cobat +
+                                        ror-add-piombo ) )
+                 end-perform
+           end-start.
 
       ***---
-       ELABORAZIONE-N.   
-           move caltotiva-doc to tno-chiave.
-           read tnotacr no lock
-                invalid continue
-            not invalid
-                move low-value    to rno-rec
-                move tno-chiave   to rno-chiave
-                start rnotacr key >= rno-chiave
-                      invalid continue
-                  not invalid
-                      perform until 1 = 2
-                         read rnotacr next at end exit perform end-read
-                         if rno-anno   not = tno-anno or
-                            rno-numero not = tno-numero
-                            exit perform
-                         end-if         
-                         move rno-cod-iva to como-iva
-                         perform VALORIZZA-IVA           
-                         compute el-impon(idx) =
-                                 el-impon(idx) +
-                               ( rno-qta * ( rno-prz-unitario + 
-                                             rno-imp-consumo   +
-                                             rno-imp-cou-cobat +
-                                             rno-add-piombo ) )
-                      end-perform
-                end-start
-           end-read.
+       ELABORAZIONE-N.  
+           move caltotiva-anno to rno-anno.
+           move caltotiva-num  to rno-numero.
+           move low-value      to rno-num-riga.
+           start rnotacr key >= rno-chiave
+                 invalid continue
+             not invalid
+                 perform until 1 = 2
+                    read rnotacr next at end exit perform end-read
+                    if rno-anno   not = caltotiva-anno or
+                       rno-numero not = caltotiva-num
+                       exit perform
+                    end-if         
+                    move rno-cod-iva to como-iva
+                    perform VALORIZZA-IVA           
+                    compute el-impon(idx) =
+                            el-impon(idx) +
+                          ( rno-qta * ( rno-prz-unitario + 
+                                        rno-imp-consumo   +
+                                        rno-imp-cou-cobat +
+                                        rno-add-piombo ) )
+                 end-perform
+           end-start.
 
       ***---
        VALORIZZA-IVA.
@@ -163,7 +180,7 @@
 
       ***---
        CLOSE-FILES.  
-           close tordini tnotacr rordini rnotacr tivaese.
+           close rordini rnotacr tivaese.
 
       ***---
        EXIT-PGM.
